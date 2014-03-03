@@ -1,0 +1,1329 @@
+C51 COMPILER V9.51   EEPROM                                                                02/27/2014 19:08:29 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE EEPROM
+OBJECT MODULE PLACED IN .\DP8051_Keil_951\Debug\EEPROM.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\Generated_Source\PSoC3\EEPROM.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051_Keil_951\Debug\EEPROM.lst) CD DB NOIP OT(3,SP
+                    -EED) INCDIR(.,.\Generated_Source\PSoC3) OJ(.\DP8051_Keil_951\Debug\EEPROM.obj)
+
+line level    source
+
+   1          /*******************************************************************************
+   2          * File Name: EEPROM.c
+   3          * Version 2.10
+   4          *
+   5          * Description:
+   6          *  Provides the source code to the API for the EEPROM component.
+   7          *
+   8          ********************************************************************************
+   9          * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  10          * You may use this file only in accordance with the license, terms, conditions,
+  11          * disclaimers, and limitations in the end user license agreement accompanying
+  12          * the software package with which this file was provided.
+  13          *******************************************************************************/
+  14          
+  15          #include "EEPROM.h"
+  16          
+  17          
+  18          #if (CY_PSOC3 || CY_PSOC5LP)
+  19          
+  20              /*******************************************************************************
+  21              * Function Name: EEPROM_Enable
+  22              ********************************************************************************
+  23              *
+  24              * Summary:
+  25              *  Enable the EEPROM.
+  26              *
+  27              * Parameters:
+  28              *  None
+  29              *
+  30              * Return:
+  31              *  None
+  32              *
+  33              *******************************************************************************/
+  34              void EEPROM_Enable(void) 
+  35              {
+  36   1              CyEEPROM_Start();
+  37   1          }
+  38          
+  39          
+  40              /*******************************************************************************
+  41              * Function Name: EEPROM_Start
+  42              ********************************************************************************
+  43              *
+  44              * Summary:
+  45              *  Starts EEPROM.
+  46              *
+  47              * Parameters:
+  48              *  None
+  49              *
+  50              * Return:
+  51              *  None
+  52              *
+  53              *******************************************************************************/
+C51 COMPILER V9.51   EEPROM                                                                02/27/2014 19:08:29 PAGE 2   
+
+  54              void EEPROM_Start(void) 
+  55              {
+  56   1              /* Enable the EEPROM */
+  57   1              EEPROM_Enable();
+  58   1          }
+  59          
+  60          
+  61              /*******************************************************************************
+  62              * Function Name: EEPROM_Stop
+  63              ********************************************************************************
+  64              *
+  65              * Summary:
+  66              *  Stops and powers down EEPROM.
+  67              *
+  68              * Parameters:
+  69              *  None
+  70              *
+  71              * Return:
+  72              *  None
+  73              *
+  74              *******************************************************************************/
+  75              void EEPROM_Stop (void) 
+  76              {
+  77   1              /* Disable EEPROM */
+  78   1              CyEEPROM_Stop();
+  79   1          }
+  80          
+  81          #endif /* (CY_PSOC3 || CY_PSOC5LP) */
+  82          
+  83          
+  84          /*******************************************************************************
+  85          * Function Name: EEPROM_EraseSector
+  86          ********************************************************************************
+  87          *
+  88          * Summary:
+  89          *  Erases a sector of memory. This function blocks until the operation is
+  90          *  complete.
+  91          *
+  92          * Parameters:
+  93          *  sectorNumber:  Sector number to erase.
+  94          *
+  95          * Return:
+  96          *  CYRET_SUCCESS, if the operation was successful.
+  97          *  CYRET_BAD_PARAM, if the parameter sectorNumber out of range.
+  98          *  CYRET_LOCKED, if the spc is being used.
+  99          *  CYRET_UNKNOWN, if there was an SPC error.
+ 100          *
+ 101          *******************************************************************************/
+ 102          cystatus EEPROM_EraseSector(uint8 sectorNumber) 
+ 103          {
+ 104   1          cystatus status;
+ 105   1      
+ 106   1          /* Start the SPC */
+ 107   1          CySpcStart();
+ 108   1      
+ 109   1          if(sectorNumber < (uint8) CY_EEPROM_NUMBER_ARRAYS)
+ 110   1          {
+ 111   2              /* See if we can get the SPC. */
+ 112   2              if(CySpcLock() == CYRET_SUCCESS)
+ 113   2              {
+ 114   3                  #if(CY_PSOC5A)
+              
+C51 COMPILER V9.51   EEPROM                                                                02/27/2014 19:08:29 PAGE 3   
+
+                              /* Plan for failure */
+                              status = CYRET_UNKNOWN;
+              
+                              /* Command to load a row of data */
+                              if(CySpcLoadRow(CY_SPC_FIRST_EE_ARRAYID, 0, CYDEV_EEPROM_ROW_SIZE) == CYRET_STARTED)
+                              {
+                                  while(CY_SPC_BUSY)
+                                  {
+                                      /* Wait until SPC becomes idle */
+                                  }
+              
+                                  /* SPC is idle now */
+                                  if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+                                  {
+                                      status = CYRET_SUCCESS;
+                                  }
+                              }
+              
+                              /* Command to erase a sector */
+                              if(status == CYRET_SUCCESS)
+                              {
+              
+                          #endif /* (CY_PSOC5A) */
+ 139   3      
+ 140   3                          if(CySpcEraseSector(CY_SPC_FIRST_EE_ARRAYID, sectorNumber) == CYRET_STARTED)
+ 141   3                          {
+ 142   4                              /* Plan for failure */
+ 143   4                              status = CYRET_UNKNOWN;
+ 144   4      
+ 145   4                              while(CY_SPC_BUSY)
+ 146   4                              {
+ 147   5                                  /* Wait until SPC becomes idle */
+ 148   5                              }
+ 149   4      
+ 150   4                              /* SPC is idle now */
+ 151   4                              if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+ 152   4                              {
+ 153   5                                  status = CYRET_SUCCESS;
+ 154   5                              }
+ 155   4                          }
+ 156   3                          else
+ 157   3                          {
+ 158   4                              status = CYRET_UNKNOWN;
+ 159   4                          }
+ 160   3      
+ 161   3                  #if(CY_PSOC5A)
+              
+                              }
+                              else
+                              {
+                                  status = CYRET_UNKNOWN;
+                              }
+              
+                          #endif /* (CY_PSOC5A) */
+ 170   3      
+ 171   3                      /* Unlock the SPC so someone else can use it. */
+ 172   3                      CySpcUnlock();
+ 173   3              }
+ 174   2              else
+ 175   2              {
+ 176   3                  status = CYRET_LOCKED;
+ 177   3              }
+C51 COMPILER V9.51   EEPROM                                                                02/27/2014 19:08:29 PAGE 4   
+
+ 178   2          }
+ 179   1          else
+ 180   1          {
+ 181   2              status = CYRET_BAD_PARAM;
+ 182   2          }
+ 183   1      
+ 184   1          return(status);
+ 185   1      }
+ 186          
+ 187          
+ 188          /*******************************************************************************
+ 189          * Function Name: EEPROM_Write
+ 190          ********************************************************************************
+ 191          *
+ 192          * Summary:
+ 193          *  Writes a row, CYDEV_EEPROM_ROW_SIZE of data to the EEPROM. This is
+ 194          *  a blocking call. It will not return until the function succeeds or fails.
+ 195          *
+ 196          * Parameters:
+ 197          *  rowData:  Address of the data to write to the EEPROM.
+ 198          *  rowNumber:  EEPROM row number to program.
+ 199          *
+ 200          * Return:
+ 201          *  CYRET_SUCCESS, if the operation was successful.
+ 202          *  CYRET_BAD_PARAM, if the parameter rowNumber out of range.
+ 203          *  CYRET_LOCKED, if the spc is being used.
+ 204          *  CYRET_UNKNOWN, if there was an SPC error.
+ 205          *
+ 206          *******************************************************************************/
+ 207          cystatus EEPROM_Write(const uint8 * rowData, uint8 rowNumber) 
+ 208          {
+ 209   1          cystatus status;
+ 210   1      
+ 211   1          /* Start the SPC */
+ 212   1          CySpcStart();
+ 213   1      
+ 214   1          if(rowNumber < (uint8) CY_EEPROM_NUMBER_ROWS)
+ 215   1          {
+ 216   2              /* See if we can get the SPC. */
+ 217   2              if(CySpcLock() == CYRET_SUCCESS)
+ 218   2              {
+ 219   3                  /* Plan for failure */
+ 220   3                  status = CYRET_UNKNOWN;
+ 221   3      
+ 222   3                  /* Command to load a row of data */
+ 223   3                  if(CySpcLoadRow(CY_SPC_FIRST_EE_ARRAYID, rowData, CYDEV_EEPROM_ROW_SIZE) == CYRET_STARTED)
+ 224   3                  {
+ 225   4                      while(CY_SPC_BUSY)
+ 226   4                      {
+ 227   5                          /* Wait until SPC becomes idle */
+ 228   5                      }
+ 229   4      
+ 230   4                      /* SPC is idle now */
+ 231   4                      if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+ 232   4                      {
+ 233   5                          status = CYRET_SUCCESS;
+ 234   5                      }
+ 235   4      
+ 236   4                      /* Command to erase and program the row. */
+ 237   4                      if(status == CYRET_SUCCESS)
+ 238   4                      {
+ 239   5                          if(CySpcWriteRow(CY_SPC_FIRST_EE_ARRAYID, (uint16)rowNumber, dieTemperature[0],
+C51 COMPILER V9.51   EEPROM                                                                02/27/2014 19:08:29 PAGE 5   
+
+ 240   5                          dieTemperature[1]) == CYRET_STARTED)
+ 241   5                          {
+ 242   6                              /* Plan for failure */
+ 243   6                              status = CYRET_UNKNOWN;
+ 244   6      
+ 245   6                              while(CY_SPC_BUSY)
+ 246   6                              {
+ 247   7                                  /* Wait until SPC becomes idle */
+ 248   7                              }
+ 249   6      
+ 250   6                              /* SPC is idle now */
+ 251   6                              if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+ 252   6                              {
+ 253   7                                  status = CYRET_SUCCESS;
+ 254   7                              }
+ 255   6                          }
+ 256   5                          else
+ 257   5                          {
+ 258   6                              status = CYRET_UNKNOWN;
+ 259   6                          }
+ 260   5                      }
+ 261   4                      else
+ 262   4                      {
+ 263   5                          status = CYRET_UNKNOWN;
+ 264   5                      }
+ 265   4                  }
+ 266   3      
+ 267   3                  /* Unlock the SPC so someone else can use it. */
+ 268   3                  CySpcUnlock();
+ 269   3              }
+ 270   2              else
+ 271   2              {
+ 272   3                  status = CYRET_LOCKED;
+ 273   3              }
+ 274   2          }
+ 275   1          else
+ 276   1          {
+ 277   2              status = CYRET_BAD_PARAM;
+ 278   2          }
+ 279   1      
+ 280   1          return(status);
+ 281   1      }
+ 282          
+ 283          
+ 284          /*******************************************************************************
+ 285          * Function Name: EEPROM_StartWrite
+ 286          ********************************************************************************
+ 287          *
+ 288          * Summary:
+ 289          *  Starts the SPC write function. This function does not block, it returns
+ 290          *  once the command has begun the SPC write function. This function must be used
+ 291          *  in combination with EEPROM_QueryWrite(). Once this function has
+ 292          *  been called the SPC will be locked until EEPROM_QueryWrite()
+ 293          *  returns CYRET_SUCCESS.
+ 294          *
+ 295          * Parameters:
+ 296          *  rowData:  Address of buffer containing a row of data to write to the EEPROM.
+ 297          *  rowNumber:  EEPROM row number to program.
+ 298          *
+ 299          * Return:
+ 300          *  CYRET_STARTED, if the spc command to write was successfuly started.
+ 301          *  CYRET_BAD_PARAM, if the parameter rowNumber out of range.
+C51 COMPILER V9.51   EEPROM                                                                02/27/2014 19:08:29 PAGE 6   
+
+ 302          *  CYRET_LOCKED, if the spc is being used.
+ 303          *  CYRET_UNKNOWN, if there was an SPC error.
+ 304          *
+ 305          *******************************************************************************/
+ 306          cystatus EEPROM_StartWrite(const uint8 * rowData, uint8 rowNumber) \
+ 307          
+ 308          {
+ 309   1          cystatus status;
+ 310   1      
+ 311   1          if(rowNumber < (uint8) CY_EEPROM_NUMBER_ROWS)
+ 312   1          {
+ 313   2              /* See if we can get the SPC. */
+ 314   2              if(CySpcLock() == CYRET_SUCCESS)
+ 315   2              {
+ 316   3                  /* Plan for failure */
+ 317   3                  status = CYRET_UNKNOWN;
+ 318   3      
+ 319   3                  /* Command to load a row of data */
+ 320   3                  if(CySpcLoadRow(CY_SPC_FIRST_EE_ARRAYID, rowData, CYDEV_EEPROM_ROW_SIZE) == CYRET_STARTED)
+ 321   3                  {
+ 322   4                      while(CY_SPC_BUSY)
+ 323   4                      {
+ 324   5                          /* Wait until SPC becomes idle */
+ 325   5                      }
+ 326   4      
+ 327   4                      /* SPC is idle now */
+ 328   4                      if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+ 329   4                      {
+ 330   5                          status = CYRET_SUCCESS;
+ 331   5                      }
+ 332   4      
+ 333   4                      /* Command to erase and program the row. */
+ 334   4                      if(status == CYRET_SUCCESS)
+ 335   4                      {
+ 336   5                          if(CySpcWriteRow(CY_SPC_FIRST_EE_ARRAYID, (uint16)rowNumber, dieTemperature[0],
+ 337   5                          dieTemperature[1]) == CYRET_STARTED)
+ 338   5                          {
+ 339   6                              status = CYRET_STARTED;
+ 340   6                          }
+ 341   5                          else
+ 342   5                          {
+ 343   6                              status = CYRET_UNKNOWN;
+ 344   6                          }
+ 345   5                      }
+ 346   4                      else
+ 347   4                      {
+ 348   5                          status = CYRET_UNKNOWN;
+ 349   5                      }
+ 350   4                  }
+ 351   3              }
+ 352   2              else
+ 353   2              {
+ 354   3                  status = CYRET_LOCKED;
+ 355   3              }
+ 356   2          }
+ 357   1          else
+ 358   1          {
+ 359   2              status = CYRET_BAD_PARAM;
+ 360   2          }
+ 361   1      
+ 362   1          return(status);
+ 363   1      }
+C51 COMPILER V9.51   EEPROM                                                                02/27/2014 19:08:29 PAGE 7   
+
+ 364          
+ 365          
+ 366          /*******************************************************************************
+ 367          * Function Name: EEPROM_QueryWrite
+ 368          ********************************************************************************
+ 369          *
+ 370          * Summary:
+ 371          *  Checks the state of write to EEPROM. This function must be called until
+ 372          *  the return value is not CYRET_STARTED.
+ 373          *
+ 374          * Parameters:
+ 375          *  None
+ 376          *
+ 377          * Return:
+ 378          *  CYRET_STARTED, if the spc command is still processing.
+ 379          *  CYRET_SUCCESS, if the operation was successful.
+ 380          *  CYRET_UNKNOWN, if there was an SPC error.
+ 381          *
+ 382          *******************************************************************************/
+ 383          cystatus EEPROM_QueryWrite(void) 
+ 384          {
+ 385   1          cystatus status;
+ 386   1      
+ 387   1          /* Check if SPC is idle */
+ 388   1          if(CY_SPC_IDLE)
+ 389   1          {
+ 390   2              /* SPC is idle now */
+ 391   2              if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+ 392   2              {
+ 393   3                  status = CYRET_SUCCESS;
+ 394   3              }
+ 395   2              else
+ 396   2              {
+ 397   3                  status = CYRET_UNKNOWN;
+ 398   3              }
+ 399   2      
+ 400   2              /* Unlock the SPC so someone else can use it. */
+ 401   2              CySpcUnlock();
+ 402   2          }
+ 403   1          else
+ 404   1          {
+ 405   2              status = CYRET_STARTED;
+ 406   2          }
+ 407   1      
+ 408   1          return(status);
+ 409   1      }
+ 410          
+ 411          
+ 412          /*******************************************************************************
+ 413          * Function Name: EEPROM_ByteWrite
+ 414          ********************************************************************************
+ 415          *
+ 416          * Summary:
+ 417          *  Writes a byte of data to the EEPROM. This is a blocking call. It will not
+ 418          *  return until the function succeeds or fails.
+ 419          *
+ 420          * Parameters:
+ 421          *  dataByte:  Byte of data to write to the EEPROM.
+ 422          *  rowNumber:  EEPROM row number to program.
+ 423          *  byteNumber:  Byte number within the row to program.
+ 424          *
+ 425          * Return:
+C51 COMPILER V9.51   EEPROM                                                                02/27/2014 19:08:29 PAGE 8   
+
+ 426          *  CYRET_SUCCESS, if the operation was successful.
+ 427          *  CYRET_BAD_PARAM, if the parameter rowNumber or byteNumber out of range.
+ 428          *  CYRET_LOCKED, if the spc is being used.
+ 429          *  CYRET_UNKNOWN, if there was an SPC error.
+ 430          *
+ 431          *******************************************************************************/
+ 432          cystatus EEPROM_ByteWrite(uint8 dataByte, uint8 rowNumber, uint8 byteNumber) \
+ 433          
+ 434          {
+ 435   1          cystatus status;
+ 436   1      
+ 437   1          /* Start the SPC */
+ 438   1          CySpcStart();
+ 439   1      
+ 440   1          if((rowNumber < (uint8) CY_EEPROM_NUMBER_ROWS) && (byteNumber < (uint8) SIZEOF_EEPROM_ROW))
+ 441   1          {
+ 442   2              /* See if we can get the SPC. */
+ 443   2              if(CySpcLock() == CYRET_SUCCESS)
+ 444   2              {
+ 445   3                  /* Plan for failure */
+ 446   3                  status = CYRET_UNKNOWN;
+ 447   3      
+ 448   3                  /* Command to load a byte of data */
+ 449   3                  if(CySpcLoadMultiByte(CY_SPC_FIRST_EE_ARRAYID, (uint16)byteNumber, &dataByte,\
+ 450   3                                                                      EEPROM_SPC_BYTE_WRITE_SIZE) == CYRET_START
+             -ED)
+ 451   3                  {
+ 452   4                      while(CY_SPC_BUSY)
+ 453   4                      {
+ 454   5                          /* Wait until SPC becomes idle */
+ 455   5                      }
+ 456   4      
+ 457   4                      /* SPC is idle now */
+ 458   4                      if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+ 459   4                      {
+ 460   5                          status = CYRET_SUCCESS;
+ 461   5                      }
+ 462   4      
+ 463   4                      /* Command to erase and program the row. */
+ 464   4                      if(status == CYRET_SUCCESS)
+ 465   4                      {
+ 466   5                          if(CySpcWriteRow(CY_SPC_FIRST_EE_ARRAYID, (uint16)rowNumber, dieTemperature[0],
+ 467   5                          dieTemperature[1]) == CYRET_STARTED)
+ 468   5                          {
+ 469   6                              /* Plan for failure */
+ 470   6                              status = CYRET_UNKNOWN;
+ 471   6      
+ 472   6                              while(CY_SPC_BUSY)
+ 473   6                              {
+ 474   7                                  /* Wait until SPC becomes idle */
+ 475   7                              }
+ 476   6      
+ 477   6                              /* SPC is idle now */
+ 478   6                              if(CY_SPC_STATUS_SUCCESS == CY_SPC_READ_STATUS)
+ 479   6                              {
+ 480   7                                  status = CYRET_SUCCESS;
+ 481   7                              }
+ 482   6                          }
+ 483   5                          else
+ 484   5                          {
+ 485   6                              status = CYRET_UNKNOWN;
+ 486   6                          }
+C51 COMPILER V9.51   EEPROM                                                                02/27/2014 19:08:29 PAGE 9   
+
+ 487   5                      }
+ 488   4                      else
+ 489   4                      {
+ 490   5                          status = CYRET_UNKNOWN;
+ 491   5                      }
+ 492   4                  }
+ 493   3      
+ 494   3                  /* Unlock the SPC so someone else can use it. */
+ 495   3                  CySpcUnlock();
+ 496   3              }
+ 497   2              else
+ 498   2              {
+ 499   3                  status = CYRET_LOCKED;
+ 500   3              }
+ 501   2          }
+ 502   1          else
+ 503   1          {
+ 504   2              status = CYRET_BAD_PARAM;
+ 505   2          }
+ 506   1      
+ 507   1          return(status);
+ 508   1      }
+ 509          
+ 510          
+ 511          /* [] END OF FILE */
+C51 COMPILER V9.51   EEPROM                                                                02/27/2014 19:08:29 PAGE 10  
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION EEPROM_Enable (BEGIN)
+                                           ; SOURCE LINE # 34
+                                           ; SOURCE LINE # 35
+                                           ; SOURCE LINE # 36
+0000 120000      E     LCALL   CyEEPROM_Start
+                                           ; SOURCE LINE # 37
+0003 22                RET     
+             ; FUNCTION EEPROM_Enable (END)
+
+             ; FUNCTION EEPROM_Start (BEGIN)
+                                           ; SOURCE LINE # 54
+                                           ; SOURCE LINE # 55
+                                           ; SOURCE LINE # 57
+0000 120000      R     LCALL   EEPROM_Enable
+                                           ; SOURCE LINE # 58
+0003 22                RET     
+             ; FUNCTION EEPROM_Start (END)
+
+             ; FUNCTION EEPROM_Stop (BEGIN)
+                                           ; SOURCE LINE # 75
+                                           ; SOURCE LINE # 76
+                                           ; SOURCE LINE # 78
+0000 120000      E     LCALL   CyEEPROM_Stop
+                                           ; SOURCE LINE # 79
+0003 22                RET     
+             ; FUNCTION EEPROM_Stop (END)
+
+             ; FUNCTION _EEPROM_EraseSector (BEGIN)
+                                           ; SOURCE LINE # 102
+0000 900000      R     MOV     DPTR,#sectorNumber
+0003 EF                MOV     A,R7
+0004 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 103
+                                           ; SOURCE LINE # 107
+0005 120000      E     LCALL   CySpcStart
+                                           ; SOURCE LINE # 109
+0008 900000      R     MOV     DPTR,#sectorNumber
+000B E0                MOVX    A,@DPTR
+000C C3                CLR     C
+000D 9402              SUBB    A,#02H
+000F 5052              JNC     ?C0004
+                                           ; SOURCE LINE # 110
+                                           ; SOURCE LINE # 112
+0011 120000      E     LCALL   CySpcLock
+0014 EF                MOV     A,R7
+0015 7044              JNZ     ?C0005
+                                           ; SOURCE LINE # 113
+                                           ; SOURCE LINE # 140
+0017 900000      R     MOV     DPTR,#sectorNumber
+001A E0                MOVX    A,@DPTR
+001B FD                MOV     R5,A
+001C 7F40              MOV     R7,#040H
+001E 120000      E     LCALL   _CySpcEraseSector
+0021 EF                MOV     A,R7
+0022 6407              XRL     A,#07H
+0024 702A              JNZ     ?C0006
+                                           ; SOURCE LINE # 141
+                                           ; SOURCE LINE # 143
+0026 900000      R     MOV     DPTR,#status
+C51 COMPILER V9.51   EEPROM                                                                02/27/2014 19:08:29 PAGE 11  
+
+0029 74FF              MOV     A,#0FFH
+002B F0                MOVX    @DPTR,A
+002C         ?C0007:
+                                           ; SOURCE LINE # 145
+002C 904722            MOV     DPTR,#04722H
+002F E0                MOVX    A,@DPTR
+0030 5402              ANL     A,#02H
+0032 60F8              JZ      ?C0007
+                                           ; SOURCE LINE # 146
+                                           ; SOURCE LINE # 148
+0034         ?C0008:
+                                           ; SOURCE LINE # 151
+0034 904722            MOV     DPTR,#04722H
+0037 E0                MOVX    A,@DPTR
+0038 5402              ANL     A,#02H
+003A 6009              JZ      ?C0010
+003C E0                MOVX    A,@DPTR
+003D FF                MOV     R7,A
+003E 13                RRC     A
+003F 13                RRC     A
+0040 543F              ANL     A,#03FH
+0042 FF                MOV     R7,A
+0043 8002              SJMP    ?C0011
+0045         ?C0010:
+0045 7FFF              MOV     R7,#0FFH
+0047         ?C0011:
+0047 EF                MOV     A,R7
+0048 700C              JNZ     ?C0012
+                                           ; SOURCE LINE # 152
+                                           ; SOURCE LINE # 153
+004A 900000      R     MOV     DPTR,#status
+004D F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 154
+                                           ; SOURCE LINE # 155
+004E 8006              SJMP    ?C0012
+0050         ?C0006:
+                                           ; SOURCE LINE # 157
+                                           ; SOURCE LINE # 158
+0050 900000      R     MOV     DPTR,#status
+0053 74FF              MOV     A,#0FFH
+0055 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 159
+0056         ?C0012:
+                                           ; SOURCE LINE # 172
+0056 120000      E     LCALL   CySpcUnlock
+                                           ; SOURCE LINE # 173
+0059 800E              SJMP    ?C0014
+005B         ?C0005:
+                                           ; SOURCE LINE # 175
+                                           ; SOURCE LINE # 176
+005B 900000      R     MOV     DPTR,#status
+005E 7404              MOV     A,#04H
+0060 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 177
+                                           ; SOURCE LINE # 178
+0061 8006              SJMP    ?C0014
+0063         ?C0004:
+                                           ; SOURCE LINE # 180
+                                           ; SOURCE LINE # 181
+0063 900000      R     MOV     DPTR,#status
+0066 7401              MOV     A,#01H
+0068 F0                MOVX    @DPTR,A
+C51 COMPILER V9.51   EEPROM                                                                02/27/2014 19:08:29 PAGE 12  
+
+                                           ; SOURCE LINE # 182
+0069         ?C0014:
+                                           ; SOURCE LINE # 184
+0069 900000      R     MOV     DPTR,#status
+006C E0                MOVX    A,@DPTR
+006D FF                MOV     R7,A
+                                           ; SOURCE LINE # 185
+006E         ?C0015:
+006E 22                RET     
+             ; FUNCTION _EEPROM_EraseSector (END)
+
+             ; FUNCTION _EEPROM_Write (BEGIN)
+                                           ; SOURCE LINE # 207
+0000 900000      R     MOV     DPTR,#rowData
+0003 EB                MOV     A,R3
+0004 F0                MOVX    @DPTR,A
+0005 A3                INC     DPTR
+0006 EA                MOV     A,R2
+0007 F0                MOVX    @DPTR,A
+0008 A3                INC     DPTR
+0009 E9                MOV     A,R1
+000A F0                MOVX    @DPTR,A
+000B A3                INC     DPTR
+000C ED                MOV     A,R5
+000D F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 208
+                                           ; SOURCE LINE # 212
+000E 120000      E     LCALL   CySpcStart
+                                           ; SOURCE LINE # 214
+0011 900000      R     MOV     DPTR,#rowNumber
+0014 E0                MOVX    A,@DPTR
+0015 C3                CLR     C
+0016 9480              SUBB    A,#080H
+0018 4003              JC      $ + 5H
+001A 020000      R     LJMP    ?C0016
+                                           ; SOURCE LINE # 215
+                                           ; SOURCE LINE # 217
+001D 120000      E     LCALL   CySpcLock
+0020 EF                MOV     A,R7
+0021 6003              JZ      $ + 5H
+0023 020000      R     LJMP    ?C0017
+                                           ; SOURCE LINE # 218
+                                           ; SOURCE LINE # 220
+0026 900000      R     MOV     DPTR,#status
+0029 74FF              MOV     A,#0FFH
+002B F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 223
+002C 900000      R     MOV     DPTR,#rowData
+002F E0                MOVX    A,@DPTR
+0030 FB                MOV     R3,A
+0031 A3                INC     DPTR
+0032 E0                MOVX    A,@DPTR
+0033 FA                MOV     R2,A
+0034 A3                INC     DPTR
+0035 E0                MOVX    A,@DPTR
+0036 F9                MOV     R1,A
+0037 900000      E     MOV     DPTR,#?_CySpcLoadRow?BYTE+04H
+003A E4                CLR     A
+003B F0                MOVX    @DPTR,A
+003C A3                INC     DPTR
+003D 7410              MOV     A,#010H
+003F F0                MOVX    @DPTR,A
+C51 COMPILER V9.51   EEPROM                                                                02/27/2014 19:08:29 PAGE 13  
+
+0040 7F40              MOV     R7,#040H
+0042 120000      E     LCALL   _CySpcLoadRow
+0045 EF                MOV     A,R7
+0046 6407              XRL     A,#07H
+0048 707C              JNZ     ?C0018
+                                           ; SOURCE LINE # 224
+004A         ?C0019:
+                                           ; SOURCE LINE # 225
+004A 904722            MOV     DPTR,#04722H
+004D E0                MOVX    A,@DPTR
+004E 5402              ANL     A,#02H
+0050 60F8              JZ      ?C0019
+                                           ; SOURCE LINE # 226
+                                           ; SOURCE LINE # 228
+0052         ?C0020:
+                                           ; SOURCE LINE # 231
+0052 904722            MOV     DPTR,#04722H
+0055 E0                MOVX    A,@DPTR
+0056 5402              ANL     A,#02H
+0058 6009              JZ      ?C0022
+005A E0                MOVX    A,@DPTR
+005B FF                MOV     R7,A
+005C 13                RRC     A
+005D 13                RRC     A
+005E 543F              ANL     A,#03FH
+0060 FF                MOV     R7,A
+0061 8002              SJMP    ?C0023
+0063         ?C0022:
+0063 7FFF              MOV     R7,#0FFH
+0065         ?C0023:
+0065 EF                MOV     A,R7
+0066 7004              JNZ     ?C0021
+                                           ; SOURCE LINE # 232
+                                           ; SOURCE LINE # 233
+0068 900000      R     MOV     DPTR,#status
+006B F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 234
+006C         ?C0021:
+                                           ; SOURCE LINE # 237
+006C 900000      R     MOV     DPTR,#status
+006F E0                MOVX    A,@DPTR
+0070 704E              JNZ     ?C0024
+                                           ; SOURCE LINE # 238
+                                           ; SOURCE LINE # 239
+0072 900000      R     MOV     DPTR,#rowNumber
+0075 E0                MOVX    A,@DPTR
+0076 FD                MOV     R5,A
+0077 7C00              MOV     R4,#00H
+0079 900000      E     MOV     DPTR,#dieTemperature
+007C E0                MOVX    A,@DPTR
+007D FB                MOV     R3,A
+007E A3                INC     DPTR
+007F E0                MOVX    A,@DPTR
+0080 900000      E     MOV     DPTR,#?_CySpcWriteRow?BYTE+04H
+0083 F0                MOVX    @DPTR,A
+0084 7F40              MOV     R7,#040H
+0086 120000      E     LCALL   _CySpcWriteRow
+0089 EF                MOV     A,R7
+008A 6407              XRL     A,#07H
+008C 702A              JNZ     ?C0025
+                                           ; SOURCE LINE # 241
+                                           ; SOURCE LINE # 243
+C51 COMPILER V9.51   EEPROM                                                                02/27/2014 19:08:29 PAGE 14  
+
+008E 900000      R     MOV     DPTR,#status
+0091 74FF              MOV     A,#0FFH
+0093 F0                MOVX    @DPTR,A
+0094         ?C0026:
+                                           ; SOURCE LINE # 245
+0094 904722            MOV     DPTR,#04722H
+0097 E0                MOVX    A,@DPTR
+0098 5402              ANL     A,#02H
+009A 60F8              JZ      ?C0026
+                                           ; SOURCE LINE # 246
+                                           ; SOURCE LINE # 248
+009C         ?C0027:
+                                           ; SOURCE LINE # 251
+009C 904722            MOV     DPTR,#04722H
+009F E0                MOVX    A,@DPTR
+00A0 5402              ANL     A,#02H
+00A2 6009              JZ      ?C0029
+00A4 E0                MOVX    A,@DPTR
+00A5 FF                MOV     R7,A
+00A6 13                RRC     A
+00A7 13                RRC     A
+00A8 543F              ANL     A,#03FH
+00AA FF                MOV     R7,A
+00AB 8002              SJMP    ?C0030
+00AD         ?C0029:
+00AD 7FFF              MOV     R7,#0FFH
+00AF         ?C0030:
+00AF EF                MOV     A,R7
+00B0 7014              JNZ     ?C0018
+                                           ; SOURCE LINE # 252
+                                           ; SOURCE LINE # 253
+00B2 900000      R     MOV     DPTR,#status
+00B5 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 254
+                                           ; SOURCE LINE # 255
+00B6 800E              SJMP    ?C0018
+00B8         ?C0025:
+                                           ; SOURCE LINE # 257
+                                           ; SOURCE LINE # 258
+00B8 900000      R     MOV     DPTR,#status
+00BB 74FF              MOV     A,#0FFH
+00BD F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 259
+                                           ; SOURCE LINE # 260
+00BE 8006              SJMP    ?C0018
+00C0         ?C0024:
+                                           ; SOURCE LINE # 262
+                                           ; SOURCE LINE # 263
+00C0 900000      R     MOV     DPTR,#status
+00C3 74FF              MOV     A,#0FFH
+00C5 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 264
+                                           ; SOURCE LINE # 265
+00C6         ?C0018:
+                                           ; SOURCE LINE # 268
+00C6 120000      E     LCALL   CySpcUnlock
+                                           ; SOURCE LINE # 269
+00C9 800E              SJMP    ?C0034
+00CB         ?C0017:
+                                           ; SOURCE LINE # 271
+                                           ; SOURCE LINE # 272
+00CB 900000      R     MOV     DPTR,#status
+C51 COMPILER V9.51   EEPROM                                                                02/27/2014 19:08:29 PAGE 15  
+
+00CE 7404              MOV     A,#04H
+00D0 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 273
+                                           ; SOURCE LINE # 274
+00D1 8006              SJMP    ?C0034
+00D3         ?C0016:
+                                           ; SOURCE LINE # 276
+                                           ; SOURCE LINE # 277
+00D3 900000      R     MOV     DPTR,#status
+00D6 7401              MOV     A,#01H
+00D8 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 278
+00D9         ?C0034:
+                                           ; SOURCE LINE # 280
+00D9 900000      R     MOV     DPTR,#status
+00DC E0                MOVX    A,@DPTR
+00DD FF                MOV     R7,A
+                                           ; SOURCE LINE # 281
+00DE         ?C0035:
+00DE 22                RET     
+             ; FUNCTION _EEPROM_Write (END)
+
+             ; FUNCTION _EEPROM_StartWrite (BEGIN)
+                                           ; SOURCE LINE # 306
+0000 900000      R     MOV     DPTR,#rowData
+0003 EB                MOV     A,R3
+0004 F0                MOVX    @DPTR,A
+0005 A3                INC     DPTR
+0006 EA                MOV     A,R2
+0007 F0                MOVX    @DPTR,A
+0008 A3                INC     DPTR
+0009 E9                MOV     A,R1
+000A F0                MOVX    @DPTR,A
+000B A3                INC     DPTR
+000C ED                MOV     A,R5
+000D F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 308
+                                           ; SOURCE LINE # 311
+000E E0                MOVX    A,@DPTR
+000F C3                CLR     C
+0010 9480              SUBB    A,#080H
+0012 4003              JC      $ + 5H
+0014 020000      R     LJMP    ?C0036
+                                           ; SOURCE LINE # 312
+                                           ; SOURCE LINE # 314
+0017 120000      E     LCALL   CySpcLock
+001A EF                MOV     A,R7
+001B 6003              JZ      $ + 5H
+001D 020000      R     LJMP    ?C0037
+                                           ; SOURCE LINE # 315
+                                           ; SOURCE LINE # 317
+0020 900000      R     MOV     DPTR,#status
+0023 74FF              MOV     A,#0FFH
+0025 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 320
+0026 900000      R     MOV     DPTR,#rowData
+0029 E0                MOVX    A,@DPTR
+002A FB                MOV     R3,A
+002B A3                INC     DPTR
+002C E0                MOVX    A,@DPTR
+002D FA                MOV     R2,A
+002E A3                INC     DPTR
+C51 COMPILER V9.51   EEPROM                                                                02/27/2014 19:08:29 PAGE 16  
+
+002F E0                MOVX    A,@DPTR
+0030 F9                MOV     R1,A
+0031 900000      E     MOV     DPTR,#?_CySpcLoadRow?BYTE+04H
+0034 E4                CLR     A
+0035 F0                MOVX    @DPTR,A
+0036 A3                INC     DPTR
+0037 7410              MOV     A,#010H
+0039 F0                MOVX    @DPTR,A
+003A 7F40              MOV     R7,#040H
+003C 120000      E     LCALL   _CySpcLoadRow
+003F EF                MOV     A,R7
+0040 6407              XRL     A,#07H
+0042 7069              JNZ     ?C0049
+                                           ; SOURCE LINE # 321
+0044         ?C0039:
+                                           ; SOURCE LINE # 322
+0044 904722            MOV     DPTR,#04722H
+0047 E0                MOVX    A,@DPTR
+0048 5402              ANL     A,#02H
+004A 60F8              JZ      ?C0039
+                                           ; SOURCE LINE # 323
+                                           ; SOURCE LINE # 325
+004C         ?C0040:
+                                           ; SOURCE LINE # 328
+004C 904722            MOV     DPTR,#04722H
+004F E0                MOVX    A,@DPTR
+0050 5402              ANL     A,#02H
+0052 6009              JZ      ?C0042
+0054 E0                MOVX    A,@DPTR
+0055 FF                MOV     R7,A
+0056 13                RRC     A
+0057 13                RRC     A
+0058 543F              ANL     A,#03FH
+005A FF                MOV     R7,A
+005B 8002              SJMP    ?C0043
+005D         ?C0042:
+005D 7FFF              MOV     R7,#0FFH
+005F         ?C0043:
+005F EF                MOV     A,R7
+0060 7004              JNZ     ?C0041
+                                           ; SOURCE LINE # 329
+                                           ; SOURCE LINE # 330
+0062 900000      R     MOV     DPTR,#status
+0065 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 331
+0066         ?C0041:
+                                           ; SOURCE LINE # 334
+0066 900000      R     MOV     DPTR,#status
+0069 E0                MOVX    A,@DPTR
+006A 702B              JNZ     ?C0044
+                                           ; SOURCE LINE # 335
+                                           ; SOURCE LINE # 336
+006C 900000      R     MOV     DPTR,#rowNumber
+006F E0                MOVX    A,@DPTR
+0070 FD                MOV     R5,A
+0071 7C00              MOV     R4,#00H
+0073 900000      E     MOV     DPTR,#dieTemperature
+0076 E0                MOVX    A,@DPTR
+0077 FB                MOV     R3,A
+0078 A3                INC     DPTR
+0079 E0                MOVX    A,@DPTR
+007A 900000      E     MOV     DPTR,#?_CySpcWriteRow?BYTE+04H
+C51 COMPILER V9.51   EEPROM                                                                02/27/2014 19:08:29 PAGE 17  
+
+007D F0                MOVX    @DPTR,A
+007E 7F40              MOV     R7,#040H
+0080 120000      E     LCALL   _CySpcWriteRow
+0083 EF                MOV     A,R7
+0084 B40708            CJNE    A,#07H,?C0045
+                                           ; SOURCE LINE # 338
+                                           ; SOURCE LINE # 339
+0087 900000      R     MOV     DPTR,#status
+008A 7407              MOV     A,#07H
+008C F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 340
+008D 801E              SJMP    ?C0049
+008F         ?C0045:
+                                           ; SOURCE LINE # 342
+                                           ; SOURCE LINE # 343
+008F 900000      R     MOV     DPTR,#status
+0092 74FF              MOV     A,#0FFH
+0094 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 344
+                                           ; SOURCE LINE # 345
+0095 8016              SJMP    ?C0049
+0097         ?C0044:
+                                           ; SOURCE LINE # 347
+                                           ; SOURCE LINE # 348
+0097 900000      R     MOV     DPTR,#status
+009A 74FF              MOV     A,#0FFH
+009C F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 349
+                                           ; SOURCE LINE # 350
+                                           ; SOURCE LINE # 351
+009D 800E              SJMP    ?C0049
+009F         ?C0037:
+                                           ; SOURCE LINE # 353
+                                           ; SOURCE LINE # 354
+009F 900000      R     MOV     DPTR,#status
+00A2 7404              MOV     A,#04H
+00A4 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 355
+                                           ; SOURCE LINE # 356
+00A5 8006              SJMP    ?C0049
+00A7         ?C0036:
+                                           ; SOURCE LINE # 358
+                                           ; SOURCE LINE # 359
+00A7 900000      R     MOV     DPTR,#status
+00AA 7401              MOV     A,#01H
+00AC F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 360
+00AD         ?C0049:
+                                           ; SOURCE LINE # 362
+00AD 900000      R     MOV     DPTR,#status
+00B0 E0                MOVX    A,@DPTR
+00B1 FF                MOV     R7,A
+                                           ; SOURCE LINE # 363
+00B2         ?C0050:
+00B2 22                RET     
+             ; FUNCTION _EEPROM_StartWrite (END)
+
+             ; FUNCTION EEPROM_QueryWrite (BEGIN)
+                                           ; SOURCE LINE # 383
+                                           ; SOURCE LINE # 384
+                                           ; SOURCE LINE # 388
+0000 904722            MOV     DPTR,#04722H
+C51 COMPILER V9.51   EEPROM                                                                02/27/2014 19:08:29 PAGE 18  
+
+0003 E0                MOVX    A,@DPTR
+0004 5402              ANL     A,#02H
+0006 6024              JZ      ?C0051
+                                           ; SOURCE LINE # 389
+                                           ; SOURCE LINE # 391
+0008 E0                MOVX    A,@DPTR
+0009 5402              ANL     A,#02H
+000B 6009              JZ      ?C0053
+000D E0                MOVX    A,@DPTR
+000E FF                MOV     R7,A
+000F 13                RRC     A
+0010 13                RRC     A
+0011 543F              ANL     A,#03FH
+0013 FF                MOV     R7,A
+0014 8002              SJMP    ?C0054
+0016         ?C0053:
+0016 7FFF              MOV     R7,#0FFH
+0018         ?C0054:
+0018 EF                MOV     A,R7
+0019 7006              JNZ     ?C0052
+                                           ; SOURCE LINE # 392
+                                           ; SOURCE LINE # 393
+001B 900000      R     MOV     DPTR,#status
+001E F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 394
+001F 8006              SJMP    ?C0055
+0021         ?C0052:
+                                           ; SOURCE LINE # 396
+                                           ; SOURCE LINE # 397
+0021 900000      R     MOV     DPTR,#status
+0024 74FF              MOV     A,#0FFH
+0026 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 398
+0027         ?C0055:
+                                           ; SOURCE LINE # 401
+0027 120000      E     LCALL   CySpcUnlock
+                                           ; SOURCE LINE # 402
+002A 8006              SJMP    ?C0056
+002C         ?C0051:
+                                           ; SOURCE LINE # 404
+                                           ; SOURCE LINE # 405
+002C 900000      R     MOV     DPTR,#status
+002F 7407              MOV     A,#07H
+0031 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 406
+0032         ?C0056:
+                                           ; SOURCE LINE # 408
+0032 900000      R     MOV     DPTR,#status
+0035 E0                MOVX    A,@DPTR
+0036 FF                MOV     R7,A
+                                           ; SOURCE LINE # 409
+0037         ?C0057:
+0037 22                RET     
+             ; FUNCTION EEPROM_QueryWrite (END)
+
+             ; FUNCTION _EEPROM_ByteWrite (BEGIN)
+                                           ; SOURCE LINE # 432
+0000 900000      R     MOV     DPTR,#dataByte
+0003 EF                MOV     A,R7
+0004 F0                MOVX    @DPTR,A
+0005 A3                INC     DPTR
+0006 ED                MOV     A,R5
+C51 COMPILER V9.51   EEPROM                                                                02/27/2014 19:08:29 PAGE 19  
+
+0007 F0                MOVX    @DPTR,A
+0008 A3                INC     DPTR
+0009 EB                MOV     A,R3
+000A F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 434
+                                           ; SOURCE LINE # 438
+000B 120000      E     LCALL   CySpcStart
+                                           ; SOURCE LINE # 440
+000E 900000      R     MOV     DPTR,#rowNumber
+0011 E0                MOVX    A,@DPTR
+0012 C3                CLR     C
+0013 9480              SUBB    A,#080H
+0015 4003              JC      $ + 5H
+0017 020000      R     LJMP    ?C0058
+001A A3                INC     DPTR
+001B E0                MOVX    A,@DPTR
+001C C3                CLR     C
+001D 9410              SUBB    A,#010H
+001F 4003              JC      $ + 5H
+0021 020000      R     LJMP    ?C0058
+                                           ; SOURCE LINE # 441
+                                           ; SOURCE LINE # 443
+0024 120000      E     LCALL   CySpcLock
+0027 EF                MOV     A,R7
+0028 6003              JZ      $ + 5H
+002A 020000      R     LJMP    ?C0059
+                                           ; SOURCE LINE # 444
+                                           ; SOURCE LINE # 446
+002D 900000      R     MOV     DPTR,#status
+0030 74FF              MOV     A,#0FFH
+0032 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 449
+0033 900000      R     MOV     DPTR,#byteNumber
+0036 E0                MOVX    A,@DPTR
+0037 FD                MOV     R5,A
+0038 7C00              MOV     R4,#00H
+003A 7B01              MOV     R3,#01H
+003C 7A00        R     MOV     R2,#HIGH dataByte
+003E 7900        R     MOV     R1,#LOW dataByte
+0040 900000      E     MOV     DPTR,#?_CySpcLoadMultiByte?BYTE+06H
+0043 7401              MOV     A,#01H
+0045 F0                MOVX    @DPTR,A
+0046 7F40              MOV     R7,#040H
+0048 120000      E     LCALL   _CySpcLoadMultiByte
+004B EF                MOV     A,R7
+004C 6407              XRL     A,#07H
+004E 707C              JNZ     ?C0060
+                                           ; SOURCE LINE # 451
+0050         ?C0061:
+                                           ; SOURCE LINE # 452
+0050 904722            MOV     DPTR,#04722H
+0053 E0                MOVX    A,@DPTR
+0054 5402              ANL     A,#02H
+0056 60F8              JZ      ?C0061
+                                           ; SOURCE LINE # 453
+                                           ; SOURCE LINE # 455
+0058         ?C0062:
+                                           ; SOURCE LINE # 458
+0058 904722            MOV     DPTR,#04722H
+005B E0                MOVX    A,@DPTR
+005C 5402              ANL     A,#02H
+005E 6009              JZ      ?C0064
+C51 COMPILER V9.51   EEPROM                                                                02/27/2014 19:08:29 PAGE 20  
+
+0060 E0                MOVX    A,@DPTR
+0061 FF                MOV     R7,A
+0062 13                RRC     A
+0063 13                RRC     A
+0064 543F              ANL     A,#03FH
+0066 FF                MOV     R7,A
+0067 8002              SJMP    ?C0065
+0069         ?C0064:
+0069 7FFF              MOV     R7,#0FFH
+006B         ?C0065:
+006B EF                MOV     A,R7
+006C 7004              JNZ     ?C0063
+                                           ; SOURCE LINE # 459
+                                           ; SOURCE LINE # 460
+006E 900000      R     MOV     DPTR,#status
+0071 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 461
+0072         ?C0063:
+                                           ; SOURCE LINE # 464
+0072 900000      R     MOV     DPTR,#status
+0075 E0                MOVX    A,@DPTR
+0076 704E              JNZ     ?C0066
+                                           ; SOURCE LINE # 465
+                                           ; SOURCE LINE # 466
+0078 900000      R     MOV     DPTR,#rowNumber
+007B E0                MOVX    A,@DPTR
+007C FD                MOV     R5,A
+007D 7C00              MOV     R4,#00H
+007F 900000      E     MOV     DPTR,#dieTemperature
+0082 E0                MOVX    A,@DPTR
+0083 FB                MOV     R3,A
+0084 A3                INC     DPTR
+0085 E0                MOVX    A,@DPTR
+0086 900000      E     MOV     DPTR,#?_CySpcWriteRow?BYTE+04H
+0089 F0                MOVX    @DPTR,A
+008A 7F40              MOV     R7,#040H
+008C 120000      E     LCALL   _CySpcWriteRow
+008F EF                MOV     A,R7
+0090 6407              XRL     A,#07H
+0092 702A              JNZ     ?C0067
+                                           ; SOURCE LINE # 468
+                                           ; SOURCE LINE # 470
+0094 900000      R     MOV     DPTR,#status
+0097 74FF              MOV     A,#0FFH
+0099 F0                MOVX    @DPTR,A
+009A         ?C0068:
+                                           ; SOURCE LINE # 472
+009A 904722            MOV     DPTR,#04722H
+009D E0                MOVX    A,@DPTR
+009E 5402              ANL     A,#02H
+00A0 60F8              JZ      ?C0068
+                                           ; SOURCE LINE # 473
+                                           ; SOURCE LINE # 475
+00A2         ?C0069:
+                                           ; SOURCE LINE # 478
+00A2 904722            MOV     DPTR,#04722H
+00A5 E0                MOVX    A,@DPTR
+00A6 5402              ANL     A,#02H
+00A8 6009              JZ      ?C0071
+00AA E0                MOVX    A,@DPTR
+00AB FF                MOV     R7,A
+00AC 13                RRC     A
+C51 COMPILER V9.51   EEPROM                                                                02/27/2014 19:08:29 PAGE 21  
+
+00AD 13                RRC     A
+00AE 543F              ANL     A,#03FH
+00B0 FF                MOV     R7,A
+00B1 8002              SJMP    ?C0072
+00B3         ?C0071:
+00B3 7FFF              MOV     R7,#0FFH
+00B5         ?C0072:
+00B5 EF                MOV     A,R7
+00B6 7014              JNZ     ?C0060
+                                           ; SOURCE LINE # 479
+                                           ; SOURCE LINE # 480
+00B8 900000      R     MOV     DPTR,#status
+00BB F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 481
+                                           ; SOURCE LINE # 482
+00BC 800E              SJMP    ?C0060
+00BE         ?C0067:
+                                           ; SOURCE LINE # 484
+                                           ; SOURCE LINE # 485
+00BE 900000      R     MOV     DPTR,#status
+00C1 74FF              MOV     A,#0FFH
+00C3 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 486
+                                           ; SOURCE LINE # 487
+00C4 8006              SJMP    ?C0060
+00C6         ?C0066:
+                                           ; SOURCE LINE # 489
+                                           ; SOURCE LINE # 490
+00C6 900000      R     MOV     DPTR,#status
+00C9 74FF              MOV     A,#0FFH
+00CB F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 491
+                                           ; SOURCE LINE # 492
+00CC         ?C0060:
+                                           ; SOURCE LINE # 495
+00CC 120000      E     LCALL   CySpcUnlock
+                                           ; SOURCE LINE # 496
+00CF 800E              SJMP    ?C0076
+00D1         ?C0059:
+                                           ; SOURCE LINE # 498
+                                           ; SOURCE LINE # 499
+00D1 900000      R     MOV     DPTR,#status
+00D4 7404              MOV     A,#04H
+00D6 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 500
+                                           ; SOURCE LINE # 501
+00D7 8006              SJMP    ?C0076
+00D9         ?C0058:
+                                           ; SOURCE LINE # 503
+                                           ; SOURCE LINE # 504
+00D9 900000      R     MOV     DPTR,#status
+00DC 7401              MOV     A,#01H
+00DE F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 505
+00DF         ?C0076:
+                                           ; SOURCE LINE # 507
+00DF 900000      R     MOV     DPTR,#status
+00E2 E0                MOVX    A,@DPTR
+00E3 FF                MOV     R7,A
+                                           ; SOURCE LINE # 508
+00E4         ?C0077:
+00E4 22                RET     
+C51 COMPILER V9.51   EEPROM                                                                02/27/2014 19:08:29 PAGE 22  
+
+             ; FUNCTION _EEPROM_ByteWrite (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    810    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----      17
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

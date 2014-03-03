@@ -1,0 +1,312 @@
+C51 COMPILER V9.51   CHARLCD_1_LCDPORT                                                     02/27/2014 19:08:29 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE CHARLCD_1_LCDPORT
+OBJECT MODULE PLACED IN .\DP8051_Keil_951\Debug\CharLCD_1_LCDPort.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\Generated_Source\PSoC3\CharLCD_1_LCDPort.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051_Keil_951\Debug\CharLCD_1_LCDPort.l
+                    -st) CD DB NOIP OT(3,SPEED) INCDIR(.,.\Generated_Source\PSoC3) OJ(.\DP8051_Keil_951\Debug\CharLCD_1_LCDPort.obj)
+
+line level    source
+
+   1          /*******************************************************************************
+   2          * File Name: CharLCD_1_LCDPort.c  
+   3          * Version 1.90
+   4          *
+   5          * Description:
+   6          *  This file contains API to enable firmware control of a Pins component.
+   7          *
+   8          * Note:
+   9          *
+  10          ********************************************************************************
+  11          * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  12          * You may use this file only in accordance with the license, terms, conditions, 
+  13          * disclaimers, and limitations in the end user license agreement accompanying 
+  14          * the software package with which this file was provided.
+  15          *******************************************************************************/
+  16          
+  17          #include "cytypes.h"
+  18          #include "CharLCD_1_LCDPort.h"
+  19          
+  20          
+  21          /*******************************************************************************
+  22          * Function Name: CharLCD_1_LCDPort_Write
+  23          ********************************************************************************
+  24          *
+  25          * Summary:
+  26          *  Assign a new value to the digital port's data output register.  
+  27          *
+  28          * Parameters:  
+  29          *  prtValue:  The value to be assigned to the Digital Port. 
+  30          *
+  31          * Return: 
+  32          *  None 
+  33          *  
+  34          *******************************************************************************/
+  35          void CharLCD_1_LCDPort_Write(uint8 value) 
+  36          {
+  37   1          uint8 staticBits = (CharLCD_1_LCDPort_DR & (uint8)(~CharLCD_1_LCDPort_MASK));
+  38   1          CharLCD_1_LCDPort_DR = staticBits | ((uint8)(value << CharLCD_1_LCDPort_SHIFT) & CharLCD_1_LCDPort_MAS
+             -K);
+  39   1      }
+  40          
+  41          
+  42          /*******************************************************************************
+  43          * Function Name: CharLCD_1_LCDPort_SetDriveMode
+  44          ********************************************************************************
+  45          *
+  46          * Summary:
+  47          *  Change the drive mode on the pins of the port.
+  48          * 
+  49          * Parameters:  
+  50          *  mode:  Change the pins to this drive mode.
+  51          *
+  52          * Return: 
+C51 COMPILER V9.51   CHARLCD_1_LCDPORT                                                     02/27/2014 19:08:29 PAGE 2   
+
+  53          *  None
+  54          *
+  55          *******************************************************************************/
+  56          void CharLCD_1_LCDPort_SetDriveMode(uint8 mode) 
+  57          {
+  58   1              CyPins_SetPinDriveMode(CharLCD_1_LCDPort_0, mode);
+  59   1              CyPins_SetPinDriveMode(CharLCD_1_LCDPort_1, mode);
+  60   1              CyPins_SetPinDriveMode(CharLCD_1_LCDPort_2, mode);
+  61   1              CyPins_SetPinDriveMode(CharLCD_1_LCDPort_3, mode);
+  62   1              CyPins_SetPinDriveMode(CharLCD_1_LCDPort_4, mode);
+  63   1              CyPins_SetPinDriveMode(CharLCD_1_LCDPort_5, mode);
+  64   1              CyPins_SetPinDriveMode(CharLCD_1_LCDPort_6, mode);
+  65   1      }
+  66          
+  67          
+  68          /*******************************************************************************
+  69          * Function Name: CharLCD_1_LCDPort_Read
+  70          ********************************************************************************
+  71          *
+  72          * Summary:
+  73          *  Read the current value on the pins of the Digital Port in right justified 
+  74          *  form.
+  75          *
+  76          * Parameters:  
+  77          *  None 
+  78          *
+  79          * Return: 
+  80          *  Returns the current value of the Digital Port as a right justified number
+  81          *  
+  82          * Note:
+  83          *  Macro CharLCD_1_LCDPort_ReadPS calls this function. 
+  84          *  
+  85          *******************************************************************************/
+  86          uint8 CharLCD_1_LCDPort_Read(void) 
+  87          {
+  88   1          return (CharLCD_1_LCDPort_PS & CharLCD_1_LCDPort_MASK) >> CharLCD_1_LCDPort_SHIFT;
+  89   1      }
+  90          
+  91          
+  92          /*******************************************************************************
+  93          * Function Name: CharLCD_1_LCDPort_ReadDataReg
+  94          ********************************************************************************
+  95          *
+  96          * Summary:
+  97          *  Read the current value assigned to a Digital Port's data output register
+  98          *
+  99          * Parameters:  
+ 100          *  None 
+ 101          *
+ 102          * Return: 
+ 103          *  Returns the current value assigned to the Digital Port's data output register
+ 104          *  
+ 105          *******************************************************************************/
+ 106          uint8 CharLCD_1_LCDPort_ReadDataReg(void) 
+ 107          {
+ 108   1          return (CharLCD_1_LCDPort_DR & CharLCD_1_LCDPort_MASK) >> CharLCD_1_LCDPort_SHIFT;
+ 109   1      }
+ 110          
+ 111          
+ 112          /* If Interrupts Are Enabled for this Pins component */ 
+ 113          #if defined(CharLCD_1_LCDPort_INTSTAT) 
+              
+C51 COMPILER V9.51   CHARLCD_1_LCDPORT                                                     02/27/2014 19:08:29 PAGE 3   
+
+                  /*******************************************************************************
+                  * Function Name: CharLCD_1_LCDPort_ClearInterrupt
+                  ********************************************************************************
+                  *
+                  * Summary:
+                  *  Clears any active interrupts attached to port and returns the value of the 
+                  *  interrupt status register.
+                  *
+                  * Parameters:  
+                  *  None 
+                  *
+                  * Return: 
+                  *  Returns the value of the interrupt status register
+                  *  
+                  *******************************************************************************/
+                  uint8 CharLCD_1_LCDPort_ClearInterrupt(void) 
+                  {
+                      return (CharLCD_1_LCDPort_INTSTAT & CharLCD_1_LCDPort_MASK) >> CharLCD_1_LCDPort_SHIFT;
+                  }
+              
+              #endif /* If Interrupts Are Enabled for this Pins component */ 
+ 136          
+ 137          
+ 138          /* [] END OF FILE */
+C51 COMPILER V9.51   CHARLCD_1_LCDPORT                                                     02/27/2014 19:08:29 PAGE 4   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION _CharLCD_1_LCDPort_Write (BEGIN)
+                                           ; SOURCE LINE # 35
+0000 900000      R     MOV     DPTR,#value
+0003 EF                MOV     A,R7
+0004 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 36
+                                           ; SOURCE LINE # 37
+0005 905120            MOV     DPTR,#05120H
+0008 E0                MOVX    A,@DPTR
+0009 5480              ANL     A,#080H
+000B 900000      R     MOV     DPTR,#staticBits
+000E F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 38
+000F 900000      R     MOV     DPTR,#value
+0012 E0                MOVX    A,@DPTR
+0013 547F              ANL     A,#07FH
+0015 FF                MOV     R7,A
+0016 A3                INC     DPTR
+0017 E0                MOVX    A,@DPTR
+0018 4F                ORL     A,R7
+0019 905120            MOV     DPTR,#05120H
+001C F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 39
+001D 22                RET     
+             ; FUNCTION _CharLCD_1_LCDPort_Write (END)
+
+             ; FUNCTION _CharLCD_1_LCDPort_SetDriveMode (BEGIN)
+                                           ; SOURCE LINE # 56
+0000 900000      R     MOV     DPTR,#mode
+0003 EF                MOV     A,R7
+0004 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 57
+                                           ; SOURCE LINE # 58
+0005 E0                MOVX    A,@DPTR
+0006 540E              ANL     A,#0EH
+0008 FF                MOV     R7,A
+0009 905010            MOV     DPTR,#05010H
+000C E0                MOVX    A,@DPTR
+000D 54F1              ANL     A,#0F1H
+000F 4F                ORL     A,R7
+0010 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 59
+0011 900000      R     MOV     DPTR,#mode
+0014 E0                MOVX    A,@DPTR
+0015 540E              ANL     A,#0EH
+0017 FF                MOV     R7,A
+0018 905011            MOV     DPTR,#05011H
+001B E0                MOVX    A,@DPTR
+001C 54F1              ANL     A,#0F1H
+001E 4F                ORL     A,R7
+001F F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 60
+0020 900000      R     MOV     DPTR,#mode
+0023 E0                MOVX    A,@DPTR
+0024 540E              ANL     A,#0EH
+0026 FF                MOV     R7,A
+0027 905012            MOV     DPTR,#05012H
+002A E0                MOVX    A,@DPTR
+002B 54F1              ANL     A,#0F1H
+C51 COMPILER V9.51   CHARLCD_1_LCDPORT                                                     02/27/2014 19:08:29 PAGE 5   
+
+002D 4F                ORL     A,R7
+002E F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 61
+002F 900000      R     MOV     DPTR,#mode
+0032 E0                MOVX    A,@DPTR
+0033 540E              ANL     A,#0EH
+0035 FF                MOV     R7,A
+0036 905013            MOV     DPTR,#05013H
+0039 E0                MOVX    A,@DPTR
+003A 54F1              ANL     A,#0F1H
+003C 4F                ORL     A,R7
+003D F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 62
+003E 900000      R     MOV     DPTR,#mode
+0041 E0                MOVX    A,@DPTR
+0042 540E              ANL     A,#0EH
+0044 FF                MOV     R7,A
+0045 905014            MOV     DPTR,#05014H
+0048 E0                MOVX    A,@DPTR
+0049 54F1              ANL     A,#0F1H
+004B 4F                ORL     A,R7
+004C F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 63
+004D 900000      R     MOV     DPTR,#mode
+0050 E0                MOVX    A,@DPTR
+0051 540E              ANL     A,#0EH
+0053 FF                MOV     R7,A
+0054 905015            MOV     DPTR,#05015H
+0057 E0                MOVX    A,@DPTR
+0058 54F1              ANL     A,#0F1H
+005A 4F                ORL     A,R7
+005B F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 64
+005C 900000      R     MOV     DPTR,#mode
+005F E0                MOVX    A,@DPTR
+0060 540E              ANL     A,#0EH
+0062 FF                MOV     R7,A
+0063 905016            MOV     DPTR,#05016H
+0066 E0                MOVX    A,@DPTR
+0067 54F1              ANL     A,#0F1H
+0069 4F                ORL     A,R7
+006A F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 65
+006B 22                RET     
+             ; FUNCTION _CharLCD_1_LCDPort_SetDriveMode (END)
+
+             ; FUNCTION CharLCD_1_LCDPort_Read (BEGIN)
+                                           ; SOURCE LINE # 86
+                                           ; SOURCE LINE # 87
+                                           ; SOURCE LINE # 88
+0000 905121            MOV     DPTR,#05121H
+0003 E0                MOVX    A,@DPTR
+0004 547F              ANL     A,#07FH
+0006 FF                MOV     R7,A
+                                           ; SOURCE LINE # 89
+0007         ?C0003:
+0007 22                RET     
+             ; FUNCTION CharLCD_1_LCDPort_Read (END)
+
+             ; FUNCTION CharLCD_1_LCDPort_ReadDataReg (BEGIN)
+                                           ; SOURCE LINE # 106
+                                           ; SOURCE LINE # 107
+C51 COMPILER V9.51   CHARLCD_1_LCDPORT                                                     02/27/2014 19:08:29 PAGE 6   
+
+                                           ; SOURCE LINE # 108
+0000 905120            MOV     DPTR,#05120H
+0003 E0                MOVX    A,@DPTR
+0004 547F              ANL     A,#07FH
+0006 FF                MOV     R7,A
+                                           ; SOURCE LINE # 109
+0007         ?C0004:
+0007 22                RET     
+             ; FUNCTION CharLCD_1_LCDPort_ReadDataReg (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    154    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----       3
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
