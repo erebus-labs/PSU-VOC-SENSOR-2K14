@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CyXmlSerializer>
+<!--This file is machine generated and read. It is not intended to be edited by hand.-->
+<!--Due to this, there is no schema for this file.-->
+<CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21 type_name="CyDesigner.Common.ProjMgmt.Model.CyPrjMgmtWrkspcCustomData" version="4">
+<CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997 type_name="CyDesigner.Common.Base.CyCustomData" version="2">
+<userData>
+<dataGuid v="1b906a0f-a7b6-4e4d-a428-82f98b53cb35">
+<CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35 type_name="CyDesigner.Common.ProjMgmt.GUI.CyExplorerWindow+CyExplorerWindowState" version="3" SelectedTab="Source">
+<TreeKeys>
+<v>Source</v>
+<v>Components</v>
+<v>Output</v>
+</TreeKeys>
+<TreeStates>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="ErerbusSensorMax">
+<ExpandedNodeIds>
+<v>ErerbusSensorMax</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\TopDesign.cysch</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\ADCtoEEPROM.cydwr</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Header Files</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Source Files\main.c</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\ADC_DelSig_2</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\ADC_DelSig_2\ADC_DelSig_2.c</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\ADC_DelSig_2\ADC_DelSig_2.h</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\ADC_DelSig_2\ADC_DelSig_2_INT.c</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\ADC_DelSig_2\ADC_DelSig_2_PM.c</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\ADC_DelSig_2_AMux</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\ADC_DelSig_2_AMux\ADC_DelSig_2_AMux.c</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\ADC_DelSig_2_AMux\ADC_DelSig_2_AMux.h</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\ADC_DelSig_2_Ext_CP_Clk</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\ADC_DelSig_2_Ext_CP_Clk\ADC_DelSig_2_Ext_CP_Clk.c</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\ADC_DelSig_2_Ext_CP_Clk\ADC_DelSig_2_Ext_CP_Clk.h</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\ADC_DelSig_2_IRQ</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\ADC_DelSig_2_IRQ\ADC_DelSig_2_IRQ.c</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\ADC_DelSig_2_IRQ\ADC_DelSig_2_IRQ.h</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\ADC_DelSig_2_theACLK</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\ADC_DelSig_2_theACLK\ADC_DelSig_2_theACLK.c</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\ADC_DelSig_2_theACLK\ADC_DelSig_2_theACLK.h</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cy_boot</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cy_boot\CyBootAsmKeil.a51</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cy_boot\CyDmac.c</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cy_boot\CyDmac.h</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cy_boot\CyFlash.c</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cy_boot\CyFlash.h</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cy_boot\CyLib.c</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cy_boot\CyLib.h</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cy_boot\cymem.a51</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cy_boot\cypins.h</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cy_boot\cyPm.c</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cy_boot\cyPm.h</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cy_boot\CySpc.c</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cy_boot\CySpc.h</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cy_boot\cytypes.h</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cy_boot\cyutils.c</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cy_boot\KeilStart.a51</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cy_boot\PSoC3_8051.h</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cy_boot\PSoC3_8051.inc</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\Em_EEPROM_1</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\Em_EEPROM_1\Em_EEPROM_1.c</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\Em_EEPROM_1\Em_EEPROM_1.h</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\isr_1</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\isr_1\isr_1.c</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\isr_1\isr_1.h</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\LCD_Char_1</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\LCD_Char_1\LCD_Char_1.c</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\LCD_Char_1\LCD_Char_1.h</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\LCD_Char_1\LCD_Char_1_PM.c</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\LCD_Char_1_LCDPort</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\LCD_Char_1_LCDPort\LCD_Char_1_LCDPort.c</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\LCD_Char_1_LCDPort\LCD_Char_1_LCDPort.h</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\LCD_Char_1_LCDPort\LCD_Char_1_LCDPort_aliases.h</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\Pin_1</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\Pin_1\Pin_1.c</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\Pin_1\Pin_1.h</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\Pin_1\Pin_1_aliases.h</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\Pin_2</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\Pin_2\Pin_2.c</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\Pin_2\Pin_2.h</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\Pin_2\Pin_2_aliases.h</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cydevice.h</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cydevice_trm.h</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cydevicekeil.inc</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cydevicekeil_trm.inc</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cydisabledsheets.h</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cyfitter.h</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cyfitter_cfg.c</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cyfitter_cfg.h</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\cyfitterkeil.inc</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Generated_Source\PSoC3\project.h</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>ErerbusSensorMax</v>
+<v>ErerbusSensorMax\ADCtoEEPROM</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>ErerbusSensorMax</v>
+<v>ErerbusSensorMax\ADCtoEEPROM</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\TopDesign</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\TopDesign\TopDesign.cysch</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>ErerbusSensorMax</v>
+<v>ErerbusSensorMax\ADCtoEEPROM</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\TopDesign</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\TopDesign\TopDesign.cysch</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<ExpandedNodeIds>
+<v>ErerbusSensorMax</v>
+<v>ErerbusSensorMax\ADCtoEEPROM</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\Listing Files</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\Listing Files\ADC_DelSig_2.lst</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\Listing Files\ADC_DelSig_2_AMux.lst</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\Listing Files\ADC_DelSig_2_Ext_CP_Clk.lst</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\Listing Files\ADC_DelSig_2_INT.lst</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\Listing Files\ADC_DelSig_2_IRQ.lst</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\Listing Files\ADC_DelSig_2_PM.lst</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\Listing Files\ADC_DelSig_2_theACLK.lst</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\Listing Files\CyBootAsmKeil.lst</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\Listing Files\CyDmac.lst</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\Listing Files\CyFlash.lst</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\Listing Files\CyLib.lst</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\Listing Files\cymem.lst</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\Listing Files\cyPm.lst</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\Listing Files\CySpc.lst</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\Listing Files\cyutils.lst</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\Listing Files\Em_EEPROM_1.lst</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\Listing Files\isr_1.lst</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\Listing Files\KeilStart.lst</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\Listing Files\LCD_Char_1.lst</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\Listing Files\LCD_Char_1_LCDPort.lst</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\Listing Files\LCD_Char_1_PM.lst</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\Listing Files\main.lst</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\Listing Files\Pin_1.lst</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\Listing Files\Pin_2.lst</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\ADCtoEEPROM.elf</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\ADCtoEEPROM.hex</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\DP8051\DP8051_Keil_951\Debug\ADCtoEEPROM.map</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\ADCtoEEPROM.rpt</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\ADCtoEEPROM_timing.html</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>ErerbusSensorMax</v>
+<v>ErerbusSensorMax\ADCtoEEPROM</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\ADCtoEEPROM.rpt</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\ADCtoEEPROM_timing.html</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStates>
+<TreeKeysV2>
+<v>Datasheet</v>
+</TreeKeysV2>
+<TreeStatesV2>
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Workspace 'Emulated EEPROM' (4 Projects)\Em_EEPROM_Example01">
+<ExpandedNodeIds>
+<v>ErerbusSensorMax</v>
+<v>ErerbusSensorMax\ADCtoEEPROM</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\PSoC 3 Architecture TRM</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\CY8C38 Family Datasheet</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\System Reference Guide v4_0</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\ADC_DelSig_v3_0</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\CharLCD_v1_90</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\cy_isr_v1_70</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\cy_pins_v1_90</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Em_EEPROM_v1_10</v>
+</ExpandedNodeIds>
+<VisibleNodeIds>
+<v>ErerbusSensorMax</v>
+<v>ErerbusSensorMax\ADCtoEEPROM</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\PSoC 3 Architecture TRM</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\CY8C38 Family Datasheet</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\System Reference Guide v4_0</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\ADC_DelSig_v3_0</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\CharLCD_v1_90</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\cy_isr_v1_70</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\cy_pins_v1_90</v>
+<v>ErerbusSensorMax\ADCtoEEPROM\Em_EEPROM_v1_10</v>
+</VisibleNodeIds>
+</CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
+</TreeStatesV2>
+</CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
+</dataGuid>
+<dataGuid v="5f2be1a5-0687-4501-bb8c-cf21cb8211bf">
+<CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf type_name="CyDesigner.Common.ProjMgmt.GUI.CyBookmarkData" version="1">
+<indicators />
+</CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf>
+</dataGuid>
+</userData>
+</CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
+<Unloaded />
+<OpenDocs>
+<name v=".\Design03.cydsn\TopDesign\TopDesign.cysch" />
+</OpenDocs>
+<config v="" />
+<AutoUpdate v="true" />
+</CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
+</CyXmlSerializer>

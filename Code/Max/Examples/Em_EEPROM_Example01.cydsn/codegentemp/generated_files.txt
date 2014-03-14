@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="us-ascii"?>
+
+<fileSet version="1" anchorPath="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp" xsi:schemaLocation="http://cypress.com/xsd/cypathdictionary cypathdictionary.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://cypress.com/xsd/cypathdictionary">
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\cyfitter_cfg.h" value="NONE;" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\cyfitter_cfg.c" value="DP8051_C_FILE;" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\config.hex" value="NONE;" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\protect.hex" value="NONE;" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\eeprom.hex" value="NONE;" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\cydevice.h" value="NONE;" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\cydevicekeil.inc" value="NONE;" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\cydevice_trm.h" value="NONE;" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\cydevicekeil_trm.inc" value="NONE;" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\cyfitterkeil.inc" value="NONE;" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\cyfitter.h" value="NONE;" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\cydisabledsheets.h" value="NONE;" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\Em_EEPROM.c" value="DP8051_C_FILE;Em_EEPROM" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\Em_EEPROM.h" value="NONE;Em_EEPROM" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\LCD.c" value="DP8051_C_FILE;LCD" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\LCD.h" value="NONE;LCD" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\LCD_PM.c" value="DP8051_C_FILE;LCD" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\LCD_LCDPort.c" value="DP8051_C_FILE;LCD_LCDPort" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\LCD_LCDPort.h" value="NONE;LCD_LCDPort" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\LCD_LCDPort_aliases.h" value="NONE;LCD_LCDPort" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\CyScBoostClk.c" value="DP8051_C_FILE;CyScBoostClk" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\CyScBoostClk.h" value="NONE;CyScBoostClk" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\CyBootAsmKeil.a51" value="KEIL_8051_ASM_FILE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\CyDmac.c" value="DP8051_C_FILE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\CyDmac.h" value="NONE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\CyFlash.c" value="DP8051_C_FILE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\CyFlash.h" value="NONE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\CyLib.c" value="DP8051_C_FILE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\CyLib.h" value="NONE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\cymem.a51" value="KEIL_8051_ASM_FILE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\cypins.h" value="NONE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\cyPm.c" value="DP8051_C_FILE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\cyPm.h" value="NONE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\CySpc.c" value="DP8051_C_FILE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\CySpc.h" value="NONE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\cytypes.h" value="NONE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\cyutils.c" value="DP8051_C_FILE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\KeilStart.a51" value="KEIL_8051_ASM_FILE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\PSoC3_8051.h" value="NONE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\PSoC3_8051.inc" value="NONE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\PSoC Creator\Design02\Em_EEPROM_Example01.cydsn\codegentemp\project.h" value="NONE;" />
+</fileSet>
