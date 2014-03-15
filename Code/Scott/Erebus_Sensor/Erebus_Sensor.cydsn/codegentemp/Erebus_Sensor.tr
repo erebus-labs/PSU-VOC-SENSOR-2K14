@@ -62,7 +62,7 @@ Port Name  Setup to Clk  Clock Name:Phase
 
 Port Name   Clock to Out  Clock Name:Phase  
 ----------  ------------  ----------------  
-LED(0)_PAD  24022         timer_clock:R     
+LED(0)_PAD  23160         timer_clock:R     
 
 
                          3.3::Pad to Pad
@@ -91,7 +91,7 @@ Port Name (Source)  Port Name (Destination)  Delay
 
 ++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin     : \Timer_1:TimerHW\/tc
+Path Begin     : \Blink_Timer:TimerHW\/tc
 Path End       : Net_65/main_0
 Capture Clock  : Net_65/clock_0
 Path slack     : 999990235p
@@ -113,19 +113,19 @@ Launch Clock Path
 pin name                                                      model name      delay     AT  edge  Fanout
 ------------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/dclk_glb_ff_0                                      clockblockcell      0      0  RISE       1
-\Timer_1:TimerHW\/clock                                       timercell           0      0  RISE       1
+\Blink_Timer:TimerHW\/clock                                   timercell           0      0  RISE       1
 
 Data path
-pin name              model name   delay     AT      slack  edge  Fanout
---------------------  -----------  -----  -----  ---------  ----  ------
-\Timer_1:TimerHW\/tc  timercell     1000   1000  999990235  RISE       1
-Net_65/main_0         macrocell2    5255   6255  999990235  RISE       1
+pin name                  model name   delay     AT      slack  edge  Fanout
+------------------------  -----------  -----  -----  ---------  ----  ------
+\Blink_Timer:TimerHW\/tc  timercell     1000   1000  999990235  RISE       1
+Net_65/main_0             macrocell1    5255   6255  999990235  RISE       1
 
 Capture Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
 ---------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/dclk_glb_0                                      clockblockcell      0      0  RISE       1
-Net_65/clock_0                                             macrocell2          0      0  RISE       1
+Net_65/clock_0                                             macrocell1          0      0  RISE       1
 
 
 
@@ -139,7 +139,7 @@ Net_65/clock_0                                             macrocell2          0
 
 ++++ Path 1 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
 
-Path Begin     : \Timer_1:TimerHW\/tc
+Path Begin     : \Blink_Timer:TimerHW\/tc
 Path End       : Net_65/main_0
 Capture Clock  : Net_65/clock_0
 Path slack     : 999990235p
@@ -161,19 +161,19 @@ Launch Clock Path
 pin name                                                      model name      delay     AT  edge  Fanout
 ------------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/dclk_glb_ff_0                                      clockblockcell      0      0  RISE       1
-\Timer_1:TimerHW\/clock                                       timercell           0      0  RISE       1
+\Blink_Timer:TimerHW\/clock                                   timercell           0      0  RISE       1
 
 Data path
-pin name              model name   delay     AT      slack  edge  Fanout
---------------------  -----------  -----  -----  ---------  ----  ------
-\Timer_1:TimerHW\/tc  timercell     1000   1000  999990235  RISE       1
-Net_65/main_0         macrocell2    5255   6255  999990235  RISE       1
+pin name                  model name   delay     AT      slack  edge  Fanout
+------------------------  -----------  -----  -----  ---------  ----  ------
+\Blink_Timer:TimerHW\/tc  timercell     1000   1000  999990235  RISE       1
+Net_65/main_0             macrocell1    5255   6255  999990235  RISE       1
 
 Capture Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
 ---------------------------------------------------------  --------------  -----  -----  ----  ------
 ClockBlock/dclk_glb_0                                      clockblockcell      0      0  RISE       1
-Net_65/clock_0                                             macrocell2          0      0  RISE       1
+Net_65/clock_0                                             macrocell1          0      0  RISE       1
 
 
 ===================================================================== 

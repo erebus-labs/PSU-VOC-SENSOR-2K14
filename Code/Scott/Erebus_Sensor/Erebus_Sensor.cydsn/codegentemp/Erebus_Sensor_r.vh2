@@ -1,11 +1,11 @@
 -- Project:   Erebus_Sensor
--- Generated: 03/02/2014 17:35:32
+-- Generated: 03/15/2014 15:12:53
 -- 
 
 ENTITY Erebus_Sensor IS
     PORT(
         LED(0)_PAD : OUT std_ulogic;
-        V_bus(0)_PAD : IN std_ulogic);
+        Vbus(0)_PAD : IN std_ulogic);
     ATTRIBUTE voltage_Vio1 OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_Vusb OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_Vddd OF __DEFAULT__ : ENTITY IS 5e0;
@@ -30,44 +30,42 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     SIGNAL ClockBlock_XTAL_32KHZ : bit;
     SIGNAL LED(0)__PA : bit;
     SIGNAL Net_146 : bit;
-    SIGNAL Net_204 : bit;
-    SIGNAL Net_206 : bit;
-    ATTRIBUTE placement_force OF Net_206 : SIGNAL IS "U(3,4,A)0";
+    SIGNAL Net_225 : bit;
     SIGNAL Net_65 : bit;
-    ATTRIBUTE placement_force OF Net_65 : SIGNAL IS "U(3,4,A)1";
+    ATTRIBUTE placement_force OF Net_65 : SIGNAL IS "U(3,4,A)0";
     SIGNAL Net_72 : bit;
     ATTRIBUTE global_signal OF Net_72 : SIGNAL IS true;
     SIGNAL Net_72_local : bit;
     SIGNAL Net_8 : bit;
-    SIGNAL V_bus(0)__PA : bit;
-    SIGNAL \Timer_1:Net_261\ : bit;
-    SIGNAL \Timer_1:Net_57\ : bit;
-    SIGNAL \\\USBUART_1:Dm(0)\\__PA\ : bit;
-    SIGNAL \\\USBUART_1:Dp(0)\\__PA\ : bit;
-    SIGNAL \USBUART_1:Net_1010\ : bit;
-    SIGNAL \USBUART_1:Net_79\ : bit;
-    SIGNAL \USBUART_1:Net_81\ : bit;
-    SIGNAL \USBUART_1:Net_824\ : bit;
-    SIGNAL \USBUART_1:Net_95\ : bit;
-    SIGNAL \USBUART_1:dma_req_0\ : bit;
-    SIGNAL \USBUART_1:dma_req_1\ : bit;
-    SIGNAL \USBUART_1:dma_req_2\ : bit;
-    SIGNAL \USBUART_1:dma_req_3\ : bit;
-    SIGNAL \USBUART_1:dma_req_4\ : bit;
-    SIGNAL \USBUART_1:dma_req_5\ : bit;
-    SIGNAL \USBUART_1:dma_req_6\ : bit;
-    SIGNAL \USBUART_1:dma_req_7\ : bit;
-    SIGNAL \USBUART_1:ept_int_0\ : bit;
-    SIGNAL \USBUART_1:ept_int_1\ : bit;
-    SIGNAL \USBUART_1:ept_int_2\ : bit;
-    SIGNAL \USBUART_1:ept_int_3\ : bit;
-    SIGNAL \USBUART_1:ept_int_4\ : bit;
-    SIGNAL \USBUART_1:ept_int_5\ : bit;
-    SIGNAL \USBUART_1:ept_int_6\ : bit;
-    SIGNAL \USBUART_1:ept_int_7\ : bit;
-    SIGNAL \USBUART_1:ept_int_8\ : bit;
+    SIGNAL Vbus(0)__PA : bit;
+    SIGNAL \Blink_Timer:Net_261\ : bit;
+    SIGNAL \Blink_Timer:Net_57\ : bit;
+    SIGNAL \\\USBUART:Dm(0)\\__PA\ : bit;
+    SIGNAL \\\USBUART:Dp(0)\\__PA\ : bit;
+    SIGNAL \USBUART:Net_1010\ : bit;
+    SIGNAL \USBUART:Net_79\ : bit;
+    SIGNAL \USBUART:Net_81\ : bit;
+    SIGNAL \USBUART:Net_824\ : bit;
+    SIGNAL \USBUART:Net_95\ : bit;
+    SIGNAL \USBUART:dma_req_0\ : bit;
+    SIGNAL \USBUART:dma_req_1\ : bit;
+    SIGNAL \USBUART:dma_req_2\ : bit;
+    SIGNAL \USBUART:dma_req_3\ : bit;
+    SIGNAL \USBUART:dma_req_4\ : bit;
+    SIGNAL \USBUART:dma_req_5\ : bit;
+    SIGNAL \USBUART:dma_req_6\ : bit;
+    SIGNAL \USBUART:dma_req_7\ : bit;
+    SIGNAL \USBUART:ept_int_0\ : bit;
+    SIGNAL \USBUART:ept_int_1\ : bit;
+    SIGNAL \USBUART:ept_int_2\ : bit;
+    SIGNAL \USBUART:ept_int_3\ : bit;
+    SIGNAL \USBUART:ept_int_4\ : bit;
+    SIGNAL \USBUART:ept_int_5\ : bit;
+    SIGNAL \USBUART:ept_int_6\ : bit;
+    SIGNAL \USBUART:ept_int_7\ : bit;
+    SIGNAL \USBUART:ept_int_8\ : bit;
     SIGNAL __ONE__ : bit;
-    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(3,4,A)2";
+    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(3,4,A)1";
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
     SIGNAL __ZERO__ : bit;
     ATTRIBUTE GROUND OF __ZERO__ : SIGNAL IS true;
@@ -79,32 +77,27 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     ATTRIBUTE Location OF ClockBlock : LABEL IS "F(Clock,0)";
     ATTRIBUTE lib_model OF LED(0) : LABEL IS "iocell1";
     ATTRIBUTE Location OF LED(0) : LABEL IS "P0[0]";
-    ATTRIBUTE lib_model OF Net_206 : LABEL IS "macrocell1";
-    ATTRIBUTE Location OF Net_206 : LABEL IS "U(3,4)";
-    ATTRIBUTE lib_model OF Net_65 : LABEL IS "macrocell2";
+    ATTRIBUTE lib_model OF Net_65 : LABEL IS "macrocell1";
     ATTRIBUTE Location OF Net_65 : LABEL IS "U(3,4)";
-    ATTRIBUTE Location OF USB_DIS_ISR : LABEL IS "[IntrHod=(0)][IntrId=(0)]";
-    ATTRIBUTE Location OF USB_EN_ISR : LABEL IS "[IntrHod=(0)][IntrId=(1)]";
-    ATTRIBUTE lib_model OF V_bus(0) : LABEL IS "iocell2";
-    ATTRIBUTE Location OF V_bus(0) : LABEL IS "P0[1]";
-    ATTRIBUTE Location OF \Timer_1:TimerHW\ : LABEL IS "F(Timer,0)";
-    ATTRIBUTE lib_model OF \USBUART_1:Dm(0)\ : LABEL IS "iocell3";
-    ATTRIBUTE Location OF \USBUART_1:Dm(0)\ : LABEL IS "P15[7]";
-    ATTRIBUTE lib_model OF \USBUART_1:Dp(0)\ : LABEL IS "iocell4";
-    ATTRIBUTE Location OF \USBUART_1:Dp(0)\ : LABEL IS "P15[6]";
-    ATTRIBUTE Location OF \USBUART_1:Dp\ : LABEL IS "F(PICU,8)";
-    ATTRIBUTE Location OF \USBUART_1:USB\ : LABEL IS "F(USB,0)";
-    ATTRIBUTE lib_model OF \USBUART_1:Vbus_ps:sts:sts_reg\ : LABEL IS "statuscell1";
-    ATTRIBUTE Location OF \USBUART_1:Vbus_ps:sts:sts_reg\ : LABEL IS "U(3,4)";
-    ATTRIBUTE Location OF \USBUART_1:arb_int\ : LABEL IS "[IntrHod=(0)][IntrId=(22)]";
-    ATTRIBUTE Location OF \USBUART_1:bus_reset\ : LABEL IS "[IntrHod=(0)][IntrId=(23)]";
-    ATTRIBUTE Location OF \USBUART_1:dp_int\ : LABEL IS "[IntrHod=(0)][IntrId=(12)]";
-    ATTRIBUTE Location OF \USBUART_1:ep_0\ : LABEL IS "[IntrHod=(0)][IntrId=(24)]";
-    ATTRIBUTE Location OF \USBUART_1:ep_1\ : LABEL IS "[IntrHod=(0)][IntrId=(2)]";
-    ATTRIBUTE Location OF \USBUART_1:ep_2\ : LABEL IS "[IntrHod=(0)][IntrId=(3)]";
-    ATTRIBUTE Location OF \USBUART_1:ep_3\ : LABEL IS "[IntrHod=(0)][IntrId=(4)]";
-    ATTRIBUTE Location OF \USBUART_1:sof_int\ : LABEL IS "[IntrHod=(0)][IntrId=(21)]";
-    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell3";
+    ATTRIBUTE lib_model OF Vbus(0) : LABEL IS "iocell2";
+    ATTRIBUTE Location OF Vbus(0) : LABEL IS "P6[0]";
+    ATTRIBUTE Location OF Vbus_IRQ : LABEL IS "[IntrHod=(0)][IntrId=(0)]";
+    ATTRIBUTE Location OF \Blink_Timer:TimerHW\ : LABEL IS "F(Timer,0)";
+    ATTRIBUTE lib_model OF \USBUART:Dm(0)\ : LABEL IS "iocell3";
+    ATTRIBUTE Location OF \USBUART:Dm(0)\ : LABEL IS "P15[7]";
+    ATTRIBUTE lib_model OF \USBUART:Dp(0)\ : LABEL IS "iocell4";
+    ATTRIBUTE Location OF \USBUART:Dp(0)\ : LABEL IS "P15[6]";
+    ATTRIBUTE Location OF \USBUART:Dp\ : LABEL IS "F(PICU,8)";
+    ATTRIBUTE Location OF \USBUART:USB\ : LABEL IS "F(USB,0)";
+    ATTRIBUTE Location OF \USBUART:arb_int\ : LABEL IS "[IntrHod=(0)][IntrId=(22)]";
+    ATTRIBUTE Location OF \USBUART:bus_reset\ : LABEL IS "[IntrHod=(0)][IntrId=(23)]";
+    ATTRIBUTE Location OF \USBUART:dp_int\ : LABEL IS "[IntrHod=(0)][IntrId=(12)]";
+    ATTRIBUTE Location OF \USBUART:ep_0\ : LABEL IS "[IntrHod=(0)][IntrId=(24)]";
+    ATTRIBUTE Location OF \USBUART:ep_1\ : LABEL IS "[IntrHod=(0)][IntrId=(1)]";
+    ATTRIBUTE Location OF \USBUART:ep_2\ : LABEL IS "[IntrHod=(0)][IntrId=(2)]";
+    ATTRIBUTE Location OF \USBUART:ep_3\ : LABEL IS "[IntrHod=(0)][IntrId=(3)]";
+    ATTRIBUTE Location OF \USBUART:sof_int\ : LABEL IS "[IntrHod=(0)][IntrId=(21)]";
+    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell2";
     ATTRIBUTE Location OF __ONE__ : LABEL IS "U(3,4)";
     COMPONENT abufcell
     END COMPONENT;
@@ -1118,13 +1111,6 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    Net_206:macrocell
-        GENERIC MAP(
-            eqn_main => "(!main_0)")
-        PORT MAP(
-            q => Net_206,
-            main_0 => Net_204);
-
     Net_65:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)")
@@ -1133,23 +1119,9 @@ BEGIN
             clock_0 => Net_72,
             main_0 => Net_146);
 
-    USB_DIS_ISR:interrupt
+    Vbus:logicalport
         GENERIC MAP(
-            int_type => "00")
-        PORT MAP(
-            interrupt => Net_206,
-            clock => ClockBlock_BUS_CLK);
-
-    USB_EN_ISR:interrupt
-        GENERIC MAP(
-            int_type => "00")
-        PORT MAP(
-            interrupt => Net_204,
-            clock => ClockBlock_BUS_CLK);
-
-    V_bus:logicalport
-        GENERIC MAP(
-            drive_mode => "001",
+            drive_mode => "011",
             ibuf_enabled => "1",
             id => "4c15b41e-e284-4978-99e7-5aaee19bd0ce",
             init_dr_st => "0",
@@ -1214,19 +1186,19 @@ BEGIN
             out_reset => open,
             in_clock => open);
 
-    V_bus(0):iocell
+    Vbus(0):iocell
         GENERIC MAP(
             in_sync_mode => 2,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "V_bus",
+            logicalport => "Vbus",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000100000000000000000000000000000000000000001")
         PORT MAP(
-            pa_out => V_bus(0)__PA,
+            pa_out => Vbus(0)__PA,
             oe => open,
-            fb => Net_204,
-            pad_in => V_bus(0)_PAD,
+            fb => Net_225,
+            pad_in => Vbus(0)_PAD,
             in_clock => ClockBlock_BUS_CLK,
             in_clock_en => '1',
             in_reset => '0',
@@ -1234,7 +1206,14 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    \Timer_1:TimerHW\:timercell
+    Vbus_IRQ:interrupt
+        GENERIC MAP(
+            int_type => "10")
+        PORT MAP(
+            interrupt => Net_225,
+            clock => ClockBlock_BUS_CLK);
+
+    \Blink_Timer:TimerHW\:timercell
         GENERIC MAP(
             cy_registers => "")
         PORT MAP(
@@ -1244,19 +1223,19 @@ BEGIN
             capture => open,
             timer_reset => open,
             tc => Net_146,
-            cmp => \Timer_1:Net_261\,
-            irq => \Timer_1:Net_57\);
+            cmp => \Blink_Timer:Net_261\,
+            irq => \Blink_Timer:Net_57\);
 
-    \USBUART_1:Dm(0)\:iocell
+    \USBUART:Dm(0)\:iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "\USBUART_1:Dm\",
+            logicalport => "\USBUART:Dm\",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000000000000000000000000000010000000000000000")
         PORT MAP(
-            pa_out => \\\USBUART_1:Dm(0)\\__PA\,
+            pa_out => \\\USBUART:Dm(0)\\__PA\,
             oe => open,
             in_clock => open,
             in_clock_en => '1',
@@ -1265,7 +1244,7 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    \USBUART_1:Dm\:logicalport
+    \USBUART:Dm\:logicalport
         GENERIC MAP(
             drive_mode => "000",
             ibuf_enabled => "0",
@@ -1331,16 +1310,16 @@ BEGIN
             out_clock_en => open,
             out_reset => open);
 
-    \USBUART_1:Dp(0)\:iocell
+    \USBUART:Dp(0)\:iocell
         GENERIC MAP(
             in_sync_mode => 2,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "\USBUART_1:Dp\",
+            logicalport => "\USBUART:Dp\",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000000000000000000000000000001000000000000000")
         PORT MAP(
-            pa_out => \\\USBUART_1:Dp(0)\\__PA\,
+            pa_out => \\\USBUART:Dp(0)\\__PA\,
             oe => open,
             in_clock => ClockBlock_BUS_CLK,
             in_clock_en => '1',
@@ -1349,7 +1328,7 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    \USBUART_1:Dp\:logicalport
+    \USBUART:Dp\:logicalport
         GENERIC MAP(
             drive_mode => "000",
             ibuf_enabled => "0",
@@ -1414,101 +1393,86 @@ BEGIN
             in_reset => open,
             out_clock_en => open,
             out_reset => open,
-            interrupt => \USBUART_1:Net_1010\,
+            interrupt => \USBUART:Net_1010\,
             in_clock => open);
 
-    \USBUART_1:USB\:usbcell
+    \USBUART:USB\:usbcell
         GENERIC MAP(
             cy_registers => "")
         PORT MAP(
             sof_int => Net_8,
-            arb_int => \USBUART_1:Net_79\,
-            usb_int => \USBUART_1:Net_81\,
-            ept_int_8 => \USBUART_1:ept_int_8\,
-            ept_int_7 => \USBUART_1:ept_int_7\,
-            ept_int_6 => \USBUART_1:ept_int_6\,
-            ept_int_5 => \USBUART_1:ept_int_5\,
-            ept_int_4 => \USBUART_1:ept_int_4\,
-            ept_int_3 => \USBUART_1:ept_int_3\,
-            ept_int_2 => \USBUART_1:ept_int_2\,
-            ept_int_1 => \USBUART_1:ept_int_1\,
-            ept_int_0 => \USBUART_1:ept_int_0\,
-            ord_int => \USBUART_1:Net_95\,
-            dma_req_7 => \USBUART_1:dma_req_7\,
-            dma_req_6 => \USBUART_1:dma_req_6\,
-            dma_req_5 => \USBUART_1:dma_req_5\,
-            dma_req_4 => \USBUART_1:dma_req_4\,
-            dma_req_3 => \USBUART_1:dma_req_3\,
-            dma_req_2 => \USBUART_1:dma_req_2\,
-            dma_req_1 => \USBUART_1:dma_req_1\,
-            dma_req_0 => \USBUART_1:dma_req_0\,
-            dma_termin => \USBUART_1:Net_824\);
+            arb_int => \USBUART:Net_79\,
+            usb_int => \USBUART:Net_81\,
+            ept_int_8 => \USBUART:ept_int_8\,
+            ept_int_7 => \USBUART:ept_int_7\,
+            ept_int_6 => \USBUART:ept_int_6\,
+            ept_int_5 => \USBUART:ept_int_5\,
+            ept_int_4 => \USBUART:ept_int_4\,
+            ept_int_3 => \USBUART:ept_int_3\,
+            ept_int_2 => \USBUART:ept_int_2\,
+            ept_int_1 => \USBUART:ept_int_1\,
+            ept_int_0 => \USBUART:ept_int_0\,
+            ord_int => \USBUART:Net_95\,
+            dma_req_7 => \USBUART:dma_req_7\,
+            dma_req_6 => \USBUART:dma_req_6\,
+            dma_req_5 => \USBUART:dma_req_5\,
+            dma_req_4 => \USBUART:dma_req_4\,
+            dma_req_3 => \USBUART:dma_req_3\,
+            dma_req_2 => \USBUART:dma_req_2\,
+            dma_req_1 => \USBUART:dma_req_1\,
+            dma_req_0 => \USBUART:dma_req_0\,
+            dma_termin => \USBUART:Net_824\);
 
-    \USBUART_1:Vbus_ps:sts:sts_reg\:statuscell
-        GENERIC MAP(
-            cy_force_order => 1,
-            cy_md_select => "00000000")
-        PORT MAP(
-            clock => open,
-            status_7 => open,
-            status_6 => open,
-            status_5 => open,
-            status_4 => open,
-            status_3 => open,
-            status_2 => open,
-            status_1 => open,
-            status_0 => Net_204);
-
-    \USBUART_1:arb_int\:interrupt
+    \USBUART:arb_int\:interrupt
         GENERIC MAP(
             int_type => "10")
         PORT MAP(
-            interrupt => \USBUART_1:Net_79\,
+            interrupt => \USBUART:Net_79\,
             clock => ClockBlock_BUS_CLK);
 
-    \USBUART_1:bus_reset\:interrupt
+    \USBUART:bus_reset\:interrupt
         GENERIC MAP(
             int_type => "10")
         PORT MAP(
-            interrupt => \USBUART_1:Net_81\,
+            interrupt => \USBUART:Net_81\,
             clock => ClockBlock_BUS_CLK);
 
-    \USBUART_1:dp_int\:interrupt
+    \USBUART:dp_int\:interrupt
         GENERIC MAP(
             int_type => "10")
         PORT MAP(
-            interrupt => \USBUART_1:Net_1010\,
+            interrupt => \USBUART:Net_1010\,
             clock => ClockBlock_BUS_CLK);
 
-    \USBUART_1:ep_0\:interrupt
+    \USBUART:ep_0\:interrupt
         GENERIC MAP(
             int_type => "10")
         PORT MAP(
-            interrupt => \USBUART_1:ept_int_0\,
+            interrupt => \USBUART:ept_int_0\,
             clock => ClockBlock_BUS_CLK);
 
-    \USBUART_1:ep_1\:interrupt
+    \USBUART:ep_1\:interrupt
         GENERIC MAP(
             int_type => "10")
         PORT MAP(
-            interrupt => \USBUART_1:ept_int_1\,
+            interrupt => \USBUART:ept_int_1\,
             clock => ClockBlock_BUS_CLK);
 
-    \USBUART_1:ep_2\:interrupt
+    \USBUART:ep_2\:interrupt
         GENERIC MAP(
             int_type => "10")
         PORT MAP(
-            interrupt => \USBUART_1:ept_int_2\,
+            interrupt => \USBUART:ept_int_2\,
             clock => ClockBlock_BUS_CLK);
 
-    \USBUART_1:ep_3\:interrupt
+    \USBUART:ep_3\:interrupt
         GENERIC MAP(
             int_type => "10")
         PORT MAP(
-            interrupt => \USBUART_1:ept_int_3\,
+            interrupt => \USBUART:ept_int_3\,
             clock => ClockBlock_BUS_CLK);
 
-    \USBUART_1:sof_int\:interrupt
+    \USBUART:sof_int\:interrupt
         GENERIC MAP(
             int_type => "10")
         PORT MAP(

@@ -389,106 +389,6 @@
               <FilePath>.\Generated_Source\PSoC3\cydisabledsheets.h</FilePath>
             </File>
             <File>
-              <FileName>USBUART_1.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1.h</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_audio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_audio.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_audio.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_audio.h</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_boot.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_boot.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_cdc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_cdc.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_cdc.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_cdc.h</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_cls.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_cls.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_descr.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_descr.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_drv.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_drv.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_episr.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_episr.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_hid.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_hid.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_hid.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_hid.h</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_pm.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_pm.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_std.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_std.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_vnd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_vnd.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_cdc.inf</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_cdc.inf</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_midi.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_midi.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_midi.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_midi.h</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_pvt.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_pvt.h</FilePath>
-            </File>
-            <File>
               <FileName>LED.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\LED.c</FilePath>
@@ -502,36 +402,6 @@
               <FileName>LED_aliases.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\LED_aliases.h</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_Dm.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_Dm.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_Dm.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_Dm.h</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_Dm_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_Dm_aliases.h</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_Dp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_Dp.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_Dp.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_Dp.h</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_Dp_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_Dp_aliases.h</FilePath>
             </File>
             <File>
               <FileName>CyBootAsmKeil.a51</FileName>
@@ -624,21 +494,6 @@
               <FilePath>.\Generated_Source\PSoC3\project.h</FilePath>
             </File>
             <File>
-              <FileName>Timer_1.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Timer_1.c</FilePath>
-            </File>
-            <File>
-              <FileName>Timer_1.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Timer_1.h</FilePath>
-            </File>
-            <File>
-              <FileName>Timer_1_PM.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Timer_1_PM.c</FilePath>
-            </File>
-            <File>
               <FileName>timer_clock.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\timer_clock.c</FilePath>
@@ -649,49 +504,174 @@
               <FilePath>.\Generated_Source\PSoC3\timer_clock.h</FilePath>
             </File>
             <File>
-              <FileName>V_bus.c</FileName>
+              <FileName>Vbus.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\V_bus.c</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\Vbus.c</FilePath>
             </File>
             <File>
-              <FileName>V_bus.h</FileName>
+              <FileName>Vbus.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\V_bus.h</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\Vbus.h</FilePath>
             </File>
             <File>
-              <FileName>V_bus_aliases.h</FileName>
+              <FileName>Vbus_aliases.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\V_bus_aliases.h</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\Vbus_aliases.h</FilePath>
             </File>
             <File>
-              <FileName>USB_EN_ISR.c</FileName>
+              <FileName>Vbus_IRQ.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USB_EN_ISR.c</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\Vbus_IRQ.c</FilePath>
             </File>
             <File>
-              <FileName>USB_EN_ISR.h</FileName>
+              <FileName>Vbus_IRQ.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USB_EN_ISR.h</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\Vbus_IRQ.h</FilePath>
             </File>
             <File>
-              <FileName>USB_DIS_ISR.c</FileName>
+              <FileName>USBUART.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USB_DIS_ISR.c</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\USBUART.c</FilePath>
             </File>
             <File>
-              <FileName>USB_DIS_ISR.h</FileName>
+              <FileName>USBUART.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USB_DIS_ISR.h</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\USBUART.h</FilePath>
             </File>
             <File>
-              <FileName>USBUART_1_Vbus_ps.c</FileName>
+              <FileName>USBUART_audio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_Vbus_ps.c</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_audio.c</FilePath>
             </File>
             <File>
-              <FileName>USBUART_1_Vbus_ps.h</FileName>
+              <FileName>USBUART_audio.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_Vbus_ps.h</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_audio.h</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_boot.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_boot.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_cdc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_cdc.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_cdc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_cdc.h</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_cls.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_cls.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_descr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_descr.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_drv.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_drv.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_episr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_episr.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_hid.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_hid.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_hid.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_hid.h</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_pm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_pm.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_std.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_std.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_vnd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_vnd.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_cdc.inf</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_cdc.inf</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_midi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_midi.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_midi.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_midi.h</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_pvt.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_pvt.h</FilePath>
+            </File>
+            <File>
+              <FileName>Blink_Timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Blink_Timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>Blink_Timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Blink_Timer.h</FilePath>
+            </File>
+            <File>
+              <FileName>Blink_Timer_PM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Blink_Timer_PM.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_Dm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_Dm.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_Dm.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_Dm.h</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_Dm_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_Dm_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_Dp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_Dp.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_Dp.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_Dp.h</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_Dp_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_Dp_aliases.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1084,106 +1064,6 @@
               <FilePath>.\Generated_Source\PSoC3\cydisabledsheets.h</FilePath>
             </File>
             <File>
-              <FileName>USBUART_1.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1.h</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_audio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_audio.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_audio.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_audio.h</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_boot.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_boot.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_cdc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_cdc.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_cdc.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_cdc.h</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_cls.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_cls.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_descr.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_descr.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_drv.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_drv.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_episr.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_episr.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_hid.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_hid.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_hid.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_hid.h</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_pm.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_pm.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_std.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_std.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_vnd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_vnd.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_cdc.inf</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_cdc.inf</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_midi.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_midi.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_midi.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_midi.h</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_pvt.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_pvt.h</FilePath>
-            </File>
-            <File>
               <FileName>LED.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\LED.c</FilePath>
@@ -1197,36 +1077,6 @@
               <FileName>LED_aliases.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\LED_aliases.h</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_Dm.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_Dm.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_Dm.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_Dm.h</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_Dm_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_Dm_aliases.h</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_Dp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_Dp.c</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_Dp.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_Dp.h</FilePath>
-            </File>
-            <File>
-              <FileName>USBUART_1_Dp_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_Dp_aliases.h</FilePath>
             </File>
             <File>
               <FileName>CyBootAsmKeil.a51</FileName>
@@ -1319,21 +1169,6 @@
               <FilePath>.\Generated_Source\PSoC3\project.h</FilePath>
             </File>
             <File>
-              <FileName>Timer_1.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Timer_1.c</FilePath>
-            </File>
-            <File>
-              <FileName>Timer_1.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Timer_1.h</FilePath>
-            </File>
-            <File>
-              <FileName>Timer_1_PM.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Timer_1_PM.c</FilePath>
-            </File>
-            <File>
               <FileName>timer_clock.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\timer_clock.c</FilePath>
@@ -1344,49 +1179,174 @@
               <FilePath>.\Generated_Source\PSoC3\timer_clock.h</FilePath>
             </File>
             <File>
-              <FileName>V_bus.c</FileName>
+              <FileName>Vbus.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\V_bus.c</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\Vbus.c</FilePath>
             </File>
             <File>
-              <FileName>V_bus.h</FileName>
+              <FileName>Vbus.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\V_bus.h</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\Vbus.h</FilePath>
             </File>
             <File>
-              <FileName>V_bus_aliases.h</FileName>
+              <FileName>Vbus_aliases.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\V_bus_aliases.h</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\Vbus_aliases.h</FilePath>
             </File>
             <File>
-              <FileName>USB_EN_ISR.c</FileName>
+              <FileName>Vbus_IRQ.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USB_EN_ISR.c</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\Vbus_IRQ.c</FilePath>
             </File>
             <File>
-              <FileName>USB_EN_ISR.h</FileName>
+              <FileName>Vbus_IRQ.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USB_EN_ISR.h</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\Vbus_IRQ.h</FilePath>
             </File>
             <File>
-              <FileName>USB_DIS_ISR.c</FileName>
+              <FileName>USBUART.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USB_DIS_ISR.c</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\USBUART.c</FilePath>
             </File>
             <File>
-              <FileName>USB_DIS_ISR.h</FileName>
+              <FileName>USBUART.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USB_DIS_ISR.h</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\USBUART.h</FilePath>
             </File>
             <File>
-              <FileName>USBUART_1_Vbus_ps.c</FileName>
+              <FileName>USBUART_audio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_Vbus_ps.c</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_audio.c</FilePath>
             </File>
             <File>
-              <FileName>USBUART_1_Vbus_ps.h</FileName>
+              <FileName>USBUART_audio.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USBUART_1_Vbus_ps.h</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_audio.h</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_boot.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_boot.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_cdc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_cdc.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_cdc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_cdc.h</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_cls.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_cls.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_descr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_descr.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_drv.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_drv.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_episr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_episr.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_hid.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_hid.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_hid.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_hid.h</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_pm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_pm.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_std.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_std.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_vnd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_vnd.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_cdc.inf</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_cdc.inf</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_midi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_midi.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_midi.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_midi.h</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_pvt.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_pvt.h</FilePath>
+            </File>
+            <File>
+              <FileName>Blink_Timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Blink_Timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>Blink_Timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Blink_Timer.h</FilePath>
+            </File>
+            <File>
+              <FileName>Blink_Timer_PM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Blink_Timer_PM.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_Dm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_Dm.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_Dm.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_Dm.h</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_Dm_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_Dm_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_Dp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_Dp.c</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_Dp.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_Dp.h</FilePath>
+            </File>
+            <File>
+              <FileName>USBUART_Dp_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\USBUART_Dp_aliases.h</FilePath>
             </File>
           </Files>
         </Group>

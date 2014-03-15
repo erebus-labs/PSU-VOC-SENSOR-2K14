@@ -77,8 +77,8 @@
 #define USBUART_1_ENABLE_STRINGS   
 #define USBUART_1_MAX_REPORTID_NUMBER   (0u)
 
-#define USBUART_1_MON_VBUS                       (1u)
-#define USBUART_1_EXTERN_VBUS                    (1u)
+#define USBUART_1_MON_VBUS                       (0u)
+#define USBUART_1_EXTERN_VBUS                    (0u)
 #define USBUART_1_EXTERN_VND                     (0u)
 #define USBUART_1_EXTERN_CLS                     (0u)
 #define USBUART_1_MAX_INTERFACES_NUMBER          (2u)
