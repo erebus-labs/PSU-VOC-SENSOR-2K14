@@ -1,5 +1,5 @@
 # ADCtoEEPROM
-# 2014-03-14 22:46:26Z
+# 2014-03-21 00:53:35Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -8,17 +8,17 @@ dont_use_io iocell 1 1
 # IO_3@[IOP=(1)][IoId=(3)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 3
 set_location "ClockBlock" clockblockcell -1 -1 0
-set_io "Pin_1(0)" iocell 6 5
-set_io "Pin_2(0)" iocell 15 5
-set_location "\ADC_DelSig_2:DEC\" decimatorcell -1 -1 0
-set_location "\ADC_DelSig_2:DSM\" dsmodcell -1 -1 0
-set_location "\ADC_DelSig_2:IRQ\" interrupt -1 -1 29
-set_io "\LCD_Char_1:LCDPort(0)\" iocell 0 0
-set_io "\LCD_Char_1:LCDPort(1)\" iocell 0 1
-set_io "\LCD_Char_1:LCDPort(2)\" iocell 0 2
-set_io "\LCD_Char_1:LCDPort(3)\" iocell 0 3
-set_io "\LCD_Char_1:LCDPort(4)\" iocell 0 4
-set_io "\LCD_Char_1:LCDPort(5)\" iocell 0 5
-set_io "\LCD_Char_1:LCDPort(6)\" iocell 0 6
+set_io "Potentiometer(0)" iocell 6 5
+set_io "SW_3(0)" iocell 15 5
+set_location "TakeSample_IRQ" interrupt -1 -1 0
+set_location "\ADC:DEC\" decimatorcell -1 -1 0
+set_location "\ADC:DSM\" dsmodcell -1 -1 0
+set_location "\ADC:IRQ\" interrupt -1 -1 29
+set_io "\LCD:LCDPort(0)\" iocell 0 0
+set_io "\LCD:LCDPort(1)\" iocell 0 1
+set_io "\LCD:LCDPort(2)\" iocell 0 2
+set_io "\LCD:LCDPort(3)\" iocell 0 3
+set_io "\LCD:LCDPort(4)\" iocell 0 4
+set_io "\LCD:LCDPort(5)\" iocell 0 5
+set_io "\LCD:LCDPort(6)\" iocell 0 6
 set_location "__ONE__" 3 0 0 0
-set_location "isr_1" interrupt -1 -1 0

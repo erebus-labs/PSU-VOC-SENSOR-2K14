@@ -1,6 +1,6 @@
 // ======================================================================
 // ADCtoEEPROM.v generated from TopDesign.cysch
-// 03/14/2014 at 15:46
+// 03/20/2014 at 17:53
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -47,7 +47,7 @@
 `define CYDEV_CHIP_FAMILY_USED 1
 `define CYDEV_CHIP_MEMBER_USED 1
 `define CYDEV_CHIP_REVISION_USED 3
-// CharLCD_v1_90(ConversionRoutines=true, CUSTOM0=0,E,8,8,8,E,0, CUSTOM1=0,A,A,4,4,4,0, CUSTOM2=0,E,A,E,8,8,0, CUSTOM3=0,E,A,C,A,A,0, CUSTOM4=0,E,8,C,8,E,0, CUSTOM5=0,E,8,E,2,E,0, CUSTOM6=0,E,8,E,2,E,0, CUSTOM7=0,4,4,4,0,4,0, CustomCharacterSet=0, TypeReplacementString=uint8, CY_COMPONENT_NAME=CharLCD_v1_90, CY_CONTROL_FILE=<:default:>, CY_FITTER_NAME=LCD_Char_1, CY_INSTANCE_SHORT_NAME=LCD_Char_1, CY_MAJOR_VERSION=1, CY_MINOR_VERSION=90, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=cydsfit No Version Information Found, INSTANCE_NAME=LCD_Char_1, )
+// CharLCD_v1_90(ConversionRoutines=true, CUSTOM0=0,E,8,8,8,E,0, CUSTOM1=0,A,A,4,4,4,0, CUSTOM2=0,E,A,E,8,8,0, CUSTOM3=0,E,A,C,A,A,0, CUSTOM4=0,E,8,C,8,E,0, CUSTOM5=0,E,8,E,2,E,0, CUSTOM6=0,E,8,E,2,E,0, CUSTOM7=0,4,4,4,0,4,0, CustomCharacterSet=0, TypeReplacementString=uint8, CY_COMPONENT_NAME=CharLCD_v1_90, CY_CONTROL_FILE=<:default:>, CY_FITTER_NAME=LCD, CY_INSTANCE_SHORT_NAME=LCD, CY_MAJOR_VERSION=1, CY_MINOR_VERSION=90, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=cydsfit No Version Information Found, INSTANCE_NAME=LCD, )
 module CharLCD_v1_90_0 ;
 
 
@@ -203,7 +203,7 @@ endmodule
 `include "C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\or_v1_0\or_v1_0.v"
 `endif
 
-// ADC_DelSig_v3_0(ADC_Alignment=0, ADC_Alignment_Config2=0, ADC_Alignment_Config3=0, ADC_Alignment_Config4=0, ADC_Charge_Pump_Clock=true, ADC_Clock=1, ADC_CLOCK_FREQUENCY=131000, ADC_Input_Mode=1, ADC_Input_Range=2, ADC_Input_Range_Config2=4, ADC_Input_Range_Config3=4, ADC_Input_Range_Config4=4, ADC_Power=1, ADC_Reference=5, ADC_Reference_Config2=0, ADC_Reference_Config3=0, ADC_Reference_Config4=0, ADC_Resolution=12, ADC_Resolution_Config2=16, ADC_Resolution_Config3=16, ADC_Resolution_Config4=16, Clock_Frequency=64000, Comment_Config1=Default Config, Comment_Config2=Second Config, Comment_Config3=Third Config, Comment_Config4=Fourth Config, Config1_Name=CFG1, Config2_Name=CFG2, Config3_Name=CFG3, Config4_Name=CFG4, Configs=1, Conversion_Mode=1, Conversion_Mode_Config2=2, Conversion_Mode_Config3=2, Conversion_Mode_Config4=2, Enable_Vref_Vss=false, EnableModulatorInput=false, Input_Buffer_Gain=1, Input_Buffer_Gain_Config2=1, Input_Buffer_Gain_Config3=1, Input_Buffer_Gain_Config4=1, Input_Buffer_Mode=1, Input_Buffer_Mode_Config2=1, Input_Buffer_Mode_Config3=1, Input_Buffer_Mode_Config4=1, Ref_Voltage=1.25, Ref_Voltage_Config2=1.024, Ref_Voltage_Config3=1.024, Ref_Voltage_Config4=1.024, rm_int=false, Sample_Rate=1000, Sample_Rate_Config2=10000, Sample_Rate_Config3=10000, Sample_Rate_Config4=10000, Start_of_Conversion=0, Vdda_Value=5, CY_COMPONENT_NAME=ADC_DelSig_v3_0, CY_CONTROL_FILE=<:default:>, CY_FITTER_NAME=ADC_DelSig_2, CY_INSTANCE_SHORT_NAME=ADC_DelSig_2, CY_MAJOR_VERSION=3, CY_MINOR_VERSION=0, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=cydsfit No Version Information Found, INSTANCE_NAME=ADC_DelSig_2, )
+// ADC_DelSig_v3_0(ADC_Alignment=0, ADC_Alignment_Config2=0, ADC_Alignment_Config3=0, ADC_Alignment_Config4=0, ADC_Charge_Pump_Clock=true, ADC_Clock=1, ADC_CLOCK_FREQUENCY=131000, ADC_Input_Mode=1, ADC_Input_Range=2, ADC_Input_Range_Config2=4, ADC_Input_Range_Config3=4, ADC_Input_Range_Config4=4, ADC_Power=1, ADC_Reference=5, ADC_Reference_Config2=0, ADC_Reference_Config3=0, ADC_Reference_Config4=0, ADC_Resolution=12, ADC_Resolution_Config2=16, ADC_Resolution_Config3=16, ADC_Resolution_Config4=16, Clock_Frequency=64000, Comment_Config1=Default Config, Comment_Config2=Second Config, Comment_Config3=Third Config, Comment_Config4=Fourth Config, Config1_Name=CFG1, Config2_Name=CFG2, Config3_Name=CFG3, Config4_Name=CFG4, Configs=1, Conversion_Mode=1, Conversion_Mode_Config2=2, Conversion_Mode_Config3=2, Conversion_Mode_Config4=2, Enable_Vref_Vss=false, EnableModulatorInput=false, Input_Buffer_Gain=1, Input_Buffer_Gain_Config2=1, Input_Buffer_Gain_Config3=1, Input_Buffer_Gain_Config4=1, Input_Buffer_Mode=1, Input_Buffer_Mode_Config2=1, Input_Buffer_Mode_Config3=1, Input_Buffer_Mode_Config4=1, Ref_Voltage=1.25, Ref_Voltage_Config2=1.024, Ref_Voltage_Config3=1.024, Ref_Voltage_Config4=1.024, rm_int=false, Sample_Rate=1000, Sample_Rate_Config2=10000, Sample_Rate_Config3=10000, Sample_Rate_Config4=10000, Start_of_Conversion=0, Vdda_Value=5, CY_COMPONENT_NAME=ADC_DelSig_v3_0, CY_CONTROL_FILE=<:default:>, CY_FITTER_NAME=ADC, CY_INSTANCE_SHORT_NAME=ADC, CY_MAJOR_VERSION=3, CY_MINOR_VERSION=0, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=cydsfit No Version Information Found, INSTANCE_NAME=ADC, )
 module ADC_DelSig_v3_0_1 (
     vplus,
     vminus,
@@ -409,13 +409,13 @@ module top ;
     electrical  Net_16;
           wire  Net_23;
 
-    CharLCD_v1_90_0 LCD_Char_1 ();
+    CharLCD_v1_90_0 LCD ();
 
-	wire [0:0] tmpOE__Pin_1_net;
-	wire [0:0] tmpFB_0__Pin_1_net;
-	wire [0:0] tmpIO_0__Pin_1_net;
-	wire [0:0] tmpINTERRUPT_0__Pin_1_net;
-	electrical [0:0] tmpSIOVREF__Pin_1_net;
+	wire [0:0] tmpOE__Potentiometer_net;
+	wire [0:0] tmpFB_0__Potentiometer_net;
+	wire [0:0] tmpIO_0__Potentiometer_net;
+	wire [0:0] tmpINTERRUPT_0__Potentiometer_net;
+	electrical [0:0] tmpSIOVREF__Potentiometer_net;
 
 	cy_psoc3_pins_v1_10
 		#(.id("05a9c8de-3ba2-4909-8250-95fdc61c0bf4"),
@@ -464,14 +464,14 @@ module top ;
 		  .spanning(0),
 		  .vtrip(2'b10),
 		  .width(1))
-		Pin_1
-		 (.oe(tmpOE__Pin_1_net),
+		Potentiometer
+		 (.oe(tmpOE__Potentiometer_net),
 		  .y({1'b0}),
-		  .fb({tmpFB_0__Pin_1_net[0:0]}),
+		  .fb({tmpFB_0__Potentiometer_net[0:0]}),
 		  .analog({Net_16}),
-		  .io({tmpIO_0__Pin_1_net[0:0]}),
-		  .siovref(tmpSIOVREF__Pin_1_net),
-		  .interrupt({tmpINTERRUPT_0__Pin_1_net[0:0]}),
+		  .io({tmpIO_0__Potentiometer_net[0:0]}),
+		  .siovref(tmpSIOVREF__Potentiometer_net),
+		  .interrupt({tmpINTERRUPT_0__Potentiometer_net[0:0]}),
 		  .in_clock({1'b0}),
 		  .in_clock_en({1'b1}),
 		  .in_reset({1'b0}),
@@ -479,9 +479,9 @@ module top ;
 		  .out_clock_en({1'b1}),
 		  .out_reset({1'b0}));
 
-	assign tmpOE__Pin_1_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+	assign tmpOE__Potentiometer_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
-    ADC_DelSig_v3_0_1 ADC_DelSig_2 (
+    ADC_DelSig_v3_0_1 ADC (
         .vplus(Net_16),
         .vminus(Net_8),
         .soc(1'b1),
@@ -493,14 +493,14 @@ module top ;
 
 	cy_isr_v1_0
 		#(.int_type(2'b00))
-		isr_1
+		TakeSample_IRQ
 		 (.int_signal(Net_23));
 
 
-	wire [0:0] tmpOE__Pin_2_net;
-	wire [0:0] tmpIO_0__Pin_2_net;
-	wire [0:0] tmpINTERRUPT_0__Pin_2_net;
-	electrical [0:0] tmpSIOVREF__Pin_2_net;
+	wire [0:0] tmpOE__SW_3_net;
+	wire [0:0] tmpIO_0__SW_3_net;
+	wire [0:0] tmpINTERRUPT_0__SW_3_net;
+	electrical [0:0] tmpSIOVREF__SW_3_net;
 
 	cy_psoc3_pins_v1_10
 		#(.id("11f124a4-7916-484c-a486-00be9b544c48"),
@@ -549,13 +549,13 @@ module top ;
 		  .spanning(0),
 		  .vtrip(2'b00),
 		  .width(1))
-		Pin_2
-		 (.oe(tmpOE__Pin_2_net),
+		SW_3
+		 (.oe(tmpOE__SW_3_net),
 		  .y({1'b0}),
 		  .fb({Net_23}),
-		  .io({tmpIO_0__Pin_2_net[0:0]}),
-		  .siovref(tmpSIOVREF__Pin_2_net),
-		  .interrupt({tmpINTERRUPT_0__Pin_2_net[0:0]}),
+		  .io({tmpIO_0__SW_3_net[0:0]}),
+		  .siovref(tmpSIOVREF__SW_3_net),
+		  .interrupt({tmpINTERRUPT_0__SW_3_net[0:0]}),
 		  .in_clock({1'b0}),
 		  .in_clock_en({1'b1}),
 		  .in_reset({1'b0}),
@@ -563,7 +563,7 @@ module top ;
 		  .out_clock_en({1'b1}),
 		  .out_reset({1'b0}));
 
-	assign tmpOE__Pin_2_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+	assign tmpOE__SW_3_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
 
 

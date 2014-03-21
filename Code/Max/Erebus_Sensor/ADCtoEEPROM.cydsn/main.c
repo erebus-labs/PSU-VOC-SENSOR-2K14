@@ -15,9 +15,11 @@ int main()
 {
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
 
-    /* CyGlobalIntEnable; */ /* Uncomment this line to enable global interrupts. */
+    CyGlobalIntEnable;  /* Uncomment this line to enable global interrupts. */
+    TakeSample_IRQ_Start();
     for(;;)
     {
+        
         /* Place your application code here. */
     }
 }

@@ -1,8 +1,13 @@
---------------- Build Started: 03/14/2014 15:48:34 Project: ADCtoEEPROM, Configuration: DP8051 Keil 9.51 Debug ---------------
+--------------- Build Started: 03/20/2014 20:00:17 Project: ADCtoEEPROM, Configuration: DP8051 Keil 9.51 Debug ---------------
 The code generation step is up to date.
-The compile step is up to date, no work needs to be done.
-The link step is up to date, no work needs to be done.
-cyhextool -o .\DP8051\DP8051_Keil_951\Debug\ADCtoEEPROM.hex -f .\DP8051\DP8051_Keil_951\Debug\ADCtoEEPROM.ihx -prot .\Generated_Source\PSoC3\protect.hex -id 1E028069 -a EEPROM=90200000:800,PROGRAM=00000000:10000,CONFIG=80000000:2000,PROTECT=90400000:40 -meta 0301 -cunv 00004005 -wonv BC90ACAF -ecc .\Generated_Source\PSoC3\config.hex
-Flash used: 2192 of 65536 bytes (3.3 %).
-SRAM used: 100 of 8192 bytes (1.2 %).
---------------- Build Succeeded: 03/14/2014 15:48:35 ---------------
+c51.exe .\main.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\main.lst) CD DB NOIP "OT(2, Size)" "DF (DEBUG)" "INCDIR(., .\Generated_Source\PSoC3)" OJ(.\DP8051\DP8051_Keil_951\Debug\main.obj)
+c51.exe .\Generated_Source\PSoC3\TakeSample_IRQ.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\TakeSample_IRQ.lst) CD DB NOIP "OT(2, Size)" "DF (DEBUG)" "INCDIR(., .\Generated_Source\PSoC3)" OJ(.\DP8051\DP8051_Keil_951\Debug\TakeSample_IRQ.obj)
+ERROR: .\Generated_Source\PSoC3\TakeSample_IRQ.c:134: 'unit16': undefined identifier
+ERROR: .\Generated_Source\PSoC3\TakeSample_IRQ.c:134: syntax error near 'SampledData'
+ERROR: .\Generated_Source\PSoC3\TakeSample_IRQ.c:137: 'SampledData': undefined identifier
+ERROR: .\Generated_Source\PSoC3\TakeSample_IRQ.c:138: 'SampledData': undefined identifier
+ERROR: .\Generated_Source\PSoC3\TakeSample_IRQ.c:140: 'SampledData': undefined identifier
+ERROR: .\Generated_Source\PSoC3\TakeSample_IRQ.c:142: 'SampledData': undefined identifier
+ERROR: .\Generated_Source\PSoC3\TakeSample_IRQ.c:144: 'SampledData': undefined identifier
+The command 'c51.exe' failed with exit code '2'.
+--------------- Build Failed: 03/20/2014 20:00:19 ---------------

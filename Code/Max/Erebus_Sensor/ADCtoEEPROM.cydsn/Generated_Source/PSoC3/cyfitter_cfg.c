@@ -234,20 +234,20 @@ void SetAnalogRoutingPumps(uint8 enabled)
 #define CY_AMUX_UNUSED CYREG_BOOST_SR
 /* This is an implementation detail of the AMux. Code that depends on it may be
    incompatible with other versions of PSoC Creator. */
-uint8 CYXDATA * const CYCODE ADC_DelSig_2_AMux__addrTable[2] = {
+uint8 CYXDATA * const CYCODE ADC_AMux__addrTable[2] = {
 	(uint8 CYXDATA *)CYREG_DSM0_SW3, 
 	(uint8 CYXDATA *)CY_AMUX_UNUSED, 
 };
 
 /* This is an implementation detail of the AMux. Code that depends on it may be
    incompatible with other versions of PSoC Creator. */
-const uint8 CYCODE ADC_DelSig_2_AMux__maskTable[2] = {
+const uint8 CYCODE ADC_AMux__maskTable[2] = {
 	0x40u, 
 	0x00u, 
 };
 
 /*******************************************************************************
-* Function Name: ADC_DelSig_2_AMux_Set
+* Function Name: ADC_AMux_Set
 ********************************************************************************
 * Summary:
 *  This function is used to set a particular channel as active on the AMux.
@@ -259,16 +259,16 @@ const uint8 CYCODE ADC_DelSig_2_AMux__maskTable[2] = {
 *   void
 *
 *******************************************************************************/
-void ADC_DelSig_2_AMux_Set(uint8 channel)
+void ADC_AMux_Set(uint8 channel)
 {
 	if (channel < 2)
 	{
-		*ADC_DelSig_2_AMux__addrTable[channel] |= ADC_DelSig_2_AMux__maskTable[channel];
+		*ADC_AMux__addrTable[channel] |= ADC_AMux__maskTable[channel];
 	}
 }
 
 /*******************************************************************************
-* Function Name: ADC_DelSig_2_AMux_Unset
+* Function Name: ADC_AMux_Unset
 ********************************************************************************
 * Summary:
 *  This function is used to clear a particular channel from being active on the
@@ -281,11 +281,11 @@ void ADC_DelSig_2_AMux_Set(uint8 channel)
 *   void
 *
 *******************************************************************************/
-void ADC_DelSig_2_AMux_Unset(uint8 channel)
+void ADC_AMux_Unset(uint8 channel)
 {
 	if (channel < 2)
 	{
-		*ADC_DelSig_2_AMux__addrTable[channel] &= (uint8)~ADC_DelSig_2_AMux__maskTable[channel];
+		*ADC_AMux__addrTable[channel] &= (uint8)~ADC_AMux__maskTable[channel];
 	}
 }
 

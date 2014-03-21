@@ -17,16 +17,16 @@
                     1::Clock Frequency Summary
 ===================================================================== 
 Number of clocks: 10
-Clock: ADC_DelSig_2_Ext_CP_Clk               | N/A  | Target: 24.00 MHz   | 
-Clock: ADC_DelSig_2_Ext_CP_Clk(routed)       | N/A  | Target: 24.00 MHz   | 
-Clock: ADC_DelSig_2_theACLK                  | N/A  | Target: 0.13 MHz    | 
-Clock: ADC_DelSig_2_theACLK(fixed-function)  | N/A  | Target: 0.13 MHz    | 
-Clock: CyBUS_CLK                             | N/A  | Target: 24.00 MHz   | 
-Clock: CyILO                                 | N/A  | Target: 0.00 MHz    | 
-Clock: CyIMO                                 | N/A  | Target: 3.00 MHz    | 
-Clock: CyMASTER_CLK                          | N/A  | Target: 24.00 MHz   | 
-Clock: CyPLL_OUT                             | N/A  | Target: 24.00 MHz   | 
-Clock: \ADC_DelSig_2:DSM\/dec_clock          | N/A  | Target: 100.00 MHz  | 
+Clock: ADC_Ext_CP_Clk               | N/A  | Target: 24.00 MHz   | 
+Clock: ADC_Ext_CP_Clk(routed)       | N/A  | Target: 24.00 MHz   | 
+Clock: ADC_theACLK                  | N/A  | Target: 0.13 MHz    | 
+Clock: ADC_theACLK(fixed-function)  | N/A  | Target: 0.13 MHz    | 
+Clock: CyBUS_CLK                    | N/A  | Target: 24.00 MHz   | 
+Clock: CyILO                        | N/A  | Target: 0.00 MHz    | 
+Clock: CyIMO                        | N/A  | Target: 3.00 MHz    | 
+Clock: CyMASTER_CLK                 | N/A  | Target: 24.00 MHz   | 
+Clock: CyPLL_OUT                    | N/A  | Target: 24.00 MHz   | 
+Clock: \ADC:DSM\/dec_clock          | N/A  | Target: 100.00 MHz  | 
 
  =====================================================================
                     End of Clock Frequency Summary

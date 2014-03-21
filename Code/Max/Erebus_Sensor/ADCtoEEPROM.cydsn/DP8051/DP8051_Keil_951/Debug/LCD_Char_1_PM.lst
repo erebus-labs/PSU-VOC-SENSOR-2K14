@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   LCD_CHAR_1_PM                                                         03/14/2014 15:40:26 PAGE 1   
+C51 COMPILER V9.51   LCD_CHAR_1_PM                                                         03/19/2014 22:47:33 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE LCD_CHAR_1_PM
@@ -62,7 +62,7 @@ line level    source
   50          *  None.
   51          *
   52          * Return:
-C51 COMPILER V9.51   LCD_CHAR_1_PM                                                         03/14/2014 15:40:26 PAGE 2   
+C51 COMPILER V9.51   LCD_CHAR_1_PM                                                         03/19/2014 22:47:33 PAGE 2   
 
   53          *  None.
   54          *
@@ -126,13 +126,13 @@ line level    source
  112   1          {
  113   2              LCD_Char_1_Enable();
  114   2          }
-C51 COMPILER V9.51   LCD_CHAR_1_PM                                                         03/14/2014 15:40:26 PAGE 3   
+C51 COMPILER V9.51   LCD_CHAR_1_PM                                                         03/19/2014 22:47:33 PAGE 3   
 
  115   1      }
  116          
  117          
  118          /* [] END OF FILE */
-C51 COMPILER V9.51   LCD_CHAR_1_PM                                                         03/14/2014 15:40:26 PAGE 4   
+C51 COMPILER V9.51   LCD_CHAR_1_PM                                                         03/19/2014 22:47:33 PAGE 4   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -196,7 +196,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =      1    ----
    PDATA SIZE       =   ----    ----
-C51 COMPILER V9.51   LCD_CHAR_1_PM                                                         03/14/2014 15:40:26 PAGE 5   
+C51 COMPILER V9.51   LCD_CHAR_1_PM                                                         03/19/2014 22:47:33 PAGE 5   
 
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----

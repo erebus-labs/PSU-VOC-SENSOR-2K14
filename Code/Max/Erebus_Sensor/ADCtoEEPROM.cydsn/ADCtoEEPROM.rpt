@@ -1,13 +1,13 @@
-Loading plugins phase: Elapsed time ==> 0s.259ms
-Initializing data phase: Elapsed time ==> 1s.769ms
+Loading plugins phase: Elapsed time ==> 1s.265ms
+Initializing data phase: Elapsed time ==> 5s.233ms
 <CYPRESSTAG name="CyDsfit arguments...">
-cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\maxwell18\Documents\PSoC Creator\Design03\ADCtoEEPROM.cydsn\ADCtoEEPROM.cyprj -d CY8C3866AXI-040 -s C:\Users\maxwell18\Documents\PSoC Creator\Design03\ADCtoEEPROM.cydsn\Generated_Source\PSoC3 -- -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE</CYPRESSTAG>
+cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\ADCtoEEPROM.cyprj -d CY8C3866AXI-040 -s C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\Generated_Source\PSoC3 -- -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE</CYPRESSTAG>
 <CYPRESSTAG name="Design elaboration results...">
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 3s.079ms
+Elaboration phase: Elapsed time ==> 3s.676ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.082ms
+HDL generation phase: Elapsed time ==> 0s.109ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -25,23 +25,23 @@ HDL generation phase: Elapsed time ==> 0s.082ms
 ======================================================================
 Compiling:  ADCtoEEPROM.v
 Program  :   C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\bin/warp.exe
-Options  :    -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\maxwell18\Documents\PSoC Creator\Design03\ADCtoEEPROM.cydsn\ADCtoEEPROM.cyprj -dcpsoc3 ADCtoEEPROM.v -verilog
+Options  :    -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\ADCtoEEPROM.cyprj -dcpsoc3 ADCtoEEPROM.v -verilog
 ======================================================================
 
 ======================================================================
 Compiling:  ADCtoEEPROM.v
 Program  :   C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\bin/warp.exe
-Options  :    -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\maxwell18\Documents\PSoC Creator\Design03\ADCtoEEPROM.cydsn\ADCtoEEPROM.cyprj -dcpsoc3 ADCtoEEPROM.v -verilog
+Options  :    -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\ADCtoEEPROM.cyprj -dcpsoc3 ADCtoEEPROM.v -verilog
 ======================================================================
 
 ======================================================================
 Compiling:  ADCtoEEPROM.v
 Program  :   vlogfe
-Options  :    -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\maxwell18\Documents\PSoC Creator\Design03\ADCtoEEPROM.cydsn\ADCtoEEPROM.cyprj -dcpsoc3 -verilog ADCtoEEPROM.v
+Options  :    -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\ADCtoEEPROM.cyprj -dcpsoc3 -verilog ADCtoEEPROM.v
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Fri Mar 14 15:46:24 2014
+Thu Mar 20 17:53:32 2014
 
 
 ======================================================================
@@ -51,7 +51,7 @@ Options  :    -yv2 -q10 ADCtoEEPROM.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Fri Mar 14 15:46:24 2014
+Thu Mar 20 17:53:32 2014
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\..\psoc\content\cyprimitives\CyPrimitives.cylib\cy_vref_v1_60\cy_vref_v1_60.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\..\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v'
@@ -84,11 +84,11 @@ vlogfe:  No errors.
 ======================================================================
 Compiling:  ADCtoEEPROM.v
 Program  :   tovif
-Options  :    -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\maxwell18\Documents\PSoC Creator\Design03\ADCtoEEPROM.cydsn\ADCtoEEPROM.cyprj -dcpsoc3 -verilog ADCtoEEPROM.v
+Options  :    -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\ADCtoEEPROM.cyprj -dcpsoc3 -verilog ADCtoEEPROM.v
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Fri Mar 14 15:46:24 2014
+Thu Mar 20 17:53:32 2014
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -99,8 +99,8 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\c
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\stdlogic\mod_cnst.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
-Linking 'C:\Users\maxwell18\Documents\PSoC Creator\Design03\ADCtoEEPROM.cydsn\codegentemp\ADCtoEEPROM.ctl'.
-Linking 'C:\Users\maxwell18\Documents\PSoC Creator\Design03\ADCtoEEPROM.cydsn\codegentemp\ADCtoEEPROM.v'.
+Linking 'C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\ADCtoEEPROM.ctl'.
+Linking 'C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\ADCtoEEPROM.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_vref_v1_60\cy_vref_v1_60.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\AMux_v1_80\AMux_v1_80.v'.
@@ -116,11 +116,11 @@ tovif:  No errors.
 ======================================================================
 Compiling:  ADCtoEEPROM.v
 Program  :   topld
-Options  :    -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\maxwell18\Documents\PSoC Creator\Design03\ADCtoEEPROM.cydsn\ADCtoEEPROM.cyprj -dcpsoc3 -verilog ADCtoEEPROM.v
+Options  :    -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\ADCtoEEPROM.cyprj -dcpsoc3 -verilog ADCtoEEPROM.v
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Fri Mar 14 15:46:24 2014
+Thu Mar 20 17:53:32 2014
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -131,8 +131,8 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\c
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\stdlogic\mod_cnst.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
-Linking 'C:\Users\maxwell18\Documents\PSoC Creator\Design03\ADCtoEEPROM.cydsn\codegentemp\ADCtoEEPROM.ctl'.
-Linking 'C:\Users\maxwell18\Documents\PSoC Creator\Design03\ADCtoEEPROM.cydsn\codegentemp\ADCtoEEPROM.v'.
+Linking 'C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\ADCtoEEPROM.ctl'.
+Linking 'C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\ADCtoEEPROM.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_vref_v1_60\cy_vref_v1_60.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\AMux_v1_80\AMux_v1_80.v'.
@@ -147,8 +147,8 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\l
 Detecting unused logic.
 ----------------------------------------------------------
     User names
-	\ADC_DelSig_2:Net_268\
-	\ADC_DelSig_2:Net_270\
+	\ADC:Net_268\
+	\ADC:Net_270\
 
 
 Deleted 2 User equations/components.
@@ -157,32 +157,32 @@ Deleted 0 Synthesized equations/components.
 ------------------------------------------------------
 Alias Detection
 ------------------------------------------------------
-Aliasing \LCD_Char_1:tmpOE__LCDPort_net_5\ to \LCD_Char_1:tmpOE__LCDPort_net_6\
-Aliasing \LCD_Char_1:tmpOE__LCDPort_net_4\ to \LCD_Char_1:tmpOE__LCDPort_net_6\
-Aliasing \LCD_Char_1:tmpOE__LCDPort_net_3\ to \LCD_Char_1:tmpOE__LCDPort_net_6\
-Aliasing \LCD_Char_1:tmpOE__LCDPort_net_2\ to \LCD_Char_1:tmpOE__LCDPort_net_6\
-Aliasing \LCD_Char_1:tmpOE__LCDPort_net_1\ to \LCD_Char_1:tmpOE__LCDPort_net_6\
-Aliasing \LCD_Char_1:tmpOE__LCDPort_net_0\ to \LCD_Char_1:tmpOE__LCDPort_net_6\
-Aliasing one to \LCD_Char_1:tmpOE__LCDPort_net_6\
-Aliasing tmpOE__Pin_1_net_0 to \LCD_Char_1:tmpOE__LCDPort_net_6\
-Aliasing \ADC_DelSig_2:Net_482\ to zero
-Aliasing \ADC_DelSig_2:Net_252\ to zero
-Aliasing \ADC_DelSig_2:soc\ to \LCD_Char_1:tmpOE__LCDPort_net_6\
-Aliasing tmpOE__Pin_2_net_0 to \LCD_Char_1:tmpOE__LCDPort_net_6\
-Removing Lhs of wire \LCD_Char_1:tmpOE__LCDPort_net_5\[2] = \LCD_Char_1:tmpOE__LCDPort_net_6\[1]
-Removing Lhs of wire \LCD_Char_1:tmpOE__LCDPort_net_4\[3] = \LCD_Char_1:tmpOE__LCDPort_net_6\[1]
-Removing Lhs of wire \LCD_Char_1:tmpOE__LCDPort_net_3\[4] = \LCD_Char_1:tmpOE__LCDPort_net_6\[1]
-Removing Lhs of wire \LCD_Char_1:tmpOE__LCDPort_net_2\[5] = \LCD_Char_1:tmpOE__LCDPort_net_6\[1]
-Removing Lhs of wire \LCD_Char_1:tmpOE__LCDPort_net_1\[6] = \LCD_Char_1:tmpOE__LCDPort_net_6\[1]
-Removing Lhs of wire \LCD_Char_1:tmpOE__LCDPort_net_0\[7] = \LCD_Char_1:tmpOE__LCDPort_net_6\[1]
-Removing Rhs of wire one[24] = \LCD_Char_1:tmpOE__LCDPort_net_6\[1]
-Removing Lhs of wire tmpOE__Pin_1_net_0[27] = one[24]
-Removing Rhs of wire \ADC_DelSig_2:Net_488\[45] = \ADC_DelSig_2:Net_250\[80]
-Removing Lhs of wire \ADC_DelSig_2:Net_481\[47] = zero[8]
-Removing Lhs of wire \ADC_DelSig_2:Net_482\[48] = zero[8]
-Removing Lhs of wire \ADC_DelSig_2:Net_252\[82] = zero[8]
-Removing Lhs of wire \ADC_DelSig_2:soc\[84] = one[24]
-Removing Lhs of wire tmpOE__Pin_2_net_0[90] = one[24]
+Aliasing \LCD:tmpOE__LCDPort_net_5\ to \LCD:tmpOE__LCDPort_net_6\
+Aliasing \LCD:tmpOE__LCDPort_net_4\ to \LCD:tmpOE__LCDPort_net_6\
+Aliasing \LCD:tmpOE__LCDPort_net_3\ to \LCD:tmpOE__LCDPort_net_6\
+Aliasing \LCD:tmpOE__LCDPort_net_2\ to \LCD:tmpOE__LCDPort_net_6\
+Aliasing \LCD:tmpOE__LCDPort_net_1\ to \LCD:tmpOE__LCDPort_net_6\
+Aliasing \LCD:tmpOE__LCDPort_net_0\ to \LCD:tmpOE__LCDPort_net_6\
+Aliasing one to \LCD:tmpOE__LCDPort_net_6\
+Aliasing tmpOE__Potentiometer_net_0 to \LCD:tmpOE__LCDPort_net_6\
+Aliasing \ADC:Net_482\ to zero
+Aliasing \ADC:Net_252\ to zero
+Aliasing \ADC:soc\ to \LCD:tmpOE__LCDPort_net_6\
+Aliasing tmpOE__SW_3_net_0 to \LCD:tmpOE__LCDPort_net_6\
+Removing Lhs of wire \LCD:tmpOE__LCDPort_net_5\[2] = \LCD:tmpOE__LCDPort_net_6\[1]
+Removing Lhs of wire \LCD:tmpOE__LCDPort_net_4\[3] = \LCD:tmpOE__LCDPort_net_6\[1]
+Removing Lhs of wire \LCD:tmpOE__LCDPort_net_3\[4] = \LCD:tmpOE__LCDPort_net_6\[1]
+Removing Lhs of wire \LCD:tmpOE__LCDPort_net_2\[5] = \LCD:tmpOE__LCDPort_net_6\[1]
+Removing Lhs of wire \LCD:tmpOE__LCDPort_net_1\[6] = \LCD:tmpOE__LCDPort_net_6\[1]
+Removing Lhs of wire \LCD:tmpOE__LCDPort_net_0\[7] = \LCD:tmpOE__LCDPort_net_6\[1]
+Removing Rhs of wire one[24] = \LCD:tmpOE__LCDPort_net_6\[1]
+Removing Lhs of wire tmpOE__Potentiometer_net_0[27] = one[24]
+Removing Rhs of wire \ADC:Net_488\[45] = \ADC:Net_250\[80]
+Removing Lhs of wire \ADC:Net_481\[47] = zero[8]
+Removing Lhs of wire \ADC:Net_482\[48] = zero[8]
+Removing Lhs of wire \ADC:Net_252\[82] = zero[8]
+Removing Lhs of wire \ADC:soc\[84] = one[24]
+Removing Lhs of wire tmpOE__SW_3_net_0[90] = one[24]
 
 ------------------------------------------------------
 Aliased 0 equations, 14 wires.
@@ -207,26 +207,26 @@ topld:  No errors.
 
 CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\bin/warp.exe
-Warp Arguments : -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya "-.fftprj=C:\Users\maxwell18\Documents\PSoC Creator\Design03\ADCtoEEPROM.cydsn\ADCtoEEPROM.cyprj" -dcpsoc3 ADCtoEEPROM.v -verilog
+Warp Arguments : -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\ADCtoEEPROM.cyprj -dcpsoc3 ADCtoEEPROM.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 0s.578ms
+Warp synthesis phase: Elapsed time ==> 1s.544ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V3.0.0.1539, Family: PSoC3, Started at: Friday, 14 March 2014 15:46:24
-Options: -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\maxwell18\Documents\PSoC Creator\Design03\ADCtoEEPROM.cydsn\ADCtoEEPROM.cyprj -d CY8C3866AXI-040 ADCtoEEPROM.v -verilog
+cyp3fit: V3.0.0.1539, Family: PSoC3, Started at: Thursday, 20 March 2014 17:53:33
+Options: -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\ADCtoEEPROM.cyprj -d CY8C3866AXI-040 ADCtoEEPROM.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.016ms
+Design parsing phase: Elapsed time ==> 0s.014ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
 <CYPRESSTAG name="Global Clock Selection" icon="FILE_RPT_TECHM">
-    Digital Clock 0: Automatic-assigning  clock 'ADC_DelSig_2_Ext_CP_Clk'. Fanout=1, Signal=\ADC_DelSig_2:Net_93\
-    Analog  Clock 0: Automatic-assigning  clock 'ADC_DelSig_2_theACLK'. Fanout=1, Signal=\ADC_DelSig_2:Net_488\
+    Digital Clock 0: Automatic-assigning  clock 'ADC_Ext_CP_Clk'. Fanout=1, Signal=\ADC:Net_93\
+    Analog  Clock 0: Automatic-assigning  clock 'ADC_theACLK'. Fanout=1, Signal=\ADC:Net_488\
 </CYPRESSTAG>
 <CYPRESSTAG name="UDB Clock/Enable Remapping Results">
 </CYPRESSTAG>
-ADD: pft.M0040: information: The following 7 pin(s) will be assigned a location by the fitter: \LCD_Char_1:LCDPort(0)\, \LCD_Char_1:LCDPort(1)\, \LCD_Char_1:LCDPort(2)\, \LCD_Char_1:LCDPort(3)\, \LCD_Char_1:LCDPort(4)\, \LCD_Char_1:LCDPort(5)\, \LCD_Char_1:LCDPort(6)\
+ADD: pft.M0040: information: The following 7 pin(s) will be assigned a location by the fitter: \LCD:LCDPort(0)\, \LCD:LCDPort(1)\, \LCD:LCDPort(2)\, \LCD:LCDPort(3)\, \LCD:LCDPort(4)\, \LCD:LCDPort(5)\, \LCD:LCDPort(6)\
 
 
 Removing unused cells resulting from optimization
@@ -248,7 +248,7 @@ Design Equations
     Pin listing
     ------------------------------------------------------------
 
-    Pin : Name = Pin_1(0)
+    Pin : Name = Potentiometer(0)
         Attributes:
             In Group/Port: True
             In Sync Option: AUTO
@@ -280,14 +280,14 @@ Design Equations
             Initial Value: 0
             IO Voltage: 0
         PORT MAP (
-            pa_out => Pin_1(0)__PA ,
+            pa_out => Potentiometer(0)__PA ,
             analog_term => Net_16 ,
-            pad => Pin_1(0)_PAD );
+            pad => Potentiometer(0)_PAD );
         Properties:
         {
         }
 
-    Pin : Name = Pin_2(0)
+    Pin : Name = SW_3(0)
         Attributes:
             In Group/Port: True
             In Sync Option: SYNC
@@ -319,14 +319,14 @@ Design Equations
             Initial Value: 0
             IO Voltage: 0
         PORT MAP (
-            pa_out => Pin_2(0)__PA ,
+            pa_out => SW_3(0)__PA ,
             fb => Net_23 ,
-            pad => Pin_2(0)_PAD );
+            pad => SW_3(0)_PAD );
         Properties:
         {
         }
 
-    Pin : Name = \LCD_Char_1:LCDPort(0)\
+    Pin : Name = \LCD:LCDPort(0)\
         Attributes:
             In Group/Port: True
             In Sync Option: AUTO
@@ -358,10 +358,10 @@ Design Equations
             Initial Value: 0
             IO Voltage: 0
         PORT MAP (
-            pa_out => \LCD_Char_1:LCDPort(0)\__PA ,
-            pad => \LCD_Char_1:LCDPort(0)_PAD\ );
+            pa_out => \LCD:LCDPort(0)\__PA ,
+            pad => \LCD:LCDPort(0)_PAD\ );
 
-    Pin : Name = \LCD_Char_1:LCDPort(1)\
+    Pin : Name = \LCD:LCDPort(1)\
         Attributes:
             In Group/Port: True
             In Sync Option: AUTO
@@ -393,10 +393,10 @@ Design Equations
             Initial Value: 0
             IO Voltage: 0
         PORT MAP (
-            pa_out => \LCD_Char_1:LCDPort(1)\__PA ,
-            pad => \LCD_Char_1:LCDPort(1)_PAD\ );
+            pa_out => \LCD:LCDPort(1)\__PA ,
+            pad => \LCD:LCDPort(1)_PAD\ );
 
-    Pin : Name = \LCD_Char_1:LCDPort(2)\
+    Pin : Name = \LCD:LCDPort(2)\
         Attributes:
             In Group/Port: True
             In Sync Option: AUTO
@@ -428,10 +428,10 @@ Design Equations
             Initial Value: 0
             IO Voltage: 0
         PORT MAP (
-            pa_out => \LCD_Char_1:LCDPort(2)\__PA ,
-            pad => \LCD_Char_1:LCDPort(2)_PAD\ );
+            pa_out => \LCD:LCDPort(2)\__PA ,
+            pad => \LCD:LCDPort(2)_PAD\ );
 
-    Pin : Name = \LCD_Char_1:LCDPort(3)\
+    Pin : Name = \LCD:LCDPort(3)\
         Attributes:
             In Group/Port: True
             In Sync Option: AUTO
@@ -463,10 +463,10 @@ Design Equations
             Initial Value: 0
             IO Voltage: 0
         PORT MAP (
-            pa_out => \LCD_Char_1:LCDPort(3)\__PA ,
-            pad => \LCD_Char_1:LCDPort(3)_PAD\ );
+            pa_out => \LCD:LCDPort(3)\__PA ,
+            pad => \LCD:LCDPort(3)_PAD\ );
 
-    Pin : Name = \LCD_Char_1:LCDPort(4)\
+    Pin : Name = \LCD:LCDPort(4)\
         Attributes:
             In Group/Port: True
             In Sync Option: AUTO
@@ -498,10 +498,10 @@ Design Equations
             Initial Value: 0
             IO Voltage: 0
         PORT MAP (
-            pa_out => \LCD_Char_1:LCDPort(4)\__PA ,
-            pad => \LCD_Char_1:LCDPort(4)_PAD\ );
+            pa_out => \LCD:LCDPort(4)\__PA ,
+            pad => \LCD:LCDPort(4)_PAD\ );
 
-    Pin : Name = \LCD_Char_1:LCDPort(5)\
+    Pin : Name = \LCD:LCDPort(5)\
         Attributes:
             In Group/Port: True
             In Sync Option: AUTO
@@ -533,10 +533,10 @@ Design Equations
             Initial Value: 0
             IO Voltage: 0
         PORT MAP (
-            pa_out => \LCD_Char_1:LCDPort(5)\__PA ,
-            pad => \LCD_Char_1:LCDPort(5)_PAD\ );
+            pa_out => \LCD:LCDPort(5)\__PA ,
+            pad => \LCD:LCDPort(5)_PAD\ );
 
-    Pin : Name = \LCD_Char_1:LCDPort(6)\
+    Pin : Name = \LCD:LCDPort(6)\
         Attributes:
             In Group/Port: True
             In Sync Option: AUTO
@@ -568,8 +568,8 @@ Design Equations
             Initial Value: 0
             IO Voltage: 0
         PORT MAP (
-            pa_out => \LCD_Char_1:LCDPort(6)\__PA ,
-            pad => \LCD_Char_1:LCDPort(6)_PAD\ );
+            pa_out => \LCD:LCDPort(6)\__PA ,
+            pad => \LCD:LCDPort(6)_PAD\ );
     </CYPRESSTAG>
     <CYPRESSTAG name="Macrocell listing" icon="FILE_RPT_EQUATION">
 
@@ -607,20 +607,20 @@ Design Equations
     Interrupt listing
     ------------------------------------------------------------
 
-    interrupt: Name =\ADC_DelSig_2:IRQ\
-        PORT MAP (
-            interrupt => Net_10 );
-        Properties:
-        {
-            int_type = "10"
-        }
-
-    interrupt: Name =isr_1
+    interrupt: Name =TakeSample_IRQ
         PORT MAP (
             interrupt => Net_23 );
         Properties:
         {
             int_type = "00"
+        }
+
+    interrupt: Name =\ADC:IRQ\
+        PORT MAP (
+            interrupt => Net_10 );
+        Properties:
+        {
+            int_type = "10"
         }
     </CYPRESSTAG>
 </CYPRESSTAG>
@@ -658,39 +658,39 @@ LCD Fixed Blocks              :    0 :    1 :    1 :   0.00%
 EMIF Fixed Blocks             :    0 :    1 :    1 :   0.00%
 LPF Fixed Blocks              :    0 :    2 :    2 :   0.00%
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.016ms
+Technology Mapping: Elapsed time ==> 0s.033ms
 Info: mpr.M0037: Unused pieces of the design have been optimized out. See the Tech mapping section of the report file for details. (App=cydsfit)
-Tech mapping phase: Elapsed time ==> 0s.149ms
+Tech mapping phase: Elapsed time ==> 0s.168ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
-Info: apr.M0002: Analog signal "\ADC_DelSig_2:Net_690\" is connected to one terminal only. (App=cydsfit)
+Info: apr.M0002: Analog signal "\ADC:Net_690\" is connected to one terminal only. (App=cydsfit)
 Initial Analog Placement Results:
-IO_5@[IOP=(6)][IoId=(5)] : Pin_1(0) (fixed)
-IO_5@[IOP=(15)][IoId=(5)] : Pin_2(0) (fixed)
-DSM[0]@[FFB(DSM,0)] : \ADC_DelSig_2:DSM\
-Vref[6]@[FFB(Vref,6)] : \ADC_DelSig_2:vRef_2\
+IO_5@[IOP=(6)][IoId=(5)] : Potentiometer(0) (fixed)
+IO_5@[IOP=(15)][IoId=(5)] : SW_3(0) (fixed)
+DSM[0]@[FFB(DSM,0)] : \ADC:DSM\
+Vref[6]@[FFB(Vref,6)] : \ADC:vRef_2\
 Analog Placement Results:
-IO_5@[IOP=(6)][IoId=(5)] : Pin_1(0) (fixed)
-IO_5@[IOP=(15)][IoId=(5)] : Pin_2(0) (fixed)
-DSM[0]@[FFB(DSM,0)] : \ADC_DelSig_2:DSM\
-Vref[6]@[FFB(Vref,6)] : \ADC_DelSig_2:vRef_2\
+IO_5@[IOP=(6)][IoId=(5)] : Potentiometer(0) (fixed)
+IO_5@[IOP=(15)][IoId=(5)] : SW_3(0) (fixed)
+DSM[0]@[FFB(DSM,0)] : \ADC:DSM\
+Vref[6]@[FFB(Vref,6)] : \ADC:vRef_2\
 
-Analog Placement phase: Elapsed time ==> 0s.041ms
+Analog Placement phase: Elapsed time ==> 0s.111ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
-Analog Routing phase: Elapsed time ==> 0s.003ms
+Analog Routing phase: Elapsed time ==> 0s.005ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Code Generation">
 ============ Analog Final Answer Routes ============
 Dump of CyAnalogRoutingResultsDB
 Map of net to items {
-  Net: \ADC_DelSig_2:Net_520\ {
+  Net: \ADC:Net_520\ {
     dsm_0_vminus
   }
-  Net: \ADC_DelSig_2:Net_244\ {
+  Net: \ADC:Net_244\ {
     common_vssa
   }
-  Net: \ADC_DelSig_2:Net_690\ {
+  Net: \ADC:Net_690\ {
   }
   Net: Net_16 {
     dsm_0_vplus
@@ -699,15 +699,15 @@ Map of net to items {
     agl1_x_p6_5
     p6_5
   }
-  Net: \ADC_DelSig_2:Net_573\ {
+  Net: \ADC:Net_573\ {
   }
-  Net: \ADC_DelSig_2:Net_41\ {
+  Net: \ADC:Net_41\ {
   }
-  Net: \ADC_DelSig_2:Net_109\ {
+  Net: \ADC:Net_109\ {
   }
-  Net: \ADC_DelSig_2:Net_677\ {
+  Net: \ADC:Net_677\ {
   }
-  Net: AmuxNet::\ADC_DelSig_2:AMux\ {
+  Net: AmuxNet::\ADC:AMux\ {
     dsm_0_vminus
     dsm_0_vminus_x_dsm_0_vminus_vssa
     dsm_0_vminus_vssa
@@ -720,20 +720,20 @@ Map of item to net {
   agl1                                             -> Net_16
   agl1_x_p6_5                                      -> Net_16
   p6_5                                             -> Net_16
-  dsm_0_vminus                                     -> \ADC_DelSig_2:Net_520\
-  common_vssa                                      -> \ADC_DelSig_2:Net_244\
-  dsm_0_vminus_x_dsm_0_vminus_vssa                 -> AmuxNet::\ADC_DelSig_2:AMux\
-  dsm_0_vminus_vssa                                -> AmuxNet::\ADC_DelSig_2:AMux\
+  dsm_0_vminus                                     -> \ADC:Net_520\
+  common_vssa                                      -> \ADC:Net_244\
+  dsm_0_vminus_x_dsm_0_vminus_vssa                 -> AmuxNet::\ADC:AMux\
+  dsm_0_vminus_vssa                                -> AmuxNet::\ADC:AMux\
 }
 Mux Info {
-  Mux: \ADC_DelSig_2:AMux\ {
-     Mouth: \ADC_DelSig_2:Net_520\
-     Guts:  AmuxNet::\ADC_DelSig_2:AMux\
+  Mux: \ADC:AMux\ {
+     Mouth: \ADC:Net_520\
+     Guts:  AmuxNet::\ADC:AMux\
      IsSingleSwitching: False
      IsStaticSwitching: True
      IsAtMostOneSwitch: False
     Arm: 0 {
-      Net:   \ADC_DelSig_2:Net_244\
+      Net:   \ADC:Net_244\
       Outer: dsm_0_vminus_x_dsm_0_vminus_vssa
       Inner: __open__
       Path {
@@ -744,7 +744,7 @@ Mux Info {
       }
     }
     Arm: 1 {
-      Net:   \ADC_DelSig_2:Net_690\
+      Net:   \ADC:Net_690\
       Outer: __open__
       Inner: __open__
       Path {
@@ -756,7 +756,7 @@ Dump of CyP35AnalogRoutingResultsDB
 IsVddaHalfUsedForComp = False
 IsVddaHalfUsedForSar0 = False
 IsVddaHalfUsedForSar1 = False
-Analog Code Generation phase: Elapsed time ==> 0s.639ms
+Analog Code Generation phase: Elapsed time ==> 0s.691ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="PLD Packing">
@@ -780,17 +780,17 @@ PLD Packing Summary
 <CYPRESSTAG name="Packed PLD Contents">
 Packed PLD Contents not displayed at this verbose level.</CYPRESSTAG>
 </CYPRESSTAG>
-PLD Packing: Elapsed time ==> 0s.001ms
+PLD Packing: Elapsed time ==> 0s.002ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Partitioning">
 <CYPRESSTAG name="Initial Partitioning Summary">
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.020ms
+Partitioning: Elapsed time ==> 0s.027ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Simulated Annealing">
-Annealing: Elapsed time ==> 0s.002ms
+Annealing: Elapsed time ==> 0s.004ms
 <CYPRESSTAG name="Simulated Annealing Results">
 The seed used for moves was 114161200.
 Inital cost was 30, final cost is 30 (0.00% improvement).</CYPRESSTAG>
@@ -856,7 +856,7 @@ UDB [UDB=(3,4)] is empty.
 UDB [UDB=(3,5)] is empty.
 Intr hod @ [IntrHod=(0)]: 
   Intr@ [IntrHod=(0)][IntrId=(0)] 
-    interrupt: Name =isr_1
+    interrupt: Name =TakeSample_IRQ
         PORT MAP (
             interrupt => Net_23 );
         Properties:
@@ -864,7 +864,7 @@ Intr hod @ [IntrHod=(0)]:
             int_type = "00"
         }
   Intr@ [IntrHod=(0)][IntrId=(29)] 
-    interrupt: Name =\ADC_DelSig_2:IRQ\
+    interrupt: Name =\ADC:IRQ\
         PORT MAP (
             interrupt => Net_10 );
         Properties:
@@ -874,7 +874,7 @@ Intr hod @ [IntrHod=(0)]:
 Drq hod @ [DrqHod=(0)]: empty
 Port 0 contains the following IO cells:
 [IoId=0]: 
-Pin : Name = \LCD_Char_1:LCDPort(0)\
+Pin : Name = \LCD:LCDPort(0)\
     Attributes:
         In Group/Port: True
         In Sync Option: AUTO
@@ -906,14 +906,14 @@ Pin : Name = \LCD_Char_1:LCDPort(0)\
         Initial Value: 0
         IO Voltage: 0
     PORT MAP (
-        pa_out => \LCD_Char_1:LCDPort(0)\__PA ,
-        pad => \LCD_Char_1:LCDPort(0)_PAD\ );
+        pa_out => \LCD:LCDPort(0)\__PA ,
+        pad => \LCD:LCDPort(0)_PAD\ );
     Properties:
     {
     }
 
 [IoId=1]: 
-Pin : Name = \LCD_Char_1:LCDPort(1)\
+Pin : Name = \LCD:LCDPort(1)\
     Attributes:
         In Group/Port: True
         In Sync Option: AUTO
@@ -945,14 +945,14 @@ Pin : Name = \LCD_Char_1:LCDPort(1)\
         Initial Value: 0
         IO Voltage: 0
     PORT MAP (
-        pa_out => \LCD_Char_1:LCDPort(1)\__PA ,
-        pad => \LCD_Char_1:LCDPort(1)_PAD\ );
+        pa_out => \LCD:LCDPort(1)\__PA ,
+        pad => \LCD:LCDPort(1)_PAD\ );
     Properties:
     {
     }
 
 [IoId=2]: 
-Pin : Name = \LCD_Char_1:LCDPort(2)\
+Pin : Name = \LCD:LCDPort(2)\
     Attributes:
         In Group/Port: True
         In Sync Option: AUTO
@@ -984,14 +984,14 @@ Pin : Name = \LCD_Char_1:LCDPort(2)\
         Initial Value: 0
         IO Voltage: 0
     PORT MAP (
-        pa_out => \LCD_Char_1:LCDPort(2)\__PA ,
-        pad => \LCD_Char_1:LCDPort(2)_PAD\ );
+        pa_out => \LCD:LCDPort(2)\__PA ,
+        pad => \LCD:LCDPort(2)_PAD\ );
     Properties:
     {
     }
 
 [IoId=3]: 
-Pin : Name = \LCD_Char_1:LCDPort(3)\
+Pin : Name = \LCD:LCDPort(3)\
     Attributes:
         In Group/Port: True
         In Sync Option: AUTO
@@ -1023,14 +1023,14 @@ Pin : Name = \LCD_Char_1:LCDPort(3)\
         Initial Value: 0
         IO Voltage: 0
     PORT MAP (
-        pa_out => \LCD_Char_1:LCDPort(3)\__PA ,
-        pad => \LCD_Char_1:LCDPort(3)_PAD\ );
+        pa_out => \LCD:LCDPort(3)\__PA ,
+        pad => \LCD:LCDPort(3)_PAD\ );
     Properties:
     {
     }
 
 [IoId=4]: 
-Pin : Name = \LCD_Char_1:LCDPort(4)\
+Pin : Name = \LCD:LCDPort(4)\
     Attributes:
         In Group/Port: True
         In Sync Option: AUTO
@@ -1062,14 +1062,14 @@ Pin : Name = \LCD_Char_1:LCDPort(4)\
         Initial Value: 0
         IO Voltage: 0
     PORT MAP (
-        pa_out => \LCD_Char_1:LCDPort(4)\__PA ,
-        pad => \LCD_Char_1:LCDPort(4)_PAD\ );
+        pa_out => \LCD:LCDPort(4)\__PA ,
+        pad => \LCD:LCDPort(4)_PAD\ );
     Properties:
     {
     }
 
 [IoId=5]: 
-Pin : Name = \LCD_Char_1:LCDPort(5)\
+Pin : Name = \LCD:LCDPort(5)\
     Attributes:
         In Group/Port: True
         In Sync Option: AUTO
@@ -1101,14 +1101,14 @@ Pin : Name = \LCD_Char_1:LCDPort(5)\
         Initial Value: 0
         IO Voltage: 0
     PORT MAP (
-        pa_out => \LCD_Char_1:LCDPort(5)\__PA ,
-        pad => \LCD_Char_1:LCDPort(5)_PAD\ );
+        pa_out => \LCD:LCDPort(5)\__PA ,
+        pad => \LCD:LCDPort(5)_PAD\ );
     Properties:
     {
     }
 
 [IoId=6]: 
-Pin : Name = \LCD_Char_1:LCDPort(6)\
+Pin : Name = \LCD:LCDPort(6)\
     Attributes:
         In Group/Port: True
         In Sync Option: AUTO
@@ -1140,8 +1140,8 @@ Pin : Name = \LCD_Char_1:LCDPort(6)\
         Initial Value: 0
         IO Voltage: 0
     PORT MAP (
-        pa_out => \LCD_Char_1:LCDPort(6)\__PA ,
-        pad => \LCD_Char_1:LCDPort(6)_PAD\ );
+        pa_out => \LCD:LCDPort(6)\__PA ,
+        pad => \LCD:LCDPort(6)_PAD\ );
     Properties:
     {
     }
@@ -1153,7 +1153,7 @@ Port 4 is empty
 Port 5 is empty
 Port 6 contains the following IO cells:
 [IoId=5]: 
-Pin : Name = Pin_1(0)
+Pin : Name = Potentiometer(0)
     Attributes:
         In Group/Port: True
         In Sync Option: AUTO
@@ -1185,9 +1185,9 @@ Pin : Name = Pin_1(0)
         Initial Value: 0
         IO Voltage: 0
     PORT MAP (
-        pa_out => Pin_1(0)__PA ,
+        pa_out => Potentiometer(0)__PA ,
         analog_term => Net_16 ,
-        pad => Pin_1(0)_PAD );
+        pad => Potentiometer(0)_PAD );
     Properties:
     {
     }
@@ -1195,7 +1195,7 @@ Pin : Name = Pin_1(0)
 Port 12 is empty
 Port 15 contains the following IO cells:
 [IoId=5]: 
-Pin : Name = Pin_2(0)
+Pin : Name = SW_3(0)
     Attributes:
         In Group/Port: True
         In Sync Option: SYNC
@@ -1227,9 +1227,9 @@ Pin : Name = Pin_2(0)
         Initial Value: 0
         IO Voltage: 0
     PORT MAP (
-        pa_out => Pin_2(0)__PA ,
+        pa_out => SW_3(0)__PA ,
         fb => Net_23 ,
-        pad => Pin_2(0)_PAD );
+        pad => SW_3(0)_PAD );
     Properties:
     {
     }
@@ -1252,12 +1252,12 @@ Fixed Function block hod @ [FFB(Clock,0)]:
             clk_32k => ClockBlock_32k ,
             pllout => ClockBlock_PLL_OUT ,
             imo => ClockBlock_IMO ,
-            dclk_glb_0 => \ADC_DelSig_2:Net_93\ ,
-            dclk_0 => \ADC_DelSig_2:Net_93_local\ ,
-            aclk_glb_0 => \ADC_DelSig_2:Net_488\ ,
-            aclk_0 => \ADC_DelSig_2:Net_488_local\ ,
-            clk_a_dig_glb_0 => \ADC_DelSig_2:Net_488_adig\ ,
-            clk_a_dig_0 => \ADC_DelSig_2:Net_488_adig_local\ );
+            dclk_glb_0 => \ADC:Net_93\ ,
+            dclk_0 => \ADC:Net_93_local\ ,
+            aclk_glb_0 => \ADC:Net_488\ ,
+            aclk_0 => \ADC:Net_488_local\ ,
+            clk_a_dig_glb_0 => \ADC:Net_488_adig\ ,
+            clk_a_dig_0 => \ADC:Net_488_adig_local\ );
         Properties:
         {
         }
@@ -1265,30 +1265,30 @@ Fixed Function block hod @ [FFB(Comparator,0)]: empty
 Fixed Function block hod @ [FFB(DFB,0)]: empty
 Fixed Function block hod @ [FFB(DSM,0)]: 
     DS Modulator @ [FFB(DSM,0)]: 
-    dsmodcell: Name =\ADC_DelSig_2:DSM\
+    dsmodcell: Name =\ADC:DSM\
         PORT MAP (
-            aclock => \ADC_DelSig_2:Net_488\ ,
+            aclock => \ADC:Net_488\ ,
             vplus => Net_16 ,
-            vminus => \ADC_DelSig_2:Net_520\ ,
-            reset_dec => \ADC_DelSig_2:mod_reset\ ,
-            extclk_cp_udb => \ADC_DelSig_2:Net_93_local\ ,
-            ext_pin_1 => \ADC_DelSig_2:Net_573\ ,
-            ext_pin_2 => \ADC_DelSig_2:Net_41\ ,
-            ext_vssa => \ADC_DelSig_2:Net_109\ ,
-            qtz_ref => \ADC_DelSig_2:Net_677\ ,
-            dec_clock => \ADC_DelSig_2:aclock\ ,
-            mod_dat_3 => \ADC_DelSig_2:mod_dat_3\ ,
-            mod_dat_2 => \ADC_DelSig_2:mod_dat_2\ ,
-            mod_dat_1 => \ADC_DelSig_2:mod_dat_1\ ,
-            mod_dat_0 => \ADC_DelSig_2:mod_dat_0\ ,
-            dout_udb_7 => \ADC_DelSig_2:Net_245_7\ ,
-            dout_udb_6 => \ADC_DelSig_2:Net_245_6\ ,
-            dout_udb_5 => \ADC_DelSig_2:Net_245_5\ ,
-            dout_udb_4 => \ADC_DelSig_2:Net_245_4\ ,
-            dout_udb_3 => \ADC_DelSig_2:Net_245_3\ ,
-            dout_udb_2 => \ADC_DelSig_2:Net_245_2\ ,
-            dout_udb_1 => \ADC_DelSig_2:Net_245_1\ ,
-            dout_udb_0 => \ADC_DelSig_2:Net_245_0\ );
+            vminus => \ADC:Net_520\ ,
+            reset_dec => \ADC:mod_reset\ ,
+            extclk_cp_udb => \ADC:Net_93_local\ ,
+            ext_pin_1 => \ADC:Net_573\ ,
+            ext_pin_2 => \ADC:Net_41\ ,
+            ext_vssa => \ADC:Net_109\ ,
+            qtz_ref => \ADC:Net_677\ ,
+            dec_clock => \ADC:aclock\ ,
+            mod_dat_3 => \ADC:mod_dat_3\ ,
+            mod_dat_2 => \ADC:mod_dat_2\ ,
+            mod_dat_1 => \ADC:mod_dat_1\ ,
+            mod_dat_0 => \ADC:mod_dat_0\ ,
+            dout_udb_7 => \ADC:Net_245_7\ ,
+            dout_udb_6 => \ADC:Net_245_6\ ,
+            dout_udb_5 => \ADC:Net_245_5\ ,
+            dout_udb_4 => \ADC:Net_245_4\ ,
+            dout_udb_3 => \ADC:Net_245_3\ ,
+            dout_udb_2 => \ADC:Net_245_2\ ,
+            dout_udb_1 => \ADC:Net_245_1\ ,
+            dout_udb_0 => \ADC:Net_245_0\ );
         Properties:
         {
             cy_registers = ""
@@ -1296,15 +1296,15 @@ Fixed Function block hod @ [FFB(DSM,0)]:
         }
 Fixed Function block hod @ [FFB(Decimator,0)]: 
     Decimator Block @ [FFB(Decimator,0)]: 
-    decimatorcell: Name =\ADC_DelSig_2:DEC\
+    decimatorcell: Name =\ADC:DEC\
         PORT MAP (
-            aclock => \ADC_DelSig_2:aclock\ ,
-            mod_dat_3 => \ADC_DelSig_2:mod_dat_3\ ,
-            mod_dat_2 => \ADC_DelSig_2:mod_dat_2\ ,
-            mod_dat_1 => \ADC_DelSig_2:mod_dat_1\ ,
-            mod_dat_0 => \ADC_DelSig_2:mod_dat_0\ ,
+            aclock => \ADC:aclock\ ,
+            mod_dat_3 => \ADC:mod_dat_3\ ,
+            mod_dat_2 => \ADC:mod_dat_2\ ,
+            mod_dat_1 => \ADC:mod_dat_1\ ,
+            mod_dat_0 => \ADC:mod_dat_0\ ,
             ext_start => __ONE__ ,
-            modrst => \ADC_DelSig_2:mod_reset\ ,
+            modrst => \ADC:mod_reset\ ,
             interrupt => Net_10 );
         Properties:
         {
@@ -1324,9 +1324,9 @@ Fixed Function block hod @ [FFB(Abuf,0)]: empty
 Fixed Function block hod @ [FFB(CsAbuf,0)]: empty
 Fixed Function block hod @ [FFB(Vref,0)]: 
     Vref Block @ [FFB(Vref,6)]: 
-    vrefcell: Name =\ADC_DelSig_2:vRef_2\
+    vrefcell: Name =\ADC:vRef_2\
         PORT MAP (
-            vout => \ADC_DelSig_2:Net_244\ );
+            vout => \ADC:Net_244\ );
         Properties:
         {
             autoenable = 1
@@ -1339,11 +1339,11 @@ Fixed Function block hod @ [FFB(SAR,0)]: empty
 
 Blocks not positioned by the digital component placer:
     Amux Block @ <No Location>: 
-    amuxcell: Name =\ADC_DelSig_2:AMux\
+    amuxcell: Name =\ADC:AMux\
         PORT MAP (
-            muxin_1 => \ADC_DelSig_2:Net_690\ ,
-            muxin_0 => \ADC_DelSig_2:Net_244\ ,
-            vout => \ADC_DelSig_2:Net_520\ );
+            muxin_1 => \ADC:Net_690\ ,
+            muxin_0 => \ADC:Net_244\ ,
+            vout => \ADC:Net_520\ );
         Properties:
         {
             api_type = 0
@@ -1360,51 +1360,51 @@ Blocks not positioned by the digital component placer:
 ------------------------------------------------------------
 Port Configuration report
 ------------------------------------------------------------
-     |     |       | Interrupt |                  |                         | 
-Port | Pin | Fixed |      Type |       Drive Mode |                    Name | Connections
------+-----+-------+-----------+------------------+-------------------------+---------------
-   0 |   0 |       |      NONE |         CMOS_OUT | \LCD_Char_1:LCDPort(0)\ | 
-     |   1 |       |      NONE |         CMOS_OUT | \LCD_Char_1:LCDPort(1)\ | 
-     |   2 |       |      NONE |         CMOS_OUT | \LCD_Char_1:LCDPort(2)\ | 
-     |   3 |       |      NONE |         CMOS_OUT | \LCD_Char_1:LCDPort(3)\ | 
-     |   4 |       |      NONE |         CMOS_OUT | \LCD_Char_1:LCDPort(4)\ | 
-     |   5 |       |      NONE |         CMOS_OUT | \LCD_Char_1:LCDPort(5)\ | 
-     |   6 |       |      NONE |         CMOS_OUT | \LCD_Char_1:LCDPort(6)\ | 
------+-----+-------+-----------+------------------+-------------------------+---------------
-   6 |   5 |     * |      NONE |      HI_Z_ANALOG |                Pin_1(0) | Analog(Net_16)
------+-----+-------+-----------+------------------+-------------------------+---------------
-  15 |   5 |     * |      NONE |     HI_Z_DIGITAL |                Pin_2(0) | FB(Net_23)
---------------------------------------------------------------------------------------------
+     |     |       | Interrupt |                  |                  | 
+Port | Pin | Fixed |      Type |       Drive Mode |             Name | Connections
+-----+-----+-------+-----------+------------------+------------------+---------------
+   0 |   0 |       |      NONE |         CMOS_OUT | \LCD:LCDPort(0)\ | 
+     |   1 |       |      NONE |         CMOS_OUT | \LCD:LCDPort(1)\ | 
+     |   2 |       |      NONE |         CMOS_OUT | \LCD:LCDPort(2)\ | 
+     |   3 |       |      NONE |         CMOS_OUT | \LCD:LCDPort(3)\ | 
+     |   4 |       |      NONE |         CMOS_OUT | \LCD:LCDPort(4)\ | 
+     |   5 |       |      NONE |         CMOS_OUT | \LCD:LCDPort(5)\ | 
+     |   6 |       |      NONE |         CMOS_OUT | \LCD:LCDPort(6)\ | 
+-----+-----+-------+-----------+------------------+------------------+---------------
+   6 |   5 |     * |      NONE |      HI_Z_ANALOG | Potentiometer(0) | Analog(Net_16)
+-----+-----+-------+-----------+------------------+------------------+---------------
+  15 |   5 |     * |      NONE |     HI_Z_DIGITAL |          SW_3(0) | FB(Net_23)
+-------------------------------------------------------------------------------------
 </CYPRESSTAG>
-Info: plm.M0038: The pin named \LCD_Char_1:LCDPort(3)\ at location P0[3] prevents usage of special purposes: DSM:ExtVref. (App=cydsfit)
+Info: plm.M0038: The pin named \LCD:LCDPort(3)\ at location P0[3] prevents usage of special purposes: DSM:ExtVref. (App=cydsfit)
 </CYPRESSTAG>
 </CYPRESSTAG>
-Digital component placer commit/Report: Elapsed time ==> 0s.003ms
-Digital Placement phase: Elapsed time ==> 0s.903ms
+Digital component placer commit/Report: Elapsed time ==> 0s.006ms
+Digital Placement phase: Elapsed time ==> 1s.225ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 Routing successful.
-Digital Routing phase: Elapsed time ==> 1s.383ms
+Digital Routing phase: Elapsed time ==> 1s.704ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream and API generation">
-Bitstream and API generation phase: Elapsed time ==> 0s.185ms
+Bitstream and API generation phase: Elapsed time ==> 0s.217ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream verification">
-Bitstream verification phase: Elapsed time ==> 0s.066ms
+Bitstream verification phase: Elapsed time ==> 0s.076ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Timing report is in ADCtoEEPROM_timing.html.
-Static timing analysis phase: Elapsed time ==> 0s.293ms
+Static timing analysis phase: Elapsed time ==> 0s.370ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
-Data reporting phase: Elapsed time ==> 0s.001ms
+Data reporting phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.186ms
+Design database save phase: Elapsed time ==> 0s.236ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 3s.889ms
+cydsfit: Elapsed time ==> 4s.854ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 3s.923ms
-API generation phase: Elapsed time ==> 0s.886ms
-Dependency generation phase: Elapsed time ==> 0s.007ms
-Cleanup phase: Elapsed time ==> 0s.001ms
+Fitter phase: Elapsed time ==> 4s.908ms
+API generation phase: Elapsed time ==> 1s.204ms
+Dependency generation phase: Elapsed time ==> 0s.010ms
+Cleanup phase: Elapsed time ==> 0s.000ms

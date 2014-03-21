@@ -1,17 +1,17 @@
 -- Project:   ADCtoEEPROM
--- Generated: 03/14/2014 15:46:26
+-- Generated: 03/20/2014 17:53:35
 -- 
 
 ENTITY ADCtoEEPROM IS
     PORT(
-        Pin_2(0)_PAD : IN std_ulogic;
-        \LCD_Char_1:LCDPort(0)_PAD\ : OUT std_ulogic;
-        \LCD_Char_1:LCDPort(1)_PAD\ : OUT std_ulogic;
-        \LCD_Char_1:LCDPort(2)_PAD\ : OUT std_ulogic;
-        \LCD_Char_1:LCDPort(3)_PAD\ : OUT std_ulogic;
-        \LCD_Char_1:LCDPort(4)_PAD\ : OUT std_ulogic;
-        \LCD_Char_1:LCDPort(5)_PAD\ : OUT std_ulogic;
-        \LCD_Char_1:LCDPort(6)_PAD\ : OUT std_ulogic);
+        SW_3(0)_PAD : IN std_ulogic;
+        \LCD:LCDPort(0)_PAD\ : OUT std_ulogic;
+        \LCD:LCDPort(1)_PAD\ : OUT std_ulogic;
+        \LCD:LCDPort(2)_PAD\ : OUT std_ulogic;
+        \LCD:LCDPort(3)_PAD\ : OUT std_ulogic;
+        \LCD:LCDPort(4)_PAD\ : OUT std_ulogic;
+        \LCD:LCDPort(5)_PAD\ : OUT std_ulogic;
+        \LCD:LCDPort(6)_PAD\ : OUT std_ulogic);
     ATTRIBUTE voltage_Vio1 OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_Vusb OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_Vddd OF __DEFAULT__ : ENTITY IS 5e0;
@@ -36,37 +36,37 @@ ARCHITECTURE __DEFAULT__ OF ADCtoEEPROM IS
     SIGNAL ClockBlock_XTAL_32KHZ : bit;
     SIGNAL Net_10 : bit;
     SIGNAL Net_23 : bit;
-    SIGNAL Pin_1(0)__PA : bit;
-    SIGNAL Pin_2(0)__PA : bit;
-    SIGNAL \ADC_DelSig_2:Net_245_0\ : bit;
-    SIGNAL \ADC_DelSig_2:Net_245_1\ : bit;
-    SIGNAL \ADC_DelSig_2:Net_245_2\ : bit;
-    SIGNAL \ADC_DelSig_2:Net_245_3\ : bit;
-    SIGNAL \ADC_DelSig_2:Net_245_4\ : bit;
-    SIGNAL \ADC_DelSig_2:Net_245_5\ : bit;
-    SIGNAL \ADC_DelSig_2:Net_245_6\ : bit;
-    SIGNAL \ADC_DelSig_2:Net_245_7\ : bit;
-    SIGNAL \ADC_DelSig_2:Net_488\ : bit;
-    ATTRIBUTE global_signal OF \ADC_DelSig_2:Net_488\ : SIGNAL IS true;
-    SIGNAL \ADC_DelSig_2:Net_488_adig\ : bit;
-    SIGNAL \ADC_DelSig_2:Net_488_adig_local\ : bit;
-    SIGNAL \ADC_DelSig_2:Net_488_local\ : bit;
-    SIGNAL \ADC_DelSig_2:Net_93\ : bit;
-    ATTRIBUTE global_signal OF \ADC_DelSig_2:Net_93\ : SIGNAL IS true;
-    SIGNAL \ADC_DelSig_2:Net_93_local\ : bit;
-    SIGNAL \ADC_DelSig_2:aclock\ : bit;
-    SIGNAL \ADC_DelSig_2:mod_dat_0\ : bit;
-    SIGNAL \ADC_DelSig_2:mod_dat_1\ : bit;
-    SIGNAL \ADC_DelSig_2:mod_dat_2\ : bit;
-    SIGNAL \ADC_DelSig_2:mod_dat_3\ : bit;
-    SIGNAL \ADC_DelSig_2:mod_reset\ : bit;
-    SIGNAL \\\LCD_Char_1:LCDPort(0)\\__PA\ : bit;
-    SIGNAL \\\LCD_Char_1:LCDPort(1)\\__PA\ : bit;
-    SIGNAL \\\LCD_Char_1:LCDPort(2)\\__PA\ : bit;
-    SIGNAL \\\LCD_Char_1:LCDPort(3)\\__PA\ : bit;
-    SIGNAL \\\LCD_Char_1:LCDPort(4)\\__PA\ : bit;
-    SIGNAL \\\LCD_Char_1:LCDPort(5)\\__PA\ : bit;
-    SIGNAL \\\LCD_Char_1:LCDPort(6)\\__PA\ : bit;
+    SIGNAL Potentiometer(0)__PA : bit;
+    SIGNAL SW_3(0)__PA : bit;
+    SIGNAL \ADC:Net_245_0\ : bit;
+    SIGNAL \ADC:Net_245_1\ : bit;
+    SIGNAL \ADC:Net_245_2\ : bit;
+    SIGNAL \ADC:Net_245_3\ : bit;
+    SIGNAL \ADC:Net_245_4\ : bit;
+    SIGNAL \ADC:Net_245_5\ : bit;
+    SIGNAL \ADC:Net_245_6\ : bit;
+    SIGNAL \ADC:Net_245_7\ : bit;
+    SIGNAL \ADC:Net_488\ : bit;
+    ATTRIBUTE global_signal OF \ADC:Net_488\ : SIGNAL IS true;
+    SIGNAL \ADC:Net_488_adig\ : bit;
+    SIGNAL \ADC:Net_488_adig_local\ : bit;
+    SIGNAL \ADC:Net_488_local\ : bit;
+    SIGNAL \ADC:Net_93\ : bit;
+    ATTRIBUTE global_signal OF \ADC:Net_93\ : SIGNAL IS true;
+    SIGNAL \ADC:Net_93_local\ : bit;
+    SIGNAL \ADC:aclock\ : bit;
+    SIGNAL \ADC:mod_dat_0\ : bit;
+    SIGNAL \ADC:mod_dat_1\ : bit;
+    SIGNAL \ADC:mod_dat_2\ : bit;
+    SIGNAL \ADC:mod_dat_3\ : bit;
+    SIGNAL \ADC:mod_reset\ : bit;
+    SIGNAL \\\LCD:LCDPort(0)\\__PA\ : bit;
+    SIGNAL \\\LCD:LCDPort(1)\\__PA\ : bit;
+    SIGNAL \\\LCD:LCDPort(2)\\__PA\ : bit;
+    SIGNAL \\\LCD:LCDPort(3)\\__PA\ : bit;
+    SIGNAL \\\LCD:LCDPort(4)\\__PA\ : bit;
+    SIGNAL \\\LCD:LCDPort(5)\\__PA\ : bit;
+    SIGNAL \\\LCD:LCDPort(6)\\__PA\ : bit;
     SIGNAL __ONE__ : bit;
     ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(3,0,A)0";
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
@@ -78,30 +78,30 @@ ARCHITECTURE __DEFAULT__ OF ADCtoEEPROM IS
     ATTRIBUTE GROUND OF zero : SIGNAL IS true;
     SIGNAL \ClockBlock.aclk_glb_ff_0__sig\ : bit;
     ATTRIBUTE Location OF ClockBlock : LABEL IS "F(Clock,0)";
-    ATTRIBUTE lib_model OF Pin_1(0) : LABEL IS "iocell1";
-    ATTRIBUTE Location OF Pin_1(0) : LABEL IS "P6[5]";
-    ATTRIBUTE lib_model OF Pin_2(0) : LABEL IS "iocell2";
-    ATTRIBUTE Location OF Pin_2(0) : LABEL IS "P15[5]";
-    ATTRIBUTE Location OF \ADC_DelSig_2:DEC\ : LABEL IS "F(Decimator,0)";
-    ATTRIBUTE Location OF \ADC_DelSig_2:DSM\ : LABEL IS "F(DSM,0)";
-    ATTRIBUTE Location OF \ADC_DelSig_2:IRQ\ : LABEL IS "[IntrHod=(0)][IntrId=(29)]";
-    ATTRIBUTE lib_model OF \LCD_Char_1:LCDPort(0)\ : LABEL IS "iocell3";
-    ATTRIBUTE Location OF \LCD_Char_1:LCDPort(0)\ : LABEL IS "P0[0]";
-    ATTRIBUTE lib_model OF \LCD_Char_1:LCDPort(1)\ : LABEL IS "iocell4";
-    ATTRIBUTE Location OF \LCD_Char_1:LCDPort(1)\ : LABEL IS "P0[1]";
-    ATTRIBUTE lib_model OF \LCD_Char_1:LCDPort(2)\ : LABEL IS "iocell5";
-    ATTRIBUTE Location OF \LCD_Char_1:LCDPort(2)\ : LABEL IS "P0[2]";
-    ATTRIBUTE lib_model OF \LCD_Char_1:LCDPort(3)\ : LABEL IS "iocell6";
-    ATTRIBUTE Location OF \LCD_Char_1:LCDPort(3)\ : LABEL IS "P0[3]";
-    ATTRIBUTE lib_model OF \LCD_Char_1:LCDPort(4)\ : LABEL IS "iocell7";
-    ATTRIBUTE Location OF \LCD_Char_1:LCDPort(4)\ : LABEL IS "P0[4]";
-    ATTRIBUTE lib_model OF \LCD_Char_1:LCDPort(5)\ : LABEL IS "iocell8";
-    ATTRIBUTE Location OF \LCD_Char_1:LCDPort(5)\ : LABEL IS "P0[5]";
-    ATTRIBUTE lib_model OF \LCD_Char_1:LCDPort(6)\ : LABEL IS "iocell9";
-    ATTRIBUTE Location OF \LCD_Char_1:LCDPort(6)\ : LABEL IS "P0[6]";
+    ATTRIBUTE lib_model OF Potentiometer(0) : LABEL IS "iocell1";
+    ATTRIBUTE Location OF Potentiometer(0) : LABEL IS "P6[5]";
+    ATTRIBUTE lib_model OF SW_3(0) : LABEL IS "iocell2";
+    ATTRIBUTE Location OF SW_3(0) : LABEL IS "P15[5]";
+    ATTRIBUTE Location OF TakeSample_IRQ : LABEL IS "[IntrHod=(0)][IntrId=(0)]";
+    ATTRIBUTE Location OF \ADC:DEC\ : LABEL IS "F(Decimator,0)";
+    ATTRIBUTE Location OF \ADC:DSM\ : LABEL IS "F(DSM,0)";
+    ATTRIBUTE Location OF \ADC:IRQ\ : LABEL IS "[IntrHod=(0)][IntrId=(29)]";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(0)\ : LABEL IS "iocell3";
+    ATTRIBUTE Location OF \LCD:LCDPort(0)\ : LABEL IS "P0[0]";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(1)\ : LABEL IS "iocell4";
+    ATTRIBUTE Location OF \LCD:LCDPort(1)\ : LABEL IS "P0[1]";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(2)\ : LABEL IS "iocell5";
+    ATTRIBUTE Location OF \LCD:LCDPort(2)\ : LABEL IS "P0[2]";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(3)\ : LABEL IS "iocell6";
+    ATTRIBUTE Location OF \LCD:LCDPort(3)\ : LABEL IS "P0[3]";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(4)\ : LABEL IS "iocell7";
+    ATTRIBUTE Location OF \LCD:LCDPort(4)\ : LABEL IS "P0[4]";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(5)\ : LABEL IS "iocell8";
+    ATTRIBUTE Location OF \LCD:LCDPort(5)\ : LABEL IS "P0[5]";
+    ATTRIBUTE lib_model OF \LCD:LCDPort(6)\ : LABEL IS "iocell9";
+    ATTRIBUTE Location OF \LCD:LCDPort(6)\ : LABEL IS "P0[6]";
     ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell1";
     ATTRIBUTE Location OF __ONE__ : LABEL IS "U(3,0)";
-    ATTRIBUTE Location OF isr_1 : LABEL IS "[IntrHod=(0)][IntrId=(0)]";
     COMPONENT abufcell
     END COMPONENT;
     COMPONENT boostcell
@@ -1023,15 +1023,15 @@ BEGIN
             imo => ClockBlock_IMO,
             dsi_clkin_div => open,
             dsi_glb_div => open,
-            dclk_glb_0 => \ADC_DelSig_2:Net_93\,
-            dclk_0 => \ADC_DelSig_2:Net_93_local\,
-            aclk_glb_0 => \ADC_DelSig_2:Net_488\,
-            aclk_0 => \ADC_DelSig_2:Net_488_local\,
-            clk_a_dig_glb_0 => \ADC_DelSig_2:Net_488_adig\,
-            clk_a_dig_0 => \ADC_DelSig_2:Net_488_adig_local\,
+            dclk_glb_0 => \ADC:Net_93\,
+            dclk_0 => \ADC:Net_93_local\,
+            aclk_glb_0 => \ADC:Net_488\,
+            aclk_0 => \ADC:Net_488_local\,
+            clk_a_dig_glb_0 => \ADC:Net_488_adig\,
+            clk_a_dig_0 => \ADC:Net_488_adig_local\,
             aclk_glb_ff_0 => \ClockBlock.aclk_glb_ff_0__sig\);
 
-    Pin_1:logicalport
+    Potentiometer:logicalport
         GENERIC MAP(
             drive_mode => "000",
             ibuf_enabled => "0",
@@ -1097,16 +1097,16 @@ BEGIN
             out_clock_en => open,
             out_reset => open);
 
-    Pin_1(0):iocell
+    Potentiometer(0):iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "Pin_1",
+            logicalport => "Potentiometer",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
         PORT MAP(
-            pa_out => Pin_1(0)__PA,
+            pa_out => Potentiometer(0)__PA,
             oe => open,
             in_clock => open,
             in_clock_en => '1',
@@ -1115,7 +1115,7 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    Pin_2:logicalport
+    SW_3:logicalport
         GENERIC MAP(
             drive_mode => "001",
             ibuf_enabled => "1",
@@ -1182,19 +1182,19 @@ BEGIN
             out_reset => open,
             in_clock => open);
 
-    Pin_2(0):iocell
+    SW_3(0):iocell
         GENERIC MAP(
             in_sync_mode => 2,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "Pin_2",
+            logicalport => "SW_3",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000100000000000000000000000000000000000000001")
         PORT MAP(
-            pa_out => Pin_2(0)__PA,
+            pa_out => SW_3(0)__PA,
             oe => open,
             fb => Net_23,
-            pad_in => Pin_2(0)_PAD,
+            pad_in => SW_3(0)_PAD,
             in_clock => ClockBlock_BUS_CLK,
             in_clock_en => '1',
             in_reset => '0',
@@ -1202,61 +1202,68 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    \ADC_DelSig_2:DEC\:decimatorcell
+    TakeSample_IRQ:interrupt
+        GENERIC MAP(
+            int_type => "00")
+        PORT MAP(
+            interrupt => Net_23,
+            clock => ClockBlock_BUS_CLK);
+
+    \ADC:DEC\:decimatorcell
         GENERIC MAP(
             cy_registers => "")
         PORT MAP(
-            aclock => \ADC_DelSig_2:aclock\,
-            mod_dat_3 => \ADC_DelSig_2:mod_dat_3\,
-            mod_dat_2 => \ADC_DelSig_2:mod_dat_2\,
-            mod_dat_1 => \ADC_DelSig_2:mod_dat_1\,
-            mod_dat_0 => \ADC_DelSig_2:mod_dat_0\,
+            aclock => \ADC:aclock\,
+            mod_dat_3 => \ADC:mod_dat_3\,
+            mod_dat_2 => \ADC:mod_dat_2\,
+            mod_dat_1 => \ADC:mod_dat_1\,
+            mod_dat_0 => \ADC:mod_dat_0\,
             ext_start => __ONE__,
-            modrst => \ADC_DelSig_2:mod_reset\,
+            modrst => \ADC:mod_reset\,
             interrupt => Net_10);
 
-    \ADC_DelSig_2:DSM\:dsmodcell
+    \ADC:DSM\:dsmodcell
         GENERIC MAP(
             cy_registers => "",
             resolution => 12)
         PORT MAP(
             aclock => \ClockBlock.aclk_glb_ff_0__sig\,
             reset_udb => open,
-            reset_dec => \ADC_DelSig_2:mod_reset\,
-            extclk_cp_udb => \ADC_DelSig_2:Net_93_local\,
-            dec_clock => \ADC_DelSig_2:aclock\,
-            mod_dat_3 => \ADC_DelSig_2:mod_dat_3\,
-            mod_dat_2 => \ADC_DelSig_2:mod_dat_2\,
-            mod_dat_1 => \ADC_DelSig_2:mod_dat_1\,
-            mod_dat_0 => \ADC_DelSig_2:mod_dat_0\,
-            dout_udb_7 => \ADC_DelSig_2:Net_245_7\,
-            dout_udb_6 => \ADC_DelSig_2:Net_245_6\,
-            dout_udb_5 => \ADC_DelSig_2:Net_245_5\,
-            dout_udb_4 => \ADC_DelSig_2:Net_245_4\,
-            dout_udb_3 => \ADC_DelSig_2:Net_245_3\,
-            dout_udb_2 => \ADC_DelSig_2:Net_245_2\,
-            dout_udb_1 => \ADC_DelSig_2:Net_245_1\,
-            dout_udb_0 => \ADC_DelSig_2:Net_245_0\);
+            reset_dec => \ADC:mod_reset\,
+            extclk_cp_udb => \ADC:Net_93_local\,
+            dec_clock => \ADC:aclock\,
+            mod_dat_3 => \ADC:mod_dat_3\,
+            mod_dat_2 => \ADC:mod_dat_2\,
+            mod_dat_1 => \ADC:mod_dat_1\,
+            mod_dat_0 => \ADC:mod_dat_0\,
+            dout_udb_7 => \ADC:Net_245_7\,
+            dout_udb_6 => \ADC:Net_245_6\,
+            dout_udb_5 => \ADC:Net_245_5\,
+            dout_udb_4 => \ADC:Net_245_4\,
+            dout_udb_3 => \ADC:Net_245_3\,
+            dout_udb_2 => \ADC:Net_245_2\,
+            dout_udb_1 => \ADC:Net_245_1\,
+            dout_udb_0 => \ADC:Net_245_0\);
 
-    \ADC_DelSig_2:IRQ\:interrupt
+    \ADC:IRQ\:interrupt
         GENERIC MAP(
             int_type => "10")
         PORT MAP(
             interrupt => Net_10,
             clock => ClockBlock_BUS_CLK);
 
-    \LCD_Char_1:LCDPort(0)\:iocell
+    \LCD:LCDPort(0)\:iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "\LCD_Char_1:LCDPort\",
+            logicalport => "\LCD:LCDPort\",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
         PORT MAP(
-            pa_out => \\\LCD_Char_1:LCDPort(0)\\__PA\,
+            pa_out => \\\LCD:LCDPort(0)\\__PA\,
             oe => open,
-            pad_in => \LCD_Char_1:LCDPort(0)_PAD\,
+            pad_in => \LCD:LCDPort(0)_PAD\,
             in_clock => open,
             in_clock_en => '1',
             in_reset => '0',
@@ -1264,18 +1271,18 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    \LCD_Char_1:LCDPort(1)\:iocell
+    \LCD:LCDPort(1)\:iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "\LCD_Char_1:LCDPort\",
+            logicalport => "\LCD:LCDPort\",
             logicalport_pin_id => 1,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
         PORT MAP(
-            pa_out => \\\LCD_Char_1:LCDPort(1)\\__PA\,
+            pa_out => \\\LCD:LCDPort(1)\\__PA\,
             oe => open,
-            pad_in => \LCD_Char_1:LCDPort(1)_PAD\,
+            pad_in => \LCD:LCDPort(1)_PAD\,
             in_clock => open,
             in_clock_en => '1',
             in_reset => '0',
@@ -1283,18 +1290,18 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    \LCD_Char_1:LCDPort(2)\:iocell
+    \LCD:LCDPort(2)\:iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "\LCD_Char_1:LCDPort\",
+            logicalport => "\LCD:LCDPort\",
             logicalport_pin_id => 2,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
         PORT MAP(
-            pa_out => \\\LCD_Char_1:LCDPort(2)\\__PA\,
+            pa_out => \\\LCD:LCDPort(2)\\__PA\,
             oe => open,
-            pad_in => \LCD_Char_1:LCDPort(2)_PAD\,
+            pad_in => \LCD:LCDPort(2)_PAD\,
             in_clock => open,
             in_clock_en => '1',
             in_reset => '0',
@@ -1302,18 +1309,18 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    \LCD_Char_1:LCDPort(3)\:iocell
+    \LCD:LCDPort(3)\:iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "\LCD_Char_1:LCDPort\",
+            logicalport => "\LCD:LCDPort\",
             logicalport_pin_id => 3,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
         PORT MAP(
-            pa_out => \\\LCD_Char_1:LCDPort(3)\\__PA\,
+            pa_out => \\\LCD:LCDPort(3)\\__PA\,
             oe => open,
-            pad_in => \LCD_Char_1:LCDPort(3)_PAD\,
+            pad_in => \LCD:LCDPort(3)_PAD\,
             in_clock => open,
             in_clock_en => '1',
             in_reset => '0',
@@ -1321,18 +1328,18 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    \LCD_Char_1:LCDPort(4)\:iocell
+    \LCD:LCDPort(4)\:iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "\LCD_Char_1:LCDPort\",
+            logicalport => "\LCD:LCDPort\",
             logicalport_pin_id => 4,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
         PORT MAP(
-            pa_out => \\\LCD_Char_1:LCDPort(4)\\__PA\,
+            pa_out => \\\LCD:LCDPort(4)\\__PA\,
             oe => open,
-            pad_in => \LCD_Char_1:LCDPort(4)_PAD\,
+            pad_in => \LCD:LCDPort(4)_PAD\,
             in_clock => open,
             in_clock_en => '1',
             in_reset => '0',
@@ -1340,18 +1347,18 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    \LCD_Char_1:LCDPort(5)\:iocell
+    \LCD:LCDPort(5)\:iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "\LCD_Char_1:LCDPort\",
+            logicalport => "\LCD:LCDPort\",
             logicalport_pin_id => 5,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
         PORT MAP(
-            pa_out => \\\LCD_Char_1:LCDPort(5)\\__PA\,
+            pa_out => \\\LCD:LCDPort(5)\\__PA\,
             oe => open,
-            pad_in => \LCD_Char_1:LCDPort(5)_PAD\,
+            pad_in => \LCD:LCDPort(5)_PAD\,
             in_clock => open,
             in_clock_en => '1',
             in_reset => '0',
@@ -1359,18 +1366,18 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    \LCD_Char_1:LCDPort(6)\:iocell
+    \LCD:LCDPort(6)\:iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "\LCD_Char_1:LCDPort\",
+            logicalport => "\LCD:LCDPort\",
             logicalport_pin_id => 6,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
         PORT MAP(
-            pa_out => \\\LCD_Char_1:LCDPort(6)\\__PA\,
+            pa_out => \\\LCD:LCDPort(6)\\__PA\,
             oe => open,
-            pad_in => \LCD_Char_1:LCDPort(6)_PAD\,
+            pad_in => \LCD:LCDPort(6)_PAD\,
             in_clock => open,
             in_clock_en => '1',
             in_reset => '0',
@@ -1378,7 +1385,7 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    \LCD_Char_1:LCDPort\:logicalport
+    \LCD:LCDPort\:logicalport
         GENERIC MAP(
             drive_mode => "110110110110110110110",
             ibuf_enabled => "1111111",
@@ -1449,12 +1456,5 @@ BEGIN
             eqn_main => "1'b0")
         PORT MAP(
             q => __ONE__);
-
-    isr_1:interrupt
-        GENERIC MAP(
-            int_type => "00")
-        PORT MAP(
-            interrupt => Net_23,
-            clock => ClockBlock_BUS_CLK);
 
 END __DEFAULT__;

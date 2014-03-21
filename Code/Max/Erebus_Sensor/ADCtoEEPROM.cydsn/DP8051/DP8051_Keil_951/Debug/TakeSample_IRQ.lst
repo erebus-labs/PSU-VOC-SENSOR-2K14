@@ -1,0 +1,399 @@
+C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/20/2014 20:00:18 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE TAKESAMPLE_IRQ
+OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Debug\TakeSample_IRQ.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\Generated_Source\PSoC3\TakeSample_IRQ.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\TakeSample_IRQ.
+                    -lst) CD DB NOIP OT(2,SIZE) DF(DEBUG) INCDIR(.,.\Generated_Source\PSoC3) OJ(.\DP8051\DP8051_Keil_951\Debug\TakeSample_IRQ
+                    -.obj)
+
+line level    source
+
+   1          /*******************************************************************************
+   2          * File Name: TakeSample_IRQ.c  
+   3          * Version 1.70
+   4          *
+   5          *  Description:
+   6          *   API for controlling the state of an interrupt.
+   7          *
+   8          *
+   9          *  Note:
+  10          *
+  11          ********************************************************************************
+  12          * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  13          * You may use this file only in accordance with the license, terms, conditions, 
+  14          * disclaimers, and limitations in the end user license agreement accompanying 
+  15          * the software package with which this file was provided.
+  16          *******************************************************************************/
+  17          
+  18          #include <cydevice_trm.h>
+  19          #include <CyLib.h>
+  20          #include <TakeSample_IRQ.h>
+  21          
+  22          #if !defined(TakeSample_IRQ__REMOVED) /* Check for removal by optimization */
+  23          
+  24          /*******************************************************************************
+  25          *  Place your includes, defines and code here 
+  26          ********************************************************************************/
+  27          /* `#START TakeSample_IRQ_intc` */
+  28          
+  29          /* `#END` */
+  30          
+  31          
+  32          /*******************************************************************************
+  33          * Function Name: TakeSample_IRQ_Start
+  34          ********************************************************************************
+  35          *
+  36          * Summary:
+  37          *  Set up the interrupt and enable it.
+  38          *
+  39          * Parameters:  
+  40          *   None
+  41          *
+  42          * Return:
+  43          *   None
+  44          *
+  45          *******************************************************************************/
+  46          void TakeSample_IRQ_Start(void) 
+  47          {
+  48   1          /* For all we know the interrupt is active. */
+  49   1          TakeSample_IRQ_Disable();
+  50   1      
+  51   1          /* Set the ISR to point to the TakeSample_IRQ Interrupt. */
+  52   1          TakeSample_IRQ_SetVector(&TakeSample_IRQ_Interrupt);
+C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/20/2014 20:00:18 PAGE 2   
+
+  53   1      
+  54   1          /* Set the priority. */
+  55   1          TakeSample_IRQ_SetPriority((uint8)TakeSample_IRQ_INTC_PRIOR_NUMBER);
+  56   1      
+  57   1          /* Enable it. */
+  58   1          TakeSample_IRQ_Enable();
+  59   1      }
+  60          
+  61          
+  62          /*******************************************************************************
+  63          * Function Name: TakeSample_IRQ_StartEx
+  64          ********************************************************************************
+  65          *
+  66          * Summary:
+  67          *  Set up the interrupt and enable it.
+  68          *
+  69          * Parameters:  
+  70          *   address: Address of the ISR to set in the interrupt vector table.
+  71          *
+  72          * Return:
+  73          *   None
+  74          *
+  75          *******************************************************************************/
+  76          void TakeSample_IRQ_StartEx(cyisraddress address) 
+  77          {
+  78   1          /* For all we know the interrupt is active. */
+  79   1          TakeSample_IRQ_Disable();
+  80   1      
+  81   1          /* Set the ISR to point to the TakeSample_IRQ Interrupt. */
+  82   1          TakeSample_IRQ_SetVector(address);
+  83   1      
+  84   1          /* Set the priority. */
+  85   1          TakeSample_IRQ_SetPriority((uint8)TakeSample_IRQ_INTC_PRIOR_NUMBER);
+  86   1      
+  87   1          /* Enable it. */
+  88   1          TakeSample_IRQ_Enable();
+  89   1      }
+  90          
+  91          
+  92          /*******************************************************************************
+  93          * Function Name: TakeSample_IRQ_Stop
+  94          ********************************************************************************
+  95          *
+  96          * Summary:
+  97          *   Disables and removes the interrupt.
+  98          *
+  99          * Parameters:  
+ 100          *   None
+ 101          *
+ 102          * Return:
+ 103          *   None
+ 104          *
+ 105          *******************************************************************************/
+ 106          void TakeSample_IRQ_Stop(void) 
+ 107          {
+ 108   1          /* Disable this interrupt. */
+ 109   1          TakeSample_IRQ_Disable();
+ 110   1      }
+ 111          
+ 112          
+ 113          /*******************************************************************************
+ 114          * Function Name: TakeSample_IRQ_Interrupt
+C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/20/2014 20:00:18 PAGE 3   
+
+ 115          ********************************************************************************
+ 116          * Summary:
+ 117          *   The default Interrupt Service Routine for TakeSample_IRQ.
+ 118          *
+ 119          *   Add custom code between the coments to keep the next version of this file
+ 120          *   from over writting your code.
+ 121          *
+ 122          * Parameters:  
+ 123          *   None
+ 124          *
+ 125          * Return:
+ 126          *   None
+ 127          *
+ 128          *******************************************************************************/
+ 129          CY_ISR(TakeSample_IRQ_Interrupt)
+ 130          {
+ 131   1          /*  Place your Interrupt code here. */
+ 132   1          /* `#START TakeSample_IRQ_Interrupt` */
+ 133   1          
+ 134   1          unit16 SampledData=0; 
+*** ERROR C202 IN LINE 134 OF .\Generated_Source\PSoC3\TakeSample_IRQ.c: 'unit16': undefined identifier
+*** ERROR C141 IN LINE 134 OF .\Generated_Source\PSoC3\TakeSample_IRQ.c: syntax error near 'SampledData'
+ 135   1          
+ 136   1          /* ADC */
+ 137   1          SampledData = ADC_Read16(); /* Function Starts, Converts, Stops, and Returns from ADC */
+*** ERROR C202 IN LINE 137 OF .\Generated_Source\PSoC3\TakeSample_IRQ.c: 'SampledData': undefined identifier
+ 138   1          if (SampledData & 0x8000)
+*** ERROR C202 IN LINE 138 OF .\Generated_Source\PSoC3\TakeSample_IRQ.c: 'SampledData': undefined identifier
+ 139   1              {
+ 140   2              SampledData = 0;        /* Ignore negative ADC results */
+*** ERROR C202 IN LINE 140 OF .\Generated_Source\PSoC3\TakeSample_IRQ.c: 'SampledData': undefined identifier
+ 141   2              }
+ 142   1              else if (SampledData >= 0xfff)
+*** ERROR C202 IN LINE 142 OF .\Generated_Source\PSoC3\TakeSample_IRQ.c: 'SampledData': undefined identifier
+ 143   1              {
+ 144   2              SampledData = 0xfff;    /* Ignore high ADC results */
+*** ERROR C202 IN LINE 144 OF .\Generated_Source\PSoC3\TakeSample_IRQ.c: 'SampledData': undefined identifier
+ 145   2          }
+ 146   1          
+ 147   1          /* LCD */
+ 148   1          LCD_ClearDisplay();
+ 149   1              LCD_PrintString("Data From Memory : ");
+ 150   1          LCD_Position(1, 6);
+ 151   1              LCD_PrintString("     ");                       // clean up the previous display
+ 152   1              LCD_Position(1, 6);
+ 153   1          LCD_PrintNumber(SampledData);
+ 154   1          
+ 155   1          /* EEP */
+ 156   1          
+ 157   1          /* `#END` */
+ 158   1      
+ 159   1          /* PSoC3 ES1, ES2 RTC ISR PATCH  */ 
+ 160   1          #if(CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3)
+ 161   1              #if((CYDEV_CHIP_REVISION_USED <= CYDEV_CHIP_REVISION_3A_ES2) && (TakeSample_IRQ__ES2_PATCH ))     
+             - 
+                          TakeSample_IRQ_ISR_PATCH();
+                      #endif /* CYDEV_CHIP_REVISION_USED */
+ 164   1          #endif /* (CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3) */
+ 165   1      }
+ 166          
+ 167          
+ 168          /*******************************************************************************
+C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/20/2014 20:00:18 PAGE 4   
+
+ 169          * Function Name: TakeSample_IRQ_SetVector
+ 170          ********************************************************************************
+ 171          *
+ 172          * Summary:
+ 173          *   Change the ISR vector for the Interrupt. Note calling TakeSample_IRQ_Start
+ 174          *   will override any effect this method would have had. To set the vector 
+ 175          *   before the component has been started use TakeSample_IRQ_StartEx instead.
+ 176          *
+ 177          * Parameters:
+ 178          *   address: Address of the ISR to set in the interrupt vector table.
+ 179          *
+ 180          * Return:
+ 181          *   None
+ 182          *
+ 183          *******************************************************************************/
+ 184          void TakeSample_IRQ_SetVector(cyisraddress address) 
+ 185          {
+ 186   1          CY_SET_REG16(TakeSample_IRQ_INTC_VECTOR, (uint16) address);
+ 187   1      }
+ 188          
+ 189          
+ 190          /*******************************************************************************
+ 191          * Function Name: TakeSample_IRQ_GetVector
+ 192          ********************************************************************************
+ 193          *
+ 194          * Summary:
+ 195          *   Gets the "address" of the current ISR vector for the Interrupt.
+ 196          *
+ 197          * Parameters:
+ 198          *   None
+ 199          *
+ 200          * Return:
+ 201          *   Address of the ISR in the interrupt vector table.
+ 202          *
+ 203          *******************************************************************************/
+ 204          cyisraddress TakeSample_IRQ_GetVector(void) 
+ 205          {
+ 206   1          return (cyisraddress) CY_GET_REG16(TakeSample_IRQ_INTC_VECTOR);
+ 207   1      }
+ 208          
+ 209          
+ 210          /*******************************************************************************
+ 211          * Function Name: TakeSample_IRQ_SetPriority
+ 212          ********************************************************************************
+ 213          *
+ 214          * Summary:
+ 215          *   Sets the Priority of the Interrupt. Note calling TakeSample_IRQ_Start
+ 216          *   or TakeSample_IRQ_StartEx will override any effect this method would 
+ 217          *   have had. This method should only be called after TakeSample_IRQ_Start or 
+ 218          *   TakeSample_IRQ_StartEx has been called. To set the initial
+ 219          *   priority for the component use the cydwr file in the tool.
+ 220          *
+ 221          * Parameters:
+ 222          *   priority: Priority of the interrupt. 0 - 7, 0 being the highest.
+ 223          *
+ 224          * Return:
+ 225          *   None
+ 226          *
+ 227          *******************************************************************************/
+ 228          void TakeSample_IRQ_SetPriority(uint8 priority) 
+ 229          {
+ 230   1          *TakeSample_IRQ_INTC_PRIOR = priority << 5;
+C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/20/2014 20:00:18 PAGE 5   
+
+ 231   1      }
+ 232          
+ 233          
+ 234          /*******************************************************************************
+ 235          * Function Name: TakeSample_IRQ_GetPriority
+ 236          ********************************************************************************
+ 237          *
+ 238          * Summary:
+ 239          *   Gets the Priority of the Interrupt.
+ 240          *
+ 241          * Parameters:
+ 242          *   None
+ 243          *
+ 244          * Return:
+ 245          *   Priority of the interrupt. 0 - 7, 0 being the highest.
+ 246          *
+ 247          *******************************************************************************/
+ 248          uint8 TakeSample_IRQ_GetPriority(void) 
+ 249          {
+ 250   1          uint8 priority;
+ 251   1      
+ 252   1      
+ 253   1          priority = *TakeSample_IRQ_INTC_PRIOR >> 5;
+ 254   1      
+ 255   1          return priority;
+ 256   1      }
+ 257          
+ 258          
+ 259          /*******************************************************************************
+ 260          * Function Name: TakeSample_IRQ_Enable
+ 261          ********************************************************************************
+ 262          *
+ 263          * Summary:
+ 264          *   Enables the interrupt.
+ 265          *
+ 266          * Parameters:
+ 267          *   None
+ 268          *
+ 269          * Return:
+ 270          *   None
+ 271          *
+ 272          *******************************************************************************/
+ 273          void TakeSample_IRQ_Enable(void) 
+ 274          {
+ 275   1          /* Enable the general interrupt. */
+ 276   1          *TakeSample_IRQ_INTC_SET_EN = TakeSample_IRQ__INTC_MASK;
+ 277   1      }
+ 278          
+ 279          
+ 280          /*******************************************************************************
+ 281          * Function Name: TakeSample_IRQ_GetState
+ 282          ********************************************************************************
+ 283          *
+ 284          * Summary:
+ 285          *   Gets the state (enabled, disabled) of the Interrupt.
+ 286          *
+ 287          * Parameters:
+ 288          *   None
+ 289          *
+ 290          * Return:
+ 291          *   1 if enabled, 0 if disabled.
+ 292          *
+C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/20/2014 20:00:18 PAGE 6   
+
+ 293          *******************************************************************************/
+ 294          uint8 TakeSample_IRQ_GetState(void) 
+ 295          {
+ 296   1          /* Get the state of the general interrupt. */
+ 297   1          return ((*TakeSample_IRQ_INTC_SET_EN & (uint8)TakeSample_IRQ__INTC_MASK) != 0u) ? 1u:0u;
+ 298   1      }
+ 299          
+ 300          
+ 301          /*******************************************************************************
+ 302          * Function Name: TakeSample_IRQ_Disable
+ 303          ********************************************************************************
+ 304          *
+ 305          * Summary:
+ 306          *   Disables the Interrupt.
+ 307          *
+ 308          * Parameters:
+ 309          *   None
+ 310          *
+ 311          * Return:
+ 312          *   None
+ 313          *
+ 314          *******************************************************************************/
+ 315          void TakeSample_IRQ_Disable(void) 
+ 316          {
+ 317   1          /* Disable the general interrupt. */
+ 318   1          *TakeSample_IRQ_INTC_CLR_EN = TakeSample_IRQ__INTC_MASK;
+ 319   1      }
+ 320          
+ 321          
+ 322          /*******************************************************************************
+ 323          * Function Name: TakeSample_IRQ_SetPending
+ 324          ********************************************************************************
+ 325          *
+ 326          * Summary:
+ 327          *   Causes the Interrupt to enter the pending state, a software method of
+ 328          *   generating the interrupt.
+ 329          *
+ 330          * Parameters:
+ 331          *   None
+ 332          *
+ 333          * Return:
+ 334          *   None
+ 335          *
+ 336          *******************************************************************************/
+ 337          void TakeSample_IRQ_SetPending(void) 
+ 338          {
+ 339   1          *TakeSample_IRQ_INTC_SET_PD = TakeSample_IRQ__INTC_MASK;
+ 340   1      }
+ 341          
+ 342          
+ 343          /*******************************************************************************
+ 344          * Function Name: TakeSample_IRQ_ClearPending
+ 345          ********************************************************************************
+ 346          *
+ 347          * Summary:
+ 348          *   Clears a pending interrupt.
+ 349          *
+ 350          * Parameters:
+ 351          *   None
+ 352          *
+ 353          * Return:
+ 354          *   None
+C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/20/2014 20:00:18 PAGE 7   
+
+ 355          *
+ 356          *******************************************************************************/
+ 357          void TakeSample_IRQ_ClearPending(void) 
+ 358          {
+ 359   1          *TakeSample_IRQ_INTC_CLR_PD = TakeSample_IRQ__INTC_MASK;
+ 360   1      }
+ 361          
+ 362          #endif /* End check for removal by optimization */
+ 363          
+ 364          
+ 365          /* [] END OF FILE */
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  7 ERROR(S)

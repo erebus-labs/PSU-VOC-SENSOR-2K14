@@ -2,10 +2,10 @@ net ClockBlock_BUS_CLK
 	term   ":clockblockcell.clk_bus_glb"
 	switch ":clockblockcell.clk_bus_glb==>:ioport15:pin5.in_clock"
 	term   ":ioport15:pin5.in_clock"
-	switch ":clockblockcell.clk_bus_glb==>:interrupt_29.clock"
-	term   ":interrupt_29.clock"
 	switch ":clockblockcell.clk_bus_glb==>:interrupt_0.clock"
 	term   ":interrupt_0.clock"
+	switch ":clockblockcell.clk_bus_glb==>:interrupt_29.clock"
+	term   ":interrupt_29.clock"
 end ClockBlock_BUS_CLK
 net Net_10
 	term   ":decimatorcell.interrupt"
@@ -32,7 +32,7 @@ net Net_23
 	switch ":interrupt_idmux_0.interrupt_idmux_0__out==>:interrupt_0.interrupt"
 	term   ":interrupt_0.interrupt"
 end Net_23
-net \ADC_DelSig_2:Net_93_local\
+net \ADC:Net_93_local\
 	term   ":clockblockcell.dclk_0"
 	switch ":clockblockcell.dclk_0==>Stub-:dsiswitch_bottom@[DSI=(1,1)][side=bottom]:dsihc_bottom:v33+:dsiswitch_bottom@[DSI=(1,1)][side=bottom]:dsihc_bottom:v35"
 	switch "OStub-:dsiswitch_bottom@[DSI=(1,1)][side=bottom]:dsihc_bottom:v33+:dsiswitch_bottom@[DSI=(1,1)][side=bottom]:dsihc_bottom:v35"
@@ -48,7 +48,7 @@ net \ADC_DelSig_2:Net_93_local\
 	switch "IStub-:dsiswitch_top@[DSI=(0,3)][side=top]:dsihc_top:v69+:dsiswitch_top@[DSI=(0,3)][side=top]:dsihc_top:v71"
 	switch "Stub-:dsiswitch_top@[DSI=(0,3)][side=top]:dsihc_top:v69+:dsiswitch_top@[DSI=(0,3)][side=top]:dsihc_top:v71==>:dsmodcell.extclk_cp_udb"
 	term   ":dsmodcell.extclk_cp_udb"
-end \ADC_DelSig_2:Net_93_local\
+end \ADC:Net_93_local\
 net __ONE__
 	term   ":udb@[UDB=(3,0)]:pld0:mc0.q"
 	switch ":udb@[UDB=(3,0)]:pld0:mc0.q==>:udb@[UDB=(3,0)]:pld0:output_permute1.q_0"
