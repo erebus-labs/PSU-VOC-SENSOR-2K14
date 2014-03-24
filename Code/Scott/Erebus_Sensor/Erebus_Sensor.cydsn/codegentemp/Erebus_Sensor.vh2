@@ -2,7 +2,7 @@
 --	Conversion of Erebus_Sensor.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Sat Mar 15 15:12:51 2014
+--	Fri Mar 21 14:33:15 2014
 --
 
 USE cypress.cypress.all;
@@ -67,11 +67,34 @@ TERMINAL tmpSIOVREF__LED_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__LED_net_0 : bit;
 SIGNAL cy_tff_1 : bit;
 SIGNAL tmpOE__Vbus_net_0 : bit;
-SIGNAL Net_225 : bit;
+SIGNAL Net_249 : bit;
 SIGNAL tmpIO_0__Vbus_net_0 : bit;
 TERMINAL tmpSIOVREF__Vbus_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__Vbus_net_0 : bit;
+SIGNAL Net_408 : bit;
+SIGNAL Net_242 : bit;
+SIGNAL Net_454 : bit;
+SIGNAL \Vbus_Debounce:op_clk\ : bit;
+SIGNAL \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\ : bit;
+SIGNAL \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\ : bit;
+SIGNAL Net_483 : bit;
+SIGNAL Net_484 : bit;
+SIGNAL tmpOE__USB_LED_net_0 : bit;
+SIGNAL tmpFB_0__USB_LED_net_0 : bit;
+SIGNAL tmpIO_0__USB_LED_net_0 : bit;
+TERMINAL tmpSIOVREF__USB_LED_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__USB_LED_net_0 : bit;
+SIGNAL tmpOE__EEPROM_LED_net_0 : bit;
+SIGNAL tmpFB_0__EEPROM_LED_net_0 : bit;
+SIGNAL tmpIO_0__EEPROM_LED_net_0 : bit;
+TERMINAL tmpSIOVREF__EEPROM_LED_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__EEPROM_LED_net_0 : bit;
 SIGNAL cy_tff_1D : bit;
+SIGNAL Net_408D : bit;
+SIGNAL Net_454D : bit;
+SIGNAL \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\\D\ : bit;
+SIGNAL \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\\D\ : bit;
+SIGNAL Net_484D : bit;
 BEGIN
 
 zero <=  ('0') ;
@@ -80,6 +103,13 @@ one <=  ('1') ;
 
 cy_tff_1D <= ((not Net_65 and Net_146)
 	OR (not Net_146 and Net_65));
+
+Net_408D <= ((not \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\ and \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\));
+
+Net_454D <= ((not \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\ and \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\));
+
+Net_484D <= ((not \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\ and \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\)
+	OR (not \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\ and \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\));
 
 \USBUART:USB\:cy_psoc3_usb_v1_0
 	GENERIC MAP(cy_registers=>"")
@@ -338,8 +368,8 @@ timer_clock:cy_clock_v1_0
 	GENERIC MAP(cy_registers=>"",
 		id=>"920ac626-75fc-42be-bddc-386ba9cec7f2",
 		source_clock_id=>"315365C3-2E3E-4f04-84A2-BB564A173261",
-		divisor=>0,
-		period=>"1000000000000",
+		divisor=>100,
+		period=>"0",
 		is_direct=>'0',
 		is_digital=>'1')
 	PORT MAP(clock_out=>Net_72,
@@ -397,7 +427,7 @@ Vbus:cy_psoc3_pins_v1_10
 		pa_out_reset=>-1)
 	PORT MAP(oe=>(one),
 		y=>(zero),
-		fb=>Net_225,
+		fb=>Net_249,
 		analog=>(open),
 		io=>(tmpIO_0__Vbus_net_0),
 		siovref=>(tmpSIOVREF__Vbus_net_0),
@@ -409,12 +439,180 @@ Vbus:cy_psoc3_pins_v1_10
 		out_clock_en=>one,
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__Vbus_net_0);
-Vbus_IRQ:cy_isr_v1_0
+VbusHigh_IRQ:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10")
-	PORT MAP(int_signal=>Net_225);
+	PORT MAP(int_signal=>Net_408);
+debounce_clock:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"7e7122dd-63ea-486c-98f4-a5cb803589f2",
+		source_clock_id=>"315365C3-2E3E-4f04-84A2-BB564A173261",
+		divisor=>1000,
+		period=>"0",
+		is_direct=>'0',
+		is_digital=>'1')
+	PORT MAP(clock_out=>Net_242,
+		dig_domain_out=>open);
+VbusLow_IRQ:cy_isr_v1_0
+	GENERIC MAP(int_type=>"00")
+	PORT MAP(int_signal=>Net_454);
+\Vbus_Debounce:ClkSync\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>Net_242,
+		enable=>one,
+		clock_out=>\Vbus_Debounce:op_clk\);
+USB_LED:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"2cf5d462-3571-4294-a162-e64ac1ee780c",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"",
+		sio_hyst=>"0",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1)
+	PORT MAP(oe=>(one),
+		y=>(zero),
+		fb=>(tmpFB_0__USB_LED_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__USB_LED_net_0),
+		siovref=>(tmpSIOVREF__USB_LED_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>one,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>one,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__USB_LED_net_0);
+EEPROM_LED:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"205ded8c-a56f-4245-b0b0-103e15030cf1",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"",
+		sio_hyst=>"0",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1)
+	PORT MAP(oe=>(one),
+		y=>(zero),
+		fb=>(tmpFB_0__EEPROM_LED_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__EEPROM_LED_net_0),
+		siovref=>(tmpSIOVREF__EEPROM_LED_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>one,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>one,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__EEPROM_LED_net_0);
 cy_tff_1:cy_dff
 	PORT MAP(d=>cy_tff_1D,
 		clk=>Net_72,
 		q=>Net_65);
+Net_408:cy_dff
+	PORT MAP(d=>Net_408D,
+		clk=>\Vbus_Debounce:op_clk\,
+		q=>Net_408);
+Net_454:cy_dff
+	PORT MAP(d=>Net_454D,
+		clk=>\Vbus_Debounce:op_clk\,
+		q=>Net_454);
+\Vbus_Debounce:DEBOUNCER[0]:d_sync_0\:cy_dff
+	PORT MAP(d=>Net_249,
+		clk=>\Vbus_Debounce:op_clk\,
+		q=>\Vbus_Debounce:DEBOUNCER[0]:d_sync_0\);
+\Vbus_Debounce:DEBOUNCER[0]:d_sync_1\:cy_dff
+	PORT MAP(d=>\Vbus_Debounce:DEBOUNCER[0]:d_sync_0\,
+		clk=>\Vbus_Debounce:op_clk\,
+		q=>\Vbus_Debounce:DEBOUNCER[0]:d_sync_1\);
+Net_484:cy_dff
+	PORT MAP(d=>Net_484D,
+		clk=>\Vbus_Debounce:op_clk\,
+		q=>Net_484);
 
 END R_T_L;

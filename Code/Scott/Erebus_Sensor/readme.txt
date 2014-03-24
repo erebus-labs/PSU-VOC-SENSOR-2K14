@@ -1,1 +1,0 @@
-This project will blink an LED connected to 0[0] at 2Hz. When a logic high voltage (5V) is presented to pin 6[0] an interrupt will be triggered that increases the blink rate to 4Hz until the high voltage is removed.

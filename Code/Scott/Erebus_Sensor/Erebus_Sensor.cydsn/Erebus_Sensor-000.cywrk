@@ -8,6 +8,7 @@
 <files />
 <projects>
 <name_val_pair name="Erebus_Sensor" v=".\Erebus_Sensor.cyprj" />
+<name_val_pair name="USB_UART01" v="..\..\USB_UART\USB_UART01\USB_UART01.cydsn\USB_UART01.cyprj" />
 </projects>
 <workspace_id v="5603cb93-7317-4ca1-acbb-94152283ea84" />
 <WriteAppVersionLastSavedWith v="3.0.0.1539" />

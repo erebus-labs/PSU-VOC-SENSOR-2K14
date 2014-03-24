@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   TIMER_CLOCK                                                           03/15/2014 13:29:05 PAGE 1   
+C51 COMPILER V9.51   TIMER_CLOCK                                                           03/21/2014 14:33:23 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE TIMER_CLOCK
@@ -62,7 +62,7 @@ line level    source
   51          
   52          
   53          /*******************************************************************************
-C51 COMPILER V9.51   TIMER_CLOCK                                                           03/15/2014 13:29:05 PAGE 2   
+C51 COMPILER V9.51   TIMER_CLOCK                                                           03/21/2014 14:33:23 PAGE 2   
 
   54          * Function Name: timer_clock_Stop
   55          ********************************************************************************
@@ -126,7 +126,7 @@ line level    source
               #else
  114   2              CLK_DIST_DMASK = timer_clock_CLKEN_MASK;
  115   2              CLK_DIST_AMASK = 0x00u;
-C51 COMPILER V9.51   TIMER_CLOCK                                                           03/15/2014 13:29:05 PAGE 3   
+C51 COMPILER V9.51   TIMER_CLOCK                                                           03/21/2014 14:33:23 PAGE 3   
 
  116   2      #endif /* timer_clock__CFG3 */
  117   2      
@@ -190,7 +190,7 @@ line level    source
  175          *  Modifies the clock divider and, thus, the frequency. When the clock divider
  176          *  register is set to zero or changed from zero, the clock will be temporarily
  177          *  disabled in order to change the SSS mode bit. If the clock is enabled when
-C51 COMPILER V9.51   TIMER_CLOCK                                                           03/15/2014 13:29:05 PAGE 4   
+C51 COMPILER V9.51   TIMER_CLOCK                                                           03/21/2014 14:33:23 PAGE 4   
 
  178          *  SetDividerRegister is called, then the source clock must be running.
  179          *
@@ -254,7 +254,7 @@ line level    source
  237   4                      CLK_DIST_AMASK = 0x00u;
  238   4      #endif /* timer_clock__CFG3 */
  239   4                      /* Clear mask of bus clock. */
-C51 COMPILER V9.51   TIMER_CLOCK                                                           03/15/2014 13:29:05 PAGE 5   
+C51 COMPILER V9.51   TIMER_CLOCK                                                           03/21/2014 14:33:23 PAGE 5   
 
  240   4                      CLK_DIST_BCFG2 &= (uint8)(~BCFG2_MASK);
  241   4      
@@ -318,7 +318,7 @@ line level    source
  299   1          return CY_GET_REG16(timer_clock_DIV_PTR);
  300   1      }
  301          
-C51 COMPILER V9.51   TIMER_CLOCK                                                           03/15/2014 13:29:05 PAGE 6   
+C51 COMPILER V9.51   TIMER_CLOCK                                                           03/21/2014 14:33:23 PAGE 6   
 
  302          
  303          /*******************************************************************************
@@ -382,7 +382,7 @@ line level    source
  361          *   the clock. Specifically, see the CLKDIST.DCFG.CFG2 register.
  362          *
  363          * Returns:
-C51 COMPILER V9.51   TIMER_CLOCK                                                           03/15/2014 13:29:05 PAGE 7   
+C51 COMPILER V9.51   TIMER_CLOCK                                                           03/21/2014 14:33:23 PAGE 7   
 
  364          *  None
  365          *
@@ -446,7 +446,7 @@ line level    source
  423   1      
  424   1          if (((oldSrc != ((uint8)CYCLK_SRC_SEL_CLK_SYNC_D)) && 
  425   1              (clkSource == ((uint8)CYCLK_SRC_SEL_CLK_SYNC_D))) && (currDiv == 0u))
-C51 COMPILER V9.51   TIMER_CLOCK                                                           03/15/2014 13:29:05 PAGE 8   
+C51 COMPILER V9.51   TIMER_CLOCK                                                           03/21/2014 14:33:23 PAGE 8   
 
  426   1          {
  427   2              /* Switching to Master and divider is 1, set SSS, which will output master, */
@@ -510,7 +510,7 @@ line level    source
               *   disable the clock. clkPhase = 1 produces a 0ns delay and clkPhase = 11 
               *   produces a 10ns delay.
               *
-C51 COMPILER V9.51   TIMER_CLOCK                                                           03/15/2014 13:29:05 PAGE 9   
+C51 COMPILER V9.51   TIMER_CLOCK                                                           03/21/2014 14:33:23 PAGE 9   
 
               * Returns:
               *  None
@@ -546,7 +546,7 @@ line level    source
  519          
  520          
  521          /* [] END OF FILE */
-C51 COMPILER V9.51   TIMER_CLOCK                                                           03/15/2014 13:29:05 PAGE 10  
+C51 COMPILER V9.51   TIMER_CLOCK                                                           03/21/2014 14:33:23 PAGE 10  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -559,7 +559,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
 0005 EF                MOV     A,R7
-0006 4401              ORL     A,#01H
+0006 4402              ORL     A,#02H
 0008 FF                MOV     R7,A
 0009 EF                MOV     A,R7
 000A F0                MOVX    @DPTR,A
@@ -568,7 +568,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000E E0                MOVX    A,@DPTR
 000F FF                MOV     R7,A
 0010 EF                MOV     A,R7
-0011 4401              ORL     A,#01H
+0011 4402              ORL     A,#02H
 0013 FF                MOV     R7,A
 0014 EF                MOV     A,R7
 0015 F0                MOVX    @DPTR,A
@@ -584,7 +584,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
 0005 EF                MOV     A,R7
-0006 54FE              ANL     A,#0FEH
+0006 54FD              ANL     A,#0FDH
 0008 FF                MOV     R7,A
 0009 EF                MOV     A,R7
 000A F0                MOVX    @DPTR,A
@@ -593,7 +593,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000E E0                MOVX    A,@DPTR
 000F FF                MOV     R7,A
 0010 EF                MOV     A,R7
-0011 54FE              ANL     A,#0FEH
+0011 54FD              ANL     A,#0FDH
 0013 FF                MOV     R7,A
 0014 EF                MOV     A,R7
 0015 F0                MOVX    @DPTR,A
@@ -609,8 +609,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
 0005 EF                MOV     A,R7
-0006 5401              ANL     A,#01H
-C51 COMPILER V9.51   TIMER_CLOCK                                                           03/15/2014 13:29:05 PAGE 11  
+0006 5402              ANL     A,#02H
+C51 COMPILER V9.51   TIMER_CLOCK                                                           03/21/2014 14:33:23 PAGE 11  
 
 0008 FF                MOV     R7,A
 0009 7E00              MOV     R6,#00H
@@ -624,7 +624,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0013 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 114
 0014 904010            MOV     DPTR,#04010H
-0017 7401              MOV     A,#01H
+0017 7402              MOV     A,#02H
 0019 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 115
 001A 904014            MOV     DPTR,#04014H
@@ -642,7 +642,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 121
 002A 7B02              MOV     R3,#02H
 002C 7A40              MOV     R2,#040H
-002E 7980              MOV     R1,#080H
+002E 7984              MOV     R1,#084H
 0030 120000      E     LCALL   _cyread16_nodpx
 0033 900000      R     MOV     DPTR,#oldDivider
 0036 EE                MOV     A,R6
@@ -674,7 +674,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0058 5401              ANL     A,#01H
 005A FF                MOV     R7,A
 005B 7E00              MOV     R6,#00H
-C51 COMPILER V9.51   TIMER_CLOCK                                                           03/15/2014 13:29:05 PAGE 12  
+C51 COMPILER V9.51   TIMER_CLOCK                                                           03/21/2014 14:33:23 PAGE 12  
 
 005D EF                MOV     A,R7
 005E 4E                ORL     A,R6
@@ -685,7 +685,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0064 E0                MOVX    A,@DPTR
 0065 FF                MOV     R7,A
 0066 EF                MOV     A,R7
-0067 54FE              ANL     A,#0FEH
+0067 54FD              ANL     A,#0FDH
 0069 FF                MOV     R7,A
 006A EF                MOV     A,R7
 006B F0                MOVX    @DPTR,A
@@ -694,7 +694,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 006F E0                MOVX    A,@DPTR
 0070 FF                MOV     R7,A
 0071 EF                MOV     A,R7
-0072 54FE              ANL     A,#0FEH
+0072 54FD              ANL     A,#0FDH
 0074 FF                MOV     R7,A
 0075 EF                MOV     A,R7
 0076 F0                MOVX    @DPTR,A
@@ -705,7 +705,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 136
 007C 7B02              MOV     R3,#02H
 007E 7A40              MOV     R2,#040H
-0080 7980              MOV     R1,#080H
+0080 7984              MOV     R1,#084H
 0082 900000      R     MOV     DPTR,#oldDivider
 0085 E0                MOVX    A,@DPTR
 0086 FC                MOV     R4,A
@@ -737,8 +737,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0010 E0                MOVX    A,@DPTR
 0011 FF                MOV     R7,A
 0012 EF                MOV     A,R7
-0013 54FE              ANL     A,#0FEH
-C51 COMPILER V9.51   TIMER_CLOCK                                                           03/15/2014 13:29:05 PAGE 13  
+0013 54FD              ANL     A,#0FDH
+C51 COMPILER V9.51   TIMER_CLOCK                                                           03/21/2014 14:33:23 PAGE 13  
 
 0015 FF                MOV     R7,A
 0016 EF                MOV     A,R7
@@ -752,7 +752,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 001C E0                MOVX    A,@DPTR
 001D FF                MOV     R7,A
 001E EF                MOV     A,R7
-001F 4401              ORL     A,#01H
+001F 4402              ORL     A,#02H
 0021 FF                MOV     R7,A
 0022 EF                MOV     A,R7
 0023 F0                MOVX    @DPTR,A
@@ -802,7 +802,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 002F FD                MOV     R5,A
 0030 ED                MOV     A,R5
 0031 6F                XRL     A,R7
-C51 COMPILER V9.51   TIMER_CLOCK                                                           03/15/2014 13:29:05 PAGE 14  
+C51 COMPILER V9.51   TIMER_CLOCK                                                           03/21/2014 14:33:23 PAGE 14  
 
 0032 7002              JNZ     ?C0038
 0034 EC                MOV     A,R4
@@ -816,7 +816,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 003E E0                MOVX    A,@DPTR
 003F FF                MOV     R7,A
 0040 EF                MOV     A,R7
-0041 5401              ANL     A,#01H
+0041 5402              ANL     A,#02H
 0043 FF                MOV     R7,A
 0044 900000      R     MOV     DPTR,#enabled
 0047 EF                MOV     A,R7
@@ -861,18 +861,18 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 213
 0075 7B02              MOV     R3,#02H
 0077 7A40              MOV     R2,#040H
-0079 7980              MOV     R1,#080H
+0079 7984              MOV     R1,#084H
 007B 900000      R     MOV     DPTR,#clkDivider
 007E E0                MOVX    A,@DPTR
 007F FC                MOV     R4,A
 0080 A3                INC     DPTR
-C51 COMPILER V9.51   TIMER_CLOCK                                                           03/15/2014 13:29:05 PAGE 15  
+C51 COMPILER V9.51   TIMER_CLOCK                                                           03/21/2014 14:33:23 PAGE 15  
 
 0081 E0                MOVX    A,@DPTR
 0082 FD                MOV     R5,A
 0083 120000      E     LCALL   _cywrite16_nodpx
                                            ; SOURCE LINE # 214
-0086 904082            MOV     DPTR,#04082H
+0086 904086            MOV     DPTR,#04086H
 0089 E0                MOVX    A,@DPTR
 008A FF                MOV     R7,A
 008B EF                MOV     A,R7
@@ -885,7 +885,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0092         ?C0013:
                                            ; SOURCE LINE # 217
                                            ; SOURCE LINE # 220
-0092 904082            MOV     DPTR,#04082H
+0092 904086            MOV     DPTR,#04086H
 0095 E0                MOVX    A,@DPTR
 0096 FF                MOV     R7,A
 0097 EF                MOV     A,R7
@@ -896,7 +896,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 221
 009D 7B02              MOV     R3,#02H
 009F 7A40              MOV     R2,#040H
-00A1 7980              MOV     R1,#080H
+00A1 7984              MOV     R1,#084H
 00A3 900000      R     MOV     DPTR,#clkDivider
 00A6 E0                MOVX    A,@DPTR
 00A7 FC                MOV     R4,A
@@ -922,7 +922,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00BB F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 236
 00BC 904010            MOV     DPTR,#04010H
-00BF 7401              MOV     A,#01H
+00BF 7402              MOV     A,#02H
 00C1 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 237
 00C2 904014            MOV     DPTR,#04014H
@@ -930,7 +930,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00C6 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 240
 00C7 904008            MOV     DPTR,#04008H
-C51 COMPILER V9.51   TIMER_CLOCK                                                           03/15/2014 13:29:05 PAGE 16  
+C51 COMPILER V9.51   TIMER_CLOCK                                                           03/21/2014 14:33:23 PAGE 16  
 
 00CA E0                MOVX    A,@DPTR
 00CB FF                MOV     R7,A
@@ -940,7 +940,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00D0 EF                MOV     A,R7
 00D1 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 243
-00D2 904082            MOV     DPTR,#04082H
+00D2 904086            MOV     DPTR,#04086H
 00D5 E0                MOVX    A,@DPTR
 00D6 FF                MOV     R7,A
 00D7 EF                MOV     A,R7
@@ -994,9 +994,9 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0116 E0                MOVX    A,@DPTR
 0117 FF                MOV     R7,A
 0118 EF                MOV     A,R7
-C51 COMPILER V9.51   TIMER_CLOCK                                                           03/15/2014 13:29:05 PAGE 17  
+C51 COMPILER V9.51   TIMER_CLOCK                                                           03/21/2014 14:33:23 PAGE 17  
 
-0119 54FE              ANL     A,#0FEH
+0119 54FD              ANL     A,#0FDH
 011B FF                MOV     R7,A
 011C EF                MOV     A,R7
 011D F0                MOVX    @DPTR,A
@@ -1012,7 +1012,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0126 E0                MOVX    A,@DPTR
 0127 FF                MOV     R7,A
 0128 EF                MOV     A,R7
-0129 5401              ANL     A,#01H
+0129 5402              ANL     A,#02H
 012B FF                MOV     R7,A
 012C 7E00              MOV     R6,#00H
 012E EF                MOV     A,R7
@@ -1058,7 +1058,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0163 7E00              MOV     R6,#00H
 0165 EF                MOV     A,R7
 0166 4E                ORL     A,R6
-C51 COMPILER V9.51   TIMER_CLOCK                                                           03/15/2014 13:29:05 PAGE 18  
+C51 COMPILER V9.51   TIMER_CLOCK                                                           03/21/2014 14:33:23 PAGE 18  
 
 0167 602B              JZ      ?C0027
 0169 80EF              SJMP    ?C0024
@@ -1070,7 +1070,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 274
 016C 7B02              MOV     R3,#02H
 016E 7A40              MOV     R2,#040H
-0170 7980              MOV     R1,#080H
+0170 7984              MOV     R1,#084H
 0172 900000      R     MOV     DPTR,#clkDivider
 0175 E0                MOVX    A,@DPTR
 0176 FC                MOV     R4,A
@@ -1108,7 +1108,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 299
 0000 7B02              MOV     R3,#02H
 0002 7A40              MOV     R2,#040H
-0004 7980              MOV     R1,#080H
+0004 7984              MOV     R1,#084H
 0006 120000      E     LCALL   _cyread16_nodpx
                                            ; SOURCE LINE # 300
 0009         ?C0028:
@@ -1122,9 +1122,9 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0004 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 333
                                            ; SOURCE LINE # 334
-C51 COMPILER V9.51   TIMER_CLOCK                                                           03/15/2014 13:29:05 PAGE 19  
+C51 COMPILER V9.51   TIMER_CLOCK                                                           03/21/2014 14:33:23 PAGE 19  
 
-0005 904082            MOV     DPTR,#04082H
+0005 904086            MOV     DPTR,#04086H
 0008 C083              PUSH    DPH
 000A C082              PUSH    DPL
 000C E0                MOVX    A,@DPTR
@@ -1153,7 +1153,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0004 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 368
                                            ; SOURCE LINE # 369
-0005 904082            MOV     DPTR,#04082H
+0005 904086            MOV     DPTR,#04086H
 0008 C083              PUSH    DPH
 000A C082              PUSH    DPL
 000C E0                MOVX    A,@DPTR
@@ -1182,11 +1182,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 388
                                            ; SOURCE LINE # 389
                                            ; SOURCE LINE # 390
-0000 904082            MOV     DPTR,#04082H
+0000 904086            MOV     DPTR,#04086H
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
 0005 EF                MOV     A,R7
-C51 COMPILER V9.51   TIMER_CLOCK                                                           03/15/2014 13:29:05 PAGE 20  
+C51 COMPILER V9.51   TIMER_CLOCK                                                           03/21/2014 14:33:23 PAGE 20  
 
 0006 54F8              ANL     A,#0F8H
 0008 FF                MOV     R7,A
@@ -1236,7 +1236,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0032 7022              JNZ     ?C0032
                                            ; SOURCE LINE # 426
                                            ; SOURCE LINE # 429
-0034 904082            MOV     DPTR,#04082H
+0034 904086            MOV     DPTR,#04086H
 0037 E0                MOVX    A,@DPTR
 0038 FF                MOV     R7,A
 0039 EF                MOV     A,R7
@@ -1245,12 +1245,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 003D EF                MOV     A,R7
 003E F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 431
-003F 904082            MOV     DPTR,#04082H
+003F 904086            MOV     DPTR,#04086H
 0042 E0                MOVX    A,@DPTR
 0043 FF                MOV     R7,A
 0044 EF                MOV     A,R7
 0045 54F8              ANL     A,#0F8H
-C51 COMPILER V9.51   TIMER_CLOCK                                                           03/15/2014 13:29:05 PAGE 21  
+C51 COMPILER V9.51   TIMER_CLOCK                                                           03/21/2014 14:33:23 PAGE 21  
 
 0047 FF                MOV     R7,A
 0048 900000      R     MOV     DPTR,#clkSource
@@ -1259,7 +1259,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 004D EF                MOV     A,R7
 004E 4E                ORL     A,R6
 004F FF                MOV     R7,A
-0050 904082            MOV     DPTR,#04082H
+0050 904086            MOV     DPTR,#04086H
 0053 EF                MOV     A,R7
 0054 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 432
@@ -1287,7 +1287,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0070 7022              JNZ     ?C0034
                                            ; SOURCE LINE # 435
                                            ; SOURCE LINE # 439
-0072 904082            MOV     DPTR,#04082H
+0072 904086            MOV     DPTR,#04086H
 0075 E0                MOVX    A,@DPTR
 0076 FF                MOV     R7,A
 0077 EF                MOV     A,R7
@@ -1299,11 +1299,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0080 EF                MOV     A,R7
 0081 4E                ORL     A,R6
 0082 FF                MOV     R7,A
-0083 904082            MOV     DPTR,#04082H
+0083 904086            MOV     DPTR,#04086H
 0086 EF                MOV     A,R7
 0087 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 440
-0088 904082            MOV     DPTR,#04082H
+0088 904086            MOV     DPTR,#04086H
 008B E0                MOVX    A,@DPTR
 008C FF                MOV     R7,A
 008D EF                MOV     A,R7
@@ -1314,11 +1314,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 441
 0093 22                RET     
 0094         ?C0034:
-C51 COMPILER V9.51   TIMER_CLOCK                                                           03/15/2014 13:29:05 PAGE 22  
+C51 COMPILER V9.51   TIMER_CLOCK                                                           03/21/2014 14:33:23 PAGE 22  
 
                                            ; SOURCE LINE # 443
                                            ; SOURCE LINE # 445
-0094 904082            MOV     DPTR,#04082H
+0094 904086            MOV     DPTR,#04086H
 0097 E0                MOVX    A,@DPTR
 0098 FF                MOV     R7,A
 0099 EF                MOV     A,R7
@@ -1330,7 +1330,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00A2 EF                MOV     A,R7
 00A3 4E                ORL     A,R6
 00A4 FF                MOV     R7,A
-00A5 904082            MOV     DPTR,#04082H
+00A5 904086            MOV     DPTR,#04086H
 00A8 EF                MOV     A,R7
 00A9 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 446
@@ -1343,7 +1343,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 464
                                            ; SOURCE LINE # 465
                                            ; SOURCE LINE # 466
-0000 904082            MOV     DPTR,#04082H
+0000 904086            MOV     DPTR,#04086H
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
 0005 EF                MOV     A,R7

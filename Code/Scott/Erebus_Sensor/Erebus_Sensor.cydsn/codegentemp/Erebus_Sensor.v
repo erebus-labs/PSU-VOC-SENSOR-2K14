@@ -1,6 +1,6 @@
 // ======================================================================
 // Erebus_Sensor.v generated from TopDesign.cysch
-// 03/15/2014 at 15:12
+// 03/21/2014 at 14:33
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -423,9 +423,25 @@ endmodule
 `include "C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_tff_v1_0\cy_tff_v1_0.v"
 `endif
 
+// Component: Debouncer_v1_0
+`ifdef CY_BLK_DIR
+`undef CY_BLK_DIR
+`endif
+
+`ifdef WARP
+`define CY_BLK_DIR "$CYPRESS_DIR\..\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Debouncer_v1_0"
+`include "$CYPRESS_DIR\..\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Debouncer_v1_0\Debouncer_v1_0.v"
+`else
+`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Debouncer_v1_0"
+`include "C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Debouncer_v1_0\Debouncer_v1_0.v"
+`endif
+
 // top
 module top ;
 
+          wire  Net_484;
+          wire  Net_483;
+          wire  Net_533;
           wire  Net_212;
           wire  Net_158;
           wire  Net_157;
@@ -434,7 +450,10 @@ module top ;
           wire  Net_154;
           wire  Net_204;
           wire  Net_8;
-          wire  Net_225;
+          wire  Net_242;
+          wire  Net_249;
+          wire  Net_408;
+          wire  Net_454;
           wire  Net_72;
           wire  Net_146;
           wire  Net_65;
@@ -543,8 +562,8 @@ module top ;
 	cy_clock_v1_0
 		#(.id("920ac626-75fc-42be-bddc-386ba9cec7f2"),
 		  .source_clock_id("315365C3-2E3E-4f04-84A2-BB564A173261"),
-		  .divisor(0),
-		  .period("1000000000000"),
+		  .divisor(100),
+		  .period("0"),
 		  .is_direct(0),
 		  .is_digital(1))
 		timer_clock
@@ -609,7 +628,7 @@ module top ;
 		Vbus
 		 (.oe(tmpOE__Vbus_net),
 		  .y({1'b0}),
-		  .fb({Net_225}),
+		  .fb({Net_249}),
 		  .io({tmpIO_0__Vbus_net[0:0]}),
 		  .siovref(tmpSIOVREF__Vbus_net),
 		  .interrupt({tmpINTERRUPT_0__Vbus_net[0:0]}),
@@ -625,9 +644,178 @@ module top ;
 
 	cy_isr_v1_0
 		#(.int_type(2'b10))
-		Vbus_IRQ
-		 (.int_signal(Net_225));
+		VbusHigh_IRQ
+		 (.int_signal(Net_408));
 
+
+
+	cy_clock_v1_0
+		#(.id("7e7122dd-63ea-486c-98f4-a5cb803589f2"),
+		  .source_clock_id("315365C3-2E3E-4f04-84A2-BB564A173261"),
+		  .divisor(1000),
+		  .period("0"),
+		  .is_direct(0),
+		  .is_digital(1))
+		debounce_clock
+		 (.clock_out(Net_242));
+
+
+
+	cy_isr_v1_0
+		#(.int_type(2'b00))
+		VbusLow_IRQ
+		 (.int_signal(Net_454));
+
+
+    Debouncer_v1_0 Vbus_Debounce (
+        .d(Net_249),
+        .clock(Net_242),
+        .q(Net_483),
+        .neg(Net_454),
+        .either(Net_484),
+        .pos(Net_408));
+    defparam Vbus_Debounce.EitherEdgeDetect = 1;
+    defparam Vbus_Debounce.NegEdgeDetect = 1;
+    defparam Vbus_Debounce.PosEdgeDetect = 1;
+    defparam Vbus_Debounce.SignalWidth = 1;
+
+	wire [0:0] tmpOE__USB_LED_net;
+	wire [0:0] tmpFB_0__USB_LED_net;
+	wire [0:0] tmpIO_0__USB_LED_net;
+	wire [0:0] tmpINTERRUPT_0__USB_LED_net;
+	electrical [0:0] tmpSIOVREF__USB_LED_net;
+
+	cy_psoc3_pins_v1_10
+		#(.id("2cf5d462-3571-4294-a162-e64ac1ee780c"),
+		  .drive_mode(3'b110),
+		  .ibuf_enabled(1'b1),
+		  .init_dr_st(1'b0),
+		  .input_clk_en(0),
+		  .input_sync(1'b1),
+		  .input_sync_mode(1'b0),
+		  .intr_mode(2'b00),
+		  .invert_in_clock(0),
+		  .invert_in_clock_en(0),
+		  .invert_in_reset(0),
+		  .invert_out_clock(0),
+		  .invert_out_clock_en(0),
+		  .invert_out_reset(0),
+		  .io_voltage(""),
+		  .layout_mode("CONTIGUOUS"),
+		  .oe_conn(1'b0),
+		  .oe_reset(0),
+		  .oe_sync(1'b0),
+		  .output_clk_en(0),
+		  .output_clock_mode(1'b0),
+		  .output_conn(1'b0),
+		  .output_mode(1'b0),
+		  .output_reset(0),
+		  .output_sync(1'b0),
+		  .pa_in_clock(-1),
+		  .pa_in_clock_en(-1),
+		  .pa_in_reset(-1),
+		  .pa_out_clock(-1),
+		  .pa_out_clock_en(-1),
+		  .pa_out_reset(-1),
+		  .pin_aliases(""),
+		  .pin_mode("O"),
+		  .por_state(4),
+		  .use_annotation(1'b0),
+		  .sio_group_cnt(0),
+		  .sio_hyst(1'b0),
+		  .sio_ibuf(""),
+		  .sio_info(2'b00),
+		  .sio_obuf(""),
+		  .sio_refsel(""),
+		  .sio_vtrip(""),
+		  .slew_rate(1'b0),
+		  .spanning(0),
+		  .vtrip(2'b10),
+		  .width(1))
+		USB_LED
+		 (.oe(tmpOE__USB_LED_net),
+		  .y({1'b0}),
+		  .fb({tmpFB_0__USB_LED_net[0:0]}),
+		  .io({tmpIO_0__USB_LED_net[0:0]}),
+		  .siovref(tmpSIOVREF__USB_LED_net),
+		  .interrupt({tmpINTERRUPT_0__USB_LED_net[0:0]}),
+		  .in_clock({1'b0}),
+		  .in_clock_en({1'b1}),
+		  .in_reset({1'b0}),
+		  .out_clock({1'b0}),
+		  .out_clock_en({1'b1}),
+		  .out_reset({1'b0}));
+
+	assign tmpOE__USB_LED_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
+	wire [0:0] tmpOE__EEPROM_LED_net;
+	wire [0:0] tmpFB_0__EEPROM_LED_net;
+	wire [0:0] tmpIO_0__EEPROM_LED_net;
+	wire [0:0] tmpINTERRUPT_0__EEPROM_LED_net;
+	electrical [0:0] tmpSIOVREF__EEPROM_LED_net;
+
+	cy_psoc3_pins_v1_10
+		#(.id("205ded8c-a56f-4245-b0b0-103e15030cf1"),
+		  .drive_mode(3'b110),
+		  .ibuf_enabled(1'b1),
+		  .init_dr_st(1'b0),
+		  .input_clk_en(0),
+		  .input_sync(1'b1),
+		  .input_sync_mode(1'b0),
+		  .intr_mode(2'b00),
+		  .invert_in_clock(0),
+		  .invert_in_clock_en(0),
+		  .invert_in_reset(0),
+		  .invert_out_clock(0),
+		  .invert_out_clock_en(0),
+		  .invert_out_reset(0),
+		  .io_voltage(""),
+		  .layout_mode("CONTIGUOUS"),
+		  .oe_conn(1'b0),
+		  .oe_reset(0),
+		  .oe_sync(1'b0),
+		  .output_clk_en(0),
+		  .output_clock_mode(1'b0),
+		  .output_conn(1'b0),
+		  .output_mode(1'b0),
+		  .output_reset(0),
+		  .output_sync(1'b0),
+		  .pa_in_clock(-1),
+		  .pa_in_clock_en(-1),
+		  .pa_in_reset(-1),
+		  .pa_out_clock(-1),
+		  .pa_out_clock_en(-1),
+		  .pa_out_reset(-1),
+		  .pin_aliases(""),
+		  .pin_mode("O"),
+		  .por_state(4),
+		  .use_annotation(1'b0),
+		  .sio_group_cnt(0),
+		  .sio_hyst(1'b0),
+		  .sio_ibuf(""),
+		  .sio_info(2'b00),
+		  .sio_obuf(""),
+		  .sio_refsel(""),
+		  .sio_vtrip(""),
+		  .slew_rate(1'b0),
+		  .spanning(0),
+		  .vtrip(2'b10),
+		  .width(1))
+		EEPROM_LED
+		 (.oe(tmpOE__EEPROM_LED_net),
+		  .y({1'b0}),
+		  .fb({tmpFB_0__EEPROM_LED_net[0:0]}),
+		  .io({tmpIO_0__EEPROM_LED_net[0:0]}),
+		  .siovref(tmpSIOVREF__EEPROM_LED_net),
+		  .interrupt({tmpINTERRUPT_0__EEPROM_LED_net[0:0]}),
+		  .in_clock({1'b0}),
+		  .in_clock_en({1'b1}),
+		  .in_reset({1'b0}),
+		  .out_clock({1'b0}),
+		  .out_clock_en({1'b1}),
+		  .out_reset({1'b0}));
+
+	assign tmpOE__EEPROM_LED_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
 
 

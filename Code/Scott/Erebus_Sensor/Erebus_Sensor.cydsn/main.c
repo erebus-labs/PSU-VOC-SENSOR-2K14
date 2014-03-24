@@ -13,9 +13,9 @@
 #include <stdlib.h>
 #include "main.h"
 
-// Globals
-uint16 delay = 500;
+// GLOBALS
 
+eeAddress EEPROM_Address = {0};
     
 void main()
 {
@@ -25,12 +25,14 @@ void main()
 
     
     // Enable and start EEPROM
- //   EEPROM_Real_Enable();
- //   EEPROM_Real_Start();
+//    EEPROM_R_Enable();
+//    EEPROM_R_Start();
     
     // Enable global interrupts
     CyGlobalIntEnable;
-    Vbus_IRQ_Start();
+    VbusHigh_IRQ_Start();
+    
+//    Blink_Timer_WritePeriod(CYDEV_EE_BASE[EEPROM_Address.blink_rate]);
     
     // Start LED Blinking
     Blink_Timer_Start();   
@@ -39,6 +41,8 @@ void main()
     {
  
     }
+    
+    return;
 }
 
 /* [] END OF FILE */
