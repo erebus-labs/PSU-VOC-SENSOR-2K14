@@ -1,0 +1,115 @@
+C51 COMPILER V9.51   MAIN                                                                  03/26/2014 21:43:58 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Debug\main.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\main.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\main.lst) CD DB NOIP OT(2,SIZE) DF(DEBUG) INCDIR
+                    -(.,.\Generated_Source\PSoC3) OJ(.\DP8051\DP8051_Keil_951\Debug\main.obj)
+
+line level    source
+
+   1          /* ========================================
+   2           *
+   3           * Copyright YOUR COMPANY, THE YEAR
+   4           * All Rights Reserved
+   5           * UNPUBLISHED, LICENSED SOFTWARE.
+   6           *
+   7           * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8           * WHICH IS THE PROPERTY OF your company.
+   9           *
+  10           * ========================================
+  11          */
+  12          #include <project.h>
+  13          #include <stdlib.h>
+  14          #include "main.h"
+  15          
+  16          #define EmEEPROMSize 1024 
+  17          static const uint8 CYCODE MemoryLocation[EmEEPROMSize];
+  18          volatile const uint8 * TailPtr = MemoryLocation;
+  19          
+  20          void main()
+  21          {
+  22   1          /* Initialization*/
+  23   1          
+  24   1          // Variable declarations
+  25   1      
+  26   1          
+  27   1          // Enable and start EEPROM
+  28   1          EEPROM_R_Start();
+  29   1          
+  30   1          Em_EEPROM_Start();
+  31   1          ADC_Start();
+  32   1          
+  33   1          // Enable global interrupts
+  34   1          CyGlobalIntEnable;
+  35   1          Vbus_IRQ_Start();
+  36   1          TakeSample_IRQ_Start();
+  37   1          
+  38   1      //    Blink_Timer_WritePeriod(CYDEV_EE_BASE[EEPROM_Address.blink_rate]);
+  39   1          
+  40   1          // Start LED Blinking
+  41   1          Blink_Timer_Start();   
+  42   1      
+  43   1          for(;;)
+  44   1          {
+  45   2       
+  46   2          }
+  47   1          
+  48   1          return;
+  49   1      }
+  50          
+  51          /* [] END OF FILE */
+C51 COMPILER V9.51   MAIN                                                                  03/26/2014 21:43:58 PAGE 2   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION main (BEGIN)
+                                           ; SOURCE LINE # 20
+                                           ; SOURCE LINE # 21
+                                           ; SOURCE LINE # 28
+0000 120000      E     LCALL   EEPROM_R_Start
+                                           ; SOURCE LINE # 30
+0003 120000      E     LCALL   Em_EEPROM_Start
+                                           ; SOURCE LINE # 31
+0006 120000      E     LCALL   ADC_Start
+                                           ; SOURCE LINE # 34
+0009 D2AF              SETB    EA
+000B 9044F4            MOV     DPTR,#044F4H
+000E 74FD              MOV     A,#0FDH
+0010 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 35
+0011 120000      E     LCALL   Vbus_IRQ_Start
+                                           ; SOURCE LINE # 36
+0014 120000      E     LCALL   TakeSample_IRQ_Start
+                                           ; SOURCE LINE # 41
+0017 120000      E     LCALL   Blink_Timer_Start
+                                           ; SOURCE LINE # 43
+001A         ?C0001:
+                                           ; SOURCE LINE # 44
+                                           ; SOURCE LINE # 46
+001A 80FE              SJMP    ?C0001
+                                           ; SOURCE LINE # 49
+001C         ?C0003:
+001C 22                RET     
+             ; FUNCTION main (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     29    ----
+   CONSTANT SIZE    =   1024    ----
+   XDATA SIZE       =      3    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

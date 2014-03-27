@@ -2,7 +2,7 @@
 --	Conversion of ADCtoEEPROM.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Wed Mar 26 20:15:28 2014
+--	Wed Mar 26 20:24:33 2014
 --
 
 USE cypress.cypress.all;

@@ -17,5 +17,5 @@ move "%~1\%~2\%~n3.hex" "%~1\%~2\%~n3.ihx"
 @IF %errorlevel% NEQ 0 EXIT /b %errorlevel% 
 CD /D "C:\Keil\UV4"
 @IF %errorlevel% NEQ 0 EXIT /b %errorlevel% 
-IF NOT EXIST "C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\ADCtoEEPROM.svd" rem "C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\ADCtoEEPROM.sfr"
+IF NOT EXIST "C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\ADCtoEEPROM.svd" rem "C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\ADCtoEEPROM.sfr"
 @IF %errorlevel% NEQ 0 EXIT /b %errorlevel% 

@@ -1,57 +1,57 @@
 <?xml version="1.0" encoding="us-ascii"?>
 
-<fileSet version="1" anchorPath="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp" xsi:schemaLocation="http://cypress.com/xsd/cypathdictionary cypathdictionary.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://cypress.com/xsd/cypathdictionary">
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\cyfitter_cfg.h" value="NONE;" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\cyfitter_cfg.c" value="DP8051_C_FILE;" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\config.hex" value="NONE;" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\protect.hex" value="NONE;" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\eeprom.hex" value="NONE;" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\cydevice.h" value="NONE;" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\cydevicekeil.inc" value="NONE;" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\cydevice_trm.h" value="NONE;" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\cydevicekeil_trm.inc" value="NONE;" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\cyfitterkeil.inc" value="NONE;" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\cyfitter.h" value="NONE;" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\cydisabledsheets.h" value="NONE;" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\Em_EEPROM.c" value="DP8051_C_FILE;Em_EEPROM" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\Em_EEPROM.h" value="NONE;Em_EEPROM" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\Potentiometer.c" value="DP8051_C_FILE;Potentiometer" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\Potentiometer.h" value="NONE;Potentiometer" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\Potentiometer_aliases.h" value="NONE;Potentiometer" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\ADC.c" value="DP8051_C_FILE;ADC" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\ADC.h" value="NONE;ADC" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\ADC_PM.c" value="DP8051_C_FILE;ADC" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\ADC_INT.c" value="DP8051_C_FILE;ADC" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\TakeSample_IRQ.c" value="DP8051_C_FILE;TakeSample_IRQ" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\TakeSample_IRQ.h" value="NONE;TakeSample_IRQ" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\SW_3.c" value="DP8051_C_FILE;SW_3" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\SW_3.h" value="NONE;SW_3" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\SW_3_aliases.h" value="NONE;SW_3" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\ADC_AMux.c" value="DP8051_C_FILE;ADC_AMux" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\ADC_AMux.h" value="NONE;ADC_AMux" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\ADC_Ext_CP_Clk.c" value="DP8051_C_FILE;ADC_Ext_CP_Clk" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\ADC_Ext_CP_Clk.h" value="NONE;ADC_Ext_CP_Clk" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\ADC_IRQ.c" value="DP8051_C_FILE;ADC_IRQ" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\ADC_IRQ.h" value="NONE;ADC_IRQ" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\ADC_theACLK.c" value="DP8051_C_FILE;ADC_theACLK" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\ADC_theACLK.h" value="NONE;ADC_theACLK" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\CyBootAsmKeil.a51" value="KEIL_8051_ASM_FILE;cy_boot" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\CyDmac.c" value="DP8051_C_FILE;cy_boot" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\CyDmac.h" value="NONE;cy_boot" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\CyFlash.c" value="DP8051_C_FILE;cy_boot" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\CyFlash.h" value="NONE;cy_boot" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\CyLib.c" value="DP8051_C_FILE;cy_boot" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\CyLib.h" value="NONE;cy_boot" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\cymem.a51" value="KEIL_8051_ASM_FILE;cy_boot" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\cypins.h" value="NONE;cy_boot" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\cyPm.c" value="DP8051_C_FILE;cy_boot" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\cyPm.h" value="NONE;cy_boot" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\CySpc.c" value="DP8051_C_FILE;cy_boot" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\CySpc.h" value="NONE;cy_boot" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\cytypes.h" value="NONE;cy_boot" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\cyutils.c" value="DP8051_C_FILE;cy_boot" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\KeilStart.a51" value="KEIL_8051_ASM_FILE;cy_boot" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\PSoC3_8051.h" value="NONE;cy_boot" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\PSoC3_8051.inc" value="NONE;cy_boot" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\ADCtoEEPROM.cydsn\codegentemp\project.h" value="NONE;" />
+<fileSet version="1" anchorPath="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp" xsi:schemaLocation="http://cypress.com/xsd/cypathdictionary cypathdictionary.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://cypress.com/xsd/cypathdictionary">
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\cyfitter_cfg.h" value="NONE;" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\cyfitter_cfg.c" value="DP8051_C_FILE;" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\config.hex" value="NONE;" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\protect.hex" value="NONE;" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\eeprom.hex" value="NONE;" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\cydevice.h" value="NONE;" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\cydevicekeil.inc" value="NONE;" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\cydevice_trm.h" value="NONE;" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\cydevicekeil_trm.inc" value="NONE;" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\cyfitterkeil.inc" value="NONE;" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\cyfitter.h" value="NONE;" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\cydisabledsheets.h" value="NONE;" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\Em_EEPROM.c" value="DP8051_C_FILE;Em_EEPROM" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\Em_EEPROM.h" value="NONE;Em_EEPROM" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\Potentiometer.c" value="DP8051_C_FILE;Potentiometer" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\Potentiometer.h" value="NONE;Potentiometer" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\Potentiometer_aliases.h" value="NONE;Potentiometer" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\ADC.c" value="DP8051_C_FILE;ADC" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\ADC.h" value="NONE;ADC" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\ADC_PM.c" value="DP8051_C_FILE;ADC" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\ADC_INT.c" value="DP8051_C_FILE;ADC" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\TakeSample_IRQ.c" value="DP8051_C_FILE;TakeSample_IRQ" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\TakeSample_IRQ.h" value="NONE;TakeSample_IRQ" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\SW_3.c" value="DP8051_C_FILE;SW_3" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\SW_3.h" value="NONE;SW_3" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\SW_3_aliases.h" value="NONE;SW_3" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\ADC_AMux.c" value="DP8051_C_FILE;ADC_AMux" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\ADC_AMux.h" value="NONE;ADC_AMux" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\ADC_Ext_CP_Clk.c" value="DP8051_C_FILE;ADC_Ext_CP_Clk" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\ADC_Ext_CP_Clk.h" value="NONE;ADC_Ext_CP_Clk" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\ADC_IRQ.c" value="DP8051_C_FILE;ADC_IRQ" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\ADC_IRQ.h" value="NONE;ADC_IRQ" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\ADC_theACLK.c" value="DP8051_C_FILE;ADC_theACLK" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\ADC_theACLK.h" value="NONE;ADC_theACLK" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\CyBootAsmKeil.a51" value="KEIL_8051_ASM_FILE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\CyDmac.c" value="DP8051_C_FILE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\CyDmac.h" value="NONE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\CyFlash.c" value="DP8051_C_FILE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\CyFlash.h" value="NONE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\CyLib.c" value="DP8051_C_FILE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\CyLib.h" value="NONE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\cymem.a51" value="KEIL_8051_ASM_FILE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\cypins.h" value="NONE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\cyPm.c" value="DP8051_C_FILE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\cyPm.h" value="NONE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\CySpc.c" value="DP8051_C_FILE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\CySpc.h" value="NONE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\cytypes.h" value="NONE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\cyutils.c" value="DP8051_C_FILE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\KeilStart.a51" value="KEIL_8051_ASM_FILE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\PSoC3_8051.h" value="NONE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\PSoC3_8051.inc" value="NONE;cy_boot" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Max\Erebus_Sensor\ADCtoEEPROM.cydsn\codegentemp\project.h" value="NONE;" />
 </fileSet>
