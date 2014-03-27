@@ -13,10 +13,7 @@
 #include <stdlib.h>
 #include "main.h"
 
-// GLOBALS
 
-eeAddress EEPROM_Address = {0};
-    
 void main()
 {
     /* Initialization*/
@@ -25,12 +22,11 @@ void main()
 
     
     // Enable and start EEPROM
-//    EEPROM_R_Enable();
-//    EEPROM_R_Start();
+    EEPROM_R_Start();
     
     // Enable global interrupts
     CyGlobalIntEnable;
-    VbusHigh_IRQ_Start();
+    Vbus_IRQ_Start();
     
 //    Blink_Timer_WritePeriod(CYDEV_EE_BASE[EEPROM_Address.blink_rate]);
     

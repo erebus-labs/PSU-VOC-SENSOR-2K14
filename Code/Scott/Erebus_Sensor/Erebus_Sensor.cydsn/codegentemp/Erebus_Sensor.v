@@ -1,6 +1,6 @@
 // ======================================================================
 // Erebus_Sensor.v generated from TopDesign.cysch
-// 03/21/2014 at 14:33
+// 03/26/2014 at 18:04
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -439,9 +439,9 @@ endmodule
 // top
 module top ;
 
-          wire  Net_484;
-          wire  Net_483;
-          wire  Net_533;
+          wire  Net_555;
+          wire  Net_554;
+          wire  Net_553;
           wire  Net_212;
           wire  Net_158;
           wire  Net_157;
@@ -450,14 +450,14 @@ module top ;
           wire  Net_154;
           wire  Net_204;
           wire  Net_8;
+          wire  Net_556;
+          wire  Net_408;
+          wire  Net_146;
+          wire  Net_12;
           wire  Net_242;
           wire  Net_249;
-          wire  Net_408;
-          wire  Net_454;
           wire  Net_72;
-          wire  Net_146;
           wire  Net_65;
-          wire  Net_12;
 
     USBFS_v2_60_0 USBUART (
         .sof(Net_8),
@@ -644,7 +644,7 @@ module top ;
 
 	cy_isr_v1_0
 		#(.int_type(2'b10))
-		VbusHigh_IRQ
+		Vbus_IRQ
 		 (.int_signal(Net_408));
 
 
@@ -660,23 +660,16 @@ module top ;
 		 (.clock_out(Net_242));
 
 
-
-	cy_isr_v1_0
-		#(.int_type(2'b00))
-		VbusLow_IRQ
-		 (.int_signal(Net_454));
-
-
     Debouncer_v1_0 Vbus_Debounce (
         .d(Net_249),
         .clock(Net_242),
-        .q(Net_483),
-        .neg(Net_454),
-        .either(Net_484),
-        .pos(Net_408));
+        .q(Net_556),
+        .neg(Net_554),
+        .either(Net_408),
+        .pos(Net_555));
     defparam Vbus_Debounce.EitherEdgeDetect = 1;
-    defparam Vbus_Debounce.NegEdgeDetect = 1;
-    defparam Vbus_Debounce.PosEdgeDetect = 1;
+    defparam Vbus_Debounce.NegEdgeDetect = 0;
+    defparam Vbus_Debounce.PosEdgeDetect = 0;
     defparam Vbus_Debounce.SignalWidth = 1;
 
 	wire [0:0] tmpOE__USB_LED_net;
@@ -707,7 +700,7 @@ module top ;
 		  .oe_sync(1'b0),
 		  .output_clk_en(0),
 		  .output_clock_mode(1'b0),
-		  .output_conn(1'b0),
+		  .output_conn(1'b1),
 		  .output_mode(1'b0),
 		  .output_reset(0),
 		  .output_sync(1'b0),
@@ -734,7 +727,7 @@ module top ;
 		  .width(1))
 		USB_LED
 		 (.oe(tmpOE__USB_LED_net),
-		  .y({1'b0}),
+		  .y({Net_556}),
 		  .fb({tmpFB_0__USB_LED_net[0:0]}),
 		  .io({tmpIO_0__USB_LED_net[0:0]}),
 		  .siovref(tmpSIOVREF__USB_LED_net),

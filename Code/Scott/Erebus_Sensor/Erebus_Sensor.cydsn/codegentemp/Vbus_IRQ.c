@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: VbusHigh_IRQ.c  
+* File Name: Vbus_IRQ.c  
 * Version 1.70
 *
 *  Description:
@@ -17,23 +17,20 @@
 
 #include <cydevice_trm.h>
 #include <CyLib.h>
-#include <VbusHigh_IRQ.h>
+#include <Vbus_IRQ.h>
 
-#if !defined(VbusHigh_IRQ__REMOVED) /* Check for removal by optimization */
+#if !defined(Vbus_IRQ__REMOVED) /* Check for removal by optimization */
 
 /*******************************************************************************
 *  Place your includes, defines and code here 
 ********************************************************************************/
-/* `#START VbusHigh_IRQ_intc` */
-
-#include "USB_Access.h"
-#include "project.h"
-
+/* `#START Vbus_IRQ_intc` */
+    #include "USB_Access.h"
 /* `#END` */
 
 
 /*******************************************************************************
-* Function Name: VbusHigh_IRQ_Start
+* Function Name: Vbus_IRQ_Start
 ********************************************************************************
 *
 * Summary:
@@ -46,24 +43,24 @@
 *   None
 *
 *******************************************************************************/
-void VbusHigh_IRQ_Start(void) 
+void Vbus_IRQ_Start(void) 
 {
     /* For all we know the interrupt is active. */
-    VbusHigh_IRQ_Disable();
+    Vbus_IRQ_Disable();
 
-    /* Set the ISR to point to the VbusHigh_IRQ Interrupt. */
-    VbusHigh_IRQ_SetVector(&VbusHigh_IRQ_Interrupt);
+    /* Set the ISR to point to the Vbus_IRQ Interrupt. */
+    Vbus_IRQ_SetVector(&Vbus_IRQ_Interrupt);
 
     /* Set the priority. */
-    VbusHigh_IRQ_SetPriority((uint8)VbusHigh_IRQ_INTC_PRIOR_NUMBER);
+    Vbus_IRQ_SetPriority((uint8)Vbus_IRQ_INTC_PRIOR_NUMBER);
 
     /* Enable it. */
-    VbusHigh_IRQ_Enable();
+    Vbus_IRQ_Enable();
 }
 
 
 /*******************************************************************************
-* Function Name: VbusHigh_IRQ_StartEx
+* Function Name: Vbus_IRQ_StartEx
 ********************************************************************************
 *
 * Summary:
@@ -76,24 +73,24 @@ void VbusHigh_IRQ_Start(void)
 *   None
 *
 *******************************************************************************/
-void VbusHigh_IRQ_StartEx(cyisraddress address) 
+void Vbus_IRQ_StartEx(cyisraddress address) 
 {
     /* For all we know the interrupt is active. */
-    VbusHigh_IRQ_Disable();
+    Vbus_IRQ_Disable();
 
-    /* Set the ISR to point to the VbusHigh_IRQ Interrupt. */
-    VbusHigh_IRQ_SetVector(address);
+    /* Set the ISR to point to the Vbus_IRQ Interrupt. */
+    Vbus_IRQ_SetVector(address);
 
     /* Set the priority. */
-    VbusHigh_IRQ_SetPriority((uint8)VbusHigh_IRQ_INTC_PRIOR_NUMBER);
+    Vbus_IRQ_SetPriority((uint8)Vbus_IRQ_INTC_PRIOR_NUMBER);
 
     /* Enable it. */
-    VbusHigh_IRQ_Enable();
+    Vbus_IRQ_Enable();
 }
 
 
 /*******************************************************************************
-* Function Name: VbusHigh_IRQ_Stop
+* Function Name: Vbus_IRQ_Stop
 ********************************************************************************
 *
 * Summary:
@@ -106,18 +103,18 @@ void VbusHigh_IRQ_StartEx(cyisraddress address)
 *   None
 *
 *******************************************************************************/
-void VbusHigh_IRQ_Stop(void) 
+void Vbus_IRQ_Stop(void) 
 {
     /* Disable this interrupt. */
-    VbusHigh_IRQ_Disable();
+    Vbus_IRQ_Disable();
 }
 
 
 /*******************************************************************************
-* Function Name: VbusHigh_IRQ_Interrupt
+* Function Name: Vbus_IRQ_Interrupt
 ********************************************************************************
 * Summary:
-*   The default Interrupt Service Routine for VbusHigh_IRQ.
+*   The default Interrupt Service Routine for Vbus_IRQ.
 *
 *   Add custom code between the coments to keep the next version of this file
 *   from over writting your code.
@@ -129,67 +126,32 @@ void VbusHigh_IRQ_Stop(void)
 *   None
 *
 *******************************************************************************/
-CY_ISR(VbusHigh_IRQ_Interrupt)
+CY_ISR(Vbus_IRQ_Interrupt)
 {
     /*  Place your Interrupt code here. */
-    /* `#START VbusHigh_IRQ_Interrupt` */
-
-    // Power has just been applied to the Vbus pin, so we enter USB communication mode
-    VbusLow_IRQ_Start();
-    USB_LED_Write(1);
-
-    uint16 count;
-    uint8 buffer[BUFFER_LEN];
-    uint8 state;
-
-    /* Start USBFS Operation with 5V operation */
-    USBUART_Start(0u, USBUART_5V_OPERATION);
+    /* `#START Vbus_IRQ_Interrupt` */
     
-    /* Wait for Device to enumerate */
-    while(!USBUART_GetConfiguration());
-
-    /* Enumeration is done, enable OUT endpoint for receive data from Host */
-    USBUART_CDC_Init();
-
-    /* Main Loop: */
-    // This is an infinite loop because when power is removed from the Vbus pin,
-    // an interrupt will be generated (of higher priority) that will force a software
-    // reset and apply any new settings that have been added to EEPROM
-    for(;;)
-    {
-        if(USBUART_DataIsReady() != 0u)               /* Check for input data from PC */
-        {   
-            count = USBUART_GetAll(buffer);           /* Read received data and re-enable OUT endpoint */
-            if(count != 0u)
-            {
-                while(USBUART_CDCIsReady() == 0u);    /* Wait till component is ready to send more data to the PC */ 
-                USBUART_PutData(buffer, count);       /* Send data back to PC */
-            }
-        }  
-        
-        state = USBUART_IsLineChanged();              /* Check for Line settings changed */
-    }   
-
+    USB_ISR();
 
     /* `#END` */
 
     /* PSoC3 ES1, ES2 RTC ISR PATCH  */ 
     #if(CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3)
-        #if((CYDEV_CHIP_REVISION_USED <= CYDEV_CHIP_REVISION_3A_ES2) && (VbusHigh_IRQ__ES2_PATCH ))      
-            VbusHigh_IRQ_ISR_PATCH();
+        #if((CYDEV_CHIP_REVISION_USED <= CYDEV_CHIP_REVISION_3A_ES2) && (Vbus_IRQ__ES2_PATCH ))      
+            Vbus_IRQ_ISR_PATCH();
         #endif /* CYDEV_CHIP_REVISION_USED */
     #endif /* (CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3) */
 }
 
 
 /*******************************************************************************
-* Function Name: VbusHigh_IRQ_SetVector
+* Function Name: Vbus_IRQ_SetVector
 ********************************************************************************
 *
 * Summary:
-*   Change the ISR vector for the Interrupt. Note calling VbusHigh_IRQ_Start
+*   Change the ISR vector for the Interrupt. Note calling Vbus_IRQ_Start
 *   will override any effect this method would have had. To set the vector 
-*   before the component has been started use VbusHigh_IRQ_StartEx instead.
+*   before the component has been started use Vbus_IRQ_StartEx instead.
 *
 * Parameters:
 *   address: Address of the ISR to set in the interrupt vector table.
@@ -198,14 +160,14 @@ CY_ISR(VbusHigh_IRQ_Interrupt)
 *   None
 *
 *******************************************************************************/
-void VbusHigh_IRQ_SetVector(cyisraddress address) 
+void Vbus_IRQ_SetVector(cyisraddress address) 
 {
-    CY_SET_REG16(VbusHigh_IRQ_INTC_VECTOR, (uint16) address);
+    CY_SET_REG16(Vbus_IRQ_INTC_VECTOR, (uint16) address);
 }
 
 
 /*******************************************************************************
-* Function Name: VbusHigh_IRQ_GetVector
+* Function Name: Vbus_IRQ_GetVector
 ********************************************************************************
 *
 * Summary:
@@ -218,21 +180,21 @@ void VbusHigh_IRQ_SetVector(cyisraddress address)
 *   Address of the ISR in the interrupt vector table.
 *
 *******************************************************************************/
-cyisraddress VbusHigh_IRQ_GetVector(void) 
+cyisraddress Vbus_IRQ_GetVector(void) 
 {
-    return (cyisraddress) CY_GET_REG16(VbusHigh_IRQ_INTC_VECTOR);
+    return (cyisraddress) CY_GET_REG16(Vbus_IRQ_INTC_VECTOR);
 }
 
 
 /*******************************************************************************
-* Function Name: VbusHigh_IRQ_SetPriority
+* Function Name: Vbus_IRQ_SetPriority
 ********************************************************************************
 *
 * Summary:
-*   Sets the Priority of the Interrupt. Note calling VbusHigh_IRQ_Start
-*   or VbusHigh_IRQ_StartEx will override any effect this method would 
-*   have had. This method should only be called after VbusHigh_IRQ_Start or 
-*   VbusHigh_IRQ_StartEx has been called. To set the initial
+*   Sets the Priority of the Interrupt. Note calling Vbus_IRQ_Start
+*   or Vbus_IRQ_StartEx will override any effect this method would 
+*   have had. This method should only be called after Vbus_IRQ_Start or 
+*   Vbus_IRQ_StartEx has been called. To set the initial
 *   priority for the component use the cydwr file in the tool.
 *
 * Parameters:
@@ -242,14 +204,14 @@ cyisraddress VbusHigh_IRQ_GetVector(void)
 *   None
 *
 *******************************************************************************/
-void VbusHigh_IRQ_SetPriority(uint8 priority) 
+void Vbus_IRQ_SetPriority(uint8 priority) 
 {
-    *VbusHigh_IRQ_INTC_PRIOR = priority << 5;
+    *Vbus_IRQ_INTC_PRIOR = priority << 5;
 }
 
 
 /*******************************************************************************
-* Function Name: VbusHigh_IRQ_GetPriority
+* Function Name: Vbus_IRQ_GetPriority
 ********************************************************************************
 *
 * Summary:
@@ -262,19 +224,19 @@ void VbusHigh_IRQ_SetPriority(uint8 priority)
 *   Priority of the interrupt. 0 - 7, 0 being the highest.
 *
 *******************************************************************************/
-uint8 VbusHigh_IRQ_GetPriority(void) 
+uint8 Vbus_IRQ_GetPriority(void) 
 {
     uint8 priority;
 
 
-    priority = *VbusHigh_IRQ_INTC_PRIOR >> 5;
+    priority = *Vbus_IRQ_INTC_PRIOR >> 5;
 
     return priority;
 }
 
 
 /*******************************************************************************
-* Function Name: VbusHigh_IRQ_Enable
+* Function Name: Vbus_IRQ_Enable
 ********************************************************************************
 *
 * Summary:
@@ -287,15 +249,15 @@ uint8 VbusHigh_IRQ_GetPriority(void)
 *   None
 *
 *******************************************************************************/
-void VbusHigh_IRQ_Enable(void) 
+void Vbus_IRQ_Enable(void) 
 {
     /* Enable the general interrupt. */
-    *VbusHigh_IRQ_INTC_SET_EN = VbusHigh_IRQ__INTC_MASK;
+    *Vbus_IRQ_INTC_SET_EN = Vbus_IRQ__INTC_MASK;
 }
 
 
 /*******************************************************************************
-* Function Name: VbusHigh_IRQ_GetState
+* Function Name: Vbus_IRQ_GetState
 ********************************************************************************
 *
 * Summary:
@@ -308,15 +270,15 @@ void VbusHigh_IRQ_Enable(void)
 *   1 if enabled, 0 if disabled.
 *
 *******************************************************************************/
-uint8 VbusHigh_IRQ_GetState(void) 
+uint8 Vbus_IRQ_GetState(void) 
 {
     /* Get the state of the general interrupt. */
-    return ((*VbusHigh_IRQ_INTC_SET_EN & (uint8)VbusHigh_IRQ__INTC_MASK) != 0u) ? 1u:0u;
+    return ((*Vbus_IRQ_INTC_SET_EN & (uint8)Vbus_IRQ__INTC_MASK) != 0u) ? 1u:0u;
 }
 
 
 /*******************************************************************************
-* Function Name: VbusHigh_IRQ_Disable
+* Function Name: Vbus_IRQ_Disable
 ********************************************************************************
 *
 * Summary:
@@ -329,15 +291,15 @@ uint8 VbusHigh_IRQ_GetState(void)
 *   None
 *
 *******************************************************************************/
-void VbusHigh_IRQ_Disable(void) 
+void Vbus_IRQ_Disable(void) 
 {
     /* Disable the general interrupt. */
-    *VbusHigh_IRQ_INTC_CLR_EN = VbusHigh_IRQ__INTC_MASK;
+    *Vbus_IRQ_INTC_CLR_EN = Vbus_IRQ__INTC_MASK;
 }
 
 
 /*******************************************************************************
-* Function Name: VbusHigh_IRQ_SetPending
+* Function Name: Vbus_IRQ_SetPending
 ********************************************************************************
 *
 * Summary:
@@ -351,14 +313,14 @@ void VbusHigh_IRQ_Disable(void)
 *   None
 *
 *******************************************************************************/
-void VbusHigh_IRQ_SetPending(void) 
+void Vbus_IRQ_SetPending(void) 
 {
-    *VbusHigh_IRQ_INTC_SET_PD = VbusHigh_IRQ__INTC_MASK;
+    *Vbus_IRQ_INTC_SET_PD = Vbus_IRQ__INTC_MASK;
 }
 
 
 /*******************************************************************************
-* Function Name: VbusHigh_IRQ_ClearPending
+* Function Name: Vbus_IRQ_ClearPending
 ********************************************************************************
 *
 * Summary:
@@ -371,9 +333,9 @@ void VbusHigh_IRQ_SetPending(void)
 *   None
 *
 *******************************************************************************/
-void VbusHigh_IRQ_ClearPending(void) 
+void Vbus_IRQ_ClearPending(void) 
 {
-    *VbusHigh_IRQ_INTC_CLR_PD = VbusHigh_IRQ__INTC_MASK;
+    *Vbus_IRQ_INTC_CLR_PD = Vbus_IRQ__INTC_MASK;
 }
 
 #endif /* End check for removal by optimization */

@@ -2,7 +2,7 @@
 --	Conversion of Erebus_Sensor.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Fri Mar 21 14:33:15 2014
+--	Wed Mar 26 18:04:07 2014
 --
 
 USE cypress.cypress.all;
@@ -73,12 +73,12 @@ TERMINAL tmpSIOVREF__Vbus_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__Vbus_net_0 : bit;
 SIGNAL Net_408 : bit;
 SIGNAL Net_242 : bit;
-SIGNAL Net_454 : bit;
 SIGNAL \Vbus_Debounce:op_clk\ : bit;
 SIGNAL \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\ : bit;
 SIGNAL \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\ : bit;
-SIGNAL Net_483 : bit;
-SIGNAL Net_484 : bit;
+SIGNAL Net_556 : bit;
+SIGNAL Net_555 : bit;
+SIGNAL Net_554 : bit;
 SIGNAL tmpOE__USB_LED_net_0 : bit;
 SIGNAL tmpFB_0__USB_LED_net_0 : bit;
 SIGNAL tmpIO_0__USB_LED_net_0 : bit;
@@ -91,10 +91,10 @@ TERMINAL tmpSIOVREF__EEPROM_LED_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__EEPROM_LED_net_0 : bit;
 SIGNAL cy_tff_1D : bit;
 SIGNAL Net_408D : bit;
-SIGNAL Net_454D : bit;
 SIGNAL \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\\D\ : bit;
 SIGNAL \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\\D\ : bit;
-SIGNAL Net_484D : bit;
+SIGNAL Net_555D : bit;
+SIGNAL Net_554D : bit;
 BEGIN
 
 zero <=  ('0') ;
@@ -104,12 +104,8 @@ one <=  ('1') ;
 cy_tff_1D <= ((not Net_65 and Net_146)
 	OR (not Net_146 and Net_65));
 
-Net_408D <= ((not \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\ and \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\));
-
-Net_454D <= ((not \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\ and \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\));
-
-Net_484D <= ((not \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\ and \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\)
-	OR (not \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\ and \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\));
+Net_408D <= ((not \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\ and Net_556)
+	OR (not Net_556 and \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\));
 
 \USBUART:USB\:cy_psoc3_usb_v1_0
 	GENERIC MAP(cy_registers=>"")
@@ -439,7 +435,7 @@ Vbus:cy_psoc3_pins_v1_10
 		out_clock_en=>one,
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__Vbus_net_0);
-VbusHigh_IRQ:cy_isr_v1_0
+Vbus_IRQ:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10")
 	PORT MAP(int_signal=>Net_408);
 debounce_clock:cy_clock_v1_0
@@ -452,9 +448,6 @@ debounce_clock:cy_clock_v1_0
 		is_digital=>'1')
 	PORT MAP(clock_out=>Net_242,
 		dig_domain_out=>open);
-VbusLow_IRQ:cy_isr_v1_0
-	GENERIC MAP(int_type=>"00")
-	PORT MAP(int_signal=>Net_454);
 \Vbus_Debounce:ClkSync\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
 	PORT MAP(clock_in=>Net_242,
@@ -477,7 +470,7 @@ USB_LED:cy_psoc3_pins_v1_10
 		invert_out_reset=>'0',
 		io_voltage=>"",
 		layout_mode=>"CONTIGUOUS",
-		output_conn=>"0",
+		output_conn=>"1",
 		output_sync=>"0",
 		output_clk_en=>'0',
 		output_mode=>"0",
@@ -512,7 +505,7 @@ USB_LED:cy_psoc3_pins_v1_10
 		pa_out_clock_en=>-1,
 		pa_out_reset=>-1)
 	PORT MAP(oe=>(one),
-		y=>(zero),
+		y=>Net_556,
 		fb=>(tmpFB_0__USB_LED_net_0),
 		analog=>(open),
 		io=>(tmpIO_0__USB_LED_net_0),
@@ -598,21 +591,21 @@ Net_408:cy_dff
 	PORT MAP(d=>Net_408D,
 		clk=>\Vbus_Debounce:op_clk\,
 		q=>Net_408);
-Net_454:cy_dff
-	PORT MAP(d=>Net_454D,
-		clk=>\Vbus_Debounce:op_clk\,
-		q=>Net_454);
 \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\:cy_dff
 	PORT MAP(d=>Net_249,
 		clk=>\Vbus_Debounce:op_clk\,
-		q=>\Vbus_Debounce:DEBOUNCER[0]:d_sync_0\);
+		q=>Net_556);
 \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\:cy_dff
-	PORT MAP(d=>\Vbus_Debounce:DEBOUNCER[0]:d_sync_0\,
+	PORT MAP(d=>Net_556,
 		clk=>\Vbus_Debounce:op_clk\,
 		q=>\Vbus_Debounce:DEBOUNCER[0]:d_sync_1\);
-Net_484:cy_dff
-	PORT MAP(d=>Net_484D,
+Net_555:cy_dff
+	PORT MAP(d=>zero,
 		clk=>\Vbus_Debounce:op_clk\,
-		q=>Net_484);
+		q=>Net_555);
+Net_554:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\Vbus_Debounce:op_clk\,
+		q=>Net_554);
 
 END R_T_L;

@@ -11,11 +11,8 @@
 */
 
 // File Inclusions
-#include "EEPROM_R.h"
-#include "eeprom_access.h"
+#include "EEPROM_Access.h"
 
 // Macros
-
-#define BUFFER_LEN 64u 
 
 /* [] END OF FILE */

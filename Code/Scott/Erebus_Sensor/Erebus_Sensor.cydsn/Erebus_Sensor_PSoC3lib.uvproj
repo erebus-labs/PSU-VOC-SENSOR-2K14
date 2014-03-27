@@ -674,26 +674,6 @@
               <FilePath>.\Generated_Source\PSoC3\EEPROM_R.h</FilePath>
             </File>
             <File>
-              <FileName>VbusHigh_IRQ.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\VbusHigh_IRQ.c</FilePath>
-            </File>
-            <File>
-              <FileName>VbusHigh_IRQ.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\VbusHigh_IRQ.h</FilePath>
-            </File>
-            <File>
-              <FileName>VbusLow_IRQ.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\VbusLow_IRQ.c</FilePath>
-            </File>
-            <File>
-              <FileName>VbusLow_IRQ.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\VbusLow_IRQ.h</FilePath>
-            </File>
-            <File>
               <FileName>debounce_clock.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\debounce_clock.c</FilePath>
@@ -732,6 +712,16 @@
               <FileName>EEPROM_LED_aliases.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\EEPROM_LED_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>Vbus_IRQ.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Vbus_IRQ.c</FilePath>
+            </File>
+            <File>
+              <FileName>Vbus_IRQ.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Vbus_IRQ.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1409,26 +1399,6 @@
               <FilePath>.\Generated_Source\PSoC3\EEPROM_R.h</FilePath>
             </File>
             <File>
-              <FileName>VbusHigh_IRQ.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\VbusHigh_IRQ.c</FilePath>
-            </File>
-            <File>
-              <FileName>VbusHigh_IRQ.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\VbusHigh_IRQ.h</FilePath>
-            </File>
-            <File>
-              <FileName>VbusLow_IRQ.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\VbusLow_IRQ.c</FilePath>
-            </File>
-            <File>
-              <FileName>VbusLow_IRQ.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\VbusLow_IRQ.h</FilePath>
-            </File>
-            <File>
               <FileName>debounce_clock.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\debounce_clock.c</FilePath>
@@ -1467,6 +1437,16 @@
               <FileName>EEPROM_LED_aliases.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\EEPROM_LED_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>Vbus_IRQ.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Vbus_IRQ.c</FilePath>
+            </File>
+            <File>
+              <FileName>Vbus_IRQ.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Vbus_IRQ.h</FilePath>
             </File>
           </Files>
         </Group>

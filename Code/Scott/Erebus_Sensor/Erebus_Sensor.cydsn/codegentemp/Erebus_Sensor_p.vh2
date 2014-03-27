@@ -1,5 +1,5 @@
 -- Project:   Erebus_Sensor
--- Generated: 03/21/2014 14:33:16
+-- Generated: 03/26/2014 18:04:08
 -- 
 
 ENTITY Erebus_Sensor IS
@@ -39,7 +39,7 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     SIGNAL Net_249 : bit;
     SIGNAL Net_249_SYNCOUT : bit;
     SIGNAL Net_408 : bit;
-    SIGNAL Net_454 : bit;
+    SIGNAL Net_556 : bit;
     SIGNAL Net_65 : bit;
     SIGNAL Net_72 : bit;
     ATTRIBUTE global_signal OF Net_72 : SIGNAL IS true;
@@ -73,7 +73,6 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     SIGNAL \USBUART:ept_int_6\ : bit;
     SIGNAL \USBUART:ept_int_7\ : bit;
     SIGNAL \USBUART:ept_int_8\ : bit;
-    SIGNAL \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\ : bit;
     SIGNAL \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\ : bit;
     SIGNAL __ONE__ : bit;
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
@@ -89,7 +88,7 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     ATTRIBUTE lib_model OF LED(0) : LABEL IS "iocell2";
     ATTRIBUTE Location OF LED(0) : LABEL IS "P0[0]";
     ATTRIBUTE lib_model OF Net_408 : LABEL IS "macrocell1";
-    ATTRIBUTE lib_model OF Net_454 : LABEL IS "macrocell2";
+    ATTRIBUTE lib_model OF Net_556 : LABEL IS "macrocell2";
     ATTRIBUTE lib_model OF Net_65 : LABEL IS "macrocell3";
     ATTRIBUTE lib_model OF USB_LED(0) : LABEL IS "iocell3";
     ATTRIBUTE Location OF USB_LED(0) : LABEL IS "P0[1]";
@@ -100,9 +99,8 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     ATTRIBUTE lib_model OF \USBUART:Dp(0)\ : LABEL IS "iocell6";
     ATTRIBUTE Location OF \USBUART:Dp(0)\ : LABEL IS "P15[6]";
     ATTRIBUTE Location OF \USBUART:USB\ : LABEL IS "F(USB,0)";
-    ATTRIBUTE lib_model OF \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\ : LABEL IS "macrocell4";
-    ATTRIBUTE lib_model OF \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\ : LABEL IS "macrocell5";
-    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell6";
+    ATTRIBUTE lib_model OF \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\ : LABEL IS "macrocell4";
+    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell5";
     COMPONENT abufcell
     END COMPONENT;
     COMPONENT boostcell
@@ -1231,23 +1229,22 @@ BEGIN
 
     Net_408:macrocell
         GENERIC MAP(
-            eqn_main => "(main_0 * !main_1)",
+            eqn_main => "(!main_0 * main_1) + (main_0 * !main_1)",
             clk_inv => '0')
         PORT MAP(
             q => Net_408,
             clock_0 => Net_242,
-            main_0 => \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\,
-            main_1 => \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\);
+            main_0 => \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\,
+            main_1 => Net_556);
 
-    Net_454:macrocell
+    Net_556:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * main_1)",
+            eqn_main => "(main_0)",
             clk_inv => '0')
         PORT MAP(
-            q => Net_454,
-            clock_0 => Net_242,
-            main_0 => \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\,
-            main_1 => \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\);
+            q => Net_556,
+            main_0 => Net_249_SYNCOUT,
+            clock_0 => Net_242);
 
     Net_65:macrocell
         GENERIC MAP(
@@ -1281,7 +1278,7 @@ BEGIN
             oe_sync => "0",
             output_clk_en => 0,
             output_clock_mode => "0",
-            output_conn => "0",
+            output_conn => "1",
             output_mode => "0",
             output_reset => 0,
             output_sync => "0",
@@ -1331,10 +1328,12 @@ BEGIN
             oe_sync_mode => 0,
             logicalport => "USB_LED",
             logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+            io_capabilities => "0000000000000000000000100000000000000000000000000000000000000001")
         PORT MAP(
             pa_out => USB_LED(0)__PA,
             oe => open,
+            pin_input => Net_556,
+            pad_out => USB_LED(0)_PAD,
             pad_in => USB_LED(0)_PAD,
             in_clock => open,
             in_clock_en => '1',
@@ -1438,18 +1437,11 @@ BEGIN
             out => Net_249_SYNCOUT,
             clock => ClockBlock_BUS_CLK);
 
-    VbusHigh_IRQ:interrupt
+    Vbus_IRQ:interrupt
         GENERIC MAP(
             int_type => "10")
         PORT MAP(
             interrupt => Net_408,
-            clock => ClockBlock_BUS_CLK);
-
-    VbusLow_IRQ:interrupt
-        GENERIC MAP(
-            int_type => "00")
-        PORT MAP(
-            interrupt => Net_454,
             clock => ClockBlock_BUS_CLK);
 
     \Blink_Timer:TimerHW\:timercell
@@ -1718,22 +1710,13 @@ BEGIN
             interrupt => Net_8,
             clock => ClockBlock_BUS_CLK);
 
-    \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0)",
-            clk_inv => '0')
-        PORT MAP(
-            q => \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\,
-            main_0 => Net_249_SYNCOUT,
-            clock_0 => Net_242);
-
     \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
             clk_inv => '0')
         PORT MAP(
             q => \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\,
-            main_0 => \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\,
+            main_0 => Net_556,
             clock_0 => Net_242);
 
     __ONE__:macrocell

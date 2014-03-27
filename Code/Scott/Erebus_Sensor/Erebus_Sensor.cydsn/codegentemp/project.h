@@ -31,10 +31,9 @@
 #include <timer_clock.h>
 #include <Vbus.h>
 #include <Vbus_aliases.h>
-#include <VbusHigh_IRQ.h>
+#include <Vbus_IRQ.h>
 #include <EEPROM_R.h>
 #include <debounce_clock.h>
-#include <VbusLow_IRQ.h>
 #include <USB_LED.h>
 #include <USB_LED_aliases.h>
 #include <EEPROM_LED.h>
