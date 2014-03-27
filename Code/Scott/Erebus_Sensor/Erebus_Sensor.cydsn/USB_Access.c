@@ -84,14 +84,14 @@ uint8 retrieve(uint8* buffer, command* instruction){
     // If data in buffer is the right amount for a command,
     // retrieve it
     if(count == COMMAND_LENGTH){
-        USBUART_GetData(buffer, RETRIEVE_LEN);
+        USBUART_GetData(buffer, COMMAND_LENGTH);
         instruction -> command = buffer[0];
         instruction -> target = buffer[1] & (buffer[2] << 0x8);
         instruction -> value = buffer[3] & (buffer[4] << 0x8);
     }
     // Otherwise, flush the USB buffer and report fail
     else{
-        USBUART_GetAll(buffer);
+        USBUART_GetChar();
         result = FAIL;
     }
     
