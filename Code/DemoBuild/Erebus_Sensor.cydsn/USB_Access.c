@@ -10,7 +10,7 @@
  * ========================================
 */
 #include "USB_Access.h"
-
+#include "EmEEPROM_Access.h" // Location of sapled data in flash
 /* This file provides function definitions for USB interactions */
 
 void USB_ISR(){
@@ -106,8 +106,31 @@ void apply_setting(command instruction){
 }
 
 void dump_data(){
-    // Not Yet Implemented
-    
+    uint8  ExportBuffer[64]; // 64 Bytes per USB data packet.
+    int i = 0;
+    double DataCnt = 0;
+    uint8* ExportPtr =(uint8*) MemoryLocation; 
+    while (ExportPtr <= TailPtr)
+    {   
+        while (i <= 63)
+        {
+            if (ExportPtr <= TailPtr)
+            {
+                ExportBuffer[i] = *ExportPtr; // Copy sampled data from flash at *ExportPtr to buffer for send over usb com 
+                ++i;
+                ExportPtr++;
+                ++DataCnt;
+            }
+            else
+            {
+                ExportBuffer[i] = 0x00;
+                ++i;
+            }
+            
+        }
+        i = 0;
+    }
+    ExportBuffer[i] = 0x80;
     return;
 }
 

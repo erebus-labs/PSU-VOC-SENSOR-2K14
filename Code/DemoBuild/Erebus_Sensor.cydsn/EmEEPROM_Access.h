@@ -13,5 +13,5 @@
 
 // Emulated EEPROM/FLASH
 extern const uint8 CYCODE MemoryLocation[];
-extern const uint8 * TailPtr;
+extern volatile const uint8 * TailPtr;
 /* [] END OF FILE */

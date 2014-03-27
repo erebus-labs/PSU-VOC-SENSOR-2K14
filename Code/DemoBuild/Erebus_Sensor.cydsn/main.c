@@ -14,7 +14,8 @@
 #include "main.h"
 
 #define EmEEPROMSize 1024 
-static const uint8 CYCODE MemoryLocation[EmEEPROMSize];
+
+const uint8 CYCODE MemoryLocation[EmEEPROMSize]; // Errors caused by the include of main.h which includes the externs and static
 volatile const uint8 * TailPtr = MemoryLocation;
 
 void main()
