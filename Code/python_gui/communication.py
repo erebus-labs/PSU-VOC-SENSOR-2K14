@@ -2,7 +2,7 @@
 #
 #     File Name: communication.py
 #       Project: Erebus Labs Sensor
-# Revision Date: 03/21/2014
+# Revision Date: 03/26/2014
 #   Description: This file handles serial communications for the Erebus Labs sensor user interface
 #
 #*************************************************************************************************

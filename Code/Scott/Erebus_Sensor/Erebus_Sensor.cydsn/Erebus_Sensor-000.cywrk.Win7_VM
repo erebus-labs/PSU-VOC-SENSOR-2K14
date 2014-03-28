@@ -13,9 +13,10 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Erebus_Sensor-000\Erebus_Sensor">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Erebus_Sensor-000\Erebus_Sensor\Source Files\EEPROM_Access.c">
 <ExpandedNodeIds>
 <v>Erebus_Sensor-000</v>
+<v>Erebus_Sensor-000\Erebus_Sensor</v>
 <v>Erebus_Sensor-000\Erebus_Sensor\TopDesign.cysch</v>
 <v>Erebus_Sensor-000\Erebus_Sensor\Erebus_Sensor.cydwr</v>
 <v>Erebus_Sensor-000\Erebus_Sensor\Header Files</v>
@@ -122,6 +123,20 @@
 <VisibleNodeIds>
 <v>Erebus_Sensor-000</v>
 <v>Erebus_Sensor-000\Erebus_Sensor</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\TopDesign.cysch</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Erebus_Sensor.cydwr</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Header Files</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Header Files\EEPROM_Access.h</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Header Files\main.h</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Header Files\USB_Access.h</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Source Files</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Source Files\EEPROM_Access.c</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Source Files\main.c</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Source Files\USB_Access.c</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\Blink_Timer</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\Blink_Timer\Blink_Timer.c</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Erebus_Sensor-000\Erebus_Sensor\TopDesign">
@@ -207,7 +222,6 @@
 <v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\cymem.lst</v>
 <v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\cyPm.lst</v>
 <v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\CySpc.lst</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\cyutils.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -261,16 +275,18 @@
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
 <OpenDocs>
-<name v=".\TopDesign\TopDesign.cysch" />
 <name v=".\Erebus_Sensor.cydwr" />
+<name v=".\TopDesign\TopDesign.cysch" />
 <name v=".\Generated_Source\PSoC3\project.h" />
 <name v=".\main.c" />
-<name v=".\Generated_Source\PSoC3\Vbus.c" />
 <name v=".\main.h" />
-<name v=".\eeprom_access.h" />
-<name v=".\Generated_Source\PSoC3\VbusHigh_IRQ.c" />
+<name v=".\USB_Access.c" />
+<name v=".\EEPROM_Access.c" />
+<name v=".\Generated_Source\PSoC3\EEPROM_R.c" />
+<name v="..\..\usb_uart\usb_uart01\usb_uart01.cydsn\main.c" />
 <name v=".\USB_Access.h" />
-<name v=".\Generated_Source\PSoC3\VbusLow_IRQ.c" />
+<name v=".\EEPROM_Access.h" />
+<name v=".\Generated_Source\PSoC3\cydevice.h" />
 </OpenDocs>
 <config v="" />
 <AutoUpdate v="true" />

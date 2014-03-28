@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   USB_ACCESS                                                            03/26/2014 23:00:13 PAGE 1   
+C51 COMPILER V9.51   USB_ACCESS                                                            03/27/2014 17:43:46 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE USB_ACCESS
@@ -28,139 +28,136 @@ line level    source
   17   1          
   18   1          // Power has just been applied to the Vbus pin, so we enter USB communication mode
   19   1      
-  20   1          uint8 buffer[BUFFER_LEN];
-  21   1          uint8 result = 0;
-  22   1          command instruction = {0,0,0};
-  23   1          
-  24   1          uint8 temp = 0xFF;
-  25   1        
-  26   1          // Start EEPROM
-  27   1          EEPROM_R_Start();
-  28   1              
-  29   1          /* Start USBFS Operation with 5V operation */
-  30   1          USBUART_Start(0u, USBUART_5V_OPERATION);
-  31   1          
-  32   1          /* Wait for Device to enumerate */
-  33   1          while(!USBUART_GetConfiguration() && Vbus_Read());
-  34   1      
-  35   1          /* Enumeration is done, enable OUT endpoint for receive data from Host */
-  36   1          USBUART_CDC_Init();
-  37   1            
-  38   1          while(Vbus_Read())
-  39   1          {    
-  40   2              temp = USBUART_DataIsReady();
-  41   2              if(temp != 0u){   /* Check for input data from PC */
-  42   3                  result = retrieve(buffer, &instruction);
-  43   3              
-  44   3                  if (result == SUCCESS){
-  45   4                      
-  46   4                      switch (instruction.command){
-  47   5                      
-  48   5                          case IDENTIFY:
-  49   5                              send_reply(IDENTIFIER);
-  50   5                              break;
-  51   5                          
-  52   5                          case DUMP_DATA:
-  53   5                              dump_data();
-C51 COMPILER V9.51   USB_ACCESS                                                            03/26/2014 23:00:13 PAGE 2   
+  20   1          uint8 result = 0;
+  21   1          command instruction = {0,0,0};
+  22   1          
+  23   1          uint8 temp = 0xFF;
+  24   1              
+  25   1          /* Start USBFS Operation with 5V operation */
+  26   1          USBUART_Start(0u, USBUART_5V_OPERATION);
+  27   1          
+  28   1          /* Wait for Device to enumerate */
+  29   1          while(!USBUART_GetConfiguration() && Vbus_Read());
+  30   1      
+  31   1          /* Enumeration is done, enable OUT endpoint for receive data from Host */
+  32   1          USBUART_CDC_Init();
+  33   1            
+  34   1          while(Vbus_Read())
+  35   1          {    
+  36   2              temp = USBUART_DataIsReady();
+  37   2              if(temp != 0u){   /* Check for input data from PC */
+  38   3                  result = retrieve(&instruction);
+  39   3              
+  40   3                  if (result == SUCCESS){
+  41   4                      
+  42   4                      switch (instruction.command){
+  43   5                      
+  44   5                          case IDENTIFY:
+  45   5                              send_reply(IDENTIFIER);
+  46   5                              break;
+  47   5                          
+  48   5                          case DUMP_DATA:
+  49   5                              dump_data();
+  50   5                              send_reply(SUCCESS);
+  51   5                              break;
+  52   5                              
+  53   5                          case CHANGE_SETTING:
+C51 COMPILER V9.51   USB_ACCESS                                                            03/27/2014 17:43:46 PAGE 2   
 
-  54   5                              send_reply(SUCCESS);
-  55   5                              break;
-  56   5                              
-  57   5                          case CHANGE_SETTING:
-  58   5                              apply_setting(instruction);
-  59   5                              send_reply(SUCCESS);
-  60   5                              break;
-  61   5                              
-  62   5                          default:
-  63   5                              send_reply(FAIL);
-  64   5                      }
-  65   4                  }   
-  66   3                  else{
-  67   4                      send_reply(FAIL);
-  68   4                  }
-  69   3              }
-  70   2          }
-  71   1          
-  72   1          USB_Close();
-  73   1          
-  74   1          return;
-  75   1      }
-  76          
-  77          uint8 retrieve(uint8* buffer, command* instruction){
-  78   1          uint16 count = 0;
-  79   1          uint8 attempts = 0;
-  80   1          uint8 result = SUCCESS;
-  81   1          
-  82   1          count = USBUART_GetCount(); 
-  83   1          
-  84   1          // If data in buffer is the right amount for a command,
-  85   1          // retrieve it
-  86   1          if(count == COMMAND_LENGTH){
-  87   2              USBUART_GetData(buffer, COMMAND_LENGTH);
-  88   2              instruction -> command = buffer[0];
-  89   2              instruction -> target = buffer[1] & (buffer[2] << 0x8);
-  90   2              instruction -> value = buffer[3] & (buffer[4] << 0x8);
-  91   2          }
-  92   1          // Otherwise, flush the USB buffer and report fail
-  93   1          else{
-  94   2              USBUART_GetChar();
-  95   2              result = FAIL;
-  96   2          }
-  97   1          
-  98   1          return result;
-  99   1      }
- 100          
- 101          void apply_setting(command instruction){
- 102   1          
- 103   1          update_variable(instruction.target, instruction.value);    
- 104   1          
- 105   1          return;
- 106   1      }
- 107          
- 108          void dump_data(){
- 109   1          // Not Yet Implemented
- 110   1          
- 111   1          return;
- 112   1      }
- 113          
- 114          void send_reply(uint8 message){
- 115   1         
-C51 COMPILER V9.51   USB_ACCESS                                                            03/26/2014 23:00:13 PAGE 3   
+  54   5                              apply_setting(instruction);
+  55   5                              send_reply(SUCCESS);
+  56   5                              break;
+  57   5                              
+  58   5                          default:
+  59   5                              send_reply(FAIL);
+  60   5                      }
+  61   4                  }   
+  62   3                  else{
+  63   4                      send_reply(FAIL);
+  64   4                  }
+  65   3              }
+  66   2          }
+  67   1          
+  68   1          USB_Close();
+  69   1          
+  70   1          return;
+  71   1      }
+  72          
+  73          uint8 retrieve(command* instruction){
+  74   1          uint8 buffer[BUFFER_LEN];
+  75   1          uint16 count = 0;
+  76   1          uint8 attempts = 0;
+  77   1          uint8 result = SUCCESS;
+  78   1          
+  79   1          count = USBUART_GetCount(); 
+  80   1          
+  81   1          // If data in buffer is the right amount for a command,
+  82   1          // retrieve it
+  83   1          if(count == COMMAND_LENGTH){
+  84   2              USBUART_GetAll(buffer);
+  85   2              instruction -> command = buffer[0];
+  86   2              instruction -> target = (((uint16) buffer[1]) << 0x8) | buffer[2];
+  87   2              instruction -> value = (((uint16) buffer[3]) << 0x8) | buffer[4];
+  88   2          }
+  89   1          // Otherwise, flush the USB buffer and report fail
+  90   1          else{
+  91   2              USBUART_GetChar();
+  92   2              result = FAIL;
+  93   2          }
+  94   1          
+  95   1          return result;
+  96   1      }
+  97          
+  98          void apply_setting(command instruction){
+  99   1          
+ 100   1          update_variable(instruction.target, instruction.value);    
+ 101   1          
+ 102   1          return;
+ 103   1      }
+ 104          
+ 105          void dump_data(){
+ 106   1          // Not Yet Implemented
+ 107   1          
+ 108   1          return;
+ 109   1      }
+ 110          
+ 111          void send_reply(uint8 message){
+ 112   1         
+ 113   1          while(!USBUART_CDCIsReady() && Vbus_Read());
+ 114   1          
+ 115   1          if(Vbus_Read()){
+C51 COMPILER V9.51   USB_ACCESS                                                            03/27/2014 17:43:46 PAGE 3   
 
- 116   1          while(!USBUART_CDCIsReady() && Vbus_Read());
- 117   1          
- 118   1          if(Vbus_Read()){
- 119   2              USBUART_PutData(&message, REPLY_LEN);
- 120   2          }
- 121   1          
- 122   1          return;
- 123   1      }
- 124          
- 125          
- 126          void USB_Close(){
- 127   1          
- 128   1          EEPROM_R_Stop();
- 129   1          USBUART_Stop();
- 130   1          CySoftwareReset();
- 131   1          
- 132   1          return;
- 133   1      }
- 134          
- 135          
- 136          /* [] END OF FILE */
-C51 COMPILER V9.51   USB_ACCESS                                                            03/26/2014 23:00:13 PAGE 4   
+ 116   2              USBUART_PutData(&message, REPLY_LEN);
+ 117   2          }
+ 118   1          
+ 119   1          return;
+ 120   1      }
+ 121          
+ 122          
+ 123          void USB_Close(){
+ 124   1          
+ 125   1          EEPROM_R_Stop();
+ 126   1          USBUART_Stop();
+ 127   1          CySoftwareReset();
+ 128   1          
+ 129   1          return;
+ 130   1      }
+ 131          
+ 132          
+ 133          /* [] END OF FILE */
+C51 COMPILER V9.51   USB_ACCESS                                                            03/27/2014 17:43:46 PAGE 4   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
 
              ; FUNCTION USB_ISR (BEGIN)
                                            ; SOURCE LINE # 16
-                                           ; SOURCE LINE # 21
+                                           ; SOURCE LINE # 20
 0000 900000      R     MOV     DPTR,#result
 0003 E4                CLR     A
 0004 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 22
+                                           ; SOURCE LINE # 21
 0005 7BFF              MOV     R3,#0FFH
 0007 7A00        R     MOV     R2,#HIGH _?ix1000
 0009 7900        R     MOV     R1,#LOW _?ix1000
@@ -179,187 +176,174 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0023 7E00              MOV     R6,#00H
 0025 7F05              MOV     R7,#05H
 0027 120000      E     LCALL   ?C?COPYAMD
-                                           ; SOURCE LINE # 24
+                                           ; SOURCE LINE # 23
 002A 900000      R     MOV     DPTR,#temp
 002D 74FF              MOV     A,#0FFH
 002F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 27
-0030 120000      E     LCALL   EEPROM_R_Start
-                                           ; SOURCE LINE # 30
-0033 7D01              MOV     R5,#01H
-0035 7F00              MOV     R7,#00H
-0037 120000      E     LCALL   _USBUART_Start
-003A         ?C0001:
-                                           ; SOURCE LINE # 33
-003A 120000      E     LCALL   USBUART_GetConfiguration
-003D EF                MOV     A,R7
-003E 7006              JNZ     ?C0002
-0040 120000      E     LCALL   Vbus_Read
-0043 EF                MOV     A,R7
-0044 70F4              JNZ     ?C0001
-0046         ?C0002:
+                                           ; SOURCE LINE # 26
+0030 7D01              MOV     R5,#01H
+0032 7F00              MOV     R7,#00H
+0034 120000      E     LCALL   _USBUART_Start
+0037         ?C0001:
+                                           ; SOURCE LINE # 29
+0037 120000      E     LCALL   USBUART_GetConfiguration
+003A EF                MOV     A,R7
+003B 7006              JNZ     ?C0002
+003D 120000      E     LCALL   Vbus_Read
+0040 EF                MOV     A,R7
+0041 70F4              JNZ     ?C0001
+0043         ?C0002:
+                                           ; SOURCE LINE # 32
+0043 120000      E     LCALL   USBUART_CDC_Init
+0046         ?C0003:
+                                           ; SOURCE LINE # 34
+0046 120000      E     LCALL   Vbus_Read
+0049 EF                MOV     A,R7
+004A 7003              JNZ     $ + 5H
+004C 020000      R     LJMP    ?C0004
+                                           ; SOURCE LINE # 35
                                            ; SOURCE LINE # 36
-0046 120000      E     LCALL   USBUART_CDC_Init
-0049         ?C0003:
+004F 120000      E     LCALL   USBUART_DataIsReady
+0052 900000      R     MOV     DPTR,#temp
+0055 EF                MOV     A,R7
+0056 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 37
+0057 900000      R     MOV     DPTR,#temp
+005A E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   USB_ACCESS                                                            03/27/2014 17:43:46 PAGE 5   
+
+005B FF                MOV     R7,A
+005C EF                MOV     A,R7
+005D 60E7              JZ      ?C0003
                                            ; SOURCE LINE # 38
-0049 120000      E     LCALL   Vbus_Read
-004C EF                MOV     A,R7
-004D 7003              JNZ     $ + 5H
-004F 020000      R     LJMP    ?C0004
-                                           ; SOURCE LINE # 39
+005F 7B01              MOV     R3,#01H
+0061 7A00        R     MOV     R2,#HIGH instruction
+0063 7900        R     MOV     R1,#LOW instruction
+0065 120000      R     LCALL   _retrieve
+0068 900000      R     MOV     DPTR,#result
+006B EF                MOV     A,R7
+006C F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 40
-0052 120000      E     LCALL   USBUART_DataIsReady
-0055 900000      R     MOV     DPTR,#temp
-0058 EF                MOV     A,R7
-0059 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 41
-C51 COMPILER V9.51   USB_ACCESS                                                            03/26/2014 23:00:13 PAGE 5   
-
-005A 900000      R     MOV     DPTR,#temp
-005D E0                MOVX    A,@DPTR
-005E FF                MOV     R7,A
-005F EF                MOV     A,R7
-0060 60E7              JZ      ?C0003
+006D 900000      R     MOV     DPTR,#result
+0070 E0                MOVX    A,@DPTR
+0071 FF                MOV     R7,A
+0072 EF                MOV     A,R7
+0073 6459              XRL     A,#059H
+0075 705F              JNZ     ?C0006
                                            ; SOURCE LINE # 42
-0062 7B01              MOV     R3,#01H
-0064 7A00        R     MOV     R2,#HIGH buffer
-0066 7900        R     MOV     R1,#LOW buffer
-0068 C003              PUSH    AR3
-006A C002              PUSH    AR2
-006C C001              PUSH    AR1
-006E 7B01              MOV     R3,#01H
-0070 7A00        R     MOV     R2,#HIGH instruction
-0072 7900        R     MOV     R1,#LOW instruction
-0074 900000      R     MOV     DPTR,#?_retrieve?BYTE+03H
-0077 120000      E     LCALL   ?C?PSTXDATA
-007A D001              POP     AR1
-007C D002              POP     AR2
-007E D003              POP     AR3
-0080 120000      R     LCALL   _retrieve
-0083 900000      R     MOV     DPTR,#result
-0086 EF                MOV     A,R7
-0087 F0                MOVX    @DPTR,A
+0077 900000      R     MOV     DPTR,#instruction
+007A E0                MOVX    A,@DPTR
+007B FF                MOV     R7,A
+007C EF                MOV     A,R7
+007D 120000      E     LCALL   ?C?CCASE
+0080 0000        R     DW      ?C0010
+0082 43                DB      043H
+0083 0000        R     DW      ?C0009
+0085 44                DB      044H
+0086 0000        R     DW      ?C0008
+0088 49                DB      049H
+0089 0000              DW      00H
+008B 0000        R     DW      ?C0011
                                            ; SOURCE LINE # 44
-0088 900000      R     MOV     DPTR,#result
-008B E0                MOVX    A,@DPTR
-008C FF                MOV     R7,A
-008D EF                MOV     A,R7
-008E 6459              XRL     A,#059H
-0090 705F              JNZ     ?C0006
+008D         ?C0008:
+                                           ; SOURCE LINE # 45
+008D 7F45              MOV     R7,#045H
+008F 120000      R     LCALL   _send_reply
                                            ; SOURCE LINE # 46
-0092 900000      R     MOV     DPTR,#instruction
-0095 E0                MOVX    A,@DPTR
-0096 FF                MOV     R7,A
-0097 EF                MOV     A,R7
-0098 120000      E     LCALL   ?C?CCASE
-009B 0000        R     DW      ?C0010
-009D 43                DB      043H
-009E 0000        R     DW      ?C0009
-00A0 44                DB      044H
-00A1 0000        R     DW      ?C0008
-00A3 49                DB      049H
-00A4 0000              DW      00H
-00A6 0000        R     DW      ?C0011
+0092 80B2              SJMP    ?C0003
                                            ; SOURCE LINE # 48
-00A8         ?C0008:
+0094         ?C0009:
                                            ; SOURCE LINE # 49
-00A8 7F45              MOV     R7,#045H
-00AA 120000      R     LCALL   _send_reply
+0094 120000      R     LCALL   dump_data
                                            ; SOURCE LINE # 50
-00AD 809A              SJMP    ?C0003
-                                           ; SOURCE LINE # 52
-00AF         ?C0009:
+0097 7F59              MOV     R7,#059H
+0099 120000      R     LCALL   _send_reply
+                                           ; SOURCE LINE # 51
+009C 80A8              SJMP    ?C0003
                                            ; SOURCE LINE # 53
-00AF 120000      R     LCALL   dump_data
+009E         ?C0010:
                                            ; SOURCE LINE # 54
-00B2 7F59              MOV     R7,#059H
-00B4 120000      R     LCALL   _send_reply
-                                           ; SOURCE LINE # 55
-00B7 8090              SJMP    ?C0003
-                                           ; SOURCE LINE # 57
-C51 COMPILER V9.51   USB_ACCESS                                                            03/26/2014 23:00:13 PAGE 6   
+009E 7B01              MOV     R3,#01H
+00A0 7A00        R     MOV     R2,#HIGH instruction
+00A2 7900        R     MOV     R1,#LOW instruction
+00A4 C003              PUSH    AR3
+00A6 C002              PUSH    AR2
+00A8 C001              PUSH    AR1
+00AA 7B01              MOV     R3,#01H
+00AC 7A00        R     MOV     R2,#HIGH ?apply_setting?BYTE
+00AE 7900        R     MOV     R1,#LOW ?apply_setting?BYTE
+00B0 A801              MOV     R0,AR1
+00B2 AC02              MOV     R4,AR2
+C51 COMPILER V9.51   USB_ACCESS                                                            03/27/2014 17:43:46 PAGE 6   
 
-00B9         ?C0010:
+00B4 AD03              MOV     R5,AR3
+00B6 D001              POP     AR1
+00B8 D002              POP     AR2
+00BA D003              POP     AR3
+00BC 7E00              MOV     R6,#00H
+00BE 7F05              MOV     R7,#05H
+00C0 120000      E     LCALL   ?C?COPYAMD
+00C3 120000      R     LCALL   apply_setting
+                                           ; SOURCE LINE # 55
+00C6 7F59              MOV     R7,#059H
+00C8 120000      R     LCALL   _send_reply
+                                           ; SOURCE LINE # 56
+00CB 020000      R     LJMP    ?C0003
                                            ; SOURCE LINE # 58
-00B9 7B01              MOV     R3,#01H
-00BB 7A00        R     MOV     R2,#HIGH instruction
-00BD 7900        R     MOV     R1,#LOW instruction
-00BF C003              PUSH    AR3
-00C1 C002              PUSH    AR2
-00C3 C001              PUSH    AR1
-00C5 7B01              MOV     R3,#01H
-00C7 7A00        R     MOV     R2,#HIGH ?apply_setting?BYTE
-00C9 7900        R     MOV     R1,#LOW ?apply_setting?BYTE
-00CB A801              MOV     R0,AR1
-00CD AC02              MOV     R4,AR2
-00CF AD03              MOV     R5,AR3
-00D1 D001              POP     AR1
-00D3 D002              POP     AR2
-00D5 D003              POP     AR3
-00D7 7E00              MOV     R6,#00H
-00D9 7F05              MOV     R7,#05H
-00DB 120000      E     LCALL   ?C?COPYAMD
-00DE 120000      R     LCALL   apply_setting
+00CE         ?C0011:
                                            ; SOURCE LINE # 59
-00E1 7F59              MOV     R7,#059H
-00E3 120000      R     LCALL   _send_reply
+00CE 7F4E              MOV     R7,#04EH
+00D0 120000      R     LCALL   _send_reply
                                            ; SOURCE LINE # 60
-00E6 020000      R     LJMP    ?C0003
+                                           ; SOURCE LINE # 61
+00D3 020000      R     LJMP    ?C0003
+00D6         ?C0006:
                                            ; SOURCE LINE # 62
-00E9         ?C0011:
                                            ; SOURCE LINE # 63
-00E9 7F4E              MOV     R7,#04EH
-00EB 120000      R     LCALL   _send_reply
+00D6 7F4E              MOV     R7,#04EH
+00D8 120000      R     LCALL   _send_reply
                                            ; SOURCE LINE # 64
                                            ; SOURCE LINE # 65
-00EE 020000      R     LJMP    ?C0003
-00F1         ?C0006:
                                            ; SOURCE LINE # 66
-                                           ; SOURCE LINE # 67
-00F1 7F4E              MOV     R7,#04EH
-00F3 120000      R     LCALL   _send_reply
+00DB 020000      R     LJMP    ?C0003
+00DE         ?C0004:
                                            ; SOURCE LINE # 68
-                                           ; SOURCE LINE # 69
-                                           ; SOURCE LINE # 70
-00F6 020000      R     LJMP    ?C0003
-00F9         ?C0004:
-                                           ; SOURCE LINE # 72
-00F9 120000      R     LCALL   USB_Close
-                                           ; SOURCE LINE # 75
-00FC         ?C0013:
-00FC 22                RET     
+00DE 120000      R     LCALL   USB_Close
+                                           ; SOURCE LINE # 71
+00E1         ?C0013:
+00E1 22                RET     
              ; FUNCTION USB_ISR (END)
 
              ; FUNCTION _retrieve (BEGIN)
-                                           ; SOURCE LINE # 77
-0000 900000      R     MOV     DPTR,#buffer
+                                           ; SOURCE LINE # 73
+0000 900000      R     MOV     DPTR,#instruction
 0003 120000      E     LCALL   ?C?PSTXDATA
-                                           ; SOURCE LINE # 78
+                                           ; SOURCE LINE # 75
 0006 900000      R     MOV     DPTR,#count
 0009 E4                CLR     A
 000A F0                MOVX    @DPTR,A
 000B A3                INC     DPTR
 000C E4                CLR     A
 000D F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   USB_ACCESS                                                            03/26/2014 23:00:13 PAGE 7   
-
-                                           ; SOURCE LINE # 79
+                                           ; SOURCE LINE # 76
 000E 900000      R     MOV     DPTR,#attempts
 0011 E4                CLR     A
 0012 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 80
+                                           ; SOURCE LINE # 77
 0013 900000      R     MOV     DPTR,#result
 0016 7459              MOV     A,#059H
 0018 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 82
+                                           ; SOURCE LINE # 79
 0019 120000      E     LCALL   USBUART_GetCount
 001C 900000      R     MOV     DPTR,#count
 001F EE                MOV     A,R6
 0020 F0                MOVX    @DPTR,A
+C51 COMPILER V9.51   USB_ACCESS                                                            03/27/2014 17:43:46 PAGE 7   
+
 0021 A3                INC     DPTR
 0022 EF                MOV     A,R7
 0023 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 86
+                                           ; SOURCE LINE # 83
 0024 900000      R     MOV     DPTR,#count
 0027 E0                MOVX    A,@DPTR
 0028 FE                MOV     R6,A
@@ -369,125 +353,104 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 002C EF                MOV     A,R7
 002D 6405              XRL     A,#05H
 002F 4E                ORL     A,R6
-0030 6003              JZ      $ + 5H
-0032 020000      R     LJMP    ?C0014
+0030 7072              JNZ     ?C0014
+                                           ; SOURCE LINE # 84
+0032 7B01              MOV     R3,#01H
+0034 7A00        R     MOV     R2,#HIGH buffer
+0036 7900        R     MOV     R1,#LOW buffer
+0038 120000      E     LCALL   _USBUART_GetAll
+                                           ; SOURCE LINE # 85
+003B 900000      R     MOV     DPTR,#buffer
+003E E0                MOVX    A,@DPTR
+003F FF                MOV     R7,A
+0040 900000      R     MOV     DPTR,#instruction
+0043 120000      E     LCALL   ?C?PLDXDATA
+0046 EF                MOV     A,R7
+0047 120000      E     LCALL   ?C?CSTPTR
+                                           ; SOURCE LINE # 86
+004A 900000      R     MOV     DPTR,#buffer+01H
+004D E0                MOVX    A,@DPTR
+004E FF                MOV     R7,A
+004F 7E00              MOV     R6,#00H
+0051 EF                MOV     A,R7
+0052 7F00              MOV     R7,#00H
+0054 FE                MOV     R6,A
+0055 900000      R     MOV     DPTR,#buffer+02H
+0058 E0                MOVX    A,@DPTR
+0059 FD                MOV     R5,A
+005A 7C00              MOV     R4,#00H
+005C EE                MOV     A,R6
+005D 4C                ORL     A,R4
+005E FE                MOV     R6,A
+005F EF                MOV     A,R7
+0060 4D                ORL     A,R5
+0061 FF                MOV     R7,A
+0062 900000      R     MOV     DPTR,#instruction
+0065 120000      E     LCALL   ?C?PLDXDATA
+0068 E9                MOV     A,R1
+0069 2401              ADD     A,#01H
+006B F9                MOV     R1,A
+006C EA                MOV     A,R2
+006D 3400              ADDC    A,#00H
+006F FA                MOV     R2,A
+0070 EE                MOV     A,R6
+0071 8FF0              MOV     B,R7
+0073 120000      E     LCALL   ?C?ISTPTR
                                            ; SOURCE LINE # 87
-0035 900000      R     MOV     DPTR,#buffer
-0038 120000      E     LCALL   ?C?PLDXDATA
-003B 7D05              MOV     R5,#05H
-003D 7C00              MOV     R4,#00H
-003F 120000      E     LCALL   _USBUART_GetData
+0076 900000      R     MOV     DPTR,#buffer+03H
+0079 E0                MOVX    A,@DPTR
+007A FF                MOV     R7,A
+007B 7E00              MOV     R6,#00H
+007D EF                MOV     A,R7
+C51 COMPILER V9.51   USB_ACCESS                                                            03/27/2014 17:43:46 PAGE 8   
+
+007E 7F00              MOV     R7,#00H
+0080 FE                MOV     R6,A
+0081 900000      R     MOV     DPTR,#buffer+04H
+0084 E0                MOVX    A,@DPTR
+0085 FD                MOV     R5,A
+0086 7C00              MOV     R4,#00H
+0088 EE                MOV     A,R6
+0089 4C                ORL     A,R4
+008A FE                MOV     R6,A
+008B EF                MOV     A,R7
+008C 4D                ORL     A,R5
+008D FF                MOV     R7,A
+008E 900000      R     MOV     DPTR,#instruction
+0091 120000      E     LCALL   ?C?PLDXDATA
+0094 E9                MOV     A,R1
+0095 2403              ADD     A,#03H
+0097 F9                MOV     R1,A
+0098 EA                MOV     A,R2
+0099 3400              ADDC    A,#00H
+009B FA                MOV     R2,A
+009C EE                MOV     A,R6
+009D 8FF0              MOV     B,R7
+009F 120000      E     LCALL   ?C?ISTPTR
                                            ; SOURCE LINE # 88
-0042 900000      R     MOV     DPTR,#buffer
-0045 120000      E     LCALL   ?C?PLDXDATA
-0048 120000      E     LCALL   ?C?CLDPTR
-004B FF                MOV     R7,A
-004C 900000      R     MOV     DPTR,#instruction
-004F 120000      E     LCALL   ?C?PLDXDATA
-0052 EF                MOV     A,R7
-0053 120000      E     LCALL   ?C?CSTPTR
-                                           ; SOURCE LINE # 89
-0056 900000      R     MOV     DPTR,#buffer
-0059 120000      E     LCALL   ?C?PLDXDATA
-005C E9                MOV     A,R1
-005D 2402              ADD     A,#02H
-005F F9                MOV     R1,A
-0060 EA                MOV     A,R2
-0061 3400              ADDC    A,#00H
-0063 FA                MOV     R2,A
-0064 120000      E     LCALL   ?C?CLDPTR
-0067 FF                MOV     R7,A
-0068 7F00              MOV     R7,#00H
-006A 900000      R     MOV     DPTR,#buffer
-006D 120000      E     LCALL   ?C?PLDXDATA
-0070 E9                MOV     A,R1
-0071 2401              ADD     A,#01H
-0073 F9                MOV     R1,A
-0074 EA                MOV     A,R2
-0075 3400              ADDC    A,#00H
-C51 COMPILER V9.51   USB_ACCESS                                                            03/26/2014 23:00:13 PAGE 8   
-
-0077 FA                MOV     R2,A
-0078 120000      E     LCALL   ?C?CLDPTR
-007B FE                MOV     R6,A
-007C EF                MOV     A,R7
-007D 5E                ANL     A,R6
-007E FF                MOV     R7,A
-007F 7E00              MOV     R6,#00H
-0081 900000      R     MOV     DPTR,#instruction
-0084 120000      E     LCALL   ?C?PLDXDATA
-0087 E9                MOV     A,R1
-0088 2401              ADD     A,#01H
-008A F9                MOV     R1,A
-008B EA                MOV     A,R2
-008C 3400              ADDC    A,#00H
-008E FA                MOV     R2,A
-008F EE                MOV     A,R6
-0090 8FF0              MOV     B,R7
-0092 120000      E     LCALL   ?C?ISTPTR
+00A2 8009              SJMP    ?C0015
+00A4         ?C0014:
                                            ; SOURCE LINE # 90
-0095 900000      R     MOV     DPTR,#buffer
-0098 120000      E     LCALL   ?C?PLDXDATA
-009B E9                MOV     A,R1
-009C 2404              ADD     A,#04H
-009E F9                MOV     R1,A
-009F EA                MOV     A,R2
-00A0 3400              ADDC    A,#00H
-00A2 FA                MOV     R2,A
-00A3 120000      E     LCALL   ?C?CLDPTR
-00A6 FF                MOV     R7,A
-00A7 7F00              MOV     R7,#00H
-00A9 900000      R     MOV     DPTR,#buffer
-00AC 120000      E     LCALL   ?C?PLDXDATA
-00AF E9                MOV     A,R1
-00B0 2403              ADD     A,#03H
-00B2 F9                MOV     R1,A
-00B3 EA                MOV     A,R2
-00B4 3400              ADDC    A,#00H
-00B6 FA                MOV     R2,A
-00B7 120000      E     LCALL   ?C?CLDPTR
-00BA FE                MOV     R6,A
-00BB EF                MOV     A,R7
-00BC 5E                ANL     A,R6
-00BD FF                MOV     R7,A
-00BE 7E00              MOV     R6,#00H
-00C0 900000      R     MOV     DPTR,#instruction
-00C3 120000      E     LCALL   ?C?PLDXDATA
-00C6 E9                MOV     A,R1
-00C7 2403              ADD     A,#03H
-00C9 F9                MOV     R1,A
-00CA EA                MOV     A,R2
-00CB 3400              ADDC    A,#00H
-00CD FA                MOV     R2,A
-00CE EE                MOV     A,R6
-00CF 8FF0              MOV     B,R7
-00D1 120000      E     LCALL   ?C?ISTPTR
                                            ; SOURCE LINE # 91
-00D4 8009              SJMP    ?C0015
-00D6         ?C0014:
+00A4 120000      E     LCALL   USBUART_GetChar
+                                           ; SOURCE LINE # 92
+00A7 900000      R     MOV     DPTR,#result
+00AA 744E              MOV     A,#04EH
+00AC F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 93
-                                           ; SOURCE LINE # 94
-00D6 120000      E     LCALL   USBUART_GetChar
+00AD         ?C0015:
                                            ; SOURCE LINE # 95
-C51 COMPILER V9.51   USB_ACCESS                                                            03/26/2014 23:00:13 PAGE 9   
-
-00D9 900000      R     MOV     DPTR,#result
-00DC 744E              MOV     A,#04EH
-00DE F0                MOVX    @DPTR,A
+00AD 900000      R     MOV     DPTR,#result
+00B0 E0                MOVX    A,@DPTR
+00B1 FF                MOV     R7,A
                                            ; SOURCE LINE # 96
-00DF         ?C0015:
-                                           ; SOURCE LINE # 98
-00DF 900000      R     MOV     DPTR,#result
-00E2 E0                MOVX    A,@DPTR
-00E3 FF                MOV     R7,A
-                                           ; SOURCE LINE # 99
-00E4         ?C0016:
-00E4 22                RET     
+00B2         ?C0016:
+00B2 22                RET     
              ; FUNCTION _retrieve (END)
 
              ; FUNCTION apply_setting (BEGIN)
-                                           ; SOURCE LINE # 101
-                                           ; SOURCE LINE # 103
+                                           ; SOURCE LINE # 98
+                                           ; SOURCE LINE # 100
 0000 900000      R     MOV     DPTR,#instruction+01H
 0003 E0                MOVX    A,@DPTR
 0004 FE                MOV     R6,A
@@ -501,25 +464,27 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000E E0                MOVX    A,@DPTR
 000F FD                MOV     R5,A
 0010 120000      E     LCALL   _update_variable
-                                           ; SOURCE LINE # 106
+                                           ; SOURCE LINE # 103
 0013         ?C0017:
+C51 COMPILER V9.51   USB_ACCESS                                                            03/27/2014 17:43:46 PAGE 9   
+
 0013 22                RET     
              ; FUNCTION apply_setting (END)
 
              ; FUNCTION dump_data (BEGIN)
-                                           ; SOURCE LINE # 108
-                                           ; SOURCE LINE # 112
+                                           ; SOURCE LINE # 105
+                                           ; SOURCE LINE # 109
 0000         ?C0018:
 0000 22                RET     
              ; FUNCTION dump_data (END)
 
              ; FUNCTION _send_reply (BEGIN)
-                                           ; SOURCE LINE # 114
+                                           ; SOURCE LINE # 111
 0000 900000      R     MOV     DPTR,#message
 0003 EF                MOV     A,R7
 0004 F0                MOVX    @DPTR,A
 0005         ?C0019:
-                                           ; SOURCE LINE # 116
+                                           ; SOURCE LINE # 113
 0005 120000      E     LCALL   USBUART_CDCIsReady
 0008 EF                MOV     A,R7
 0009 7006              JNZ     ?C0020
@@ -527,34 +492,32 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000E EF                MOV     A,R7
 000F 70F4              JNZ     ?C0019
 0011         ?C0020:
-                                           ; SOURCE LINE # 118
+                                           ; SOURCE LINE # 115
 0011 120000      E     LCALL   Vbus_Read
 0014 EF                MOV     A,R7
 0015 600D              JZ      ?C0022
-                                           ; SOURCE LINE # 119
+                                           ; SOURCE LINE # 116
 0017 7B01              MOV     R3,#01H
-C51 COMPILER V9.51   USB_ACCESS                                                            03/26/2014 23:00:13 PAGE 10  
-
 0019 7A00        R     MOV     R2,#HIGH message
 001B 7900        R     MOV     R1,#LOW message
 001D 7D01              MOV     R5,#01H
 001F 7C00              MOV     R4,#00H
 0021 120000      E     LCALL   _USBUART_PutData
+                                           ; SOURCE LINE # 117
                                            ; SOURCE LINE # 120
-                                           ; SOURCE LINE # 123
 0024         ?C0022:
 0024 22                RET     
              ; FUNCTION _send_reply (END)
 
              ; FUNCTION USB_Close (BEGIN)
-                                           ; SOURCE LINE # 126
-                                           ; SOURCE LINE # 128
+                                           ; SOURCE LINE # 123
+                                           ; SOURCE LINE # 125
 0000 120000      E     LCALL   EEPROM_R_Stop
-                                           ; SOURCE LINE # 129
+                                           ; SOURCE LINE # 126
 0003 120000      E     LCALL   USBUART_Stop
-                                           ; SOURCE LINE # 130
+                                           ; SOURCE LINE # 127
 0006 120000      E     LCALL   CySoftwareReset
-                                           ; SOURCE LINE # 133
+                                           ; SOURCE LINE # 130
 0009         ?C0023:
 0009 22                RET     
              ; FUNCTION USB_Close (END)
@@ -562,11 +525,13 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    550    ----
+   CODE SIZE        =    473    ----
    CONSTANT SIZE    =      5    ----
-   XDATA SIZE       =   ----      87
+   XDATA SIZE       =   ----      84
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
+C51 COMPILER V9.51   USB_ACCESS                                                            03/27/2014 17:43:46 PAGE 10  
+
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
    EDATA SIZE       =   ----    ----

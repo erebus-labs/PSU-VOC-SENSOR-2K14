@@ -14,9 +14,10 @@
 #include "main.h"
 
 
-void main()
+int main()
 {
     /* Initialization*/
+    uint16 blink_rate = 0;
     
     // Variable declarations
 
@@ -31,14 +32,17 @@ void main()
 //    Blink_Timer_WritePeriod(CYDEV_EE_BASE[EEPROM_Address.blink_rate]);
     
     // Start LED Blinking
-    Blink_Timer_Start();   
-
+    
+    Blink_Timer_Start();  
+    blink_rate = get_variable(BLINK_RATE);
+    Blink_Timer_WritePeriod(blink_rate);
+    
     for(;;)
     {
  
     }
     
-    return;
+    return (0);
 }
 
 /* [] END OF FILE */

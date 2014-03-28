@@ -14,24 +14,26 @@
 
 void update_variable(uint16 index, uint16 value){
     uint8* buffer;
-    double rows_used = 0;
+    float rows_used = 0;
     uint16 remainder = 0;
-    uint8* src_ptr = EE_ADDR;
+    uint8* src_ptr;
     uint8* dst_ptr;
     uint8 i = 0; // loop var
     cystatus status;
     
+    float bytes_used = EEPROM_BYTES_USED;
+    
     // Allocate array to hold EEPROM variables
-    rows_used = ceil(EEPROM_BYTES_USED/16);
-    buffer = malloc(rows_used * 16);
+    
+    rows_used = ceil(bytes_used/16);
+    buffer = malloc(((uint16) rows_used) * 16);
     dst_ptr = buffer;
     remainder = (rows_used * 16) - EEPROM_BYTES_USED;
     
     // Copy all variables into RAM
     for (i=0; i<EEPROM_BYTES_USED; ++i){
-        *dst_ptr = *src_ptr;
+        *dst_ptr = CY_GET_REG8(CYDEV_EE_BASE + i);
         ++dst_ptr;
-        ++src_ptr;        
     }
     
     // Fill remainder of buffer with zeros
@@ -60,6 +62,15 @@ void update_variable(uint16 index, uint16 value){
     free(buffer);
     
     return;   
+}
+
+uint16 get_variable(uint16 var_index){
+    uint16 value = 10;
+        
+    value = ((uint16) CY_GET_REG8(CYDEV_EE_BASE + var_index)) << 8;
+    value = value | CY_GET_REG8(CYDEV_EE_BASE + var_index + 1);
+    
+    return value;
 }
 
 

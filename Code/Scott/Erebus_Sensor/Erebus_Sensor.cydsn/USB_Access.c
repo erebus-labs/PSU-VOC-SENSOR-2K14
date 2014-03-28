@@ -17,14 +17,10 @@ void USB_ISR(){
     
     // Power has just been applied to the Vbus pin, so we enter USB communication mode
 
-    uint8 buffer[BUFFER_LEN];
     uint8 result = 0;
     command instruction = {0,0,0};
     
     uint8 temp = 0xFF;
-  
-    // Start EEPROM
-    EEPROM_R_Start();
         
     /* Start USBFS Operation with 5V operation */
     USBUART_Start(0u, USBUART_5V_OPERATION);
@@ -39,7 +35,7 @@ void USB_ISR(){
     {    
         temp = USBUART_DataIsReady();
         if(temp != 0u){   /* Check for input data from PC */
-            result = retrieve(buffer, &instruction);
+            result = retrieve(&instruction);
         
             if (result == SUCCESS){
                 
@@ -74,7 +70,8 @@ void USB_ISR(){
     return;
 }
 
-uint8 retrieve(uint8* buffer, command* instruction){
+uint8 retrieve(command* instruction){
+    uint8 buffer[BUFFER_LEN];
     uint16 count = 0;
     uint8 attempts = 0;
     uint8 result = SUCCESS;
@@ -84,10 +81,10 @@ uint8 retrieve(uint8* buffer, command* instruction){
     // If data in buffer is the right amount for a command,
     // retrieve it
     if(count == COMMAND_LENGTH){
-        USBUART_GetData(buffer, COMMAND_LENGTH);
+        USBUART_GetAll(buffer);
         instruction -> command = buffer[0];
-        instruction -> target = buffer[1] & (buffer[2] << 0x8);
-        instruction -> value = buffer[3] & (buffer[4] << 0x8);
+        instruction -> target = (((uint16) buffer[1]) << 0x8) | buffer[2];
+        instruction -> value = (((uint16) buffer[3]) << 0x8) | buffer[4];
     }
     // Otherwise, flush the USB buffer and report fail
     else{

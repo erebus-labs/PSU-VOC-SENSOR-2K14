@@ -94,6 +94,48 @@
 <file name=".\EEPROM_Access.h" />
 <file name=".\USB_Access.c" />
 <file name=".\USB_Access.h" />
+<file name=".\DP8051\DP8051_Keil_951\Debug\EEPROM_Access.obj">
+<dep name=".\Generated_Source\PSoC3\Blink_Timer.h" />
+<dep name=".\Generated_Source\PSoC3\CyDmac.h" />
+<dep name=".\Generated_Source\PSoC3\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC3\CyLib.h" />
+<dep name=".\Generated_Source\PSoC3\CySpc.h" />
+<dep name=".\Generated_Source\PSoC3\EEPROM_LED.h" />
+<dep name=".\Generated_Source\PSoC3\EEPROM_LED_aliases.h" />
+<dep name=".\Generated_Source\PSoC3\EEPROM_R.h" />
+<dep name=".\Generated_Source\PSoC3\LED.h" />
+<dep name=".\Generated_Source\PSoC3\LED_aliases.h" />
+<dep name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
+<dep name=".\Generated_Source\PSoC3\Project.h" />
+<dep name=".\Generated_Source\PSoC3\USBUART.h" />
+<dep name=".\Generated_Source\PSoC3\USBUART_Dm.h" />
+<dep name=".\Generated_Source\PSoC3\USBUART_Dm_aliases.h" />
+<dep name=".\Generated_Source\PSoC3\USBUART_Dp.h" />
+<dep name=".\Generated_Source\PSoC3\USBUART_Dp_aliases.h" />
+<dep name=".\Generated_Source\PSoC3\USBUART_audio.h" />
+<dep name=".\Generated_Source\PSoC3\USBUART_cdc.h" />
+<dep name=".\Generated_Source\PSoC3\USBUART_hid.h" />
+<dep name=".\Generated_Source\PSoC3\USBUART_midi.h" />
+<dep name=".\Generated_Source\PSoC3\USBUART_pvt.h" />
+<dep name=".\Generated_Source\PSoC3\USB_LED.h" />
+<dep name=".\Generated_Source\PSoC3\USB_LED_aliases.h" />
+<dep name=".\Generated_Source\PSoC3\Vbus.h" />
+<dep name=".\Generated_Source\PSoC3\Vbus_IRQ.h" />
+<dep name=".\Generated_Source\PSoC3\Vbus_aliases.h" />
+<dep name=".\Generated_Source\PSoC3\cyPm.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC3\cydisabledsheets.h" />
+<dep name=".\Generated_Source\PSoC3\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC3\cyfitter_cfg.h" />
+<dep name=".\Generated_Source\PSoC3\cypins.h" />
+<dep name=".\Generated_Source\PSoC3\cytypes.h" />
+<dep name=".\Generated_Source\PSoC3\debounce_clock.h" />
+<dep name=".\Generated_Source\PSoC3\timer_clock.h" />
+<dep name=".\EEPROM_Access.c" />
+<dep name=".\EEPROM_Access.h" />
+</file>
+<file name=".\EEPROM_Access.c" />
 <file name=".\DP8051\DP8051_Keil_951\Debug\Vbus_IRQ.obj">
 <dep name=".\Generated_Source\PSoC3\Blink_Timer.h" />
 <dep name=".\Generated_Source\PSoC3\CyDmac.h" />
@@ -137,48 +179,6 @@
 <dep name=".\USB_Access.h" />
 </file>
 <file name=".\Generated_Source\PSoC3\Vbus_IRQ.c" />
-<file name=".\DP8051\DP8051_Keil_951\Debug\EEPROM_Access.obj">
-<dep name=".\Generated_Source\PSoC3\Blink_Timer.h" />
-<dep name=".\Generated_Source\PSoC3\CyDmac.h" />
-<dep name=".\Generated_Source\PSoC3\CyFlash.h" />
-<dep name=".\Generated_Source\PSoC3\CyLib.h" />
-<dep name=".\Generated_Source\PSoC3\CySpc.h" />
-<dep name=".\Generated_Source\PSoC3\EEPROM_LED.h" />
-<dep name=".\Generated_Source\PSoC3\EEPROM_LED_aliases.h" />
-<dep name=".\Generated_Source\PSoC3\EEPROM_R.h" />
-<dep name=".\Generated_Source\PSoC3\LED.h" />
-<dep name=".\Generated_Source\PSoC3\LED_aliases.h" />
-<dep name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
-<dep name=".\Generated_Source\PSoC3\Project.h" />
-<dep name=".\Generated_Source\PSoC3\USBUART.h" />
-<dep name=".\Generated_Source\PSoC3\USBUART_Dm.h" />
-<dep name=".\Generated_Source\PSoC3\USBUART_Dm_aliases.h" />
-<dep name=".\Generated_Source\PSoC3\USBUART_Dp.h" />
-<dep name=".\Generated_Source\PSoC3\USBUART_Dp_aliases.h" />
-<dep name=".\Generated_Source\PSoC3\USBUART_audio.h" />
-<dep name=".\Generated_Source\PSoC3\USBUART_cdc.h" />
-<dep name=".\Generated_Source\PSoC3\USBUART_hid.h" />
-<dep name=".\Generated_Source\PSoC3\USBUART_midi.h" />
-<dep name=".\Generated_Source\PSoC3\USBUART_pvt.h" />
-<dep name=".\Generated_Source\PSoC3\USB_LED.h" />
-<dep name=".\Generated_Source\PSoC3\USB_LED_aliases.h" />
-<dep name=".\Generated_Source\PSoC3\Vbus.h" />
-<dep name=".\Generated_Source\PSoC3\Vbus_IRQ.h" />
-<dep name=".\Generated_Source\PSoC3\Vbus_aliases.h" />
-<dep name=".\Generated_Source\PSoC3\cyPm.h" />
-<dep name=".\Generated_Source\PSoC3\cydevice.h" />
-<dep name=".\Generated_Source\PSoC3\cydevice_trm.h" />
-<dep name=".\Generated_Source\PSoC3\cydisabledsheets.h" />
-<dep name=".\Generated_Source\PSoC3\cyfitter.h" />
-<dep name=".\Generated_Source\PSoC3\cyfitter_cfg.h" />
-<dep name=".\Generated_Source\PSoC3\cypins.h" />
-<dep name=".\Generated_Source\PSoC3\cytypes.h" />
-<dep name=".\Generated_Source\PSoC3\debounce_clock.h" />
-<dep name=".\Generated_Source\PSoC3\timer_clock.h" />
-<dep name=".\EEPROM_Access.c" />
-<dep name=".\EEPROM_Access.h" />
-</file>
-<file name=".\EEPROM_Access.c" />
 <file name=".\DP8051\DP8051_Keil_951\Debug\main.obj">
 <dep name=".\Generated_Source\PSoC3\Blink_Timer.h" />
 <dep name=".\Generated_Source\PSoC3\CyDmac.h" />
@@ -1420,6 +1420,7 @@
 <v>Cypress Component Catalog\System</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
+<v>Cypress Component Catalog\System\Boost Converter [v5.0]</v>
 <v>Cypress Component Catalog\System\Bootloadable [v1.20]</v>
 <v>Cypress Component Catalog\System\Bootloader [v1.20]</v>
 <v>Cypress Component Catalog\System\Clock [v2.10]</v>
@@ -1433,7 +1434,6 @@
 <v>Cypress Component Catalog\System\Interrupt [v1.70]</v>
 <v>Cypress Component Catalog\System\RTC [v2.0]</v>
 <v>Cypress Component Catalog\System\SleepTimer [v3.20]</v>
-<v>Cypress Component Catalog\Thermal Management</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Off-Chip Component Catalog\Sensors">
@@ -2140,14 +2140,14 @@
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\cy_psoc3_inc.v</v>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\stdlogic\rtlpkg.vif</v>
 </warp_dep>
-<deps_time v="130403558531326797" />
+<deps_time v="130404298980412052" />
 <top_block v="TopDesign" />
 <last_generation v="0" />
 </CyGuid_925cc1e1-309e-4e08-b0a1-09a83c35b157>
 </dataGuid>
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
-<deps_time v="130403736152902332" />
+<deps_time v="130404410291133160" />
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
 </dataGuid>
 <dataGuid v="bf610382-39c6-441f-80b8-b04622ea7845">
@@ -2158,7 +2158,12 @@
 <dataGuid v="504337dd-7d07-4bc7-9057-90e60cf6c469">
 <CyGuid_504337dd-7d07-4bc7-9057-90e60cf6c469 type_name="CyDesigner.Common.Debugger.CyBreakpointList" version="1">
 <debugger_breakpoint_list>
-<CyGuid_76464711-0ae1-4583-b869-f07a0403fc6e type_name="CyDesigner.Common.Debugger.CyFileLineBreakpoint" version="1" hitcount="0" condition="" enabled="True" hardware="True" temparary="False" filename=".\USB_Access.c" linenumber="38" />
+<CyGuid_76464711-0ae1-4583-b869-f07a0403fc6e type_name="CyDesigner.Common.Debugger.CyFileLineBreakpoint" version="1" hitcount="0" condition="" enabled="True" hardware="True" temparary="False" filename=".\main.c" linenumber="20" />
+<CyGuid_76464711-0ae1-4583-b869-f07a0403fc6e type_name="CyDesigner.Common.Debugger.CyFileLineBreakpoint" version="1" hitcount="0" condition="" enabled="True" hardware="True" temparary="False" filename=".\USB_Access.c" linenumber="95" />
+<CyGuid_76464711-0ae1-4583-b869-f07a0403fc6e type_name="CyDesigner.Common.Debugger.CyFileLineBreakpoint" version="1" hitcount="0" condition="" enabled="True" hardware="True" temparary="False" filename=".\EEPROM_Access.c" linenumber="28" />
+<CyGuid_76464711-0ae1-4583-b869-f07a0403fc6e type_name="CyDesigner.Common.Debugger.CyFileLineBreakpoint" version="1" hitcount="0" condition="" enabled="True" hardware="True" temparary="False" filename=".\EEPROM_Access.c" linenumber="50" />
+<CyGuid_76464711-0ae1-4583-b869-f07a0403fc6e type_name="CyDesigner.Common.Debugger.CyFileLineBreakpoint" version="1" hitcount="0" condition="" enabled="True" hardware="True" temparary="False" filename=".\EEPROM_Access.c" linenumber="34" />
+<CyGuid_76464711-0ae1-4583-b869-f07a0403fc6e type_name="CyDesigner.Common.Debugger.CyFileLineBreakpoint" version="1" hitcount="0" condition="" enabled="True" hardware="True" temparary="False" filename=".\EEPROM_Access.c" linenumber="62" />
 </debugger_breakpoint_list>
 </CyGuid_504337dd-7d07-4bc7-9057-90e60cf6c469>
 </dataGuid>

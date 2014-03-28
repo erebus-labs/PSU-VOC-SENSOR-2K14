@@ -46,7 +46,7 @@
     
     // Function Prototypes
     void USB_ISR();
-    uint8 retrieve(uint8* buffer, command* instruction);
+    uint8 retrieve(command* instruction);
     void apply_setting(command instruction);
     void dump_data();
     void send_reply(uint8 buffer);

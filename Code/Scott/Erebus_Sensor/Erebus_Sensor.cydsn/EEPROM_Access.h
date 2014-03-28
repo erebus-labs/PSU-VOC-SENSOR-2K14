@@ -33,15 +33,15 @@
     
     // The index and size of each user variable are defined here
     
-    #define BLINK_RATE_INDEX    0x0000
+    #define BLINK_RATE    0x0000
     
     // EEPROM_BYTES_USED is boring for now - as more variables are
     // added, it will be calculated based on previous macros
-    #define EEPROM_BYTES_USED BLINK_RATE_INDEX + 2
+    #define EEPROM_BYTES_USED BLINK_RATE + 2
 
     // Function Prototypes
     
-    uint8* get_variable(uint16 index, uint8 size);
+    uint16 get_variable(uint16 index);
     void update_variable(uint16 index, uint16 value);
     
 
