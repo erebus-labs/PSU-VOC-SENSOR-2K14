@@ -1,5 +1,5 @@
 # Erebus_Sensor
-# 2014-03-27 04:42:26Z
+# 2014-03-28 00:48:09Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -14,9 +14,9 @@ set_location "Net_14" 3 1 0 3
 set_location "Net_408" 3 1 0 0
 set_location "Net_556" 3 1 0 2
 set_location "Net_65" 3 1 1 0
-set_io "Potentiometer(0)" iocell 6 5
 set_io "SW_3(0)" iocell 15 5
 set_location "SW_3(0)_SYNC" 3 1 5 1
+set_io "Sensor_VIn(0)" iocell 0 7
 set_location "TakeSample_IRQ" interrupt -1 -1 0
 set_io "USB_LED(0)" iocell 0 1
 set_io "Vbus(0)" iocell 6 0

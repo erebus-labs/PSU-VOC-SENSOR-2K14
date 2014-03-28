@@ -734,21 +734,6 @@
               <FilePath>.\Generated_Source\PSoC3\Em_EEPROM.h</FilePath>
             </File>
             <File>
-              <FileName>Potentiometer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Potentiometer.c</FilePath>
-            </File>
-            <File>
-              <FileName>Potentiometer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Potentiometer.h</FilePath>
-            </File>
-            <File>
-              <FileName>Potentiometer_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Potentiometer_aliases.h</FilePath>
-            </File>
-            <File>
               <FileName>ADC.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\ADC.c</FilePath>
@@ -832,6 +817,21 @@
               <FileName>ADC_theACLK.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\ADC_theACLK.h</FilePath>
+            </File>
+            <File>
+              <FileName>Sensor_VIn.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Sensor_VIn.c</FilePath>
+            </File>
+            <File>
+              <FileName>Sensor_VIn.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Sensor_VIn.h</FilePath>
+            </File>
+            <File>
+              <FileName>Sensor_VIn_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Sensor_VIn_aliases.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1569,21 +1569,6 @@
               <FilePath>.\Generated_Source\PSoC3\Em_EEPROM.h</FilePath>
             </File>
             <File>
-              <FileName>Potentiometer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Potentiometer.c</FilePath>
-            </File>
-            <File>
-              <FileName>Potentiometer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Potentiometer.h</FilePath>
-            </File>
-            <File>
-              <FileName>Potentiometer_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Potentiometer_aliases.h</FilePath>
-            </File>
-            <File>
               <FileName>ADC.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\ADC.c</FilePath>
@@ -1667,6 +1652,21 @@
               <FileName>ADC_theACLK.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\ADC_theACLK.h</FilePath>
+            </File>
+            <File>
+              <FileName>Sensor_VIn.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Sensor_VIn.c</FilePath>
+            </File>
+            <File>
+              <FileName>Sensor_VIn.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Sensor_VIn.h</FilePath>
+            </File>
+            <File>
+              <FileName>Sensor_VIn_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Sensor_VIn_aliases.h</FilePath>
             </File>
           </Files>
         </Group>

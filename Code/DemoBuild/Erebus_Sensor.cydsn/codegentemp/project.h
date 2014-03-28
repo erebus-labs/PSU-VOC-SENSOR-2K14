@@ -39,8 +39,8 @@
 #include <EEPROM_LED.h>
 #include <EEPROM_LED_aliases.h>
 #include <Em_EEPROM.h>
-#include <Potentiometer.h>
-#include <Potentiometer_aliases.h>
+#include <Sensor_VIn.h>
+#include <Sensor_VIn_aliases.h>
 #include <ADC.h>
 #include <TakeSample_IRQ.h>
 #include <SW_3.h>

@@ -12,6 +12,7 @@
 #include <project.h>
 
 // Emulated EEPROM/FLASH
+#define EmEEPROMSize 1024 
 extern const uint8 CYCODE MemoryLocation[];
-extern volatile const uint8 * TailPtr;
+extern volatile uint8* TailPtr;
 /* [] END OF FILE */

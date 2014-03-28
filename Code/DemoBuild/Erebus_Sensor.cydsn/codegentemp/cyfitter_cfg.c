@@ -200,8 +200,8 @@ static void AnalogSetDefault(void)
 	uint8 bg_xover_inl_trim = CY_GET_XTND_REG8((void CYFAR *)(CYREG_FLSHID_MFG_CFG_BG_XOVER_INL_TRIM + 1u));
 	CY_SET_REG8((void CYXDATA *)(CYREG_BG_DFT0), (bg_xover_inl_trim & 0x07u));
 	CY_SET_REG8((void CYXDATA *)(CYREG_BG_DFT1), ((bg_xover_inl_trim >> 4) & 0x0Fu));
-	CY_SET_REG8((void CYXDATA *)CYREG_PRT6_AG, 0x20u);
-	CY_SET_REG8((void CYXDATA *)CYREG_DSM0_SW0, 0x02u);
+	CY_SET_REG8((void CYXDATA *)CYREG_PRT0_AG, 0x80u);
+	CY_SET_REG8((void CYXDATA *)CYREG_DSM0_SW0, 0x80u);
 	CY_SET_REG8((void CYXDATA *)CYREG_PUMP_CR0, 0x44u);
 }
 

@@ -25,8 +25,8 @@
 *  Place your includes, defines and code here 
 ********************************************************************************/
 /* `#START TakeSample_IRQ_intc` */
-#include <project.h>
-#include <EmEEPROM_Access.h>
+#include "project.h"
+#include "EmEEPROM_Access.h"
 /* `#END` */
 
 
@@ -131,8 +131,10 @@ CY_ISR(TakeSample_IRQ_Interrupt)
 {
     /*  Place your Interrupt code here. */
     /* `#START TakeSample_IRQ_Interrupt` */
-     
     uint16 SampledData=0; 
+    
+    Em_EEPROM_Start(); 
+    ADC_Start();
     
     /* ADC */
     SampledData = ADC_Read16(); /* Function Starts, Converts, Stops, and Returns from ADC */

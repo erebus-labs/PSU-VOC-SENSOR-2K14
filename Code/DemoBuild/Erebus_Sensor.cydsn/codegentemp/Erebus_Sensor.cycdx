@@ -4,7 +4,7 @@
   <block name="Em_EEPROM" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="Vbus_Debounce" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="USB_LED" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="Potentiometer" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Sensor_VIn" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="SW_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="not_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="ADC" BASE="0x0" SIZE="0x0" desc="" visible="true">

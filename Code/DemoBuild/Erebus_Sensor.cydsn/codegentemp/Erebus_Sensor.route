@@ -220,13 +220,13 @@ net Net_408
 	switch ":interrupt_idmux_1.interrupt_idmux_1__out==>:interrupt_1.interrupt"
 	term   ":interrupt_1.interrupt"
 end Net_408
-net Net_560
+net Net_566
 	term   ":decimatorcell.interrupt"
 	switch ":decimatorcell.interrupt==>Stub-:dsiswitch_bottom@[DSI=(1,2)][side=bottom]:dsihc_bottom:v20+:dsiswitch_bottom@[DSI=(1,2)][side=bottom]:dsihc_bottom:v22"
 	switch "Stub-:dsiswitch_bottom@[DSI=(1,2)][side=bottom]:dsihc_bottom:v20+:dsiswitch_bottom@[DSI=(1,2)][side=bottom]:dsihc_bottom:v22==>:interrupt_idmux_29.in_0"
 	switch ":interrupt_idmux_29.interrupt_idmux_29__out==>:interrupt_29.interrupt"
 	term   ":interrupt_29.interrupt"
-end Net_560
+end Net_566
 net Net_65
 	term   ":udb@[UDB=(3,1)]:pld1:mc0.q"
 	switch ":udb@[UDB=(3,1)]:pld1:mc0.q==>:udb@[UDB=(3,1)]:pld1:output_permute0.q_0"

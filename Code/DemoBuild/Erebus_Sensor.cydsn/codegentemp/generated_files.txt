@@ -58,9 +58,9 @@
   <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\MASTER\Erebus_Sensor.cydsn\codegentemp\EEPROM_LED_aliases.h" value="NONE;EEPROM_LED" />
   <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\MASTER\Erebus_Sensor.cydsn\codegentemp\Em_EEPROM.c" value="DP8051_C_FILE;Em_EEPROM" />
   <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\MASTER\Erebus_Sensor.cydsn\codegentemp\Em_EEPROM.h" value="NONE;Em_EEPROM" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\MASTER\Erebus_Sensor.cydsn\codegentemp\Potentiometer.c" value="DP8051_C_FILE;Potentiometer" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\MASTER\Erebus_Sensor.cydsn\codegentemp\Potentiometer.h" value="NONE;Potentiometer" />
-  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\MASTER\Erebus_Sensor.cydsn\codegentemp\Potentiometer_aliases.h" value="NONE;Potentiometer" />
+  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\MASTER\Erebus_Sensor.cydsn\codegentemp\Sensor_VIn.c" value="DP8051_C_FILE;Sensor_VIn" />
+  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\MASTER\Erebus_Sensor.cydsn\codegentemp\Sensor_VIn.h" value="NONE;Sensor_VIn" />
+  <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\MASTER\Erebus_Sensor.cydsn\codegentemp\Sensor_VIn_aliases.h" value="NONE;Sensor_VIn" />
   <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\MASTER\Erebus_Sensor.cydsn\codegentemp\ADC.c" value="DP8051_C_FILE;ADC" />
   <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\MASTER\Erebus_Sensor.cydsn\codegentemp\ADC.h" value="NONE;ADC" />
   <file name="C:\Users\maxwell18\Desktop\Capstone work\Project Work\MASTER\Erebus_Sensor.cydsn\codegentemp\ADC_PM.c" value="DP8051_C_FILE;ADC" />

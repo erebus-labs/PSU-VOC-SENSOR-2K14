@@ -13,10 +13,10 @@
 #include <stdlib.h>
 #include "main.h"
 
-#define EmEEPROMSize 1024 
+
 
 const uint8 CYCODE MemoryLocation[EmEEPROMSize]; // Errors caused by the include of main.h which includes the externs and static
-volatile const uint8 * TailPtr = MemoryLocation;
+volatile uint8* TailPtr =(uint8*) MemoryLocation;
 
 void main()
 {
@@ -27,10 +27,7 @@ void main()
     
     // Enable and start EEPROM
     EEPROM_R_Start();
-    
-    Em_EEPROM_Start();
-    ADC_Start();
-    
+         
     // Enable global interrupts
     CyGlobalIntEnable;
     Vbus_IRQ_Start();

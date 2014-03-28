@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/26/2014 21:46:21 PAGE 1   
+C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/27/2014 17:48:20 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE TAKESAMPLE_IRQ
@@ -37,8 +37,8 @@ line level    source
   25          *  Place your includes, defines and code here 
   26          ********************************************************************************/
   27          /* `#START TakeSample_IRQ_intc` */
-  28          #include <project.h>
-  29          #include <EmEEPROM_Access.h>
+  28          #include "project.h"
+  29          #include "EmEEPROM_Access.h"
   30          /* `#END` */
   31          
   32          
@@ -62,7 +62,7 @@ line level    source
   50   1          TakeSample_IRQ_Disable();
   51   1      
   52   1          /* Set the ISR to point to the TakeSample_IRQ Interrupt. */
-C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/26/2014 21:46:21 PAGE 2   
+C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/27/2014 17:48:20 PAGE 2   
 
   53   1          TakeSample_IRQ_SetVector(&TakeSample_IRQ_Interrupt);
   54   1      
@@ -126,7 +126,7 @@ line level    source
  112          
  113          
  114          /*******************************************************************************
-C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/26/2014 21:46:21 PAGE 3   
+C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/27/2014 17:48:20 PAGE 3   
 
  115          * Function Name: TakeSample_IRQ_Interrupt
  116          ********************************************************************************
@@ -147,246 +147,248 @@ line level    source
  131          {
  132   1          /*  Place your Interrupt code here. */
  133   1          /* `#START TakeSample_IRQ_Interrupt` */
- 134   1           
- 135   1          uint16 SampledData=0; 
- 136   1          
- 137   1          /* ADC */
- 138   1          SampledData = ADC_Read16(); /* Function Starts, Converts, Stops, and Returns from ADC */
- 139   1          if (SampledData & 0x8000)
- 140   1              {
- 141   2              SampledData = 0;        /* Ignore negative ADC results */
- 142   2              }
- 143   1              else if (SampledData >= 0xfff)
- 144   1              {
- 145   2              SampledData = 0xfff;    /* Ignore high ADC results */
- 146   2          }
- 147   1          
- 148   1          
- 149   1          /* EEP */
- 150   1          Em_EEPROM_Write(&SampledData,TailPtr,2u);
-*** WARNING C182 IN LINE 150 OF .\Generated_Source\PSoC3\TakeSample_IRQ.c: pointer to different objects
- 151   1          
- 152   1          TailPtr = TailPtr + 2; 
- 153   1      
- 154   1          /* `#END` */
+ 134   1          uint16 SampledData=0; 
+ 135   1          
+ 136   1          Em_EEPROM_Start(); 
+ 137   1          ADC_Start();
+ 138   1          
+ 139   1          /* ADC */
+ 140   1          SampledData = ADC_Read16(); /* Function Starts, Converts, Stops, and Returns from ADC */
+ 141   1          if (SampledData & 0x8000)
+ 142   1              {
+ 143   2              SampledData = 0;        /* Ignore negative ADC results */
+ 144   2              }
+ 145   1              else if (SampledData >= 0xfff)
+ 146   1              {
+ 147   2              SampledData = 0xfff;    /* Ignore high ADC results */
+ 148   2          }
+ 149   1          
+ 150   1          
+ 151   1          /* EEP */
+ 152   1          Em_EEPROM_Write(&SampledData,TailPtr,2u);
+*** WARNING C182 IN LINE 152 OF .\Generated_Source\PSoC3\TakeSample_IRQ.c: pointer to different objects
+ 153   1          
+ 154   1          TailPtr = TailPtr + 2; 
  155   1      
- 156   1          /* PSoC3 ES1, ES2 RTC ISR PATCH  */ 
- 157   1          #if(CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3)
- 158   1              #if((CYDEV_CHIP_REVISION_USED <= CYDEV_CHIP_REVISION_3A_ES2) && (TakeSample_IRQ__ES2_PATCH ))     
+ 156   1          /* `#END` */
+ 157   1      
+ 158   1          /* PSoC3 ES1, ES2 RTC ISR PATCH  */ 
+ 159   1          #if(CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3)
+ 160   1              #if((CYDEV_CHIP_REVISION_USED <= CYDEV_CHIP_REVISION_3A_ES2) && (TakeSample_IRQ__ES2_PATCH ))     
              - 
                           TakeSample_IRQ_ISR_PATCH();
                       #endif /* CYDEV_CHIP_REVISION_USED */
- 161   1          #endif /* (CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3) */
- 162   1      }
- 163          
- 164          
- 165          /*******************************************************************************
- 166          * Function Name: TakeSample_IRQ_SetVector
- 167          ********************************************************************************
- 168          *
- 169          * Summary:
- 170          *   Change the ISR vector for the Interrupt. Note calling TakeSample_IRQ_Start
- 171          *   will override any effect this method would have had. To set the vector 
- 172          *   before the component has been started use TakeSample_IRQ_StartEx instead.
- 173          *
- 174          * Parameters:
-C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/26/2014 21:46:21 PAGE 4   
+ 163   1          #endif /* (CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3) */
+ 164   1      }
+ 165          
+ 166          
+ 167          /*******************************************************************************
+ 168          * Function Name: TakeSample_IRQ_SetVector
+ 169          ********************************************************************************
+ 170          *
+ 171          * Summary:
+ 172          *   Change the ISR vector for the Interrupt. Note calling TakeSample_IRQ_Start
+ 173          *   will override any effect this method would have had. To set the vector 
+ 174          *   before the component has been started use TakeSample_IRQ_StartEx instead.
+C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/27/2014 17:48:20 PAGE 4   
 
- 175          *   address: Address of the ISR to set in the interrupt vector table.
- 176          *
- 177          * Return:
- 178          *   None
- 179          *
- 180          *******************************************************************************/
- 181          void TakeSample_IRQ_SetVector(cyisraddress address) 
- 182          {
- 183   1          CY_SET_REG16(TakeSample_IRQ_INTC_VECTOR, (uint16) address);
- 184   1      }
- 185          
- 186          
- 187          /*******************************************************************************
- 188          * Function Name: TakeSample_IRQ_GetVector
- 189          ********************************************************************************
- 190          *
- 191          * Summary:
- 192          *   Gets the "address" of the current ISR vector for the Interrupt.
- 193          *
- 194          * Parameters:
- 195          *   None
- 196          *
- 197          * Return:
- 198          *   Address of the ISR in the interrupt vector table.
- 199          *
- 200          *******************************************************************************/
- 201          cyisraddress TakeSample_IRQ_GetVector(void) 
- 202          {
- 203   1          return (cyisraddress) CY_GET_REG16(TakeSample_IRQ_INTC_VECTOR);
- 204   1      }
- 205          
- 206          
- 207          /*******************************************************************************
- 208          * Function Name: TakeSample_IRQ_SetPriority
- 209          ********************************************************************************
- 210          *
- 211          * Summary:
- 212          *   Sets the Priority of the Interrupt. Note calling TakeSample_IRQ_Start
- 213          *   or TakeSample_IRQ_StartEx will override any effect this method would 
- 214          *   have had. This method should only be called after TakeSample_IRQ_Start or 
- 215          *   TakeSample_IRQ_StartEx has been called. To set the initial
- 216          *   priority for the component use the cydwr file in the tool.
- 217          *
- 218          * Parameters:
- 219          *   priority: Priority of the interrupt. 0 - 7, 0 being the highest.
- 220          *
- 221          * Return:
- 222          *   None
- 223          *
- 224          *******************************************************************************/
- 225          void TakeSample_IRQ_SetPriority(uint8 priority) 
- 226          {
- 227   1          *TakeSample_IRQ_INTC_PRIOR = priority << 5;
- 228   1      }
- 229          
- 230          
- 231          /*******************************************************************************
- 232          * Function Name: TakeSample_IRQ_GetPriority
- 233          ********************************************************************************
- 234          *
- 235          * Summary:
- 236          *   Gets the Priority of the Interrupt.
-C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/26/2014 21:46:21 PAGE 5   
+ 175          *
+ 176          * Parameters:
+ 177          *   address: Address of the ISR to set in the interrupt vector table.
+ 178          *
+ 179          * Return:
+ 180          *   None
+ 181          *
+ 182          *******************************************************************************/
+ 183          void TakeSample_IRQ_SetVector(cyisraddress address) 
+ 184          {
+ 185   1          CY_SET_REG16(TakeSample_IRQ_INTC_VECTOR, (uint16) address);
+ 186   1      }
+ 187          
+ 188          
+ 189          /*******************************************************************************
+ 190          * Function Name: TakeSample_IRQ_GetVector
+ 191          ********************************************************************************
+ 192          *
+ 193          * Summary:
+ 194          *   Gets the "address" of the current ISR vector for the Interrupt.
+ 195          *
+ 196          * Parameters:
+ 197          *   None
+ 198          *
+ 199          * Return:
+ 200          *   Address of the ISR in the interrupt vector table.
+ 201          *
+ 202          *******************************************************************************/
+ 203          cyisraddress TakeSample_IRQ_GetVector(void) 
+ 204          {
+ 205   1          return (cyisraddress) CY_GET_REG16(TakeSample_IRQ_INTC_VECTOR);
+ 206   1      }
+ 207          
+ 208          
+ 209          /*******************************************************************************
+ 210          * Function Name: TakeSample_IRQ_SetPriority
+ 211          ********************************************************************************
+ 212          *
+ 213          * Summary:
+ 214          *   Sets the Priority of the Interrupt. Note calling TakeSample_IRQ_Start
+ 215          *   or TakeSample_IRQ_StartEx will override any effect this method would 
+ 216          *   have had. This method should only be called after TakeSample_IRQ_Start or 
+ 217          *   TakeSample_IRQ_StartEx has been called. To set the initial
+ 218          *   priority for the component use the cydwr file in the tool.
+ 219          *
+ 220          * Parameters:
+ 221          *   priority: Priority of the interrupt. 0 - 7, 0 being the highest.
+ 222          *
+ 223          * Return:
+ 224          *   None
+ 225          *
+ 226          *******************************************************************************/
+ 227          void TakeSample_IRQ_SetPriority(uint8 priority) 
+ 228          {
+ 229   1          *TakeSample_IRQ_INTC_PRIOR = priority << 5;
+ 230   1      }
+ 231          
+ 232          
+ 233          /*******************************************************************************
+ 234          * Function Name: TakeSample_IRQ_GetPriority
+ 235          ********************************************************************************
+ 236          *
+C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/27/2014 17:48:20 PAGE 5   
 
- 237          *
- 238          * Parameters:
- 239          *   None
- 240          *
- 241          * Return:
- 242          *   Priority of the interrupt. 0 - 7, 0 being the highest.
- 243          *
- 244          *******************************************************************************/
- 245          uint8 TakeSample_IRQ_GetPriority(void) 
- 246          {
- 247   1          uint8 priority;
- 248   1      
- 249   1      
- 250   1          priority = *TakeSample_IRQ_INTC_PRIOR >> 5;
+ 237          * Summary:
+ 238          *   Gets the Priority of the Interrupt.
+ 239          *
+ 240          * Parameters:
+ 241          *   None
+ 242          *
+ 243          * Return:
+ 244          *   Priority of the interrupt. 0 - 7, 0 being the highest.
+ 245          *
+ 246          *******************************************************************************/
+ 247          uint8 TakeSample_IRQ_GetPriority(void) 
+ 248          {
+ 249   1          uint8 priority;
+ 250   1      
  251   1      
- 252   1          return priority;
- 253   1      }
- 254          
- 255          
- 256          /*******************************************************************************
- 257          * Function Name: TakeSample_IRQ_Enable
- 258          ********************************************************************************
- 259          *
- 260          * Summary:
- 261          *   Enables the interrupt.
- 262          *
- 263          * Parameters:
- 264          *   None
- 265          *
- 266          * Return:
- 267          *   None
- 268          *
- 269          *******************************************************************************/
- 270          void TakeSample_IRQ_Enable(void) 
- 271          {
- 272   1          /* Enable the general interrupt. */
- 273   1          *TakeSample_IRQ_INTC_SET_EN = TakeSample_IRQ__INTC_MASK;
- 274   1      }
- 275          
- 276          
- 277          /*******************************************************************************
- 278          * Function Name: TakeSample_IRQ_GetState
- 279          ********************************************************************************
- 280          *
- 281          * Summary:
- 282          *   Gets the state (enabled, disabled) of the Interrupt.
- 283          *
- 284          * Parameters:
- 285          *   None
- 286          *
- 287          * Return:
- 288          *   1 if enabled, 0 if disabled.
- 289          *
- 290          *******************************************************************************/
- 291          uint8 TakeSample_IRQ_GetState(void) 
- 292          {
- 293   1          /* Get the state of the general interrupt. */
- 294   1          return ((*TakeSample_IRQ_INTC_SET_EN & (uint8)TakeSample_IRQ__INTC_MASK) != 0u) ? 1u:0u;
- 295   1      }
- 296          
- 297          
- 298          /*******************************************************************************
-C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/26/2014 21:46:21 PAGE 6   
+ 252   1          priority = *TakeSample_IRQ_INTC_PRIOR >> 5;
+ 253   1      
+ 254   1          return priority;
+ 255   1      }
+ 256          
+ 257          
+ 258          /*******************************************************************************
+ 259          * Function Name: TakeSample_IRQ_Enable
+ 260          ********************************************************************************
+ 261          *
+ 262          * Summary:
+ 263          *   Enables the interrupt.
+ 264          *
+ 265          * Parameters:
+ 266          *   None
+ 267          *
+ 268          * Return:
+ 269          *   None
+ 270          *
+ 271          *******************************************************************************/
+ 272          void TakeSample_IRQ_Enable(void) 
+ 273          {
+ 274   1          /* Enable the general interrupt. */
+ 275   1          *TakeSample_IRQ_INTC_SET_EN = TakeSample_IRQ__INTC_MASK;
+ 276   1      }
+ 277          
+ 278          
+ 279          /*******************************************************************************
+ 280          * Function Name: TakeSample_IRQ_GetState
+ 281          ********************************************************************************
+ 282          *
+ 283          * Summary:
+ 284          *   Gets the state (enabled, disabled) of the Interrupt.
+ 285          *
+ 286          * Parameters:
+ 287          *   None
+ 288          *
+ 289          * Return:
+ 290          *   1 if enabled, 0 if disabled.
+ 291          *
+ 292          *******************************************************************************/
+ 293          uint8 TakeSample_IRQ_GetState(void) 
+ 294          {
+ 295   1          /* Get the state of the general interrupt. */
+ 296   1          return ((*TakeSample_IRQ_INTC_SET_EN & (uint8)TakeSample_IRQ__INTC_MASK) != 0u) ? 1u:0u;
+ 297   1      }
+ 298          
+C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/27/2014 17:48:20 PAGE 6   
 
- 299          * Function Name: TakeSample_IRQ_Disable
- 300          ********************************************************************************
- 301          *
- 302          * Summary:
- 303          *   Disables the Interrupt.
- 304          *
- 305          * Parameters:
- 306          *   None
- 307          *
- 308          * Return:
- 309          *   None
- 310          *
- 311          *******************************************************************************/
- 312          void TakeSample_IRQ_Disable(void) 
- 313          {
- 314   1          /* Disable the general interrupt. */
- 315   1          *TakeSample_IRQ_INTC_CLR_EN = TakeSample_IRQ__INTC_MASK;
- 316   1      }
- 317          
- 318          
- 319          /*******************************************************************************
- 320          * Function Name: TakeSample_IRQ_SetPending
- 321          ********************************************************************************
- 322          *
- 323          * Summary:
- 324          *   Causes the Interrupt to enter the pending state, a software method of
- 325          *   generating the interrupt.
- 326          *
- 327          * Parameters:
- 328          *   None
- 329          *
- 330          * Return:
- 331          *   None
- 332          *
- 333          *******************************************************************************/
- 334          void TakeSample_IRQ_SetPending(void) 
- 335          {
- 336   1          *TakeSample_IRQ_INTC_SET_PD = TakeSample_IRQ__INTC_MASK;
- 337   1      }
- 338          
- 339          
- 340          /*******************************************************************************
- 341          * Function Name: TakeSample_IRQ_ClearPending
- 342          ********************************************************************************
- 343          *
- 344          * Summary:
- 345          *   Clears a pending interrupt.
- 346          *
- 347          * Parameters:
- 348          *   None
- 349          *
- 350          * Return:
- 351          *   None
- 352          *
- 353          *******************************************************************************/
- 354          void TakeSample_IRQ_ClearPending(void) 
- 355          {
- 356   1          *TakeSample_IRQ_INTC_CLR_PD = TakeSample_IRQ__INTC_MASK;
- 357   1      }
- 358          
- 359          #endif /* End check for removal by optimization */
+ 299          
+ 300          /*******************************************************************************
+ 301          * Function Name: TakeSample_IRQ_Disable
+ 302          ********************************************************************************
+ 303          *
+ 304          * Summary:
+ 305          *   Disables the Interrupt.
+ 306          *
+ 307          * Parameters:
+ 308          *   None
+ 309          *
+ 310          * Return:
+ 311          *   None
+ 312          *
+ 313          *******************************************************************************/
+ 314          void TakeSample_IRQ_Disable(void) 
+ 315          {
+ 316   1          /* Disable the general interrupt. */
+ 317   1          *TakeSample_IRQ_INTC_CLR_EN = TakeSample_IRQ__INTC_MASK;
+ 318   1      }
+ 319          
+ 320          
+ 321          /*******************************************************************************
+ 322          * Function Name: TakeSample_IRQ_SetPending
+ 323          ********************************************************************************
+ 324          *
+ 325          * Summary:
+ 326          *   Causes the Interrupt to enter the pending state, a software method of
+ 327          *   generating the interrupt.
+ 328          *
+ 329          * Parameters:
+ 330          *   None
+ 331          *
+ 332          * Return:
+ 333          *   None
+ 334          *
+ 335          *******************************************************************************/
+ 336          void TakeSample_IRQ_SetPending(void) 
+ 337          {
+ 338   1          *TakeSample_IRQ_INTC_SET_PD = TakeSample_IRQ__INTC_MASK;
+ 339   1      }
+ 340          
+ 341          
+ 342          /*******************************************************************************
+ 343          * Function Name: TakeSample_IRQ_ClearPending
+ 344          ********************************************************************************
+ 345          *
+ 346          * Summary:
+ 347          *   Clears a pending interrupt.
+ 348          *
+ 349          * Parameters:
+ 350          *   None
+ 351          *
+ 352          * Return:
+ 353          *   None
+ 354          *
+ 355          *******************************************************************************/
+ 356          void TakeSample_IRQ_ClearPending(void) 
+ 357          {
+ 358   1          *TakeSample_IRQ_INTC_CLR_PD = TakeSample_IRQ__INTC_MASK;
+ 359   1      }
  360          
-C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/26/2014 21:46:21 PAGE 7   
+C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/27/2014 17:48:20 PAGE 7   
 
- 361          
- 362          /* [] END OF FILE */
-C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/26/2014 21:46:21 PAGE 8   
+ 361          #endif /* End check for removal by optimization */
+ 362          
+ 363          
+ 364          /* [] END OF FILE */
+C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/27/2014 17:48:20 PAGE 8   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -450,7 +452,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0000 C0E0              PUSH    ACC
 0002 C0F0              PUSH    B
 0004 C083              PUSH    DPH
-C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/26/2014 21:46:21 PAGE 9   
+C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/27/2014 17:48:20 PAGE 9   
 
 0006 C082              PUSH    DPL
 0008 C085              PUSH    DPH1
@@ -470,125 +472,129 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0027 C006              PUSH    AR6
 0029 C007              PUSH    AR7
                                            ; SOURCE LINE # 130
-                                           ; SOURCE LINE # 135
+                                           ; SOURCE LINE # 134
 002B 900000      R     MOV     DPTR,#SampledData
 002E E4                CLR     A
 002F F0                MOVX    @DPTR,A
 0030 A3                INC     DPTR
 0031 E4                CLR     A
 0032 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 138
-0033 120000      E     LCALL   ADC_Read16
-0036 900000      R     MOV     DPTR,#SampledData
-0039 EE                MOV     A,R6
-003A F0                MOVX    @DPTR,A
-003B A3                INC     DPTR
-003C EF                MOV     A,R7
-003D F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 139
-003E 900000      R     MOV     DPTR,#SampledData
-0041 E0                MOVX    A,@DPTR
-0042 FE                MOV     R6,A
-0043 A3                INC     DPTR
-0044 E0                MOVX    A,@DPTR
-0045 FF                MOV     R7,A
-0046 EE                MOV     A,R6
-0047 30E70A            JNB     ACC.7,?C0004
+                                           ; SOURCE LINE # 136
+0033 120000      E     LCALL   Em_EEPROM_Start
+                                           ; SOURCE LINE # 137
+0036 120000      E     LCALL   ADC_Start
                                            ; SOURCE LINE # 140
+0039 120000      E     LCALL   ADC_Read16
+003C 900000      R     MOV     DPTR,#SampledData
+003F EE                MOV     A,R6
+0040 F0                MOVX    @DPTR,A
+0041 A3                INC     DPTR
+0042 EF                MOV     A,R7
+0043 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 141
-004A 900000      R     MOV     DPTR,#SampledData
-004D E4                CLR     A
-004E F0                MOVX    @DPTR,A
-004F A3                INC     DPTR
-0050 E4                CLR     A
-0051 F0                MOVX    @DPTR,A
+0044 900000      R     MOV     DPTR,#SampledData
+0047 E0                MOVX    A,@DPTR
+0048 FE                MOV     R6,A
+0049 A3                INC     DPTR
+004A E0                MOVX    A,@DPTR
+004B FF                MOV     R7,A
+004C EE                MOV     A,R6
+004D 30E70A            JNB     ACC.7,?C0004
                                            ; SOURCE LINE # 142
-0052 801B              SJMP    ?C0005
-0054         ?C0004:
                                            ; SOURCE LINE # 143
-0054 900000      R     MOV     DPTR,#SampledData
-0057 E0                MOVX    A,@DPTR
-0058 FE                MOV     R6,A
-0059 A3                INC     DPTR
-005A E0                MOVX    A,@DPTR
-005B FF                MOV     R7,A
-005C C3                CLR     C
-005D EF                MOV     A,R7
-C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/26/2014 21:46:21 PAGE 10  
-
-005E 94FF              SUBB    A,#0FFH
-0060 EE                MOV     A,R6
-0061 940F              SUBB    A,#0FH
-0063 400A              JC      ?C0005
+0050 900000      R     MOV     DPTR,#SampledData
+0053 E4                CLR     A
+0054 F0                MOVX    @DPTR,A
+0055 A3                INC     DPTR
+0056 E4                CLR     A
+0057 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 144
+0058 801B              SJMP    ?C0005
+005A         ?C0004:
                                            ; SOURCE LINE # 145
-0065 900000      R     MOV     DPTR,#SampledData
-0068 740F              MOV     A,#0FH
-006A F0                MOVX    @DPTR,A
-006B A3                INC     DPTR
-006C 74FF              MOV     A,#0FFH
-006E F0                MOVX    @DPTR,A
+005A 900000      R     MOV     DPTR,#SampledData
+005D E0                MOVX    A,@DPTR
+005E FE                MOV     R6,A
+005F A3                INC     DPTR
+C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/27/2014 17:48:20 PAGE 10  
+
+0060 E0                MOVX    A,@DPTR
+0061 FF                MOV     R7,A
+0062 C3                CLR     C
+0063 EF                MOV     A,R7
+0064 94FF              SUBB    A,#0FFH
+0066 EE                MOV     A,R6
+0067 940F              SUBB    A,#0FH
+0069 400A              JC      ?C0005
                                            ; SOURCE LINE # 146
-006F         ?C0005:
-                                           ; SOURCE LINE # 150
-006F 7B01              MOV     R3,#01H
-0071 7A00        R     MOV     R2,#HIGH SampledData
-0073 7900        R     MOV     R1,#LOW SampledData
-0075 C003              PUSH    AR3
-0077 C002              PUSH    AR2
-0079 C001              PUSH    AR1
-007B 900000      E     MOV     DPTR,#TailPtr
-007E 120000      E     LCALL   ?C?PLDXDATA
-0081 900000      E     MOV     DPTR,#?_Em_EEPROM_Write?BYTE+03H
-0084 120000      E     LCALL   ?C?PSTXDATA
-0087 900000      E     MOV     DPTR,#?_Em_EEPROM_Write?BYTE+06H
-008A E4                CLR     A
-008B F0                MOVX    @DPTR,A
-008C A3                INC     DPTR
-008D 7402              MOV     A,#02H
-008F F0                MOVX    @DPTR,A
-0090 D001              POP     AR1
-0092 D002              POP     AR2
-0094 D003              POP     AR3
-0096 120000      E     LCALL   _Em_EEPROM_Write
+                                           ; SOURCE LINE # 147
+006B 900000      R     MOV     DPTR,#SampledData
+006E 740F              MOV     A,#0FH
+0070 F0                MOVX    @DPTR,A
+0071 A3                INC     DPTR
+0072 74FF              MOV     A,#0FFH
+0074 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 148
+0075         ?C0005:
                                            ; SOURCE LINE # 152
-0099 900000      E     MOV     DPTR,#TailPtr+01H
-009C E4                CLR     A
-009D 75F002            MOV     B,#02H
-00A0 120000      E     LCALL   ?C?IILDX
-                                           ; SOURCE LINE # 162
-00A3 D007              POP     AR7
-00A5 D006              POP     AR6
-00A7 D005              POP     AR5
-00A9 D004              POP     AR4
-00AB D003              POP     AR3
-00AD D002              POP     AR2
-00AF D001              POP     AR1
-00B1 D000              POP     AR0
-00B3 D0D0              POP     PSW
-00B5 D000        E     POP     ?C?XPAGE1SFR
-00B7 D086              POP     DPS
-00B9 D084              POP     DPL1
-00BB D085              POP     DPH1
-00BD D082              POP     DPL
-00BF D083              POP     DPH
-00C1 D0F0              POP     B
-00C3 D0E0              POP     ACC
-00C5 32                RETI    
+0075 7B01              MOV     R3,#01H
+0077 7A00        R     MOV     R2,#HIGH SampledData
+0079 7900        R     MOV     R1,#LOW SampledData
+007B C003              PUSH    AR3
+007D C002              PUSH    AR2
+007F C001              PUSH    AR1
+0081 900000      E     MOV     DPTR,#TailPtr
+0084 120000      E     LCALL   ?C?PLDXDATA
+0087 900000      E     MOV     DPTR,#?_Em_EEPROM_Write?BYTE+03H
+008A 120000      E     LCALL   ?C?PSTXDATA
+008D 900000      E     MOV     DPTR,#?_Em_EEPROM_Write?BYTE+06H
+0090 E4                CLR     A
+0091 F0                MOVX    @DPTR,A
+0092 A3                INC     DPTR
+0093 7402              MOV     A,#02H
+0095 F0                MOVX    @DPTR,A
+0096 D001              POP     AR1
+0098 D002              POP     AR2
+009A D003              POP     AR3
+009C 120000      E     LCALL   _Em_EEPROM_Write
+                                           ; SOURCE LINE # 154
+009F 900000      E     MOV     DPTR,#TailPtr+01H
+00A2 E4                CLR     A
+00A3 75F002            MOV     B,#02H
+00A6 120000      E     LCALL   ?C?IILDX
+                                           ; SOURCE LINE # 164
+00A9 D007              POP     AR7
+00AB D006              POP     AR6
+00AD D005              POP     AR5
+00AF D004              POP     AR4
+00B1 D003              POP     AR3
+00B3 D002              POP     AR2
+00B5 D001              POP     AR1
+00B7 D000              POP     AR0
+00B9 D0D0              POP     PSW
+00BB D000        E     POP     ?C?XPAGE1SFR
+00BD D086              POP     DPS
+00BF D084              POP     DPL1
+00C1 D085              POP     DPH1
+00C3 D082              POP     DPL
+00C5 D083              POP     DPH
+00C7 D0F0              POP     B
+00C9 D0E0              POP     ACC
+C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/27/2014 17:48:20 PAGE 11  
+
+00CB 32                RETI    
              ; FUNCTION TakeSample_IRQ_Interrupt (END)
 
              ; FUNCTION _TakeSample_IRQ_SetVector (BEGIN)
-C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/26/2014 21:46:21 PAGE 11  
-
-                                           ; SOURCE LINE # 181
+                                           ; SOURCE LINE # 183
 0000 900000      R     MOV     DPTR,#address
 0003 EE                MOV     A,R6
 0004 F0                MOVX    @DPTR,A
 0005 A3                INC     DPTR
 0006 EF                MOV     A,R7
 0007 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 182
-                                           ; SOURCE LINE # 183
+                                           ; SOURCE LINE # 184
+                                           ; SOURCE LINE # 185
 0008 7B02              MOV     R3,#02H
 000A 7A44              MOV     R2,#044H
 000C 7900              MOV     R1,#00H
@@ -601,30 +607,30 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0016 AD07              MOV     R5,AR7
 0018 AC06              MOV     R4,AR6
 001A 120000      E     LCALL   _cywrite16_nodpx
-                                           ; SOURCE LINE # 184
+                                           ; SOURCE LINE # 186
 001D 22                RET     
              ; FUNCTION _TakeSample_IRQ_SetVector (END)
 
              ; FUNCTION TakeSample_IRQ_GetVector (BEGIN)
-                                           ; SOURCE LINE # 201
-                                           ; SOURCE LINE # 202
                                            ; SOURCE LINE # 203
+                                           ; SOURCE LINE # 204
+                                           ; SOURCE LINE # 205
 0000 7B02              MOV     R3,#02H
 0002 7A44              MOV     R2,#044H
 0004 7900              MOV     R1,#00H
 0006 120000      E     LCALL   _cyread16_nodpx
-                                           ; SOURCE LINE # 204
+                                           ; SOURCE LINE # 206
 0009         ?C0009:
 0009 22                RET     
              ; FUNCTION TakeSample_IRQ_GetVector (END)
 
              ; FUNCTION _TakeSample_IRQ_SetPriority (BEGIN)
-                                           ; SOURCE LINE # 225
+                                           ; SOURCE LINE # 227
 0000 900000      R     MOV     DPTR,#priority
 0003 EF                MOV     A,R7
 0004 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 226
-                                           ; SOURCE LINE # 227
+                                           ; SOURCE LINE # 228
+                                           ; SOURCE LINE # 229
 0005 900000      R     MOV     DPTR,#priority
 0008 E0                MOVX    A,@DPTR
 0009 FF                MOV     R7,A
@@ -636,16 +642,16 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0010 904480            MOV     DPTR,#04480H
 0013 EF                MOV     A,R7
 0014 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 228
+                                           ; SOURCE LINE # 230
 0015 22                RET     
+C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/27/2014 17:48:20 PAGE 12  
+
              ; FUNCTION _TakeSample_IRQ_SetPriority (END)
 
              ; FUNCTION TakeSample_IRQ_GetPriority (BEGIN)
-                                           ; SOURCE LINE # 245
-C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/26/2014 21:46:21 PAGE 12  
-
-                                           ; SOURCE LINE # 246
-                                           ; SOURCE LINE # 250
+                                           ; SOURCE LINE # 247
+                                           ; SOURCE LINE # 248
+                                           ; SOURCE LINE # 252
 0000 904480            MOV     DPTR,#04480H
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
@@ -657,30 +663,30 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000B 900000      R     MOV     DPTR,#priority
 000E EF                MOV     A,R7
 000F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 252
+                                           ; SOURCE LINE # 254
 0010 900000      R     MOV     DPTR,#priority
 0013 E0                MOVX    A,@DPTR
 0014 FF                MOV     R7,A
-                                           ; SOURCE LINE # 253
+                                           ; SOURCE LINE # 255
 0015         ?C0011:
 0015 22                RET     
              ; FUNCTION TakeSample_IRQ_GetPriority (END)
 
              ; FUNCTION TakeSample_IRQ_Enable (BEGIN)
-                                           ; SOURCE LINE # 270
-                                           ; SOURCE LINE # 271
+                                           ; SOURCE LINE # 272
                                            ; SOURCE LINE # 273
+                                           ; SOURCE LINE # 275
 0000 9044C0            MOV     DPTR,#044C0H
 0003 7401              MOV     A,#01H
 0005 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 274
+                                           ; SOURCE LINE # 276
 0006 22                RET     
              ; FUNCTION TakeSample_IRQ_Enable (END)
 
              ; FUNCTION TakeSample_IRQ_GetState (BEGIN)
-                                           ; SOURCE LINE # 291
-                                           ; SOURCE LINE # 292
+                                           ; SOURCE LINE # 293
                                            ; SOURCE LINE # 294
+                                           ; SOURCE LINE # 296
 0000 9044C0            MOV     DPTR,#044C0H
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
@@ -691,50 +697,50 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000D         ?C0013:
 000D 7F00              MOV     R7,#00H
 000F         ?C0014:
-                                           ; SOURCE LINE # 295
+                                           ; SOURCE LINE # 297
 000F         ?C0015:
 000F 22                RET     
              ; FUNCTION TakeSample_IRQ_GetState (END)
 
              ; FUNCTION TakeSample_IRQ_Disable (BEGIN)
-                                           ; SOURCE LINE # 312
-                                           ; SOURCE LINE # 313
+                                           ; SOURCE LINE # 314
                                            ; SOURCE LINE # 315
+                                           ; SOURCE LINE # 317
 0000 9044C8            MOV     DPTR,#044C8H
 0003 7401              MOV     A,#01H
+C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/27/2014 17:48:20 PAGE 13  
+
 0005 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 316
+                                           ; SOURCE LINE # 318
 0006 22                RET     
              ; FUNCTION TakeSample_IRQ_Disable (END)
-C51 COMPILER V9.51   TAKESAMPLE_IRQ                                                        03/26/2014 21:46:21 PAGE 13  
-
 
              ; FUNCTION TakeSample_IRQ_SetPending (BEGIN)
-                                           ; SOURCE LINE # 334
-                                           ; SOURCE LINE # 335
                                            ; SOURCE LINE # 336
+                                           ; SOURCE LINE # 337
+                                           ; SOURCE LINE # 338
 0000 9044D0            MOV     DPTR,#044D0H
 0003 7401              MOV     A,#01H
 0005 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 337
+                                           ; SOURCE LINE # 339
 0006 22                RET     
              ; FUNCTION TakeSample_IRQ_SetPending (END)
 
              ; FUNCTION TakeSample_IRQ_ClearPending (BEGIN)
-                                           ; SOURCE LINE # 354
-                                           ; SOURCE LINE # 355
                                            ; SOURCE LINE # 356
+                                           ; SOURCE LINE # 357
+                                           ; SOURCE LINE # 358
 0000 9044D8            MOV     DPTR,#044D8H
 0003 7401              MOV     A,#01H
 0005 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 357
+                                           ; SOURCE LINE # 359
 0006 22                RET     
              ; FUNCTION TakeSample_IRQ_ClearPending (END)
 
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    380    ----
+   CODE SIZE        =    386    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----       8
    PDATA SIZE       =   ----    ----

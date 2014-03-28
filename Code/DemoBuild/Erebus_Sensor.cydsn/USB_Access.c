@@ -10,7 +10,7 @@
  * ========================================
 */
 #include "USB_Access.h"
-#include "EmEEPROM_Access.h" // Location of sapled data in flash
+#include "EmEEPROM_Access.h" // Location of sampled data in flash
 /* This file provides function definitions for USB interactions */
 
 void USB_ISR(){
@@ -23,8 +23,6 @@ void USB_ISR(){
     
     uint8 temp = 0xFF;
   
-    // Start EEPROM
-    EEPROM_R_Start();
         
     /* Start USBFS Operation with 5V operation */
     USBUART_Start(0u, USBUART_5V_OPERATION);
@@ -51,7 +49,7 @@ void USB_ISR(){
                     
                     case DUMP_DATA:
                         dump_data();
-                        send_reply(SUCCESS);
+                        //send_reply(SUCCESS);
                         break;
                         
                     case CHANGE_SETTING:
@@ -106,13 +104,16 @@ void apply_setting(command instruction){
 }
 
 void dump_data(){
-    uint8  ExportBuffer[64]; // 64 Bytes per USB data packet.
-    int i = 0;
-    double DataCnt = 0;
+    uint8  ExportBuffer[BUFFER_LEN]; // 64 Bytes per USB data packet.
     uint8* ExportPtr =(uint8*) MemoryLocation; 
+    uint16 DataCnt = 0;
+    uint8  CntSplit1, CntSplit2;
+    uint8  i = 0;
+    
+    /* Operator */
     while (ExportPtr <= TailPtr)
     {   
-        while (i <= 63)
+        while (i < BUFFER_LEN)
         {
             if (ExportPtr <= TailPtr)
             {
@@ -128,9 +129,19 @@ void dump_data(){
             }
             
         }
+        
+        USBUART_PutData(ExportBuffer, BUFFER_LEN); // Send 64 byte packet of data from memory
         i = 0;
     }
-    ExportBuffer[i] = 0x80;
+    /* Trailer Packet to Identify End of Sampled Data in Memory */
+    ExportBuffer[0] = 0x80;               // End of Data Identifier
+    ExportBuffer[1] = 0x00;
+    CntSplit1 = (uint8)0xFF00 & DataCnt;  //2 byte Count split into two 1 byte packages to be arrayed.
+    CntSplit2 = (uint8)0x00FF & DataCnt;
+    ExportBuffer[2] = CntSplit1;          // Count of Total Samples Sent
+    ExportBuffer[3] = CntSplit2;
+    USBUART_PutData(ExportBuffer, 4u); 
+    
     return;
 }
 

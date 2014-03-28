@@ -1,5 +1,5 @@
 -- Project:   Erebus_Sensor
--- Generated: 03/26/2014 21:42:25
+-- Generated: 03/27/2014 17:48:08
 -- 
 
 ENTITY Erebus_Sensor IS
@@ -44,14 +44,14 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     SIGNAL Net_249_SYNCOUT : bit;
     SIGNAL Net_408 : bit;
     SIGNAL Net_556 : bit;
-    SIGNAL Net_560 : bit;
+    SIGNAL Net_566 : bit;
     SIGNAL Net_65 : bit;
     SIGNAL Net_72 : bit;
     ATTRIBUTE global_signal OF Net_72 : SIGNAL IS true;
     SIGNAL Net_72_local : bit;
     SIGNAL Net_8 : bit;
-    SIGNAL Potentiometer(0)__PA : bit;
     SIGNAL SW_3(0)__PA : bit;
+    SIGNAL Sensor_VIn(0)__PA : bit;
     SIGNAL USB_LED(0)__PA : bit;
     SIGNAL Vbus(0)__PA : bit;
     SIGNAL \ADC:Net_245_0\ : bit;
@@ -121,10 +121,10 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     ATTRIBUTE lib_model OF Net_408 : LABEL IS "macrocell2";
     ATTRIBUTE lib_model OF Net_556 : LABEL IS "macrocell3";
     ATTRIBUTE lib_model OF Net_65 : LABEL IS "macrocell4";
-    ATTRIBUTE lib_model OF Potentiometer(0) : LABEL IS "iocell3";
-    ATTRIBUTE Location OF Potentiometer(0) : LABEL IS "P6[5]";
-    ATTRIBUTE lib_model OF SW_3(0) : LABEL IS "iocell4";
+    ATTRIBUTE lib_model OF SW_3(0) : LABEL IS "iocell3";
     ATTRIBUTE Location OF SW_3(0) : LABEL IS "P15[5]";
+    ATTRIBUTE lib_model OF Sensor_VIn(0) : LABEL IS "iocell4";
+    ATTRIBUTE Location OF Sensor_VIn(0) : LABEL IS "P0[7]";
     ATTRIBUTE lib_model OF USB_LED(0) : LABEL IS "iocell5";
     ATTRIBUTE Location OF USB_LED(0) : LABEL IS "P0[1]";
     ATTRIBUTE lib_model OF Vbus(0) : LABEL IS "iocell6";
@@ -1305,90 +1305,6 @@ BEGIN
             clock_0 => Net_72,
             main_0 => Net_146);
 
-    Potentiometer:logicalport
-        GENERIC MAP(
-            drive_mode => "000",
-            ibuf_enabled => "0",
-            id => "05a9c8de-3ba2-4909-8250-95fdc61c0bf4",
-            init_dr_st => "0",
-            input_clk_en => 0,
-            input_sync => "1",
-            input_sync_mode => "0",
-            intr_mode => "00",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "CONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "0",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "A",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "",
-            sio_hyst => "0",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 0,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "10",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open);
-
-    Potentiometer(0):iocell
-        GENERIC MAP(
-            in_sync_mode => 0,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "Potentiometer",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
-        PORT MAP(
-            pa_out => Potentiometer(0)__PA,
-            oe => open,
-            in_clock => open,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
-
     SW_3:logicalport
         GENERIC MAP(
             drive_mode => "010",
@@ -1483,6 +1399,90 @@ BEGIN
             in => Net_15,
             out => Net_15_SYNCOUT,
             clock => ClockBlock_BUS_CLK);
+
+    Sensor_VIn:logicalport
+        GENERIC MAP(
+            drive_mode => "000",
+            ibuf_enabled => "0",
+            id => "05a9c8de-3ba2-4909-8250-95fdc61c0bf4",
+            init_dr_st => "0",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "0",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "A",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "",
+            sio_hyst => "0",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    Sensor_VIn(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "Sensor_VIn",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
+        PORT MAP(
+            pa_out => Sensor_VIn(0)__PA,
+            oe => open,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
 
     TakeSample_IRQ:interrupt
         GENERIC MAP(
@@ -1691,7 +1691,7 @@ BEGIN
             mod_dat_0 => \ADC:mod_dat_0\,
             ext_start => __ONE__,
             modrst => \ADC:mod_reset\,
-            interrupt => Net_560);
+            interrupt => Net_566);
 
     \ADC:DSM\:dsmodcell
         GENERIC MAP(
@@ -1720,7 +1720,7 @@ BEGIN
         GENERIC MAP(
             int_type => "10")
         PORT MAP(
-            interrupt => Net_560,
+            interrupt => Net_566,
             clock => ClockBlock_BUS_CLK);
 
     \Blink_Timer:TimerHW\:timercell

@@ -32,7 +32,7 @@ set_location "SW_3(0)_SYNC" synccell 3 1 5 1
 set_location "\ADC:DEC\" decimatorcell -1 -1 0
 set_io "Vbus(0)" iocell 6 0
 set_io "EEPROM_LED(0)" iocell 0 2
-set_io "Potentiometer(0)" iocell 6 5
+set_io "Sensor_VIn(0)" iocell 0 7
 # Note: port 15 is the logical name for port 8
 set_io "\USBUART:Dm(0)\" iocell 15 7
 # Note: port 15 is the logical name for port 8

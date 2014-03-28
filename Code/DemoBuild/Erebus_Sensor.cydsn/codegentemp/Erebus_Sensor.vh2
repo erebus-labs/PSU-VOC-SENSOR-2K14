@@ -2,7 +2,7 @@
 --	Conversion of Erebus_Sensor.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Wed Mar 26 21:42:24 2014
+--	Thu Mar 27 17:48:07 2014
 --
 
 USE cypress.cypress.all;
@@ -89,12 +89,12 @@ SIGNAL tmpFB_0__EEPROM_LED_net_0 : bit;
 SIGNAL tmpIO_0__EEPROM_LED_net_0 : bit;
 TERMINAL tmpSIOVREF__EEPROM_LED_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__EEPROM_LED_net_0 : bit;
-SIGNAL tmpOE__Potentiometer_net_0 : bit;
-SIGNAL tmpFB_0__Potentiometer_net_0 : bit;
+SIGNAL tmpOE__Sensor_VIn_net_0 : bit;
+SIGNAL tmpFB_0__Sensor_VIn_net_0 : bit;
 TERMINAL Net_564 : bit;
-SIGNAL tmpIO_0__Potentiometer_net_0 : bit;
-TERMINAL tmpSIOVREF__Potentiometer_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__Potentiometer_net_0 : bit;
+SIGNAL tmpIO_0__Sensor_VIn_net_0 : bit;
+TERMINAL tmpSIOVREF__Sensor_VIn_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Sensor_VIn_net_0 : bit;
 TERMINAL \ADC:Net_244\ : bit;
 TERMINAL \ADC:Net_690\ : bit;
 TERMINAL \ADC:Net_35\ : bit;
@@ -126,7 +126,7 @@ SIGNAL \ADC:Net_245_0\ : bit;
 TERMINAL \ADC:Net_352\ : bit;
 TERMINAL \ADC:Net_257\ : bit;
 TERMINAL \ADC:Net_249\ : bit;
-SIGNAL Net_560 : bit;
+SIGNAL Net_566 : bit;
 SIGNAL \ADC:Net_250\ : bit;
 SIGNAL \ADC:Net_252\ : bit;
 SIGNAL \ADC:soc\ : bit;
@@ -634,7 +634,7 @@ EEPROM_LED:cy_psoc3_pins_v1_10
 		out_clock_en=>one,
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__EEPROM_LED_net_0);
-Potentiometer:cy_psoc3_pins_v1_10
+Sensor_VIn:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"05a9c8de-3ba2-4909-8250-95fdc61c0bf4",
 		drive_mode=>"000",
 		ibuf_enabled=>"0",
@@ -687,10 +687,10 @@ Potentiometer:cy_psoc3_pins_v1_10
 		pa_out_reset=>-1)
 	PORT MAP(oe=>(one),
 		y=>(zero),
-		fb=>(tmpFB_0__Potentiometer_net_0),
+		fb=>(tmpFB_0__Sensor_VIn_net_0),
 		analog=>Net_564,
-		io=>(tmpIO_0__Potentiometer_net_0),
-		siovref=>(tmpSIOVREF__Potentiometer_net_0),
+		io=>(tmpIO_0__Sensor_VIn_net_0),
+		siovref=>(tmpSIOVREF__Sensor_VIn_net_0),
 		annotation=>(open),
 		in_clock=>zero,
 		in_clock_en=>one,
@@ -698,7 +698,7 @@ Potentiometer:cy_psoc3_pins_v1_10
 		out_clock=>zero,
 		out_clock_en=>one,
 		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__Potentiometer_net_0);
+		interrupt=>tmpINTERRUPT_0__Sensor_VIn_net_0);
 \ADC:vRef_2\:cy_vref_v1_0
 	GENERIC MAP(guid=>"15B3DB15-B7B3-4d62-A2DF-25EA392A7161",
 		name=>"Vssa (GND)",
@@ -785,13 +785,13 @@ Potentiometer:cy_psoc3_pins_v1_10
 		signal2=>\ADC:Net_20\);
 \ADC:IRQ\:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10")
-	PORT MAP(int_signal=>Net_560);
+	PORT MAP(int_signal=>Net_566);
 \ADC:theACLK\:cy_clock_v1_0
 	GENERIC MAP(cy_registers=>"",
 		id=>"3191f881-3e8e-486e-997a-395fee1f9105/edd15f43-b66b-457b-be3a-5342345270c8",
 		source_clock_id=>"61737EF6-3B74-48f9-8B91-F7473A442AE7",
 		divisor=>0,
-		period=>"7633587786.25954",
+		period=>"6666666666.66667",
 		is_direct=>'0',
 		is_digital=>'0')
 	PORT MAP(clock_out=>\ADC:Net_488\,
@@ -802,7 +802,7 @@ Potentiometer:cy_psoc3_pins_v1_10
 		mod_dat=>(\ADC:mod_dat_3\, \ADC:mod_dat_2\, \ADC:mod_dat_1\, \ADC:mod_dat_0\),
 		ext_start=>one,
 		mod_reset=>\ADC:mod_reset\,
-		interrupt=>Net_560);
+		interrupt=>Net_566);
 TakeSample_IRQ:cy_isr_v1_0
 	GENERIC MAP(int_type=>"00")
 	PORT MAP(int_signal=>Net_14);
