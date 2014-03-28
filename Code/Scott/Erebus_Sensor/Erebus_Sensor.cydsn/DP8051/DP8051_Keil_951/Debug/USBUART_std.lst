@@ -1,11 +1,11 @@
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 1   
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE USBUART_STD
 OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Debug\USBUART_std.obj
 COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
                     -.\Generated_Source\PSoC3\USBUART_std.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\USBUART_std.lst) C
-                    -D DB NOIP OT(2,SIZE) DF(DEBUG) INCDIR(.,.\Generated_Source\PSoC3) OJ(.\DP8051\DP8051_Keil_951\Debug\USBUART_std.obj)
+                    -D DB NOIP OT(0,SIZE) DF(DEBUG) INCDIR(.,.\Generated_Source\PSoC3) OJ(.\DP8051\DP8051_Keil_951\Debug\USBUART_std.obj)
 
 line level    source
 
@@ -62,7 +62,7 @@ line level    source
                   * Reentrant:
                   *  No.
                   *
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 2   
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 2   
 
                   *******************************************************************************/
                   void  USBUART_SerialNumString(uint8 snString[]) 
@@ -126,7 +126,7 @@ line level    source
  113   4                          USBUART_currentTD.pData = (volatile uint8 *)pTmp->p_list;
  114   4                          USBUART_currentTD.count = USBUART_DEVICE_DESCR_LENGTH;
  115   4                          requestHandled  = USBUART_InitControlRead();
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 3   
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 3   
 
  116   4                      }
  117   3                      else if (CY_GET_REG8(USBUART_wValueHi) == USBUART_DESCR_CONFIG)
@@ -190,7 +190,7 @@ line level    source
  175   4                      }
  176   3                      #endif /* End USBUART_ENABLE_STRINGS */
  177   3                      else
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 4   
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 4   
 
  178   3                      {
  179   4                          requestHandled = USBUART_DispatchClassRqst();
@@ -254,7 +254,7 @@ line level    source
  236   4                          interfaceNumber = CY_GET_REG8(USBUART_wIndexLo);
  237   4                          USBUART_interfaceNumber = interfaceNumber;
  238   4                          USBUART_configurationChanged = USBUART_TRUE;
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 5   
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 5   
 
  239   4                          #if ((USBUART_EP_MA == USBUART__MA_DYNAMIC) && \
  240   4                               (USBUART_EP_MM == USBUART__EP_MANUAL) )
@@ -318,7 +318,7 @@ line level    source
  298   4                          case USBUART_RQST_RCPT_IFC:
  299   4                              /* Validate interfaceNumber */
  300   4                              if (CY_GET_REG8(USBUART_wIndexLo) < USBUART_MAX_INTERFACES_NUMBER)
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 6   
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 6   
 
  301   4                              {
  302   5                                  USBUART_interfaceStatus[CY_GET_REG8(USBUART_wIndexLo)] &=
@@ -382,7 +382,7 @@ line level    source
  360   2              }
  361   1          }
  362          
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 7   
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 7   
 
  363          #endif /* End USBUART_ENABLE_IDSN_STRING */
  364          
@@ -446,7 +446,7 @@ line level    source
  421   2      
  422   2              #if(USBUART_EP_MM != USBUART__EP_DMAAUTO)
  423   2                  CY_SET_REG8((reg8 *)(USBUART_SIE_EP1_CNT0_IND + i),   USBUART_EP[ep].bufferSize >> 8u);
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 8   
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 8   
 
  424   2                  CY_SET_REG8((reg8 *)(USBUART_SIE_EP1_CNT1_IND + i),   USBUART_EP[ep].bufferSize & 0xFFu);
  425   2      
@@ -510,7 +510,7 @@ line level    source
  482   1          #if(USBUART_EP_MM != USBUART__EP_DMAAUTO)
  483   1              uint16 buffCount = 0u;
  484   1          #endif /* End USBUART_EP_MM != USBUART__EP_DMAAUTO */
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 9   
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 9   
 
  485   1      
  486   1          const T_USBUART_LUT CYCODE *pTmp;
@@ -574,7 +574,7 @@ line level    source
                                       /* IN Endpoint */
                                       USBUART_EP[cur_ep].apiEpState = USBUART_EVENT_PENDING;
                                       USBUART_EP[cur_ep].epMode = (ep_type == USBUART_EP_TYPE_ISOC) ?
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 10  
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 10  
 
                                                                       USBUART_MODE_ISO_IN : USBUART_MODE_ACK_IN;
                                       #if defined(USBUART_ENABLE_CDC_CLASS)
@@ -638,7 +638,7 @@ line level    source
  605   4                          {
  606   5                              if(USBUART_EP[i].bufferSize < pEP->bufferSize)
  607   5                              {
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 11  
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 11  
 
  608   6                                  USBUART_EP[i].bufferSize = pEP->bufferSize;
  609   6                              }
@@ -702,7 +702,7 @@ line level    source
                                           #endif /* End USBUART_EP_MM == USBUART__EP_DMAAUTO */
  668   6                              }
  669   5                          }
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 12  
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 12  
 
  670   4                          pEP = &pEP[1u];
  671   4                      }
@@ -766,7 +766,7 @@ line level    source
  729   1          uint8 ri;
  730   1      
  731   1          const T_USBUART_LUT CYCODE *pTmp;
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 13  
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 13  
 
  732   1          const T_USBUART_EP_SETTINGS_BLOCK CYCODE *pEP;
  733   1      
@@ -830,7 +830,7 @@ line level    source
                               *  this bit will be set to 1 when block is ready for reconfiguration.
                               */
                               while((USBUART_DYN_RECONFIG_REG & USBUART_DYN_RECONFIG_RDY_STS) == 0u)
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 14  
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 14  
 
                               {
                                   ;
@@ -894,7 +894,7 @@ line level    source
  853   1          const T_USBUART_LUT CYCODE *pTmp;
  854   1      
  855   1          pTmp = (const T_USBUART_LUT CYCODE *) USBUART_TABLE[USBUART_device].p_list;
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 15  
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 15  
 
  856   1      
  857   1          /* The first entry points to the Device Descriptor,
@@ -958,7 +958,7 @@ line level    source
  915          
  916          /*******************************************************************************
  917          * Function Name: USBUART_TerminateEP
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 16  
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 16  
 
  918          ********************************************************************************
  919          *
@@ -1022,7 +1022,7 @@ line level    source
  977          * Reentrant:
  978          *  No.
  979          *
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 17  
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 17  
 
  980          *******************************************************************************/
  981          uint8 USBUART_SetEndpointHalt(void) 
@@ -1086,7 +1086,7 @@ line level    source
 1039   1          uint8 ri;
 1040   1          uint8 requestHandled = USBUART_FALSE;
 1041   1      
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 18  
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 18  
 
 1042   1          /* Clear endpoint halt */
 1043   1          ep = CY_GET_REG8(USBUART_wIndexLo) & USBUART_DIR_UNUSED;
@@ -1150,7 +1150,7 @@ line level    source
 1101          *  requestHandled.
 1102          *
 1103          * Reentrant:
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 19  
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 19  
 
 1104          *  No.
 1105          *
@@ -1183,7 +1183,7 @@ line level    source
 1132          
 1133          
 1134          /* [] END OF FILE */
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 20  
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 20  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -1247,7 +1247,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 004A FF                MOV     R7,A
 004B EF                MOV     A,R7
 004C B40135            CJNE    A,#01H,?C0004
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 21  
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 21  
 
                                            ; SOURCE LINE # 111
                                            ; SOURCE LINE # 112
@@ -1311,7 +1311,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00A2 FE                MOV     R6,A
 00A3 A3                INC     DPTR
 00A4 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 22  
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 22  
 
 00A5 FF                MOV     R7,A
 00A6 8F82              MOV     DPL,R7
@@ -1375,7 +1375,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0101 6003              JZ      $ + 5H
 0103 020000      R     LJMP    ?C0008
                                            ; SOURCE LINE # 128
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 23  
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 23  
 
                                            ; SOURCE LINE # 131
 0106 900000      R     MOV     DPTR,#nStr
@@ -1439,7 +1439,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0163         ?C0010:
                                            ; SOURCE LINE # 144
 0163 906002            MOV     DPTR,#06002H
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 24  
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 24  
 
 0166 E0                MOVX    A,@DPTR
 0167 FF                MOV     R7,A
@@ -1503,7 +1503,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01C3 120000      E     LCALL   ?C?PLDXDATA
 01C6 120000      E     LCALL   ?C?CLDPTR
 01C9 FF                MOV     R7,A
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 25  
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 25  
 
 01CA 7E00              MOV     R6,#00H
 01CC 900000      E     MOV     DPTR,#USBUART_currentTD
@@ -1523,6 +1523,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01E6 EF                MOV     A,R7
 01E7 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 174
+01E8         ?C0013:
                                            ; SOURCE LINE # 175
 01E8 020000      R     LJMP    ?C0023
 01EB         ?C0008:
@@ -1533,6 +1534,9 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01F1 EF                MOV     A,R7
 01F2 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 180
+01F3         ?C0014:
+01F3         ?C0007:
+01F3         ?C0005:
                                            ; SOURCE LINE # 181
 01F3 020000      R     LJMP    ?C0023
                                            ; SOURCE LINE # 182
@@ -1563,12 +1567,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0213 7402              MOV     A,#02H
 0215 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 187
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 26  
+
 0216 906004            MOV     DPTR,#06004H
 0219 E0                MOVX    A,@DPTR
 021A FF                MOV     R7,A
 021B EF                MOV     A,R7
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 26  
-
 021C 547F              ANL     A,#07FH
 021E FF                MOV     R7,A
 021F EF                MOV     A,R7
@@ -1627,460 +1631,480 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 026C 7900        R     MOV     R1,#LOW USBUART_tBuffer
 026E 900000      E     MOV     DPTR,#USBUART_currentTD+02H
 0271 120000      E     LCALL   ?C?PSTXDATA
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 27  
+
                                            ; SOURCE LINE # 198
 0274 120000      E     LCALL   USBUART_InitControlRead
 0277 900000      R     MOV     DPTR,#requestHandled
 027A EF                MOV     A,R7
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 27  
-
 027B F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 199
 027C 020000      R     LJMP    ?C0023
                                            ; SOURCE LINE # 200
+027F         ?C0019:
                                            ; SOURCE LINE # 201
-                                           ; SOURCE LINE # 202
-                                           ; SOURCE LINE # 203
 027F 020000      R     LJMP    ?C0023
+                                           ; SOURCE LINE # 202
+0282         ?C0016:
+                                           ; SOURCE LINE # 203
+0282 020000      R     LJMP    ?C0023
                                            ; SOURCE LINE # 204
-0282         ?C0020:
+0285         ?C0020:
                                            ; SOURCE LINE # 205
-0282 900000      E     MOV     DPTR,#USBUART_currentTD
-0285 E4                CLR     A
-0286 F0                MOVX    @DPTR,A
-0287 A3                INC     DPTR
-0288 7401              MOV     A,#01H
-028A F0                MOVX    @DPTR,A
+0285 900000      E     MOV     DPTR,#USBUART_currentTD
+0288 E4                CLR     A
+0289 F0                MOVX    @DPTR,A
+028A A3                INC     DPTR
+028B 7401              MOV     A,#01H
+028D F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 206
-028B 7B01              MOV     R3,#01H
-028D 7A00        E     MOV     R2,#HIGH USBUART_configuration
-028F 7900        E     MOV     R1,#LOW USBUART_configuration
-0291 900000      E     MOV     DPTR,#USBUART_currentTD+02H
-0294 120000      E     LCALL   ?C?PSTXDATA
+028E 7B01              MOV     R3,#01H
+0290 7A00        E     MOV     R2,#HIGH USBUART_configuration
+0292 7900        E     MOV     R1,#LOW USBUART_configuration
+0294 900000      E     MOV     DPTR,#USBUART_currentTD+02H
+0297 120000      E     LCALL   ?C?PSTXDATA
                                            ; SOURCE LINE # 207
-0297 120000      E     LCALL   USBUART_InitControlRead
-029A 900000      R     MOV     DPTR,#requestHandled
-029D EF                MOV     A,R7
-029E F0                MOVX    @DPTR,A
+029A 120000      E     LCALL   USBUART_InitControlRead
+029D 900000      R     MOV     DPTR,#requestHandled
+02A0 EF                MOV     A,R7
+02A1 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 208
-029F 020000      R     LJMP    ?C0023
+02A2 020000      R     LJMP    ?C0023
                                            ; SOURCE LINE # 209
-02A2         ?C0021:
+02A5         ?C0021:
                                            ; SOURCE LINE # 210
-02A2 900000      E     MOV     DPTR,#USBUART_currentTD
-02A5 E4                CLR     A
-02A6 F0                MOVX    @DPTR,A
-02A7 A3                INC     DPTR
-02A8 7401              MOV     A,#01H
-02AA F0                MOVX    @DPTR,A
+02A5 900000      E     MOV     DPTR,#USBUART_currentTD
+02A8 E4                CLR     A
+02A9 F0                MOVX    @DPTR,A
+02AA A3                INC     DPTR
+02AB 7401              MOV     A,#01H
+02AD F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 211
-02AB 906004            MOV     DPTR,#06004H
-02AE E0                MOVX    A,@DPTR
-02AF FF                MOV     R7,A
-02B0 7400        E     MOV     A,#LOW USBUART_interfaceSetting
-02B2 2F                ADD     A,R7
-02B3 F9                MOV     R1,A
-02B4 E4                CLR     A
-02B5 3400        E     ADDC    A,#HIGH USBUART_interfaceSetting
-02B7 FA                MOV     R2,A
-02B8 7B01              MOV     R3,#01H
-02BA 900000      E     MOV     DPTR,#USBUART_currentTD+02H
-02BD 120000      E     LCALL   ?C?PSTXDATA
+02AE 906004            MOV     DPTR,#06004H
+02B1 E0                MOVX    A,@DPTR
+02B2 FF                MOV     R7,A
+02B3 7400        E     MOV     A,#LOW USBUART_interfaceSetting
+02B5 2F                ADD     A,R7
+02B6 F9                MOV     R1,A
+02B7 E4                CLR     A
+02B8 3400        E     ADDC    A,#HIGH USBUART_interfaceSetting
+02BA FA                MOV     R2,A
+02BB 7B01              MOV     R3,#01H
+02BD 900000      E     MOV     DPTR,#USBUART_currentTD+02H
+02C0 120000      E     LCALL   ?C?PSTXDATA
                                            ; SOURCE LINE # 213
-02C0 120000      E     LCALL   USBUART_InitControlRead
-02C3 900000      R     MOV     DPTR,#requestHandled
-02C6 EF                MOV     A,R7
-02C7 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 214
-02C8 020000      R     LJMP    ?C0023
-                                           ; SOURCE LINE # 215
-                                           ; SOURCE LINE # 216
-                                           ; SOURCE LINE # 217
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 28  
+02C3 120000      E     LCALL   USBUART_InitControlRead
+02C6 900000      R     MOV     DPTR,#requestHandled
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 28  
 
-                                           ; SOURCE LINE # 218
+02C9 EF                MOV     A,R7
+02CA F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 214
 02CB 020000      R     LJMP    ?C0023
-02CE         ?C0001:
+                                           ; SOURCE LINE # 215
+02CE         ?C0022:
+                                           ; SOURCE LINE # 216
+02CE 020000      R     LJMP    ?C0023
+                                           ; SOURCE LINE # 217
+02D1         ?C0002:
+                                           ; SOURCE LINE # 218
+02D1 020000      R     LJMP    ?C0023
+02D4         ?C0001:
                                            ; SOURCE LINE # 219
                                            ; SOURCE LINE # 221
-02CE 906001            MOV     DPTR,#06001H
-02D1 E0                MOVX    A,@DPTR
-02D2 FF                MOV     R7,A
-02D3 EF                MOV     A,R7
-02D4 120000      E     LCALL   ?C?CCASE
-02D7 0000        R     DW      ?C0029
-02D9 01                DB      01H
-02DA 0000        R     DW      ?C0038
-02DC 03                DB      03H
-02DD 0000        R     DW      ?C0025
-02DF 05                DB      05H
-02E0 0000        R     DW      ?C0026
-02E2 09                DB      09H
-02E3 0000        R     DW      ?C0027
-02E5 0B                DB      0BH
-02E6 0000              DW      00H
-02E8 0000        R     DW      ?C0023
+02D4 906001            MOV     DPTR,#06001H
+02D7 E0                MOVX    A,@DPTR
+02D8 FF                MOV     R7,A
+02D9 EF                MOV     A,R7
+02DA 120000      E     LCALL   ?C?CCASE
+02DD 0000        R     DW      ?C0029
+02DF 01                DB      01H
+02E0 0000        R     DW      ?C0038
+02E2 03                DB      03H
+02E3 0000        R     DW      ?C0025
+02E5 05                DB      05H
+02E6 0000        R     DW      ?C0026
+02E8 09                DB      09H
+02E9 0000        R     DW      ?C0027
+02EB 0B                DB      0BH
+02EC 0000              DW      00H
+02EE 0000        R     DW      ?C0023
                                            ; SOURCE LINE # 222
                                            ; SOURCE LINE # 223
-02EA         ?C0025:
+02F0         ?C0025:
                                            ; SOURCE LINE # 224
-02EA 906002            MOV     DPTR,#06002H
-02ED E0                MOVX    A,@DPTR
-02EE FF                MOV     R7,A
-02EF 900000      E     MOV     DPTR,#USBUART_deviceAddress
-02F2 EF                MOV     A,R7
-02F3 F0                MOVX    @DPTR,A
+02F0 906002            MOV     DPTR,#06002H
+02F3 E0                MOVX    A,@DPTR
+02F4 FF                MOV     R7,A
+02F5 900000      E     MOV     DPTR,#USBUART_deviceAddress
+02F8 EF                MOV     A,R7
+02F9 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 225
-02F4 120000      E     LCALL   USBUART_InitNoDataControlTransfer
-02F7 900000      R     MOV     DPTR,#requestHandled
-02FA EF                MOV     A,R7
-02FB F0                MOVX    @DPTR,A
+02FA 120000      E     LCALL   USBUART_InitNoDataControlTransfer
+02FD 900000      R     MOV     DPTR,#requestHandled
+0300 EF                MOV     A,R7
+0301 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 226
-02FC 020000      R     LJMP    ?C0023
+0302 020000      R     LJMP    ?C0023
                                            ; SOURCE LINE # 227
-02FF         ?C0026:
+0305         ?C0026:
                                            ; SOURCE LINE # 228
-02FF 906002            MOV     DPTR,#06002H
-0302 E0                MOVX    A,@DPTR
-0303 FF                MOV     R7,A
-0304 900000      E     MOV     DPTR,#USBUART_configuration
-0307 EF                MOV     A,R7
-0308 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 229
-0309 900000      E     MOV     DPTR,#USBUART_configurationChanged
-030C 7401              MOV     A,#01H
+0305 906002            MOV     DPTR,#06002H
+0308 E0                MOVX    A,@DPTR
+0309 FF                MOV     R7,A
+030A 900000      E     MOV     DPTR,#USBUART_configuration
+030D EF                MOV     A,R7
 030E F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 230
-030F 7F01              MOV     R7,#01H
-0311 120000      R     LCALL   _USBUART_Config
-                                           ; SOURCE LINE # 231
-0314 120000      E     LCALL   USBUART_InitNoDataControlTransfer
-0317 900000      R     MOV     DPTR,#requestHandled
-031A EF                MOV     A,R7
-031B F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 232
-031C 020000      R     LJMP    ?C0023
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 29  
+                                           ; SOURCE LINE # 229
+030F 900000      E     MOV     DPTR,#USBUART_configurationChanged
+0312 7401              MOV     A,#01H
+0314 F0                MOVX    @DPTR,A
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 29  
 
+                                           ; SOURCE LINE # 230
+0315 7F01              MOV     R7,#01H
+0317 120000      R     LCALL   _USBUART_Config
+                                           ; SOURCE LINE # 231
+031A 120000      E     LCALL   USBUART_InitNoDataControlTransfer
+031D 900000      R     MOV     DPTR,#requestHandled
+0320 EF                MOV     A,R7
+0321 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 232
+0322 020000      R     LJMP    ?C0023
                                            ; SOURCE LINE # 233
-031F         ?C0027:
+0325         ?C0027:
                                            ; SOURCE LINE # 234
-031F 120000      R     LCALL   USBUART_ValidateAlternateSetting
-0322 EF                MOV     A,R7
-0323 7003              JNZ     $ + 5H
-0325 020000      R     LJMP    ?C0023
+0325 120000      R     LCALL   USBUART_ValidateAlternateSetting
+0328 EF                MOV     A,R7
+0329 7003              JNZ     $ + 5H
+032B 020000      R     LJMP    ?C0023
                                            ; SOURCE LINE # 235
                                            ; SOURCE LINE # 236
-0328 906004            MOV     DPTR,#06004H
-032B E0                MOVX    A,@DPTR
-032C FF                MOV     R7,A
-032D 900000      R     MOV     DPTR,#interfaceNumber
-0330 EF                MOV     A,R7
-0331 F0                MOVX    @DPTR,A
+032E 906004            MOV     DPTR,#06004H
+0331 E0                MOVX    A,@DPTR
+0332 FF                MOV     R7,A
+0333 900000      R     MOV     DPTR,#interfaceNumber
+0336 EF                MOV     A,R7
+0337 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 237
-0332 900000      R     MOV     DPTR,#interfaceNumber
-0335 E0                MOVX    A,@DPTR
-0336 FF                MOV     R7,A
-0337 900000      E     MOV     DPTR,#USBUART_interfaceNumber
-033A EF                MOV     A,R7
-033B F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 238
-033C 900000      E     MOV     DPTR,#USBUART_configurationChanged
-033F 7401              MOV     A,#01H
+0338 900000      R     MOV     DPTR,#interfaceNumber
+033B E0                MOVX    A,@DPTR
+033C FF                MOV     R7,A
+033D 900000      E     MOV     DPTR,#USBUART_interfaceNumber
+0340 EF                MOV     A,R7
 0341 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 238
+0342 900000      E     MOV     DPTR,#USBUART_configurationChanged
+0345 7401              MOV     A,#01H
+0347 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 243
-0342 120000      R     LCALL   USBUART_ConfigAltChanged
+0348 120000      R     LCALL   USBUART_ConfigAltChanged
                                            ; SOURCE LINE # 246
-0345 900000      R     MOV     DPTR,#interfaceNumber
-0348 E0                MOVX    A,@DPTR
-0349 FF                MOV     R7,A
-034A 7400        E     MOV     A,#LOW USBUART_interfaceSetting
-034C 2F                ADD     A,R7
-034D F582              MOV     DPL,A
-034F E4                CLR     A
-0350 3400        E     ADDC    A,#HIGH USBUART_interfaceSetting
-0352 F583              MOV     DPH,A
-0354 E0                MOVX    A,@DPTR
-0355 FF                MOV     R7,A
-0356 900000      R     MOV     DPTR,#interfaceNumber
-0359 E0                MOVX    A,@DPTR
-035A FE                MOV     R6,A
-035B 7400        E     MOV     A,#LOW USBUART_interfaceSetting_last
-035D 2E                ADD     A,R6
-035E F582              MOV     DPL,A
-0360 E4                CLR     A
-0361 3400        E     ADDC    A,#HIGH USBUART_interfaceSetting_last
-0363 F583              MOV     DPH,A
-0365 EF                MOV     A,R7
-0366 F0                MOVX    @DPTR,A
+034B 900000      R     MOV     DPTR,#interfaceNumber
+034E E0                MOVX    A,@DPTR
+034F FF                MOV     R7,A
+0350 7400        E     MOV     A,#LOW USBUART_interfaceSetting
+0352 2F                ADD     A,R7
+0353 F582              MOV     DPL,A
+0355 E4                CLR     A
+0356 3400        E     ADDC    A,#HIGH USBUART_interfaceSetting
+0358 F583              MOV     DPH,A
+035A E0                MOVX    A,@DPTR
+035B FF                MOV     R7,A
+035C 900000      R     MOV     DPTR,#interfaceNumber
+035F E0                MOVX    A,@DPTR
+0360 FE                MOV     R6,A
+0361 7400        E     MOV     A,#LOW USBUART_interfaceSetting_last
+0363 2E                ADD     A,R6
+0364 F582              MOV     DPL,A
+0366 E4                CLR     A
+0367 3400        E     ADDC    A,#HIGH USBUART_interfaceSetting_last
+0369 F583              MOV     DPH,A
+036B EF                MOV     A,R7
+036C F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 248
-0367 120000      E     LCALL   USBUART_InitNoDataControlTransfer
-036A 900000      R     MOV     DPTR,#requestHandled
-036D EF                MOV     A,R7
-036E F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 249
-                                           ; SOURCE LINE # 250
-036F 020000      R     LJMP    ?C0023
-                                           ; SOURCE LINE # 251
-0372         ?C0029:
-                                           ; SOURCE LINE # 252
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 30  
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 30  
 
-0372 906000            MOV     DPTR,#06000H
-0375 E0                MOVX    A,@DPTR
-0376 FF                MOV     R7,A
-0377 EF                MOV     A,R7
-0378 5403              ANL     A,#03H
-037A FF                MOV     R7,A
-037B EF                MOV     A,R7
-037C 120000      E     LCALL   ?C?CCASE
-037F 0000        R     DW      ?C0033
-0381 00                DB      00H
-0382 0000        R     DW      ?C0035
-0384 01                DB      01H
-0385 0000        R     DW      ?C0031
-0387 02                DB      02H
-0388 0000              DW      00H
-038A 0000        R     DW      ?C0023
+036D 120000      E     LCALL   USBUART_InitNoDataControlTransfer
+0370 900000      R     MOV     DPTR,#requestHandled
+0373 EF                MOV     A,R7
+0374 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 249
+0375         ?C0028:
+                                           ; SOURCE LINE # 250
+0375 020000      R     LJMP    ?C0023
+                                           ; SOURCE LINE # 251
+0378         ?C0029:
+                                           ; SOURCE LINE # 252
+0378 906000            MOV     DPTR,#06000H
+037B E0                MOVX    A,@DPTR
+037C FF                MOV     R7,A
+037D EF                MOV     A,R7
+037E 5403              ANL     A,#03H
+0380 FF                MOV     R7,A
+0381 EF                MOV     A,R7
+0382 120000      E     LCALL   ?C?CCASE
+0385 0000        R     DW      ?C0033
+0387 00                DB      00H
+0388 0000        R     DW      ?C0035
+038A 01                DB      01H
+038B 0000        R     DW      ?C0031
+038D 02                DB      02H
+038E 0000              DW      00H
+0390 0000        R     DW      ?C0023
                                            ; SOURCE LINE # 253
                                            ; SOURCE LINE # 254
-038C         ?C0031:
+0392         ?C0031:
                                            ; SOURCE LINE # 255
-038C 906002            MOV     DPTR,#06002H
-038F E0                MOVX    A,@DPTR
-0390 FF                MOV     R7,A
-0391 EF                MOV     A,R7
-0392 6003              JZ      $ + 5H
-0394 020000      R     LJMP    ?C0023
+0392 906002            MOV     DPTR,#06002H
+0395 E0                MOVX    A,@DPTR
+0396 FF                MOV     R7,A
+0397 EF                MOV     A,R7
+0398 6003              JZ      $ + 5H
+039A 020000      R     LJMP    ?C0023
                                            ; SOURCE LINE # 256
                                            ; SOURCE LINE # 257
-0397 120000      R     LCALL   USBUART_ClearEndpointHalt
-039A 900000      R     MOV     DPTR,#requestHandled
-039D EF                MOV     A,R7
-039E F0                MOVX    @DPTR,A
+039D 120000      R     LCALL   USBUART_ClearEndpointHalt
+03A0 900000      R     MOV     DPTR,#requestHandled
+03A3 EF                MOV     A,R7
+03A4 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 258
+03A5         ?C0032:
                                            ; SOURCE LINE # 259
-039F 020000      R     LJMP    ?C0023
+03A5 020000      R     LJMP    ?C0023
                                            ; SOURCE LINE # 260
-03A2         ?C0033:
+03A8         ?C0033:
                                            ; SOURCE LINE # 262
-03A2 906002            MOV     DPTR,#06002H
-03A5 E0                MOVX    A,@DPTR
-03A6 FF                MOV     R7,A
-03A7 EF                MOV     A,R7
-03A8 6401              XRL     A,#01H
-03AA 6003              JZ      $ + 5H
-03AC 020000      R     LJMP    ?C0023
+03A8 906002            MOV     DPTR,#06002H
+03AB E0                MOVX    A,@DPTR
+03AC FF                MOV     R7,A
+03AD EF                MOV     A,R7
+03AE 6401              XRL     A,#01H
+03B0 6003              JZ      $ + 5H
+03B2 020000      R     LJMP    ?C0023
                                            ; SOURCE LINE # 263
                                            ; SOURCE LINE # 264
-03AF 900000      E     MOV     DPTR,#USBUART_deviceStatus
-03B2 E0                MOVX    A,@DPTR
-03B3 FF                MOV     R7,A
-03B4 EF                MOV     A,R7
-03B5 54FD              ANL     A,#0FDH
-03B7 FF                MOV     R7,A
-03B8 900000      E     MOV     DPTR,#USBUART_deviceStatus
-03BB EF                MOV     A,R7
-03BC F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 265
-03BD 120000      E     LCALL   USBUART_InitNoDataControlTransfer
-03C0 900000      R     MOV     DPTR,#requestHandled
-03C3 EF                MOV     A,R7
-03C4 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 266
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 31  
+03B5 900000      E     MOV     DPTR,#USBUART_deviceStatus
+03B8 E0                MOVX    A,@DPTR
+03B9 FF                MOV     R7,A
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 31  
 
+03BA EF                MOV     A,R7
+03BB 54FD              ANL     A,#0FDH
+03BD FF                MOV     R7,A
+03BE 900000      E     MOV     DPTR,#USBUART_deviceStatus
+03C1 EF                MOV     A,R7
+03C2 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 265
+03C3 120000      E     LCALL   USBUART_InitNoDataControlTransfer
+03C6 900000      R     MOV     DPTR,#requestHandled
+03C9 EF                MOV     A,R7
+03CA F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 266
+03CB         ?C0034:
                                            ; SOURCE LINE # 267
-03C5 020000      R     LJMP    ?C0023
+03CB 020000      R     LJMP    ?C0023
                                            ; SOURCE LINE # 268
-03C8         ?C0035:
+03CE         ?C0035:
                                            ; SOURCE LINE # 270
-03C8 906004            MOV     DPTR,#06004H
-03CB E0                MOVX    A,@DPTR
-03CC FF                MOV     R7,A
-03CD EF                MOV     A,R7
-03CE C3                CLR     C
-03CF 9402              SUBB    A,#02H
-03D1 4003              JC      $ + 5H
-03D3 020000      R     LJMP    ?C0023
+03CE 906004            MOV     DPTR,#06004H
+03D1 E0                MOVX    A,@DPTR
+03D2 FF                MOV     R7,A
+03D3 EF                MOV     A,R7
+03D4 C3                CLR     C
+03D5 9402              SUBB    A,#02H
+03D7 4003              JC      $ + 5H
+03D9 020000      R     LJMP    ?C0023
                                            ; SOURCE LINE # 271
                                            ; SOURCE LINE # 273
-03D6 906004            MOV     DPTR,#06004H
-03D9 E0                MOVX    A,@DPTR
-03DA FF                MOV     R7,A
-03DB 7400        E     MOV     A,#LOW USBUART_interfaceStatus
-03DD 2F                ADD     A,R7
-03DE F582              MOV     DPL,A
-03E0 E4                CLR     A
-03E1 3400        E     ADDC    A,#HIGH USBUART_interfaceStatus
-03E3 F583              MOV     DPH,A
-03E5 C083              PUSH    DPH
-03E7 C082              PUSH    DPL
-03E9 E0                MOVX    A,@DPTR
-03EA FF                MOV     R7,A
-03EB 906002            MOV     DPTR,#06002H
-03EE E0                MOVX    A,@DPTR
-03EF FE                MOV     R6,A
-03F0 EE                MOV     A,R6
-03F1 F4                CPL     A
-03F2 FE                MOV     R6,A
-03F3 EF                MOV     A,R7
-03F4 5E                ANL     A,R6
-03F5 FF                MOV     R7,A
-03F6 D082              POP     DPL
-03F8 D083              POP     DPH
-03FA EF                MOV     A,R7
-03FB F0                MOVX    @DPTR,A
+03DC 906004            MOV     DPTR,#06004H
+03DF E0                MOVX    A,@DPTR
+03E0 FF                MOV     R7,A
+03E1 7400        E     MOV     A,#LOW USBUART_interfaceStatus
+03E3 2F                ADD     A,R7
+03E4 F582              MOV     DPL,A
+03E6 E4                CLR     A
+03E7 3400        E     ADDC    A,#HIGH USBUART_interfaceStatus
+03E9 F583              MOV     DPH,A
+03EB C083              PUSH    DPH
+03ED C082              PUSH    DPL
+03EF E0                MOVX    A,@DPTR
+03F0 FF                MOV     R7,A
+03F1 906002            MOV     DPTR,#06002H
+03F4 E0                MOVX    A,@DPTR
+03F5 FE                MOV     R6,A
+03F6 EE                MOV     A,R6
+03F7 F4                CPL     A
+03F8 FE                MOV     R6,A
+03F9 EF                MOV     A,R7
+03FA 5E                ANL     A,R6
+03FB FF                MOV     R7,A
+03FC D082              POP     DPL
+03FE D083              POP     DPH
+0400 EF                MOV     A,R7
+0401 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 274
-03FC 120000      E     LCALL   USBUART_InitNoDataControlTransfer
-03FF 900000      R     MOV     DPTR,#requestHandled
-0402 EF                MOV     A,R7
-0403 F0                MOVX    @DPTR,A
+0402 120000      E     LCALL   USBUART_InitNoDataControlTransfer
+0405 900000      R     MOV     DPTR,#requestHandled
+0408 EF                MOV     A,R7
+0409 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 275
+040A         ?C0036:
                                            ; SOURCE LINE # 276
-0404 020000      R     LJMP    ?C0023
-                                           ; SOURCE LINE # 277
-                                           ; SOURCE LINE # 278
-                                           ; SOURCE LINE # 279
-                                           ; SOURCE LINE # 280
-0407 020000      R     LJMP    ?C0023
-                                           ; SOURCE LINE # 281
-040A         ?C0038:
-                                           ; SOURCE LINE # 282
-040A 906000            MOV     DPTR,#06000H
-040D E0                MOVX    A,@DPTR
-040E FF                MOV     R7,A
-040F EF                MOV     A,R7
-0410 5403              ANL     A,#03H
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 32  
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 32  
 
-0412 FF                MOV     R7,A
-0413 EF                MOV     A,R7
-0414 120000      E     LCALL   ?C?CCASE
-0417 0000        R     DW      ?C0042
-0419 00                DB      00H
-041A 0000        R     DW      ?C0044
-041C 01                DB      01H
-041D 0000        R     DW      ?C0040
-041F 02                DB      02H
-0420 0000              DW      00H
-0422 0000        R     DW      ?C0023
+040A 020000      R     LJMP    ?C0023
+                                           ; SOURCE LINE # 277
+040D         ?C0037:
+                                           ; SOURCE LINE # 278
+040D 020000      R     LJMP    ?C0023
+                                           ; SOURCE LINE # 279
+0410         ?C0030:
+                                           ; SOURCE LINE # 280
+0410 020000      R     LJMP    ?C0023
+                                           ; SOURCE LINE # 281
+0413         ?C0038:
+                                           ; SOURCE LINE # 282
+0413 906000            MOV     DPTR,#06000H
+0416 E0                MOVX    A,@DPTR
+0417 FF                MOV     R7,A
+0418 EF                MOV     A,R7
+0419 5403              ANL     A,#03H
+041B FF                MOV     R7,A
+041C EF                MOV     A,R7
+041D 120000      E     LCALL   ?C?CCASE
+0420 0000        R     DW      ?C0042
+0422 00                DB      00H
+0423 0000        R     DW      ?C0044
+0425 01                DB      01H
+0426 0000        R     DW      ?C0040
+0428 02                DB      02H
+0429 0000              DW      00H
+042B 0000        R     DW      ?C0023
                                            ; SOURCE LINE # 283
                                            ; SOURCE LINE # 284
-0424         ?C0040:
+042D         ?C0040:
                                            ; SOURCE LINE # 285
-0424 906002            MOV     DPTR,#06002H
-0427 E0                MOVX    A,@DPTR
-0428 FF                MOV     R7,A
-0429 EF                MOV     A,R7
-042A 7065              JNZ     ?C0023
+042D 906002            MOV     DPTR,#06002H
+0430 E0                MOVX    A,@DPTR
+0431 FF                MOV     R7,A
+0432 EF                MOV     A,R7
+0433 7065              JNZ     ?C0023
                                            ; SOURCE LINE # 286
                                            ; SOURCE LINE # 287
-042C 120000      R     LCALL   USBUART_SetEndpointHalt
-042F 900000      R     MOV     DPTR,#requestHandled
-0432 EF                MOV     A,R7
-0433 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 288
-                                           ; SOURCE LINE # 289
-0434 805B              SJMP    ?C0023
-                                           ; SOURCE LINE # 290
-0436         ?C0042:
-                                           ; SOURCE LINE # 292
-0436 906002            MOV     DPTR,#06002H
-0439 E0                MOVX    A,@DPTR
-043A FF                MOV     R7,A
+0435 120000      R     LCALL   USBUART_SetEndpointHalt
+0438 900000      R     MOV     DPTR,#requestHandled
 043B EF                MOV     A,R7
-043C 6401              XRL     A,#01H
-043E 7051              JNZ     ?C0023
+043C F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 288
+043D         ?C0041:
+                                           ; SOURCE LINE # 289
+043D 805B              SJMP    ?C0023
+                                           ; SOURCE LINE # 290
+043F         ?C0042:
+                                           ; SOURCE LINE # 292
+043F 906002            MOV     DPTR,#06002H
+0442 E0                MOVX    A,@DPTR
+0443 FF                MOV     R7,A
+0444 EF                MOV     A,R7
+0445 6401              XRL     A,#01H
+0447 7051              JNZ     ?C0023
                                            ; SOURCE LINE # 293
                                            ; SOURCE LINE # 294
-0440 900000      E     MOV     DPTR,#USBUART_deviceStatus
-0443 E0                MOVX    A,@DPTR
-0444 FF                MOV     R7,A
-0445 EF                MOV     A,R7
-0446 4402              ORL     A,#02H
-0448 FF                MOV     R7,A
 0449 900000      E     MOV     DPTR,#USBUART_deviceStatus
-044C EF                MOV     A,R7
-044D F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 295
-044E 120000      E     LCALL   USBUART_InitNoDataControlTransfer
-0451 900000      R     MOV     DPTR,#requestHandled
-0454 EF                MOV     A,R7
-0455 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 296
-                                           ; SOURCE LINE # 297
-0456 8039              SJMP    ?C0023
-                                           ; SOURCE LINE # 298
-0458         ?C0044:
-                                           ; SOURCE LINE # 300
-0458 906004            MOV     DPTR,#06004H
-045B E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 33  
+044C E0                MOVX    A,@DPTR
+044D FF                MOV     R7,A
+044E EF                MOV     A,R7
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 33  
 
-045C FF                MOV     R7,A
+044F 4402              ORL     A,#02H
+0451 FF                MOV     R7,A
+0452 900000      E     MOV     DPTR,#USBUART_deviceStatus
+0455 EF                MOV     A,R7
+0456 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 295
+0457 120000      E     LCALL   USBUART_InitNoDataControlTransfer
+045A 900000      R     MOV     DPTR,#requestHandled
 045D EF                MOV     A,R7
-045E C3                CLR     C
-045F 9402              SUBB    A,#02H
-0461 502E              JNC     ?C0023
+045E F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 296
+045F         ?C0043:
+                                           ; SOURCE LINE # 297
+045F 8039              SJMP    ?C0023
+                                           ; SOURCE LINE # 298
+0461         ?C0044:
+                                           ; SOURCE LINE # 300
+0461 906004            MOV     DPTR,#06004H
+0464 E0                MOVX    A,@DPTR
+0465 FF                MOV     R7,A
+0466 EF                MOV     A,R7
+0467 C3                CLR     C
+0468 9402              SUBB    A,#02H
+046A 502E              JNC     ?C0023
                                            ; SOURCE LINE # 301
                                            ; SOURCE LINE # 303
-0463 906004            MOV     DPTR,#06004H
-0466 E0                MOVX    A,@DPTR
-0467 FF                MOV     R7,A
-0468 7400        E     MOV     A,#LOW USBUART_interfaceStatus
-046A 2F                ADD     A,R7
-046B F582              MOV     DPL,A
-046D E4                CLR     A
-046E 3400        E     ADDC    A,#HIGH USBUART_interfaceStatus
-0470 F583              MOV     DPH,A
-0472 C083              PUSH    DPH
-0474 C082              PUSH    DPL
-0476 E0                MOVX    A,@DPTR
-0477 FF                MOV     R7,A
-0478 906002            MOV     DPTR,#06002H
-047B E0                MOVX    A,@DPTR
-047C FE                MOV     R6,A
-047D EE                MOV     A,R6
-047E F4                CPL     A
-047F FE                MOV     R6,A
-0480 EF                MOV     A,R7
-0481 5E                ANL     A,R6
-0482 FF                MOV     R7,A
-0483 D082              POP     DPL
-0485 D083              POP     DPH
-0487 EF                MOV     A,R7
-0488 F0                MOVX    @DPTR,A
+046C 906004            MOV     DPTR,#06004H
+046F E0                MOVX    A,@DPTR
+0470 FF                MOV     R7,A
+0471 7400        E     MOV     A,#LOW USBUART_interfaceStatus
+0473 2F                ADD     A,R7
+0474 F582              MOV     DPL,A
+0476 E4                CLR     A
+0477 3400        E     ADDC    A,#HIGH USBUART_interfaceStatus
+0479 F583              MOV     DPH,A
+047B C083              PUSH    DPH
+047D C082              PUSH    DPL
+047F E0                MOVX    A,@DPTR
+0480 FF                MOV     R7,A
+0481 906002            MOV     DPTR,#06002H
+0484 E0                MOVX    A,@DPTR
+0485 FE                MOV     R6,A
+0486 EE                MOV     A,R6
+0487 F4                CPL     A
+0488 FE                MOV     R6,A
+0489 EF                MOV     A,R7
+048A 5E                ANL     A,R6
+048B FF                MOV     R7,A
+048C D082              POP     DPL
+048E D083              POP     DPH
+0490 EF                MOV     A,R7
+0491 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 304
-0489 120000      E     LCALL   USBUART_InitNoDataControlTransfer
-048C 900000      R     MOV     DPTR,#requestHandled
-048F EF                MOV     A,R7
-0490 F0                MOVX    @DPTR,A
+0492 120000      E     LCALL   USBUART_InitNoDataControlTransfer
+0495 900000      R     MOV     DPTR,#requestHandled
+0498 EF                MOV     A,R7
+0499 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 305
+049A         ?C0045:
                                            ; SOURCE LINE # 306
                                            ; SOURCE LINE # 307
+049A         ?C0046:
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 34  
+
                                            ; SOURCE LINE # 308
                                            ; SOURCE LINE # 309
+049A         ?C0039:
                                            ; SOURCE LINE # 310
                                            ; SOURCE LINE # 311
+049A         ?C0047:
                                            ; SOURCE LINE # 312
                                            ; SOURCE LINE # 313
+049A         ?C0024:
                                            ; SOURCE LINE # 314
-0491         ?C0023:
+049A         ?C0023:
                                            ; SOURCE LINE # 315
-0491 900000      R     MOV     DPTR,#requestHandled
-0494 E0                MOVX    A,@DPTR
-0495 FF                MOV     R7,A
+049A 900000      R     MOV     DPTR,#requestHandled
+049D E0                MOVX    A,@DPTR
+049E FF                MOV     R7,A
                                            ; SOURCE LINE # 316
-0496         ?C0048:
-0496 22                RET     
+049F         ?C0048:
+049F 22                RET     
              ; FUNCTION USBUART_HandleStandardRqst (END)
 
              ; FUNCTION _USBUART_ReadDieID (BEGIN)
                                            ; SOURCE LINE # 338
 0000 900000      R     MOV     DPTR,#descr
 0003 120000      E     LCALL   ?C?PSTXDATA
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 34  
-
                                            ; SOURCE LINE # 339
                                            ; SOURCE LINE # 341
 0006 900000      R     MOV     DPTR,#j
@@ -2119,6 +2143,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0041 120000      E     LCALL   ?C?PLDXDATA
 0044 E9                MOV     A,R1
 0045 2401              ADD     A,#01H
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 35  
+
 0047 F9                MOV     R1,A
 0048 EA                MOV     A,R2
 0049 3400              ADDC    A,#00H
@@ -2143,8 +2169,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0065 900000      R     MOV     DPTR,#j
 0068 E0                MOVX    A,@DPTR
 0069 FF                MOV     R7,A
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 35  
-
 006A E4                CLR     A
 006B FC                MOV     R4,A
 006C FD                MOV     R5,A
@@ -2183,6 +2207,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 009B FF                MOV     R7,A
 009C EF                MOV     A,R7
 009D 900000      R     MOV     DPTR,#hex
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 36  
+
 00A0 93                MOVC    A,@A+DPTR
 00A1 FF                MOV     R7,A
 00A2 900000      R     MOV     DPTR,#descr
@@ -2207,8 +2233,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00BF FF                MOV     R7,A
 00C0 EF                MOV     A,R7
 00C1 900000      R     MOV     DPTR,#hex
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 36  
-
 00C4 93                MOVC    A,@A+DPTR
 00C5 FF                MOV     R7,A
 00C6 900000      R     MOV     DPTR,#i
@@ -2234,16 +2258,21 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00E3 EF                MOV     A,R7
 00E4 120000      E     LCALL   ?C?CSTPTR
                                            ; SOURCE LINE # 359
+00E7         ?C0052:
 00E7 900000      R     MOV     DPTR,#i
 00EA E0                MOVX    A,@DPTR
 00EB 2404              ADD     A,#04H
 00ED F0                MOVX    @DPTR,A
 00EE 020000      R     LJMP    ?C0050
+00F1         ?C0051:
                                            ; SOURCE LINE # 360
+00F1         ?C0049:
                                            ; SOURCE LINE # 361
 00F1         ?C0053:
 00F1 22                RET     
              ; FUNCTION _USBUART_ReadDieID (END)
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 37  
+
 
              ; FUNCTION USBUART_ConfigReg (BEGIN)
                                            ; SOURCE LINE # 382
@@ -2271,8 +2300,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 001C E0                MOVX    A,@DPTR
 001D FF                MOV     R7,A
 001E 7E00              MOV     R6,#00H
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 37  
-
 0020 EF                MOV     A,R7
 0021 2480              ADD     A,#080H
 0023 FF                MOV     R7,A
@@ -2308,6 +2335,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 004D 75F00B            MOV     B,#0BH
 0050 A4                MUL     AB
 0051 2400        E     ADD     A,#LOW USBUART_EP+04H
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 38  
+
 0053 F582              MOV     DPL,A
 0055 E4                CLR     A
 0056 3400        E     ADDC    A,#HIGH USBUART_EP+04H
@@ -2335,8 +2364,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0074 FE                MOV     R6,A
 0075 8F82              MOV     DPL,R7
 0077 8E83              MOV     DPH,R6
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 38  
-
 0079 740C              MOV     A,#0CH
 007B F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 407
@@ -2359,6 +2386,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0091 7408              MOV     A,#08H
 0093 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 415
+0094         ?C0059:
                                            ; SOURCE LINE # 416
 0094 8016              SJMP    ?C0060
 0096         ?C0057:
@@ -2371,6 +2399,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 009D EF                MOV     A,R7
 009E 240E              ADD     A,#0EH
 00A0 FF                MOV     R7,A
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 39  
+
 00A1 EE                MOV     A,R6
 00A2 3460              ADDC    A,#060H
 00A4 FE                MOV     R6,A
@@ -2399,8 +2429,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00C3 FF                MOV     R7,A
 00C4 EE                MOV     A,R6
 00C5 FF                MOV     R7,A
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 39  
-
 00C6 7E00              MOV     R6,#00H
 00C8 900000      R     MOV     DPTR,#i
 00CB E0                MOVX    A,@DPTR
@@ -2435,6 +2463,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00F4 A3                INC     DPTR
 00F5 E0                MOVX    A,@DPTR
 00F6 FF                MOV     R7,A
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 40  
+
 00F7 EF                MOV     A,R7
 00F8 54FF              ANL     A,#0FFH
 00FA FF                MOV     R7,A
@@ -2463,8 +2493,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 011B A4                MUL     AB
 011C 2400        E     ADD     A,#LOW USBUART_EP+06H
 011E F582              MOV     DPL,A
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 40  
-
 0120 E4                CLR     A
 0121 3400        E     ADDC    A,#HIGH USBUART_EP+06H
 0123 F583              MOV     DPH,A
@@ -2499,6 +2527,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 014A EF                MOV     A,R7
 014B 75F00B            MOV     B,#0BH
 014E A4                MUL     AB
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 41  
+
 014F 2400        E     ADD     A,#LOW USBUART_EP+06H
 0151 F582              MOV     DPL,A
 0153 E4                CLR     A
@@ -2527,8 +2557,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0172 8D82              MOV     DPL,R5
 0174 8C83              MOV     DPH,R4
 0176 EF                MOV     A,R7
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 41  
-
 0177 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 428
 0178 900000      R     MOV     DPTR,#ep
@@ -2563,6 +2591,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01A2 3460              ADDC    A,#060H
 01A4 FC                MOV     R4,A
 01A5 8D82              MOV     DPL,R5
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 42  
+
 01A7 8C83              MOV     DPH,R4
 01A9 EF                MOV     A,R7
 01AA F0                MOVX    @DPTR,A
@@ -2591,8 +2621,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01CB FE                MOV     R6,A
 01CC EE                MOV     A,R6
 01CD FD                MOV     R5,A
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 42  
-
 01CE 7C00              MOV     R4,#00H
 01D0 ED                MOV     A,R5
 01D1 2485              ADD     A,#085H
@@ -2610,6 +2638,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01E2 04                INC     A
 01E3 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 433
+01E4         ?C0056:
 01E4 900000      R     MOV     DPTR,#i
 01E7 E0                MOVX    A,@DPTR
 01E8 2410              ADD     A,#010H
@@ -2621,10 +2650,13 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01F1 74FF              MOV     A,#0FFH
 01F3 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 450
+01F4         ?C0061:
 01F4 22                RET     
              ; FUNCTION USBUART_ConfigReg (END)
 
              ; FUNCTION _USBUART_Config (BEGIN)
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 43  
+
                                            ; SOURCE LINE # 475
 0000 900000      R     MOV     DPTR,#clearAltSetting
 0003 EF                MOV     A,R7
@@ -2655,8 +2687,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0020 900000      R     MOV     DPTR,#ep
 0023 E0                MOVX    A,@DPTR
 0024 FF                MOV     R7,A
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 43  
-
 0025 EF                MOV     A,R7
 0026 75F00B            MOV     B,#0BH
 0029 A4                MUL     AB
@@ -2689,6 +2719,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0050 75F00B            MOV     B,#0BH
 0053 A4                MUL     AB
 0054 2400        E     ADD     A,#LOW USBUART_EP+01H
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 44  
+
 0056 F582              MOV     DPL,A
 0058 E4                CLR     A
 0059 3400        E     ADDC    A,#HIGH USBUART_EP+01H
@@ -2719,8 +2751,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 007E 2400        E     ADD     A,#LOW USBUART_EP+05H
 0080 F582              MOV     DPL,A
 0082 E4                CLR     A
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 44  
-
 0083 3400        E     ADDC    A,#HIGH USBUART_EP+05H
 0085 F583              MOV     DPH,A
 0087 E4                CLR     A
@@ -2753,10 +2783,13 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00AD F582              MOV     DPL,A
 00AF E4                CLR     A
 00B0 3400        E     ADDC    A,#HIGH USBUART_EP+0AH
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 45  
+
 00B2 F583              MOV     DPH,A
 00B4 E4                CLR     A
 00B5 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 500
+00B6         ?C0064:
 00B6 900000      R     MOV     DPTR,#ep
 00B9 E0                MOVX    A,@DPTR
 00BA 04                INC     A
@@ -2783,8 +2816,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00D3 9402              SUBB    A,#02H
 00D5 502A              JNC     ?C0065
                                            ; SOURCE LINE # 506
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 45  
-
                                            ; SOURCE LINE # 507
 00D7 900000      R     MOV     DPTR,#i
 00DA E0                MOVX    A,@DPTR
@@ -2810,11 +2841,15 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00F7 E4                CLR     A
 00F8 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 509
+00F9         ?C0068:
 00F9 900000      R     MOV     DPTR,#i
 00FC E0                MOVX    A,@DPTR
 00FD 04                INC     A
 00FE F0                MOVX    @DPTR,A
 00FF 80CB              SJMP    ?C0066
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 46  
+
+0101         ?C0067:
                                            ; SOURCE LINE # 510
 0101         ?C0065:
                                            ; SOURCE LINE # 513
@@ -2847,8 +2882,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0126 FE                MOV     R6,A
 0127 A3                INC     DPTR
 0128 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 46  
-
 0129 FF                MOV     R7,A
 012A 8F82              MOV     DPL,R7
 012C 8E83              MOV     DPH,R6
@@ -2878,6 +2911,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 520
 0154 900000      E     MOV     DPTR,#USBUART_deviceStatus
 0157 E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 47  
+
 0158 FF                MOV     R7,A
 0159 EF                MOV     A,R7
 015A 4401              ORL     A,#01H
@@ -2911,8 +2946,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 017A EF                MOV     A,R7
 017B 2404              ADD     A,#04H
 017D FF                MOV     R7,A
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 47  
-
 017E EE                MOV     A,R6
 017F 3400              ADDC    A,#00H
 0181 FE                MOV     R6,A
@@ -2942,6 +2975,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01A1 7401              MOV     A,#01H
 01A3 F0                MOVX    @DPTR,A
 01A4         ?C0072:
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 48  
+
 01A4 900000      R     MOV     DPTR,#i
 01A7 E0                MOVX    A,@DPTR
 01A8 FF                MOV     R7,A
@@ -2975,8 +3010,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01D1 E4                CLR     A
 01D2 F0                MOVX    @DPTR,A
 01D3         ?C0075:
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 48  
-
 01D3 900000      R     MOV     DPTR,#ep
 01D6 E0                MOVX    A,@DPTR
 01D7 FF                MOV     R7,A
@@ -3006,6 +3039,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01F8 FF                MOV     R7,A
 01F9 7E00              MOV     R6,#00H
 01FB 900000      R     MOV     DPTR,#i
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 49  
+
 01FE E0                MOVX    A,@DPTR
 01FF FD                MOV     R5,A
 0200 7C00              MOV     R4,#00H
@@ -3039,8 +3074,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0226 ED                MOV     A,R5
 0227 75F00B            MOV     B,#0BH
 022A A4                MUL     AB
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 49  
-
 022B 2400        E     ADD     A,#LOW USBUART_EP+08H
 022D F582              MOV     DPL,A
 022F E4                CLR     A
@@ -3070,6 +3103,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 024C 7404              MOV     A,#04H
 024E 93                MOVC    A,@A+DPTR
 024F FE                MOV     R6,A
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 50  
+
 0250 7405              MOV     A,#05H
 0252 93                MOVC    A,@A+DPTR
 0253 FF                MOV     R7,A
@@ -3103,8 +3138,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0278 E4                CLR     A
 0279 93                MOVC    A,@A+DPTR
 027A FF                MOV     R7,A
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 50  
-
 027B 7400        E     MOV     A,#LOW USBUART_interfaceSetting
 027D 2F                ADD     A,R7
 027E F582              MOV     DPL,A
@@ -3134,6 +3167,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 02A1 E0                MOVX    A,@DPTR
 02A2 FE                MOV     R6,A
 02A3 A3                INC     DPTR
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 51  
+
 02A4 E0                MOVX    A,@DPTR
 02A5 FF                MOV     R7,A
 02A6 8F82              MOV     DPL,R7
@@ -3167,8 +3202,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 02CE 4E                ORL     A,R6
 02CF 7003              JNZ     $ + 5H
 02D1 020000      R     LJMP    ?C0081
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 51  
-
                                            ; SOURCE LINE # 615
                                            ; SOURCE LINE # 617
 02D4 900000      R     MOV     DPTR,#i
@@ -3198,6 +3231,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 02F9 900000      R     MOV     DPTR,#i
 02FC E0                MOVX    A,@DPTR
 02FD FE                MOV     R6,A
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 52  
+
 02FE EE                MOV     A,R6
 02FF 75F00B            MOV     B,#0BH
 0302 A4                MUL     AB
@@ -3231,8 +3266,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 032A FF                MOV     R7,A
 032B 8F82              MOV     DPL,R7
 032D 8E83              MOV     DPH,R6
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 52  
-
 032F 7406              MOV     A,#06H
 0331 93                MOVC    A,@A+DPTR
 0332 FF                MOV     R7,A
@@ -3257,10 +3290,13 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0350 EF                MOV     A,R7
 0351 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 627
+0352         ?C0084:
                                            ; SOURCE LINE # 637
 0352 8076              SJMP    ?C0086
 0354         ?C0081:
                                            ; SOURCE LINE # 639
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 53  
+
                                            ; SOURCE LINE # 641
 0354 900000      R     MOV     DPTR,#i
 0357 E0                MOVX    A,@DPTR
@@ -3295,8 +3331,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0382 2400        E     ADD     A,#LOW USBUART_EP+05H
 0384 F582              MOV     DPL,A
 0386 E4                CLR     A
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 53  
-
 0387 3400        E     ADDC    A,#HIGH USBUART_EP+05H
 0389 F583              MOV     DPH,A
 038B EF                MOV     A,R7
@@ -3325,6 +3359,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 03AA 8F82              MOV     DPL,R7
 03AC 8E83              MOV     DPH,R6
 03AE 7406              MOV     A,#06H
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 54  
+
 03B0 93                MOVC    A,@A+DPTR
 03B1 FF                MOV     R7,A
 03B2 EF                MOV     A,R7
@@ -3345,6 +3381,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 03C8 EF                MOV     A,R7
 03C9 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 651
+03CA         ?C0089:
                                            ; SOURCE LINE # 661
 03CA         ?C0086:
                                            ; SOURCE LINE # 662
@@ -3359,8 +3396,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 03D6 7402              MOV     A,#02H
 03D8 93                MOVC    A,@A+DPTR
 03D9 FF                MOV     R7,A
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 54  
-
 03DA 900000      R     MOV     DPTR,#i
 03DD E0                MOVX    A,@DPTR
 03DE FE                MOV     R6,A
@@ -3388,6 +3423,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 03FE FF                MOV     R7,A
 03FF 900000      R     MOV     DPTR,#i
 0402 E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 55  
+
 0403 FE                MOV     R6,A
 0404 EE                MOV     A,R6
 0405 75F00B            MOV     B,#0BH
@@ -3400,6 +3437,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0412 EF                MOV     A,R7
 0413 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 668
+0414         ?C0080:
                                            ; SOURCE LINE # 669
 0414         ?C0078:
                                            ; SOURCE LINE # 670
@@ -3422,13 +3460,13 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 042A EF                MOV     A,R7
 042B F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 671
+042C         ?C0077:
 042C 900000      R     MOV     DPTR,#cur_ep
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 55  
-
 042F E0                MOVX    A,@DPTR
 0430 04                INC     A
 0431 F0                MOVX    @DPTR,A
 0432 020000      R     LJMP    ?C0075
+0435         ?C0076:
                                            ; SOURCE LINE # 672
 0435         ?C0074:
 0435 900000      R     MOV     DPTR,#i
@@ -3449,6 +3487,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 044A A3                INC     DPTR
 044B 120000      E     LCALL   ?C?PLDCODE
 044E AE02              MOV     R6,AR2
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 56  
+
 0450 AF01              MOV     R7,AR1
 0452 900000      R     MOV     DPTR,#pEP
 0455 EE                MOV     A,R6
@@ -3487,8 +3527,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 047D 900000      R     MOV     DPTR,#pEP
 0480 E0                MOVX    A,@DPTR
 0481 FC                MOV     R4,A
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 56  
-
 0482 A3                INC     DPTR
 0483 E0                MOVX    A,@DPTR
 0484 FD                MOV     R5,A
@@ -3513,6 +3551,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 685
 04A1 900000      R     MOV     DPTR,#pEP
 04A4 E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 57  
+
 04A5 FE                MOV     R6,A
 04A6 A3                INC     DPTR
 04A7 E0                MOVX    A,@DPTR
@@ -3530,6 +3570,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 04B7 EF                MOV     A,R7
 04B8 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 686
+04B9         ?C0093:
 04B9 900000      R     MOV     DPTR,#i
 04BC E0                MOVX    A,@DPTR
 04BD 04                INC     A
@@ -3551,8 +3592,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 04D2         ?C0094:
 04D2 900000      R     MOV     DPTR,#ep
 04D5 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 57  
-
 04D6 FF                MOV     R7,A
 04D7 EF                MOV     A,R7
 04D8 C3                CLR     C
@@ -3576,6 +3615,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 04F1 F582              MOV     DPL,A
 04F3 E4                CLR     A
 04F4 3400        E     ADDC    A,#HIGH USBUART_EP+06H
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 58  
+
 04F6 F583              MOV     DPH,A
 04F8 EE                MOV     A,R6
 04F9 F0                MOVX    @DPTR,A
@@ -3604,6 +3645,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0519 8FF0              MOV     B,R7
 051B 120000      E     LCALL   ?C?IILDX
                                            ; SOURCE LINE # 696
+051E         ?C0096:
 051E 900000      R     MOV     DPTR,#ep
 0521 E0                MOVX    A,@DPTR
 0522 04                INC     A
@@ -3613,10 +3655,9 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 700
 0526 120000      R     LCALL   USBUART_ConfigReg
                                            ; SOURCE LINE # 701
+0529         ?C0069:
                                            ; SOURCE LINE # 702
 0529         ?C0097:
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 58  
-
 0529 22                RET     
              ; FUNCTION _USBUART_Config (END)
 
@@ -3638,6 +3679,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0011 E0                MOVX    A,@DPTR
 0012 FF                MOV     R7,A
 0013 EF                MOV     A,R7
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 59  
+
 0014 14                DEC     A
 0015 FF                MOV     R7,A
 0016 120000      R     LCALL   _USBUART_GetConfigTablePtr
@@ -3679,8 +3722,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0046 93                MOVC    A,@A+DPTR
 0047 FF                MOV     R7,A
 0048 900000      R     MOV     DPTR,#ep
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 59  
-
 004B EF                MOV     A,R7
 004C F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 745
@@ -3702,6 +3743,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0066 A3                INC     DPTR
 0067 EF                MOV     A,R7
 0068 F0                MOVX    @DPTR,A
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 60  
+
                                            ; SOURCE LINE # 746
 0069 900000      R     MOV     DPTR,#i
 006C E4                CLR     A
@@ -3743,8 +3786,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 009E E0                MOVX    A,@DPTR
 009F FC                MOV     R4,A
 00A0 A3                INC     DPTR
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 60  
-
 00A1 E0                MOVX    A,@DPTR
 00A2 FD                MOV     R5,A
 00A3 8D82              MOV     DPL,R5
@@ -3766,6 +3807,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00BA 020000      R     LJMP    ?C0102
 00BD 900000      R     MOV     DPTR,#pEP
 00C0 E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 61  
+
 00C1 FE                MOV     R6,A
 00C2 A3                INC     DPTR
 00C3 E0                MOVX    A,@DPTR
@@ -3807,8 +3850,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00F7 8F82              MOV     DPL,R7
 00F9 8E83              MOV     DPH,R6
 00FB E4                CLR     A
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 61  
-
 00FC 93                MOVC    A,@A+DPTR
 00FD FF                MOV     R7,A
 00FE 906004            MOV     DPTR,#06004H
@@ -3830,6 +3871,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0114 8E83              MOV     DPH,R6
 0116 7402              MOV     A,#02H
 0118 93                MOVC    A,@A+DPTR
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 62  
+
 0119 FF                MOV     R7,A
 011A EF                MOV     A,R7
 011B 547F              ANL     A,#07FH
@@ -3871,8 +3914,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 014B E0                MOVX    A,@DPTR
 014C FF                MOV     R7,A
 014D 8F82              MOV     DPL,R7
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 62  
-
 014F 8E83              MOV     DPH,R6
 0151 7403              MOV     A,#03H
 0153 93                MOVC    A,@A+DPTR
@@ -3894,6 +3935,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0168 8E83              MOV     DPH,R6
 016A 7402              MOV     A,#02H
 016C 93                MOVC    A,@A+DPTR
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 63  
+
 016D FF                MOV     R7,A
 016E EF                MOV     A,R7
 016F 5480              ANL     A,#080H
@@ -3935,8 +3978,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01A3 75F00B            MOV     B,#0BH
 01A6 A4                MUL     AB
 01A7 2400        E     ADD     A,#LOW USBUART_EP+05H
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 63  
-
 01A9 F582              MOV     DPL,A
 01AB E4                CLR     A
 01AC 3400        E     ADDC    A,#HIGH USBUART_EP+05H
@@ -3958,6 +3999,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01C0 F582              MOV     DPL,A
 01C2 E4                CLR     A
 01C3 3400        E     ADDC    A,#HIGH USBUART_EP+01H
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 64  
+
 01C5 F583              MOV     DPH,A
 01C7 E4                CLR     A
 01C8 F0                MOVX    @DPTR,A
@@ -3999,8 +4042,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01F9 3460              ADDC    A,#060H
 01FB FE                MOV     R6,A
 01FC 8F82              MOV     DPL,R7
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 64  
-
 01FE 8E83              MOV     DPH,R6
 0200 7401              MOV     A,#01H
 0202 F0                MOVX    @DPTR,A
@@ -4022,6 +4063,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0217 900000      R     MOV     DPTR,#cur_ep
 021A E0                MOVX    A,@DPTR
 021B FD                MOV     R5,A
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 65  
+
 021C ED                MOV     A,R5
 021D 75F00B            MOV     B,#0BH
 0220 A4                MUL     AB
@@ -4063,8 +4106,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 775
 0254 900000      R     MOV     DPTR,#pEP
 0257 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 65  
-
 0258 FE                MOV     R6,A
 0259 A3                INC     DPTR
 025A E0                MOVX    A,@DPTR
@@ -4086,6 +4127,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0273 3400        E     ADDC    A,#HIGH USBUART_EP
 0275 F583              MOV     DPH,A
 0277 EF                MOV     A,R7
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 66  
+
 0278 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 778
 0279 900000      R     MOV     DPTR,#cur_ep
@@ -4127,8 +4170,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 02AF EE                MOV     A,R6
 02B0 FD                MOV     R5,A
 02B1 7C00              MOV     R4,#00H
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 66  
-
 02B3 ED                MOV     A,R5
 02B4 240C              ADD     A,#0CH
 02B6 FD                MOV     R5,A
@@ -4150,6 +4191,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 02CD F582              MOV     DPL,A
 02CF E4                CLR     A
 02D0 3400        E     ADDC    A,#HIGH USBUART_EP+08H
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 67  
+
 02D2 F583              MOV     DPH,A
 02D4 E0                MOVX    A,@DPTR
 02D5 FE                MOV     R6,A
@@ -4191,8 +4234,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0308 FE                MOV     R6,A
 0309 A3                INC     DPTR
 030A E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 67  
-
 030B FF                MOV     R7,A
 030C EF                MOV     A,R7
 030D 54FF              ANL     A,#0FFH
@@ -4214,6 +4255,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0325 EF                MOV     A,R7
 0326 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 821
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 68  
+
 0327 900000      R     MOV     DPTR,#cur_ep
 032A E0                MOVX    A,@DPTR
 032B FF                MOV     R7,A
@@ -4255,8 +4298,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 035E FF                MOV     R7,A
 035F EF                MOV     A,R7
 0360 75F00B            MOV     B,#0BH
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 68  
-
 0363 A4                MUL     AB
 0364 2400        E     ADD     A,#LOW USBUART_EP+06H
 0366 F582              MOV     DPL,A
@@ -4278,6 +4319,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 037C FD                MOV     R5,A
 037D 7C00              MOV     R4,#00H
 037F ED                MOV     A,R5
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 69  
+
 0380 2484              ADD     A,#084H
 0382 FD                MOV     R5,A
 0383 EC                MOV     A,R4
@@ -4319,8 +4362,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 03B6 EC                MOV     A,R4
 03B7 3460              ADDC    A,#060H
 03B9 FC                MOV     R4,A
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 69  
-
 03BA 8D82              MOV     DPL,R5
 03BC 8C83              MOV     DPH,R4
 03BE EF                MOV     A,R7
@@ -4342,17 +4383,22 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 03CF FE                MOV     R6,A
 03D0 900000      R     MOV     DPTR,#pEP
 03D3 EE                MOV     A,R6
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 70  
+
 03D4 F0                MOVX    @DPTR,A
 03D5 A3                INC     DPTR
 03D6 EF                MOV     A,R7
 03D7 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 830
+03D8         ?C0101:
 03D8 900000      R     MOV     DPTR,#i
 03DB E0                MOVX    A,@DPTR
 03DC 04                INC     A
 03DD F0                MOVX    @DPTR,A
 03DE 020000      R     LJMP    ?C0099
+03E1         ?C0100:
                                            ; SOURCE LINE # 831
+03E1         ?C0098:
                                            ; SOURCE LINE # 832
 03E1         ?C0109:
 03E1 22                RET     
@@ -4383,8 +4429,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0022 EE                MOV     A,R6
 0023 F0                MOVX    @DPTR,A
 0024 A3                INC     DPTR
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 70  
-
 0025 EF                MOV     A,R7
 0026 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 860
@@ -4403,6 +4447,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 003B FF                MOV     R7,A
 003C D082              POP     DPL
 003E D083              POP     DPH
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 71  
+
 0040 75F004            MOV     B,#04H
 0043 EF                MOV     A,R7
 0044 120000      E     LCALL   ?C?OFFXADD
@@ -4447,8 +4493,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 901
                                            ; SOURCE LINE # 903
                                            ; SOURCE LINE # 907
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 71  
-
 0000 900000      E     MOV     DPTR,#USBUART_configuration
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
@@ -4467,6 +4511,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0016 E0                MOVX    A,@DPTR
 0017 FE                MOV     R6,A
 0018 A3                INC     DPTR
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 72  
+
 0019 E0                MOVX    A,@DPTR
 001A FF                MOV     R7,A
 001B 8F82              MOV     DPL,R7
@@ -4511,8 +4557,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0053 A3                INC     DPTR
 0054 E0                MOVX    A,@DPTR
 0055 FD                MOV     R5,A
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 72  
-
 0056 EF                MOV     A,R7
 0057 2D                ADD     A,R5
 0058 FF                MOV     R7,A
@@ -4531,6 +4575,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0068 FE                MOV     R6,A
 0069 A3                INC     DPTR
 006A E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 73  
+
 006B FF                MOV     R7,A
 006C 8F82              MOV     DPL,R7
 006E 8E83              MOV     DPH,R6
@@ -4575,8 +4621,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0024 F8                MOV     R0,A
 0025 540F              ANL     A,#0FH
 0027 C8                XCH     A,R0
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 73  
-
 0028 68                XRL     A,R0
 0029 FF                MOV     R7,A
 002A EE                MOV     A,R6
@@ -4595,6 +4639,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 003B D3                SETB    C
 003C 9400              SUBB    A,#00H
 003E 5003              JNC     $ + 5H
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 74  
+
 0040 020000      R     LJMP    ?C0116
 0043 900000      R     MOV     DPTR,#ep
 0046 E0                MOVX    A,@DPTR
@@ -4639,8 +4685,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 007F E4                CLR     A
 0080 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 948
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 74  
-
 0081 900000      R     MOV     DPTR,#ep
 0084 E0                MOVX    A,@DPTR
 0085 FF                MOV     R7,A
@@ -4659,6 +4703,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 009A E0                MOVX    A,@DPTR
 009B FF                MOV     R7,A
 009C EF                MOV     A,R7
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 75  
+
 009D 75F00B            MOV     B,#0BH
 00A0 A4                MUL     AB
 00A1 2400        E     ADD     A,#LOW USBUART_EP+04H
@@ -4703,8 +4749,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00D4 EF                MOV     A,R7
 00D5 240E              ADD     A,#0EH
 00D7 FF                MOV     R7,A
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 75  
-
 00D8 EE                MOV     A,R6
 00D9 3460              ADDC    A,#060H
 00DB FE                MOV     R6,A
@@ -4713,7 +4757,9 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00E0 7408              MOV     A,#08H
 00E2 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 959
+00E3         ?C0115:
                                            ; SOURCE LINE # 960
+00E3         ?C0113:
                                            ; SOURCE LINE # 961
 00E3         ?C0116:
 00E3 22                RET     
@@ -4721,6 +4767,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
              ; FUNCTION USBUART_SetEndpointHalt (BEGIN)
                                            ; SOURCE LINE # 981
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 76  
+
                                            ; SOURCE LINE # 982
                                            ; SOURCE LINE # 985
 0000 900000      R     MOV     DPTR,#requestHandled
@@ -4767,8 +4815,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0038 E0                MOVX    A,@DPTR
 0039 FF                MOV     R7,A
 003A EF                MOV     A,R7
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 76  
-
 003B D3                SETB    C
 003C 9400              SUBB    A,#00H
 003E 5003              JNC     $ + 5H
@@ -4785,6 +4831,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 994
 0051 900000      R     MOV     DPTR,#ep
 0054 E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 77  
+
 0055 FF                MOV     R7,A
 0056 EF                MOV     A,R7
 0057 75F00B            MOV     B,#0BH
@@ -4831,8 +4879,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0095 FF                MOV     R7,A
 0096 EF                MOV     A,R7
 0097 4402              ORL     A,#02H
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 77  
-
 0099 FF                MOV     R7,A
 009A EF                MOV     A,R7
 009B F0                MOVX    @DPTR,A
@@ -4849,6 +4895,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00AB 3400        E     ADDC    A,#HIGH USBUART_EP+04H
 00AD F583              MOV     DPH,A
 00AF E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 78  
+
 00B0 FF                MOV     R7,A
 00B1 EF                MOV     A,R7
 00B2 5480              ANL     A,#080H
@@ -4895,8 +4943,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1011
 00E9         ?C0119:
                                            ; SOURCE LINE # 1012
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 78  
-
 00E9 120000      E     LCALL   USBUART_InitNoDataControlTransfer
 00EC 900000      R     MOV     DPTR,#requestHandled
 00EF EF                MOV     A,R7
@@ -4913,6 +4959,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION USBUART_SetEndpointHalt (END)
 
              ; FUNCTION USBUART_ClearEndpointHalt (BEGIN)
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 79  
+
                                            ; SOURCE LINE # 1036
                                            ; SOURCE LINE # 1037
                                            ; SOURCE LINE # 1040
@@ -4959,8 +5007,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0035 900000      R     MOV     DPTR,#ep
 0038 E0                MOVX    A,@DPTR
 0039 FF                MOV     R7,A
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 79  
-
 003A EF                MOV     A,R7
 003B D3                SETB    C
 003C 9400              SUBB    A,#00H
@@ -4977,6 +5023,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1047
                                            ; SOURCE LINE # 1049
 0051 900000      R     MOV     DPTR,#ep
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 80  
+
 0054 E0                MOVX    A,@DPTR
 0055 FF                MOV     R7,A
 0056 EF                MOV     A,R7
@@ -5023,8 +5071,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0092 8E83              MOV     DPH,R6
 0094 E0                MOVX    A,@DPTR
 0095 FF                MOV     R7,A
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 80  
-
 0096 EF                MOV     A,R7
 0097 547F              ANL     A,#07FH
 0099 FF                MOV     R7,A
@@ -5041,6 +5087,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00A8 F582              MOV     DPL,A
 00AA E4                CLR     A
 00AB 3400        E     ADDC    A,#HIGH USBUART_EP+01H
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 81  
+
 00AD F583              MOV     DPH,A
 00AF E0                MOVX    A,@DPTR
 00B0 FF                MOV     R7,A
@@ -5087,8 +5135,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00EA FF                MOV     R7,A
 00EB EF                MOV     A,R7
 00EC B40118            CJNE    A,#01H,?C0123
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 81  
-
                                            ; SOURCE LINE # 1063
                                            ; SOURCE LINE # 1064
 00EF 900000      R     MOV     DPTR,#ri
@@ -5105,6 +5151,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0100 8E83              MOV     DPH,R6
 0102 740C              MOV     A,#0CH
 0104 F0                MOVX    @DPTR,A
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 82  
+
                                            ; SOURCE LINE # 1065
 0105 805F              SJMP    ?C0125
 0107         ?C0123:
@@ -5125,6 +5173,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 011A 740D              MOV     A,#0DH
 011C F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 1069
+011D         ?C0124:
                                            ; SOURCE LINE # 1070
 011D 8047              SJMP    ?C0125
 011F         ?C0122:
@@ -5151,8 +5200,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 013B E0                MOVX    A,@DPTR
 013C FF                MOV     R7,A
 013D 7E00              MOV     R6,#00H
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 82  
-
 013F EF                MOV     A,R7
 0140 240E              ADD     A,#0EH
 0142 FF                MOV     R7,A
@@ -5168,6 +5215,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0150         ?C0126:
                                            ; SOURCE LINE # 1079
                                            ; SOURCE LINE # 1080
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 83  
+
 0150 900000      R     MOV     DPTR,#ri
 0153 E0                MOVX    A,@DPTR
 0154 FF                MOV     R7,A
@@ -5183,6 +5232,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0163 7409              MOV     A,#09H
 0165 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 1081
+0166         ?C0127:
                                            ; SOURCE LINE # 1082
 0166         ?C0125:
                                            ; SOURCE LINE # 1083
@@ -5215,8 +5265,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000B 900000      R     MOV     DPTR,#interfaceNum
 000E EF                MOV     A,R7
 000F F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 83  
-
                                            ; SOURCE LINE # 1116
 0010 900000      E     MOV     DPTR,#USBUART_configuration
 0013 E0                MOVX    A,@DPTR
@@ -5231,6 +5279,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0020 A3                INC     DPTR
 0021 EF                MOV     A,R7
 0022 F0                MOVX    @DPTR,A
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 84  
+
                                            ; SOURCE LINE # 1117
 0023 900000      R     MOV     DPTR,#pTmp
 0026 E0                MOVX    A,@DPTR
@@ -5279,8 +5329,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0062 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 1122
 0063 8038              SJMP    ?C0131
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 84  
-
 0065         ?C0129:
                                            ; SOURCE LINE # 1124
                                            ; SOURCE LINE # 1126
@@ -5295,6 +5343,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0072 F583              MOV     DPH,A
 0074 E0                MOVX    A,@DPTR
 0075 FF                MOV     R7,A
+C51 COMPILER V9.51   USBUART_STD                                                           03/28/2014 13:53:45 PAGE 85  
+
 0076 900000      R     MOV     DPTR,#interfaceNum
 0079 E0                MOVX    A,@DPTR
 007A FE                MOV     R6,A
@@ -5335,16 +5385,14 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   5483    ----
+   CODE SIZE        =   5492    ----
    CONSTANT SIZE    =     16    ----
-   XDATA SIZE       =      2      59
+   XDATA SIZE       =     61    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
    EDATA SIZE       =   ----    ----
-C51 COMPILER V9.51   USBUART_STD                                                           03/27/2014 15:27:15 PAGE 85  
-
    HDATA SIZE       =   ----    ----
    XDATA CONST SIZE =   ----    ----
    FAR CONST SIZE   =   ----    ----

@@ -6,7 +6,7 @@
 
 #Build Date:         Mar 26 2013 14:54:34
 
-#File Generated:     Mar 27 2014 14:38:10
+#File Generated:     Mar 27 2014 21:52:17
 
 #Purpose:            
 
@@ -45,17 +45,17 @@ Phase 3
 
 Design Statistics after Packing
     Number of Combinational MCs 	:	1
-    Number of Sequential MCs    	:	4
+    Number of Sequential MCs    	:	7
     Number of DPs               	:	0
     Number of Controls          	:	0
     Number of Status            	:	0
-    Number of SyncCells         	:	1
+    Number of SyncCells         	:	2
     Number of count7cells       	:	0
 
 Device Utilization Summary after Packing
-    Macrocells                  :	5/192
-    UDBS                        :	1/24
-    IOs                         :	6/72
+    Macrocells                  :	8/192
+    UDBS                        :	2/24
+    IOs                         :	8/72
 
 
 D2088: Phase 3, elapsed time : 0.0 (sec)
@@ -79,13 +79,18 @@ analysis after routing.
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 8
+Number of clocks: 13
+Clock: ADC_Ext_CP_Clk       | Frequency: N/A       | Target:  64.0 MHz
+Clock: ADC_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  64.0 MHz
+Clock: ADC_theACLK          | Frequency: N/A       | Target:   0.1 MHz
+Clock: ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyBUS_CLK            | Frequency: 138.2 MHz | Target:  64.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  64.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  64.0 MHz
-Clock: debounce_clock       | Frequency: 138.2 MHz | Target:   0.0 MHz
+Clock: \ADC:DSM\/dec_clock  | Frequency: N/A       | Target:   0.1 MHz
+Clock: debounce_clock       | Frequency: 123.4 MHz | Target:   0.0 MHz
 Clock: timer_clock          | Frequency: N/A       | Target:   0.0 MHz
 Clock: timer_clock(fixed-function) | Frequency: N/A       | Target:   0.0 MHz
 
@@ -99,12 +104,17 @@ Phase 7
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 8
+Number of clocks: 13
+Clock: ADC_Ext_CP_Clk       | Frequency: N/A       | Target:  64.0 MHz
+Clock: ADC_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  64.0 MHz
+Clock: ADC_theACLK          | Frequency: N/A       | Target:   0.1 MHz
+Clock: ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyBUS_CLK            | Frequency:  44.2 MHz | Target:  64.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  64.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  64.0 MHz
+Clock: \ADC:DSM\/dec_clock  | Frequency: N/A       | Target:   0.1 MHz
 Clock: debounce_clock       | Frequency:  44.2 MHz | Target:   0.0 MHz
 Clock: timer_clock          | Frequency: N/A       | Target:   0.0 MHz
 Clock: timer_clock(fixed-function) | Frequency: N/A       | Target:   0.0 MHz
@@ -116,17 +126,17 @@ D2088: Phase 7, elapsed time : 0.0 (sec)
 
 Final Design Statistics
     Number of Combinational MCs 	:	1
-    Number of Sequential MCs    	:	4
+    Number of Sequential MCs    	:	7
     Number of DPs               	:	0
     Number of Controls          	:	0
     Number of Status            	:	0
-    Number of SyncCells         	:	1
+    Number of SyncCells         	:	2
     Number of count7cells       	:	0
-    Number of IOs       	:	6
+    Number of IOs       	:	8
 
 Device Utilization Summary
-    Macrocells                  :	5/192
-    IOs                         :	6/72
+    Macrocells                  :	8/192
+    IOs                         :	8/72
 
 
 
@@ -142,12 +152,17 @@ analysis after routing.
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 8
+Number of clocks: 13
+Clock: ADC_Ext_CP_Clk       | Frequency: N/A       | Target:  64.0 MHz
+Clock: ADC_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  64.0 MHz
+Clock: ADC_theACLK          | Frequency: N/A       | Target:   0.1 MHz
+Clock: ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyBUS_CLK            | Frequency:  44.2 MHz | Target:  64.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  64.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  64.0 MHz
+Clock: \ADC:DSM\/dec_clock  | Frequency: N/A       | Target:   0.1 MHz
 Clock: debounce_clock       | Frequency:  44.2 MHz | Target:   0.0 MHz
 Clock: timer_clock          | Frequency: N/A       | Target:   0.0 MHz
 Clock: timer_clock(fixed-function) | Frequency: N/A       | Target:   0.0 MHz
@@ -161,5 +176,5 @@ D2088: Phase 8, elapsed time : 0.0 (sec)
 
 D2054: Placement of the design completed successfully
 
-I2076: Total run-time: 1.1 sec.
+I2076: Total run-time: 0.8 sec.
 

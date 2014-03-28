@@ -1,6 +1,6 @@
 // ======================================================================
 // Erebus_Sensor.v generated from TopDesign.cysch
-// 03/27/2014 at 17:48
+// 03/27/2014 at 21:52
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -682,22 +682,12 @@ module ADC_DelSig_v3_0_2 (
 
 endmodule
 
-// Component: not_v1_0
-`ifdef CY_BLK_DIR
-`undef CY_BLK_DIR
-`endif
-
-`ifdef WARP
-`define CY_BLK_DIR "$CYPRESS_DIR\..\psoc\content\cyprimitives\CyPrimitives.cylib\not_v1_0"
-`include "$CYPRESS_DIR\..\psoc\content\cyprimitives\CyPrimitives.cylib\not_v1_0\not_v1_0.v"
-`else
-`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\not_v1_0"
-`include "C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\not_v1_0\not_v1_0.v"
-`endif
-
 // top
 module top ;
 
+          wire  Net_582;
+          wire  Net_581;
+          wire  Net_580;
           wire  Net_563;
     electrical  Net_562;
           wire  Net_561;
@@ -715,14 +705,14 @@ module top ;
           wire  Net_154;
           wire  Net_204;
           wire  Net_8;
-    electrical  Net_564;
+          wire  Net_570;
           wire  Net_14;
-          wire  Net_15;
+          wire  Net_242;
+    electrical  Net_564;
           wire  Net_556;
           wire  Net_408;
           wire  Net_146;
           wire  Net_12;
-          wire  Net_242;
           wire  Net_249;
           wire  Net_72;
           wire  Net_65;
@@ -1219,7 +1209,7 @@ module top ;
 		SW_3
 		 (.oe(tmpOE__SW_3_net),
 		  .y({1'b0}),
-		  .fb({Net_15}),
+		  .fb({Net_570}),
 		  .io({tmpIO_0__SW_3_net[0:0]}),
 		  .siovref(tmpSIOVREF__SW_3_net),
 		  .interrupt({tmpINTERRUPT_0__SW_3_net[0:0]}),
@@ -1232,8 +1222,17 @@ module top ;
 
 	assign tmpOE__SW_3_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
-
-    assign Net_14 = ~Net_15;
+    Debouncer_v1_0 SW3_Debounce (
+        .d(Net_570),
+        .clock(Net_242),
+        .q(Net_580),
+        .neg(Net_14),
+        .either(Net_581),
+        .pos(Net_582));
+    defparam SW3_Debounce.EitherEdgeDetect = 0;
+    defparam SW3_Debounce.NegEdgeDetect = 1;
+    defparam SW3_Debounce.PosEdgeDetect = 0;
+    defparam SW3_Debounce.SignalWidth = 1;
 
 
 

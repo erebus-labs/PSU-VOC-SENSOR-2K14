@@ -14,7 +14,11 @@
 #include "main.h"
 
 
-int main()
+
+const uint8 CYCODE MemoryLocation[EmEEPROMSize]; // Errors caused by the include of main.h which includes the externs and static
+volatile uint8* TailPtr = (uint8*) MemoryLocation;
+
+void main()
 {
     /* Initialization*/
     uint16 blink_rate = 0;
@@ -24,10 +28,11 @@ int main()
     
     // Enable and start EEPROM
     EEPROM_R_Start();
-    
+         
     // Enable global interrupts
     CyGlobalIntEnable;
     Vbus_IRQ_Start();
+    TakeSample_IRQ_Start();
     
 //    Blink_Timer_WritePeriod(CYDEV_EE_BASE[EEPROM_Address.blink_rate]);
     
@@ -42,7 +47,7 @@ int main()
  
     }
     
-    return (0);
+    return;
 }
 
 /* [] END OF FILE */

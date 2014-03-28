@@ -10,7 +10,7 @@
  * ========================================
 */
 #include "USB_Access.h"
-
+#include "EmEEPROM_Access.h" // Location of sampled data in flash
 /* This file provides function definitions for USB interactions */
 
 void USB_ISR(){
@@ -47,7 +47,7 @@ void USB_ISR(){
                     
                     case DUMP_DATA:
                         dump_data();
-                        send_reply(SUCCESS);
+                        confirm_dump();
                         break;
                         
                     case CHANGE_SETTING:
@@ -81,7 +81,7 @@ uint8 retrieve(command* instruction){
     // If data in buffer is the right amount for a command,
     // retrieve it
     if(count == COMMAND_LENGTH){
-        USBUART_GetAll(buffer);
+        USBUART_GetData(buffer, COMMAND_LENGTH);
         instruction -> command = buffer[0];
         instruction -> target = (((uint16) buffer[1]) << 0x8) | buffer[2];
         instruction -> value = (((uint16) buffer[3]) << 0x8) | buffer[4];
@@ -103,7 +103,46 @@ void apply_setting(command instruction){
 }
 
 void dump_data(){
-    // Not Yet Implemented
+    uint8  ExportBuffer[BUFFER_LEN]; // 64 Bytes per USB data packet.
+    uint8* ExportPtr =(uint8*) MemoryLocation; 
+    uint16 DataCnt = 0;
+    uint8  i = 0;
+    
+    /* Operator */
+    while (ExportPtr < TailPtr)
+    {   
+        while (i < BUFFER_LEN)
+        {
+            if (ExportPtr < TailPtr)
+            {
+                ExportBuffer[i] = *ExportPtr; // Copy sampled data from flash at *ExportPtr to buffer for send over usb com 
+                ++i;
+                ++ExportPtr;
+                ++DataCnt;
+            }
+            else
+            {
+                ExportBuffer[i] = 0x40;
+                ++i;
+            }           
+        }
+        
+        while(!USBUART_CDCIsReady() && Vbus_Read());
+        USBUART_PutData(ExportBuffer, BUFFER_LEN); // Send 64 byte packet of data from memory
+        i = 0;
+ //       await_reply();
+    }
+    
+    /* Trailer Packet to Identify End of Sampled Data in Memory */
+    ExportBuffer[0] = 0x80;               // End of Data Identifier
+    ExportBuffer[1] = 0x00;
+    
+    //2 byte Count split into two 1 byte packages to be arrayed.
+    DataCnt = DataCnt / 2;
+    ExportBuffer[2] = (uint8)(DataCnt >> 8);;          // Count of Total Samples Sent
+    ExportBuffer[3] = (uint8)0x00FF & DataCnt;
+    while(!USBUART_CDCIsReady() && Vbus_Read());
+    USBUART_PutData(ExportBuffer, 64u); 
     
     return;
 }
@@ -114,6 +153,43 @@ void send_reply(uint8 message){
     
     if(Vbus_Read()){
         USBUART_PutData(&message, REPLY_LEN);
+    }
+    
+    return;
+}
+
+void await_reply(){
+    uint8 result = 0;
+    command instruction = {0,0,0};
+    
+    while(1){
+        while(!USBUART_DataIsReady() && Vbus_Read());
+        
+        result = retrieve(&instruction);
+        
+        if((result == SUCCESS) && (instruction.command == NEXT)){
+            break;
+        }
+    }
+    
+    return;
+}
+
+void confirm_dump(){
+    uint8 result = 0;
+    command instruction = {0,0,0};
+    
+    while(1){
+        while(!USBUART_DataIsReady() && Vbus_Read());
+        
+        result = retrieve(&instruction);
+        
+        if(result == SUCCESS){
+            if (instruction.command == SUCCESS){
+                TailPtr = (uint8*) MemoryLocation;
+            }
+            break;
+        }
     }
     
     return;

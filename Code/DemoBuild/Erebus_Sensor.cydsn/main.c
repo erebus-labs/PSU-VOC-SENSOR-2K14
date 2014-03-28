@@ -16,11 +16,12 @@
 
 
 const uint8 CYCODE MemoryLocation[EmEEPROMSize]; // Errors caused by the include of main.h which includes the externs and static
-volatile uint8* TailPtr =(uint8*) MemoryLocation;
+volatile uint8* TailPtr = (uint8*) MemoryLocation;
 
 void main()
 {
     /* Initialization*/
+    uint16 blink_rate = 0;
     
     // Variable declarations
 
@@ -36,8 +37,11 @@ void main()
 //    Blink_Timer_WritePeriod(CYDEV_EE_BASE[EEPROM_Address.blink_rate]);
     
     // Start LED Blinking
-    Blink_Timer_Start();   
-
+    
+    Blink_Timer_Start();  
+    blink_rate = get_variable(BLINK_RATE);
+    Blink_Timer_WritePeriod(blink_rate);
+    
     for(;;)
     {
  

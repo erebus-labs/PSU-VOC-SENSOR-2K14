@@ -1,11 +1,11 @@
-C51 COMPILER V9.51   USBUART_PM                                                            03/27/2014 17:48:18 PAGE 1   
+C51 COMPILER V9.51   USBUART_PM                                                            03/28/2014 13:53:45 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE USBUART_PM
 OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Debug\USBUART_pm.obj
 COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
                     -.\Generated_Source\PSoC3\USBUART_pm.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\USBUART_pm.lst) CD 
-                    -DB NOIP OT(2,SIZE) DF(DEBUG) INCDIR(.,.\Generated_Source\PSoC3) OJ(.\DP8051\DP8051_Keil_951\Debug\USBUART_pm.obj)
+                    -DB NOIP OT(0,SIZE) DF(DEBUG) INCDIR(.,.\Generated_Source\PSoC3) OJ(.\DP8051\DP8051_Keil_951\Debug\USBUART_pm.obj)
 
 line level    source
 
@@ -62,7 +62,7 @@ line level    source
   51              * Return:
   52              *  None.
   53              *
-C51 COMPILER V9.51   USBUART_PM                                                            03/27/2014 17:48:18 PAGE 2   
+C51 COMPILER V9.51   USBUART_PM                                                            03/28/2014 13:53:45 PAGE 2   
 
   54              *******************************************************************************/
   55              CY_ISR(USBUART_DP_ISR)
@@ -126,7 +126,7 @@ line level    source
  113   2          }
  114   1      }
  115          
-C51 COMPILER V9.51   USBUART_PM                                                            03/27/2014 17:48:18 PAGE 3   
+C51 COMPILER V9.51   USBUART_PM                                                            03/28/2014 13:53:45 PAGE 3   
 
  116          
  117          /*******************************************************************************
@@ -190,7 +190,7 @@ line level    source
  174   2              USBUART_PM_ACT_CFG_REG &= (uint8)~USBUART_PM_ACT_EN_FSUSB;
  175   2              /* Disable USB block for Standby Power Mode */
  176   2              USBUART_PM_STBY_CFG_REG &= (uint8)~USBUART_PM_STBY_EN_FSUSB;
-C51 COMPILER V9.51   USBUART_PM                                                            03/27/2014 17:48:18 PAGE 4   
+C51 COMPILER V9.51   USBUART_PM                                                            03/28/2014 13:53:45 PAGE 4   
 
  177   2              CyDelayUs(1u); /* min  0.5us delay required */
  178   2      
@@ -254,7 +254,7 @@ line level    source
  236   2              USBUART_PM_USB_CR0_REG |= USBUART_PM_USB_CR0_REF_EN;
  237   2              /* The reference will be available ~40us after power restored */
  238   2              CyDelayUs(40u);
-C51 COMPILER V9.51   USBUART_PM                                                            03/27/2014 17:48:18 PAGE 5   
+C51 COMPILER V9.51   USBUART_PM                                                            03/28/2014 13:53:45 PAGE 5   
 
  239   2              /* Return VRegulator*/
  240   2              USBUART_CR1_REG |= USBUART_backup.mode;
@@ -295,7 +295,7 @@ line level    source
  275          
  276          
  277          /* [] END OF FILE */
-C51 COMPILER V9.51   USBUART_PM                                                            03/27/2014 17:48:18 PAGE 6   
+C51 COMPILER V9.51   USBUART_PM                                                            03/28/2014 13:53:45 PAGE 6   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -319,6 +319,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 001E E0                MOVX    A,@DPTR
 001F FF                MOV     R7,A
                                            ; SOURCE LINE # 63
+0020         ?C0001:
 0020 D007              POP     AR7
 0022 D0D0              POP     PSW
 0024 D000        E     POP     ?C?XPAGE1SFR
@@ -335,6 +336,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 85
                                            ; SOURCE LINE # 86
                                            ; SOURCE LINE # 88
+0000         ?C0002:
 0000 22                RET     
              ; FUNCTION USBUART_SaveConfig (END)
 
@@ -351,16 +353,17 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 112
 0008 120000      E     LCALL   USBUART_ConfigReg
                                            ; SOURCE LINE # 113
+000B         ?C0003:
                                            ; SOURCE LINE # 114
 000B         ?C0004:
 000B 22                RET     
              ; FUNCTION USBUART_RestoreConfig (END)
 
+C51 COMPILER V9.51   USBUART_PM                                                            03/28/2014 13:53:45 PAGE 7   
+
              ; FUNCTION USBUART_Suspend (BEGIN)
                                            ; SOURCE LINE # 137
                                            ; SOURCE LINE # 138
-C51 COMPILER V9.51   USBUART_PM                                                            03/27/2014 17:48:18 PAGE 7   
-
                                            ; SOURCE LINE # 140
 0000 120000      E     LCALL   CyEnterCriticalSection
 0003 900000      R     MOV     DPTR,#enableInterrupts
@@ -420,11 +423,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 004C 120000      E     LCALL   _CyDelayUs
                                            ; SOURCE LINE # 163
 004F 906009            MOV     DPTR,#06009H
+C51 COMPILER V9.51   USBUART_PM                                                            03/28/2014 13:53:45 PAGE 8   
+
 0052 E0                MOVX    A,@DPTR
 0053 FF                MOV     R7,A
 0054 EF                MOV     A,R7
-C51 COMPILER V9.51   USBUART_PM                                                            03/27/2014 17:48:18 PAGE 8   
-
 0055 5401              ANL     A,#01H
 0057 FF                MOV     R7,A
 0058 900000      R     MOV     DPTR,#USBUART_backup+01H
@@ -484,11 +487,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 009D 7E00              MOV     R6,#00H
 009F 120000      E     LCALL   _CyDelayUs
                                            ; SOURCE LINE # 179
+C51 COMPILER V9.51   USBUART_PM                                                            03/28/2014 13:53:45 PAGE 9   
+
 00A2 8005              SJMP    ?C0006
 00A4         ?C0005:
                                            ; SOURCE LINE # 181
-C51 COMPILER V9.51   USBUART_PM                                                            03/27/2014 17:48:18 PAGE 9   
-
                                            ; SOURCE LINE # 182
 00A4 900000      R     MOV     DPTR,#USBUART_backup
 00A7 E4                CLR     A
@@ -518,6 +521,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00CA 7410              MOV     A,#010H
 00CC F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 194
+00CD         ?C0007:
 00CD 22                RET     
              ; FUNCTION USBUART_Suspend (END)
 
@@ -547,12 +551,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 001D FF                MOV     R7,A
 001E EF                MOV     A,R7
 001F 4401              ORL     A,#01H
+C51 COMPILER V9.51   USBUART_PM                                                            03/28/2014 13:53:45 PAGE 10  
+
 0021 FF                MOV     R7,A
 0022 EF                MOV     A,R7
 0023 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 231
-C51 COMPILER V9.51   USBUART_PM                                                            03/27/2014 17:48:18 PAGE 10  
-
 0024 9043B5            MOV     DPTR,#043B5H
 0027 E0                MOVX    A,@DPTR
 0028 FF                MOV     R7,A
@@ -611,12 +615,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0070 4402              ORL     A,#02H
 0072 FF                MOV     R7,A
 0073 EF                MOV     A,R7
+C51 COMPILER V9.51   USBUART_PM                                                            03/28/2014 13:53:45 PAGE 11  
+
 0074 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 244
 0075 7F02              MOV     R7,#02H
 0077 7E00              MOV     R6,#00H
-C51 COMPILER V9.51   USBUART_PM                                                            03/27/2014 17:48:18 PAGE 11  
-
 0079 120000      E     LCALL   _CyDelayUs
                                            ; SOURCE LINE # 246
 007C 904394            MOV     DPTR,#04394H
@@ -660,6 +664,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00B0 FF                MOV     R7,A
 00B1 120000      E     LCALL   _CyExitCriticalSection
                                            ; SOURCE LINE # 274
+00B4         ?C0009:
 00B4 22                RET     
              ; FUNCTION USBUART_Resume (END)
 
@@ -668,12 +673,14 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 MODULE INFORMATION:   STATIC OVERLAYABLE
    CODE SIZE        =    451    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =      2       2
+   XDATA SIZE       =      4    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
    EDATA SIZE       =   ----    ----
+C51 COMPILER V9.51   USBUART_PM                                                            03/28/2014 13:53:45 PAGE 12  
+
    HDATA SIZE       =   ----    ----
    XDATA CONST SIZE =   ----    ----
    FAR CONST SIZE   =   ----    ----

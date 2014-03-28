@@ -17,12 +17,10 @@ void USB_ISR(){
     
     // Power has just been applied to the Vbus pin, so we enter USB communication mode
 
-    uint8 buffer[BUFFER_LEN];
     uint8 result = 0;
     command instruction = {0,0,0};
     
     uint8 temp = 0xFF;
-  
         
     /* Start USBFS Operation with 5V operation */
     USBUART_Start(0u, USBUART_5V_OPERATION);
@@ -37,7 +35,7 @@ void USB_ISR(){
     {    
         temp = USBUART_DataIsReady();
         if(temp != 0u){   /* Check for input data from PC */
-            result = retrieve(buffer, &instruction);
+            result = retrieve(&instruction);
         
             if (result == SUCCESS){
                 
@@ -49,7 +47,7 @@ void USB_ISR(){
                     
                     case DUMP_DATA:
                         dump_data();
-                        //send_reply(SUCCESS);
+                        confirm_dump();
                         break;
                         
                     case CHANGE_SETTING:
@@ -72,7 +70,8 @@ void USB_ISR(){
     return;
 }
 
-uint8 retrieve(uint8* buffer, command* instruction){
+uint8 retrieve(command* instruction){
+    uint8 buffer[BUFFER_LEN];
     uint16 count = 0;
     uint8 attempts = 0;
     uint8 result = SUCCESS;
@@ -84,12 +83,12 @@ uint8 retrieve(uint8* buffer, command* instruction){
     if(count == COMMAND_LENGTH){
         USBUART_GetData(buffer, COMMAND_LENGTH);
         instruction -> command = buffer[0];
-        instruction -> target = buffer[1] & (buffer[2] << 0x8);
-        instruction -> value = buffer[3] & (buffer[4] << 0x8);
+        instruction -> target = (((uint16) buffer[1]) << 0x8) | buffer[2];
+        instruction -> value = (((uint16) buffer[3]) << 0x8) | buffer[4];
     }
     // Otherwise, flush the USB buffer and report fail
     else{
-        USBUART_GetAll(buffer);
+        USBUART_GetChar();
         result = FAIL;
     }
     
@@ -107,40 +106,43 @@ void dump_data(){
     uint8  ExportBuffer[BUFFER_LEN]; // 64 Bytes per USB data packet.
     uint8* ExportPtr =(uint8*) MemoryLocation; 
     uint16 DataCnt = 0;
-    uint8  CntSplit1, CntSplit2;
     uint8  i = 0;
     
     /* Operator */
-    while (ExportPtr <= TailPtr)
+    while (ExportPtr < TailPtr)
     {   
         while (i < BUFFER_LEN)
         {
-            if (ExportPtr <= TailPtr)
+            if (ExportPtr < TailPtr)
             {
                 ExportBuffer[i] = *ExportPtr; // Copy sampled data from flash at *ExportPtr to buffer for send over usb com 
                 ++i;
-                ExportPtr++;
+                ++ExportPtr;
                 ++DataCnt;
             }
             else
             {
-                ExportBuffer[i] = 0x00;
+                ExportBuffer[i] = 0x40;
                 ++i;
-            }
-            
+            }           
         }
         
+        while(!USBUART_CDCIsReady() && Vbus_Read());
         USBUART_PutData(ExportBuffer, BUFFER_LEN); // Send 64 byte packet of data from memory
         i = 0;
+ //       await_reply();
     }
+    
     /* Trailer Packet to Identify End of Sampled Data in Memory */
     ExportBuffer[0] = 0x80;               // End of Data Identifier
     ExportBuffer[1] = 0x00;
-    CntSplit1 = (uint8)0xFF00 & DataCnt;  //2 byte Count split into two 1 byte packages to be arrayed.
-    CntSplit2 = (uint8)0x00FF & DataCnt;
-    ExportBuffer[2] = CntSplit1;          // Count of Total Samples Sent
-    ExportBuffer[3] = CntSplit2;
-    USBUART_PutData(ExportBuffer, 4u); 
+    
+    //2 byte Count split into two 1 byte packages to be arrayed.
+    DataCnt = DataCnt / 2;
+    ExportBuffer[2] = (uint8)(DataCnt >> 8);;          // Count of Total Samples Sent
+    ExportBuffer[3] = (uint8)0x00FF & DataCnt;
+    while(!USBUART_CDCIsReady() && Vbus_Read());
+    USBUART_PutData(ExportBuffer, 64u); 
     
     return;
 }
@@ -151,6 +153,43 @@ void send_reply(uint8 message){
     
     if(Vbus_Read()){
         USBUART_PutData(&message, REPLY_LEN);
+    }
+    
+    return;
+}
+
+void await_reply(){
+    uint8 result = 0;
+    command instruction = {0,0,0};
+    
+    while(1){
+        while(!USBUART_DataIsReady() && Vbus_Read());
+        
+        result = retrieve(&instruction);
+        
+        if((result == SUCCESS) && (instruction.command == NEXT)){
+            break;
+        }
+    }
+    
+    return;
+}
+
+void confirm_dump(){
+    uint8 result = 0;
+    command instruction = {0,0,0};
+    
+    while(1){
+        while(!USBUART_DataIsReady() && Vbus_Read());
+        
+        result = retrieve(&instruction);
+        
+        if(result == SUCCESS){
+            if (instruction.command == SUCCESS){
+                TailPtr = (uint8*) MemoryLocation;
+            }
+            break;
+        }
     }
     
     return;

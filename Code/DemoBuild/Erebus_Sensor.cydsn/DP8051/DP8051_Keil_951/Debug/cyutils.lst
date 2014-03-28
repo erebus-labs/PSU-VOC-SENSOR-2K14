@@ -1,11 +1,11 @@
-C51 COMPILER V9.51   CYUTILS                                                               03/27/2014 17:48:16 PAGE 1   
+C51 COMPILER V9.51   CYUTILS                                                               03/28/2014 13:53:42 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE CYUTILS
 OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Debug\cyutils.obj
 COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
                     -.\Generated_Source\PSoC3\cyutils.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\cyutils.lst) CD DB NOI
-                    -P OT(2,SIZE) DF(DEBUG) INCDIR(.,.\Generated_Source\PSoC3) OJ(.\DP8051\DP8051_Keil_951\Debug\cyutils.obj)
+                    -P OT(0,SIZE) DF(DEBUG) INCDIR(.,.\Generated_Source\PSoC3) OJ(.\DP8051\DP8051_Keil_951\Debug\cyutils.obj)
 
 line level    source
 
@@ -62,7 +62,7 @@ line level    source
                       /***************************************************************************
                       * Function Name: CyGetReg24
                       ****************************************************************************
-C51 COMPILER V9.51   CYUTILS                                                               03/27/2014 17:48:16 PAGE 2   
+C51 COMPILER V9.51   CYUTILS                                                               03/28/2014 13:53:42 PAGE 2   
 
                       *
                       * Summary:
@@ -98,7 +98,7 @@ line level    source
   85          
   86          
   87          /* [] END OF FILE */
-C51 COMPILER V9.51   CYUTILS                                                               03/27/2014 17:48:16 PAGE 3   
+C51 COMPILER V9.51   CYUTILS                                                               03/28/2014 13:53:42 PAGE 3   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 

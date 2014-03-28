@@ -1,4 +1,4 @@
---------------- Rebuild Started: 03/27/2014 15:49:18 Project: Erebus_Sensor, Configuration: DP8051 Keil 9.51 Debug ---------------
+--------------- Rebuild Started: 03/27/2014 21:06:36 Project: Erebus_Sensor, Configuration: DP8051 Keil 9.51 Debug ---------------
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\main.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\USB_Access.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\EEPROM_Access.obj"
@@ -38,7 +38,6 @@ Deleting file ".\DP8051\DP8051_Keil_951\Debug\debounce_clock.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\USB_LED.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\EEPROM_LED.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\Em_EEPROM.obj"
-Deleting file ".\DP8051\DP8051_Keil_951\Debug\Potentiometer.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\ADC.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\ADC_PM.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\ADC_INT.obj"
@@ -48,6 +47,7 @@ Deleting file ".\DP8051\DP8051_Keil_951\Debug\ADC_AMux.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\ADC_Ext_CP_Clk.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\ADC_IRQ.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\ADC_theACLK.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\Sensor_VIn.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\Erebus_Sensor.hex"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\Erebus_Sensor.elf"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\Erebus_Sensor.map"
@@ -58,7 +58,7 @@ Deleting file ".\Erebus_Sensor_timing.html"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\.deps\C_FILE.P"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\.deps\DP8051_C_FILE.P"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\.deps\KEIL_8051_ASM_FILE.P"
-cydsfit.exe "-.appdatapath" "C:\Users\maxwell18\AppData\Local\Cypress Semiconductor\PSoC Creator\3.0" "-.fdsnotice" "-.fdswarpdepfile=warp_dependencies.txt" "-.fdselabdepfile=elab_dependencies.txt" "-.fdsbldfile=generated_files.txt" "-p" "C:\Users\maxwell18\Desktop\Capstone work\Project Work\MASTER\Erebus_Sensor.cydsn\Erebus_Sensor.cyprj" "-d" "CY8C3866AXI-040" "-s" "C:\Users\maxwell18\Desktop\Capstone work\Project Work\MASTER\Erebus_Sensor.cydsn\Generated_Source\PSoC3" "--" "-yv2" "-v3" "-ygs" "-q10" "-o2" "-.fftcfgtype=BE"
+cydsfit.exe "-.appdatapath" "C:\Users\Win7_VM\AppData\Local\Cypress Semiconductor\PSoC Creator\3.0" "-.fdsnotice" "-.fdswarpdepfile=warp_dependencies.txt" "-.fdselabdepfile=elab_dependencies.txt" "-.fdsbldfile=generated_files.txt" "-p" "C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\Erebus_Sensor.cyprj" "-d" "CY8C3866AXI-040" "-s" "C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\Generated_Source\PSoC3" "--" "-yv2" "-v3" "-ygs" "-q10" "-o2" "-.fftcfgtype=BE"
 Elaborating Design...
 HDL Generation ...
 Synthesis ...
@@ -73,14 +73,13 @@ Digital Placement ...
 Digital Routing ...
 Bitstream Generation ...
 Static timing analysis ...
-Warning: sta.M0021: Erebus_Sensor_timing.html: Warning-1350: Asynchronous path(s) exist from "timer_clock(fixed-function)" to "timer_clock". See the timing report for details. (File=C:\Users\maxwell18\Desktop\Capstone work\Project Work\MASTER\Erebus_Sensor.cydsn\Erebus_Sensor_timing.html)
+Warning: sta.M0021: Erebus_Sensor_timing.html: Warning-1350: Asynchronous path(s) exist from "timer_clock(fixed-function)" to "timer_clock". See the timing report for details. (File=C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\Erebus_Sensor_timing.html)
 API Generation ...
 Dependency Generation ...
 Clean Temporary Files ...
 c51.exe .\main.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\main.lst) CD DB NOIP "OT(2, Size)" "DF (DEBUG)" "INCDIR(., .\Generated_Source\PSoC3)" OJ(.\DP8051\DP8051_Keil_951\Debug\main.obj)
 c51.exe .\USB_Access.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\USB_Access.lst) CD DB NOIP "OT(2, Size)" "DF (DEBUG)" "INCDIR(., .\Generated_Source\PSoC3)" OJ(.\DP8051\DP8051_Keil_951\Debug\USB_Access.obj)
 c51.exe .\EEPROM_Access.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\EEPROM_Access.lst) CD DB NOIP "OT(2, Size)" "DF (DEBUG)" "INCDIR(., .\Generated_Source\PSoC3)" OJ(.\DP8051\DP8051_Keil_951\Debug\EEPROM_Access.obj)
-WARNING: .\EEPROM_Access.c:19: mspace probably invalid
 c51.exe .\Generated_Source\PSoC3\cyfitter_cfg.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\cyfitter_cfg.lst) CD DB NOIP "OT(2, Size)" "DF (DEBUG)" "INCDIR(., .\Generated_Source\PSoC3)" OJ(.\DP8051\DP8051_Keil_951\Debug\cyfitter_cfg.obj)
 c51.exe .\Generated_Source\PSoC3\LED.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\LED.lst) CD DB NOIP "OT(2, Size)" "DF (DEBUG)" "INCDIR(., .\Generated_Source\PSoC3)" OJ(.\DP8051\DP8051_Keil_951\Debug\LED.obj)
 Ax51.exe .\Generated_Source\PSoC3\CyBootAsmKeil.a51 NOCO MACRO DB DF(DEBUG) PR(.\DP8051\DP8051_Keil_951\Debug/CyBootAsmKeil.lst) CASE EP "INCDIR(., .\Generated_Source\PSoC3)" OJ(.\DP8051\DP8051_Keil_951\Debug\CyBootAsmKeil.obj)
@@ -117,7 +116,6 @@ c51.exe .\Generated_Source\PSoC3\debounce_clock.c NOIV LARGE MODDP2 OMF2 VB(1) P
 c51.exe .\Generated_Source\PSoC3\USB_LED.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\USB_LED.lst) CD DB NOIP "OT(2, Size)" "DF (DEBUG)" "INCDIR(., .\Generated_Source\PSoC3)" OJ(.\DP8051\DP8051_Keil_951\Debug\USB_LED.obj)
 c51.exe .\Generated_Source\PSoC3\EEPROM_LED.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\EEPROM_LED.lst) CD DB NOIP "OT(2, Size)" "DF (DEBUG)" "INCDIR(., .\Generated_Source\PSoC3)" OJ(.\DP8051\DP8051_Keil_951\Debug\EEPROM_LED.obj)
 c51.exe .\Generated_Source\PSoC3\Em_EEPROM.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\Em_EEPROM.lst) CD DB NOIP "OT(2, Size)" "DF (DEBUG)" "INCDIR(., .\Generated_Source\PSoC3)" OJ(.\DP8051\DP8051_Keil_951\Debug\Em_EEPROM.obj)
-c51.exe .\Generated_Source\PSoC3\Potentiometer.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\Potentiometer.lst) CD DB NOIP "OT(2, Size)" "DF (DEBUG)" "INCDIR(., .\Generated_Source\PSoC3)" OJ(.\DP8051\DP8051_Keil_951\Debug\Potentiometer.obj)
 c51.exe .\Generated_Source\PSoC3\ADC.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\ADC.lst) CD DB NOIP "OT(2, Size)" "DF (DEBUG)" "INCDIR(., .\Generated_Source\PSoC3)" OJ(.\DP8051\DP8051_Keil_951\Debug\ADC.obj)
 c51.exe .\Generated_Source\PSoC3\ADC_PM.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\ADC_PM.lst) CD DB NOIP "OT(2, Size)" "DF (DEBUG)" "INCDIR(., .\Generated_Source\PSoC3)" OJ(.\DP8051\DP8051_Keil_951\Debug\ADC_PM.obj)
 c51.exe .\Generated_Source\PSoC3\ADC_INT.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\ADC_INT.lst) CD DB NOIP "OT(2, Size)" "DF (DEBUG)" "INCDIR(., .\Generated_Source\PSoC3)" OJ(.\DP8051\DP8051_Keil_951\Debug\ADC_INT.obj)
@@ -128,12 +126,41 @@ c51.exe .\Generated_Source\PSoC3\ADC_AMux.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP
 c51.exe .\Generated_Source\PSoC3\ADC_Ext_CP_Clk.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\ADC_Ext_CP_Clk.lst) CD DB NOIP "OT(2, Size)" "DF (DEBUG)" "INCDIR(., .\Generated_Source\PSoC3)" OJ(.\DP8051\DP8051_Keil_951\Debug\ADC_Ext_CP_Clk.obj)
 c51.exe .\Generated_Source\PSoC3\ADC_IRQ.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\ADC_IRQ.lst) CD DB NOIP "OT(2, Size)" "DF (DEBUG)" "INCDIR(., .\Generated_Source\PSoC3)" OJ(.\DP8051\DP8051_Keil_951\Debug\ADC_IRQ.obj)
 c51.exe .\Generated_Source\PSoC3\ADC_theACLK.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\ADC_theACLK.lst) CD DB NOIP "OT(2, Size)" "DF (DEBUG)" "INCDIR(., .\Generated_Source\PSoC3)" OJ(.\DP8051\DP8051_Keil_951\Debug\ADC_theACLK.obj)
-LIBX51.exe TRANSFER '.\DP8051\DP8051_Keil_951\Debug\cyfitter_cfg.obj', '.\DP8051\DP8051_Keil_951\Debug\LED.obj', '.\DP8051\DP8051_Keil_951\Debug\CyBootAsmKeil.obj', '.\DP8051\DP8051_Keil_951\Debug\CyDmac.obj', '.\DP8051\DP8051_Keil_951\Debug\CyFlash.obj', '.\DP8051\DP8051_Keil_951\Debug\CyLib.obj', '.\DP8051\DP8051_Keil_951\Debug\cymem.obj', '.\DP8051\DP8051_Keil_951\Debug\cyPm.obj', '.\DP8051\DP8051_Keil_951\Debug\CySpc.obj', '.\DP8051\DP8051_Keil_951\Debug\cyutils.obj', '.\DP8051\DP8051_Keil_951\Debug\KeilStart.obj', '.\DP8051\DP8051_Keil_951\Debug\timer_clock.obj', '.\DP8051\DP8051_Keil_951\Debug\Vbus.obj', '.\DP8051\DP8051_Keil_951\Debug\Vbus_IRQ.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_audio.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_boot.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_cdc.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_cls.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_descr.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_drv.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_episr.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_hid.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_pm.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_std.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_vnd.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_midi.obj', '.\DP8051\DP8051_Keil_951\Debug\Blink_Timer.obj', '.\DP8051\DP8051_Keil_951\Debug\Blink_Timer_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_Dm.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_Dp.obj', '.\DP8051\DP8051_Keil_951\Debug\EEPROM_R.obj', '.\DP8051\DP8051_Keil_951\Debug\debounce_clock.obj', '.\DP8051\DP8051_Keil_951\Debug\USB_LED.obj', '.\DP8051\DP8051_Keil_951\Debug\EEPROM_LED.obj', '.\DP8051\DP8051_Keil_951\Debug\Em_EEPROM.obj', '.\DP8051\DP8051_Keil_951\Debug\Potentiometer.obj', '.\DP8051\DP8051_Keil_951\Debug\ADC.obj', '.\DP8051\DP8051_Keil_951\Debug\ADC_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\ADC_INT.obj', '.\DP8051\DP8051_Keil_951\Debug\TakeSample_IRQ.obj', '.\DP8051\DP8051_Keil_951\Debug\SW_3.obj', '.\DP8051\DP8051_Keil_951\Debug\ADC_AMux.obj', '.\DP8051\DP8051_Keil_951\Debug\ADC_Ext_CP_Clk.obj', '.\DP8051\DP8051_Keil_951\Debug\ADC_IRQ.obj', '.\DP8051\DP8051_Keil_951\Debug\ADC_theACLK.obj' TO '.\DP8051\DP8051_Keil_951\Debug\Erebus_Sensor.lib'
+c51.exe .\Generated_Source\PSoC3\Sensor_VIn.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\Sensor_VIn.lst) CD DB NOIP "OT(2, Size)" "DF (DEBUG)" "INCDIR(., .\Generated_Source\PSoC3)" OJ(.\DP8051\DP8051_Keil_951\Debug\Sensor_VIn.obj)
+LIBX51.exe TRANSFER '.\DP8051\DP8051_Keil_951\Debug\cyfitter_cfg.obj', '.\DP8051\DP8051_Keil_951\Debug\LED.obj', '.\DP8051\DP8051_Keil_951\Debug\CyBootAsmKeil.obj', '.\DP8051\DP8051_Keil_951\Debug\CyDmac.obj', '.\DP8051\DP8051_Keil_951\Debug\CyFlash.obj', '.\DP8051\DP8051_Keil_951\Debug\CyLib.obj', '.\DP8051\DP8051_Keil_951\Debug\cymem.obj', '.\DP8051\DP8051_Keil_951\Debug\cyPm.obj', '.\DP8051\DP8051_Keil_951\Debug\CySpc.obj', '.\DP8051\DP8051_Keil_951\Debug\cyutils.obj', '.\DP8051\DP8051_Keil_951\Debug\KeilStart.obj', '.\DP8051\DP8051_Keil_951\Debug\timer_clock.obj', '.\DP8051\DP8051_Keil_951\Debug\Vbus.obj', '.\DP8051\DP8051_Keil_951\Debug\Vbus_IRQ.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_audio.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_boot.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_cdc.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_cls.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_descr.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_drv.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_episr.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_hid.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_pm.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_std.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_vnd.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_midi.obj', '.\DP8051\DP8051_Keil_951\Debug\Blink_Timer.obj', '.\DP8051\DP8051_Keil_951\Debug\Blink_Timer_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_Dm.obj', '.\DP8051\DP8051_Keil_951\Debug\USBUART_Dp.obj', '.\DP8051\DP8051_Keil_951\Debug\EEPROM_R.obj', '.\DP8051\DP8051_Keil_951\Debug\debounce_clock.obj', '.\DP8051\DP8051_Keil_951\Debug\USB_LED.obj', '.\DP8051\DP8051_Keil_951\Debug\EEPROM_LED.obj', '.\DP8051\DP8051_Keil_951\Debug\Em_EEPROM.obj', '.\DP8051\DP8051_Keil_951\Debug\ADC.obj', '.\DP8051\DP8051_Keil_951\Debug\ADC_PM.obj', '.\DP8051\DP8051_Keil_951\Debug\ADC_INT.obj', '.\DP8051\DP8051_Keil_951\Debug\TakeSample_IRQ.obj', '.\DP8051\DP8051_Keil_951\Debug\SW_3.obj', '.\DP8051\DP8051_Keil_951\Debug\ADC_AMux.obj', '.\DP8051\DP8051_Keil_951\Debug\ADC_Ext_CP_Clk.obj', '.\DP8051\DP8051_Keil_951\Debug\ADC_IRQ.obj', '.\DP8051\DP8051_Keil_951\Debug\ADC_theACLK.obj', '.\DP8051\DP8051_Keil_951\Debug\Sensor_VIn.obj' TO '.\DP8051\DP8051_Keil_951\Debug\Erebus_Sensor.lib'
 LX51.exe '.\DP8051\DP8051_Keil_951\Debug\main.obj', '.\DP8051\DP8051_Keil_951\Debug\USB_Access.obj', '.\DP8051\DP8051_Keil_951\Debug\EEPROM_Access.obj', '.\DP8051\DP8051_Keil_951\Debug\Erebus_Sensor.lib', 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\DP8051\DP8051_Keil_951\Debug\CyComponentLibrary.lib'  TO '.\DP8051\DP8051_Keil_951\Debug\Erebus_Sensor.omf' PR(.\DP8051\DP8051_Keil_951\Debug\Erebus_Sensor.map) IX CODE DW(16) RU CL(XDATA(X:0x0000-X:0x1FFF)) CL(CODE(C:0x0000-C:0xFFFF)) CL(CONST(C:0x0000-C:0xFFFF))
-Program Size: data=14.0 xdata=465 const=1360 code=16533
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _CYINTSETPRIORITY/CYLIB
+    CALLER1: VBUS_IRQ_INTERRUPT/VBUS_IRQ
+    CALLER2: TAKESAMPLE_IRQ_INTERRUPT/TAKESAMPLE_IRQ
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _CYINTSETVECTOR/CYLIB
+    CALLER1: VBUS_IRQ_INTERRUPT/VBUS_IRQ
+    CALLER2: TAKESAMPLE_IRQ_INTERRUPT/TAKESAMPLE_IRQ
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    CYSPCSTART/CYSPC
+    CALLER1: VBUS_IRQ_INTERRUPT/VBUS_IRQ
+    CALLER2: TAKESAMPLE_IRQ_INTERRUPT/TAKESAMPLE_IRQ
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    CYSPCLOCK/CYSPC
+    CALLER1: VBUS_IRQ_INTERRUPT/VBUS_IRQ
+    CALLER2: TAKESAMPLE_IRQ_INTERRUPT/TAKESAMPLE_IRQ
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    CYSPCUNLOCK/CYSPC
+    CALLER1: VBUS_IRQ_INTERRUPT/VBUS_IRQ
+    CALLER2: TAKESAMPLE_IRQ_INTERRUPT/TAKESAMPLE_IRQ
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _CYSPCLOADROW/CYSPC
+    CALLER1: VBUS_IRQ_INTERRUPT/VBUS_IRQ
+    CALLER2: TAKESAMPLE_IRQ_INTERRUPT/TAKESAMPLE_IRQ
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _CYSPCWRITEROW/CYSPC
+    CALLER1: VBUS_IRQ_INTERRUPT/VBUS_IRQ
+    CALLER2: TAKESAMPLE_IRQ_INTERRUPT/TAKESAMPLE_IRQ
+Program Size: data=14.0 xdata=1055 const=1365 code=21662
 OHx51.exe Erebus_Sensor.omf HEXFILE(Erebus_Sensor.ihx)
 c8051-elf-omf2elf.exe Erebus_Sensor.omf Erebus_Sensor.elf
 cyhextool -o .\DP8051\DP8051_Keil_951\Debug\Erebus_Sensor.hex -f .\DP8051\DP8051_Keil_951\Debug\Erebus_Sensor.ihx -prot .\Generated_Source\PSoC3\protect.hex -id 1E028069 -a EEPROM=90200000:800,PROGRAM=00000000:10000,CONFIG=80000000:2000,PROTECT=90400000:40 -meta 0301 -cunv 00004005 -wonv BC90ACAF -ecc .\Generated_Source\PSoC3\config.hex
-Flash used: 17893 of 65536 bytes (27.3 %).
-SRAM used: 465 of 8192 bytes (5.7 %).
---------------- Rebuild Succeeded: 03/27/2014 15:49:43 ---------------
+Flash used: 23027 of 65536 bytes (35.1 %).
+SRAM used: 1055 of 8192 bytes (12.9 %).
+--------------- Rebuild Succeeded: 03/27/2014 21:07:03 ---------------

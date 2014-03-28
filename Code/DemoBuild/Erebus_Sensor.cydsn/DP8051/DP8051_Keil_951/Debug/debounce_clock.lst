@@ -1,11 +1,11 @@
-C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/27/2014 17:48:19 PAGE 1   
+C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/28/2014 13:53:47 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE DEBOUNCE_CLOCK
 OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Debug\debounce_clock.obj
 COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
                     -.\Generated_Source\PSoC3\debounce_clock.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\debounce_clock.
-                    -lst) CD DB NOIP OT(2,SIZE) DF(DEBUG) INCDIR(.,.\Generated_Source\PSoC3) OJ(.\DP8051\DP8051_Keil_951\Debug\debounce_clock
+                    -lst) CD DB NOIP OT(0,SIZE) DF(DEBUG) INCDIR(.,.\Generated_Source\PSoC3) OJ(.\DP8051\DP8051_Keil_951\Debug\debounce_clock
                     -.obj)
 
 line level    source
@@ -62,7 +62,7 @@ line level    source
   50   1      }
   51          
   52          
-C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/27/2014 17:48:19 PAGE 2   
+C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/28/2014 13:53:47 PAGE 2   
 
   53          /*******************************************************************************
   54          * Function Name: debounce_clock_Stop
@@ -126,7 +126,7 @@ line level    source
                       CLK_DIST_DMASK = 0x00u;
               #else
  114   2              CLK_DIST_DMASK = debounce_clock_CLKEN_MASK;
-C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/27/2014 17:48:19 PAGE 3   
+C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/28/2014 13:53:47 PAGE 3   
 
  115   2              CLK_DIST_AMASK = 0x00u;
  116   2      #endif /* debounce_clock__CFG3 */
@@ -190,7 +190,7 @@ line level    source
  174          * Summary:
  175          *  Modifies the clock divider and, thus, the frequency. When the clock divider
  176          *  register is set to zero or changed from zero, the clock will be temporarily
-C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/27/2014 17:48:19 PAGE 4   
+C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/28/2014 13:53:47 PAGE 4   
 
  177          *  disabled in order to change the SSS mode bit. If the clock is enabled when
  178          *  SetDividerRegister is called, then the source clock must be running.
@@ -254,7 +254,7 @@ line level    source
  236   4                      CLK_DIST_DMASK = debounce_clock_CLKEN_MASK;
  237   4                      CLK_DIST_AMASK = 0x00u;
  238   4      #endif /* debounce_clock__CFG3 */
-C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/27/2014 17:48:19 PAGE 5   
+C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/28/2014 13:53:47 PAGE 5   
 
  239   4                      /* Clear mask of bus clock. */
  240   4                      CLK_DIST_BCFG2 &= (uint8)(~BCFG2_MASK);
@@ -318,7 +318,7 @@ line level    source
  298          {
  299   1          return CY_GET_REG16(debounce_clock_DIV_PTR);
  300   1      }
-C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/27/2014 17:48:19 PAGE 6   
+C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/28/2014 13:53:47 PAGE 6   
 
  301          
  302          
@@ -382,7 +382,7 @@ line level    source
  360          *   See the Technical Reference Manual for details about setting the mode of
  361          *   the clock. Specifically, see the CLKDIST.DCFG.CFG2 register.
  362          *
-C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/27/2014 17:48:19 PAGE 7   
+C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/28/2014 13:53:47 PAGE 7   
 
  363          * Returns:
  364          *  None
@@ -446,7 +446,7 @@ line level    source
  422   1          uint8 oldSrc = debounce_clock_GetSourceRegister();
  423   1      
  424   1          if (((oldSrc != ((uint8)CYCLK_SRC_SEL_CLK_SYNC_D)) && 
-C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/27/2014 17:48:19 PAGE 8   
+C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/28/2014 13:53:47 PAGE 8   
 
  425   1              (clkSource == ((uint8)CYCLK_SRC_SEL_CLK_SYNC_D))) && (currDiv == 0u))
  426   1          {
@@ -510,7 +510,7 @@ line level    source
               *   clkPhase must be from 1 to 11 inclusive. Other values, including 0,
               *   disable the clock. clkPhase = 1 produces a 0ns delay and clkPhase = 11 
               *   produces a 10ns delay.
-C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/27/2014 17:48:19 PAGE 9   
+C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/28/2014 13:53:47 PAGE 9   
 
               *
               * Returns:
@@ -547,7 +547,7 @@ line level    source
  519          
  520          
  521          /* [] END OF FILE */
-C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/27/2014 17:48:19 PAGE 10  
+C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/28/2014 13:53:47 PAGE 10  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -574,6 +574,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0014 EF                MOV     A,R7
 0015 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 50
+0016         ?C0001:
 0016 22                RET     
              ; FUNCTION debounce_clock_Start (END)
 
@@ -599,6 +600,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0014 EF                MOV     A,R7
 0015 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 76
+0016         ?C0002:
 0016 22                RET     
              ; FUNCTION debounce_clock_Stop (END)
 
@@ -609,10 +611,10 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0000 9043A2            MOV     DPTR,#043A2H
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
+C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/28/2014 13:53:47 PAGE 11  
+
 0005 EF                MOV     A,R7
 0006 5402              ANL     A,#02H
-C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/27/2014 17:48:19 PAGE 11  
-
 0008 FF                MOV     R7,A
 0009 7E00              MOV     R6,#00H
 000B EF                MOV     A,R7
@@ -673,10 +675,10 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0056 FF                MOV     R7,A
 0057 EF                MOV     A,R7
 0058 5401              ANL     A,#01H
+C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/28/2014 13:53:47 PAGE 12  
+
 005A FF                MOV     R7,A
 005B 7E00              MOV     R6,#00H
-C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/27/2014 17:48:19 PAGE 12  
-
 005D EF                MOV     A,R7
 005E 4E                ORL     A,R6
 005F 70F1              JNZ     ?C0004
@@ -715,6 +717,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0089 FD                MOV     R5,A
 008A 120000      E     LCALL   _cywrite16_nodpx
                                            ; SOURCE LINE # 138
+008D         ?C0003:
                                            ; SOURCE LINE # 139
 008D         ?C0006:
 008D 22                RET     
@@ -736,11 +739,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 161
 000D 9043B2            MOV     DPTR,#043B2H
 0010 E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/28/2014 13:53:47 PAGE 13  
+
 0011 FF                MOV     R7,A
 0012 EF                MOV     A,R7
 0013 54FD              ANL     A,#0FDH
-C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/27/2014 17:48:19 PAGE 13  
-
 0015 FF                MOV     R7,A
 0016 EF                MOV     A,R7
 0017 F0                MOVX    @DPTR,A
@@ -758,6 +761,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0022 EF                MOV     A,R7
 0023 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 166
+0024         ?C0008:
                                            ; SOURCE LINE # 167
 0024         ?C0009:
 0024 22                RET     
@@ -799,12 +803,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 002B E0                MOVX    A,@DPTR
 002C FC                MOV     R4,A
 002D A3                INC     DPTR
+C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/28/2014 13:53:47 PAGE 14  
+
 002E E0                MOVX    A,@DPTR
 002F FD                MOV     R5,A
 0030 ED                MOV     A,R5
 0031 6F                XRL     A,R7
-C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/27/2014 17:48:19 PAGE 14  
-
 0032 7002              JNZ     ?C0038
 0034 EC                MOV     A,R4
 0035 6E                XRL     A,R6
@@ -863,12 +867,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0075 7B02              MOV     R3,#02H
 0077 7A40              MOV     R2,#040H
 0079 7984              MOV     R1,#084H
+C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/28/2014 13:53:47 PAGE 15  
+
 007B 900000      R     MOV     DPTR,#clkDivider
 007E E0                MOVX    A,@DPTR
 007F FC                MOV     R4,A
 0080 A3                INC     DPTR
-C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/27/2014 17:48:19 PAGE 15  
-
 0081 E0                MOVX    A,@DPTR
 0082 FD                MOV     R5,A
 0083 120000      E     LCALL   _cywrite16_nodpx
@@ -906,6 +910,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00AA FD                MOV     R5,A
 00AB 120000      E     LCALL   _cywrite16_nodpx
                                            ; SOURCE LINE # 222
+00AE         ?C0014:
                                            ; SOURCE LINE # 223
 00AE 22                RET     
 00AF         ?C0011:
@@ -926,13 +931,13 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00BF 7402              MOV     A,#02H
 00C1 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 237
+C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/28/2014 13:53:47 PAGE 16  
+
 00C2 904014            MOV     DPTR,#04014H
 00C5 E4                CLR     A
 00C6 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 240
 00C7 904008            MOV     DPTR,#04008H
-C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/27/2014 17:48:19 PAGE 16  
-
 00CA E0                MOVX    A,@DPTR
 00CB FF                MOV     R7,A
 00CC EF                MOV     A,R7
@@ -990,13 +995,13 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0110 4E                ORL     A,R6
 0111 70F1              JNZ     ?C0019
 0113         ?C0020:
+C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/28/2014 13:53:47 PAGE 17  
+
                                            ; SOURCE LINE # 253
 0113 9043A2            MOV     DPTR,#043A2H
 0116 E0                MOVX    A,@DPTR
 0117 FF                MOV     R7,A
 0118 EF                MOV     A,R7
-C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/27/2014 17:48:19 PAGE 17  
-
 0119 54FD              ANL     A,#0FDH
 011B FF                MOV     R7,A
 011C EF                MOV     A,R7
@@ -1006,6 +1011,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0121 E4                CLR     A
 0122 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 259
+0123         ?C0017:
                                            ; SOURCE LINE # 260
 0123         ?C0016:
                                            ; SOURCE LINE # 263
@@ -1053,14 +1059,14 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 015A 904001            MOV     DPTR,#04001H
 015D E0                MOVX    A,@DPTR
 015E FF                MOV     R7,A
+C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/28/2014 13:53:47 PAGE 18  
+
 015F EF                MOV     A,R7
 0160 5401              ANL     A,#01H
 0162 FF                MOV     R7,A
 0163 7E00              MOV     R6,#00H
 0165 EF                MOV     A,R7
 0166 4E                ORL     A,R6
-C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/27/2014 17:48:19 PAGE 18  
-
 0167 602B              JZ      ?C0027
 0169 80EF              SJMP    ?C0024
 016B         ?C0025:
@@ -1096,8 +1102,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0192 EF                MOV     A,R7
 0193 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 276
+0194         ?C0026:
                                            ; SOURCE LINE # 277
+0194         ?C0015:
                                            ; SOURCE LINE # 278
+0194         ?C0010:
                                            ; SOURCE LINE # 279
 0194         ?C0027:
 0194 22                RET     
@@ -1114,6 +1123,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 300
 0009         ?C0028:
 0009 22                RET     
+C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/28/2014 13:53:47 PAGE 19  
+
              ; FUNCTION debounce_clock_GetDividerRegister (END)
 
              ; FUNCTION _debounce_clock_SetModeRegister (BEGIN)
@@ -1123,8 +1134,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0004 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 333
                                            ; SOURCE LINE # 334
-C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/27/2014 17:48:19 PAGE 19  
-
 0005 904086            MOV     DPTR,#04086H
 0008 C083              PUSH    DPH
 000A C082              PUSH    DPL
@@ -1144,6 +1153,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 001E EF                MOV     A,R7
 001F F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 335
+0020         ?C0029:
 0020 22                RET     
              ; FUNCTION _debounce_clock_SetModeRegister (END)
 
@@ -1176,6 +1186,9 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0021 EF                MOV     A,R7
 0022 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 370
+0023         ?C0030:
+C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/28/2014 13:53:47 PAGE 20  
+
 0023 22                RET     
              ; FUNCTION _debounce_clock_ClearModeRegister (END)
 
@@ -1187,8 +1200,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
 0005 EF                MOV     A,R7
-C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/27/2014 17:48:19 PAGE 20  
-
 0006 54F8              ANL     A,#0F8H
 0008 FF                MOV     R7,A
                                            ; SOURCE LINE # 391
@@ -1240,6 +1251,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0034 904086            MOV     DPTR,#04086H
 0037 E0                MOVX    A,@DPTR
 0038 FF                MOV     R7,A
+C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/28/2014 13:53:47 PAGE 21  
+
 0039 EF                MOV     A,R7
 003A 4440              ORL     A,#040H
 003C FF                MOV     R7,A
@@ -1251,8 +1264,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0043 FF                MOV     R7,A
 0044 EF                MOV     A,R7
 0045 54F8              ANL     A,#0F8H
-C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/27/2014 17:48:19 PAGE 21  
-
 0047 FF                MOV     R7,A
 0048 900000      R     MOV     DPTR,#clkSource
 004B E0                MOVX    A,@DPTR
@@ -1304,6 +1315,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0086 EF                MOV     A,R7
 0087 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 440
+C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/28/2014 13:53:47 PAGE 22  
+
 0088 904086            MOV     DPTR,#04086H
 008B E0                MOVX    A,@DPTR
 008C FF                MOV     R7,A
@@ -1315,8 +1328,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 441
 0093 22                RET     
 0094         ?C0034:
-C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/27/2014 17:48:19 PAGE 22  
-
                                            ; SOURCE LINE # 443
                                            ; SOURCE LINE # 445
 0094 904086            MOV     DPTR,#04086H
@@ -1335,6 +1346,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00A8 EF                MOV     A,R7
 00A9 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 446
+00AA         ?C0035:
+00AA         ?C0033:
                                            ; SOURCE LINE # 447
 00AA         ?C0036:
 00AA 22                RET     
@@ -1360,12 +1373,14 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 MODULE INFORMATION:   STATIC OVERLAYABLE
    CODE SIZE        =    900    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =   ----      16
+   XDATA SIZE       =     16    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
    EDATA SIZE       =   ----    ----
+C51 COMPILER V9.51   DEBOUNCE_CLOCK                                                        03/28/2014 13:53:47 PAGE 23  
+
    HDATA SIZE       =   ----    ----
    XDATA CONST SIZE =   ----    ----
    FAR CONST SIZE   =   ----    ----

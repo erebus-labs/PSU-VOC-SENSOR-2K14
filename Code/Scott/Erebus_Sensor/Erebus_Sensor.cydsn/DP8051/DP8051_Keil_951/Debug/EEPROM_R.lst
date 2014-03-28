@@ -1,11 +1,11 @@
-C51 COMPILER V9.51   EEPROM_R                                                              03/27/2014 15:27:16 PAGE 1   
+C51 COMPILER V9.51   EEPROM_R                                                              03/28/2014 13:53:46 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE EEPROM_R
 OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Debug\EEPROM_R.obj
 COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
                     -.\Generated_Source\PSoC3\EEPROM_R.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\EEPROM_R.lst) CD DB N
-                    -OIP OT(2,SIZE) DF(DEBUG) INCDIR(.,.\Generated_Source\PSoC3) OJ(.\DP8051\DP8051_Keil_951\Debug\EEPROM_R.obj)
+                    -OIP OT(0,SIZE) DF(DEBUG) INCDIR(.,.\Generated_Source\PSoC3) OJ(.\DP8051\DP8051_Keil_951\Debug\EEPROM_R.obj)
 
 line level    source
 
@@ -62,7 +62,7 @@ line level    source
   51              *  None
   52              *
   53              *******************************************************************************/
-C51 COMPILER V9.51   EEPROM_R                                                              03/27/2014 15:27:16 PAGE 2   
+C51 COMPILER V9.51   EEPROM_R                                                              03/28/2014 13:53:46 PAGE 2   
 
   54              void EEPROM_R_Start(void) 
   55              {
@@ -126,7 +126,7 @@ line level    source
  113   2              {
  114   3                  #if(CY_PSOC5A)
               
-C51 COMPILER V9.51   EEPROM_R                                                              03/27/2014 15:27:16 PAGE 3   
+C51 COMPILER V9.51   EEPROM_R                                                              03/28/2014 13:53:46 PAGE 3   
 
                               /* Plan for failure */
                               status = CYRET_UNKNOWN;
@@ -190,7 +190,7 @@ line level    source
  175   2              {
  176   3                  status = CYRET_LOCKED;
  177   3              }
-C51 COMPILER V9.51   EEPROM_R                                                              03/27/2014 15:27:16 PAGE 4   
+C51 COMPILER V9.51   EEPROM_R                                                              03/28/2014 13:53:46 PAGE 4   
 
  178   2          }
  179   1          else
@@ -254,7 +254,7 @@ line level    source
  237   4                      if(status == CYRET_SUCCESS)
  238   4                      {
  239   5                          if(CySpcWriteRow(CY_SPC_FIRST_EE_ARRAYID, (uint16)rowNumber, dieTemperature[0],
-C51 COMPILER V9.51   EEPROM_R                                                              03/27/2014 15:27:16 PAGE 5   
+C51 COMPILER V9.51   EEPROM_R                                                              03/28/2014 13:53:46 PAGE 5   
 
  240   5                          dieTemperature[1]) == CYRET_STARTED)
  241   5                          {
@@ -318,7 +318,7 @@ line level    source
  299          * Return:
  300          *  CYRET_STARTED, if the spc command to write was successfuly started.
  301          *  CYRET_BAD_PARAM, if the parameter rowNumber out of range.
-C51 COMPILER V9.51   EEPROM_R                                                              03/27/2014 15:27:16 PAGE 6   
+C51 COMPILER V9.51   EEPROM_R                                                              03/28/2014 13:53:46 PAGE 6   
 
  302          *  CYRET_LOCKED, if the spc is being used.
  303          *  CYRET_UNKNOWN, if there was an SPC error.
@@ -382,7 +382,7 @@ line level    source
  361   1      
  362   1          return(status);
  363   1      }
-C51 COMPILER V9.51   EEPROM_R                                                              03/27/2014 15:27:16 PAGE 7   
+C51 COMPILER V9.51   EEPROM_R                                                              03/28/2014 13:53:46 PAGE 7   
 
  364          
  365          
@@ -446,7 +446,7 @@ line level    source
  423          *  byteNumber:  Byte number within the row to program.
  424          *
  425          * Return:
-C51 COMPILER V9.51   EEPROM_R                                                              03/27/2014 15:27:16 PAGE 8   
+C51 COMPILER V9.51   EEPROM_R                                                              03/28/2014 13:53:46 PAGE 8   
 
  426          *  CYRET_SUCCESS, if the operation was successful.
  427          *  CYRET_BAD_PARAM, if the parameter rowNumber or byteNumber out of range.
@@ -510,7 +510,7 @@ line level    source
  484   5                          {
  485   6                              status = CYRET_UNKNOWN;
  486   6                          }
-C51 COMPILER V9.51   EEPROM_R                                                              03/27/2014 15:27:16 PAGE 9   
+C51 COMPILER V9.51   EEPROM_R                                                              03/28/2014 13:53:46 PAGE 9   
 
  487   5                      }
  488   4                      else
@@ -537,7 +537,7 @@ line level    source
  509          
  510          
  511          /* [] END OF FILE */
-C51 COMPILER V9.51   EEPROM_R                                                              03/27/2014 15:27:16 PAGE 10  
+C51 COMPILER V9.51   EEPROM_R                                                              03/28/2014 13:53:46 PAGE 10  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -548,6 +548,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 36
 0000 120000      E     LCALL   CyEEPROM_Start
                                            ; SOURCE LINE # 37
+0003         ?C0001:
 0003 22                RET     
              ; FUNCTION EEPROM_R_Enable (END)
 
@@ -557,6 +558,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 57
 0000 120000      R     LCALL   EEPROM_R_Enable
                                            ; SOURCE LINE # 58
+0003         ?C0002:
 0003 22                RET     
              ; FUNCTION EEPROM_R_Start (END)
 
@@ -566,6 +568,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 78
 0000 120000      E     LCALL   CyEEPROM_Stop
                                            ; SOURCE LINE # 79
+0003         ?C0003:
 0003 22                RET     
              ; FUNCTION EEPROM_R_Stop (END)
 
@@ -598,11 +601,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 001E 7F40              MOV     R7,#040H
 0020 120000      E     LCALL   _CySpcEraseSector
 0023 EF                MOV     A,R7
+C51 COMPILER V9.51   EEPROM_R                                                              03/28/2014 13:53:46 PAGE 11  
+
 0024 6407              XRL     A,#07H
 0026 703D              JNZ     ?C0006
                                            ; SOURCE LINE # 141
-C51 COMPILER V9.51   EEPROM_R                                                              03/27/2014 15:27:16 PAGE 11  
-
                                            ; SOURCE LINE # 143
 0028 900000      R     MOV     DPTR,#status
 002B 74FF              MOV     A,#0FFH
@@ -653,6 +656,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0061 E4                CLR     A
 0062 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 154
+0063         ?C0009:
                                            ; SOURCE LINE # 155
 0063 8006              SJMP    ?C0012
 0065         ?C0006:
@@ -661,12 +665,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0065 900000      R     MOV     DPTR,#status
 0068 74FF              MOV     A,#0FFH
 006A F0                MOVX    @DPTR,A
+C51 COMPILER V9.51   EEPROM_R                                                              03/28/2014 13:53:46 PAGE 12  
+
                                            ; SOURCE LINE # 159
 006B         ?C0012:
                                            ; SOURCE LINE # 172
 006B 120000      E     LCALL   CySpcUnlock
-C51 COMPILER V9.51   EEPROM_R                                                              03/27/2014 15:27:16 PAGE 12  
-
                                            ; SOURCE LINE # 173
 006E 800E              SJMP    ?C0014
 0070         ?C0005:
@@ -676,6 +680,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0073 7404              MOV     A,#04H
 0075 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 177
+0076         ?C0013:
                                            ; SOURCE LINE # 178
 0076 8006              SJMP    ?C0014
 0078         ?C0004:
@@ -724,13 +729,13 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 220
 0025 900000      R     MOV     DPTR,#status
 0028 74FF              MOV     A,#0FFH
+C51 COMPILER V9.51   EEPROM_R                                                              03/28/2014 13:53:46 PAGE 13  
+
 002A F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 223
 002B 900000      R     MOV     DPTR,#rowData
 002E 120000      E     LCALL   ?C?PLDXDATA
 0031 900000      E     MOV     DPTR,#?_CySpcLoadRow?BYTE+04H
-C51 COMPILER V9.51   EEPROM_R                                                              03/27/2014 15:27:16 PAGE 13  
-
 0034 E4                CLR     A
 0035 F0                MOVX    @DPTR,A
 0036 A3                INC     DPTR
@@ -788,13 +793,13 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0077 900000      R     MOV     DPTR,#status
 007A E4                CLR     A
 007B F0                MOVX    @DPTR,A
+C51 COMPILER V9.51   EEPROM_R                                                              03/28/2014 13:53:46 PAGE 14  
+
                                            ; SOURCE LINE # 234
 007C         ?C0021:
                                            ; SOURCE LINE # 237
 007C 900000      R     MOV     DPTR,#status
 007F E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   EEPROM_R                                                              03/27/2014 15:27:16 PAGE 14  
-
 0080 FF                MOV     R7,A
 0081 EF                MOV     A,R7
 0082 7067              JNZ     ?C0024
@@ -852,13 +857,13 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00C7 4E                ORL     A,R6
 00C8 600D              JZ      ?C0029
 00CA 904722            MOV     DPTR,#04722H
+C51 COMPILER V9.51   EEPROM_R                                                              03/28/2014 13:53:46 PAGE 15  
+
 00CD E0                MOVX    A,@DPTR
 00CE FF                MOV     R7,A
 00CF EF                MOV     A,R7
 00D0 13                RRC     A
 00D1 13                RRC     A
-C51 COMPILER V9.51   EEPROM_R                                                              03/27/2014 15:27:16 PAGE 15  
-
 00D2 543F              ANL     A,#03FH
 00D4 FF                MOV     R7,A
 00D5 8002              SJMP    ?C0030
@@ -873,6 +878,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00DF E4                CLR     A
 00E0 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 254
+00E1         ?C0028:
                                            ; SOURCE LINE # 255
 00E1 800E              SJMP    ?C0018
 00E3         ?C0025:
@@ -882,6 +888,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00E6 74FF              MOV     A,#0FFH
 00E8 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 259
+00E9         ?C0031:
                                            ; SOURCE LINE # 260
 00E9 8006              SJMP    ?C0018
 00EB         ?C0024:
@@ -891,6 +898,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00EE 74FF              MOV     A,#0FFH
 00F0 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 264
+00F1         ?C0032:
                                            ; SOURCE LINE # 265
 00F1         ?C0018:
                                            ; SOURCE LINE # 268
@@ -904,6 +912,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00F9 7404              MOV     A,#04H
 00FB F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 273
+00FC         ?C0033:
                                            ; SOURCE LINE # 274
 00FC 8006              SJMP    ?C0034
 00FE         ?C0016:
@@ -912,6 +921,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00FE 900000      R     MOV     DPTR,#status
 0101 7401              MOV     A,#01H
 0103 F0                MOVX    @DPTR,A
+C51 COMPILER V9.51   EEPROM_R                                                              03/28/2014 13:53:46 PAGE 16  
+
                                            ; SOURCE LINE # 278
 0104         ?C0034:
                                            ; SOURCE LINE # 280
@@ -921,8 +932,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 281
 0109         ?C0035:
 0109 22                RET     
-C51 COMPILER V9.51   EEPROM_R                                                              03/27/2014 15:27:16 PAGE 16  
-
              ; FUNCTION _EEPROM_R_Write (END)
 
              ; FUNCTION _EEPROM_R_StartWrite (BEGIN)
@@ -976,6 +985,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0048 FF                MOV     R7,A
 0049 EF                MOV     A,R7
 004A 5402              ANL     A,#02H
+C51 COMPILER V9.51   EEPROM_R                                                              03/28/2014 13:53:46 PAGE 17  
+
 004C FF                MOV     R7,A
 004D 7E00              MOV     R6,#00H
 004F EF                MOV     A,R7
@@ -985,8 +996,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 325
 0053         ?C0040:
                                            ; SOURCE LINE # 328
-C51 COMPILER V9.51   EEPROM_R                                                              03/27/2014 15:27:16 PAGE 17  
-
 0053 904722            MOV     DPTR,#04722H
 0056 E0                MOVX    A,@DPTR
 0057 FF                MOV     R7,A
@@ -1040,6 +1049,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0093 FF                MOV     R7,A
 0094 900000      E     MOV     DPTR,#?_CySpcWriteRow?BYTE+04H
 0097 EF                MOV     A,R7
+C51 COMPILER V9.51   EEPROM_R                                                              03/28/2014 13:53:46 PAGE 18  
+
 0098 F0                MOVX    @DPTR,A
 0099 7F40              MOV     R7,#040H
 009B 120000      E     LCALL   _CySpcWriteRow
@@ -1049,8 +1060,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 339
 00A2 900000      R     MOV     DPTR,#status
 00A5 7407              MOV     A,#07H
-C51 COMPILER V9.51   EEPROM_R                                                              03/27/2014 15:27:16 PAGE 18  
-
 00A7 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 340
 00A8 801E              SJMP    ?C0049
@@ -1061,6 +1070,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00AD 74FF              MOV     A,#0FFH
 00AF F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 344
+00B0         ?C0046:
                                            ; SOURCE LINE # 345
 00B0 8016              SJMP    ?C0049
 00B2         ?C0044:
@@ -1070,7 +1080,9 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00B5 74FF              MOV     A,#0FFH
 00B7 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 349
+00B8         ?C0047:
                                            ; SOURCE LINE # 350
+00B8         ?C0038:
                                            ; SOURCE LINE # 351
 00B8 800E              SJMP    ?C0049
 00BA         ?C0037:
@@ -1080,6 +1092,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00BD 7404              MOV     A,#04H
 00BF F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 355
+00C0         ?C0048:
                                            ; SOURCE LINE # 356
 00C0 8006              SJMP    ?C0049
 00C2         ?C0036:
@@ -1100,6 +1113,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION _EEPROM_R_StartWrite (END)
 
              ; FUNCTION EEPROM_R_QueryWrite (BEGIN)
+C51 COMPILER V9.51   EEPROM_R                                                              03/28/2014 13:53:46 PAGE 19  
+
                                            ; SOURCE LINE # 383
                                            ; SOURCE LINE # 384
                                            ; SOURCE LINE # 388
@@ -1113,8 +1128,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000B EF                MOV     A,R7
 000C 4E                ORL     A,R6
 000D 6033              JZ      ?C0051
-C51 COMPILER V9.51   EEPROM_R                                                              03/27/2014 15:27:16 PAGE 19  
-
                                            ; SOURCE LINE # 389
                                            ; SOURCE LINE # 391
 000F 904722            MOV     DPTR,#04722H
@@ -1164,6 +1177,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 404
                                            ; SOURCE LINE # 405
 0042 900000      R     MOV     DPTR,#status
+C51 COMPILER V9.51   EEPROM_R                                                              03/28/2014 13:53:46 PAGE 20  
+
 0045 7407              MOV     A,#07H
 0047 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 406
@@ -1176,8 +1191,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 004D         ?C0057:
 004D 22                RET     
              ; FUNCTION EEPROM_R_QueryWrite (END)
-
-C51 COMPILER V9.51   EEPROM_R                                                              03/27/2014 15:27:16 PAGE 20  
 
              ; FUNCTION _EEPROM_R_ByteWrite (BEGIN)
                                            ; SOURCE LINE # 432
@@ -1228,6 +1241,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0042 EF                MOV     A,R7
 0043 FD                MOV     R5,A
 0044 7C00              MOV     R4,#00H
+C51 COMPILER V9.51   EEPROM_R                                                              03/28/2014 13:53:46 PAGE 21  
+
 0046 7B01              MOV     R3,#01H
 0048 7A00        R     MOV     R2,#HIGH dataByte
 004A 7900        R     MOV     R1,#LOW dataByte
@@ -1241,8 +1256,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 005A 6003              JZ      $ + 5H
 005C 020000      R     LJMP    ?C0060
                                            ; SOURCE LINE # 451
-C51 COMPILER V9.51   EEPROM_R                                                              03/27/2014 15:27:16 PAGE 21  
-
 005F         ?C0061:
                                            ; SOURCE LINE # 452
 005F 904722            MOV     DPTR,#04722H
@@ -1292,6 +1305,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0094         ?C0063:
                                            ; SOURCE LINE # 464
 0094 900000      R     MOV     DPTR,#status
+C51 COMPILER V9.51   EEPROM_R                                                              03/28/2014 13:53:46 PAGE 22  
+
 0097 E0                MOVX    A,@DPTR
 0098 FF                MOV     R7,A
 0099 EF                MOV     A,R7
@@ -1305,8 +1320,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00A2 FD                MOV     R5,A
 00A3 7C00              MOV     R4,#00H
 00A5 900000      E     MOV     DPTR,#dieTemperature
-C51 COMPILER V9.51   EEPROM_R                                                              03/27/2014 15:27:16 PAGE 22  
-
 00A8 E0                MOVX    A,@DPTR
 00A9 FB                MOV     R3,A
 00AA 900000      E     MOV     DPTR,#dieTemperature+01H
@@ -1356,6 +1369,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00E6 FF                MOV     R7,A
 00E7 EF                MOV     A,R7
 00E8 13                RRC     A
+C51 COMPILER V9.51   EEPROM_R                                                              03/28/2014 13:53:46 PAGE 23  
+
 00E9 13                RRC     A
 00EA 543F              ANL     A,#03FH
 00EC FF                MOV     R7,A
@@ -1369,10 +1384,9 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 480
 00F4 900000      R     MOV     DPTR,#status
 00F7 E4                CLR     A
-C51 COMPILER V9.51   EEPROM_R                                                              03/27/2014 15:27:16 PAGE 23  
-
 00F8 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 481
+00F9         ?C0070:
                                            ; SOURCE LINE # 482
 00F9 800E              SJMP    ?C0060
 00FB         ?C0067:
@@ -1382,6 +1396,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00FE 74FF              MOV     A,#0FFH
 0100 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 486
+0101         ?C0073:
                                            ; SOURCE LINE # 487
 0101 8006              SJMP    ?C0060
 0103         ?C0066:
@@ -1391,6 +1406,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0106 74FF              MOV     A,#0FFH
 0108 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 491
+0109         ?C0074:
                                            ; SOURCE LINE # 492
 0109         ?C0060:
                                            ; SOURCE LINE # 495
@@ -1404,6 +1420,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0111 7404              MOV     A,#04H
 0113 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 500
+0114         ?C0075:
                                            ; SOURCE LINE # 501
 0114 8006              SJMP    ?C0076
 0116         ?C0058:
@@ -1416,6 +1433,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 011C         ?C0076:
                                            ; SOURCE LINE # 507
 011C 900000      R     MOV     DPTR,#status
+C51 COMPILER V9.51   EEPROM_R                                                              03/28/2014 13:53:46 PAGE 24  
+
 011F E0                MOVX    A,@DPTR
 0120 FF                MOV     R7,A
                                            ; SOURCE LINE # 508
@@ -1428,13 +1447,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 MODULE INFORMATION:   STATIC OVERLAYABLE
    CODE SIZE        =    984    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =   ----      17
+   XDATA SIZE       =     17    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
-C51 COMPILER V9.51   EEPROM_R                                                              03/27/2014 15:27:16 PAGE 24  
-
    EDATA SIZE       =   ----    ----
    HDATA SIZE       =   ----    ----
    XDATA CONST SIZE =   ----    ----

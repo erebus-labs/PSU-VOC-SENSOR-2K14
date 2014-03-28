@@ -19,9 +19,8 @@ void update_variable(uint16 index, uint16 value){
     uint8* src_ptr;
     uint8* dst_ptr;
     uint8 i = 0; // loop var
-    cystatus status;
-    
     float bytes_used = EEPROM_BYTES_USED;
+    cystatus status;
     
     // Allocate array to hold EEPROM variables
     
@@ -33,7 +32,7 @@ void update_variable(uint16 index, uint16 value){
     // Copy all variables into RAM
     for (i=0; i<EEPROM_BYTES_USED; ++i){
         *dst_ptr = CY_GET_REG8(CYDEV_EE_BASE + i);
-        ++dst_ptr;
+        ++dst_ptr;      
     }
     
     // Fill remainder of buffer with zeros
@@ -43,7 +42,7 @@ void update_variable(uint16 index, uint16 value){
     }
     
     // Modify variable in RAM
-    buffer[index] = (uint8) value >> 0x8;
+    buffer[index] = (uint8) (value >> 0x8);
     buffer[index+1] = (uint8) value & 0xFF;
     
     // Erase EEPROM

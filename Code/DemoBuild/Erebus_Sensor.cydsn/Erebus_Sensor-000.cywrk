@@ -8,7 +8,6 @@
 <files />
 <projects>
 <name_val_pair name="Erebus_Sensor" v=".\Erebus_Sensor.cyprj" />
-<name_val_pair name="ADCtoEEPROM" v="..\..\ADCtoEEPROM.cydsn\ADCtoEEPROM.cyprj" />
 </projects>
 <workspace_id v="5603cb93-7317-4ca1-acbb-94152283ea84" />
 <WriteAppVersionLastSavedWith v="3.0.0.1539" />

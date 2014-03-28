@@ -1,5 +1,5 @@
 -- Project:   Erebus_Sensor
--- Generated: 03/27/2014 17:48:08
+-- Generated: 03/27/2014 21:52:17
 -- 
 
 ENTITY Erebus_Sensor IS
@@ -35,8 +35,6 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     SIGNAL LED(0)__PA : bit;
     SIGNAL Net_14 : bit;
     SIGNAL Net_146 : bit;
-    SIGNAL Net_15 : bit;
-    SIGNAL Net_15_SYNCOUT : bit;
     SIGNAL Net_242 : bit;
     ATTRIBUTE global_signal OF Net_242 : SIGNAL IS true;
     SIGNAL Net_242_local : bit;
@@ -45,6 +43,8 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     SIGNAL Net_408 : bit;
     SIGNAL Net_556 : bit;
     SIGNAL Net_566 : bit;
+    SIGNAL Net_570 : bit;
+    SIGNAL Net_570_SYNCOUT : bit;
     SIGNAL Net_65 : bit;
     SIGNAL Net_72 : bit;
     ATTRIBUTE global_signal OF Net_72 : SIGNAL IS true;
@@ -78,6 +78,8 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     SIGNAL \ADC:mod_reset\ : bit;
     SIGNAL \Blink_Timer:Net_261\ : bit;
     SIGNAL \Blink_Timer:Net_57\ : bit;
+    SIGNAL \SW3_Debounce:DEBOUNCER[0]:d_sync_0\ : bit;
+    SIGNAL \SW3_Debounce:DEBOUNCER[0]:d_sync_1\ : bit;
     SIGNAL \\\USBUART:Dm(0)\\__PA\ : bit;
     SIGNAL \\\USBUART:Dp(0)\\__PA\ : bit;
     SIGNAL \USBUART:Net_1010\ : bit;
@@ -130,13 +132,15 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     ATTRIBUTE lib_model OF Vbus(0) : LABEL IS "iocell6";
     ATTRIBUTE Location OF Vbus(0) : LABEL IS "P6[0]";
     ATTRIBUTE Location OF \ADC:DSM\ : LABEL IS "F(DSM,0)";
+    ATTRIBUTE lib_model OF \SW3_Debounce:DEBOUNCER[0]:d_sync_0\ : LABEL IS "macrocell5";
+    ATTRIBUTE lib_model OF \SW3_Debounce:DEBOUNCER[0]:d_sync_1\ : LABEL IS "macrocell6";
     ATTRIBUTE lib_model OF \USBUART:Dm(0)\ : LABEL IS "iocell7";
     ATTRIBUTE Location OF \USBUART:Dm(0)\ : LABEL IS "P15[7]";
     ATTRIBUTE lib_model OF \USBUART:Dp(0)\ : LABEL IS "iocell8";
     ATTRIBUTE Location OF \USBUART:Dp(0)\ : LABEL IS "P15[6]";
     ATTRIBUTE Location OF \USBUART:USB\ : LABEL IS "F(USB,0)";
-    ATTRIBUTE lib_model OF \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\ : LABEL IS "macrocell5";
-    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell6";
+    ATTRIBUTE lib_model OF \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\ : LABEL IS "macrocell7";
+    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell8";
     COMPONENT abufcell
     END COMPONENT;
     COMPONENT boostcell
@@ -1272,10 +1276,13 @@ BEGIN
 
     Net_14:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0)")
+            eqn_main => "(!main_0 * main_1)",
+            clk_inv => '0')
         PORT MAP(
             q => Net_14,
-            main_0 => Net_15_SYNCOUT);
+            clock_0 => Net_242,
+            main_0 => \SW3_Debounce:DEBOUNCER[0]:d_sync_0\,
+            main_1 => \SW3_Debounce:DEBOUNCER[0]:d_sync_1\);
 
     Net_408:macrocell
         GENERIC MAP(
@@ -1383,7 +1390,7 @@ BEGIN
         PORT MAP(
             pa_out => SW_3(0)__PA,
             oe => open,
-            fb => Net_15,
+            fb => Net_570,
             pad_in => SW_3(0)_PAD,
             in_clock => ClockBlock_BUS_CLK,
             in_clock_en => '1',
@@ -1396,8 +1403,8 @@ BEGIN
         GENERIC MAP(
             clk_inv => '0')
         PORT MAP(
-            in => Net_15,
-            out => Net_15_SYNCOUT,
+            in => Net_570,
+            out => Net_570_SYNCOUT,
             clock => ClockBlock_BUS_CLK);
 
     Sensor_VIn:logicalport
@@ -1735,6 +1742,24 @@ BEGIN
             tc => Net_146,
             cmp => \Blink_Timer:Net_261\,
             irq => \Blink_Timer:Net_57\);
+
+    \SW3_Debounce:DEBOUNCER[0]:d_sync_0\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            clk_inv => '0')
+        PORT MAP(
+            q => \SW3_Debounce:DEBOUNCER[0]:d_sync_0\,
+            main_0 => Net_570_SYNCOUT,
+            clock_0 => Net_242);
+
+    \SW3_Debounce:DEBOUNCER[0]:d_sync_1\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            clk_inv => '0')
+        PORT MAP(
+            q => \SW3_Debounce:DEBOUNCER[0]:d_sync_1\,
+            main_0 => \SW3_Debounce:DEBOUNCER[0]:d_sync_0\,
+            clock_0 => Net_242);
 
     \USBUART:Dm(0)\:iocell
         GENERIC MAP(

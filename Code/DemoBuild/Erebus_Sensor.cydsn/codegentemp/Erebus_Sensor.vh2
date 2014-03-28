@@ -2,7 +2,7 @@
 --	Conversion of Erebus_Sensor.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Thu Mar 27 17:48:07 2014
+--	Thu Mar 27 21:52:16 2014
 --
 
 USE cypress.cypress.all;
@@ -134,16 +134,27 @@ SIGNAL \ADC:Net_268\ : bit;
 SIGNAL \ADC:Net_270\ : bit;
 SIGNAL Net_14 : bit;
 SIGNAL tmpOE__SW_3_net_0 : bit;
-SIGNAL Net_15 : bit;
+SIGNAL Net_570 : bit;
 SIGNAL tmpIO_0__SW_3_net_0 : bit;
 TERMINAL tmpSIOVREF__SW_3_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__SW_3_net_0 : bit;
+SIGNAL \SW3_Debounce:op_clk\ : bit;
+SIGNAL \SW3_Debounce:DEBOUNCER[0]:d_sync_0\ : bit;
+SIGNAL \SW3_Debounce:DEBOUNCER[0]:d_sync_1\ : bit;
+SIGNAL Net_580 : bit;
+SIGNAL Net_582 : bit;
+SIGNAL Net_581 : bit;
 SIGNAL cy_tff_1D : bit;
 SIGNAL Net_408D : bit;
 SIGNAL \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\\D\ : bit;
 SIGNAL \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\\D\ : bit;
 SIGNAL Net_555D : bit;
 SIGNAL Net_554D : bit;
+SIGNAL Net_14D : bit;
+SIGNAL \SW3_Debounce:DEBOUNCER[0]:d_sync_0\\D\ : bit;
+SIGNAL \SW3_Debounce:DEBOUNCER[0]:d_sync_1\\D\ : bit;
+SIGNAL Net_582D : bit;
+SIGNAL Net_581D : bit;
 BEGIN
 
 zero <=  ('0') ;
@@ -156,7 +167,7 @@ cy_tff_1D <= ((not Net_65 and Net_146)
 Net_408D <= ((not \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\ and Net_556)
 	OR (not Net_556 and \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\));
 
-Net_14 <= (not Net_15);
+Net_14D <= ((not \SW3_Debounce:DEBOUNCER[0]:d_sync_0\ and \SW3_Debounce:DEBOUNCER[0]:d_sync_1\));
 
 \USBUART:USB\:cy_psoc3_usb_v1_0
 	GENERIC MAP(cy_registers=>"")
@@ -859,7 +870,7 @@ SW_3:cy_psoc3_pins_v1_10
 		pa_out_reset=>-1)
 	PORT MAP(oe=>(one),
 		y=>(zero),
-		fb=>Net_15,
+		fb=>Net_570,
 		analog=>(open),
 		io=>(tmpIO_0__SW_3_net_0),
 		siovref=>(tmpSIOVREF__SW_3_net_0),
@@ -871,6 +882,11 @@ SW_3:cy_psoc3_pins_v1_10
 		out_clock_en=>one,
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__SW_3_net_0);
+\SW3_Debounce:ClkSync\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>Net_242,
+		enable=>one,
+		clock_out=>\SW3_Debounce:op_clk\);
 cy_tff_1:cy_dff
 	PORT MAP(d=>cy_tff_1D,
 		clk=>Net_72,
@@ -895,5 +911,25 @@ Net_554:cy_dff
 	PORT MAP(d=>zero,
 		clk=>\Vbus_Debounce:op_clk\,
 		q=>Net_554);
+Net_14:cy_dff
+	PORT MAP(d=>Net_14D,
+		clk=>\SW3_Debounce:op_clk\,
+		q=>Net_14);
+\SW3_Debounce:DEBOUNCER[0]:d_sync_0\:cy_dff
+	PORT MAP(d=>Net_570,
+		clk=>\SW3_Debounce:op_clk\,
+		q=>\SW3_Debounce:DEBOUNCER[0]:d_sync_0\);
+\SW3_Debounce:DEBOUNCER[0]:d_sync_1\:cy_dff
+	PORT MAP(d=>\SW3_Debounce:DEBOUNCER[0]:d_sync_0\,
+		clk=>\SW3_Debounce:op_clk\,
+		q=>\SW3_Debounce:DEBOUNCER[0]:d_sync_1\);
+Net_582:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\SW3_Debounce:op_clk\,
+		q=>Net_582);
+Net_581:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\SW3_Debounce:op_clk\,
+		q=>Net_581);
 
 END R_T_L;
