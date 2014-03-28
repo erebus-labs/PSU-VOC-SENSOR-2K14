@@ -36,7 +36,11 @@ def main():
 
     elif response == 'D':
       print("\nRequesting Data Dump...")
-      print("Data dumped to {}".format(log_name))
+      data = sensor.get_data()
+
+      with open(log_name, 'a') as fi:
+        fi.write("\n".join([str(point) for point in data]))
+      print("{} Data points dumped to: {}".format(len(data), log_name))
 
     elif response == 'C':
       value = int(input("\tEnter new blink rate:").strip(" .\n\r"))

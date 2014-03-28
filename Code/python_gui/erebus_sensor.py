@@ -33,7 +33,10 @@ class ErebusSensor:
     self.commands = {
       'IDENTIFY'       :b'I',
       'DUMP_DATA'      :b'D',
-      'CHANGE_SETTINGS':b'C'}
+      'CHANGE_SETTINGS':b'C',
+      'NEXT'           :b'X',
+      'SUCCESS'        :b'Y',
+      'FAILURE'        :b'N'}
 
     self.responses = {
       'SUCCESS'   :b'Y',
@@ -53,7 +56,8 @@ class ErebusSensor:
                                     parity=serial.PARITY_EVEN,
                                     xonxoff=0,
                                     rtscts=0,
-                                    stopbits=serial.STOPBITS_ONE)
+                                    stopbits=serial.STOPBITS_ONE,
+                                    timeout=3)
 
         self.send_command('IDENTIFY')
 
@@ -85,7 +89,6 @@ class ErebusSensor:
   def send_command(self, command, target=0, value=0):
 
     out = struct.pack('>chh', self.commands[command], target, value)
-    print(out)
     self.handle.write(out)
     return 
 
@@ -101,12 +104,55 @@ class ErebusSensor:
       return None
 
     data = []
+    points_sent = 0
+    packet_format_string = '>'+'h'*32
+    points_received = -1
+
     try:
       self.send_command('DUMP_DATA')
     except OSError:
       return -1
 
-    return data
+    for x in range(3):
+    
+      while True:
+        package = self.handle.read(64)
+        packet = struct.unpack(packet_format_string, package)
+
+        for word in packet:
+          if not word & 0xF000:
+            data.append(word)
+            points_sent += 1
+
+          elif word & 0x4000:
+            continue
+
+          elif word & 0x8000:
+            points_received = packet[1]
+            break
+
+        if points_received >= 0:
+          break
+
+      if points_received == points_sent:
+        self.send_command('SUCCESS')
+        result = 1
+      else:
+        self.send_command('FAIL')
+        result = 0
+
+      if result == 1:
+        break
+      else:
+        try:
+          self.send_command('DUMP_DATA')
+        except OSError:
+          return -1
+      
+    if result:    
+      return data
+    else:
+      return None
 
   def request_id(self):
     try:
