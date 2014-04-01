@@ -1,0 +1,142 @@
+C51 COMPILER V9.51   MAIN                                                                  04/01/2014 06:30:36 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Debug\main.obj
+COMPILER INVOKED BY: C:\Program Files\Cypress\PSoC Creator\3.0\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe .\main
+                    -.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\main.lst) CD DB NOIP OT(0,SIZE) DF(DEBUG) INCDIR(.,.\G
+                    -enerated_Source\PSoC3) OJ(.\DP8051\DP8051_Keil_951\Debug\main.obj)
+
+line level    source
+
+   1          /* ========================================
+   2           *
+   3           * Copyright YOUR COMPANY, THE YEAR
+   4           * All Rights Reserved
+   5           * UNPUBLISHED, LICENSED SOFTWARE.
+   6           *
+   7           * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8           * WHICH IS THE PROPERTY OF your company.
+   9           *
+  10           * ========================================
+  11          */
+  12          #include <project.h>
+  13          #include <stdlib.h>
+  14          #include "main.h"
+  15          
+  16          
+  17          
+  18          const uint8 CYCODE MemoryLocation[EmEEPROMSize]; // Errors caused by the include of main.h which includes 
+             -the externs and static
+  19          volatile uint8* TailPtr = (uint8*) MemoryLocation;
+  20          
+  21          void main()
+  22          {
+  23   1          /* Initialization*/
+  24   1          uint16 blink_rate = 0;
+  25   1          
+  26   1          // Variable declarations
+  27   1      
+  28   1          
+  29   1          // Enable and start EEPROM
+  30   1          EEPROM_R_Start();
+  31   1               
+  32   1          // Enable global interrupts
+  33   1          CyGlobalIntEnable;
+  34   1          Vbus_IRQ_Start();
+  35   1          //TakeSample_IRQ_Start();
+  36   1          
+  37   1      //    Blink_Timer_WritePeriod(CYDEV_EE_BASE[EEPROM_Address.blink_rate]);
+  38   1          
+  39   1          // Start LED Blinking
+  40   1          
+  41   1          Blink_Timer_Start();  
+  42   1          blink_rate = get_variable(BLINK_RATE);
+  43   1          Blink_Timer_WritePeriod(blink_rate);
+  44   1          
+  45   1          for(;;)
+  46   1          {
+  47   2       
+  48   2          }
+  49   1          
+  50   1          return;
+  51   1      }
+  52          
+C51 COMPILER V9.51   MAIN                                                                  04/01/2014 06:30:36 PAGE 2   
+
+  53          /* [] END OF FILE */
+C51 COMPILER V9.51   MAIN                                                                  04/01/2014 06:30:36 PAGE 3   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION main (BEGIN)
+                                           ; SOURCE LINE # 21
+                                           ; SOURCE LINE # 22
+                                           ; SOURCE LINE # 24
+0000 900000      R     MOV     DPTR,#blink_rate
+0003 E4                CLR     A
+0004 F0                MOVX    @DPTR,A
+0005 A3                INC     DPTR
+0006 E4                CLR     A
+0007 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 30
+0008 120000      E     LCALL   EEPROM_R_Start
+                                           ; SOURCE LINE # 33
+000B D2AF              SETB    EA
+000D 9044F4            MOV     DPTR,#044F4H
+0010 74FD              MOV     A,#0FDH
+0012 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 34
+0013 120000      E     LCALL   Vbus_IRQ_Start
+                                           ; SOURCE LINE # 41
+0016 120000      E     LCALL   Blink_Timer_Start
+                                           ; SOURCE LINE # 42
+0019 7F00              MOV     R7,#00H
+001B 7E00              MOV     R6,#00H
+001D 120000      E     LCALL   _get_variable
+0020 900000      R     MOV     DPTR,#blink_rate
+0023 EE                MOV     A,R6
+0024 F0                MOVX    @DPTR,A
+0025 A3                INC     DPTR
+0026 EF                MOV     A,R7
+0027 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 43
+0028 900000      R     MOV     DPTR,#blink_rate
+002B E0                MOVX    A,@DPTR
+002C FE                MOV     R6,A
+002D A3                INC     DPTR
+002E E0                MOVX    A,@DPTR
+002F FF                MOV     R7,A
+0030 120000      E     LCALL   _Blink_Timer_WritePeriod
+                                           ; SOURCE LINE # 45
+0033         ?C0001:
+                                           ; SOURCE LINE # 46
+                                           ; SOURCE LINE # 48
+0033 80FE              SJMP    ?C0001
+0035         ?C0002:
+                                           ; SOURCE LINE # 51
+0035         ?C0003:
+0035 22                RET     
+             ; FUNCTION main (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     54    ----
+   CONSTANT SIZE    =   1024    ----
+   XDATA SIZE       =      5    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+C51 COMPILER V9.51   MAIN                                                                  04/01/2014 06:30:36 PAGE 4   
+
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

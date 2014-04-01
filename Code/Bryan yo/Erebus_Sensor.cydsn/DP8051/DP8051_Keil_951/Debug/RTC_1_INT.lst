@@ -1,0 +1,1005 @@
+C51 COMPILER V9.51   RTC_1_INT                                                             04/01/2014 06:30:45 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE RTC_1_INT
+OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Debug\RTC_1_INT.obj
+COMPILER INVOKED BY: C:\Program Files\Cypress\PSoC Creator\3.0\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe .\Gene
+                    -rated_Source\PSoC3\RTC_1_INT.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\RTC_1_INT.lst) CD DB NOIP 
+                    -OT(0,SIZE) DF(DEBUG) INCDIR(.,.\Generated_Source\PSoC3) OJ(.\DP8051\DP8051_Keil_951\Debug\RTC_1_INT.obj)
+
+line level    source
+
+   1          /*******************************************************************************
+   2          * File Name: RTC_1_INT.c
+   3          * Version 2.0
+   4          *
+   5          * Description:
+   6          *  This file contains the Interrupt Service Routine (ISR) for the RTC component.
+   7          *  This interrupt routine has entry pointes to overflow on time or date.
+   8          *
+   9          ********************************************************************************
+  10          * Copyright 2008-2013, Cypress Semiconductor Corporation.  All rights reserved.
+  11          * You may use this file only in accordance with the license, terms, conditions,
+  12          * disclaimers, and limitations in the end user license agreement accompanying
+  13          * the software package with which this file was provided.
+  14          *******************************************************************************/
+  15          
+  16          #include "RTC_1.h"
+  17          #include "CyLib.h"
+  18          
+  19          /* Function Prototypes */
+  20          static void RTC_1_EverySecondHandler(void);
+  21          static void RTC_1_EveryMinuteHandler(void);
+  22          static void RTC_1_EveryHourHandler(void);
+  23          static void RTC_1_EveryDayHandler(void);
+  24          static void RTC_1_EveryWeekHandler(void);
+  25          static void RTC_1_EveryMonthHandler(void);
+  26          static void RTC_1_EveryYearHandler(void);
+  27          
+  28          
+  29          /*******************************************************************************
+  30          *  Place your includes, defines and code here
+  31          *******************************************************************************/
+  32          /* `#START RTC_ISR_DEFINITION` */
+  33              #include "project.h"
+  34              #include "EmEEPROM_Access.h"
+  35          
+  36          
+  37              uint16 SampledData=0; 
+  38              
+  39              Em_EEPROM_Start(); 
+*** ERROR C231 IN LINE 39 OF .\Generated_Source\PSoC3\RTC_1_INT.c: 'Em_EEPROM_Start': redefinition
+  40              ADC_Start();
+*** ERROR C231 IN LINE 40 OF .\Generated_Source\PSoC3\RTC_1_INT.c: 'ADC_Start': redefinition
+  41              
+  42              /* ADC */
+  43              SampledData = ADC_Read16(); /* Function Starts, Converts, Stops, and Returns from ADC */
+*** ERROR C279 IN LINE 43 OF .\Generated_Source\PSoC3\RTC_1_INT.c: 'SampledData': multiple initialization
+*** ERROR C231 IN LINE 43 OF .\Generated_Source\PSoC3\RTC_1_INT.c: 'SampledData': redefinition
+  44              if (SampledData & 0x8000)
+*** ERROR C141 IN LINE 44 OF .\Generated_Source\PSoC3\RTC_1_INT.c: syntax error near 'if'
+*** ERROR C141 IN LINE 44 OF .\Generated_Source\PSoC3\RTC_1_INT.c: syntax error near '&', expected ')'
+  45                  {
+  46                  SampledData = 0;        /* Ignore negative ADC results */
+*** ERROR C279 IN LINE 46 OF .\Generated_Source\PSoC3\RTC_1_INT.c: 'SampledData': multiple initialization
+C51 COMPILER V9.51   RTC_1_INT                                                             04/01/2014 06:30:45 PAGE 2   
+
+  47                  }
+*** ERROR C141 IN LINE 47 OF .\Generated_Source\PSoC3\RTC_1_INT.c: syntax error near '}'
+  48                  else if (SampledData >= 0xfff)
+*** ERROR C141 IN LINE 48 OF .\Generated_Source\PSoC3\RTC_1_INT.c: syntax error near '>=', expected ')'
+  49                  {
+  50                  SampledData = 0xfff;    /* Ignore high ADC results */
+*** ERROR C279 IN LINE 50 OF .\Generated_Source\PSoC3\RTC_1_INT.c: 'SampledData': multiple initialization
+  51              }
+*** ERROR C141 IN LINE 51 OF .\Generated_Source\PSoC3\RTC_1_INT.c: syntax error near '}'
+  52              
+  53              
+  54              /* EEP */
+  55              Em_EEPROM_Write(&SampledData,TailPtr,2u);
+*** ERROR C141 IN LINE 55 OF .\Generated_Source\PSoC3\RTC_1_INT.c: syntax error near '&'
+*** ERROR C231 IN LINE 55 OF .\Generated_Source\PSoC3\RTC_1_INT.c: '_Em_EEPROM_Write': redefinition
+  56              
+  57              TailPtr = TailPtr + 2; 
+  58          
+  59          /* `#END` */
+  60          
+  61          
+  62          /*******************************************************************************
+  63          * Function Name:   RTC_1_EverySecondHandler
+  64          ********************************************************************************
+  65          *
+  66          * Summary:
+  67          *  This function is called every second.
+  68          *
+  69          * Parameters:
+  70          *  None.
+  71          *
+  72          * Return:
+  73          *  None.
+  74          *
+  75          *******************************************************************************/
+  76          static void RTC_1_EverySecondHandler(void)
+  77          {
+  78   1          /*  Place your every second handler code here. */
+  79   1          /* `#START EVERY_SECOND_HANDLER_CODE` */
+  80   1      
+  81   1          /* `#END` */
+  82   1      }
+  83          
+  84          
+  85          /*******************************************************************************
+  86          * Function Name:   RTC_1_EveryMinuteHandler
+  87          ********************************************************************************
+  88          *
+  89          * Summary:
+  90          *  This function is called every minute.
+  91          *
+  92          * Parameters:
+  93          *  None.
+  94          *
+  95          * Return:
+  96          *  None.
+  97          *
+  98          *******************************************************************************/
+  99          static void RTC_1_EveryMinuteHandler(void)
+ 100          {
+ 101   1          /*  Place your every minute handler code here. */
+ 102   1          /* `#START EVERY_MINUTE_HANDLER_CODE` */
+C51 COMPILER V9.51   RTC_1_INT                                                             04/01/2014 06:30:45 PAGE 3   
+
+ 103   1      
+ 104   1          /* `#END` */
+ 105   1      }
+ 106          
+ 107          
+ 108          /*******************************************************************************
+ 109          * Function Name:   RTC_1_EveryHourHandler
+ 110          ********************************************************************************
+ 111          *
+ 112          * Summary:
+ 113          *  This function is called every hour.
+ 114          *
+ 115          * Parameters:
+ 116          *  None.
+ 117          *
+ 118          * Return:
+ 119          *  None.
+ 120          *
+ 121          *******************************************************************************/
+ 122          static void RTC_1_EveryHourHandler(void)
+ 123          {
+ 124   1          /*  Place your every hour handler code here. */
+ 125   1          /* `#START EVERY_HOUR_HANDLER_CODE` */
+ 126   1      
+ 127   1          /* `#END` */
+ 128   1      }
+ 129          
+ 130          
+ 131          /*******************************************************************************
+ 132          * Function Name:   RTC_1_EveryDayHandler
+ 133          ********************************************************************************
+ 134          *
+ 135          * Summary:
+ 136          *  This function is called every day.
+ 137          *
+ 138          * Parameters:
+ 139          *  None.
+ 140          *
+ 141          * Return:
+ 142          *  None.
+ 143          *
+ 144          *******************************************************************************/
+ 145          static void RTC_1_EveryDayHandler(void)
+ 146          {
+ 147   1          /*  Place your everyday handler code here. */
+ 148   1          /* `#START EVERY_DAY_HANDLER_CODE` */
+ 149   1      
+ 150   1          /* `#END` */
+ 151   1      }
+ 152          
+ 153          
+ 154          /*******************************************************************************
+ 155          * Function Name:   RTC_1_EveryWeekHandler
+ 156          ********************************************************************************
+ 157          *
+ 158          * Summary:
+ 159          *  This function is called every week.
+ 160          *
+ 161          * Parameters:
+ 162          *  None.
+ 163          *
+ 164          * Return:
+C51 COMPILER V9.51   RTC_1_INT                                                             04/01/2014 06:30:45 PAGE 4   
+
+ 165          *  None.
+ 166          *
+ 167          *******************************************************************************/
+ 168          static void RTC_1_EveryWeekHandler(void)
+ 169          {
+ 170   1          /*  Place your every week handler code here. */
+ 171   1          /* `#START EVERY_WEEK_HANDLER_CODE` */
+ 172   1      
+ 173   1          /* `#END` */
+ 174   1      }
+ 175          
+ 176          
+ 177          /*******************************************************************************
+ 178          * Function Name:   RTC_1_EveryMonthHandler
+ 179          ********************************************************************************
+ 180          *
+ 181          * Summary:
+ 182          *  This function is called every month.
+ 183          *
+ 184          * Parameters:
+ 185          *  None.
+ 186          *
+ 187          * Return:
+ 188          *  None.
+ 189          *
+ 190          *******************************************************************************/
+ 191          static void RTC_1_EveryMonthHandler(void)
+ 192          {
+ 193   1          /*  Place your every month handler code here. */
+ 194   1          /* `#START EVERY_MONTH_HANDLER_CODE` */
+ 195   1      
+ 196   1          /* `#END` */
+ 197   1      }
+ 198          
+ 199          
+ 200          /*******************************************************************************
+ 201          * Function Name:   RTC_1_EveryYearHandler
+ 202          ********************************************************************************
+ 203          *
+ 204          * Summary:
+ 205          *  This function is called every year.
+ 206          *
+ 207          * Parameters:
+ 208          *  None.
+ 209          *
+ 210          * Return:
+ 211          *  None.
+ 212          *
+ 213          *******************************************************************************/
+ 214          static void RTC_1_EveryYearHandler(void)
+ 215          {
+ 216   1          /*  Place your every year handler code here. */
+ 217   1          /* `#START EVERY_YEAR_HANDLER_CODE` */
+ 218   1      
+ 219   1          /* `#END` */
+ 220   1      }
+ 221          
+ 222          
+ 223          /*******************************************************************************
+ 224          * Function Name: RTC_1_ISR
+ 225          ********************************************************************************
+ 226          *
+C51 COMPILER V9.51   RTC_1_INT                                                             04/01/2014 06:30:45 PAGE 5   
+
+ 227          * Summary:
+ 228          *  This ISR is executed on 1PPS (one pulse per second) event.
+ 229          *  Global interrupt must be enabled to invoke this ISR.
+ 230          *  This interrupt trigs every second.
+ 231          *
+ 232          * Parameters:
+ 233          *  None.
+ 234          *
+ 235          * Return:
+ 236          *  None.
+ 237          *
+ 238          * Global variables:
+ 239          * RTC_1_currentTimeDate, RTC_1_dstTimeDateStart,
+ 240          *  RTC_1_dstTimeDateStop, RTC_1_dstTimeDateStart,
+ 241          *  RTC_1_alarmCfgTimeDate, RTC_1_statusDateTime,
+ 242          *  RTC_1_dstStartStatus, RTC_1_dstStartStatus,
+ 243          *  RTC_1_dstStopStatus, RTC_1_alarmCurStatus: global
+ 244          *  variables are used for the time/date, DST and alarm update procedure.
+ 245          *
+ 246          *  RTC_1_dstTimeDateStart and RTC_1_currentTimeDate:
+ 247          *  are modified with the updated values.
+ 248          *
+ 249          *  RTC_1_statusDateTime, RTC_1_dstStartStatus,
+ 250          *  RTC_1_dstStartStatus, RTC_1_dstStopStatus,
+ 251          *  RTC_1_alarmCurStatus: global variables could be modified while
+ 252          *  current time/date is updated.
+ 253          *
+ 254          * Side Effects:
+ 255          *  Clears all interrupt status bits (react_int, limact_int, onepps_int, ctw_int,
+ 256          *  and  ftw_int) in Power Manager Interrupt Status Register. If an interrupt
+ 257          *  gets generated at the same time as a clear, the bit will remain set (which
+ 258          *  causes another interrupt).
+ 259          *
+ 260          *******************************************************************************/
+ 261          CY_ISR(RTC_1_ISR)
+ 262          {
+ 263   1          uint8 RTC_1_tmp;
+ 264   1      
+ 265   1          /* Clear OPPS interrupt status flag */
+ 266   1          (void) CyPmReadStatus(CY_PM_ONEPPS_INT);
+ 267   1      
+ 268   1          /* Increment seconds counter */
+ 269   1          RTC_1_currentTimeDate.Sec++;
+ 270   1      
+ 271   1          /* Check if minute elapsed */
+ 272   1          if(RTC_1_currentTimeDate.Sec > RTC_1_MINUTE_ELAPSED)
+ 273   1          {
+ 274   2              /* Inc Min */
+ 275   2              RTC_1_currentTimeDate.Min++;
+ 276   2      
+ 277   2              /* Clear Sec */
+ 278   2              RTC_1_currentTimeDate.Sec = 0u;
+ 279   2      
+ 280   2              if(RTC_1_currentTimeDate.Min > RTC_1_HOUR_ELAPSED)
+ 281   2              {
+ 282   3                  /* Inc HOUR */
+ 283   3                  RTC_1_currentTimeDate.Hour++;
+ 284   3      
+ 285   3                  /* Clear Min */
+ 286   3                  RTC_1_currentTimeDate.Min = 0u;
+ 287   3      
+ 288   3                  /* Day roll over */
+C51 COMPILER V9.51   RTC_1_INT                                                             04/01/2014 06:30:45 PAGE 6   
+
+ 289   3                  if(RTC_1_currentTimeDate.Hour > RTC_1_DAY_ELAPSED)
+ 290   3                  {
+ 291   4                      /* Inc DayOfMonth */
+ 292   4                      RTC_1_currentTimeDate.DayOfMonth++;
+ 293   4      
+ 294   4                      /* Clear Hour */
+ 295   4                      RTC_1_currentTimeDate.Hour = 0u;
+ 296   4      
+ 297   4                      /* Inc DayOfYear */
+ 298   4                      RTC_1_currentTimeDate.DayOfYear++;
+ 299   4      
+ 300   4                      /* Inc DayOfWeek */
+ 301   4                      RTC_1_currentTimeDate.DayOfWeek++;
+ 302   4      
+ 303   4                      /* Check DayOfWeek */
+ 304   4                      if(RTC_1_currentTimeDate.DayOfWeek > RTC_1_WEEK_ELAPSED)
+ 305   4                      {
+ 306   5                          /* start new week */
+ 307   5                          RTC_1_currentTimeDate.DayOfWeek = 1u;
+ 308   5                      }
+ 309   4      
+ 310   4                      /* Day of month roll over.
+ 311   4                      * Check if day of month greater than 29 in February of leap year or
+ 312   4                      * if day of month greater than 28 NOT in February of NON leap year or
+ 313   4                      * if day of month greater than it should be in every month in non leap year
+ 314   4                      */
+ 315   4                      if(((0u != (RTC_1_statusDateTime & RTC_1_STATUS_LY)) &&
+ 316   4                          (RTC_1_currentTimeDate.Month == RTC_1_FEBRUARY)  &&
+ 317   4                          (RTC_1_currentTimeDate.DayOfMonth >
+ 318   4                                   (RTC_1_daysInMonths[RTC_1_currentTimeDate.Month - 1u] + 1u))) ||
+ 319   4                         ((0u != (RTC_1_statusDateTime & RTC_1_STATUS_LY))  &&
+ 320   4                          (RTC_1_currentTimeDate.Month != RTC_1_FEBRUARY) &&
+ 321   4                          (RTC_1_currentTimeDate.DayOfMonth >
+ 322   4                                          RTC_1_daysInMonths[RTC_1_currentTimeDate.Month - 1u])) ||
+ 323   4                         ((0u == (RTC_1_statusDateTime & RTC_1_STATUS_LY))  &&
+ 324   4                          (RTC_1_currentTimeDate.DayOfMonth >
+ 325   4                                          RTC_1_daysInMonths[RTC_1_currentTimeDate.Month - 1u])))
+ 326   4                      {
+ 327   5                          /* Inc Month */
+ 328   5                          RTC_1_currentTimeDate.Month++;
+ 329   5      
+ 330   5                          /* Set first day of month */
+ 331   5                          RTC_1_currentTimeDate.DayOfMonth = 1u;
+ 332   5      
+ 333   5                          /* Year roll over */
+ 334   5                          if(RTC_1_currentTimeDate.Month > RTC_1_YEAR_ELAPSED)
+ 335   5                          {
+ 336   6                              /* Inc Year */
+ 337   6                              RTC_1_currentTimeDate.Year++;
+ 338   6      
+ 339   6                              /* Set first month of year */
+ 340   6                              RTC_1_currentTimeDate.Month = 1u;
+ 341   6      
+ 342   6                              /* Set first day of year */
+ 343   6                              RTC_1_currentTimeDate.DayOfYear = 1u;
+ 344   6      
+ 345   6                              /* Is this year leap */
+ 346   6                              if(1u == RTC_1_LEAP_YEAR(RTC_1_currentTimeDate.Year))
+ 347   6                              {
+ 348   7                                  /* Set leap year flag */
+ 349   7                                  RTC_1_statusDateTime |= RTC_1_STATUS_LY;
+ 350   7                              }
+C51 COMPILER V9.51   RTC_1_INT                                                             04/01/2014 06:30:45 PAGE 7   
+
+ 351   6                              else    /* not leap year */
+ 352   6                              {
+ 353   7                                  /* Clear leap year */
+ 354   7                                  RTC_1_statusDateTime &= (uint8)(~RTC_1_STATUS_LY);
+ 355   7                              }
+ 356   6      
+ 357   6                              /* Alarm YEAR */
+ 358   6                              if(0u != RTC_1_IS_BIT_SET(RTC_1_alarmCfgMask,
+ 359   6                                                                   RTC_1_ALARM_YEAR_MASK))
+ 360   6                              {
+ 361   7                                  /* Years match */
+ 362   7                                  if(RTC_1_alarmCfgTimeDate.Year == RTC_1_currentTimeDate.Year)
+ 363   7                                  {
+ 364   8                                      /* Rise year alarm */
+ 365   8                                      RTC_1_alarmCurStatus |= RTC_1_ALARM_YEAR_MASK;
+ 366   8                                  }
+ 367   7                                  else    /* Years do not match */
+ 368   7                                  {
+ 369   8                                      /* Clear year alarm */
+ 370   8                                      RTC_1_alarmCurStatus &= (uint8)(~RTC_1_ALARM_YEAR_MASK);
+ 371   8                                  }
+ 372   7                              } /* do not alarm year */
+ 373   6      
+ 374   6                              /* Set Alarm flag event */
+ 375   6                              RTC_1_tmp = RTC_1_alarmCfgMask;
+ 376   6                              RTC_1_SET_ALARM(RTC_1_tmp,
+ 378   6                                                         RTC_1_alarmCurStatus,
+ 378   6                                                         RTC_1_statusDateTime);
+ 379   6      
+ 380   6                              /* Every Year */
+ 381   6                              if(0u != RTC_1_IS_BIT_SET(RTC_1_intervalCfgMask,
+ 382   6                                                                   RTC_1_INTERVAL_YEAR_MASK))
+ 383   6                              {
+ 384   7                                  RTC_1_EveryYearHandler();
+ 385   7                              }
+ 386   6      
+ 387   6                          } /* Month > 12 */
+ 388   5      
+ 389   5                          /* Alarm MONTH */
+ 390   5                          if(0u != RTC_1_IS_BIT_SET(RTC_1_alarmCfgMask,
+ 391   5                                                               RTC_1_ALARM_MONTH_MASK))
+ 392   5                          {
+ 393   6                              if(RTC_1_alarmCfgTimeDate.Month == RTC_1_currentTimeDate.Month)
+ 394   6                              {
+ 395   7                                  /* Set month alarm */
+ 396   7                                  RTC_1_alarmCurStatus |= RTC_1_ALARM_MONTH_MASK;
+ 397   7                              }
+ 398   6                              else
+ 399   6                              {
+ 400   7                                  /* Clear month alarm */
+ 401   7                                  RTC_1_alarmCurStatus &= (uint8)(~RTC_1_ALARM_MONTH_MASK);
+ 402   7                              }
+ 403   6                          }   /* Month alarm is masked */
+ 404   5      
+ 405   5                          #if (1u == RTC_1_DST_FUNC_ENABLE)
+ 406   5                              if(RTC_1_dstTimeDateStop.Month == RTC_1_currentTimeDate.Month)
+ 407   5                              {
+ 408   6                                  RTC_1_dstStopStatus |= RTC_1_DST_MONTH;
+ 409   6                              }
+ 410   5                              else
+ 411   5                              {
+ 412   6                                  RTC_1_dstStopStatus &= (uint8)(~RTC_1_DST_MONTH);
+C51 COMPILER V9.51   RTC_1_INT                                                             04/01/2014 06:30:45 PAGE 8   
+
+ 413   6                              }
+ 414   5      
+ 415   5                              if(RTC_1_dstTimeDateStart.Month == RTC_1_currentTimeDate.Month)
+ 416   5                              {
+ 417   6                                  RTC_1_dstStartStatus |= RTC_1_DST_MONTH;
+ 418   6                              }
+ 419   5                              else
+ 420   5                              {
+ 421   6                                  RTC_1_dstStartStatus &= (uint8)(~RTC_1_DST_MONTH);
+ 422   6                              }
+ 423   5                          #endif /* 1u == RTC_1_DST_FUNC_ENABLE */
+ 424   5      
+ 425   5                          /* Set Alarm flag event */
+ 426   5                          RTC_1_tmp = RTC_1_alarmCfgMask;
+ 427   5                          RTC_1_SET_ALARM(RTC_1_tmp,
+ 429   5                                                     RTC_1_alarmCurStatus,
+ 429   5                                                     RTC_1_statusDateTime);
+ 430   5      
+ 431   5                          /* Every Month */
+ 432   5                          if(0u != RTC_1_IS_BIT_SET(RTC_1_intervalCfgMask,
+ 433   5                                                               RTC_1_INTERVAL_MONTH_MASK))
+ 434   5                          {
+ 435   6                              RTC_1_EveryMonthHandler();
+ 436   6                          }
+ 437   5                      }   /* Day roll over */
+ 438   4      
+ 439   4                      /* Alarm DAYOFWEEK */
+ 440   4                      if(0u != RTC_1_IS_BIT_SET(RTC_1_alarmCfgMask,
+ 441   4                                                           RTC_1_ALARM_DAYOFWEEK_MASK))
+ 442   4                      {
+ 443   5                          if(RTC_1_alarmCfgTimeDate.DayOfWeek == RTC_1_currentTimeDate.DayOfWeek)
+ 444   5                          {
+ 445   6                              /* Set day of week alarm */
+ 446   6                              RTC_1_alarmCurStatus |= RTC_1_ALARM_DAYOFWEEK_MASK;
+ 447   6                          }
+ 448   5                          else
+ 449   5                          {
+ 450   6                              /* Clear day of week alarm */
+ 451   6                              RTC_1_alarmCurStatus &= (uint8)(~RTC_1_ALARM_DAYOFWEEK_MASK);
+ 452   6                          }
+ 453   5                      }   /* Day of week alarm is masked */
+ 454   4      
+ 455   4                      /* Alarm DAYOFYEAR */
+ 456   4                      if(0u != RTC_1_IS_BIT_SET(RTC_1_alarmCfgMask,
+ 457   4                                                           RTC_1_ALARM_DAYOFYEAR_MASK))
+ 458   4                      {
+ 459   5                          if(RTC_1_alarmCfgTimeDate.DayOfYear == RTC_1_currentTimeDate.DayOfYear)
+ 460   5                          {
+ 461   6                              /* Set day of year alarm */
+ 462   6                              RTC_1_alarmCurStatus |= RTC_1_ALARM_DAYOFYEAR_MASK;
+ 463   6                          }
+ 464   5                          else
+ 465   5                          {
+ 466   6                              /* Clear day of year alarm */
+ 467   6                              RTC_1_alarmCurStatus &= (uint8)(~RTC_1_ALARM_DAYOFYEAR_MASK);
+ 468   6                          }
+ 469   5                      }   /* Day of year alarm is masked */
+ 470   4      
+ 471   4                      /* Alarm DAYOFMONTH */
+ 472   4                      if(0u != RTC_1_IS_BIT_SET(RTC_1_alarmCfgMask,
+ 473   4                               RTC_1_ALARM_DAYOFMONTH_MASK))
+ 474   4                      {
+C51 COMPILER V9.51   RTC_1_INT                                                             04/01/2014 06:30:45 PAGE 9   
+
+ 475   5                          if(RTC_1_alarmCfgTimeDate.DayOfMonth == RTC_1_currentTimeDate.DayOfMonth)
+ 476   5                          {
+ 477   6                              /* Set day of month alarm */
+ 478   6                              RTC_1_alarmCurStatus |= RTC_1_ALARM_DAYOFMONTH_MASK;
+ 479   6                          }
+ 480   5                          else
+ 481   5                          {
+ 482   6                              /* Clear day of month alarm */
+ 483   6                              RTC_1_alarmCurStatus &= (uint8)(~RTC_1_ALARM_DAYOFMONTH_MASK);
+ 484   6                          }
+ 485   5                      }   /* Day of month alarm is masked */
+ 486   4      
+ 487   4                      #if (1u == RTC_1_DST_FUNC_ENABLE)
+ 488   4                          if(RTC_1_dstTimeDateStop.DayOfMonth == RTC_1_currentTimeDate.DayOfMonth)
+ 489   4                          {
+ 490   5                              RTC_1_dstStopStatus |= RTC_1_DST_DAYOFMONTH;
+ 491   5                          }
+ 492   4                          else
+ 493   4                          {
+ 494   5                              RTC_1_dstStopStatus &= (uint8)(~RTC_1_DST_DAYOFMONTH);
+ 495   5                          }
+ 496   4      
+ 497   4                          if(RTC_1_dstTimeDateStart.DayOfMonth == RTC_1_currentTimeDate.DayOfMonth)
+ 498   4                          {
+ 499   5                              RTC_1_dstStartStatus |= RTC_1_DST_DAYOFMONTH;
+ 500   5                          }
+ 501   4                          else
+ 502   4                          {
+ 503   5                              RTC_1_dstStartStatus &= (uint8)(~RTC_1_DST_DAYOFMONTH);
+ 504   5                          }
+ 505   4                      #endif /* 1u == RTC_1_DST_FUNC_ENABLE */
+ 506   4      
+ 507   4                      /* Set Alarm flag event */
+ 508   4                      RTC_1_tmp = RTC_1_alarmCfgMask;
+ 509   4                      RTC_1_SET_ALARM(RTC_1_tmp,
+ 511   4                                                 RTC_1_alarmCurStatus,
+ 511   4                                                 RTC_1_statusDateTime);
+ 512   4      
+ 513   4                      /* Every Day */
+ 514   4                      if(0u != RTC_1_IS_BIT_SET(RTC_1_intervalCfgMask,
+ 515   4                               RTC_1_INTERVAL_DAY_MASK))
+ 516   4                      {
+ 517   5                          RTC_1_EveryDayHandler();
+ 518   5                      }
+ 519   4      
+ 520   4                      if(1u == RTC_1_currentTimeDate.DayOfWeek)
+ 521   4                      {
+ 522   5                          /* Every Week */
+ 523   5                          if(0u != RTC_1_IS_BIT_SET(RTC_1_intervalCfgMask,
+ 524   5                                                               RTC_1_INTERVAL_WEEK_MASK))
+ 525   5                          {
+ 526   6                             RTC_1_EveryWeekHandler();
+ 527   6                          }
+ 528   5                      }
+ 529   4      
+ 530   4                  } /* End of day roll over */
+ 531   3      
+ 532   3                  /* Status set PM/AM flag */
+ 533   3                  if(RTC_1_currentTimeDate.Hour < RTC_1_HALF_OF_DAY_ELAPSED)
+ 534   3                  {
+ 535   4                      /* AM Hour 00:00-11:59, flag zero */
+ 536   4                      RTC_1_statusDateTime &= (uint8)(~RTC_1_STATUS_AM_PM);
+C51 COMPILER V9.51   RTC_1_INT                                                             04/01/2014 06:30:45 PAGE 10  
+
+ 537   4                  }
+ 538   3                  else
+ 539   3                  {
+ 540   4                      /* PM Hour 12:00-23:59, flag set */
+ 541   4                      RTC_1_statusDateTime |= RTC_1_STATUS_AM_PM;
+ 542   4                  }
+ 543   3      
+ 544   3                  #if (1u == RTC_1_DST_FUNC_ENABLE)
+ 545   3                      if(RTC_1_dstTimeDateStop.Hour == RTC_1_currentTimeDate.Hour)
+ 546   3                      {
+ 547   4                          RTC_1_dstStopStatus |= RTC_1_DST_HOUR;
+ 548   4                      }
+ 549   3                      else
+ 550   3                      {
+ 551   4                          RTC_1_dstStopStatus &= (uint8)(~RTC_1_DST_HOUR);
+ 552   4                      }
+ 553   3      
+ 554   3                      if(RTC_1_dstTimeDateStart.Hour == RTC_1_currentTimeDate.Hour)
+ 555   3                      {
+ 556   4                          RTC_1_dstStartStatus |= RTC_1_DST_HOUR;
+ 557   4                      }
+ 558   3                      else
+ 559   3                      {
+ 560   4                      RTC_1_dstStartStatus &= (uint8)(~RTC_1_DST_HOUR);
+ 561   4                      }
+ 562   3      
+ 563   3                      /* DST Enable ? */
+ 564   3                      if(0u != RTC_1_IS_BIT_SET(RTC_1_dstModeType, RTC_1_DST_ENABLE))
+ 565   3                      {
+ 566   4                          if(0u != RTC_1_IS_BIT_SET(RTC_1_statusDateTime, RTC_1_STATUS_DST))
+ 567   4                          {
+ 568   5                              if(0u != RTC_1_IS_BIT_SET(RTC_1_dstStopStatus, RTC_1_DST_HOUR |
+ 569   5                                                             RTC_1_DST_DAYOFMONTH | RTC_1_DST_MONTH))
+ 570   5                              {
+ 571   6                                  /* Substruct from current value of minutes, number of minutes
+ 572   6                                  * in DST offset which is out of complete hour
+ 573   6                                  */
+ 574   6                                  RTC_1_currentTimeDate.Min -=
+ 575   6                                                      RTC_1_dstOffsetMin % (RTC_1_HOUR_ELAPSED + 1u);
+ 576   6      
+ 577   6                                  /* Is minute value negative? */
+ 578   6                                  if(RTC_1_currentTimeDate.Min > RTC_1_HOUR_ELAPSED)
+ 579   6                                  {
+ 580   7                                      /* Convert to the positive.
+ 581   7                                      * HOUR_ELAPSED -     (~currentTimeDate.Min    ) ==
+ 582   7                                      * HOUR_ELAPSED + 1 - (~currentTimeDate.Min + 1)
+ 583   7                                      */
+ 584   7                                      RTC_1_currentTimeDate.Min = RTC_1_HOUR_ELAPSED -
+ 585   7                                                                   ((uint8)(~RTC_1_currentTimeDate.Min));
+ 586   7      
+ 587   7                                      RTC_1_currentTimeDate.Hour--;
+ 588   7                                  }
+ 589   6      
+ 590   6                                  RTC_1_currentTimeDate.Hour -= RTC_1_dstOffsetMin /
+ 591   6                                                                           (RTC_1_HOUR_ELAPSED + 1u);
+ 592   6      
+ 593   6                                  /* Day roll over
+ 594   6                                  * Is hour value negative? */
+ 595   6                                  if(RTC_1_currentTimeDate.Hour > RTC_1_DAY_ELAPSED)
+ 596   6                                  {
+ 597   7                                      /* Convert to the positive.
+ 598   7                                      * DAY_ELAPSED - (~currentTimeDate.Hour) ==
+C51 COMPILER V9.51   RTC_1_INT                                                             04/01/2014 06:30:45 PAGE 11  
+
+ 599   7                                      * DAY_ELAPSED + 1 - (~currentTimeDate.Hour + 1)
+ 600   7                                      */
+ 601   7                                      RTC_1_currentTimeDate.Hour = RTC_1_DAY_ELAPSED -
+ 602   7                                                                    ((uint8)(~RTC_1_currentTimeDate.Hour));
+ 603   7      
+ 604   7                                      /* Status set PM/AM flag */
+ 605   7                                      if(RTC_1_currentTimeDate.Hour < RTC_1_HALF_OF_DAY_ELAPSED)
+ 606   7                                      {
+ 607   8                                          /* AM Hour 00:00-11:59, flag zero */
+ 608   8                                          RTC_1_statusDateTime &= (uint8)(~RTC_1_STATUS_AM_PM);
+ 609   8                                      }
+ 610   7                                      else
+ 611   7                                      {
+ 612   8                                          /* PM Hour 12:00-23:59, flag set */
+ 613   8                                          RTC_1_statusDateTime |= RTC_1_STATUS_AM_PM;
+ 614   8                                      }
+ 615   7      
+ 616   7                                      RTC_1_currentTimeDate.DayOfMonth--;
+ 617   7                                      RTC_1_currentTimeDate.DayOfYear--;
+ 618   7                                      RTC_1_currentTimeDate.DayOfWeek--;
+ 619   7      
+ 620   7                                      if(0u == RTC_1_currentTimeDate.DayOfWeek)
+ 621   7                                      {
+ 622   8                                          RTC_1_currentTimeDate.DayOfWeek = RTC_1_DAYS_IN_WEEK;
+ 623   8                                      }
+ 624   7      
+ 625   7                                      if(0u == RTC_1_currentTimeDate.DayOfMonth)
+ 626   7                                      {
+ 627   8                                          RTC_1_currentTimeDate.Month--;
+ 628   8                                          if(0u == RTC_1_currentTimeDate.Month)
+ 629   8                                          {
+ 630   9                                              RTC_1_currentTimeDate.Month = RTC_1_DECEMBER;
+ 631   9      
+ 632   9                                              RTC_1_currentTimeDate.DayOfMonth =
+ 633   9                                                  RTC_1_daysInMonths[RTC_1_currentTimeDate.Month - 1u];
+ 634   9      
+ 635   9                                              RTC_1_currentTimeDate.Year--;
+ 636   9      
+ 637   9                                              if(1u == RTC_1_LEAP_YEAR(RTC_1_currentTimeDate.Year))
+ 638   9                                              {
+ 639  10                                                  /* LP - true, else - false */
+ 640  10                                                  RTC_1_statusDateTime |= RTC_1_STATUS_LY;
+ 641  10                                                  RTC_1_currentTimeDate.DayOfYear =
+ 642  10                                                                                          RTC_1_DAYS_IN_LEAP_YEA
+             -R;
+ 643  10                                              }
+ 644   9                                              else
+ 645   9                                              {
+ 646  10                                                  RTC_1_statusDateTime &= (uint8)(~RTC_1_STATUS_LY);
+ 647  10                                                  RTC_1_currentTimeDate.DayOfYear = RTC_1_DAYS_IN_YEAR;
+ 648  10                                              }
+ 649   9                                              RTC_1_EveryYearHandler();
+ 650   9                                          }
+ 651   8                                          else
+ 652   8                                          {
+ 653   9                                              /* Day of month roll over.
+ 654   9                                              * Check if day of month February 29 of leap year
+ 655   9                                              */
+ 656   9                                              if((0u != (RTC_1_statusDateTime & RTC_1_STATUS_LY)) &&
+ 657   9                                                  (RTC_1_currentTimeDate.Month == RTC_1_FEBRUARY))
+ 658   9                                              {
+ 659  10                                                  RTC_1_currentTimeDate.DayOfMonth =
+C51 COMPILER V9.51   RTC_1_INT                                                             04/01/2014 06:30:45 PAGE 12  
+
+ 660  10                                                  RTC_1_daysInMonths[RTC_1_currentTimeDate.Month - 1u]
+ 661  10                                                  + 1u;
+ 662  10                                              }
+ 663   9                                              else
+ 664   9                                              {
+ 665  10                                                  RTC_1_currentTimeDate.DayOfMonth =
+ 666  10                                                  RTC_1_daysInMonths[RTC_1_currentTimeDate.Month - 1u];
+ 667  10                                              }
+ 668   9                                          }
+ 669   8                                          RTC_1_EveryMonthHandler();
+ 670   8                                      }
+ 671   7                                      RTC_1_EveryDayHandler();
+ 672   7                                  }
+ 673   6                                  RTC_1_statusDateTime &= (uint8)(~RTC_1_STATUS_DST);
+ 674   6                                  RTC_1_dstStopStatus = 0u;
+ 675   6                              }
+ 676   5                          }
+ 677   4                          else
+ 678   4                          {
+ 679   5                              if(0u != RTC_1_IS_BIT_SET(RTC_1_dstStartStatus,
+ 681   5                                                            (RTC_1_DST_HOUR | RTC_1_DST_DAYOFMONTH |
+ 681   5                                                             RTC_1_DST_MONTH)))
+ 682   5                              {
+ 683   6                                  /* Add Hour and Min */
+ 684   6                                  RTC_1_currentTimeDate.Min +=
+ 685   6                                                      RTC_1_dstOffsetMin % (RTC_1_HOUR_ELAPSED + 1u);
+ 686   6      
+ 687   6                                  if(RTC_1_currentTimeDate.Min > RTC_1_HOUR_ELAPSED)
+ 688   6                                  {
+ 689   7                                      /* Adjust Min */
+ 690   7                                      RTC_1_currentTimeDate.Min -= (RTC_1_HOUR_ELAPSED + 1u);
+ 691   7                                      RTC_1_currentTimeDate.Hour++;
+ 692   7                                  }
+ 693   6      
+ 694   6                                  RTC_1_currentTimeDate.Hour += RTC_1_dstOffsetMin /
+ 695   6                                                                           (RTC_1_HOUR_ELAPSED + 1u);
+ 696   6      
+ 697   6                                  if(RTC_1_currentTimeDate.Hour > RTC_1_DAY_ELAPSED)
+ 698   6                                  {
+ 699   7                                      /* Adjust hour, add day */
+ 700   7                                      RTC_1_currentTimeDate.Hour -= (RTC_1_DAY_ELAPSED + 1u);
+ 701   7      
+ 702   7                                      /* Status set PM/AM flag */
+ 703   7                                      if(RTC_1_currentTimeDate.Hour < RTC_1_HALF_OF_DAY_ELAPSED)
+ 704   7                                      {
+ 705   8                                          /* AM Hour 00:00-11:59, flag zero */
+ 706   8                                          RTC_1_statusDateTime &= (uint8)(~RTC_1_STATUS_AM_PM);
+ 707   8                                      }
+ 708   7                                      else
+ 709   7                                      {
+ 710   8                                          /* PM Hour 12:00-23:59, flag set */
+ 711   8                                          RTC_1_statusDateTime |= RTC_1_STATUS_AM_PM;
+ 712   8                                      }
+ 713   7      
+ 714   7                                      RTC_1_currentTimeDate.DayOfMonth++;
+ 715   7                                      RTC_1_currentTimeDate.DayOfYear++;
+ 716   7                                      RTC_1_currentTimeDate.DayOfWeek++;
+ 717   7      
+ 718   7                                      if(RTC_1_currentTimeDate.DayOfWeek > RTC_1_WEEK_ELAPSED)
+ 719   7                                      {
+ 720   8                                          RTC_1_currentTimeDate.DayOfWeek = 1u;
+ 721   8                                      }
+C51 COMPILER V9.51   RTC_1_INT                                                             04/01/2014 06:30:45 PAGE 13  
+
+ 722   7      
+ 723   7                                      /* Day of month roll over.
+ 724   7                                      * Check if day of month greater than 29 in February of leap year or
+ 725   7                                      * if day of month greater than 28 NOT in February of NON leap year or
+ 726   7                                      * if day of month greater than it should be in every month in non leap yea
+             -r
+ 727   7                                      */
+ 728   7                                      if(((0u != (RTC_1_statusDateTime & RTC_1_STATUS_LY)) &&
+ 729   7                                          (RTC_1_currentTimeDate.Month == RTC_1_FEBRUARY)  &&
+ 730   7                                          (RTC_1_currentTimeDate.DayOfMonth >
+ 731   7                                        (RTC_1_daysInMonths[RTC_1_currentTimeDate.Month - 1u] + 1u))) ||
+ 732   7                                         ((0u != (RTC_1_statusDateTime & RTC_1_STATUS_LY)) &&
+ 733   7                                          (RTC_1_currentTimeDate.Month != RTC_1_FEBRUARY)  &&
+ 734   7                                          (RTC_1_currentTimeDate.DayOfMonth >
+ 735   7                                           RTC_1_daysInMonths[RTC_1_currentTimeDate.Month - 1u])) ||
+ 736   7                                         ((0u == (RTC_1_statusDateTime & RTC_1_STATUS_LY)) &&
+ 737   7                                          (RTC_1_currentTimeDate.DayOfMonth >
+ 738   7                                           RTC_1_daysInMonths[RTC_1_currentTimeDate.Month - 1u])))
+ 739   7                                      {
+ 740   8                                          RTC_1_currentTimeDate.Month++;
+ 741   8                                          RTC_1_currentTimeDate.DayOfMonth = 1u;
+ 742   8                                          if(RTC_1_currentTimeDate.Month > RTC_1_YEAR_ELAPSED)
+ 743   8                                          {
+ 744   9                                              RTC_1_currentTimeDate.Month = RTC_1_JANUARY;
+ 745   9                                              RTC_1_currentTimeDate.Year++;
+ 746   9      
+ 747   9                                              if(1u == RTC_1_LEAP_YEAR(RTC_1_currentTimeDate.Year))
+ 748   9                                              {
+ 749  10                                                  /* LP - true, else - false */
+ 750  10                                                  RTC_1_statusDateTime |= RTC_1_STATUS_LY;
+ 751  10                                              }
+ 752   9                                              else
+ 753   9                                              {
+ 754  10                                                  RTC_1_statusDateTime &= (uint8)(~RTC_1_STATUS_LY);
+ 755  10                                              }
+ 756   9                                              RTC_1_currentTimeDate.DayOfYear = 1u;
+ 757   9      
+ 758   9                                              RTC_1_EveryYearHandler();
+ 759   9                                          }
+ 760   8                                          RTC_1_EveryMonthHandler();
+ 761   8                                      }
+ 762   7                                      RTC_1_EveryDayHandler();
+ 763   7                                  }
+ 764   6                                  RTC_1_statusDateTime |= RTC_1_STATUS_DST;
+ 765   6                                  RTC_1_dstStartStatus = 0u;
+ 766   6      
+ 767   6                                  /* Month */
+ 768   6                                  if(RTC_1_dstTimeDateStop.Month == RTC_1_currentTimeDate.Month)
+ 769   6                                  {
+ 770   7                                      RTC_1_dstStopStatus |= RTC_1_DST_MONTH;
+ 771   7                                  }
+ 772   6                                  else
+ 773   6                                  {
+ 774   7                                      RTC_1_dstStopStatus &= (uint8)(~RTC_1_DST_MONTH);
+ 775   7                                  }
+ 776   6      
+ 777   6                                  /* DayOfMonth */
+ 778   6                                  if(RTC_1_dstTimeDateStop.DayOfMonth ==
+ 779   6                                                                                  RTC_1_currentTimeDate.DayOfMon
+             -th)
+ 780   6                                  {
+ 781   7                                      RTC_1_dstStopStatus |= RTC_1_DST_DAYOFMONTH;
+C51 COMPILER V9.51   RTC_1_INT                                                             04/01/2014 06:30:45 PAGE 14  
+
+ 782   7                                  }
+ 783   6                                  else
+ 784   6                                  {
+ 785   7                                      RTC_1_dstStopStatus &= (uint8)(~RTC_1_DST_DAYOFMONTH);
+ 786   7                                  }
+ 787   6                              }
+ 788   5                          }
+ 789   4      
+ 790   4                          /* Alarm DAYOFWEEK */
+ 791   4                          if(0u != RTC_1_IS_BIT_SET(RTC_1_alarmCfgMask,
+ 792   4                                                               RTC_1_ALARM_DAYOFWEEK_MASK))
+ 793   4                          {
+ 794   5                              if(RTC_1_alarmCfgTimeDate.DayOfWeek == RTC_1_currentTimeDate.DayOfWeek)
+ 795   5                              {
+ 796   6                                  RTC_1_alarmCurStatus |= RTC_1_ALARM_DAYOFWEEK_MASK;
+ 797   6                              }
+ 798   5                              else
+ 799   5                              {
+ 800   6                                  RTC_1_alarmCurStatus &= (uint8)(~RTC_1_ALARM_DAYOFWEEK_MASK);
+ 801   6                              }
+ 802   5                          }
+ 803   4      
+ 804   4                          /* Alarm DAYOFYEAR */
+ 805   4                          if(0u != RTC_1_IS_BIT_SET(RTC_1_alarmCfgMask,
+ 806   4                                                               RTC_1_ALARM_DAYOFYEAR_MASK))
+ 807   4                          {
+ 808   5                              if(RTC_1_alarmCfgTimeDate.DayOfYear == RTC_1_currentTimeDate.DayOfYear)
+ 809   5                              {
+ 810   6                                  RTC_1_alarmCurStatus |= RTC_1_ALARM_DAYOFYEAR_MASK;
+ 811   6                              }
+ 812   5                              else
+ 813   5                              {
+ 814   6                                  RTC_1_alarmCurStatus &= (uint8)(~RTC_1_ALARM_DAYOFYEAR_MASK);
+ 815   6                              }
+ 816   5                          }
+ 817   4      
+ 818   4                          /* Alarm DAYOFMONTH */
+ 819   4                          if(0u != RTC_1_IS_BIT_SET(RTC_1_alarmCfgMask,
+ 820   4                                                               RTC_1_ALARM_DAYOFMONTH_MASK))
+ 821   4                          {
+ 822   5                              if(RTC_1_alarmCfgTimeDate.DayOfMonth == RTC_1_currentTimeDate.DayOfMonth)
+ 823   5                              {
+ 824   6                                  RTC_1_alarmCurStatus |= RTC_1_ALARM_DAYOFMONTH_MASK;
+ 825   6                              }
+ 826   5                              else
+ 827   5                              {
+ 828   6                                  RTC_1_alarmCurStatus &= (uint8)(~RTC_1_ALARM_DAYOFMONTH_MASK);
+ 829   6                              }
+ 830   5                          }
+ 831   4      
+ 832   4                          /* Alarm MONTH */
+ 833   4                          if(0u != RTC_1_IS_BIT_SET(RTC_1_alarmCfgMask,
+ 834   4                                                               RTC_1_ALARM_MONTH_MASK))
+ 835   4                          {
+ 836   5                              if(RTC_1_alarmCfgTimeDate.Month == RTC_1_currentTimeDate.Month)
+ 837   5                              {
+ 838   6                                  RTC_1_alarmCurStatus |= RTC_1_ALARM_MONTH_MASK;
+ 839   6                              }
+ 840   5                              else
+ 841   5                              {
+ 842   6                                  RTC_1_alarmCurStatus &= (uint8)(~RTC_1_ALARM_MONTH_MASK);
+ 843   6                              }
+C51 COMPILER V9.51   RTC_1_INT                                                             04/01/2014 06:30:45 PAGE 15  
+
+ 844   5                          }
+ 845   4      
+ 846   4                          /* Alarm YEAR */
+ 847   4                          if(0u != RTC_1_IS_BIT_SET(RTC_1_alarmCfgMask,
+ 848   4                                                               RTC_1_ALARM_YEAR_MASK))
+ 849   4                          {
+ 850   5                              if(RTC_1_alarmCfgTimeDate.Year == RTC_1_currentTimeDate.Year)
+ 851   5                              {
+ 852   6                                  RTC_1_alarmCurStatus |= RTC_1_ALARM_YEAR_MASK;
+ 853   6                              }
+ 854   5                              else
+ 855   5                              {
+ 856   6                                  RTC_1_alarmCurStatus &= (uint8)(~RTC_1_ALARM_YEAR_MASK);
+ 857   6                              }
+ 858   5                          }
+ 859   4      
+ 860   4                          /* Set Alarm flag event */
+ 861   4                          RTC_1_tmp = RTC_1_alarmCfgMask;
+ 862   4                          RTC_1_SET_ALARM(RTC_1_tmp,
+ 864   4                                                     RTC_1_alarmCurStatus,
+ 864   4                                                     RTC_1_statusDateTime);
+ 865   4                      }
+ 866   3                  #endif /* 1u == RTC_1_DST_FUNC_ENABLE */
+ 867   3      
+ 868   3                  /* Alarm HOUR */
+ 869   3                  if(0u != RTC_1_IS_BIT_SET(RTC_1_alarmCfgMask, RTC_1_ALARM_HOUR_MASK))
+ 870   3                  {
+ 871   4                      if(RTC_1_alarmCfgTimeDate.Hour == RTC_1_currentTimeDate.Hour)
+ 872   4                      {
+ 873   5                          RTC_1_alarmCurStatus |= RTC_1_ALARM_HOUR_MASK;
+ 874   5                      }
+ 875   4                      else
+ 876   4                      {
+ 877   5                          RTC_1_alarmCurStatus &= (uint8)(~RTC_1_ALARM_HOUR_MASK);
+ 878   5                      }
+ 879   4                  }
+ 880   3      
+ 881   3                  /* Set Alarm flag event */
+ 882   3                  RTC_1_tmp = RTC_1_alarmCfgMask;
+ 883   3                  RTC_1_SET_ALARM(RTC_1_tmp,
+ 885   3                                             RTC_1_alarmCurStatus,
+ 885   3                                             RTC_1_statusDateTime);
+ 886   3      
+ 887   3                  /* Every Hour */
+ 888   3                  if(0u != RTC_1_IS_BIT_SET(RTC_1_intervalCfgMask, RTC_1_INTERVAL_HOUR_MASK))
+ 889   3                  {
+ 890   4                      RTC_1_EveryHourHandler();
+ 891   4                  }
+ 892   3              } /* Min > 59 = Hour */
+ 893   2      
+ 894   2              /* Alarm MIN */
+ 895   2              if(0u != RTC_1_IS_BIT_SET(RTC_1_alarmCfgMask, RTC_1_ALARM_MIN_MASK))
+ 896   2              {
+ 897   3                  if(RTC_1_alarmCfgTimeDate.Min == RTC_1_currentTimeDate.Min)
+ 898   3                  {
+ 899   4                      RTC_1_alarmCurStatus |= RTC_1_ALARM_MIN_MASK;
+ 900   4                  }
+ 901   3                  else
+ 902   3                  {
+ 903   4                      RTC_1_alarmCurStatus &= (uint8)(~RTC_1_ALARM_MIN_MASK);
+ 904   4                  }
+ 905   3              }
+C51 COMPILER V9.51   RTC_1_INT                                                             04/01/2014 06:30:45 PAGE 16  
+
+ 906   2      
+ 907   2              /* Set Alarm flag event */
+ 908   2              RTC_1_tmp = RTC_1_alarmCfgMask;
+ 909   2              RTC_1_SET_ALARM(RTC_1_tmp,
+ 911   2                                         RTC_1_alarmCurStatus,
+ 911   2                                         RTC_1_statusDateTime);
+ 912   2      
+ 913   2              /* Every Min */
+ 914   2              if(0u != RTC_1_IS_BIT_SET(RTC_1_intervalCfgMask, RTC_1_INTERVAL_MIN_MASK))
+ 915   2              {
+ 916   3                  RTC_1_EveryMinuteHandler();
+ 917   3              }
+ 918   2          } /* Sec */
+ 919   1      
+ 920   1          /* Alarm SEC */
+ 921   1          if(0u != RTC_1_IS_BIT_SET(RTC_1_alarmCfgMask, RTC_1_ALARM_SEC_MASK))
+ 922   1          {
+ 923   2              if(RTC_1_alarmCfgTimeDate.Sec == RTC_1_currentTimeDate.Sec)
+ 924   2              {
+ 925   3                  RTC_1_alarmCurStatus |= RTC_1_ALARM_SEC_MASK;
+ 926   3              }
+ 927   2              else
+ 928   2              {
+ 929   3                  RTC_1_alarmCurStatus &= (uint8)(~RTC_1_ALARM_SEC_MASK);
+ 930   3              }
+ 931   2          }
+ 932   1      
+ 933   1          /* Set Alarm flag event */
+ 934   1          RTC_1_tmp = RTC_1_alarmCfgMask;
+ 935   1          RTC_1_SET_ALARM(RTC_1_tmp, RTC_1_alarmCurStatus, RTC_1_statusDateTime);
+ 936   1      
+ 937   1          /* Execute every second handler if needed */
+ 938   1          if(0u != RTC_1_IS_BIT_SET(RTC_1_intervalCfgMask, RTC_1_INTERVAL_SEC_MASK))
+ 939   1          {
+ 940   2              RTC_1_EverySecondHandler();
+ 941   2          }
+ 942   1      
+ 943   1      }
+ 944          
+ 945          
+ 946          /* [] END OF FILE */
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  13 ERROR(S)
