@@ -19,9 +19,7 @@ void USB_ISR(){
 
     uint8 result = 0;
     command instruction = {0,0,0};
-    
-    uint8 temp = 0xFF;
-        
+           
     /* Start USBFS Operation with 5V operation */
     USBUART_Start(0u, USBUART_5V_OPERATION);
     
@@ -32,9 +30,8 @@ void USB_ISR(){
     USBUART_CDC_Init();
       
     while(Vbus_Read())
-    {    
-        temp = USBUART_DataIsReady();
-        if(temp != 0u){   /* Check for input data from PC */
+    {  
+        if(USBUART_DataIsReady() != 0u){   /* Check for input data from PC */
             result = retrieve(&instruction);
         
             if (result == SUCCESS){
@@ -96,8 +93,23 @@ uint8 retrieve(command* instruction){
 }
 
 void apply_setting(command instruction){
+    uint16 target = 0;
+
+    switch (instruction.target){
+        case SAMPLE_UNIT:
+            target = EE_SAMPLE_UNIT;
+            break;
+        
+        case SAMPLE_INTERVAL:
+            target = EE_SAMPLE_INTERVAL;
+            break;
+        
+        case SENSOR:
+            target = EE_SENSOR;
+            break;
+    }
     
-    update_variable(instruction.target, instruction.value);    
+    update_variable(target, instruction.value);    
     
     return;
 }
@@ -130,7 +142,6 @@ void dump_data(){
         while(!USBUART_CDCIsReady() && Vbus_Read());
         USBUART_PutData(ExportBuffer, BUFFER_LEN); // Send 64 byte packet of data from memory
         i = 0;
- //       await_reply();
     }
     
     /* Trailer Packet to Identify End of Sampled Data in Memory */
@@ -138,8 +149,7 @@ void dump_data(){
     ExportBuffer[1] = 0x00;
     
     //2 byte Count split into two 1 byte packages to be arrayed.
-    DataCnt = DataCnt / 2;
-    ExportBuffer[2] = (uint8)(DataCnt >> 8);;          // Count of Total Samples Sent
+    ExportBuffer[2] = (uint8)(DataCnt >> 8);;          // Count of Total Bytes Sent
     ExportBuffer[3] = (uint8)0x00FF & DataCnt;
     while(!USBUART_CDCIsReady() && Vbus_Read());
     USBUART_PutData(ExportBuffer, 64u); 
@@ -153,23 +163,6 @@ void send_reply(uint8 message){
     
     if(Vbus_Read()){
         USBUART_PutData(&message, REPLY_LEN);
-    }
-    
-    return;
-}
-
-void await_reply(){
-    uint8 result = 0;
-    command instruction = {0,0,0};
-    
-    while(1){
-        while(!USBUART_DataIsReady() && Vbus_Read());
-        
-        result = retrieve(&instruction);
-        
-        if((result == SUCCESS) && (instruction.command == NEXT)){
-            break;
-        }
     }
     
     return;

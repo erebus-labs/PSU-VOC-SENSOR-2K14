@@ -4518,7 +4518,7 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>Blink_Timer</name>
+      <name>EEPROM_Blink_Timer</name>
       <description>No description available</description>
       <baseAddress>0x43A3</baseAddress>
       <addressBlock>
@@ -4528,7 +4528,7 @@
       </addressBlock>
       <registers>
         <register>
-          <name>Blink_Timer_GLOBAL_ENABLE</name>
+          <name>EEPROM_Blink_Timer_GLOBAL_ENABLE</name>
           <description>PM.ACT.CFG</description>
           <addressOffset>0x0</addressOffset>
           <size>8</size>
@@ -4546,7 +4546,7 @@
           </fields>
         </register>
         <register>
-          <name>Blink_Timer_CONTROL</name>
+          <name>EEPROM_Blink_Timer_CONTROL</name>
           <description>TMRx.CFG0</description>
           <addressOffset>0xB5D</addressOffset>
           <size>8</size>
@@ -4630,7 +4630,7 @@
           </fields>
         </register>
         <register>
-          <name>Blink_Timer_CONTROL2</name>
+          <name>EEPROM_Blink_Timer_CONTROL2</name>
           <description>TMRx.CFG1</description>
           <addressOffset>0xB5E</addressOffset>
           <size>8</size>
@@ -4695,7 +4695,7 @@
           </fields>
         </register>
         <register>
-          <name>Blink_Timer_CONTROL3_</name>
+          <name>EEPROM_Blink_Timer_CONTROL3_</name>
           <description>TMRx.CFG2</description>
           <addressOffset>0xB5F</addressOffset>
           <size>8</size>
@@ -4790,7 +4790,7 @@
           </fields>
         </register>
         <register>
-          <name>Blink_Timer_PERIOD</name>
+          <name>EEPROM_Blink_Timer_PERIOD</name>
           <description>TMRx.PER0 - Assigned Period</description>
           <addressOffset>0xB61</addressOffset>
           <size>16</size>
@@ -4799,7 +4799,7 @@
           <resetMask>0</resetMask>
         </register>
         <register>
-          <name>Blink_Timer_COUNTER</name>
+          <name>EEPROM_Blink_Timer_COUNTER</name>
           <description>TMRx.CNT_CMP0 - Current Down Counter Value</description>
           <addressOffset>0xB63</addressOffset>
           <size>16</size>

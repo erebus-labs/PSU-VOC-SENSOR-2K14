@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: EEPROM_LED.h  
+* File Name: Sample.h  
 * Version 1.90
 *
 * Description:
@@ -14,8 +14,8 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if !defined(CY_PINS_EEPROM_LED_ALIASES_H) /* Pins EEPROM_LED_ALIASES_H */
-#define CY_PINS_EEPROM_LED_ALIASES_H
+#if !defined(CY_PINS_Sample_ALIASES_H) /* Pins Sample_ALIASES_H */
+#define CY_PINS_Sample_ALIASES_H
 
 #include "cytypes.h"
 #include "cyfitter.h"
@@ -24,9 +24,9 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define EEPROM_LED_0		EEPROM_LED__0__PC
+#define Sample_0		Sample__0__PC
 
-#endif /* End Pins EEPROM_LED_ALIASES_H */
+#endif /* End Pins Sample_ALIASES_H */
 
 
 /* [] END OF FILE */

@@ -1,12 +1,11 @@
 -- Project:   Erebus_Sensor
--- Generated: 03/27/2014 21:52:17
+-- Generated: 04/01/2014 20:45:10
 -- 
 
 ENTITY Erebus_Sensor IS
     PORT(
-        EEPROM_LED(0)_PAD : OUT std_ulogic;
         LED(0)_PAD : OUT std_ulogic;
-        SW_3(0)_PAD : IN std_ulogic;
+        Sample(0)_PAD : IN std_ulogic;
         USB_LED(0)_PAD : OUT std_ulogic;
         Vbus(0)_PAD : IN std_ulogic);
     ATTRIBUTE voltage_Vio1 OF __DEFAULT__ : ENTITY IS 5e0;
@@ -31,26 +30,25 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     SIGNAL ClockBlock_PLL_OUT : bit;
     SIGNAL ClockBlock_XTAL : bit;
     SIGNAL ClockBlock_XTAL_32KHZ : bit;
-    SIGNAL EEPROM_LED(0)__PA : bit;
     SIGNAL LED(0)__PA : bit;
     SIGNAL Net_14 : bit;
     SIGNAL Net_146 : bit;
-    SIGNAL Net_242 : bit;
-    ATTRIBUTE global_signal OF Net_242 : SIGNAL IS true;
-    SIGNAL Net_242_local : bit;
     SIGNAL Net_249 : bit;
     SIGNAL Net_249_SYNCOUT : bit;
     SIGNAL Net_408 : bit;
     SIGNAL Net_556 : bit;
     SIGNAL Net_566 : bit;
-    SIGNAL Net_570 : bit;
-    SIGNAL Net_570_SYNCOUT : bit;
     SIGNAL Net_65 : bit;
+    SIGNAL Net_665 : bit;
+    SIGNAL Net_665_SYNCOUT : bit;
+    SIGNAL Net_674 : bit;
+    ATTRIBUTE global_signal OF Net_674 : SIGNAL IS true;
+    SIGNAL Net_674_local : bit;
     SIGNAL Net_72 : bit;
     ATTRIBUTE global_signal OF Net_72 : SIGNAL IS true;
     SIGNAL Net_72_local : bit;
     SIGNAL Net_8 : bit;
-    SIGNAL SW_3(0)__PA : bit;
+    SIGNAL Sample(0)__PA : bit;
     SIGNAL Sensor_VIn(0)__PA : bit;
     SIGNAL USB_LED(0)__PA : bit;
     SIGNAL Vbus(0)__PA : bit;
@@ -76,10 +74,10 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     SIGNAL \ADC:mod_dat_2\ : bit;
     SIGNAL \ADC:mod_dat_3\ : bit;
     SIGNAL \ADC:mod_reset\ : bit;
-    SIGNAL \Blink_Timer:Net_261\ : bit;
-    SIGNAL \Blink_Timer:Net_57\ : bit;
-    SIGNAL \SW3_Debounce:DEBOUNCER[0]:d_sync_0\ : bit;
-    SIGNAL \SW3_Debounce:DEBOUNCER[0]:d_sync_1\ : bit;
+    SIGNAL \EEPROM_Blink_Timer:Net_261\ : bit;
+    SIGNAL \EEPROM_Blink_Timer:Net_57\ : bit;
+    SIGNAL \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_0\ : bit;
+    SIGNAL \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_1\ : bit;
     SIGNAL \\\USBUART:Dm(0)\\__PA\ : bit;
     SIGNAL \\\USBUART:Dp(0)\\__PA\ : bit;
     SIGNAL \USBUART:Net_1010\ : bit;
@@ -115,28 +113,26 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     ATTRIBUTE GROUND OF zero : SIGNAL IS true;
     SIGNAL \ClockBlock.dclk_glb_ff_2__sig\ : bit;
     SIGNAL \ClockBlock.aclk_glb_ff_0__sig\ : bit;
-    ATTRIBUTE lib_model OF EEPROM_LED(0) : LABEL IS "iocell1";
-    ATTRIBUTE Location OF EEPROM_LED(0) : LABEL IS "P0[2]";
-    ATTRIBUTE lib_model OF LED(0) : LABEL IS "iocell2";
+    ATTRIBUTE lib_model OF LED(0) : LABEL IS "iocell1";
     ATTRIBUTE Location OF LED(0) : LABEL IS "P0[0]";
     ATTRIBUTE lib_model OF Net_14 : LABEL IS "macrocell1";
     ATTRIBUTE lib_model OF Net_408 : LABEL IS "macrocell2";
     ATTRIBUTE lib_model OF Net_556 : LABEL IS "macrocell3";
     ATTRIBUTE lib_model OF Net_65 : LABEL IS "macrocell4";
-    ATTRIBUTE lib_model OF SW_3(0) : LABEL IS "iocell3";
-    ATTRIBUTE Location OF SW_3(0) : LABEL IS "P15[5]";
-    ATTRIBUTE lib_model OF Sensor_VIn(0) : LABEL IS "iocell4";
+    ATTRIBUTE lib_model OF Sample(0) : LABEL IS "iocell2";
+    ATTRIBUTE Location OF Sample(0) : LABEL IS "P15[5]";
+    ATTRIBUTE lib_model OF Sensor_VIn(0) : LABEL IS "iocell3";
     ATTRIBUTE Location OF Sensor_VIn(0) : LABEL IS "P0[7]";
-    ATTRIBUTE lib_model OF USB_LED(0) : LABEL IS "iocell5";
+    ATTRIBUTE lib_model OF USB_LED(0) : LABEL IS "iocell4";
     ATTRIBUTE Location OF USB_LED(0) : LABEL IS "P0[1]";
-    ATTRIBUTE lib_model OF Vbus(0) : LABEL IS "iocell6";
+    ATTRIBUTE lib_model OF Vbus(0) : LABEL IS "iocell5";
     ATTRIBUTE Location OF Vbus(0) : LABEL IS "P6[0]";
     ATTRIBUTE Location OF \ADC:DSM\ : LABEL IS "F(DSM,0)";
-    ATTRIBUTE lib_model OF \SW3_Debounce:DEBOUNCER[0]:d_sync_0\ : LABEL IS "macrocell5";
-    ATTRIBUTE lib_model OF \SW3_Debounce:DEBOUNCER[0]:d_sync_1\ : LABEL IS "macrocell6";
-    ATTRIBUTE lib_model OF \USBUART:Dm(0)\ : LABEL IS "iocell7";
+    ATTRIBUTE lib_model OF \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_0\ : LABEL IS "macrocell5";
+    ATTRIBUTE lib_model OF \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_1\ : LABEL IS "macrocell6";
+    ATTRIBUTE lib_model OF \USBUART:Dm(0)\ : LABEL IS "iocell6";
     ATTRIBUTE Location OF \USBUART:Dm(0)\ : LABEL IS "P15[7]";
-    ATTRIBUTE lib_model OF \USBUART:Dp(0)\ : LABEL IS "iocell8";
+    ATTRIBUTE lib_model OF \USBUART:Dp(0)\ : LABEL IS "iocell7";
     ATTRIBUTE Location OF \USBUART:Dp(0)\ : LABEL IS "P15[6]";
     ATTRIBUTE Location OF \USBUART:USB\ : LABEL IS "F(USB,0)";
     ATTRIBUTE lib_model OF \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\ : LABEL IS "macrocell7";
@@ -1091,8 +1087,8 @@ BEGIN
             dsi_glb_div => open,
             dclk_glb_0 => \ADC:Net_93\,
             dclk_0 => \ADC:Net_93_local\,
-            dclk_glb_1 => Net_242,
-            dclk_1 => Net_242_local,
+            dclk_glb_1 => Net_674,
+            dclk_1 => Net_674_local,
             dclk_glb_2 => Net_72,
             dclk_2 => Net_72_local,
             aclk_glb_0 => \ADC:Net_488\,
@@ -1101,91 +1097,6 @@ BEGIN
             clk_a_dig_0 => \ADC:Net_488_adig_local\,
             dclk_glb_ff_2 => \ClockBlock.dclk_glb_ff_2__sig\,
             aclk_glb_ff_0 => \ClockBlock.aclk_glb_ff_0__sig\);
-
-    EEPROM_LED:logicalport
-        GENERIC MAP(
-            drive_mode => "110",
-            ibuf_enabled => "1",
-            id => "205ded8c-a56f-4245-b0b0-103e15030cf1",
-            init_dr_st => "0",
-            input_clk_en => 0,
-            input_sync => "1",
-            input_sync_mode => "0",
-            intr_mode => "00",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "CONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "0",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "O",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "",
-            sio_hyst => "0",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 0,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "10",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open);
-
-    EEPROM_LED(0):iocell
-        GENERIC MAP(
-            in_sync_mode => 0,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "EEPROM_LED",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
-        PORT MAP(
-            pa_out => EEPROM_LED(0)__PA,
-            oe => open,
-            pad_in => EEPROM_LED(0)_PAD,
-            in_clock => open,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
 
     LED:logicalport
         GENERIC MAP(
@@ -1280,9 +1191,9 @@ BEGIN
             clk_inv => '0')
         PORT MAP(
             q => Net_14,
-            clock_0 => Net_242,
-            main_0 => \SW3_Debounce:DEBOUNCER[0]:d_sync_0\,
-            main_1 => \SW3_Debounce:DEBOUNCER[0]:d_sync_1\);
+            clock_0 => Net_674,
+            main_0 => \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_0\,
+            main_1 => \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_1\);
 
     Net_408:macrocell
         GENERIC MAP(
@@ -1290,7 +1201,7 @@ BEGIN
             clk_inv => '0')
         PORT MAP(
             q => Net_408,
-            clock_0 => Net_242,
+            clock_0 => Net_674,
             main_0 => \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\,
             main_1 => Net_556);
 
@@ -1301,7 +1212,7 @@ BEGIN
         PORT MAP(
             q => Net_556,
             main_0 => Net_249_SYNCOUT,
-            clock_0 => Net_242);
+            clock_0 => Net_674);
 
     Net_65:macrocell
         GENERIC MAP(
@@ -1312,11 +1223,11 @@ BEGIN
             clock_0 => Net_72,
             main_0 => Net_146);
 
-    SW_3:logicalport
+    Sample:logicalport
         GENERIC MAP(
             drive_mode => "010",
             ibuf_enabled => "1",
-            id => "11f124a4-7916-484c-a486-00be9b544c48",
+            id => "a518b130-43a1-4f5c-abd1-067322ccd966",
             init_dr_st => "1",
             input_clk_en => 0,
             input_sync => "1",
@@ -1379,19 +1290,19 @@ BEGIN
             out_reset => open,
             in_clock => open);
 
-    SW_3(0):iocell
+    Sample(0):iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "SW_3",
+            logicalport => "Sample",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000100000000000000000000000000000000000000001")
         PORT MAP(
-            pa_out => SW_3(0)__PA,
+            pa_out => Sample(0)__PA,
             oe => open,
-            fb => Net_570,
-            pad_in => SW_3(0)_PAD,
+            fb => Net_665,
+            pad_in => Sample(0)_PAD,
             in_clock => ClockBlock_BUS_CLK,
             in_clock_en => '1',
             in_reset => '0',
@@ -1399,12 +1310,12 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    SW_3(0)_SYNC:synccell
+    Sample(0)_SYNC:synccell
         GENERIC MAP(
             clk_inv => '0')
         PORT MAP(
-            in => Net_570,
-            out => Net_570_SYNCOUT,
+            in => Net_665,
+            out => Net_665_SYNCOUT,
             clock => ClockBlock_BUS_CLK);
 
     Sensor_VIn:logicalport
@@ -1730,7 +1641,7 @@ BEGIN
             interrupt => Net_566,
             clock => ClockBlock_BUS_CLK);
 
-    \Blink_Timer:TimerHW\:timercell
+    \EEPROM_Blink_Timer:TimerHW\:timercell
         GENERIC MAP(
             cy_registers => "")
         PORT MAP(
@@ -1740,26 +1651,26 @@ BEGIN
             capture => open,
             timer_reset => open,
             tc => Net_146,
-            cmp => \Blink_Timer:Net_261\,
-            irq => \Blink_Timer:Net_57\);
+            cmp => \EEPROM_Blink_Timer:Net_261\,
+            irq => \EEPROM_Blink_Timer:Net_57\);
 
-    \SW3_Debounce:DEBOUNCER[0]:d_sync_0\:macrocell
+    \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_0\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
             clk_inv => '0')
         PORT MAP(
-            q => \SW3_Debounce:DEBOUNCER[0]:d_sync_0\,
-            main_0 => Net_570_SYNCOUT,
-            clock_0 => Net_242);
+            q => \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_0\,
+            main_0 => Net_665_SYNCOUT,
+            clock_0 => Net_674);
 
-    \SW3_Debounce:DEBOUNCER[0]:d_sync_1\:macrocell
+    \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_1\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
             clk_inv => '0')
         PORT MAP(
-            q => \SW3_Debounce:DEBOUNCER[0]:d_sync_1\,
-            main_0 => \SW3_Debounce:DEBOUNCER[0]:d_sync_0\,
-            clock_0 => Net_242);
+            q => \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_1\,
+            main_0 => \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_0\,
+            clock_0 => Net_674);
 
     \USBUART:Dm(0)\:iocell
         GENERIC MAP(
@@ -2021,7 +1932,7 @@ BEGIN
         PORT MAP(
             q => \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\,
             main_0 => Net_556,
-            clock_0 => Net_242);
+            clock_0 => Net_674);
 
     __ONE__:macrocell
         GENERIC MAP(

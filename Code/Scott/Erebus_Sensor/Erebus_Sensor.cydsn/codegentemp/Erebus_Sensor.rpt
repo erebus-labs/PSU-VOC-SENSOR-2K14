@@ -1,13 +1,13 @@
-Loading plugins phase: Elapsed time ==> 0s.436ms
-Initializing data phase: Elapsed time ==> 2s.612ms
+Loading plugins phase: Elapsed time ==> 0s.468ms
+Initializing data phase: Elapsed time ==> 2s.218ms
 <CYPRESSTAG name="CyDsfit arguments...">
 cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\Erebus_Sensor.cyprj -d CY8C3866AXI-040 -s C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\Generated_Source\PSoC3 -- -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE</CYPRESSTAG>
 <CYPRESSTAG name="Design elaboration results...">
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 5s.262ms
+Elaboration phase: Elapsed time ==> 4s.906ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.170ms
+HDL generation phase: Elapsed time ==> 0s.156ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -41,7 +41,7 @@ Options  :    -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\Win7_
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Thu Mar 27 21:52:15 2014
+Tue Apr 01 20:45:08 2014
 
 
 ======================================================================
@@ -51,7 +51,7 @@ Options  :    -yv2 -q10 Erebus_Sensor.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Thu Mar 27 21:52:15 2014
+Tue Apr 01 20:45:08 2014
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\..\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\..\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'
@@ -92,7 +92,7 @@ Options  :    -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\Win7_
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Thu Mar 27 21:52:15 2014
+Tue Apr 01 20:45:08 2014
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -127,7 +127,7 @@ Options  :    -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\Win7_
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Thu Mar 27 21:52:16 2014
+Tue Apr 01 20:45:09 2014
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -158,9 +158,9 @@ Detecting unused logic.
 ----------------------------------------------------------
     User names
 	Net_154
+	Net_678
 	\ADC:Net_268\
 	\ADC:Net_270\
-	Net_580
 
 
 Deleted 4 User equations/components.
@@ -171,54 +171,52 @@ Alias Detection
 ------------------------------------------------------
 Aliasing one to \USBUART:tmpOE__Dm_net_0\
 Aliasing \USBUART:tmpOE__Dp_net_0\ to \USBUART:tmpOE__Dm_net_0\
-Aliasing \Blink_Timer:Net_260\ to zero
-Aliasing Net_12 to zero
-Aliasing \Blink_Timer:Net_102\ to \USBUART:tmpOE__Dm_net_0\
+Aliasing \EEPROM_Blink_Timer:Net_260\ to zero
+Aliasing Net_650 to zero
+Aliasing \EEPROM_Blink_Timer:Net_102\ to \USBUART:tmpOE__Dm_net_0\
 Aliasing tmpOE__LED_net_0 to \USBUART:tmpOE__Dm_net_0\
 Aliasing tmpOE__Vbus_net_0 to \USBUART:tmpOE__Dm_net_0\
 Aliasing tmpOE__USB_LED_net_0 to \USBUART:tmpOE__Dm_net_0\
-Aliasing tmpOE__EEPROM_LED_net_0 to \USBUART:tmpOE__Dm_net_0\
 Aliasing tmpOE__Sensor_VIn_net_0 to \USBUART:tmpOE__Dm_net_0\
 Aliasing \ADC:Net_482\ to zero
 Aliasing \ADC:Net_252\ to zero
 Aliasing \ADC:soc\ to \USBUART:tmpOE__Dm_net_0\
-Aliasing tmpOE__SW_3_net_0 to \USBUART:tmpOE__Dm_net_0\
+Aliasing tmpOE__Sample_net_0 to \USBUART:tmpOE__Dm_net_0\
 Aliasing \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\\D\ to Net_556
 Aliasing Net_555D to zero
 Aliasing Net_554D to zero
-Aliasing Net_582D to zero
-Aliasing Net_581D to zero
+Aliasing Net_680D to zero
+Aliasing Net_679D to zero
 Removing Rhs of wire one[38] = \USBUART:tmpOE__Dm_net_0\[33]
 Removing Lhs of wire \USBUART:tmpOE__Dp_net_0\[41] = one[38]
-Removing Lhs of wire \Blink_Timer:Net_260\[51] = zero[34]
-Removing Lhs of wire \Blink_Timer:Net_266\[52] = one[38]
-Removing Lhs of wire Net_12[53] = zero[34]
-Removing Rhs of wire Net_146[58] = \Blink_Timer:Net_51\[54]
-Removing Lhs of wire \Blink_Timer:Net_102\[59] = one[38]
+Removing Lhs of wire \EEPROM_Blink_Timer:Net_260\[51] = zero[34]
+Removing Lhs of wire \EEPROM_Blink_Timer:Net_266\[52] = one[38]
+Removing Lhs of wire Net_650[53] = zero[34]
+Removing Rhs of wire Net_146[58] = \EEPROM_Blink_Timer:Net_51\[54]
+Removing Lhs of wire \EEPROM_Blink_Timer:Net_102\[59] = one[38]
 Removing Lhs of wire tmpOE__LED_net_0[61] = one[38]
 Removing Rhs of wire Net_65[62] = cy_tff_1[67]
 Removing Lhs of wire tmpOE__Vbus_net_0[70] = one[38]
 Removing Rhs of wire Net_556[83] = \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\[81]
 Removing Lhs of wire tmpOE__USB_LED_net_0[87] = one[38]
-Removing Lhs of wire tmpOE__EEPROM_LED_net_0[93] = one[38]
-Removing Lhs of wire tmpOE__Sensor_VIn_net_0[99] = one[38]
-Removing Rhs of wire \ADC:Net_488\[117] = \ADC:Net_250\[152]
-Removing Lhs of wire \ADC:Net_481\[119] = zero[34]
-Removing Lhs of wire \ADC:Net_482\[120] = zero[34]
-Removing Lhs of wire \ADC:Net_252\[154] = zero[34]
-Removing Lhs of wire \ADC:soc\[156] = one[38]
-Removing Lhs of wire tmpOE__SW_3_net_0[162] = one[38]
-Removing Lhs of wire \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\\D\[176] = Net_249[71]
-Removing Lhs of wire \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\\D\[177] = Net_556[83]
-Removing Lhs of wire Net_555D[178] = zero[34]
-Removing Lhs of wire Net_554D[179] = zero[34]
-Removing Lhs of wire \SW3_Debounce:DEBOUNCER[0]:d_sync_0\\D\[181] = Net_570[163]
-Removing Lhs of wire \SW3_Debounce:DEBOUNCER[0]:d_sync_1\\D\[182] = \SW3_Debounce:DEBOUNCER[0]:d_sync_0\[169]
-Removing Lhs of wire Net_582D[183] = zero[34]
-Removing Lhs of wire Net_581D[184] = zero[34]
+Removing Lhs of wire tmpOE__Sensor_VIn_net_0[102] = one[38]
+Removing Rhs of wire \ADC:Net_488\[120] = \ADC:Net_250\[155]
+Removing Lhs of wire \ADC:Net_481\[122] = zero[34]
+Removing Lhs of wire \ADC:Net_482\[123] = zero[34]
+Removing Lhs of wire \ADC:Net_252\[157] = zero[34]
+Removing Lhs of wire \ADC:soc\[159] = one[38]
+Removing Lhs of wire tmpOE__Sample_net_0[164] = one[38]
+Removing Lhs of wire \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\\D\[170] = Net_249[71]
+Removing Lhs of wire \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\\D\[171] = Net_556[83]
+Removing Lhs of wire Net_555D[172] = zero[34]
+Removing Lhs of wire Net_554D[173] = zero[34]
+Removing Lhs of wire \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_0\\D\[174] = Net_665[95]
+Removing Lhs of wire \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_1\\D\[175] = \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_0\[94]
+Removing Lhs of wire Net_680D[176] = zero[34]
+Removing Lhs of wire Net_679D[178] = zero[34]
 
 ------------------------------------------------------
-Aliased 0 equations, 28 wires.
+Aliased 0 equations, 27 wires.
 ------------------------------------------------------
 
 ----------------------------------------------------------
@@ -242,25 +240,25 @@ CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\wa
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\bin/warp.exe
 Warp Arguments : -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya "-.fftprj=C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\Erebus_Sensor.cyprj" -dcpsoc3 Erebus_Sensor.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 1s.059ms
+Warp synthesis phase: Elapsed time ==> 1s.484ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V3.0.0.1539, Family: PSoC3, Started at: Thursday, 27 March 2014 21:52:16
+cyp3fit: V3.0.0.1539, Family: PSoC3, Started at: Tuesday, 01 April 2014 20:45:09
 Options: -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\Erebus_Sensor.cyprj -d CY8C3866AXI-040 Erebus_Sensor.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.017ms
+Design parsing phase: Elapsed time ==> 0s.015ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
     Converted constant MacroCell: Net_554 from registered to combinatorial
     Converted constant MacroCell: Net_555 from registered to combinatorial
-    Converted constant MacroCell: Net_581 from registered to combinatorial
-    Converted constant MacroCell: Net_582 from registered to combinatorial
+    Converted constant MacroCell: Net_679 from registered to combinatorial
+    Converted constant MacroCell: Net_680 from registered to combinatorial
 Assigning clock USBUART_Clock_vbus to clock BUS_CLK because it is a pass-through
 <CYPRESSTAG name="Global Clock Selection" icon="FILE_RPT_TECHM">
     Digital Clock 0: Automatic-assigning  clock 'ADC_Ext_CP_Clk'. Fanout=1, Signal=\ADC:Net_93\
-    Digital Clock 1: Automatic-assigning  clock 'debounce_clock'. Fanout=2, Signal=Net_242
+    Digital Clock 1: Automatic-assigning  clock 'debounce_clock'. Fanout=2, Signal=Net_674
     Digital Clock 2: Automatic-assigning  clock 'timer_clock'. Fanout=2, Signal=Net_72
     Analog  Clock 0: Automatic-assigning  clock 'ADC_theACLK'. Fanout=1, Signal=\ADC:Net_488\
 </CYPRESSTAG>
@@ -268,11 +266,11 @@ Assigning clock USBUART_Clock_vbus to clock BUS_CLK because it is a pass-through
 Removing unused cells resulting from optimization
     Removed unused cell/equation 'Net_554:macrocell'
     Removed unused cell/equation 'Net_555:macrocell'
-    Removed unused cell/equation 'Net_581:macrocell'
-    Removed unused cell/equation 'Net_582:macrocell'
+    Removed unused cell/equation 'Net_679:macrocell'
+    Removed unused cell/equation 'Net_680:macrocell'
 Done removing unused cells.
 <CYPRESSTAG name="UDB Clock/Enable Remapping Results">
-    UDB Clk/Enable \SW3_Debounce:ClkSync\: with output requested to be synchronous
+    UDB Clk/Enable \Sample_Switch_Debounce:ClkSync\: with output requested to be synchronous
         ClockIn: debounce_clock was determined to be a global clock that is synchronous to BUS_CLK
         EnableIn: Constant 1 was determined to be synchronous to ClockIn
         ClockOut: debounce_clock, EnableOut: Constant 1
@@ -303,44 +301,6 @@ Design Equations
     ------------------------------------------------------------
     Pin listing
     ------------------------------------------------------------
-
-    Pin : Name = EEPROM_LED(0)
-        Attributes:
-            In Group/Port: True
-            In Sync Option: AUTO
-            Out Sync Option: NOSYNC
-            Interrupt generated: False
-            Interrupt mode: NONE
-            Drive mode: CMOS_OUT
-            VTrip: EITHER
-            Slew: FAST
-            Input Sync needed: False
-            Output Sync needed: False
-            SC shield enabled: False
-            POR State: ANY
-            LCD Mode: COMMON
-            Register Mode: RegComb
-            CaSense Mode: NEITHER
-            Treat as pin: True
-            Is OE Registered: False
-            Uses Analog: False
-            Can contain Digital: True
-            Is SIO: False
-            SIO Output Buf: NONREGULATED
-            SIO Input Buf: SINGLE_ENDED
-            SIO HiFreq: LOW
-            SIO Hyst: DISABLED
-            SIO Vtrip: MULTIPLIER_0_5
-            SIO RefSel: VCC_IO
-            Required Capabilitites: DIGITAL
-            Initial Value: 0
-            IO Voltage: 0
-        PORT MAP (
-            pa_out => EEPROM_LED(0)__PA ,
-            pad => EEPROM_LED(0)_PAD );
-        Properties:
-        {
-        }
 
     Pin : Name = LED(0)
         Attributes:
@@ -381,7 +341,7 @@ Design Equations
         {
         }
 
-    Pin : Name = SW_3(0)
+    Pin : Name = Sample(0)
         Attributes:
             In Group/Port: True
             In Sync Option: SYNC
@@ -413,9 +373,9 @@ Design Equations
             Initial Value: 1
             IO Voltage: 0
         PORT MAP (
-            pa_out => SW_3(0)__PA ,
-            fb => Net_570 ,
-            pad => SW_3(0)_PAD );
+            pa_out => Sample(0)__PA ,
+            fb => Net_665 ,
+            pad => Sample(0)_PAD );
         Properties:
         {
         }
@@ -625,12 +585,12 @@ Design Equations
         Total # of inputs        : 2
         Total # of product terms : 1
         List of special equations: 
-            Clock  = (Net_242) => Global
+            Clock  = (Net_674) => Global
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              !\SW3_Debounce:DEBOUNCER[0]:d_sync_0\ * 
-              \SW3_Debounce:DEBOUNCER[0]:d_sync_1\
+              !\Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_0\ * 
+              \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_1\
         );
         Output = Net_14 (fanout=1)
 
@@ -638,7 +598,7 @@ Design Equations
         Total # of inputs        : 2
         Total # of product terms : 2
         List of special equations: 
-            Clock  = (Net_242) => Global
+            Clock  = (Net_674) => Global
             Clock Enable: True
         Main Equation            : 2 pterms
         (
@@ -651,7 +611,7 @@ Design Equations
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
-            Clock  = (Net_242) => Global
+            Clock  = (Net_674) => Global
             Clock Enable: True
         Main Equation            : 1 pterm
         (
@@ -671,35 +631,35 @@ Design Equations
         );
         Output = Net_65 (fanout=1)
 
-    MacroCell: Name=\SW3_Debounce:DEBOUNCER[0]:d_sync_0\, Mode=(D-Register)
+    MacroCell: Name=\Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_0\, Mode=(D-Register)
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
-            Clock  = (Net_242) => Global
+            Clock  = (Net_674) => Global
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              Net_570_SYNCOUT
+              Net_665_SYNCOUT
         );
-        Output = \SW3_Debounce:DEBOUNCER[0]:d_sync_0\ (fanout=2)
+        Output = \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_0\ (fanout=2)
 
-    MacroCell: Name=\SW3_Debounce:DEBOUNCER[0]:d_sync_1\, Mode=(D-Register)
+    MacroCell: Name=\Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_1\, Mode=(D-Register)
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
-            Clock  = (Net_242) => Global
+            Clock  = (Net_674) => Global
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \SW3_Debounce:DEBOUNCER[0]:d_sync_0\
+              \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_0\
         );
-        Output = \SW3_Debounce:DEBOUNCER[0]:d_sync_1\ (fanout=1)
+        Output = \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_1\ (fanout=1)
 
     MacroCell: Name=\Vbus_Debounce:DEBOUNCER[0]:d_sync_1\, Mode=(D-Register)
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
-            Clock  = (Net_242) => Global
+            Clock  = (Net_674) => Global
             Clock Enable: True
         Main Equation            : 1 pterm
         (
@@ -729,10 +689,10 @@ Design Equations
     Sync listing
     ------------------------------------------------------------
 
-    synccell: Name =SW_3(0)_SYNC
+    synccell: Name =Sample(0)_SYNC
         PORT MAP (
-            in => Net_570 ,
-            out => Net_570_SYNCOUT ,
+            in => Net_665 ,
+            out => Net_665_SYNCOUT ,
             clock => ClockBlock_BUS_CLK );
         Clock Polarity: Active High
         Clock Enable: True
@@ -856,7 +816,7 @@ Resource Type                 : Used : Free :  Max :  % Used
 ============================================================
 Digital clock dividers        :    3 :    5 :    8 :  37.50%
 Analog clock dividers         :    1 :    3 :    4 :  25.00%
-Pins                          :   11 :   61 :   72 :  15.28%
+Pins                          :   10 :   62 :   72 :  13.89%
 UDB Macrocells                :    8 :  184 :  192 :   4.17%
 UDB Unique Pterms             :    8 :  376 :  384 :   2.08%
 UDB Total Pterms              :    8 :      :      : 
@@ -882,16 +842,15 @@ LCD Fixed Blocks              :    0 :    1 :    1 :   0.00%
 EMIF Fixed Blocks             :    0 :    1 :    1 :   0.00%
 LPF Fixed Blocks              :    0 :    2 :    2 :   0.00%
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.068ms
+Technology Mapping: Elapsed time ==> 0s.046ms
 Info: mpr.M0037: Unused pieces of the design have been optimized out. See the Tech mapping section of the report file for details. (App=cydsfit)
-Tech mapping phase: Elapsed time ==> 0s.222ms
+Tech mapping phase: Elapsed time ==> 0s.203ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 Info: apr.M0002: Analog signal "\ADC:Net_690\" is connected to one terminal only. (App=cydsfit)
 Initial Analog Placement Results:
-IO_2@[IOP=(0)][IoId=(2)] : EEPROM_LED(0) (fixed)
 IO_0@[IOP=(0)][IoId=(0)] : LED(0) (fixed)
-IO_5@[IOP=(15)][IoId=(5)] : SW_3(0) (fixed)
+IO_5@[IOP=(15)][IoId=(5)] : Sample(0) (fixed)
 IO_7@[IOP=(0)][IoId=(7)] : Sensor_VIn(0) (fixed)
 IO_1@[IOP=(0)][IoId=(1)] : USB_LED(0) (fixed)
 IO_0@[IOP=(6)][IoId=(0)] : Vbus(0) (fixed)
@@ -901,9 +860,8 @@ DSM[0]@[FFB(DSM,0)] : \ADC:DSM\
 Vref[6]@[FFB(Vref,6)] : \ADC:vRef_2\
 USB[0]@[FFB(USB,0)] : \USBUART:USB\
 Analog Placement Results:
-IO_2@[IOP=(0)][IoId=(2)] : EEPROM_LED(0) (fixed)
 IO_0@[IOP=(0)][IoId=(0)] : LED(0) (fixed)
-IO_5@[IOP=(15)][IoId=(5)] : SW_3(0) (fixed)
+IO_5@[IOP=(15)][IoId=(5)] : Sample(0) (fixed)
 IO_7@[IOP=(0)][IoId=(7)] : Sensor_VIn(0) (fixed)
 IO_1@[IOP=(0)][IoId=(1)] : USB_LED(0) (fixed)
 IO_0@[IOP=(6)][IoId=(0)] : Vbus(0) (fixed)
@@ -913,7 +871,7 @@ DSM[0]@[FFB(DSM,0)] : \ADC:DSM\
 Vref[6]@[FFB(Vref,6)] : \ADC:vRef_2\
 USB[0]@[FFB(USB,0)] : \USBUART:USB\
 
-Analog Placement phase: Elapsed time ==> 0s.051ms
+Analog Placement phase: Elapsed time ==> 0s.046ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
 Analog Routing phase: Elapsed time ==> 0s.000ms
@@ -994,7 +952,7 @@ Dump of CyP35AnalogRoutingResultsDB
 IsVddaHalfUsedForComp = False
 IsVddaHalfUsedForSar0 = False
 IsVddaHalfUsedForSar1 = False
-Analog Code Generation phase: Elapsed time ==> 0s.580ms
+Analog Code Generation phase: Elapsed time ==> 0s.562ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="PLD Packing">
@@ -1025,7 +983,7 @@ PLD Packing: Elapsed time ==> 0s.000ms
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.051ms
+Partitioning: Elapsed time ==> 0s.031ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Simulated Annealing">
 Annealing: Elapsed time ==> 0s.000ms
@@ -1111,7 +1069,7 @@ LAB@[UDB=(3,4)][LB=0] #macrocells=4, #inputs=5, #pterms=5
         Total # of inputs        : 2
         Total # of product terms : 2
         List of special equations: 
-            Clock  = (Net_242) => Global
+            Clock  = (Net_674) => Global
             Clock Enable: True
         Main Equation            : 2 pterms
         (
@@ -1127,7 +1085,7 @@ LAB@[UDB=(3,4)][LB=0] #macrocells=4, #inputs=5, #pterms=5
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
-            Clock  = (Net_242) => Global
+            Clock  = (Net_674) => Global
             Clock Enable: True
         Main Equation            : 1 pterm
         (
@@ -1142,7 +1100,7 @@ LAB@[UDB=(3,4)][LB=0] #macrocells=4, #inputs=5, #pterms=5
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
-            Clock  = (Net_242) => Global
+            Clock  = (Net_674) => Global
             Clock Enable: True
         Main Equation            : 1 pterm
         (
@@ -1157,12 +1115,12 @@ LAB@[UDB=(3,4)][LB=0] #macrocells=4, #inputs=5, #pterms=5
         Total # of inputs        : 2
         Total # of product terms : 1
         List of special equations: 
-            Clock  = (Net_242) => Global
+            Clock  = (Net_674) => Global
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              !\SW3_Debounce:DEBOUNCER[0]:d_sync_0\ * 
-              \SW3_Debounce:DEBOUNCER[0]:d_sync_1\
+              !\Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_0\ * 
+              \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_1\
         );
         Output = Net_14 (fanout=1)
         Properties               : 
@@ -1172,32 +1130,32 @@ LAB@[UDB=(3,4)][LB=0] #macrocells=4, #inputs=5, #pterms=5
 
 LAB@[UDB=(3,4)][LB=1] #macrocells=2, #inputs=2, #pterms=2
 {
-    [McSlotId=0]:     MacroCell: Name=\SW3_Debounce:DEBOUNCER[0]:d_sync_1\, Mode=(D-Register) @ [UDB=(3,4)][LB=1][MC=0]
+    [McSlotId=0]:     MacroCell: Name=\Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_1\, Mode=(D-Register) @ [UDB=(3,4)][LB=1][MC=0]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
-            Clock  = (Net_242) => Global
+            Clock  = (Net_674) => Global
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \SW3_Debounce:DEBOUNCER[0]:d_sync_0\
+              \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_0\
         );
-        Output = \SW3_Debounce:DEBOUNCER[0]:d_sync_1\ (fanout=1)
+        Output = \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_1\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\SW3_Debounce:DEBOUNCER[0]:d_sync_0\, Mode=(D-Register) @ [UDB=(3,4)][LB=1][MC=1]
+    [McSlotId=1]:     MacroCell: Name=\Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_0\, Mode=(D-Register) @ [UDB=(3,4)][LB=1][MC=1]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
-            Clock  = (Net_242) => Global
+            Clock  = (Net_674) => Global
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              Net_570_SYNCOUT
+              Net_665_SYNCOUT
         );
-        Output = \SW3_Debounce:DEBOUNCER[0]:d_sync_0\ (fanout=2)
+        Output = \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_0\ (fanout=2)
         Properties               : 
         {
         }
@@ -1206,10 +1164,10 @@ LAB@[UDB=(3,4)][LB=1] #macrocells=2, #inputs=2, #pterms=2
     [McSlotId=3]: (empty)
 }
 
-synccell: Name =SW_3(0)_SYNC
+synccell: Name =Sample(0)_SYNC
     PORT MAP (
-        in => Net_570 ,
-        out => Net_570_SYNCOUT ,
+        in => Net_665 ,
+        out => Net_665_SYNCOUT ,
         clock => ClockBlock_BUS_CLK );
     Properties:
     {
@@ -1400,45 +1358,6 @@ Pin : Name = USB_LED(0)
     {
     }
 
-[IoId=2]: 
-Pin : Name = EEPROM_LED(0)
-    Attributes:
-        In Group/Port: True
-        In Sync Option: AUTO
-        Out Sync Option: NOSYNC
-        Interrupt generated: False
-        Interrupt mode: NONE
-        Drive mode: CMOS_OUT
-        VTrip: EITHER
-        Slew: FAST
-        Input Sync needed: False
-        Output Sync needed: False
-        SC shield enabled: False
-        POR State: ANY
-        LCD Mode: COMMON
-        Register Mode: RegComb
-        CaSense Mode: NEITHER
-        Treat as pin: True
-        Is OE Registered: False
-        Uses Analog: False
-        Can contain Digital: True
-        Is SIO: False
-        SIO Output Buf: NONREGULATED
-        SIO Input Buf: SINGLE_ENDED
-        SIO HiFreq: LOW
-        SIO Hyst: DISABLED
-        SIO Vtrip: MULTIPLIER_0_5
-        SIO RefSel: VCC_IO
-        Required Capabilitites: DIGITAL
-        Initial Value: 0
-        IO Voltage: 0
-    PORT MAP (
-        pa_out => EEPROM_LED(0)__PA ,
-        pad => EEPROM_LED(0)_PAD );
-    Properties:
-    {
-    }
-
 [IoId=7]: 
 Pin : Name = Sensor_VIn(0)
     Attributes:
@@ -1590,7 +1509,7 @@ Port 15 generates interrupt for logical port:
         }
     and contains the following IO cells:
 [IoId=5]: 
-Pin : Name = SW_3(0)
+Pin : Name = Sample(0)
     Attributes:
         In Group/Port: True
         In Sync Option: SYNC
@@ -1622,9 +1541,9 @@ Pin : Name = SW_3(0)
         Initial Value: 1
         IO Voltage: 0
     PORT MAP (
-        pa_out => SW_3(0)__PA ,
-        fb => Net_570 ,
-        pad => SW_3(0)_PAD );
+        pa_out => Sample(0)__PA ,
+        fb => Net_665 ,
+        pad => Sample(0)_PAD );
     Properties:
     {
     }
@@ -1729,8 +1648,8 @@ Fixed Function block hod @ [FFB(Clock,0)]:
             imo => ClockBlock_IMO ,
             dclk_glb_0 => \ADC:Net_93\ ,
             dclk_0 => \ADC:Net_93_local\ ,
-            dclk_glb_1 => Net_242 ,
-            dclk_1 => Net_242_local ,
+            dclk_glb_1 => Net_674 ,
+            dclk_1 => Net_674_local ,
             dclk_glb_2 => Net_72 ,
             dclk_2 => Net_72_local ,
             aclk_glb_0 => \ADC:Net_488\ ,
@@ -1798,13 +1717,13 @@ Fixed Function block hod @ [FFB(SC,0)]: empty
 Fixed Function block hod @ [FFB(SPC,0)]: empty
 Fixed Function block hod @ [FFB(Timer,0)]: 
     Timer Block @ [FFB(Timer,0)]: 
-    timercell: Name =\Blink_Timer:TimerHW\
+    timercell: Name =\EEPROM_Blink_Timer:TimerHW\
         PORT MAP (
             clock => Net_72 ,
             enable => __ONE__ ,
             tc => Net_146 ,
-            cmp => \Blink_Timer:Net_261\ ,
-            irq => \Blink_Timer:Net_57\ );
+            cmp => \EEPROM_Blink_Timer:Net_261\ ,
+            irq => \EEPROM_Blink_Timer:Net_57\ );
         Properties:
         {
             cy_registers = ""
@@ -1887,45 +1806,44 @@ Port | Pin | Fixed |      Type |       Drive Mode |            Name | Connection
 -----+-----+-------+-----------+------------------+-----------------+---------------------------
    0 |   0 |     * |      NONE |         CMOS_OUT |          LED(0) | In(Net_65)
      |   1 |     * |      NONE |         CMOS_OUT |      USB_LED(0) | In(Net_556)
-     |   2 |     * |      NONE |         CMOS_OUT |   EEPROM_LED(0) | 
      |   7 |     * |      NONE |      HI_Z_ANALOG |   Sensor_VIn(0) | Analog(Net_564)
 -----+-----+-------+-----------+------------------+-----------------+---------------------------
    6 |   0 |     * |      NONE |    RES_PULL_DOWN |         Vbus(0) | FB(Net_249)
 -----+-----+-------+-----------+------------------+-----------------+---------------------------
-  15 |   5 |     * |      NONE |      RES_PULL_UP |         SW_3(0) | FB(Net_570)
+  15 |   5 |     * |      NONE |      RES_PULL_UP |       Sample(0) | FB(Net_665)
      |   6 |     * |   FALLING |      HI_Z_ANALOG | \USBUART:Dp(0)\ | Analog(\USBUART:Net_1000\)
      |   7 |     * |      NONE |      HI_Z_ANALOG | \USBUART:Dm(0)\ | Analog(\USBUART:Net_597\)
 ------------------------------------------------------------------------------------------------
 </CYPRESSTAG>
 </CYPRESSTAG>
 </CYPRESSTAG>
-Digital component placer commit/Report: Elapsed time ==> 0s.000ms
-Digital Placement phase: Elapsed time ==> 1s.127ms
+Digital component placer commit/Report: Elapsed time ==> 0s.015ms
+Digital Placement phase: Elapsed time ==> 1s.328ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 Routing successful.
-Digital Routing phase: Elapsed time ==> 1s.911ms
+Digital Routing phase: Elapsed time ==> 1s.796ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream and API generation">
-Bitstream and API generation phase: Elapsed time ==> 0s.215ms
+Bitstream and API generation phase: Elapsed time ==> 0s.187ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream verification">
-Bitstream verification phase: Elapsed time ==> 0s.092ms
+Bitstream verification phase: Elapsed time ==> 0s.078ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Warning: sta.M0021: Erebus_Sensor_timing.html: Warning-1350: Asynchronous path(s) exist from "timer_clock(fixed-function)" to "timer_clock". See the timing report for details. (File=C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\Erebus_Sensor_timing.html)
 Timing report is in Erebus_Sensor_timing.html.
-Static timing analysis phase: Elapsed time ==> 0s.292ms
+Static timing analysis phase: Elapsed time ==> 0s.546ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
 Data reporting phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.276ms
+Design database save phase: Elapsed time ==> 0s.234ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 4s.802ms
+cydsfit: Elapsed time ==> 5s.031ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 4s.837ms
-API generation phase: Elapsed time ==> 1s.676ms
-Dependency generation phase: Elapsed time ==> 0s.015ms
+Fitter phase: Elapsed time ==> 5s.078ms
+API generation phase: Elapsed time ==> 1s.796ms
+Dependency generation phase: Elapsed time ==> 0s.000ms
 Cleanup phase: Elapsed time ==> 0s.000ms

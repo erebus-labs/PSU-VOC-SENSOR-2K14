@@ -24,27 +24,22 @@
 
     // MACROS
     
-    #define EE_ADDR (unsigned char*) CYDEV_EE_BASE
     #define EEPROM_ROWS CYDEV_EE_SIZE / CYDEV_EEPROM_ROW_SIZE
     #define SECTOR_NUMBER 0
-    #define NUM_VARS 1 // the number of recognized user variables
+
+    // EEPROM Array index of each user variable 
+    #define EE_SAMPLE_UNIT      0x0000
+    #define EE_SAMPLE_INTERVAL  EE_SAMPLE_UNIT + 2
+    #define EE_SENSOR           EE_SAMPLE_INTERVAL +2
     
-    // User Variable Locations in EEPROM
-    
-    // The index and size of each user variable are defined here
-    
-    #define BLINK_RATE    0x0000
-    
-    // EEPROM_BYTES_USED is boring for now - as more variables are
-    // added, it will be calculated based on previous macros
-    #define EEPROM_BYTES_USED BLINK_RATE + 2
+    // Total number of bytes used in EEPROM
+    #define EEPROM_BYTES_USED EE_SENSOR + 2
 
     // Function Prototypes
     
     uint16 get_variable(uint16 index);
     void update_variable(uint16 index, uint16 value);
     
-
 #endif // ifndef _EEPROM_ACCESS_H_
 
 /* [] END OF FILE */

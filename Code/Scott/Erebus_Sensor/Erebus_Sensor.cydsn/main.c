@@ -13,41 +13,32 @@
 #include <stdlib.h>
 #include "main.h"
 
-
-
-const uint8 CYCODE MemoryLocation[EmEEPROMSize]; // Errors caused by the include of main.h which includes the externs and static
+const uint8 CYCODE MemoryLocation[EmEEPROMSize]; 
 volatile uint8* TailPtr = (uint8*) MemoryLocation;
 
-void main()
+int main()
 {
     /* Initialization*/
-    uint16 blink_rate = 0;
     
     // Variable declarations
 
-    
     // Enable and start EEPROM
     EEPROM_R_Start();
+    
+    // When sleep functions are implemented, use the following calls to retrieve EEPROM vars:
+    // sample_unit = get_variable(EE_SAMPLE_UNIT);
+    // sample_interval = get_variable(EE_SAMPLE_INTERVAL);
          
     // Enable global interrupts
     CyGlobalIntEnable;
+    
+    // Enable individual interrupts as necessary
     Vbus_IRQ_Start();
     TakeSample_IRQ_Start();
     
-//    Blink_Timer_WritePeriod(CYDEV_EE_BASE[EEPROM_Address.blink_rate]);
+    for(;;){}
     
-    // Start LED Blinking
-    
-    Blink_Timer_Start();  
-    blink_rate = get_variable(BLINK_RATE);
-    Blink_Timer_WritePeriod(blink_rate);
-    
-    for(;;)
-    {
- 
-    }
-    
-    return;
+    return (0);
 }
 
 /* [] END OF FILE */

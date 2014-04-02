@@ -25,7 +25,7 @@
 #include <USBUART_hid.h>
 #include <USBUART_midi.h>
 #include <USBUART_pvt.h>
-#include <Blink_Timer.h>
+#include <EEPROM_Blink_Timer.h>
 #include <LED.h>
 #include <LED_aliases.h>
 #include <timer_clock.h>
@@ -36,15 +36,13 @@
 #include <debounce_clock.h>
 #include <USB_LED.h>
 #include <USB_LED_aliases.h>
-#include <EEPROM_LED.h>
-#include <EEPROM_LED_aliases.h>
 #include <Em_EEPROM.h>
 #include <Sensor_VIn.h>
 #include <Sensor_VIn_aliases.h>
 #include <ADC.h>
 #include <TakeSample_IRQ.h>
-#include <SW_3.h>
-#include <SW_3_aliases.h>
+#include <Sample.h>
+#include <Sample_aliases.h>
 #include <USBUART_Dm.h>
 #include <USBUART_Dm_aliases.h>
 #include <USBUART_Dp.h>

@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: EEPROM_LED.c  
+* File Name: Sample.c  
 * Version 1.90
 *
 * Description:
@@ -15,11 +15,11 @@
 *******************************************************************************/
 
 #include "cytypes.h"
-#include "EEPROM_LED.h"
+#include "Sample.h"
 
 
 /*******************************************************************************
-* Function Name: EEPROM_LED_Write
+* Function Name: Sample_Write
 ********************************************************************************
 *
 * Summary:
@@ -32,15 +32,15 @@
 *  None 
 *  
 *******************************************************************************/
-void EEPROM_LED_Write(uint8 value) 
+void Sample_Write(uint8 value) 
 {
-    uint8 staticBits = (EEPROM_LED_DR & (uint8)(~EEPROM_LED_MASK));
-    EEPROM_LED_DR = staticBits | ((uint8)(value << EEPROM_LED_SHIFT) & EEPROM_LED_MASK);
+    uint8 staticBits = (Sample_DR & (uint8)(~Sample_MASK));
+    Sample_DR = staticBits | ((uint8)(value << Sample_SHIFT) & Sample_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: EEPROM_LED_SetDriveMode
+* Function Name: Sample_SetDriveMode
 ********************************************************************************
 *
 * Summary:
@@ -53,14 +53,14 @@ void EEPROM_LED_Write(uint8 value)
 *  None
 *
 *******************************************************************************/
-void EEPROM_LED_SetDriveMode(uint8 mode) 
+void Sample_SetDriveMode(uint8 mode) 
 {
-	CyPins_SetPinDriveMode(EEPROM_LED_0, mode);
+	CyPins_SetPinDriveMode(Sample_0, mode);
 }
 
 
 /*******************************************************************************
-* Function Name: EEPROM_LED_Read
+* Function Name: Sample_Read
 ********************************************************************************
 *
 * Summary:
@@ -74,17 +74,17 @@ void EEPROM_LED_SetDriveMode(uint8 mode)
 *  Returns the current value of the Digital Port as a right justified number
 *  
 * Note:
-*  Macro EEPROM_LED_ReadPS calls this function. 
+*  Macro Sample_ReadPS calls this function. 
 *  
 *******************************************************************************/
-uint8 EEPROM_LED_Read(void) 
+uint8 Sample_Read(void) 
 {
-    return (EEPROM_LED_PS & EEPROM_LED_MASK) >> EEPROM_LED_SHIFT;
+    return (Sample_PS & Sample_MASK) >> Sample_SHIFT;
 }
 
 
 /*******************************************************************************
-* Function Name: EEPROM_LED_ReadDataReg
+* Function Name: Sample_ReadDataReg
 ********************************************************************************
 *
 * Summary:
@@ -97,17 +97,17 @@ uint8 EEPROM_LED_Read(void)
 *  Returns the current value assigned to the Digital Port's data output register
 *  
 *******************************************************************************/
-uint8 EEPROM_LED_ReadDataReg(void) 
+uint8 Sample_ReadDataReg(void) 
 {
-    return (EEPROM_LED_DR & EEPROM_LED_MASK) >> EEPROM_LED_SHIFT;
+    return (Sample_DR & Sample_MASK) >> Sample_SHIFT;
 }
 
 
 /* If Interrupts Are Enabled for this Pins component */ 
-#if defined(EEPROM_LED_INTSTAT) 
+#if defined(Sample_INTSTAT) 
 
     /*******************************************************************************
-    * Function Name: EEPROM_LED_ClearInterrupt
+    * Function Name: Sample_ClearInterrupt
     ********************************************************************************
     *
     * Summary:
@@ -121,9 +121,9 @@ uint8 EEPROM_LED_ReadDataReg(void)
     *  Returns the value of the interrupt status register
     *  
     *******************************************************************************/
-    uint8 EEPROM_LED_ClearInterrupt(void) 
+    uint8 Sample_ClearInterrupt(void) 
     {
-        return (EEPROM_LED_INTSTAT & EEPROM_LED_MASK) >> EEPROM_LED_SHIFT;
+        return (Sample_INTSTAT & Sample_MASK) >> Sample_SHIFT;
     }
 
 #endif /* If Interrupts Are Enabled for this Pins component */ 

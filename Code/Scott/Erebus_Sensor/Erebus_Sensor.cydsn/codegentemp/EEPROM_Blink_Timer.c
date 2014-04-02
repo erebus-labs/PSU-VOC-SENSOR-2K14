@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: Blink_Timer.c
+* File Name: EEPROM_Blink_Timer.c
 * Version 2.50
 *
 * Description:
@@ -21,13 +21,13 @@
 * the software package with which this file was provided.
 ********************************************************************************/
 
-#include "Blink_Timer.h"
+#include "EEPROM_Blink_Timer.h"
 
-uint8 Blink_Timer_initVar = 0u;
+uint8 EEPROM_Blink_Timer_initVar = 0u;
 
 
 /*******************************************************************************
-* Function Name: Blink_Timer_Init
+* Function Name: EEPROM_Blink_Timer_Init
 ********************************************************************************
 *
 * Summary:
@@ -40,130 +40,130 @@ uint8 Blink_Timer_initVar = 0u;
 *  void
 *
 *******************************************************************************/
-void Blink_Timer_Init(void) 
+void EEPROM_Blink_Timer_Init(void) 
 {
-    #if(!Blink_Timer_UsingFixedFunction)
+    #if(!EEPROM_Blink_Timer_UsingFixedFunction)
             /* Interrupt State Backup for Critical Region*/
-            uint8 Blink_Timer_interruptState;
+            uint8 EEPROM_Blink_Timer_interruptState;
     #endif /* Interrupt state back up for Fixed Function only */
 
-    #if (Blink_Timer_UsingFixedFunction)
+    #if (EEPROM_Blink_Timer_UsingFixedFunction)
         /* Clear all bits but the enable bit (if it's already set) for Timer operation */
-        Blink_Timer_CONTROL &= Blink_Timer_CTRL_ENABLE;
+        EEPROM_Blink_Timer_CONTROL &= EEPROM_Blink_Timer_CTRL_ENABLE;
 
         /* Clear the mode bits for continuous run mode */
         #if (CY_PSOC5A)
-            Blink_Timer_CONTROL2 &= ((uint8)(~Blink_Timer_CTRL_MODE_MASK));
+            EEPROM_Blink_Timer_CONTROL2 &= ((uint8)(~EEPROM_Blink_Timer_CTRL_MODE_MASK));
         #endif /* Clear bits in CONTROL2 only in PSOC5A */
 
         #if (CY_PSOC3 || CY_PSOC5LP)
-            Blink_Timer_CONTROL3 &= ((uint8)(~Blink_Timer_CTRL_MODE_MASK));
+            EEPROM_Blink_Timer_CONTROL3 &= ((uint8)(~EEPROM_Blink_Timer_CTRL_MODE_MASK));
         #endif /* CONTROL3 register exists only in PSoC3 OR PSoC5LP */
 
         /* Check if One Shot mode is enabled i.e. RunMode !=0*/
-        #if (Blink_Timer_RunModeUsed != 0x0u)
+        #if (EEPROM_Blink_Timer_RunModeUsed != 0x0u)
             /* Set 3rd bit of Control register to enable one shot mode */
-            Blink_Timer_CONTROL |= 0x04u;
+            EEPROM_Blink_Timer_CONTROL |= 0x04u;
         #endif /* One Shot enabled only when RunModeUsed is not Continuous*/
 
-        #if (Blink_Timer_RunModeUsed == 2)
+        #if (EEPROM_Blink_Timer_RunModeUsed == 2)
             #if (CY_PSOC5A)
                 /* Set last 2 bits of control2 register if one shot(halt on
                 interrupt) is enabled*/
-                Blink_Timer_CONTROL2 |= 0x03u;
+                EEPROM_Blink_Timer_CONTROL2 |= 0x03u;
             #endif /* Set One-Shot Halt on Interrupt bit in CONTROL2 for PSoC5A */
 
             #if (CY_PSOC3 || CY_PSOC5LP)
                 /* Set last 2 bits of control3 register if one shot(halt on
                 interrupt) is enabled*/
-                Blink_Timer_CONTROL3 |= 0x03u;
+                EEPROM_Blink_Timer_CONTROL3 |= 0x03u;
             #endif /* Set One-Shot Halt on Interrupt bit in CONTROL3 for PSoC3 or PSoC5LP */
 
         #endif /* Remove section if One Shot Halt on Interrupt is not enabled */
 
-        #if (Blink_Timer_UsingHWEnable != 0)
+        #if (EEPROM_Blink_Timer_UsingHWEnable != 0)
             #if (CY_PSOC5A)
                 /* Set the default Run Mode of the Timer to Continuous */
-                Blink_Timer_CONTROL2 |= Blink_Timer_CTRL_MODE_PULSEWIDTH;
+                EEPROM_Blink_Timer_CONTROL2 |= EEPROM_Blink_Timer_CTRL_MODE_PULSEWIDTH;
             #endif /* Set Continuous Run Mode in CONTROL2 for PSoC5A */
 
             #if (CY_PSOC3 || CY_PSOC5LP)
                 /* Clear and Set ROD and COD bits of CFG2 register */
-                Blink_Timer_CONTROL3 &= ((uint8)(~Blink_Timer_CTRL_RCOD_MASK));
-                Blink_Timer_CONTROL3 |= Blink_Timer_CTRL_RCOD;
+                EEPROM_Blink_Timer_CONTROL3 &= ((uint8)(~EEPROM_Blink_Timer_CTRL_RCOD_MASK));
+                EEPROM_Blink_Timer_CONTROL3 |= EEPROM_Blink_Timer_CTRL_RCOD;
 
                 /* Clear and Enable the HW enable bit in CFG2 register */
-                Blink_Timer_CONTROL3 &= ((uint8)(~Blink_Timer_CTRL_ENBL_MASK));
-                Blink_Timer_CONTROL3 |= Blink_Timer_CTRL_ENBL;
+                EEPROM_Blink_Timer_CONTROL3 &= ((uint8)(~EEPROM_Blink_Timer_CTRL_ENBL_MASK));
+                EEPROM_Blink_Timer_CONTROL3 |= EEPROM_Blink_Timer_CTRL_ENBL;
 
                 /* Set the default Run Mode of the Timer to Continuous */
-                Blink_Timer_CONTROL3 |= Blink_Timer_CTRL_MODE_CONTINUOUS;
+                EEPROM_Blink_Timer_CONTROL3 |= EEPROM_Blink_Timer_CTRL_MODE_CONTINUOUS;
             #endif /* Set Continuous Run Mode in CONTROL3 for PSoC3ES3 or PSoC5A */
 
         #endif /* Configure Run Mode with hardware enable */
 
         /* Clear and Set SYNCTC and SYNCCMP bits of RT1 register */
-        Blink_Timer_RT1 &= ((uint8)(~Blink_Timer_RT1_MASK));
-        Blink_Timer_RT1 |= Blink_Timer_SYNC;
+        EEPROM_Blink_Timer_RT1 &= ((uint8)(~EEPROM_Blink_Timer_RT1_MASK));
+        EEPROM_Blink_Timer_RT1 |= EEPROM_Blink_Timer_SYNC;
 
         /*Enable DSI Sync all all inputs of the Timer*/
-        Blink_Timer_RT1 &= ((uint8)(~Blink_Timer_SYNCDSI_MASK));
-        Blink_Timer_RT1 |= Blink_Timer_SYNCDSI_EN;
+        EEPROM_Blink_Timer_RT1 &= ((uint8)(~EEPROM_Blink_Timer_SYNCDSI_MASK));
+        EEPROM_Blink_Timer_RT1 |= EEPROM_Blink_Timer_SYNCDSI_EN;
 
         /* Set the IRQ to use the status register interrupts */
-        Blink_Timer_CONTROL2 |= Blink_Timer_CTRL2_IRQ_SEL;
+        EEPROM_Blink_Timer_CONTROL2 |= EEPROM_Blink_Timer_CTRL2_IRQ_SEL;
     #endif /* Configuring registers of fixed function implementation */
 
     /* Set Initial values from Configuration */
-    Blink_Timer_WritePeriod(Blink_Timer_INIT_PERIOD);
-    Blink_Timer_WriteCounter(Blink_Timer_INIT_PERIOD);
+    EEPROM_Blink_Timer_WritePeriod(EEPROM_Blink_Timer_INIT_PERIOD);
+    EEPROM_Blink_Timer_WriteCounter(EEPROM_Blink_Timer_INIT_PERIOD);
 
-    #if (Blink_Timer_UsingHWCaptureCounter)/* Capture counter is enabled */
-        Blink_Timer_CAPTURE_COUNT_CTRL |= Blink_Timer_CNTR_ENABLE;
-        Blink_Timer_SetCaptureCount(Blink_Timer_INIT_CAPTURE_COUNT);
+    #if (EEPROM_Blink_Timer_UsingHWCaptureCounter)/* Capture counter is enabled */
+        EEPROM_Blink_Timer_CAPTURE_COUNT_CTRL |= EEPROM_Blink_Timer_CNTR_ENABLE;
+        EEPROM_Blink_Timer_SetCaptureCount(EEPROM_Blink_Timer_INIT_CAPTURE_COUNT);
     #endif /* Configure capture counter value */
 
-    #if (!Blink_Timer_UsingFixedFunction)
-        #if (Blink_Timer_SoftwareCaptureMode)
-            Blink_Timer_SetCaptureMode(Blink_Timer_INIT_CAPTURE_MODE);
+    #if (!EEPROM_Blink_Timer_UsingFixedFunction)
+        #if (EEPROM_Blink_Timer_SoftwareCaptureMode)
+            EEPROM_Blink_Timer_SetCaptureMode(EEPROM_Blink_Timer_INIT_CAPTURE_MODE);
         #endif /* Set Capture Mode for UDB implementation if capture mode is software controlled */
 
-        #if (Blink_Timer_SoftwareTriggerMode)
-            if (0u == (Blink_Timer_CONTROL & Blink_Timer__B_TIMER__TM_SOFTWARE))
+        #if (EEPROM_Blink_Timer_SoftwareTriggerMode)
+            if (0u == (EEPROM_Blink_Timer_CONTROL & EEPROM_Blink_Timer__B_TIMER__TM_SOFTWARE))
             {
-                Blink_Timer_SetTriggerMode(Blink_Timer_INIT_TRIGGER_MODE);
+                EEPROM_Blink_Timer_SetTriggerMode(EEPROM_Blink_Timer_INIT_TRIGGER_MODE);
             }
         #endif /* Set trigger mode for UDB Implementation if trigger mode is software controlled */
 
         /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region critical*/
         /* Enter Critical Region*/
-        Blink_Timer_interruptState = CyEnterCriticalSection();
+        EEPROM_Blink_Timer_interruptState = CyEnterCriticalSection();
 
         /* Use the interrupt output of the status register for IRQ output */
-        Blink_Timer_STATUS_AUX_CTRL |= Blink_Timer_STATUS_ACTL_INT_EN_MASK;
+        EEPROM_Blink_Timer_STATUS_AUX_CTRL |= EEPROM_Blink_Timer_STATUS_ACTL_INT_EN_MASK;
 
         /* Exit Critical Region*/
-        CyExitCriticalSection(Blink_Timer_interruptState);
+        CyExitCriticalSection(EEPROM_Blink_Timer_interruptState);
 
-        #if (Blink_Timer_EnableTriggerMode)
-            Blink_Timer_EnableTrigger();
+        #if (EEPROM_Blink_Timer_EnableTriggerMode)
+            EEPROM_Blink_Timer_EnableTrigger();
         #endif /* Set Trigger enable bit for UDB implementation in the control register*/
 
-        #if (Blink_Timer_InterruptOnCaptureCount)
-             #if (!Blink_Timer_ControlRegRemoved)
-                Blink_Timer_SetInterruptCount(Blink_Timer_INIT_INT_CAPTURE_COUNT);
+        #if (EEPROM_Blink_Timer_InterruptOnCaptureCount)
+             #if (!EEPROM_Blink_Timer_ControlRegRemoved)
+                EEPROM_Blink_Timer_SetInterruptCount(EEPROM_Blink_Timer_INIT_INT_CAPTURE_COUNT);
             #endif /* Set interrupt count in control register if control register is not removed */
         #endif /*Set interrupt count in UDB implementation if interrupt count feature is checked.*/
 
-        Blink_Timer_ClearFIFO();
+        EEPROM_Blink_Timer_ClearFIFO();
     #endif /* Configure additional features of UDB implementation */
 
-    Blink_Timer_SetInterruptMode(Blink_Timer_INIT_INTERRUPT_MODE);
+    EEPROM_Blink_Timer_SetInterruptMode(EEPROM_Blink_Timer_INIT_INTERRUPT_MODE);
 }
 
 
 /*******************************************************************************
-* Function Name: Blink_Timer_Enable
+* Function Name: EEPROM_Blink_Timer_Enable
 ********************************************************************************
 *
 * Summary:
@@ -176,23 +176,23 @@ void Blink_Timer_Init(void)
 *  void
 *
 *******************************************************************************/
-void Blink_Timer_Enable(void) 
+void EEPROM_Blink_Timer_Enable(void) 
 {
     /* Globally Enable the Fixed Function Block chosen */
-    #if (Blink_Timer_UsingFixedFunction)
-        Blink_Timer_GLOBAL_ENABLE |= Blink_Timer_BLOCK_EN_MASK;
-        Blink_Timer_GLOBAL_STBY_ENABLE |= Blink_Timer_BLOCK_STBY_EN_MASK;
+    #if (EEPROM_Blink_Timer_UsingFixedFunction)
+        EEPROM_Blink_Timer_GLOBAL_ENABLE |= EEPROM_Blink_Timer_BLOCK_EN_MASK;
+        EEPROM_Blink_Timer_GLOBAL_STBY_ENABLE |= EEPROM_Blink_Timer_BLOCK_STBY_EN_MASK;
     #endif /* Set Enable bit for enabling Fixed function timer*/
 
     /* Remove assignment if control register is removed */
-    #if (!Blink_Timer_ControlRegRemoved || Blink_Timer_UsingFixedFunction)
-        Blink_Timer_CONTROL |= Blink_Timer_CTRL_ENABLE;
+    #if (!EEPROM_Blink_Timer_ControlRegRemoved || EEPROM_Blink_Timer_UsingFixedFunction)
+        EEPROM_Blink_Timer_CONTROL |= EEPROM_Blink_Timer_CTRL_ENABLE;
     #endif /* Remove assignment if control register is removed */
 }
 
 
 /*******************************************************************************
-* Function Name: Blink_Timer_Start
+* Function Name: EEPROM_Blink_Timer_Start
 ********************************************************************************
 *
 * Summary:
@@ -207,26 +207,26 @@ void Blink_Timer_Enable(void)
 *  void
 *
 * Global variables:
-*  Blink_Timer_initVar: Is modified when this function is called for the
+*  EEPROM_Blink_Timer_initVar: Is modified when this function is called for the
 *   first time. Is used to ensure that initialization happens only once.
 *
 *******************************************************************************/
-void Blink_Timer_Start(void) 
+void EEPROM_Blink_Timer_Start(void) 
 {
-    if(Blink_Timer_initVar == 0u)
+    if(EEPROM_Blink_Timer_initVar == 0u)
     {
-        Blink_Timer_Init();
+        EEPROM_Blink_Timer_Init();
 
-        Blink_Timer_initVar = 1u;   /* Clear this bit for Initialization */
+        EEPROM_Blink_Timer_initVar = 1u;   /* Clear this bit for Initialization */
     }
 
     /* Enable the Timer */
-    Blink_Timer_Enable();
+    EEPROM_Blink_Timer_Enable();
 }
 
 
 /*******************************************************************************
-* Function Name: Blink_Timer_Stop
+* Function Name: EEPROM_Blink_Timer_Stop
 ********************************************************************************
 *
 * Summary:
@@ -243,23 +243,23 @@ void Blink_Timer_Start(void)
 *               has no effect on the operation of the timer.
 *
 *******************************************************************************/
-void Blink_Timer_Stop(void) 
+void EEPROM_Blink_Timer_Stop(void) 
 {
     /* Disable Timer */
-    #if(!Blink_Timer_ControlRegRemoved || Blink_Timer_UsingFixedFunction)
-        Blink_Timer_CONTROL &= ((uint8)(~Blink_Timer_CTRL_ENABLE));
+    #if(!EEPROM_Blink_Timer_ControlRegRemoved || EEPROM_Blink_Timer_UsingFixedFunction)
+        EEPROM_Blink_Timer_CONTROL &= ((uint8)(~EEPROM_Blink_Timer_CTRL_ENABLE));
     #endif /* Remove assignment if control register is removed */
 
     /* Globally disable the Fixed Function Block chosen */
-    #if (Blink_Timer_UsingFixedFunction)
-        Blink_Timer_GLOBAL_ENABLE &= ((uint8)(~Blink_Timer_BLOCK_EN_MASK));
-        Blink_Timer_GLOBAL_STBY_ENABLE &= ((uint8)(~Blink_Timer_BLOCK_STBY_EN_MASK));
+    #if (EEPROM_Blink_Timer_UsingFixedFunction)
+        EEPROM_Blink_Timer_GLOBAL_ENABLE &= ((uint8)(~EEPROM_Blink_Timer_BLOCK_EN_MASK));
+        EEPROM_Blink_Timer_GLOBAL_STBY_ENABLE &= ((uint8)(~EEPROM_Blink_Timer_BLOCK_STBY_EN_MASK));
     #endif /* Disable global enable for the Timer Fixed function block to stop the Timer*/
 }
 
 
 /*******************************************************************************
-* Function Name: Blink_Timer_SetInterruptMode
+* Function Name: EEPROM_Blink_Timer_SetInterruptMode
 ********************************************************************************
 *
 * Summary:
@@ -275,14 +275,14 @@ void Blink_Timer_Stop(void)
 *  void
 *
 *******************************************************************************/
-void Blink_Timer_SetInterruptMode(uint8 interruptMode) 
+void EEPROM_Blink_Timer_SetInterruptMode(uint8 interruptMode) 
 {
-    Blink_Timer_STATUS_MASK = interruptMode;
+    EEPROM_Blink_Timer_STATUS_MASK = interruptMode;
 }
 
 
 /*******************************************************************************
-* Function Name: Blink_Timer_SoftwareCapture
+* Function Name: EEPROM_Blink_Timer_SoftwareCapture
 ********************************************************************************
 *
 * Summary:
@@ -298,16 +298,16 @@ void Blink_Timer_SetInterruptMode(uint8 interruptMode)
 *  An existing hardware capture could be overwritten.
 *
 *******************************************************************************/
-void Blink_Timer_SoftwareCapture(void) 
+void EEPROM_Blink_Timer_SoftwareCapture(void) 
 {
     /* Generate a software capture by reading the counter register */
-    (void)Blink_Timer_COUNTER_LSB;
+    (void)EEPROM_Blink_Timer_COUNTER_LSB;
     /* Capture Data is now in the FIFO */
 }
 
 
 /*******************************************************************************
-* Function Name: Blink_Timer_ReadStatusRegister
+* Function Name: EEPROM_Blink_Timer_ReadStatusRegister
 ********************************************************************************
 *
 * Summary:
@@ -325,17 +325,17 @@ void Blink_Timer_SoftwareCapture(void)
 *  Status register bits may be clear on read.
 *
 *******************************************************************************/
-uint8   Blink_Timer_ReadStatusRegister(void) 
+uint8   EEPROM_Blink_Timer_ReadStatusRegister(void) 
 {
-    return (Blink_Timer_STATUS);
+    return (EEPROM_Blink_Timer_STATUS);
 }
 
 
-#if (!Blink_Timer_ControlRegRemoved) /* Remove API if control register is removed */
+#if (!EEPROM_Blink_Timer_ControlRegRemoved) /* Remove API if control register is removed */
 
 
 /*******************************************************************************
-* Function Name: Blink_Timer_ReadControlRegister
+* Function Name: EEPROM_Blink_Timer_ReadControlRegister
 ********************************************************************************
 *
 * Summary:
@@ -348,14 +348,14 @@ uint8   Blink_Timer_ReadStatusRegister(void)
 *  The contents of the control register
 *
 *******************************************************************************/
-uint8 Blink_Timer_ReadControlRegister(void) 
+uint8 EEPROM_Blink_Timer_ReadControlRegister(void) 
 {
-    return ((uint8)Blink_Timer_CONTROL);
+    return ((uint8)EEPROM_Blink_Timer_CONTROL);
 }
 
 
 /*******************************************************************************
-* Function Name: Blink_Timer_WriteControlRegister
+* Function Name: EEPROM_Blink_Timer_WriteControlRegister
 ********************************************************************************
 *
 * Summary:
@@ -367,15 +367,15 @@ uint8 Blink_Timer_ReadControlRegister(void)
 * Return:
 *
 *******************************************************************************/
-void Blink_Timer_WriteControlRegister(uint8 control) 
+void EEPROM_Blink_Timer_WriteControlRegister(uint8 control) 
 {
-    Blink_Timer_CONTROL = control;
+    EEPROM_Blink_Timer_CONTROL = control;
 }
 #endif /* Remove API if control register is removed */
 
 
 /*******************************************************************************
-* Function Name: Blink_Timer_ReadPeriod
+* Function Name: EEPROM_Blink_Timer_ReadPeriod
 ********************************************************************************
 *
 * Summary:
@@ -388,18 +388,18 @@ void Blink_Timer_WriteControlRegister(uint8 control)
 *  The present value of the counter.
 *
 *******************************************************************************/
-uint16 Blink_Timer_ReadPeriod(void) 
+uint16 EEPROM_Blink_Timer_ReadPeriod(void) 
 {
-   #if(Blink_Timer_UsingFixedFunction)
-       return ((uint16)CY_GET_REG16(Blink_Timer_PERIOD_LSB_PTR));
+   #if(EEPROM_Blink_Timer_UsingFixedFunction)
+       return ((uint16)CY_GET_REG16(EEPROM_Blink_Timer_PERIOD_LSB_PTR));
    #else
-       return (CY_GET_REG16(Blink_Timer_PERIOD_LSB_PTR));
-   #endif /* (Blink_Timer_UsingFixedFunction) */
+       return (CY_GET_REG16(EEPROM_Blink_Timer_PERIOD_LSB_PTR));
+   #endif /* (EEPROM_Blink_Timer_UsingFixedFunction) */
 }
 
 
 /*******************************************************************************
-* Function Name: Blink_Timer_WritePeriod
+* Function Name: EEPROM_Blink_Timer_WritePeriod
 ********************************************************************************
 *
 * Summary:
@@ -414,19 +414,19 @@ uint16 Blink_Timer_ReadPeriod(void)
 *  void
 *
 *******************************************************************************/
-void Blink_Timer_WritePeriod(uint16 period) 
+void EEPROM_Blink_Timer_WritePeriod(uint16 period) 
 {
-    #if(Blink_Timer_UsingFixedFunction)
+    #if(EEPROM_Blink_Timer_UsingFixedFunction)
         uint16 period_temp = (uint16)period;
-        CY_SET_REG16(Blink_Timer_PERIOD_LSB_PTR, period_temp);
+        CY_SET_REG16(EEPROM_Blink_Timer_PERIOD_LSB_PTR, period_temp);
     #else
-        CY_SET_REG16(Blink_Timer_PERIOD_LSB_PTR, period);
+        CY_SET_REG16(EEPROM_Blink_Timer_PERIOD_LSB_PTR, period);
     #endif /*Write Period value with appropriate resolution suffix depending on UDB or fixed function implementation */
 }
 
 
 /*******************************************************************************
-* Function Name: Blink_Timer_ReadCapture
+* Function Name: EEPROM_Blink_Timer_ReadCapture
 ********************************************************************************
 *
 * Summary:
@@ -439,18 +439,18 @@ void Blink_Timer_WritePeriod(uint16 period)
 *  Present Capture value.
 *
 *******************************************************************************/
-uint16 Blink_Timer_ReadCapture(void) 
+uint16 EEPROM_Blink_Timer_ReadCapture(void) 
 {
-   #if(Blink_Timer_UsingFixedFunction)
-       return ((uint16)CY_GET_REG16(Blink_Timer_CAPTURE_LSB_PTR));
+   #if(EEPROM_Blink_Timer_UsingFixedFunction)
+       return ((uint16)CY_GET_REG16(EEPROM_Blink_Timer_CAPTURE_LSB_PTR));
    #else
-       return (CY_GET_REG16(Blink_Timer_CAPTURE_LSB_PTR));
-   #endif /* (Blink_Timer_UsingFixedFunction) */
+       return (CY_GET_REG16(EEPROM_Blink_Timer_CAPTURE_LSB_PTR));
+   #endif /* (EEPROM_Blink_Timer_UsingFixedFunction) */
 }
 
 
 /*******************************************************************************
-* Function Name: Blink_Timer_WriteCounter
+* Function Name: EEPROM_Blink_Timer_WriteCounter
 ********************************************************************************
 *
 * Summary:
@@ -463,23 +463,23 @@ uint16 Blink_Timer_ReadCapture(void)
 *  void
 *
 *******************************************************************************/
-void Blink_Timer_WriteCounter(uint16 counter) \
+void EEPROM_Blink_Timer_WriteCounter(uint16 counter) \
                                    
 {
-   #if(Blink_Timer_UsingFixedFunction)
+   #if(EEPROM_Blink_Timer_UsingFixedFunction)
         /* This functionality is removed until a FixedFunction HW update to
          * allow this register to be written
          */
-        CY_SET_REG16(Blink_Timer_COUNTER_LSB_PTR, (uint16)counter);
+        CY_SET_REG16(EEPROM_Blink_Timer_COUNTER_LSB_PTR, (uint16)counter);
         
     #else
-        CY_SET_REG16(Blink_Timer_COUNTER_LSB_PTR, counter);
+        CY_SET_REG16(EEPROM_Blink_Timer_COUNTER_LSB_PTR, counter);
     #endif /* Set Write Counter only for the UDB implementation (Write Counter not available in fixed function Timer */
 }
 
 
 /*******************************************************************************
-* Function Name: Blink_Timer_ReadCounter
+* Function Name: EEPROM_Blink_Timer_ReadCounter
 ********************************************************************************
 *
 * Summary:
@@ -492,24 +492,24 @@ void Blink_Timer_WriteCounter(uint16 counter) \
 *  Present compare value.
 *
 *******************************************************************************/
-uint16 Blink_Timer_ReadCounter(void) 
+uint16 EEPROM_Blink_Timer_ReadCounter(void) 
 {
 
     /* Force capture by reading Accumulator */
     /* Must first do a software capture to be able to read the counter */
     /* It is up to the user code to make sure there isn't already captured data in the FIFO */
-    (void)Blink_Timer_COUNTER_LSB;
+    (void)EEPROM_Blink_Timer_COUNTER_LSB;
 
     /* Read the data from the FIFO (or capture register for Fixed Function)*/
-    #if(Blink_Timer_UsingFixedFunction)
-        return ((uint16)CY_GET_REG16(Blink_Timer_CAPTURE_LSB_PTR));
+    #if(EEPROM_Blink_Timer_UsingFixedFunction)
+        return ((uint16)CY_GET_REG16(EEPROM_Blink_Timer_CAPTURE_LSB_PTR));
     #else
-        return (CY_GET_REG16(Blink_Timer_CAPTURE_LSB_PTR));
-    #endif /* (Blink_Timer_UsingFixedFunction) */
+        return (CY_GET_REG16(EEPROM_Blink_Timer_CAPTURE_LSB_PTR));
+    #endif /* (EEPROM_Blink_Timer_UsingFixedFunction) */
 }
 
 
-#if(!Blink_Timer_UsingFixedFunction) /* UDB Specific Functions */
+#if(!EEPROM_Blink_Timer_UsingFixedFunction) /* UDB Specific Functions */
 
 /*******************************************************************************
  * The functions below this point are only available using the UDB
@@ -517,11 +517,11 @@ uint16 Blink_Timer_ReadCounter(void)
  ******************************************************************************/
 
 
-#if (Blink_Timer_SoftwareCaptureMode)
+#if (EEPROM_Blink_Timer_SoftwareCaptureMode)
 
 
 /*******************************************************************************
-* Function Name: Blink_Timer_SetCaptureMode
+* Function Name: EEPROM_Blink_Timer_SetCaptureMode
 ********************************************************************************
 *
 * Summary:
@@ -530,42 +530,42 @@ uint16 Blink_Timer_ReadCounter(void)
 * Parameters:
 *  captureMode: This parameter sets the capture mode of the UDB capture feature
 *  The parameter values are defined using the
-*  #define Blink_Timer__B_TIMER__CM_NONE 0
-#define Blink_Timer__B_TIMER__CM_RISINGEDGE 1
-#define Blink_Timer__B_TIMER__CM_FALLINGEDGE 2
-#define Blink_Timer__B_TIMER__CM_EITHEREDGE 3
-#define Blink_Timer__B_TIMER__CM_SOFTWARE 4
+*  #define EEPROM_Blink_Timer__B_TIMER__CM_NONE 0
+#define EEPROM_Blink_Timer__B_TIMER__CM_RISINGEDGE 1
+#define EEPROM_Blink_Timer__B_TIMER__CM_FALLINGEDGE 2
+#define EEPROM_Blink_Timer__B_TIMER__CM_EITHEREDGE 3
+#define EEPROM_Blink_Timer__B_TIMER__CM_SOFTWARE 4
  identifiers
 *  The following are the possible values of the parameter
-*  Blink_Timer__B_TIMER__CM_NONE        - Set Capture mode to None
-*  Blink_Timer__B_TIMER__CM_RISINGEDGE  - Rising edge of Capture input
-*  Blink_Timer__B_TIMER__CM_FALLINGEDGE - Falling edge of Capture input
-*  Blink_Timer__B_TIMER__CM_EITHEREDGE  - Either edge of Capture input
+*  EEPROM_Blink_Timer__B_TIMER__CM_NONE        - Set Capture mode to None
+*  EEPROM_Blink_Timer__B_TIMER__CM_RISINGEDGE  - Rising edge of Capture input
+*  EEPROM_Blink_Timer__B_TIMER__CM_FALLINGEDGE - Falling edge of Capture input
+*  EEPROM_Blink_Timer__B_TIMER__CM_EITHEREDGE  - Either edge of Capture input
 *
 * Return:
 *  void
 *
 *******************************************************************************/
-void Blink_Timer_SetCaptureMode(uint8 captureMode) 
+void EEPROM_Blink_Timer_SetCaptureMode(uint8 captureMode) 
 {
     /* This must only set to two bits of the control register associated */
-    captureMode = ((uint8)((uint8)captureMode << Blink_Timer_CTRL_CAP_MODE_SHIFT));
-    captureMode &= (Blink_Timer_CTRL_CAP_MODE_MASK);
+    captureMode = ((uint8)((uint8)captureMode << EEPROM_Blink_Timer_CTRL_CAP_MODE_SHIFT));
+    captureMode &= (EEPROM_Blink_Timer_CTRL_CAP_MODE_MASK);
 
     /* Clear the Current Setting */
-    Blink_Timer_CONTROL &= ((uint8)(~Blink_Timer_CTRL_CAP_MODE_MASK));
+    EEPROM_Blink_Timer_CONTROL &= ((uint8)(~EEPROM_Blink_Timer_CTRL_CAP_MODE_MASK));
 
     /* Write The New Setting */
-    Blink_Timer_CONTROL |= captureMode;
+    EEPROM_Blink_Timer_CONTROL |= captureMode;
 }
 #endif /* Remove API if Capture Mode is not Software Controlled */
 
 
-#if (Blink_Timer_SoftwareTriggerMode)
+#if (EEPROM_Blink_Timer_SoftwareTriggerMode)
 
 
 /*******************************************************************************
-* Function Name: Blink_Timer_SetTriggerMode
+* Function Name: EEPROM_Blink_Timer_SetTriggerMode
 ********************************************************************************
 *
 * Summary:
@@ -573,35 +573,35 @@ void Blink_Timer_SetCaptureMode(uint8 captureMode)
 *
 * Parameters:
 *  triggerMode: Pass one of the pre-defined Trigger Modes (except Software)
-    #define Blink_Timer__B_TIMER__TM_NONE 0x00u
-    #define Blink_Timer__B_TIMER__TM_RISINGEDGE 0x04u
-    #define Blink_Timer__B_TIMER__TM_FALLINGEDGE 0x08u
-    #define Blink_Timer__B_TIMER__TM_EITHEREDGE 0x0Cu
-    #define Blink_Timer__B_TIMER__TM_SOFTWARE 0x10u
+    #define EEPROM_Blink_Timer__B_TIMER__TM_NONE 0x00u
+    #define EEPROM_Blink_Timer__B_TIMER__TM_RISINGEDGE 0x04u
+    #define EEPROM_Blink_Timer__B_TIMER__TM_FALLINGEDGE 0x08u
+    #define EEPROM_Blink_Timer__B_TIMER__TM_EITHEREDGE 0x0Cu
+    #define EEPROM_Blink_Timer__B_TIMER__TM_SOFTWARE 0x10u
 *
 * Return:
 *  void
 *
 *******************************************************************************/
-void Blink_Timer_SetTriggerMode(uint8 triggerMode) 
+void EEPROM_Blink_Timer_SetTriggerMode(uint8 triggerMode) 
 {
     /* This must only set to two bits of the control register associated */
-    triggerMode &= Blink_Timer_CTRL_TRIG_MODE_MASK;
+    triggerMode &= EEPROM_Blink_Timer_CTRL_TRIG_MODE_MASK;
 
     /* Clear the Current Setting */
-    Blink_Timer_CONTROL &= ((uint8)(~Blink_Timer_CTRL_TRIG_MODE_MASK));
+    EEPROM_Blink_Timer_CONTROL &= ((uint8)(~EEPROM_Blink_Timer_CTRL_TRIG_MODE_MASK));
 
     /* Write The New Setting */
-    Blink_Timer_CONTROL |= (triggerMode | Blink_Timer__B_TIMER__TM_SOFTWARE);
+    EEPROM_Blink_Timer_CONTROL |= (triggerMode | EEPROM_Blink_Timer__B_TIMER__TM_SOFTWARE);
 
 }
 #endif /* Remove API if Trigger Mode is not Software Controlled */
 
-#if (Blink_Timer_EnableTriggerMode)
+#if (EEPROM_Blink_Timer_EnableTriggerMode)
 
 
 /*******************************************************************************
-* Function Name: Blink_Timer_EnableTrigger
+* Function Name: EEPROM_Blink_Timer_EnableTrigger
 ********************************************************************************
 *
 * Summary:
@@ -614,16 +614,16 @@ void Blink_Timer_SetTriggerMode(uint8 triggerMode)
 *  void
 *
 *******************************************************************************/
-void Blink_Timer_EnableTrigger(void) 
+void EEPROM_Blink_Timer_EnableTrigger(void) 
 {
-    #if (!Blink_Timer_ControlRegRemoved)   /* Remove assignment if control register is removed */
-        Blink_Timer_CONTROL |= Blink_Timer_CTRL_TRIG_EN;
+    #if (!EEPROM_Blink_Timer_ControlRegRemoved)   /* Remove assignment if control register is removed */
+        EEPROM_Blink_Timer_CONTROL |= EEPROM_Blink_Timer_CTRL_TRIG_EN;
     #endif /* Remove code section if control register is not used */
 }
 
 
 /*******************************************************************************
-* Function Name: Blink_Timer_DisableTrigger
+* Function Name: EEPROM_Blink_Timer_DisableTrigger
 ********************************************************************************
 *
 * Summary:
@@ -636,21 +636,21 @@ void Blink_Timer_EnableTrigger(void)
 *  void
 *
 *******************************************************************************/
-void Blink_Timer_DisableTrigger(void) 
+void EEPROM_Blink_Timer_DisableTrigger(void) 
 {
-    #if (!Blink_Timer_ControlRegRemoved)   /* Remove assignment if control register is removed */
-        Blink_Timer_CONTROL &= ((uint8)(~Blink_Timer_CTRL_TRIG_EN));
+    #if (!EEPROM_Blink_Timer_ControlRegRemoved)   /* Remove assignment if control register is removed */
+        EEPROM_Blink_Timer_CONTROL &= ((uint8)(~EEPROM_Blink_Timer_CTRL_TRIG_EN));
     #endif /* Remove code section if control register is not used */
 }
 #endif /* Remove API is Trigger Mode is set to None */
 
 
-#if(Blink_Timer_InterruptOnCaptureCount)
-#if (!Blink_Timer_ControlRegRemoved)   /* Remove API if control register is removed */
+#if(EEPROM_Blink_Timer_InterruptOnCaptureCount)
+#if (!EEPROM_Blink_Timer_ControlRegRemoved)   /* Remove API if control register is removed */
 
 
 /*******************************************************************************
-* Function Name: Blink_Timer_SetInterruptCount
+* Function Name: EEPROM_Blink_Timer_SetInterruptCount
 ********************************************************************************
 *
 * Summary:
@@ -666,25 +666,25 @@ void Blink_Timer_DisableTrigger(void)
 *  void
 *
 *******************************************************************************/
-void Blink_Timer_SetInterruptCount(uint8 interruptCount) 
+void EEPROM_Blink_Timer_SetInterruptCount(uint8 interruptCount) 
 {
     /* This must only set to two bits of the control register associated */
-    interruptCount &= Blink_Timer_CTRL_INTCNT_MASK;
+    interruptCount &= EEPROM_Blink_Timer_CTRL_INTCNT_MASK;
 
     /* Clear the Current Setting */
-    Blink_Timer_CONTROL &= ((uint8)(~Blink_Timer_CTRL_INTCNT_MASK));
+    EEPROM_Blink_Timer_CONTROL &= ((uint8)(~EEPROM_Blink_Timer_CTRL_INTCNT_MASK));
     /* Write The New Setting */
-    Blink_Timer_CONTROL |= interruptCount;
+    EEPROM_Blink_Timer_CONTROL |= interruptCount;
 }
 #endif /* Remove API if control register is removed */
-#endif /* Blink_Timer_InterruptOnCaptureCount */
+#endif /* EEPROM_Blink_Timer_InterruptOnCaptureCount */
 
 
-#if (Blink_Timer_UsingHWCaptureCounter)
+#if (EEPROM_Blink_Timer_UsingHWCaptureCounter)
 
 
 /*******************************************************************************
-* Function Name: Blink_Timer_SetCaptureCount
+* Function Name: EEPROM_Blink_Timer_SetCaptureCount
 ********************************************************************************
 *
 * Summary:
@@ -699,14 +699,14 @@ void Blink_Timer_SetInterruptCount(uint8 interruptCount)
 *  void
 *
 *******************************************************************************/
-void Blink_Timer_SetCaptureCount(uint8 captureCount) 
+void EEPROM_Blink_Timer_SetCaptureCount(uint8 captureCount) 
 {
-    Blink_Timer_CAP_COUNT = captureCount;
+    EEPROM_Blink_Timer_CAP_COUNT = captureCount;
 }
 
 
 /*******************************************************************************
-* Function Name: Blink_Timer_ReadCaptureCount
+* Function Name: EEPROM_Blink_Timer_ReadCaptureCount
 ********************************************************************************
 *
 * Summary:
@@ -719,15 +719,15 @@ void Blink_Timer_SetCaptureCount(uint8 captureCount)
 *  Returns the Capture Count Setting
 *
 *******************************************************************************/
-uint8 Blink_Timer_ReadCaptureCount(void) 
+uint8 EEPROM_Blink_Timer_ReadCaptureCount(void) 
 {
-    return ((uint8)Blink_Timer_CAP_COUNT);
+    return ((uint8)EEPROM_Blink_Timer_CAP_COUNT);
 }
-#endif /* Blink_Timer_UsingHWCaptureCounter */
+#endif /* EEPROM_Blink_Timer_UsingHWCaptureCounter */
 
 
 /*******************************************************************************
-* Function Name: Blink_Timer_ClearFIFO
+* Function Name: EEPROM_Blink_Timer_ClearFIFO
 ********************************************************************************
 *
 * Summary:
@@ -740,11 +740,11 @@ uint8 Blink_Timer_ReadCaptureCount(void)
 *  void
 *
 *******************************************************************************/
-void Blink_Timer_ClearFIFO(void) 
+void EEPROM_Blink_Timer_ClearFIFO(void) 
 {
-    while(0u != (Blink_Timer_ReadStatusRegister() & Blink_Timer_STATUS_FIFONEMP))
+    while(0u != (EEPROM_Blink_Timer_ReadStatusRegister() & EEPROM_Blink_Timer_STATUS_FIFONEMP))
     {
-        (void)Blink_Timer_ReadCapture();
+        (void)EEPROM_Blink_Timer_ReadCapture();
     }
 }
 

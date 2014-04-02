@@ -29,7 +29,11 @@
     #define IDENTIFY        0x49    // "I"
     #define DUMP_DATA       0x44    // "D"
     #define CHANGE_SETTING  0x43    // "C"
-    #define NEXT            0x58    // "X"
+    
+    // Setting Codes
+    #define SAMPLE_UNIT     0x55    // "U"
+    #define SAMPLE_INTERVAL 0x56    // "V"
+    #define SENSOR          0x53    // "S"    
 
     // Outgoing Responses
     #define REPLY_LEN   1
@@ -50,7 +54,6 @@
     uint8 retrieve(command* instruction);
     void apply_setting(command instruction);
     void dump_data();
-    void await_reply();
     void confirm_dump();
     void send_reply(uint8 buffer);
     void USB_Close();

@@ -619,21 +619,6 @@
               <FilePath>.\Generated_Source\PSoC3\USBUART_pvt.h</FilePath>
             </File>
             <File>
-              <FileName>Blink_Timer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Blink_Timer.c</FilePath>
-            </File>
-            <File>
-              <FileName>Blink_Timer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Blink_Timer.h</FilePath>
-            </File>
-            <File>
-              <FileName>Blink_Timer_PM.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Blink_Timer_PM.c</FilePath>
-            </File>
-            <File>
               <FileName>USBUART_Dm.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\USBUART_Dm.c</FilePath>
@@ -699,21 +684,6 @@
               <FilePath>.\Generated_Source\PSoC3\USB_LED_aliases.h</FilePath>
             </File>
             <File>
-              <FileName>EEPROM_LED.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\EEPROM_LED.c</FilePath>
-            </File>
-            <File>
-              <FileName>EEPROM_LED.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\EEPROM_LED.h</FilePath>
-            </File>
-            <File>
-              <FileName>EEPROM_LED_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\EEPROM_LED_aliases.h</FilePath>
-            </File>
-            <File>
               <FileName>Vbus_IRQ.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\Vbus_IRQ.c</FilePath>
@@ -762,21 +732,6 @@
               <FileName>TakeSample_IRQ.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\TakeSample_IRQ.h</FilePath>
-            </File>
-            <File>
-              <FileName>SW_3.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\SW_3.c</FilePath>
-            </File>
-            <File>
-              <FileName>SW_3.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\SW_3.h</FilePath>
-            </File>
-            <File>
-              <FileName>SW_3_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\SW_3_aliases.h</FilePath>
             </File>
             <File>
               <FileName>ADC_AMux.c</FileName>
@@ -832,6 +787,36 @@
               <FileName>Sensor_VIn_aliases.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\Sensor_VIn_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>EEPROM_Blink_Timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\EEPROM_Blink_Timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>EEPROM_Blink_Timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\EEPROM_Blink_Timer.h</FilePath>
+            </File>
+            <File>
+              <FileName>EEPROM_Blink_Timer_PM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\EEPROM_Blink_Timer_PM.c</FilePath>
+            </File>
+            <File>
+              <FileName>Sample.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Sample.c</FilePath>
+            </File>
+            <File>
+              <FileName>Sample.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Sample.h</FilePath>
+            </File>
+            <File>
+              <FileName>Sample_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Sample_aliases.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1454,21 +1439,6 @@
               <FilePath>.\Generated_Source\PSoC3\USBUART_pvt.h</FilePath>
             </File>
             <File>
-              <FileName>Blink_Timer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Blink_Timer.c</FilePath>
-            </File>
-            <File>
-              <FileName>Blink_Timer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Blink_Timer.h</FilePath>
-            </File>
-            <File>
-              <FileName>Blink_Timer_PM.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Blink_Timer_PM.c</FilePath>
-            </File>
-            <File>
               <FileName>USBUART_Dm.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\USBUART_Dm.c</FilePath>
@@ -1534,21 +1504,6 @@
               <FilePath>.\Generated_Source\PSoC3\USB_LED_aliases.h</FilePath>
             </File>
             <File>
-              <FileName>EEPROM_LED.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\EEPROM_LED.c</FilePath>
-            </File>
-            <File>
-              <FileName>EEPROM_LED.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\EEPROM_LED.h</FilePath>
-            </File>
-            <File>
-              <FileName>EEPROM_LED_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\EEPROM_LED_aliases.h</FilePath>
-            </File>
-            <File>
               <FileName>Vbus_IRQ.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\Vbus_IRQ.c</FilePath>
@@ -1597,21 +1552,6 @@
               <FileName>TakeSample_IRQ.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\TakeSample_IRQ.h</FilePath>
-            </File>
-            <File>
-              <FileName>SW_3.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\SW_3.c</FilePath>
-            </File>
-            <File>
-              <FileName>SW_3.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\SW_3.h</FilePath>
-            </File>
-            <File>
-              <FileName>SW_3_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\SW_3_aliases.h</FilePath>
             </File>
             <File>
               <FileName>ADC_AMux.c</FileName>
@@ -1667,6 +1607,36 @@
               <FileName>Sensor_VIn_aliases.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\Sensor_VIn_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>EEPROM_Blink_Timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\EEPROM_Blink_Timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>EEPROM_Blink_Timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\EEPROM_Blink_Timer.h</FilePath>
+            </File>
+            <File>
+              <FileName>EEPROM_Blink_Timer_PM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\EEPROM_Blink_Timer_PM.c</FilePath>
+            </File>
+            <File>
+              <FileName>Sample.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Sample.c</FilePath>
+            </File>
+            <File>
+              <FileName>Sample.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Sample.h</FilePath>
+            </File>
+            <File>
+              <FileName>Sample_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Sample_aliases.h</FilePath>
             </File>
           </Files>
         </Group>

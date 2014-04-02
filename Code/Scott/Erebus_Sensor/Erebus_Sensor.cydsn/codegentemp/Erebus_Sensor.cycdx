@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <blockRegMap version="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cypress.com/xsd/cyblockregmap cyblockregmap.xsd" xmlns="http://cypress.com/xsd/cyblockregmap">
-  <block name="EEPROM_LED" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="Em_EEPROM" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="Vbus_Debounce" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="USB_LED" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Sample_Switch_Debounce" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="debounce_clock" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Vbus_Debounce" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Em_EEPROM" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="TakeSample_IRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Sample" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="Sensor_VIn" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="SW_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="SW3_Debounce" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="ADC" BASE="0x0" SIZE="0x0" desc="" visible="true">
     <block name="cy_analog_virtualmux_5" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <block name="cy_analog_noconnect_5" BASE="0x0" SIZE="0x0" desc="" visible="true" />
@@ -828,8 +829,6 @@
       </field>
     </register>
   </block>
-  <block name="TakeSample_IRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="debounce_clock" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="LED" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="cy_tff_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="USBUART" BASE="0x0" SIZE="0x0" desc="USBFS" visible="true">
@@ -911,17 +910,17 @@
     <register name="USBUART_EP_TYPE" address="0x608F" bitWidth="8" desc="Endpoint Type (IN/OUT) Indication" />
     <register name="USBUART_USB_CLK_EN" address="0x609D" bitWidth="8" desc="USB Block Clock Enable Register" />
   </block>
-  <block name="Blink_Timer" BASE="0x0" SIZE="0x0" desc="" visible="true">
+  <block name="EEPROM_Blink_Timer" BASE="0x0" SIZE="0x0" desc="" visible="true">
     <block name="VirtualMux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <block name="TimerHW" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <block name="VirtualMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <register name="Blink_Timer_GLOBAL_ENABLE" address="0x43A3" bitWidth="8" desc="PM.ACT.CFG">
+    <register name="EEPROM_Blink_Timer_GLOBAL_ENABLE" address="0x43A3" bitWidth="8" desc="PM.ACT.CFG">
       <field name="en_timer" from="3" to="0" access="RW" resetVal="" desc="Enable timer/counters." />
     </register>
-    <register name="Blink_Timer_CONTROL" address="0x4F00" bitWidth="8" desc="TMRx.CFG0">
+    <register name="EEPROM_Blink_Timer_CONTROL" address="0x4F00" bitWidth="8" desc="TMRx.CFG0">
       <field name="EN" from="0" to="0" access="RW" resetVal="" desc="Enables timer/comparator." />
       <field name="MODE" from="1" to="1" access="RW" resetVal="" desc="Mode. (0 = Timer; 1 = Comparator)">
         <value name="Timer" value="0" desc="Timer mode. CNT/CMP register holds timer count value." />
@@ -936,7 +935,7 @@
       </field>
       <field name="DEADBAND_PERIOD" from="7" to="6" access="RW" resetVal="" desc="Deadband Period" />
     </register>
-    <register name="Blink_Timer_CONTROL2" address="0x4F01" bitWidth="8" desc="TMRx.CFG1">
+    <register name="EEPROM_Blink_Timer_CONTROL2" address="0x4F01" bitWidth="8" desc="TMRx.CFG1">
       <field name="IRQ_SEL" from="0" to="0" access="RW" resetVal="" desc="Irq selection. (0 = raw interrupts; 1 = status register interrupts)" />
       <field name="FTC" from="1" to="1" access="RW" resetVal="" desc="First Terminal Count (FTC). Setting this bit forces a single pulse on the TC pin when first enabled.">
         <value name="Disable FTC" value="0" desc="Disable the single cycle pulse, which signifies the timer is starting." />
@@ -947,7 +946,7 @@
       <field name="CLK_BUS_EN_SEL" from="6" to="4" access="RW" resetVal="" desc="Digital Global Clock selection." />
       <field name="BUS_CLK_SEL" from="7" to="7" access="RW" resetVal="" desc="Bus Clock selection." />
     </register>
-    <register name="Blink_Timer_CONTROL3_" address="0x4F02" bitWidth="8" desc="TMRx.CFG2">
+    <register name="EEPROM_Blink_Timer_CONTROL3_" address="0x4F02" bitWidth="8" desc="TMRx.CFG2">
       <field name="TMR_CFG" from="1" to="0" access="RW" resetVal="" desc="Timer configuration (MODE = 0): 000 = Continuous; 001 = Pulsewidth; 010 = Period; 011 = Stop on IRQ">
         <value name="Continuous" value="0" desc="Timer runs while EN bit of CFG0 register is set to '1'." />
         <value name="Pulsewidth" value="1" desc="Timer runs from positive to negative edge of TIMEREN." />
@@ -965,8 +964,8 @@
       </field>
       <field name="HW_EN" from="7" to="7" access="RW" resetVal="" desc="When set Timer Enable controls counting." />
     </register>
-    <register name="Blink_Timer_PERIOD" address="0x4F04" bitWidth="16" desc="TMRx.PER0 - Assigned Period" />
-    <register name="Blink_Timer_COUNTER" address="0x4F06" bitWidth="16" desc="TMRx.CNT_CMP0 - Current Down Counter Value" />
+    <register name="EEPROM_Blink_Timer_PERIOD" address="0x4F04" bitWidth="16" desc="TMRx.PER0 - Assigned Period" />
+    <register name="EEPROM_Blink_Timer_COUNTER" address="0x4F06" bitWidth="16" desc="TMRx.CNT_CMP0 - Current Down Counter Value" />
   </block>
   <block name="timer_clock" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="Vbus_IRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" />

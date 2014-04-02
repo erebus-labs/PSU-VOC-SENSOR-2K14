@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: SW_3.c  
+* File Name: Sample.c  
 * Version 1.90
 *
 * Description:
@@ -15,11 +15,11 @@
 *******************************************************************************/
 
 #include "cytypes.h"
-#include "SW_3.h"
+#include "Sample.h"
 
 
 /*******************************************************************************
-* Function Name: SW_3_Write
+* Function Name: Sample_Write
 ********************************************************************************
 *
 * Summary:
@@ -32,15 +32,15 @@
 *  None 
 *  
 *******************************************************************************/
-void SW_3_Write(uint8 value) 
+void Sample_Write(uint8 value) 
 {
-    uint8 staticBits = (SW_3_DR & (uint8)(~SW_3_MASK));
-    SW_3_DR = staticBits | ((uint8)(value << SW_3_SHIFT) & SW_3_MASK);
+    uint8 staticBits = (Sample_DR & (uint8)(~Sample_MASK));
+    Sample_DR = staticBits | ((uint8)(value << Sample_SHIFT) & Sample_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: SW_3_SetDriveMode
+* Function Name: Sample_SetDriveMode
 ********************************************************************************
 *
 * Summary:
@@ -53,14 +53,14 @@ void SW_3_Write(uint8 value)
 *  None
 *
 *******************************************************************************/
-void SW_3_SetDriveMode(uint8 mode) 
+void Sample_SetDriveMode(uint8 mode) 
 {
-	CyPins_SetPinDriveMode(SW_3_0, mode);
+	CyPins_SetPinDriveMode(Sample_0, mode);
 }
 
 
 /*******************************************************************************
-* Function Name: SW_3_Read
+* Function Name: Sample_Read
 ********************************************************************************
 *
 * Summary:
@@ -74,17 +74,17 @@ void SW_3_SetDriveMode(uint8 mode)
 *  Returns the current value of the Digital Port as a right justified number
 *  
 * Note:
-*  Macro SW_3_ReadPS calls this function. 
+*  Macro Sample_ReadPS calls this function. 
 *  
 *******************************************************************************/
-uint8 SW_3_Read(void) 
+uint8 Sample_Read(void) 
 {
-    return (SW_3_PS & SW_3_MASK) >> SW_3_SHIFT;
+    return (Sample_PS & Sample_MASK) >> Sample_SHIFT;
 }
 
 
 /*******************************************************************************
-* Function Name: SW_3_ReadDataReg
+* Function Name: Sample_ReadDataReg
 ********************************************************************************
 *
 * Summary:
@@ -97,17 +97,17 @@ uint8 SW_3_Read(void)
 *  Returns the current value assigned to the Digital Port's data output register
 *  
 *******************************************************************************/
-uint8 SW_3_ReadDataReg(void) 
+uint8 Sample_ReadDataReg(void) 
 {
-    return (SW_3_DR & SW_3_MASK) >> SW_3_SHIFT;
+    return (Sample_DR & Sample_MASK) >> Sample_SHIFT;
 }
 
 
 /* If Interrupts Are Enabled for this Pins component */ 
-#if defined(SW_3_INTSTAT) 
+#if defined(Sample_INTSTAT) 
 
     /*******************************************************************************
-    * Function Name: SW_3_ClearInterrupt
+    * Function Name: Sample_ClearInterrupt
     ********************************************************************************
     *
     * Summary:
@@ -121,9 +121,9 @@ uint8 SW_3_ReadDataReg(void)
     *  Returns the value of the interrupt status register
     *  
     *******************************************************************************/
-    uint8 SW_3_ClearInterrupt(void) 
+    uint8 Sample_ClearInterrupt(void) 
     {
-        return (SW_3_INTSTAT & SW_3_MASK) >> SW_3_SHIFT;
+        return (Sample_INTSTAT & Sample_MASK) >> Sample_SHIFT;
     }
 
 #endif /* If Interrupts Are Enabled for this Pins component */ 
