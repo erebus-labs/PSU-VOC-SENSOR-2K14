@@ -34,7 +34,6 @@ class ErebusSensor:
       'IDENTIFY'       :b'I',
       'DUMP_DATA'      :b'D',
       'CHANGE_SETTINGS':b'C',
-      'NEXT'           :b'X',
       'SUCCESS'        :b'Y',
       'FAILURE'        :b'N'}
 
@@ -104,9 +103,9 @@ class ErebusSensor:
       return None
 
     data = []
-    points_sent = 0
+    bytes_sent = 0
     packet_format_string = '>'+'h'*32
-    points_received = -1
+    bytes_received = -1
 
     try:
       self.send_command('DUMP_DATA')
@@ -120,21 +119,22 @@ class ErebusSensor:
         packet = struct.unpack(packet_format_string, package)
 
         for word in packet:
-          if not word & 0xF000:
+          message = (word & 0xF000) >> 12
+          if message == 0x0:
             data.append(word)
-            points_sent += 1
+            bytes_sent += 2
 
-          elif word & 0x4000:
+          elif message == 0x4:
             continue
 
-          elif word & 0x8000:
-            points_received = packet[1]
+          elif message == 0x8:
+            bytes_received = packet[1]
             break
 
-        if points_received >= 0:
+        if bytes_received >= 0:
           break
 
-      if points_received == points_sent:
+      if bytes_received == bytes_sent:
         self.send_command('SUCCESS')
         result = 1
       else:
