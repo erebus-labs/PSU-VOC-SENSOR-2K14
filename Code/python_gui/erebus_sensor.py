@@ -31,19 +31,27 @@ class ErebusSensor:
     self.command_size = 5 # number of bytes in each command
 
     self.commands = {
-      'IDENTIFY'       :b'I',
-      'DUMP_DATA'      :b'D',
-      'CHANGE_SETTINGS':b'C',
-      'SUCCESS'        :b'Y',
-      'FAILURE'        :b'N'}
+      'IDENTIFY'        :0x01.to_bytes(1,byteorder='big'),
+      'DUMP_DATA'       :0x02.to_bytes(1,byteorder='big'),
+      'SEND_SETTINGS'   :0x03.to_bytes(1,byteorder='big'),
+      'CHANGE_SETTINGS' :0x04.to_bytes(1,byteorder='big'),
+      'HARD_RESET'      :0x05.to_bytes(1,byteorder='big')}
 
     self.responses = {
-      'SUCCESS'   :b'Y',
-      'FAIL'      :b'N',
-      'IDENTIFIER':b'E'}
+      'IDENTIFIER'      :0x01.to_bytes(1,byteorder='big'),
+      'SUCCESS'         :0x02.to_bytes(1,byteorder='big'),
+      'FAIL'            :0x03.to_bytes(1,byteorder='big')}
 
     self.settings = {
-      'BLINK_RATE':0}
+      'SAMPLE_UNIT'     :0x01.to_bytes(1,byteorder='big'),
+      'SAMPLE_INTERVAL' :0x02.to_bytes(1,byteorder='big'),
+      'SENSOR'          :0x03.to_bytes(1,byteorder='big')}
+
+    self.sample_codes = {
+      'SAMPLE_SEC'      :0x01.to_bytes(1,byteorder='big'),
+      'SAMPLE_MIN'      :0x02.to_bytes(1,byteorder='big'),
+      'SAMPLE_HOUR'     :0x03.to_bytes(1,byteorder='big'),
+      'SAMPLE_DAY'      :0x04.to_bytes(1,byteorder='big')}
 
     for port in self.scan_ports():
 
@@ -61,6 +69,7 @@ class ErebusSensor:
         self.send_command('IDENTIFY')
 
         response = self.handle.read(1)
+        print('\nResponse: {}'.format(response))
 
         if response == self.responses['IDENTIFIER']:
           acquired = 1
@@ -71,6 +80,8 @@ class ErebusSensor:
 
     if not acquired:
       self.handle = None
+
+    return
 
   def scan_ports(self):
 
@@ -87,8 +98,15 @@ class ErebusSensor:
 
   def send_command(self, command, target=0, value=0):
 
-    out = struct.pack('>chh', self.commands[command], target, value)
+    if command in iter(self.commands):
+      command = self.commands[command]
+    else:
+      command = self.responses[command]
+
+    out = struct.pack('>chh', command, target, value)
+
     self.handle.write(out)
+
     return 
 
   def is_connected(self):
