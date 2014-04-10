@@ -1,0 +1,68 @@
+C51 COMPILER V9.51   RTC_HANDLER                                                           04/09/2014 23:01:20 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE RTC_HANDLER
+OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Debug\RTC_handler.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\RTC_handler.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\RTC_handler.lst) CD DB NOIP OT(0,SIZE) DF
+                    -(DEBUG) INCDIR(.,.\Generated_Source\PSoC3) OJ(.\DP8051\DP8051_Keil_951\Debug\RTC_handler.obj)
+
+line level    source
+
+   1          /* ========================================
+   2           *
+   3           * Copyright YOUR COMPANY, THE YEAR
+   4           * All Rights Reserved
+   5           * UNPUBLISHED, LICENSED SOFTWARE.
+   6           *
+   7           * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8           * WHICH IS THE PROPERTY OF your company.
+   9           *
+  10           * ========================================
+  11          */
+  12          #include "RTC_handler.h"
+  13          #include "project.h"
+  14          #include "EmEEPROM_Access.h"
+  15          #include "EEPROM_Access.h"
+  16          #include "RTC_1.h"
+  17          #include "project.h"
+  18          
+  19          
+  20          void rtc_init()
+  21          {
+  22   1          uint16 sample_unit;
+  23   1          
+  24   1          sample_unit = get_variable(sample_unit);
+  25   1          
+  26   1          switch (sample_unit)
+  27   1          {
+  28   2              case 1: /* Seconds */
+  29   2                  RTC_WriteIntervalMask(0x01u);
+*** WARNING C206 IN LINE 29 OF .\RTC_handler.c: 'RTC_WriteIntervalMask': missing function-prototype
+*** ERROR C267 IN LINE 29 OF .\RTC_handler.c: 'RTC_WriteIntervalMask': requires ANSI-style prototype
+  30   2                  break;
+  31   2              case 2: /* Minutes */
+  32   2                  RTC_WriteIntervalMask(0x02u);
+  33   2                  break;
+  34   2              case 3: /* Hours */
+  35   2                  RTC_WriteIntervalMask(0x04u);
+  36   2                  break;
+  37   2              case 4: /* Days */
+  38   2                  RTC_WriteIntervalMask(0x08u);
+  39   2                  break;
+  40   2              case 5: /* Weeks */
+  41   2                  RTC_WriteIntervalMask(0x10u);
+  42   2                  break;
+  43   2              case 6: /* Months */
+  44   2                  RTC_WriteIntervalMask(0x20);
+  45   2                  break;
+  46   2              case 7: /* Years */
+  47   2                  RTC_WriteIntervalMask(0x30u);
+  48   2                  break;
+  49   2          }
+  50   1       }   
+  51          /* [] END OF FILE */
+C51 COMPILER V9.51   RTC_HANDLER                                                           04/09/2014 23:01:20 PAGE 2   
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  1 ERROR(S)
