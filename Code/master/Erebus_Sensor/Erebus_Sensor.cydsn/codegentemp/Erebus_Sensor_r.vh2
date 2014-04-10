@@ -1,10 +1,10 @@
 -- Project:   Erebus_Sensor
--- Generated: 04/01/2014 20:45:11
+-- Generated: 04/10/2014 00:13:01
 -- 
 
 ENTITY Erebus_Sensor IS
     PORT(
-        LED(0)_PAD : OUT std_ulogic;
+        EEPROM_LED(0)_PAD : OUT std_ulogic;
         Sample(0)_PAD : IN std_ulogic;
         USB_LED(0)_PAD : OUT std_ulogic;
         Vbus(0)_PAD : IN std_ulogic);
@@ -30,7 +30,7 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     SIGNAL ClockBlock_PLL_OUT : bit;
     SIGNAL ClockBlock_XTAL : bit;
     SIGNAL ClockBlock_XTAL_32KHZ : bit;
-    SIGNAL LED(0)__PA : bit;
+    SIGNAL EEPROM_LED(0)__PA : bit;
     SIGNAL Net_14 : bit;
     ATTRIBUTE placement_force OF Net_14 : SIGNAL IS "U(3,4,A)3";
     SIGNAL Net_146 : bit;
@@ -48,10 +48,10 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     SIGNAL Net_674 : bit;
     ATTRIBUTE global_signal OF Net_674 : SIGNAL IS true;
     SIGNAL Net_674_local : bit;
+    SIGNAL Net_714 : bit;
     SIGNAL Net_72 : bit;
     ATTRIBUTE global_signal OF Net_72 : SIGNAL IS true;
     SIGNAL Net_72_local : bit;
-    SIGNAL Net_8 : bit;
     SIGNAL Sample(0)__PA : bit;
     SIGNAL Sensor_VIn(0)__PA : bit;
     SIGNAL USB_LED(0)__PA : bit;
@@ -122,8 +122,8 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     SIGNAL \ClockBlock.dclk_glb_ff_2__sig\ : bit;
     SIGNAL \ClockBlock.aclk_glb_ff_0__sig\ : bit;
     ATTRIBUTE Location OF ClockBlock : LABEL IS "F(Clock,0)";
-    ATTRIBUTE lib_model OF LED(0) : LABEL IS "iocell1";
-    ATTRIBUTE Location OF LED(0) : LABEL IS "P0[0]";
+    ATTRIBUTE lib_model OF EEPROM_LED(0) : LABEL IS "iocell1";
+    ATTRIBUTE Location OF EEPROM_LED(0) : LABEL IS "P0[0]";
     ATTRIBUTE lib_model OF Net_14 : LABEL IS "macrocell1";
     ATTRIBUTE Location OF Net_14 : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF Net_408 : LABEL IS "macrocell2";
@@ -1104,7 +1104,7 @@ BEGIN
             dclk_glb_ff_2 => \ClockBlock.dclk_glb_ff_2__sig\,
             aclk_glb_ff_0 => \ClockBlock.aclk_glb_ff_0__sig\);
 
-    LED:logicalport
+    EEPROM_LED:logicalport
         GENERIC MAP(
             drive_mode => "110",
             ibuf_enabled => "1",
@@ -1170,20 +1170,20 @@ BEGIN
             out_clock_en => open,
             out_reset => open);
 
-    LED(0):iocell
+    EEPROM_LED(0):iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "LED",
+            logicalport => "EEPROM_LED",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000100000000000000000000000000000000000000001")
         PORT MAP(
-            pa_out => LED(0)__PA,
+            pa_out => EEPROM_LED(0)__PA,
             oe => open,
             pin_input => Net_65,
-            pad_out => LED(0)_PAD,
-            pad_in => LED(0)_PAD,
+            pad_out => EEPROM_LED(0)_PAD,
+            pad_in => EEPROM_LED(0)_PAD,
             in_clock => open,
             in_clock_en => '1',
             in_reset => '0',
@@ -1842,7 +1842,7 @@ BEGIN
         GENERIC MAP(
             cy_registers => "")
         PORT MAP(
-            sof_int => Net_8,
+            sof_int => Net_714,
             arb_int => \USBUART:Net_79\,
             usb_int => \USBUART:Net_81\,
             ept_int_8 => \USBUART:ept_int_8\,
@@ -1918,7 +1918,7 @@ BEGIN
         GENERIC MAP(
             int_type => "10")
         PORT MAP(
-            interrupt => Net_8,
+            interrupt => Net_714,
             clock => ClockBlock_BUS_CLK);
 
     \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\:macrocell

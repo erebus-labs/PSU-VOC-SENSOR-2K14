@@ -260,19 +260,19 @@ net Net_665
 	switch "Stub-:udbswitch@[UDB=(2,4)][side=top]:v89==>:udb@[UDB=(3,4)]:sync_wrapper:sync0.in"
 	term   ":udb@[UDB=(3,4)]:sync_wrapper:sync0.in"
 end Net_665
+net Net_714
+	term   ":usbcell.sof_int"
+	switch ":usbcell.sof_int==>Stub-:dsiswitch_top@[DSI=(0,2)][side=top]:dsihc_top:v4+:dsiswitch_top@[DSI=(0,2)][side=top]:dsihc_top:v6"
+	switch "Stub-:dsiswitch_top@[DSI=(0,2)][side=top]:dsihc_top:v4+:dsiswitch_top@[DSI=(0,2)][side=top]:dsihc_top:v6==>:interrupt_idmux_21.in_0"
+	switch ":interrupt_idmux_21.interrupt_idmux_21__out==>:interrupt_21.interrupt"
+	term   ":interrupt_21.interrupt"
+end Net_714
 net Net_72
 	term   ":clockblockcell.dclk_glb_2"
 	switch ":clockblockcell.dclk_glb_2==>:udb@[UDB=(2,4)]:clockreset:clk_pld0_mux.in_2"
 	switch ":udb@[UDB=(2,4)]:clockreset:clk_pld0_mux.pld0_clk==>:udb@[UDB=(2,4)]:pld0:mc0.clock_0"
 	term   ":udb@[UDB=(2,4)]:pld0:mc0.clock_0"
 end Net_72
-net Net_8
-	term   ":usbcell.sof_int"
-	switch ":usbcell.sof_int==>Stub-:dsiswitch_top@[DSI=(0,2)][side=top]:dsihc_top:v4+:dsiswitch_top@[DSI=(0,2)][side=top]:dsihc_top:v6"
-	switch "Stub-:dsiswitch_top@[DSI=(0,2)][side=top]:dsihc_top:v4+:dsiswitch_top@[DSI=(0,2)][side=top]:dsihc_top:v6==>:interrupt_idmux_21.in_0"
-	switch ":interrupt_idmux_21.interrupt_idmux_21__out==>:interrupt_21.interrupt"
-	term   ":interrupt_21.interrupt"
-end Net_8
 net \ADC:Net_93_local\
 	term   ":clockblockcell.dclk_0"
 	switch ":clockblockcell.dclk_0==>Stub-:dsiswitch_bottom@[DSI=(1,1)][side=bottom]:dsihc_bottom:v33+:dsiswitch_bottom@[DSI=(1,1)][side=bottom]:dsihc_bottom:v35"

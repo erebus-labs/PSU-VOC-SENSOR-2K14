@@ -51,6 +51,11 @@ void USB_ISR(){
                         apply_setting(instruction);
                         send_reply(SUCCESS);
                         break;
+                     
+                    case HARD_RESET:
+                        hard_reset();
+                        send_reply(SUCCESS);
+                        break;
                         
                     default:
                         send_reply(FAIL);
@@ -189,6 +194,18 @@ void confirm_dump(){
 }
 
 
+
+void CMD_hard_reset(){
+
+    uint8 reset_flag = 0xFF;
+    
+    Em_EEPROM_Write(&reset_flag, &hard_reset_flag, 1u);
+    
+    return;
+}
+
+
+
 void USB_Close(){
     
     EEPROM_R_Stop();
@@ -197,6 +214,8 @@ void USB_Close(){
     
     return;
 }
+
+
 
 
 /* [] END OF FILE */

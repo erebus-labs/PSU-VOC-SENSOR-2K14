@@ -72,10 +72,10 @@ Port Name  Setup to Clk  Clock Name:Phase
 -----------------------3.2::Clock to Out
 ----------------------------------------
 
-Port Name       Clock to Out  Clock Name:Phase  
---------------  ------------  ----------------  
-LED(0)_PAD      24065         timer_clock:R     
-USB_LED(0)_PAD  24321         debounce_clock:R  
+Port Name          Clock to Out  Clock Name:Phase  
+-----------------  ------------  ----------------  
+EEPROM_LED(0)_PAD  24065         timer_clock:R     
+USB_LED(0)_PAD     24321         debounce_clock:R  
 
 
                          3.3::Pad to Pad

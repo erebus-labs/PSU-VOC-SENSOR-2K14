@@ -31,6 +31,12 @@
     #define EE_SAMPLE_UNIT      0x0000
     #define EE_SAMPLE_INTERVAL  EE_SAMPLE_UNIT + 2
     #define EE_SENSOR           EE_SAMPLE_INTERVAL +2
+       
+    // RTC Time Unit Codes
+    #define SAMPLE_SEC      0x01
+    #define SAMPLE_MIN      0x02
+    #define SAMPLE_HOUR     0x03
+    #define SAMPLE_DAY      0x04
     
     // Total number of bytes used in EEPROM
     #define EEPROM_BYTES_USED EE_SENSOR + 2

@@ -389,21 +389,6 @@
               <FilePath>.\Generated_Source\PSoC3\cydisabledsheets.h</FilePath>
             </File>
             <File>
-              <FileName>LED.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\LED.c</FilePath>
-            </File>
-            <File>
-              <FileName>LED.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\LED.h</FilePath>
-            </File>
-            <File>
-              <FileName>LED_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\LED_aliases.h</FilePath>
-            </File>
-            <File>
               <FileName>CyBootAsmKeil.a51</FileName>
               <FileType>2</FileType>
               <FilePath>.\Generated_Source\PSoC3\CyBootAsmKeil.a51</FilePath>
@@ -817,6 +802,21 @@
               <FileName>Sample_aliases.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\Sample_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>EEPROM_LED.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\EEPROM_LED.c</FilePath>
+            </File>
+            <File>
+              <FileName>EEPROM_LED.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\EEPROM_LED.h</FilePath>
+            </File>
+            <File>
+              <FileName>EEPROM_LED_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\EEPROM_LED_aliases.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1209,21 +1209,6 @@
               <FilePath>.\Generated_Source\PSoC3\cydisabledsheets.h</FilePath>
             </File>
             <File>
-              <FileName>LED.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\LED.c</FilePath>
-            </File>
-            <File>
-              <FileName>LED.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\LED.h</FilePath>
-            </File>
-            <File>
-              <FileName>LED_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\LED_aliases.h</FilePath>
-            </File>
-            <File>
               <FileName>CyBootAsmKeil.a51</FileName>
               <FileType>2</FileType>
               <FilePath>.\Generated_Source\PSoC3\CyBootAsmKeil.a51</FilePath>
@@ -1637,6 +1622,21 @@
               <FileName>Sample_aliases.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\Sample_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>EEPROM_LED.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\EEPROM_LED.c</FilePath>
+            </File>
+            <File>
+              <FileName>EEPROM_LED.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\EEPROM_LED.h</FilePath>
+            </File>
+            <File>
+              <FileName>EEPROM_LED_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\EEPROM_LED_aliases.h</FilePath>
             </File>
           </Files>
         </Group>

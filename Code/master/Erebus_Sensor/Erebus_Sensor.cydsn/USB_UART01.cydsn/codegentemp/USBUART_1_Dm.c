@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: LED.c  
+* File Name: USBUART_1_Dm.c  
 * Version 1.90
 *
 * Description:
@@ -15,11 +15,11 @@
 *******************************************************************************/
 
 #include "cytypes.h"
-#include "LED.h"
+#include "USBUART_1_Dm.h"
 
 
 /*******************************************************************************
-* Function Name: LED_Write
+* Function Name: USBUART_1_Dm_Write
 ********************************************************************************
 *
 * Summary:
@@ -32,15 +32,15 @@
 *  None 
 *  
 *******************************************************************************/
-void LED_Write(uint8 value) 
+void USBUART_1_Dm_Write(uint8 value) 
 {
-    uint8 staticBits = (LED_DR & (uint8)(~LED_MASK));
-    LED_DR = staticBits | ((uint8)(value << LED_SHIFT) & LED_MASK);
+    uint8 staticBits = (USBUART_1_Dm_DR & (uint8)(~USBUART_1_Dm_MASK));
+    USBUART_1_Dm_DR = staticBits | ((uint8)(value << USBUART_1_Dm_SHIFT) & USBUART_1_Dm_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: LED_SetDriveMode
+* Function Name: USBUART_1_Dm_SetDriveMode
 ********************************************************************************
 *
 * Summary:
@@ -53,14 +53,14 @@ void LED_Write(uint8 value)
 *  None
 *
 *******************************************************************************/
-void LED_SetDriveMode(uint8 mode) 
+void USBUART_1_Dm_SetDriveMode(uint8 mode) 
 {
-	CyPins_SetPinDriveMode(LED_0, mode);
+	CyPins_SetPinDriveMode(USBUART_1_Dm_0, mode);
 }
 
 
 /*******************************************************************************
-* Function Name: LED_Read
+* Function Name: USBUART_1_Dm_Read
 ********************************************************************************
 *
 * Summary:
@@ -74,17 +74,17 @@ void LED_SetDriveMode(uint8 mode)
 *  Returns the current value of the Digital Port as a right justified number
 *  
 * Note:
-*  Macro LED_ReadPS calls this function. 
+*  Macro USBUART_1_Dm_ReadPS calls this function. 
 *  
 *******************************************************************************/
-uint8 LED_Read(void) 
+uint8 USBUART_1_Dm_Read(void) 
 {
-    return (LED_PS & LED_MASK) >> LED_SHIFT;
+    return (USBUART_1_Dm_PS & USBUART_1_Dm_MASK) >> USBUART_1_Dm_SHIFT;
 }
 
 
 /*******************************************************************************
-* Function Name: LED_ReadDataReg
+* Function Name: USBUART_1_Dm_ReadDataReg
 ********************************************************************************
 *
 * Summary:
@@ -97,17 +97,17 @@ uint8 LED_Read(void)
 *  Returns the current value assigned to the Digital Port's data output register
 *  
 *******************************************************************************/
-uint8 LED_ReadDataReg(void) 
+uint8 USBUART_1_Dm_ReadDataReg(void) 
 {
-    return (LED_DR & LED_MASK) >> LED_SHIFT;
+    return (USBUART_1_Dm_DR & USBUART_1_Dm_MASK) >> USBUART_1_Dm_SHIFT;
 }
 
 
 /* If Interrupts Are Enabled for this Pins component */ 
-#if defined(LED_INTSTAT) 
+#if defined(USBUART_1_Dm_INTSTAT) 
 
     /*******************************************************************************
-    * Function Name: LED_ClearInterrupt
+    * Function Name: USBUART_1_Dm_ClearInterrupt
     ********************************************************************************
     *
     * Summary:
@@ -121,9 +121,9 @@ uint8 LED_ReadDataReg(void)
     *  Returns the value of the interrupt status register
     *  
     *******************************************************************************/
-    uint8 LED_ClearInterrupt(void) 
+    uint8 USBUART_1_Dm_ClearInterrupt(void) 
     {
-        return (LED_INTSTAT & LED_MASK) >> LED_SHIFT;
+        return (USBUART_1_Dm_INTSTAT & USBUART_1_Dm_MASK) >> USBUART_1_Dm_SHIFT;
     }
 
 #endif /* If Interrupts Are Enabled for this Pins component */ 

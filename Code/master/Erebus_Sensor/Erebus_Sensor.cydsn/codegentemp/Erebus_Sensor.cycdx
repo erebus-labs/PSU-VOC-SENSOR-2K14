@@ -829,7 +829,7 @@
       </field>
     </register>
   </block>
-  <block name="LED" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="EEPROM_LED" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="cy_tff_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="USBUART" BASE="0x0" SIZE="0x0" desc="USBFS" visible="true">
     <block name="bus_reset" BASE="0x0" SIZE="0x0" desc="" visible="true" />

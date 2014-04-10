@@ -36,9 +36,9 @@
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\EEPROM_Blink_Timer.c" value="DP8051_C_FILE;EEPROM_Blink_Timer" />
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\EEPROM_Blink_Timer.h" value="NONE;EEPROM_Blink_Timer" />
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\EEPROM_Blink_Timer_PM.c" value="DP8051_C_FILE;EEPROM_Blink_Timer" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\LED.c" value="DP8051_C_FILE;LED" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\LED.h" value="NONE;LED" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\LED_aliases.h" value="NONE;LED" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\EEPROM_LED.c" value="DP8051_C_FILE;EEPROM_LED" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\EEPROM_LED.h" value="NONE;EEPROM_LED" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\EEPROM_LED_aliases.h" value="NONE;EEPROM_LED" />
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\timer_clock.c" value="DP8051_C_FILE;timer_clock" />
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\timer_clock.h" value="NONE;timer_clock" />
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Vbus.c" value="DP8051_C_FILE;Vbus" />

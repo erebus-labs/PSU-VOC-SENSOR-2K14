@@ -26,8 +26,8 @@
 #include <USBUART_midi.h>
 #include <USBUART_pvt.h>
 #include <EEPROM_Blink_Timer.h>
-#include <LED.h>
-#include <LED_aliases.h>
+#include <EEPROM_LED.h>
+#include <EEPROM_LED_aliases.h>
 #include <timer_clock.h>
 #include <Vbus.h>
 #include <Vbus_aliases.h>

@@ -1,6 +1,6 @@
 // ======================================================================
 // Erebus_Sensor.v generated from TopDesign.cysch
-// 04/01/2014 at 20:45
+// 04/10/2014 at 00:12
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -694,31 +694,31 @@ module top ;
           wire  Net_680;
           wire  Net_679;
           wire  Net_678;
-          wire  Net_555;
-          wire  Net_554;
-          wire  Net_553;
+          wire  Net_713;
+          wire  Net_712;
+          wire  Net_725;
           wire  Net_212;
+          wire  Net_65;
           wire  Net_158;
           wire  Net_157;
           wire  Net_156;
           wire  Net_155;
           wire  Net_154;
-          wire  Net_204;
-          wire  Net_8;
-          wire  Net_65;
+          wire  Net_715;
+          wire  Net_714;
           wire  Net_146;
-          wire  Net_674;
-          wire  Net_665;
           wire  Net_650;
           wire  Net_72;
+          wire  Net_249;
+          wire  Net_408;
+          wire  Net_556;
+          wire  Net_674;
+          wire  Net_665;
           wire  Net_14;
     electrical  Net_564;
-          wire  Net_556;
-          wire  Net_408;
-          wire  Net_249;
 
     USBFS_v2_60_0 USBUART (
-        .sof(Net_8),
+        .sof(Net_714),
         .vbusdet(1'b0));
 
     Timer_v2_50_1 EEPROM_Blink_Timer (
@@ -738,11 +738,11 @@ module top ;
     defparam EEPROM_Blink_Timer.Resolution = 16;
     defparam EEPROM_Blink_Timer.SiliconRevision = "3";
 
-	wire [0:0] tmpOE__LED_net;
-	wire [0:0] tmpFB_0__LED_net;
-	wire [0:0] tmpIO_0__LED_net;
-	wire [0:0] tmpINTERRUPT_0__LED_net;
-	electrical [0:0] tmpSIOVREF__LED_net;
+	wire [0:0] tmpOE__EEPROM_LED_net;
+	wire [0:0] tmpFB_0__EEPROM_LED_net;
+	wire [0:0] tmpIO_0__EEPROM_LED_net;
+	wire [0:0] tmpINTERRUPT_0__EEPROM_LED_net;
+	electrical [0:0] tmpSIOVREF__EEPROM_LED_net;
 
 	cy_psoc3_pins_v1_10
 		#(.id("52f31aa9-2f0a-497d-9a1f-1424095e13e6"),
@@ -791,13 +791,13 @@ module top ;
 		  .spanning(0),
 		  .vtrip(2'b10),
 		  .width(1))
-		LED
-		 (.oe(tmpOE__LED_net),
+		EEPROM_LED
+		 (.oe(tmpOE__EEPROM_LED_net),
 		  .y({Net_65}),
-		  .fb({tmpFB_0__LED_net[0:0]}),
-		  .io({tmpIO_0__LED_net[0:0]}),
-		  .siovref(tmpSIOVREF__LED_net),
-		  .interrupt({tmpINTERRUPT_0__LED_net[0:0]}),
+		  .fb({tmpFB_0__EEPROM_LED_net[0:0]}),
+		  .io({tmpIO_0__EEPROM_LED_net[0:0]}),
+		  .siovref(tmpSIOVREF__EEPROM_LED_net),
+		  .interrupt({tmpINTERRUPT_0__EEPROM_LED_net[0:0]}),
 		  .in_clock({1'b0}),
 		  .in_clock_en({1'b1}),
 		  .in_reset({1'b0}),
@@ -805,7 +805,7 @@ module top ;
 		  .out_clock_en({1'b1}),
 		  .out_reset({1'b0}));
 
-	assign tmpOE__LED_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+	assign tmpOE__EEPROM_LED_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
     // -- TFF Start --
     reg  cy_tff_1;
@@ -922,9 +922,9 @@ module top ;
         .d(Net_249),
         .clock(Net_674),
         .q(Net_556),
-        .neg(Net_554),
+        .neg(Net_712),
         .either(Net_408),
-        .pos(Net_555));
+        .pos(Net_713));
     defparam Vbus_Debounce.EitherEdgeDetect = 1;
     defparam Vbus_Debounce.NegEdgeDetect = 0;
     defparam Vbus_Debounce.PosEdgeDetect = 0;
