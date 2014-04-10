@@ -2,7 +2,7 @@
 --	Conversion of Erebus_Sensor.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Tue Apr 01 20:45:09 2014
+--	Thu Apr 10 00:12:58 2014
 --
 
 USE cypress.cypress.all;
@@ -14,7 +14,7 @@ END top_RTL;
 ARCHITECTURE R_T_L OF top_RTL IS
 TERMINAL \USBUART:Net_1000\ : bit;
 TERMINAL \USBUART:Net_597\ : bit;
-SIGNAL Net_8 : bit;
+SIGNAL Net_714 : bit;
 SIGNAL \USBUART:Net_79\ : bit;
 SIGNAL \USBUART:Net_81\ : bit;
 SIGNAL \USBUART:ept_int_8\ : bit;
@@ -59,12 +59,12 @@ SIGNAL \EEPROM_Blink_Timer:Net_57\ : bit;
 SIGNAL Net_154 : bit;
 SIGNAL Net_146 : bit;
 SIGNAL \EEPROM_Blink_Timer:Net_102\ : bit;
-SIGNAL tmpOE__LED_net_0 : bit;
+SIGNAL tmpOE__EEPROM_LED_net_0 : bit;
 SIGNAL Net_65 : bit;
-SIGNAL tmpFB_0__LED_net_0 : bit;
-SIGNAL tmpIO_0__LED_net_0 : bit;
-TERMINAL tmpSIOVREF__LED_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__LED_net_0 : bit;
+SIGNAL tmpFB_0__EEPROM_LED_net_0 : bit;
+SIGNAL tmpIO_0__EEPROM_LED_net_0 : bit;
+TERMINAL tmpSIOVREF__EEPROM_LED_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__EEPROM_LED_net_0 : bit;
 SIGNAL cy_tff_1 : bit;
 SIGNAL tmpOE__Vbus_net_0 : bit;
 SIGNAL Net_249 : bit;
@@ -77,8 +77,8 @@ SIGNAL \Vbus_Debounce:op_clk\ : bit;
 SIGNAL \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\ : bit;
 SIGNAL \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\ : bit;
 SIGNAL Net_556 : bit;
-SIGNAL Net_555 : bit;
-SIGNAL Net_554 : bit;
+SIGNAL Net_713 : bit;
+SIGNAL Net_712 : bit;
 SIGNAL tmpOE__USB_LED_net_0 : bit;
 SIGNAL tmpFB_0__USB_LED_net_0 : bit;
 SIGNAL tmpIO_0__USB_LED_net_0 : bit;
@@ -143,8 +143,8 @@ SIGNAL cy_tff_1D : bit;
 SIGNAL Net_408D : bit;
 SIGNAL \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\\D\ : bit;
 SIGNAL \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\\D\ : bit;
-SIGNAL Net_555D : bit;
-SIGNAL Net_554D : bit;
+SIGNAL Net_713D : bit;
+SIGNAL Net_712D : bit;
 SIGNAL \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_0\\D\ : bit;
 SIGNAL \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_1\\D\ : bit;
 SIGNAL Net_680D : bit;
@@ -168,7 +168,7 @@ Net_14D <= ((not \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_0\ and \Sample_Swit
 	GENERIC MAP(cy_registers=>"")
 	PORT MAP(dp=>\USBUART:Net_1000\,
 		dm=>\USBUART:Net_597\,
-		sof_int=>Net_8,
+		sof_int=>Net_714,
 		arb_int=>\USBUART:Net_79\,
 		usb_int=>\USBUART:Net_81\,
 		ept_int=>(\USBUART:ept_int_8\, \USBUART:ept_int_7\, \USBUART:ept_int_6\, \USBUART:ept_int_5\,
@@ -180,7 +180,7 @@ Net_14D <= ((not \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_0\ and \Sample_Swit
 		dma_termin=>\USBUART:Net_824\);
 \USBUART:sof_int\:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10")
-	PORT MAP(int_signal=>Net_8);
+	PORT MAP(int_signal=>Net_714);
 \USBUART:arb_int\:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10")
 	PORT MAP(int_signal=>\USBUART:Net_79\);
@@ -352,7 +352,7 @@ Net_14D <= ((not \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_0\ and \Sample_Swit
 		tc=>Net_146,
 		compare=>\EEPROM_Blink_Timer:Net_261\,
 		interrupt=>\EEPROM_Blink_Timer:Net_57\);
-LED:cy_psoc3_pins_v1_10
+EEPROM_LED:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"52f31aa9-2f0a-497d-9a1f-1424095e13e6",
 		drive_mode=>"110",
 		ibuf_enabled=>"1",
@@ -405,10 +405,10 @@ LED:cy_psoc3_pins_v1_10
 		pa_out_reset=>-1)
 	PORT MAP(oe=>(one),
 		y=>Net_65,
-		fb=>(tmpFB_0__LED_net_0),
+		fb=>(tmpFB_0__EEPROM_LED_net_0),
 		analog=>(open),
-		io=>(tmpIO_0__LED_net_0),
-		siovref=>(tmpSIOVREF__LED_net_0),
+		io=>(tmpIO_0__EEPROM_LED_net_0),
+		siovref=>(tmpSIOVREF__EEPROM_LED_net_0),
 		annotation=>(open),
 		in_clock=>zero,
 		in_clock_en=>one,
@@ -416,7 +416,7 @@ LED:cy_psoc3_pins_v1_10
 		out_clock=>zero,
 		out_clock_en=>one,
 		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__LED_net_0);
+		interrupt=>tmpINTERRUPT_0__EEPROM_LED_net_0);
 timer_clock:cy_clock_v1_0
 	GENERIC MAP(cy_registers=>"",
 		id=>"920ac626-75fc-42be-bddc-386ba9cec7f2",
@@ -833,14 +833,14 @@ Net_408:cy_dff
 	PORT MAP(d=>Net_556,
 		clk=>\Vbus_Debounce:op_clk\,
 		q=>\Vbus_Debounce:DEBOUNCER[0]:d_sync_1\);
-Net_555:cy_dff
+Net_713:cy_dff
 	PORT MAP(d=>zero,
 		clk=>\Vbus_Debounce:op_clk\,
-		q=>Net_555);
-Net_554:cy_dff
+		q=>Net_713);
+Net_712:cy_dff
 	PORT MAP(d=>zero,
 		clk=>\Vbus_Debounce:op_clk\,
-		q=>Net_554);
+		q=>Net_712);
 \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_0\:cy_dff
 	PORT MAP(d=>Net_665,
 		clk=>\Sample_Switch_Debounce:op_clk\,

@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   CYSPC                                                                 04/01/2014 20:45:19 PAGE 1   
+C51 COMPILER V9.51   CYSPC                                                                 04/10/2014 00:06:56 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE CYSPC
@@ -62,7 +62,7 @@ line level    source
   51          #if(CY_PSOC5)
               
                   /***************************************************************************
-C51 COMPILER V9.51   CYSPC                                                                 04/01/2014 20:45:19 PAGE 2   
+C51 COMPILER V9.51   CYSPC                                                                 04/10/2014 00:06:56 PAGE 2   
 
                   * The wait-state pipeline must be enabled prior to accessing the SPC
                   * register interface regardless of CPU frequency. The CySpcLock() saves
@@ -126,7 +126,7 @@ line level    source
  113   1          CyExitCriticalSection(interruptState);
  114   1      }
  115          
-C51 COMPILER V9.51   CYSPC                                                                 04/01/2014 20:45:19 PAGE 3   
+C51 COMPILER V9.51   CYSPC                                                                 04/10/2014 00:06:56 PAGE 3   
 
  116          
  117          /*******************************************************************************
@@ -190,7 +190,7 @@ line level    source
  175          *  CYRET_BAD_PARAM
  176          *
  177          *******************************************************************************/
-C51 COMPILER V9.51   CYSPC                                                                 04/01/2014 20:45:19 PAGE 4   
+C51 COMPILER V9.51   CYSPC                                                                 04/10/2014 00:06:56 PAGE 4   
 
  178          cystatus CySpcLoadMultiByte(uint8 array, uint16 address, const uint8 buffer[], uint8 size)\
  179          
@@ -254,7 +254,7 @@ line level    source
  237          *
  238          *  uint8* buffer:
  239          *   Data to be loaded to the row latch
-C51 COMPILER V9.51   CYSPC                                                                 04/01/2014 20:45:19 PAGE 5   
+C51 COMPILER V9.51   CYSPC                                                                 04/10/2014 00:06:56 PAGE 5   
 
  240          *
  241          *  uint8 size:
@@ -318,7 +318,7 @@ line level    source
  299          *  uint16 address:
  300          *   flash/eeprom addrress
  301          *
-C51 COMPILER V9.51   CYSPC                                                                 04/01/2014 20:45:19 PAGE 6   
+C51 COMPILER V9.51   CYSPC                                                                 04/10/2014 00:06:56 PAGE 6   
 
  302          *  uint8 tempPolarity:
  303          *   temperature polarity.
@@ -382,7 +382,7 @@ line level    source
  361          *  uint8 sectorNumber:
  362          *   Zero based sector number within Flash/EEPROM array
  363          *
-C51 COMPILER V9.51   CYSPC                                                                 04/01/2014 20:45:19 PAGE 7   
+C51 COMPILER V9.51   CYSPC                                                                 04/10/2014 00:06:56 PAGE 7   
 
  364          * Return:
  365          *  CYRET_STARTED
@@ -446,7 +446,7 @@ line level    source
  423          *
  424          *******************************************************************************/
  425          cystatus CySpcGetTemp(uint8 numSamples)
-C51 COMPILER V9.51   CYSPC                                                                 04/01/2014 20:45:19 PAGE 8   
+C51 COMPILER V9.51   CYSPC                                                                 04/10/2014 00:06:56 PAGE 8   
 
  426          {
  427   1          cystatus status = CYRET_STARTED;
@@ -510,7 +510,7 @@ line level    source
                           if(0u != (CY_SPC_CPU_WAITPIPE_REG & CY_SPC_CPU_WAITPIPE_BYPASS))
                           {
                               /* Enable pipeline registers */
-C51 COMPILER V9.51   CYSPC                                                                 04/01/2014 20:45:19 PAGE 9   
+C51 COMPILER V9.51   CYSPC                                                                 04/10/2014 00:06:56 PAGE 9   
 
                               CY_SPC_CPU_WAITPIPE_REG &= ((uint32)(~CY_SPC_CPU_WAITPIPE_BYPASS));
               
@@ -574,14 +574,14 @@ line level    source
                   #endif  /* (CY_PSOC5) */
  548   1      
  549   1          /* Exit critical section */
-C51 COMPILER V9.51   CYSPC                                                                 04/01/2014 20:45:19 PAGE 10  
+C51 COMPILER V9.51   CYSPC                                                                 04/10/2014 00:06:56 PAGE 10  
 
  550   1          CyExitCriticalSection(interruptState);
  551   1      }
  552          
  553          
  554          /* [] END OF FILE */
-C51 COMPILER V9.51   CYSPC                                                                 04/01/2014 20:45:19 PAGE 11  
+C51 COMPILER V9.51   CYSPC                                                                 04/10/2014 00:06:56 PAGE 11  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -645,7 +645,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0017 FF                MOV     R7,A
 0018 EF                MOV     A,R7
 0019 54F7              ANL     A,#0F7H
-C51 COMPILER V9.51   CYSPC                                                                 04/01/2014 20:45:19 PAGE 12  
+C51 COMPILER V9.51   CYSPC                                                                 04/10/2014 00:06:56 PAGE 12  
 
 001B FF                MOV     R7,A
 001C EF                MOV     A,R7
@@ -709,7 +709,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0038 120000      E     LCALL   _CyDelayUs
                                            ; SOURCE LINE # 144
 003B 80E2              SJMP    ?C0006
-C51 COMPILER V9.51   CYSPC                                                                 04/01/2014 20:45:19 PAGE 13  
+C51 COMPILER V9.51   CYSPC                                                                 04/10/2014 00:06:56 PAGE 13  
 
 003D         ?C0007:
                                            ; SOURCE LINE # 145
@@ -773,7 +773,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0020 943F              SUBB    A,#03FH
 0022 500B              JNC     ?C0013
 0024 900000      R     MOV     DPTR,#size
-C51 COMPILER V9.51   CYSPC                                                                 04/01/2014 20:45:19 PAGE 14  
+C51 COMPILER V9.51   CYSPC                                                                 04/10/2014 00:06:56 PAGE 14  
 
 0027 E0                MOVX    A,@DPTR
 0028 FF                MOV     R7,A
@@ -837,7 +837,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 007B 4E                ORL     A,R6
 007C 7075              JNZ     ?C0015
                                            ; SOURCE LINE # 198
-C51 COMPILER V9.51   CYSPC                                                                 04/01/2014 20:45:19 PAGE 15  
+C51 COMPILER V9.51   CYSPC                                                                 04/10/2014 00:06:56 PAGE 15  
 
                                            ; SOURCE LINE # 199
 007E 900000      R     MOV     DPTR,#array
@@ -901,7 +901,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00CC 9F                SUBB    A,R7
 00CD 503A              JNC     ?C0021
                                            ; SOURCE LINE # 205
-C51 COMPILER V9.51   CYSPC                                                                 04/01/2014 20:45:19 PAGE 16  
+C51 COMPILER V9.51   CYSPC                                                                 04/10/2014 00:06:56 PAGE 16  
 
                                            ; SOURCE LINE # 206
 00CF 900000      R     MOV     DPTR,#buffer
@@ -965,7 +965,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 225
 010E         ?C0022:
 010E 22                RET     
-C51 COMPILER V9.51   CYSPC                                                                 04/01/2014 20:45:19 PAGE 17  
+C51 COMPILER V9.51   CYSPC                                                                 04/10/2014 00:06:56 PAGE 17  
 
              ; FUNCTION _CySpcLoadMultiByte (END)
 
@@ -1029,7 +1029,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 004E E4                CLR     A
 004F F0                MOVX    @DPTR,A
 0050 A3                INC     DPTR
-C51 COMPILER V9.51   CYSPC                                                                 04/01/2014 20:45:19 PAGE 18  
+C51 COMPILER V9.51   CYSPC                                                                 04/10/2014 00:06:56 PAGE 18  
 
 0051 E4                CLR     A
 0052 F0                MOVX    @DPTR,A
@@ -1093,7 +1093,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 009B         ?C0028:
                                            ; SOURCE LINE # 279
 009B 8006              SJMP    ?C0029
-C51 COMPILER V9.51   CYSPC                                                                 04/01/2014 20:45:19 PAGE 19  
+C51 COMPILER V9.51   CYSPC                                                                 04/10/2014 00:06:56 PAGE 19  
 
 009D         ?C0023:
                                            ; SOURCE LINE # 281
@@ -1157,7 +1157,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0038 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 329
 0039 904722            MOV     DPTR,#04722H
-C51 COMPILER V9.51   CYSPC                                                                 04/01/2014 20:45:19 PAGE 20  
+C51 COMPILER V9.51   CYSPC                                                                 04/10/2014 00:06:56 PAGE 20  
 
 003C E0                MOVX    A,@DPTR
 003D FF                MOV     R7,A
@@ -1221,7 +1221,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 008A         ?C0032:
                                            ; SOURCE LINE # 338
                                            ; SOURCE LINE # 339
-C51 COMPILER V9.51   CYSPC                                                                 04/01/2014 20:45:19 PAGE 21  
+C51 COMPILER V9.51   CYSPC                                                                 04/10/2014 00:06:56 PAGE 21  
 
 008A 900000      R     MOV     DPTR,#status
 008D 7409              MOV     A,#09H
@@ -1285,7 +1285,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 002E 7408              MOV     A,#08H
 0030 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 382
-C51 COMPILER V9.51   CYSPC                                                                 04/01/2014 20:45:19 PAGE 22  
+C51 COMPILER V9.51   CYSPC                                                                 04/10/2014 00:06:56 PAGE 22  
 
 0031 904722            MOV     DPTR,#04722H
 0034 E0                MOVX    A,@DPTR
@@ -1349,7 +1349,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 426
                                            ; SOURCE LINE # 427
 0005 900000      R     MOV     DPTR,#status
-C51 COMPILER V9.51   CYSPC                                                                 04/01/2014 20:45:19 PAGE 23  
+C51 COMPILER V9.51   CYSPC                                                                 04/10/2014 00:06:56 PAGE 23  
 
 0008 7407              MOV     A,#07H
 000A F0                MOVX    @DPTR,A
@@ -1413,7 +1413,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 448
 004F 900000      R     MOV     DPTR,#status
 0052 7404              MOV     A,#04H
-C51 COMPILER V9.51   CYSPC                                                                 04/01/2014 20:45:19 PAGE 24  
+C51 COMPILER V9.51   CYSPC                                                                 04/10/2014 00:06:56 PAGE 24  
 
 0054 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 449
@@ -1477,7 +1477,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0000 120000      E     LCALL   CyEnterCriticalSection
 0003 900000      R     MOV     DPTR,#interruptState
 0006 EF                MOV     A,R7
-C51 COMPILER V9.51   CYSPC                                                                 04/01/2014 20:45:19 PAGE 25  
+C51 COMPILER V9.51   CYSPC                                                                 04/10/2014 00:06:56 PAGE 25  
 
 0007 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 530

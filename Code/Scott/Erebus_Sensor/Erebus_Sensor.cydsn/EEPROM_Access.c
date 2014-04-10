@@ -13,6 +13,7 @@
 #include "EEPROM_Access.h"
 
 void update_variable(uint16 index, uint16 value){
+    
     uint8* buffer;
     float rows_used = 0;
     uint16 remainder = 0;
@@ -21,6 +22,8 @@ void update_variable(uint16 index, uint16 value){
     uint8 i = 0; // loop var
     float bytes_used = EEPROM_BYTES_USED;
     cystatus status;
+    
+    EEPROM_Blink_Timer_Start();
     
     // Allocate array to hold EEPROM variables
     
@@ -60,14 +63,20 @@ void update_variable(uint16 index, uint16 value){
     // Free buffer memory
     free(buffer);
     
+    EEPROM_Blink_Timer_Stop();
+    
     return;   
 }
 
 uint16 get_variable(uint16 var_index){
     uint16 value = 10;
-        
+    
+    EEPROM_Blink_Timer_Start();
+    
     value = ((uint16) CY_GET_REG8(CYDEV_EE_BASE + var_index)) << 8;
     value = value | CY_GET_REG8(CYDEV_EE_BASE + var_index + 1);
+    
+    EEPROM_Blink_Timer_Stop();
     
     return value;
 }

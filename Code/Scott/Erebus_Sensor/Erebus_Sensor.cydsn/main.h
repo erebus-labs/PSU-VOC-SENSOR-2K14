@@ -14,8 +14,12 @@
 #define _MAIN_H_
     
 // File Inclusions
+#include <project.h>
+#include <stdlib.h>
+    
 #include "EEPROM_Access.h"
 #include "EmEEPROM_Access.h"
+#include "Utility.h"
     
 // Macros
 

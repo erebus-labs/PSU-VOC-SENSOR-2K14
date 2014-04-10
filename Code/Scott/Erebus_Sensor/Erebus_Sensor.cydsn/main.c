@@ -9,26 +9,28 @@
  *
  * ========================================
 */
-#include <project.h>
-#include <stdlib.h>
+
 #include "main.h"
 
+// Flash variables
 const uint8 CYCODE MemoryLocation[EmEEPROMSize]; 
 volatile uint8* TailPtr = (uint8*) MemoryLocation;
+const uint8 CYCODE hard_reset_flag;
 
 int main()
 {
     /* Initialization*/
     
     // Variable declarations
+    
+    // Check for hard reset flag
+    if (hard_reset_flag){
+        hard_reset();   
+    }
 
     // Enable and start EEPROM
     EEPROM_R_Start();
     
-    // When sleep functions are implemented, use the following calls to retrieve EEPROM vars:
-    // sample_unit = get_variable(EE_SAMPLE_UNIT);
-    // sample_interval = get_variable(EE_SAMPLE_INTERVAL);
-         
     // Enable global interrupts
     CyGlobalIntEnable;
     

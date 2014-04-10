@@ -1,13 +1,13 @@
-Loading plugins phase: Elapsed time ==> 0s.468ms
-Initializing data phase: Elapsed time ==> 2s.218ms
+Loading plugins phase: Elapsed time ==> 0s.375ms
+Initializing data phase: Elapsed time ==> 2s.312ms
 <CYPRESSTAG name="CyDsfit arguments...">
 cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\Erebus_Sensor.cyprj -d CY8C3866AXI-040 -s C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\Generated_Source\PSoC3 -- -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE</CYPRESSTAG>
 <CYPRESSTAG name="Design elaboration results...">
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 4s.906ms
+Elaboration phase: Elapsed time ==> 5s.015ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.156ms
+HDL generation phase: Elapsed time ==> 0s.109ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -41,7 +41,7 @@ Options  :    -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\Win7_
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Tue Apr 01 20:45:08 2014
+Thu Apr 10 00:12:58 2014
 
 
 ======================================================================
@@ -51,7 +51,7 @@ Options  :    -yv2 -q10 Erebus_Sensor.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Tue Apr 01 20:45:08 2014
+Thu Apr 10 00:12:58 2014
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\..\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\..\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'
@@ -92,7 +92,7 @@ Options  :    -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\Win7_
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Tue Apr 01 20:45:08 2014
+Thu Apr 10 00:12:58 2014
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -127,7 +127,7 @@ Options  :    -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\Win7_
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Tue Apr 01 20:45:09 2014
+Thu Apr 10 00:12:58 2014
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -174,7 +174,7 @@ Aliasing \USBUART:tmpOE__Dp_net_0\ to \USBUART:tmpOE__Dm_net_0\
 Aliasing \EEPROM_Blink_Timer:Net_260\ to zero
 Aliasing Net_650 to zero
 Aliasing \EEPROM_Blink_Timer:Net_102\ to \USBUART:tmpOE__Dm_net_0\
-Aliasing tmpOE__LED_net_0 to \USBUART:tmpOE__Dm_net_0\
+Aliasing tmpOE__EEPROM_LED_net_0 to \USBUART:tmpOE__Dm_net_0\
 Aliasing tmpOE__Vbus_net_0 to \USBUART:tmpOE__Dm_net_0\
 Aliasing tmpOE__USB_LED_net_0 to \USBUART:tmpOE__Dm_net_0\
 Aliasing tmpOE__Sensor_VIn_net_0 to \USBUART:tmpOE__Dm_net_0\
@@ -183,8 +183,8 @@ Aliasing \ADC:Net_252\ to zero
 Aliasing \ADC:soc\ to \USBUART:tmpOE__Dm_net_0\
 Aliasing tmpOE__Sample_net_0 to \USBUART:tmpOE__Dm_net_0\
 Aliasing \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\\D\ to Net_556
-Aliasing Net_555D to zero
-Aliasing Net_554D to zero
+Aliasing Net_713D to zero
+Aliasing Net_712D to zero
 Aliasing Net_680D to zero
 Aliasing Net_679D to zero
 Removing Rhs of wire one[38] = \USBUART:tmpOE__Dm_net_0\[33]
@@ -194,7 +194,7 @@ Removing Lhs of wire \EEPROM_Blink_Timer:Net_266\[52] = one[38]
 Removing Lhs of wire Net_650[53] = zero[34]
 Removing Rhs of wire Net_146[58] = \EEPROM_Blink_Timer:Net_51\[54]
 Removing Lhs of wire \EEPROM_Blink_Timer:Net_102\[59] = one[38]
-Removing Lhs of wire tmpOE__LED_net_0[61] = one[38]
+Removing Lhs of wire tmpOE__EEPROM_LED_net_0[61] = one[38]
 Removing Rhs of wire Net_65[62] = cy_tff_1[67]
 Removing Lhs of wire tmpOE__Vbus_net_0[70] = one[38]
 Removing Rhs of wire Net_556[83] = \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\[81]
@@ -208,8 +208,8 @@ Removing Lhs of wire \ADC:soc\[159] = one[38]
 Removing Lhs of wire tmpOE__Sample_net_0[164] = one[38]
 Removing Lhs of wire \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\\D\[170] = Net_249[71]
 Removing Lhs of wire \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\\D\[171] = Net_556[83]
-Removing Lhs of wire Net_555D[172] = zero[34]
-Removing Lhs of wire Net_554D[173] = zero[34]
+Removing Lhs of wire Net_713D[172] = zero[34]
+Removing Lhs of wire Net_712D[173] = zero[34]
 Removing Lhs of wire \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_0\\D\[174] = Net_665[95]
 Removing Lhs of wire \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_1\\D\[175] = \Sample_Switch_Debounce:DEBOUNCER[0]:d_sync_0\[94]
 Removing Lhs of wire Net_680D[176] = zero[34]
@@ -240,10 +240,10 @@ CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\wa
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\bin/warp.exe
 Warp Arguments : -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya "-.fftprj=C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\Erebus_Sensor.cyprj" -dcpsoc3 Erebus_Sensor.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 1s.484ms
+Warp synthesis phase: Elapsed time ==> 0s.906ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V3.0.0.1539, Family: PSoC3, Started at: Tuesday, 01 April 2014 20:45:09
+cyp3fit: V3.0.0.1539, Family: PSoC3, Started at: Thursday, 10 April 2014 00:12:59
 Options: -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\Erebus_Sensor.cyprj -d CY8C3866AXI-040 Erebus_Sensor.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
@@ -251,10 +251,10 @@ Design parsing phase: Elapsed time ==> 0s.015ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
-    Converted constant MacroCell: Net_554 from registered to combinatorial
-    Converted constant MacroCell: Net_555 from registered to combinatorial
     Converted constant MacroCell: Net_679 from registered to combinatorial
     Converted constant MacroCell: Net_680 from registered to combinatorial
+    Converted constant MacroCell: Net_712 from registered to combinatorial
+    Converted constant MacroCell: Net_713 from registered to combinatorial
 Assigning clock USBUART_Clock_vbus to clock BUS_CLK because it is a pass-through
 <CYPRESSTAG name="Global Clock Selection" icon="FILE_RPT_TECHM">
     Digital Clock 0: Automatic-assigning  clock 'ADC_Ext_CP_Clk'. Fanout=1, Signal=\ADC:Net_93\
@@ -264,10 +264,10 @@ Assigning clock USBUART_Clock_vbus to clock BUS_CLK because it is a pass-through
 </CYPRESSTAG>
 
 Removing unused cells resulting from optimization
-    Removed unused cell/equation 'Net_554:macrocell'
-    Removed unused cell/equation 'Net_555:macrocell'
     Removed unused cell/equation 'Net_679:macrocell'
     Removed unused cell/equation 'Net_680:macrocell'
+    Removed unused cell/equation 'Net_712:macrocell'
+    Removed unused cell/equation 'Net_713:macrocell'
 Done removing unused cells.
 <CYPRESSTAG name="UDB Clock/Enable Remapping Results">
     UDB Clk/Enable \Sample_Switch_Debounce:ClkSync\: with output requested to be synchronous
@@ -302,7 +302,7 @@ Design Equations
     Pin listing
     ------------------------------------------------------------
 
-    Pin : Name = LED(0)
+    Pin : Name = EEPROM_LED(0)
         Attributes:
             In Group/Port: True
             In Sync Option: AUTO
@@ -334,9 +334,9 @@ Design Equations
             Initial Value: 0
             IO Voltage: 0
         PORT MAP (
-            pa_out => LED(0)__PA ,
+            pa_out => EEPROM_LED(0)__PA ,
             input => Net_65 ,
-            pad => LED(0)_PAD );
+            pad => EEPROM_LED(0)_PAD );
         Properties:
         {
         }
@@ -799,7 +799,7 @@ Design Equations
 
     interrupt: Name =\USBUART:sof_int\
         PORT MAP (
-            interrupt => Net_8 );
+            interrupt => Net_714 );
         Properties:
         {
             int_type = "10"
@@ -842,14 +842,14 @@ LCD Fixed Blocks              :    0 :    1 :    1 :   0.00%
 EMIF Fixed Blocks             :    0 :    1 :    1 :   0.00%
 LPF Fixed Blocks              :    0 :    2 :    2 :   0.00%
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.046ms
+Technology Mapping: Elapsed time ==> 0s.078ms
 Info: mpr.M0037: Unused pieces of the design have been optimized out. See the Tech mapping section of the report file for details. (App=cydsfit)
 Tech mapping phase: Elapsed time ==> 0s.203ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 Info: apr.M0002: Analog signal "\ADC:Net_690\" is connected to one terminal only. (App=cydsfit)
 Initial Analog Placement Results:
-IO_0@[IOP=(0)][IoId=(0)] : LED(0) (fixed)
+IO_0@[IOP=(0)][IoId=(0)] : EEPROM_LED(0) (fixed)
 IO_5@[IOP=(15)][IoId=(5)] : Sample(0) (fixed)
 IO_7@[IOP=(0)][IoId=(7)] : Sensor_VIn(0) (fixed)
 IO_1@[IOP=(0)][IoId=(1)] : USB_LED(0) (fixed)
@@ -860,7 +860,7 @@ DSM[0]@[FFB(DSM,0)] : \ADC:DSM\
 Vref[6]@[FFB(Vref,6)] : \ADC:vRef_2\
 USB[0]@[FFB(USB,0)] : \USBUART:USB\
 Analog Placement Results:
-IO_0@[IOP=(0)][IoId=(0)] : LED(0) (fixed)
+IO_0@[IOP=(0)][IoId=(0)] : EEPROM_LED(0) (fixed)
 IO_5@[IOP=(15)][IoId=(5)] : Sample(0) (fixed)
 IO_7@[IOP=(0)][IoId=(7)] : Sensor_VIn(0) (fixed)
 IO_1@[IOP=(0)][IoId=(1)] : USB_LED(0) (fixed)
@@ -871,7 +871,7 @@ DSM[0]@[FFB(DSM,0)] : \ADC:DSM\
 Vref[6]@[FFB(Vref,6)] : \ADC:vRef_2\
 USB[0]@[FFB(USB,0)] : \USBUART:USB\
 
-Analog Placement phase: Elapsed time ==> 0s.046ms
+Analog Placement phase: Elapsed time ==> 0s.031ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
 Analog Routing phase: Elapsed time ==> 0s.000ms
@@ -952,7 +952,7 @@ Dump of CyP35AnalogRoutingResultsDB
 IsVddaHalfUsedForComp = False
 IsVddaHalfUsedForSar0 = False
 IsVddaHalfUsedForSar1 = False
-Analog Code Generation phase: Elapsed time ==> 0s.562ms
+Analog Code Generation phase: Elapsed time ==> 0s.546ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="PLD Packing">
@@ -983,7 +983,7 @@ PLD Packing: Elapsed time ==> 0s.000ms
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.031ms
+Partitioning: Elapsed time ==> 0s.062ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Simulated Annealing">
 Annealing: Elapsed time ==> 0s.000ms
@@ -1239,7 +1239,7 @@ Intr hod @ [IntrHod=(0)]:
   Intr@ [IntrHod=(0)][IntrId=(21)] 
     interrupt: Name =\USBUART:sof_int\
         PORT MAP (
-            interrupt => Net_8 );
+            interrupt => Net_714 );
         Properties:
         {
             int_type = "10"
@@ -1279,7 +1279,7 @@ Intr hod @ [IntrHod=(0)]:
 Drq hod @ [DrqHod=(0)]: empty
 Port 0 contains the following IO cells:
 [IoId=0]: 
-Pin : Name = LED(0)
+Pin : Name = EEPROM_LED(0)
     Attributes:
         In Group/Port: True
         In Sync Option: AUTO
@@ -1311,9 +1311,9 @@ Pin : Name = LED(0)
         Initial Value: 0
         IO Voltage: 0
     PORT MAP (
-        pa_out => LED(0)__PA ,
+        pa_out => EEPROM_LED(0)__PA ,
         input => Net_65 ,
-        pad => LED(0)_PAD );
+        pad => EEPROM_LED(0)_PAD );
     Properties:
     {
     }
@@ -1734,7 +1734,7 @@ Fixed Function block hod @ [FFB(USB,0)]:
         PORT MAP (
             dp => \USBUART:Net_1000\ ,
             dm => \USBUART:Net_597\ ,
-            sof_int => Net_8 ,
+            sof_int => Net_714 ,
             arb_int => \USBUART:Net_79\ ,
             usb_int => \USBUART:Net_81\ ,
             ept_int_8 => \USBUART:ept_int_8\ ,
@@ -1804,7 +1804,7 @@ Port Configuration report
      |     |       | Interrupt |                  |                 | 
 Port | Pin | Fixed |      Type |       Drive Mode |            Name | Connections
 -----+-----+-------+-----------+------------------+-----------------+---------------------------
-   0 |   0 |     * |      NONE |         CMOS_OUT |          LED(0) | In(Net_65)
+   0 |   0 |     * |      NONE |         CMOS_OUT |   EEPROM_LED(0) | In(Net_65)
      |   1 |     * |      NONE |         CMOS_OUT |      USB_LED(0) | In(Net_556)
      |   7 |     * |      NONE |      HI_Z_ANALOG |   Sensor_VIn(0) | Analog(Net_564)
 -----+-----+-------+-----------+------------------+-----------------+---------------------------
@@ -1818,32 +1818,32 @@ Port | Pin | Fixed |      Type |       Drive Mode |            Name | Connection
 </CYPRESSTAG>
 </CYPRESSTAG>
 Digital component placer commit/Report: Elapsed time ==> 0s.015ms
-Digital Placement phase: Elapsed time ==> 1s.328ms
+Digital Placement phase: Elapsed time ==> 1s.312ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 Routing successful.
-Digital Routing phase: Elapsed time ==> 1s.796ms
+Digital Routing phase: Elapsed time ==> 1s.859ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream and API generation">
 Bitstream and API generation phase: Elapsed time ==> 0s.187ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream verification">
-Bitstream verification phase: Elapsed time ==> 0s.078ms
+Bitstream verification phase: Elapsed time ==> 0s.062ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Warning: sta.M0021: Erebus_Sensor_timing.html: Warning-1350: Asynchronous path(s) exist from "timer_clock(fixed-function)" to "timer_clock". See the timing report for details. (File=C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\Erebus_Sensor_timing.html)
 Timing report is in Erebus_Sensor_timing.html.
-Static timing analysis phase: Elapsed time ==> 0s.546ms
+Static timing analysis phase: Elapsed time ==> 0s.312ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
 Data reporting phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.234ms
+Design database save phase: Elapsed time ==> 0s.265ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 5s.031ms
+cydsfit: Elapsed time ==> 4s.812ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 5s.078ms
-API generation phase: Elapsed time ==> 1s.796ms
-Dependency generation phase: Elapsed time ==> 0s.000ms
+Fitter phase: Elapsed time ==> 4s.859ms
+API generation phase: Elapsed time ==> 1s.562ms
+Dependency generation phase: Elapsed time ==> 0s.015ms
 Cleanup phase: Elapsed time ==> 0s.000ms

@@ -16,6 +16,7 @@
     // File Inclusions
     #include "Project.h"
     #include "EEPROM_Access.h"
+    #include "Utility.h"
 
     // Macros
     #define BUFFER_LEN          64u  
@@ -26,20 +27,23 @@
     /* Message Codes for USB Communications */
     
     // Incoming commands
-    #define IDENTIFY        0x49    // "I"
-    #define DUMP_DATA       0x44    // "D"
-    #define CHANGE_SETTING  0x43    // "C"
+    #define IDENTIFY        0x01
+    #define DUMP_DATA       0x02
+    #define SEND_SETTINGS   0x03
+    #define CHANGE_SETTING  0x04
+    #define HARD_RESET      0x05
     
     // Setting Codes
-    #define SAMPLE_UNIT     0x55    // "U"
-    #define SAMPLE_INTERVAL 0x56    // "V"
-    #define SENSOR          0x53    // "S"    
+    #define SAMPLE_UNIT     0x01
+    #define SAMPLE_INTERVAL 0x02
+    #define SENSOR          0x03    
+
 
     // Outgoing Responses
     #define REPLY_LEN   1
-    #define IDENTIFIER  0x45    // "E"
-    #define SUCCESS     0x59    // "Y"
-    #define FAIL        0x4E    // "N"
+    #define IDENTIFIER  0x01
+    #define SUCCESS     0x02
+    #define FAIL        0x03
     
           
     // Structures
@@ -56,6 +60,7 @@
     void dump_data();
     void confirm_dump();
     void send_reply(uint8 buffer);
+    void CMD_hard_reset();
     void USB_Close();
 
 #endif // ifndef _USB_ACCESS_H_
