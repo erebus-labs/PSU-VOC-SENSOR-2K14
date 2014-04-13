@@ -2,7 +2,7 @@
 #
 #     File Name: sensor.py
 #       Project: Erebus Labs Sensor
-# Revision Date: 04/07/2014
+# Revision Date: 04/12/2014
 #   Description: This file defines the ErebusSensor class
 #
 #*************************************************************************************************
@@ -12,6 +12,11 @@ import struct
 import sys
 import os
 from glob import glob
+
+# Module Level Variables
+sensorOptions = ('Light Sensor', 'Temperature Sensor')
+unitOptions = ('Seconds', 'Minutes', 'Hours', 'Days')
+maxInterval = pow(2, 16)
 
 class ErebusSensor:
 
@@ -190,4 +195,5 @@ class ErebusSensor:
           status = 1
   
       return status
+
 
