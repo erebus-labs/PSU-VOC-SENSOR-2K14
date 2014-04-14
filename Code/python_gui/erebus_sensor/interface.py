@@ -1,8 +1,8 @@
 #*************************************************************************************************
 #
-#     File Name: sensor.py
+#     File Name: interface.py
 #       Project: Erebus Labs Sensor
-# Revision Date: 04/12/2014
+# Revision Date: 04/13/2014
 #   Description: This file defines the ErebusSensor class
 #
 #*************************************************************************************************
@@ -17,6 +17,38 @@ from glob import glob
 sensorOptions = ('Light Sensor', 'Temperature Sensor')
 unitOptions = ('Seconds', 'Minutes', 'Hours', 'Days')
 maxInterval = pow(2, 16)
+
+settings = {
+    'SAMPLE_UNIT'     :0x01.to_bytes(1,byteorder='big'),
+    'SAMPLE_INTERVAL' :0x02.to_bytes(1,byteorder='big'),
+    'SENSOR'          :0x03.to_bytes(1,byteorder='big')}
+  
+
+class Settings:
+    def __init__(self, sensor=sensorOptions[0], unit=unitOptions[0], interval=1):
+        self.SENSOR = sensor
+        self.SAMPLE_UNIT = unit
+        self.SAMPLE_INTERVAL = interval
+
+    def extractDiff(self, other):
+
+        diffDict = {}
+
+        for member in iter(settings):
+            if getattr(self, member) != getattr(other, member):
+                diffDict[member] = getattr(other, member)
+
+        return diffDict
+
+class DataDump:
+    def __init__(self, startTime, sensor, sampleUnit, sampleInterval, samples):
+        self.startTime = startTime
+        self.sensor = sensor
+        self.sampleUnit = sampleUnit
+        self.sampleInterval = sampleInterval
+        self.samples = samples
+
+        return
 
 class ErebusSensor:
 
@@ -38,8 +70,8 @@ class ErebusSensor:
         self.commands = {
             'IDENTIFY'        :0x01.to_bytes(1,byteorder='big'),
             'DUMP_DATA'       :0x02.to_bytes(1,byteorder='big'),
-            'SEND_SETTINGS'   :0x03.to_bytes(1,byteorder='big'),
-            'CHANGE_SETTINGS' :0x04.to_bytes(1,byteorder='big'),
+            'GET_SETTINGS'    :0x03.to_bytes(1,byteorder='big'),
+            'CHANGE_SETTING'  :0x04.to_bytes(1,byteorder='big'),
             'HARD_RESET'      :0x05.to_bytes(1,byteorder='big')}
   
         self.responses = {
@@ -47,18 +79,13 @@ class ErebusSensor:
             'SUCCESS'         :0x02.to_bytes(1,byteorder='big'),
             'FAIL'            :0x03.to_bytes(1,byteorder='big')}
   
-        self.settings = {
-            'SAMPLE_UNIT'     :0x01.to_bytes(1,byteorder='big'),
-            'SAMPLE_INTERVAL' :0x02.to_bytes(1,byteorder='big'),
-            'SENSOR'          :0x03.to_bytes(1,byteorder='big')}
-  
         self.sample_codes = {
             'SAMPLE_SEC'      :0x01.to_bytes(1,byteorder='big'),
             'SAMPLE_MIN'      :0x02.to_bytes(1,byteorder='big'),
             'SAMPLE_HOUR'     :0x03.to_bytes(1,byteorder='big'),
             'SAMPLE_DAY'      :0x04.to_bytes(1,byteorder='big')}
   
-        for port in self.scan_ports():
+        for port in self._scanPorts():
   
             try:
                 
@@ -71,10 +98,9 @@ class ErebusSensor:
                                             stopbits=serial.STOPBITS_ONE,
                                             timeout=3)
   
-                self.send_command('IDENTIFY')
+                self._sendCommand('IDENTIFY')
   
                 response = self.handle.read(1)
-                print('\nResponse: {}'.format(response))
   
                 if response == self.responses['IDENTIFIER']:
                     acquired = 1
@@ -85,10 +111,11 @@ class ErebusSensor:
   
         if not acquired:
             self.handle = None
+            return None
   
         return
   
-    def scan_ports(self):
+    def _scanPorts(self):
   
         ports = []
     
@@ -101,7 +128,7 @@ class ErebusSensor:
     
         return ports
   
-    def send_command(self, command, target=0, value=0):
+    def _sendCommand(self, command, target=0, value=0):
   
       if command in iter(self.commands):
           command = self.commands[command]
@@ -114,14 +141,7 @@ class ErebusSensor:
   
       return 
   
-    def is_connected(self):
-      if self.handle != None:
-        return self.handle.isOpen()
-      else:
-        return False
-  
-  
-    def get_data(self):
+    def _getData(self):
       if not self.is_connected():
           return None
   
@@ -131,7 +151,7 @@ class ErebusSensor:
       bytes_received = -1
   
       try:
-          self.send_command('DUMP_DATA')
+          self._sendCommand('DUMP_DATA')
       except OSError:
           return -1
   
@@ -158,17 +178,17 @@ class ErebusSensor:
                   break
   
           if bytes_received == bytes_sent:
-              self.send_command('SUCCESS')
+              self._sendCommand('SUCCESS')
               result = 1
           else:
-              self.send_command('FAIL')
+              self._sendCommand('FAIL')
               result = 0
       
           if result == 1:
               break
           else:
               try:
-                  self.send_command('DUMP_DATA')
+                  self._sendCommand('DUMP_DATA')
               except OSError:
                   return -1
       
@@ -176,24 +196,56 @@ class ErebusSensor:
           return data
       else:
           return None
-  
-    def request_id(self):
+
+    def _changeSetting(self, setting, new_value):
+        status = 1
         try:
-            self.send_command('IDENTIFY')
+            self._sendCommand('CHANGE_SETTING', settings[setting], new_value)
         except OSError:
-            return -1
-        return self.handle.read(1)
-  
-    def change_setting(self, setting, new_value):
-      status = 0
-      try:
-          self.send_command('CHANGE_SETTINGS', self.settings[setting], new_value)
-      except OSError:
-          status = -1
-  
-      if self.handle.read(1) == self.responses['SUCCESS']:
-          status = 1
-  
-      return status
+            status = -1
+      
+        if self.handle.read(1) == self.responses['SUCCESS']:
+            status = 0
+      
+        return status
 
+    def close(self):
+        self.handle.close()
+        return
 
+    def isConnected(self):
+        if self.handle != None:
+            return self.handle.isOpen()
+        else:
+            return False
+
+    def getSettings(self):
+        retStructure = None
+        settings_count = len(settings)
+        try:
+            self._sendCommand('GET_SETTINGS')
+            package = self.handle.read(settings_count*2)
+            packet = struct.unpack('<' + 'h'*settings_count, package)
+            
+            retStructure = Settings(sensor=sensorOptions(packet[0]),
+                                    unit=unitOptions(packet[1]),
+                                    interval=int(packet[2]))
+
+        except OSError:
+            pass
+
+        return retStructure
+
+    def applySettings(self, newSettings):
+        status = 1
+        
+        for setting in newSettings:
+            if self._changeSetting(setting, newSettings[setting]):
+                break
+        else:
+            status = 0
+
+        return status
+
+                
+                
