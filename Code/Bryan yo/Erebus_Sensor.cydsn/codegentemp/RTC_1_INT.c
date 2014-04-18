@@ -30,31 +30,8 @@ static void RTC_1_EveryYearHandler(void);
 *  Place your includes, defines and code here
 *******************************************************************************/
 /* `#START RTC_ISR_DEFINITION` */
-    #include "project.h"
-    #include "EmEEPROM_Access.h"
 
-
-    uint16 SampledData=0; 
-    
-    Em_EEPROM_Start(); 
-    ADC_Start();
-    
-    /* ADC */
-    SampledData = ADC_Read16(); /* Function Starts, Converts, Stops, and Returns from ADC */
-    if (SampledData & 0x8000)
-   	{
-    	SampledData = 0;        /* Ignore negative ADC results */
-   	}
-   	else if (SampledData >= 0xfff)
-   	{
-    	SampledData = 0xfff;    /* Ignore high ADC results */
-    }
-    
-    
-    /* EEP */
-    Em_EEPROM_Write(&SampledData,TailPtr,2u);
-    
-    TailPtr = TailPtr + 2; 
+#include "Sample_Handler.h"
 
 /* `#END` */
 
@@ -77,7 +54,9 @@ static void RTC_1_EverySecondHandler(void)
 {
     /*  Place your every second handler code here. */
     /* `#START EVERY_SECOND_HANDLER_CODE` */
-
+    
+    RTC_Int_Handler();
+    
     /* `#END` */
 }
 
@@ -101,6 +80,8 @@ static void RTC_1_EveryMinuteHandler(void)
     /*  Place your every minute handler code here. */
     /* `#START EVERY_MINUTE_HANDLER_CODE` */
 
+    RTC_Int_Handler();
+    
     /* `#END` */
 }
 
@@ -124,6 +105,8 @@ static void RTC_1_EveryHourHandler(void)
     /*  Place your every hour handler code here. */
     /* `#START EVERY_HOUR_HANDLER_CODE` */
 
+    RTC_Int_Handler();
+    
     /* `#END` */
 }
 
@@ -147,6 +130,8 @@ static void RTC_1_EveryDayHandler(void)
     /*  Place your everyday handler code here. */
     /* `#START EVERY_DAY_HANDLER_CODE` */
 
+    RTC_Int_Handler();
+    
     /* `#END` */
 }
 
@@ -170,6 +155,8 @@ static void RTC_1_EveryWeekHandler(void)
     /*  Place your every week handler code here. */
     /* `#START EVERY_WEEK_HANDLER_CODE` */
 
+    RTC_Int_Handler();
+    
     /* `#END` */
 }
 
@@ -193,6 +180,8 @@ static void RTC_1_EveryMonthHandler(void)
     /*  Place your every month handler code here. */
     /* `#START EVERY_MONTH_HANDLER_CODE` */
 
+    RTC_Int_Handler();
+    
     /* `#END` */
 }
 
@@ -216,6 +205,8 @@ static void RTC_1_EveryYearHandler(void)
     /*  Place your every year handler code here. */
     /* `#START EVERY_YEAR_HANDLER_CODE` */
 
+    RTC_Int_Handler();
+    
     /* `#END` */
 }
 

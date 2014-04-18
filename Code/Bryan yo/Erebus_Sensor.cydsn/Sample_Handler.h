@@ -9,5 +9,9 @@
  *
  * ========================================
 */
-#define int take_sample()
+void rtc_init(void);
+void take_sample(void);
+void sample_counter(void);
+void RTC_Int_Handler(void);
+
 /* [] END OF FILE */

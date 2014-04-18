@@ -2,7 +2,7 @@
 --	Conversion of Erebus_Sensor.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Wed Apr 09 20:53:36 2014
+--	Thu Apr 17 22:46:31 2014
 --
 
 USE cypress.cypress.all;
