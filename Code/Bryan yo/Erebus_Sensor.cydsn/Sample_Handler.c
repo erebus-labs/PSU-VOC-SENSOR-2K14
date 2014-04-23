@@ -22,7 +22,7 @@ void rtc_init()
 {
     uint16 sample_unit;
     
-    sample_unit = get_variable(EE_Sample_Unit);
+    sample_unit = get_variable(EE_SAMPLE_UNIT);
     
     switch (sample_unit)
     {
@@ -61,7 +61,7 @@ void sample_counter()
 {
     uint16 sample_interval;
     
-    sample_interval = get_variable(EE_Sample_Interval);
+    sample_interval = get_variable(EE_SAMPLE_INTERVAL);
     
     /* Take sample if interval has been reached */
     if (sample_int_count == sample_interval)
