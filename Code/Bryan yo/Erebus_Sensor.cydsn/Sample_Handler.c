@@ -15,12 +15,13 @@
 #include "EEPROM_Access.h"
 #include "RTC_1.h"
 
-
 uint16 sample_int_count;
 
 void rtc_init()
 {
     uint16 sample_unit;
+    
+    uint8 EE_SAMPLE_UNIT = 1;
     
     sample_unit = get_variable(EE_SAMPLE_UNIT);
     
@@ -54,12 +55,24 @@ void rtc_init()
 
 void RTC_Int_Handler()
 {
-    sample_counter();
+    
+    CyPmReadStatus(4);
+    
+    if (sample_counter())
+    {
+        take_sample();
+    }
+    
+    CyPmSaveClocks();
+    CyPmSleep(1,2112);
+    
 }
 
-void sample_counter()
+uint16 sample_counter()
 {
     uint16 sample_interval;
+    
+    uint8 EE_SAMPLE_INTERVAL = 1;
     
     sample_interval = get_variable(EE_SAMPLE_INTERVAL);
     
@@ -69,19 +82,15 @@ void sample_counter()
         take_sample();
         sample_int_count = 0;
         
-        CyPmSaveClocks();
-        CyPmSleep(1,2112);
+        return 1;
     }
     /* Increment counter and go back to sleep if interval has not been reached */
     else
     {
         sample_int_count = sample_int_count++;
         
-        CyPmSaveClocks();
-        CyPmSleep(1,2112);
-        
+        return 0;
     }
-    
 }
 
 void take_sample()
@@ -107,9 +116,6 @@ void take_sample()
     Em_EEPROM_Write(&SampledData,TailPtr,2u);
     
     TailPtr = TailPtr + 2;
-    
-    CyPmSaveClocks();
-    CyPmSleep(1,2112);
     
 }
     
