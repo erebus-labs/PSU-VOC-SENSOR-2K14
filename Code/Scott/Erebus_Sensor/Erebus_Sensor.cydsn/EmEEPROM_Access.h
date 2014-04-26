@@ -9,10 +9,15 @@
  *
  * ========================================
 */
-#include <project.h>
 
-// Emulated EEPROM/FLASH
-#define EmEEPROMSize 1024 
-extern const uint8 CYCODE MemoryLocation[];
-extern volatile uint8* TailPtr;
+#ifndef _EMEEPROM_ACCESS_H_
+    #define _EMEEPROM_ACCESS_H_
+    #include "project.h"
+
+    // Emulated EEPROM/FLASH
+    #define EmEEPROMSize 1024 
+    extern const uint8 CYCODE MemoryLocation[];
+    extern const volatile uint8* TailPtr;
+    
+#endif
 /* [] END OF FILE */

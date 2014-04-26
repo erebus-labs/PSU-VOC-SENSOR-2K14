@@ -25,8 +25,7 @@
 *  Place your includes, defines and code here 
 ********************************************************************************/
 /* `#START TakeSample_IRQ_intc` */
-#include "project.h"
-#include "EmEEPROM_Access.h"
+#include "Sample_Handler.h"
 /* `#END` */
 
 
@@ -131,28 +130,7 @@ CY_ISR(TakeSample_IRQ_Interrupt)
 {
     /*  Place your Interrupt code here. */
     /* `#START TakeSample_IRQ_Interrupt` */
-    uint16 SampledData=0; 
-    
-    Em_EEPROM_Start(); 
-    ADC_Start();
-    
-    /* ADC */
-    SampledData = ADC_Read16(); /* Function Starts, Converts, Stops, and Returns from ADC */
-    if (SampledData & 0x8000)
-   	{
-    	SampledData = 0;        /* Ignore negative ADC results */
-   	}
-   	else if (SampledData >= 0xfff)
-   	{
-    	SampledData = 0xfff;    /* Ignore high ADC results */
-    }
-    
-    
-    /* EEP */
-    Em_EEPROM_Write(&SampledData,TailPtr,2u);
-    
-    TailPtr = TailPtr + 2; 
-
+    take_sample();
     /* `#END` */
 
     /* PSoC3 ES1, ES2 RTC ISR PATCH  */ 

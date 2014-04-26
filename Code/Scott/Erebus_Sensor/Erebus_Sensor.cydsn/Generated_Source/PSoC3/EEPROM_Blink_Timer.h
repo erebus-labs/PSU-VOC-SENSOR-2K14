@@ -37,7 +37,7 @@ extern uint8 EEPROM_Blink_Timer_initVar;
 **************************************/
 
 #define EEPROM_Blink_Timer_Resolution                 16u
-#define EEPROM_Blink_Timer_UsingFixedFunction         1u
+#define EEPROM_Blink_Timer_UsingFixedFunction         0u
 #define EEPROM_Blink_Timer_UsingHWCaptureCounter      0u
 #define EEPROM_Blink_Timer_SoftwareCaptureMode        0u
 #define EEPROM_Blink_Timer_SoftwareTriggerMode        0u

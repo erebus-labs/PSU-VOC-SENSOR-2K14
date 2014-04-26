@@ -17,10 +17,12 @@
 
     // INCLUSIONS
 
+    #include <math.h>
+    #include <stdlib.h>
     #include "Project.h"
     #include "cytypes.h"
-    #include "math.h"
-    #include "stdlib.h"
+    #include "LED_Handler.h"
+    #include "USB_Access.h" // included for FAIL and SUCCESS macros
 
     // MACROS
     
@@ -29,22 +31,29 @@
 
     // EEPROM Array index of each user variable 
     #define EE_SAMPLE_UNIT      0x0000
-    #define EE_SAMPLE_INTERVAL  EE_SAMPLE_UNIT + 2
-    #define EE_SENSOR           EE_SAMPLE_INTERVAL +2
+    #define EE_SAMPLE_INTERVAL  EE_SAMPLE_UNIT + 1
+    #define EE_SENSOR           EE_SAMPLE_INTERVAL +1
+
+    #define EEPROM_BYTES_USED   0x3
+    #define NUM_SETTINGS        0x3
        
     // RTC Time Unit Codes
     #define SAMPLE_SEC      0x01
     #define SAMPLE_MIN      0x02
     #define SAMPLE_HOUR     0x03
     #define SAMPLE_DAY      0x04
-    
-    // Total number of bytes used in EEPROM
-    #define EEPROM_BYTES_USED EE_SENSOR + 2
 
+    // Structures
+    typedef struct eeprom_settings{
+        uint8 sensor;
+        uint8 sample_unit;
+        uint8 sample_interval;
+    }settings_group;
+       
     // Function Prototypes
     
-    uint16 get_variable(uint16 index);
-    void update_variable(uint16 index, uint16 value);
+    uint8 get_variable(uint16 index);
+    uint8 update_settings(settings_group new_settings);
     
 #endif // ifndef _EEPROM_ACCESS_H_
 

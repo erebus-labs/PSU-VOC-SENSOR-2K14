@@ -12,7 +12,7 @@
 
 #include "EEPROM_Access.h"
 
-void update_variable(uint16 index, uint16 value){
+uint8 update_settings(settings_group new_settings){
     
     uint8* buffer;
     float rows_used = 0;
@@ -21,14 +21,20 @@ void update_variable(uint16 index, uint16 value){
     uint8* dst_ptr;
     uint8 i = 0; // loop var
     float bytes_used = EEPROM_BYTES_USED;
+    uint8 result = SUCCESS;
     cystatus status;
     
-    EEPROM_Blink_Timer_Start();
+    int test;
+    
+    EEPROM_LED_on();
     
     // Allocate array to hold EEPROM variables
     
-    rows_used = ceil(bytes_used/16);
-    buffer = malloc(((uint16) rows_used) * 16);
+    rows_used = ceil(bytes_used/CYDEV_EEPROM_ROW_SIZE);
+    buffer = malloc(((uint16) rows_used) * CYDEV_EEPROM_ROW_SIZE);
+    
+    test = sizeof(buffer);
+    
     dst_ptr = buffer;
     remainder = (rows_used * 16) - EEPROM_BYTES_USED;
     
@@ -44,18 +50,27 @@ void update_variable(uint16 index, uint16 value){
         ++i;
     }
     
-    // Modify variable in RAM
-    buffer[index] = (uint8) (value >> 0x8);
-    buffer[index+1] = (uint8) value & 0xFF;
+    // Modify variables in RAM
+    buffer[0] = new_settings.sensor;
+    buffer[1] = new_settings.sample_unit;
+    buffer[2] = new_settings.sample_interval;
     
     // Erase EEPROM
     status = EEPROM_R_EraseSector(SECTOR_NUMBER);
+    if (status != CYRET_SUCCESS){
+        result = FAIL;
+        goto exit;
+    }
     
     // Write back modified EEPROM Variables
     i = 0;
     src_ptr = buffer;
     while ((i < rows_used) && (i < EEPROM_ROWS)){
-        EEPROM_R_Write(src_ptr, i);
+        status = EEPROM_R_Write(src_ptr, i);
+        if (status != CYRET_SUCCESS){
+           result = FAIL;
+        goto exit;
+    }
         src_ptr = src_ptr + CYDEV_EEPROM_ROW_SIZE;
         ++i;
     }
@@ -63,20 +78,20 @@ void update_variable(uint16 index, uint16 value){
     // Free buffer memory
     free(buffer);
     
-    EEPROM_Blink_Timer_Stop();
+    EEPROM_LED_off();
     
-    return;   
+exit:   
+    return result;   
 }
 
-uint16 get_variable(uint16 var_index){
-    uint16 value = 10;
+uint8 get_variable(uint16 var_index){
+    uint8 value = 10;
     
-    EEPROM_Blink_Timer_Start();
+    EEPROM_LED_on();
     
-    value = ((uint16) CY_GET_REG8(CYDEV_EE_BASE + var_index)) << 8;
-    value = value | CY_GET_REG8(CYDEV_EE_BASE + var_index + 1);
+    value = CY_GET_REG8(CYDEV_EE_BASE + var_index);
     
-    EEPROM_Blink_Timer_Stop();
+    EEPROM_LED_off();
     
     return value;
 }
