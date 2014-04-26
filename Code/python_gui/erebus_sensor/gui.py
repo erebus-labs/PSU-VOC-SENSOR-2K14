@@ -22,7 +22,6 @@ class ErebusGUI(tk.Frame):
 
         # Configure GUI-wide variables
         self.sensorHandle = None
-        self.sensorSettings = None
         self.displayedSettings = interface.Settings()
 
         # Initialize Window
@@ -227,12 +226,15 @@ class ErebusGUI(tk.Frame):
             self._showNotConnected()
             return
 
-        self.sensorSettings = self.sensorHandle.getSettings()
+        sensorSettings = self.sensorHandle.getSettings()
+        if sensorSettings == -1:
+            mb.showerror("", "Settings could not be retrieved. Please try again.")
+            return
 
-        self.sensorOptions.set(self.sensorSettings.SENSOR)
+        self.sensorOptions.set(sensorSettings.SENSOR)
         self.eSettingInterval.delete(0, tk.END)
-        self.eSettingInterval.insert(0, str(self.sensorSettings.SAMPLE_INTERVAL))
-        self.unitOptions.set(self.sensorSettings.SAMPLE_UNIT)
+        self.eSettingInterval.insert(0, str(sensorSettings.SAMPLE_INTERVAL))
+        self.unitOptions.set(sensorSettings.SAMPLE_UNIT)
         
         return
 
@@ -241,15 +243,8 @@ class ErebusGUI(tk.Frame):
             self._showNotConnected()
             return
 
-        if self.sensorSettings == None:
-            self.sensorSettings = self.sensorHandle.getSettings()
-
-        newSettings = self.sensorSettings.extractDiff(self.displayedSettings)
-
-        if self.sensorHandle.applySettings(newSettings):
+        if self.sensorHandle.applySettings(self.displayedSettings):
             mb.showerror("", "Settings update failed. Please try again.")
-
-        self.sensorSettings = copy.deepcopy(self.displayedSettings)
 
         return
 

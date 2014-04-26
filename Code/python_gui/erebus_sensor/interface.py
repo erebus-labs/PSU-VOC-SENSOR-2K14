@@ -13,10 +13,13 @@ import sys
 import os
 from glob import glob
 
-# Module Level Variables
+# Module Level Variablesi
+
+# Do not change the order of the variables in these tuples
+# Their indexes are used by the device firmware
 sensorOptions = ('Light Sensor', 'Temperature Sensor')
 unitOptions = ('Seconds', 'Minutes', 'Hours', 'Days')
-maxInterval = pow(2, 16)
+maxInterval = pow(2, 8) - 1 
 
 settings = {
     'SAMPLE_UNIT'     :0x01.to_bytes(1,byteorder='big'),
@@ -44,15 +47,21 @@ class Settings:
         self.SAMPLE_UNIT = unit
         self.SAMPLE_INTERVAL = interval
 
-    def extractDiff(self, other):
+    def pack(self):
+        print("\nSensor: {}".format(self.SENSOR))
+        print("\nUnit: {}".format(self.SAMPLE_UNIT))
+        print("\nInterval: {}".format(self.SAMPLE_INTERVAL))
 
-        diffDict = {}
+        sensor_index = (sensorOptions.index(self.SENSOR)).to_bytes(1, byteorder='big')
+        unit_index  = unitOptions.index(self.SAMPLE_UNIT).to_bytes(1, byteorder='big')
+        interval = self.SAMPLE_INTERVAL.to_bytes(1, byteorder='big')
 
-        for member in iter(settings):
-            if getattr(self, member) != getattr(other, member):
-                diffDict[member] = getattr(other, member)
+        print("\nSensor Index: {}".format(sensor_index))
+        print("\nUnit Index: {}".format(unit_index))
+#        print("\nInterval: {}".format(self.SAMPLE_INTERVAL))
 
-        return diffDict
+        packed = struct.pack('>ccc', sensor_index, unit_index, interval)
+        return packed
 
 class DataBlock:
     def __init__(self):
@@ -106,17 +115,22 @@ class ErebusSensor:
   
         acquired = 0
   
-        self.command_size = 5 # number of bytes in each command
+        self.command_size = 1 # number of bytes in each command
+        self.reply_size = 1
   
         self.commands = {
             'IDENTIFY'        :0x01.to_bytes(1,byteorder='big'),
             'DUMP_DATA'       :0x02.to_bytes(1,byteorder='big'),
             'GET_SETTINGS'    :0x03.to_bytes(1,byteorder='big'),
-            'CHANGE_SETTING'  :0x04.to_bytes(1,byteorder='big'),
+            'APPLY_SETTINGS'  :0x04.to_bytes(1,byteorder='big'),
             'HARD_RESET'      :0x05.to_bytes(1,byteorder='big')}
   
-        self.responses = {
+        self.device_replies = {
             'IDENTIFIER'      :0x01.to_bytes(1,byteorder='big'),
+            'SUCCESS'         :0x02.to_bytes(1,byteorder='big'),
+            'FAIL'            :0x03.to_bytes(1,byteorder='big')}
+
+        self.host_replies = {
             'SUCCESS'         :0x02.to_bytes(1,byteorder='big'),
             'FAIL'            :0x03.to_bytes(1,byteorder='big')}
   
@@ -141,9 +155,9 @@ class ErebusSensor:
   
                 self._sendCommand('IDENTIFY')
   
-                response = self.handle.read(1)
+                response = self.handle.read(self.reply_size)
   
-                if response == self.responses['IDENTIFIER']:
+                if response == self.device_replies['IDENTIFIER']:
                     acquired = 1
                     break
           
@@ -169,18 +183,22 @@ class ErebusSensor:
     
         return ports
   
-    def _sendCommand(self, command, target=0, value=0):
-  
-        if command in iter(self.commands):
-          command = self.commands[command]
-        else:
-          command = self.responses[command]
-
-        out = struct.pack('>chh', command, target, value)
-
+    def _sendCommand(self, command):
+        command = self.commands[command]
+        out = struct.pack('>c', command)
         self.handle.write(out)
 
         return 
+
+    def _sendReply(self, reply):
+
+        reply = self.host_replies[reply]
+        out = struct.pack('>c', reply)
+        self.handle.write(out)
+
+        return 
+
+
   
     def getData(self):
         if not self.is_connected():
@@ -192,18 +210,16 @@ class ErebusSensor:
         bytes_received = -1
         word_list = []
 
-        try:
-          self._sendCommand('DUMP_DATA')
-        except OSError:
-          return -1
-
         for x in range(3):
+            try:
+              self._sendCommand('DUMP_DATA')
+            except OSError:
+              return -1
 
             # construct continuous list of 16-bit words out of incoming packets until the
             # last ones are received
             while True:
                 package = self.handle.read(64)
-                packet = struct.unpack(packet_format_string, package)
 
                 for i, word in enumerate(packet):
                     message = (word & 0xF000) >> 12
@@ -223,19 +239,15 @@ class ErebusSensor:
             bytes_received = (len(word_list) * 2) + 4
 
             if bytes_received == bytes_sent:
-              self._sendCommand('SUCCESS')
+              self._sendReply('SUCCESS')
               result = 0
             else:
-              self._sendCommand('FAIL')
+              self._sendReply('FAIL')
+              self._sendCommand('DUMP_DATA')
               result = 1
 
             if not result:
               break
-            else:
-              try:
-                  self._sendCommand('DUMP_DATA')
-              except OSError:
-                  return -1
 
         iter_word_list = iter(word_list)
 
@@ -272,19 +284,6 @@ class ErebusSensor:
         else:
             return -1
 
-    def _changeSetting(self, setting, new_value):
-        status = 1
-        try:
-            self._sendCommand('CHANGE_SETTING', settings[setting], new_value)
-        except OSError:
-            status = -1
-      
-        if self.handle.read(1) == self.responses['SUCCESS']:
-            status = 0
-      
-        return status
-            
-
     def close(self):
         self.handle.close()
         return
@@ -302,24 +301,37 @@ class ErebusSensor:
             self._sendCommand('GET_SETTINGS')
             package = self.handle.read(settings_count*2)
             print("\nSettings packet: {}".format(package))
-            packet = struct.unpack('<' + 'h'*settings_count, package)
+
+            try:
+                packet = struct.unpack('<' + 'B'*settings_count, package)
+                print("\nUpacked: {}".format(packet))
+            except struct.error:
+                return -1
             
+            print("\nPacket: {}".format(packet))
             retStructure = Settings(sensor=sensorOptions[packet[0]],
+#            retStructure = Settings(sensor=sensorOptions[1],
                                     unit=unitOptions[packet[1]],
+#                                    unit=unitOptions[1],
                                     interval=int(packet[2]))
 
         except OSError:
-            pass
+            return -1
 
         return retStructure
 
     def applySettings(self, newSettings):
         status = 1
-        
-        for setting in newSettings:
-            if self._changeSetting(setting, newSettings[setting]):
-                break
-        else:
+        self._sendCommand('APPLY_SETTINGS')
+        self.handle.write(newSettings.pack())
+
+        reply = ''
+
+        while reply not in self.host_replies:
+            print("\nWaiting...")
+            reply = self.handle.read(self.reply_size)
+
+        if reply == self.host_replies['SUCCESS']:
             status = 0
 
         return status
