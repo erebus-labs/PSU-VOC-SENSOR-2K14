@@ -14,15 +14,14 @@
 
 // Flash variables
 const uint8 CYCODE MemoryLocation[EmEEPROMSize]; 
-volatile uint8* TailPtr = (uint8*) MemoryLocation;
+const volatile uint8* TailPtr = (uint8*) MemoryLocation;
 const uint8 CYCODE hard_reset_flag;
 
 int main()
 {
     /* Initialization*/
-    
-    // Variable declarations
-    
+    rtc_setup();
+
     // Check for hard reset flag
     if (hard_reset_flag){
         hard_reset();   
@@ -36,7 +35,6 @@ int main()
     
     // Enable individual interrupts as necessary
     Vbus_IRQ_Start();
-    TakeSample_IRQ_Start();
     
     for(;;){}
     

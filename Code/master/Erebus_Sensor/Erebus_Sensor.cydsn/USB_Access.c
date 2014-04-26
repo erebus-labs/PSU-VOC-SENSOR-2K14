@@ -19,6 +19,7 @@ void USB_ISR(){
 
     uint8 result = 0;
     command instruction = {0,0,0};
+    USB_LED_on();
            
     /* Start USBFS Operation with 5V operation */
     USBUART_Start(0u, USBUART_5V_OPERATION);
@@ -47,6 +48,9 @@ void USB_ISR(){
                         confirm_dump();
                         break;
                         
+                    case GET_SETTINGS:
+                        send_settings();
+                        
                     case CHANGE_SETTING:
                         apply_setting(instruction);
                         send_reply(SUCCESS);
@@ -68,6 +72,7 @@ void USB_ISR(){
     }
     
     USB_Close();
+    USB_LED_off();
     
     return;
 }
@@ -119,13 +124,30 @@ void apply_setting(command instruction){
     return;
 }
 
+void send_settings(){
+    
+    uint16 settings[NUM_SETTINGS];
+    
+    settings[0] = get_variable(EE_SENSOR);
+    settings[1] = get_variable(EE_SAMPLE_UNIT);
+    settings[2] = get_variable(EE_SAMPLE_INTERVAL);
+    
+    while(!USBUART_CDCIsReady() && Vbus_Read());
+    
+    if(Vbus_Read()){
+        USBUART_PutData((uint8*) &settings, sizeof(settings));
+    }
+    
+    return;   
+}
+
 void dump_data(){
     uint8  ExportBuffer[BUFFER_LEN]; // 64 Bytes per USB data packet.
     uint8* ExportPtr =(uint8*) MemoryLocation; 
     uint16 DataCnt = 0;
     uint8  i = 0;
     
-    /* Operator */
+    flash_LED_on();
     while (ExportPtr < TailPtr)
     {   
         while (i < BUFFER_LEN)
@@ -139,7 +161,7 @@ void dump_data(){
             }
             else
             {
-                ExportBuffer[i] = 0x40;
+                ExportBuffer[i] = PADBYTE;
                 ++i;
             }           
         }
@@ -149,6 +171,9 @@ void dump_data(){
         i = 0;
     }
     
+    // Add the size trailer packet to get total transmission size
+    DataCnt = DataCnt + 4;
+    
     /* Trailer Packet to Identify End of Sampled Data in Memory */
     ExportBuffer[0] = 0x80;               // End of Data Identifier
     ExportBuffer[1] = 0x00;
@@ -156,8 +181,12 @@ void dump_data(){
     //2 byte Count split into two 1 byte packages to be arrayed.
     ExportBuffer[2] = (uint8)(DataCnt >> 8);;          // Count of Total Bytes Sent
     ExportBuffer[3] = (uint8)0x00FF & DataCnt;
+    
+    // Wait for UART to be ready
     while(!USBUART_CDCIsReady() && Vbus_Read());
-    USBUART_PutData(ExportBuffer, 64u); 
+    USBUART_PutData(ExportBuffer, 64u);
+    
+    flash_LED_off();
     
     return;
 }
@@ -193,18 +222,16 @@ void confirm_dump(){
     return;
 }
 
-
-
 void CMD_hard_reset(){
 
     uint8 reset_flag = 0xFF;
     
+    flash_LED_on();
     Em_EEPROM_Write(&reset_flag, &hard_reset_flag, 1u);
+    flash_LED_off();
     
     return;
 }
-
-
 
 void USB_Close(){
     

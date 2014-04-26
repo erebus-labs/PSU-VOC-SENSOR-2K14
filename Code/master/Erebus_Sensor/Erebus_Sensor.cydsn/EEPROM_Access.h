@@ -17,10 +17,11 @@
 
     // INCLUSIONS
 
+    #include <math.h>
+    #include <stdlib.h>
     #include "Project.h"
     #include "cytypes.h"
-    #include "math.h"
-    #include "stdlib.h"
+    #include "LED_Handler.h"
 
     // MACROS
     
@@ -31,6 +32,8 @@
     #define EE_SAMPLE_UNIT      0x0000
     #define EE_SAMPLE_INTERVAL  EE_SAMPLE_UNIT + 2
     #define EE_SENSOR           EE_SAMPLE_INTERVAL +2
+    
+    #define NUM_SETTINGS    0x3
        
     // RTC Time Unit Codes
     #define SAMPLE_SEC      0x01

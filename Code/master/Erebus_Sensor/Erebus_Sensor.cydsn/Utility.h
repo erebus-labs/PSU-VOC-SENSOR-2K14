@@ -13,7 +13,7 @@
 #ifndef _UTILITY_H_
     #define _UTILITY_H_
     
-    #include <project.h>
+    #include "project.h"
 
     extern const uint8 CYCODE hard_reset_flag;
 

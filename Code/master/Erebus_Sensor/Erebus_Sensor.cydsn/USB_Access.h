@@ -17,6 +17,7 @@
     #include "Project.h"
     #include "EEPROM_Access.h"
     #include "Utility.h"
+    #include "LED_Handler.h"
 
     // Macros
     #define BUFFER_LEN          64u  
@@ -29,7 +30,7 @@
     // Incoming commands
     #define IDENTIFY        0x01
     #define DUMP_DATA       0x02
-    #define SEND_SETTINGS   0x03
+    #define GET_SETTINGS    0x03
     #define CHANGE_SETTING  0x04
     #define HARD_RESET      0x05
     
@@ -38,12 +39,16 @@
     #define SAMPLE_INTERVAL 0x02
     #define SENSOR          0x03    
 
-
     // Outgoing Responses
     #define REPLY_LEN   1
     #define IDENTIFIER  0x01
     #define SUCCESS     0x02
     #define FAIL        0x03
+    
+    // Data Packet Markers
+    #define STARTBLOCK  0x4000 // This must be 16 bits - it is stored as uint16
+    #define ENDDUMP     0x80
+    #define PADBYTE     0x40
     
           
     // Structures
@@ -57,6 +62,7 @@
     void USB_ISR();
     uint8 retrieve(command* instruction);
     void apply_setting(command instruction);
+    void send_settings();
     void dump_data();
     void confirm_dump();
     void send_reply(uint8 buffer);

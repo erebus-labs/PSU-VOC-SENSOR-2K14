@@ -23,7 +23,7 @@ void update_variable(uint16 index, uint16 value){
     float bytes_used = EEPROM_BYTES_USED;
     cystatus status;
     
-    EEPROM_Blink_Timer_Start();
+    EEPROM_LED_on();
     
     // Allocate array to hold EEPROM variables
     
@@ -63,7 +63,7 @@ void update_variable(uint16 index, uint16 value){
     // Free buffer memory
     free(buffer);
     
-    EEPROM_Blink_Timer_Stop();
+   EEPROM_LED_off();
     
     return;   
 }
@@ -71,12 +71,12 @@ void update_variable(uint16 index, uint16 value){
 uint16 get_variable(uint16 var_index){
     uint16 value = 10;
     
-    EEPROM_Blink_Timer_Start();
+   EEPROM_LED_on();
     
     value = ((uint16) CY_GET_REG8(CYDEV_EE_BASE + var_index)) << 8;
     value = value | CY_GET_REG8(CYDEV_EE_BASE + var_index + 1);
     
-    EEPROM_Blink_Timer_Stop();
+   EEPROM_LED_off();
     
     return value;
 }
