@@ -12,6 +12,7 @@ import tkinter as tk
 import tkinter.messagebox as mb
 import time
 import copy
+from datetime import datetime
 
 # Project Imports
 import erebus_sensor.interface as interface
@@ -195,6 +196,12 @@ class ErebusGUI(tk.Frame):
 
         return
 
+    def _showNotConnected(self):
+        mb.showerror("", "Erebus sensor is not currently connected. Please connect "
+                         "the sensor and try again.")
+
+        return
+
     def connectSensor(self):
         connectLimit = 12
         status = 1
@@ -210,14 +217,14 @@ class ErebusGUI(tk.Frame):
         return status
 
     def disconnectSensor(self):
-        self.sensorHandle.close()
-        self.sensorHandle = None
+        if self.sensorHandle != None:
+            self.sensorHandle.close()
+            self.sensorHandle = None
         return
 
     def getSettings(self):
         if self.sensorHandle == None:
-            mb.showerror("", "Erebus sensor is not currently connected. Please connect "
-                             "the sensor and try again.")
+            self._showNotConnected()
             return
 
         self.sensorSettings = self.sensorHandle.getSettings()
@@ -231,8 +238,7 @@ class ErebusGUI(tk.Frame):
 
     def applySettings(self):
         if self.sensorHandle == None:
-            mb.showerror("", "Erebus sensor is not currently connected. Please connect "
-                             "the sensor and try again.")
+            self._showNotConnected()
             return
 
         if self.sensorSettings == None:
@@ -244,6 +250,32 @@ class ErebusGUI(tk.Frame):
             mb.showerror("", "Settings update failed. Please try again.")
 
         self.sensorSettings = copy.deepcopy(self.displayedSettings)
+
+        return
+
+    def getData(self):
+        if self.sensorHandle == None:
+            self._showNotConnected()
+            return
+        
+        dataBlocks = self.sensorHandle.getData()
+
+        if dataBlocks:
+            with open('datadump.txt', 'a') as fo:
+                fo.write("".join(["\n\n", "*"*30,
+                                  "\nErebus Sensor Data Dump",
+                                  "\n{} Blocks of data samples".format(len(dataBlocks)),
+                                  "\nDump Time: {}".format(str(datetime.now())),
+                                  "\n", "*"*30]))
+
+                for block in dataBlocks:
+                    fo.write(str(block))
+            
+        elif dataBlocks == []:
+            mb.showinfo("", "There were no data samples to retrieve from the device.")
+
+        else:
+            self._showNotConnected()
 
         return
             

@@ -22,7 +22,21 @@ settings = {
     'SAMPLE_UNIT'     :0x01.to_bytes(1,byteorder='big'),
     'SAMPLE_INTERVAL' :0x02.to_bytes(1,byteorder='big'),
     'SENSOR'          :0x03.to_bytes(1,byteorder='big')}
-  
+
+months = {
+    1  : 'January',
+    2  : 'February',
+    3  : 'March',
+    4  : 'April',
+    5  : 'May',
+    6  : 'June',
+    7  : 'July',
+    8  : 'August',
+    9  : 'September',
+    10 : 'October',
+    11 : 'November',
+    12 : 'December'}
+    
 
 class Settings:
     def __init__(self, sensor=sensorOptions[0], unit=unitOptions[0], interval=1):
@@ -40,15 +54,42 @@ class Settings:
 
         return diffDict
 
-class DataDump:
-    def __init__(self, startTime, sensor, sampleUnit, sampleInterval, samples):
-        self.startTime = startTime
-        self.sensor = sensor
-        self.sampleUnit = sampleUnit
-        self.sampleInterval = sampleInterval
-        self.samples = samples
-
+class DataBlock:
+    def __init__(self):
+        self.sensor = -1
+        self.sample_unit = -1
+        self.sample_interval = -1
+        self.second = -1
+        self.minute = -1
+        self.hour = -1
+        self.day = -1
+        self.month = -1
+        self.year = -1
+        self.data = []
+        self.data_points = 0
         return
+
+    def add_sample(self, word):
+        self.data.append(word)
+        return
+
+    def end(self):
+        self.data_points = len(self.data)
+        return
+
+    def __str__(self):
+        s = []
+        s.append("\n\n\nTotal Samples in this Block: {}".format(self.data_points))
+        s.append("Sensor:\t{}".format(self.sensor))
+        s.append("Sample Unit:\t{}".format(self.sample_unit))
+        s.append("Sample Interval:\t{}".format(self.sample_interval))
+        s.append("\nData Collection Start Time Stamp:")
+        s.append("{}:{}:{}".format(self.hour, self.minute, self.second))
+        s.append("{} {} {}".format(months[self.month], self.day, self.year))
+        s.append("\nData Points:")
+        s = s + [str(point) for point in self.data]
+
+        return "\n".join(s)
 
 class ErebusSensor:
 
@@ -130,72 +171,106 @@ class ErebusSensor:
   
     def _sendCommand(self, command, target=0, value=0):
   
-      if command in iter(self.commands):
+        if command in iter(self.commands):
           command = self.commands[command]
-      else:
+        else:
           command = self.responses[command]
+
+        out = struct.pack('>chh', command, target, value)
+
+        self.handle.write(out)
+
+        return 
   
-      out = struct.pack('>chh', command, target, value)
-  
-      self.handle.write(out)
-  
-      return 
-  
-    def _getData(self):
-      if not self.is_connected():
+    def getData(self):
+        if not self.is_connected():
           return None
-  
-      data = []
-      bytes_sent = 0
-      packet_format_string = '>'+'h'*32
-      bytes_received = -1
-  
-      try:
+
+        blocks = []
+        bytes_sent = 0
+        packet_format_string = '>'+'h'*32
+        bytes_received = -1
+        word_list = []
+
+        try:
           self._sendCommand('DUMP_DATA')
-      except OSError:
+        except OSError:
           return -1
-  
-      for x in range(3):
-      
-          while True:
-              package = self.handle.read(64)
-              packet = struct.unpack(packet_format_string, package)
-  
-              for word in packet:
-                  message = (word & 0xF000) >> 12
-                  if message == 0x0:
-                      data.append(word)
-                      bytes_sent += 2
-  
-                  elif message == 0x4:
-                      continue
-  
-                  elif message == 0x8:
-                      bytes_received = packet[1]
-                      break
-  
-              if bytes_received >= 0:
-                  break
-  
-          if bytes_received == bytes_sent:
+
+        for x in range(3):
+
+            # construct continuous list of 16-bit words out of incoming packets until the
+            # last ones are received
+            while True:
+                package = self.handle.read(64)
+                packet = struct.unpack(packet_format_string, package)
+
+                for i, word in enumerate(packet):
+                    message = (word & 0xF000) >> 12
+                    if message == 0x8:
+                        bytes_sent = packet[i+1]
+                        break
+                    else:
+                        word_list.append(word)
+
+                else:
+                    continue #executes if the for loop ends before breaking
+
+                break
+
+            # calculate total bytes received (2 per word in word_list + 4 bytes for
+            # trailer)
+            bytes_received = (len(word_list) * 2) + 4
+
+            if bytes_received == bytes_sent:
               self._sendCommand('SUCCESS')
-              result = 1
-          else:
-              self._sendCommand('FAIL')
               result = 0
-      
-          if result == 1:
+            else:
+              self._sendCommand('FAIL')
+              result = 1
+
+            if not result:
               break
-          else:
+            else:
               try:
                   self._sendCommand('DUMP_DATA')
               except OSError:
                   return -1
-      
-      if result:    
-          return data
-      else:
-          return None
+
+        iter_word_list = iter(word_list)
+
+        for word in iter_word_list:
+            message = (word & 0xF000) >> 12
+            
+            if not message:
+                blocks[-1].add_sample(word)
+
+            elif message == 0x4:
+                blocks.append(DataBlock())
+                blocks[-1].sensor = sensorOptions(next(iter_word_list))
+                blocks[-1].sample_unit = next(iter_word_list)
+                blocks[-1].sample_interval = next(iter_word_list)
+                blocks[-1].year = next(iter_word_list)
+
+                temp = next(iter_word_list)
+                blocks[-1].second = (temp & 0xFF00) >> 8
+                blocks[-1].minute = temp & 0x00FF
+
+                temp = next(iter_word_list)
+                blocks[-1].hour = (temp & 0xFF00) >> 8
+                blocks[-1].day = temp & 0x00FF
+
+                temp = next(iter_word_list)
+                blocks[-1].month= (temp & 0xFF00) >> 8
+                # last byte is pad byte for alignment - discard
+
+        for data_block in blocks:
+            data_block.end()
+
+        if not result:    
+            return blocks
+        else:
+            return -1
 
     def _changeSetting(self, setting, new_value):
         status = 1
@@ -208,6 +283,7 @@ class ErebusSensor:
             status = 0
       
         return status
+            
 
     def close(self):
         self.handle.close()
@@ -225,10 +301,11 @@ class ErebusSensor:
         try:
             self._sendCommand('GET_SETTINGS')
             package = self.handle.read(settings_count*2)
+            print("\nSettings packet: {}".format(package))
             packet = struct.unpack('<' + 'h'*settings_count, package)
             
-            retStructure = Settings(sensor=sensorOptions(packet[0]),
-                                    unit=unitOptions(packet[1]),
+            retStructure = Settings(sensor=sensorOptions[packet[0]],
+                                    unit=unitOptions[packet[1]],
                                     interval=int(packet[2]))
 
         except OSError:
