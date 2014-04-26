@@ -22662,6 +22662,8 @@ type 0309, grid 2.5 mm</description>
 <text x="78.74" y="96.52" size="1.778" layer="97">Unspecified use is tied to unused GPIO</text>
 <text x="-142.24" y="45.72" size="1.778" layer="97" rot="R90">L1</text>
 <text x="-132.08" y="43.18" size="1.778" layer="97" rot="R90">4.7uH</text>
+<text x="33.02" y="93.98" size="1.778" layer="97">Analog Input</text>
+<text x="33.02" y="93.98" size="1.778" layer="97">Analog Input</text>
 <text x="-142.24" y="-15.24" size="1.778" layer="97" rot="R90">L2</text>
 <text x="-132.08" y="-17.78" size="1.778" layer="97" rot="R90">4.7uH</text>
 <text x="-121.92" y="119.38" size="1.778" layer="97">POWER_BLOCK_A</text>
@@ -22676,7 +22678,6 @@ type 0309, grid 2.5 mm</description>
 <text x="-111.76" y="5.08" size="1.778" layer="97">IC4</text>
 <text x="-111.76" y="63.5" size="1.778" layer="97">LTC3534</text>
 <text x="-111.76" y="2.54" size="1.778" layer="97">LTC3534</text>
-<text x="27.94" y="96.52" size="1.778" layer="97">Analog Power</text>
 </plain>
 <instances>
 <instance part="U$1" gate="G$1" x="63.5" y="48.26"/>
@@ -22793,15 +22794,15 @@ type 0309, grid 2.5 mm</description>
 </instance>
 <instance part="+3V5" gate="G$1" x="91.44" y="116.84"/>
 <instance part="+3V7" gate="G$1" x="96.52" y="116.84"/>
-<instance part="R14" gate="G$1" x="50.8" y="106.68" smashed="yes" rot="R90">
-<attribute name="NAME" x="56.9214" y="107.95" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="54.102" y="105.41" size="1.778" layer="96" rot="R90"/>
+<instance part="R14" gate="G$1" x="38.1" y="106.68" smashed="yes" rot="R90">
+<attribute name="NAME" x="34.0614" y="105.41" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="36.322" y="105.41" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="R15" gate="G$1" x="43.18" y="106.68" smashed="yes" rot="R90">
 <attribute name="NAME" x="46.7614" y="107.95" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="41.402" y="105.41" size="1.778" layer="96" rot="R90"/>
+<attribute name="VALUE" x="49.022" y="107.95" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="P+3" gate="1" x="50.8" y="116.84"/>
+<instance part="P+3" gate="1" x="38.1" y="116.84"/>
 <instance part="P+4" gate="1" x="43.18" y="116.84"/>
 <instance part="C15" gate="G$1" x="45.72" y="53.34" rot="R180"/>
 <instance part="GND23" gate="1" x="45.72" y="48.26"/>
@@ -23312,7 +23313,7 @@ type 0309, grid 2.5 mm</description>
 <segment>
 <pinref part="R14" gate="G$1" pin="2"/>
 <pinref part="P+3" gate="1" pin="+5V"/>
-<wire x1="50.8" y1="111.76" x2="50.8" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="38.1" y1="111.76" x2="38.1" y2="114.3" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R15" gate="G$1" pin="2"/>
@@ -23685,6 +23686,9 @@ type 0309, grid 2.5 mm</description>
 <wire x1="38.1" y1="91.44" x2="38.1" y2="68.58" width="0.1524" layer="91"/>
 <pinref part="U$1" gate="G$1" pin="3"/>
 <wire x1="38.1" y1="68.58" x2="53.34" y2="68.58" width="0.1524" layer="91"/>
+<pinref part="R14" gate="G$1" pin="1"/>
+<wire x1="38.1" y1="101.6" x2="38.1" y2="91.44" width="0.1524" layer="91"/>
+<junction x="38.1" y="91.44"/>
 </segment>
 </net>
 <net name="N$18" class="0">
@@ -23708,9 +23712,6 @@ type 0309, grid 2.5 mm</description>
 <wire x1="50.8" y1="86.36" x2="50.8" y2="73.66" width="0.1524" layer="91"/>
 <pinref part="U$1" gate="G$1" pin="1"/>
 <wire x1="50.8" y1="73.66" x2="53.34" y2="73.66" width="0.1524" layer="91"/>
-<pinref part="R14" gate="G$1" pin="1"/>
-<wire x1="50.8" y1="101.6" x2="50.8" y2="86.36" width="0.1524" layer="91"/>
-<junction x="50.8" y="86.36"/>
 </segment>
 </net>
 <net name="N$20" class="0">
