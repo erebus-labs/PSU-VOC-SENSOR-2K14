@@ -49,17 +49,10 @@ class Settings:
         self.SAMPLE_INTERVAL = interval
 
     def pack(self):
-        print("\nSensor: {}".format(self.SENSOR))
-        print("\nUnit: {}".format(self.SAMPLE_UNIT))
-        print("\nInterval: {}".format(self.SAMPLE_INTERVAL))
 
         sensor_index = (sensorOptions.index(self.SENSOR)).to_bytes(1, byteorder='big')
         unit_index  = unitOptions.index(self.SAMPLE_UNIT).to_bytes(1, byteorder='big')
         interval = self.SAMPLE_INTERVAL.to_bytes(1, byteorder='big')
-
-        print("\nSensor Index: {}".format(sensor_index))
-        print("\nUnit Index: {}".format(unit_index))
-#        print("\nInterval: {}".format(self.SAMPLE_INTERVAL))
 
         packed = struct.pack('>ccc', sensor_index, unit_index, interval)
         return packed
@@ -186,6 +179,7 @@ class ErebusSensor:
   
     def _sendCommand(self, command):
         command = self.commands[command]
+        print("Sending Command: {}".format(command))
         out = struct.pack('>c', command)
         self.handle.write(out)
 
@@ -194,6 +188,7 @@ class ErebusSensor:
     def _sendReply(self, reply):
 
         reply = self.host_replies[reply]
+        print("Sending Reply: {}".format(reply))
         out = struct.pack('>c', reply)
         self.handle.write(out)
 
@@ -202,16 +197,14 @@ class ErebusSensor:
 
   
     def getData(self):
-        if not self.is_connected():
-          return None
 
-        blocks = []
-        bytes_sent = 0
-        packet_format_string = '>'+'h'*32
         bytes_received = -1
-        word_list = []
+        bytes_sent = 0
+        blocks = []
+        packet_format_string = '>'+'h'*32
 
         for x in range(3):
+            word_list = []
             try:
               self._sendCommand('DUMP_DATA')
             except OSError:
@@ -221,12 +214,19 @@ class ErebusSensor:
             # last ones are received
             while True:
                 package = self.handle.read(64)
+                print("Package Received: {}\n".format(package))
+                if len(package) < 64:
+                    continue
+
+                packet = struct.unpack(packet_format_string, package)
 
                 for i, word in enumerate(packet):
                     message = (word & 0xF000) >> 12
                     if message == 0x8:
                         bytes_sent = packet[i+1]
                         break
+                    elif message == 0x4:
+                        continue
                     else:
                         word_list.append(word)
 
@@ -238,13 +238,15 @@ class ErebusSensor:
             # calculate total bytes received (2 per word in word_list + 4 bytes for
             # trailer)
             bytes_received = (len(word_list) * 2) + 4
+            print("Word List: {}".format(word_list))
+            print("Bytes Received: {}".format(bytes_received))
+            print("Bytes Sent: {}".format(bytes_sent))
 
             if bytes_received == bytes_sent:
               self._sendReply('SUCCESS')
               result = 0
             else:
               self._sendReply('FAIL')
-              self._sendCommand('DUMP_DATA')
               result = 1
 
             if not result:
@@ -258,24 +260,25 @@ class ErebusSensor:
             if not message:
                 blocks[-1].add_sample(word)
 
-            elif message == 0x4:
+            elif message == 0x2:
                 blocks.append(DataBlock())
-                blocks[-1].sensor = sensorOptions(next(iter_word_list))
-                blocks[-1].sample_unit = next(iter_word_list)
-                blocks[-1].sample_interval = next(iter_word_list)
                 blocks[-1].year = next(iter_word_list)
 
                 temp = next(iter_word_list)
-                blocks[-1].second = (temp & 0xFF00) >> 8
-                blocks[-1].minute = temp & 0x00FF
+                blocks[-1].sensor = sensorOptions[(temp & 0xFF00) >> 8]
+                blocks[-1].sample_unit = unitOptions[temp & 0x00FF]
 
                 temp = next(iter_word_list)
-                blocks[-1].hour = (temp & 0xFF00) >> 8
-                blocks[-1].day = temp & 0x00FF
+                blocks[-1].sample_interval = (temp & 0xFF00) >> 8
+                blocks[-1].second = temp & 0x00FF
 
                 temp = next(iter_word_list)
-                blocks[-1].month= (temp & 0xFF00) >> 8
-                # last byte is pad byte for alignment - discard
+                blocks[-1].minute = (temp & 0xFF00) >> 8
+                blocks[-1].hour = temp & 0x00FF
+
+                temp = next(iter_word_list)
+                blocks[-1].day = (temp & 0xFF00) >> 8
+                blocks[-1].month = temp & 0x00FF
 
         for data_block in blocks:
             data_block.end()
@@ -301,7 +304,6 @@ class ErebusSensor:
         try:
             self._sendCommand('GET_SETTINGS')
             package = self.handle.read(settings_count*2)
-            print("Retrieved Package: {}".format(package))
 
             try:
                 packet = struct.unpack('<' + 'B'*settings_count, package)
@@ -326,7 +328,6 @@ class ErebusSensor:
                                unit=unit_string,
                                interval=interval)
 
-        print("Settings Out: {}".format(newSettings.pack()))
         self._sendCommand('APPLY_SETTINGS')
 
         if not self._await_result():

@@ -57,7 +57,8 @@ class ErebusGUI(tk.Frame):
         # Create Sensor Menu Entry 
         self.subMenuSensor = tk.Menu(self.menuBar, tearoff=0)
         self.menuBar.add_cascade(label="Sensor", menu=self.subMenuSensor)
-        self.subMenuSensor.add_command(label="Get Data")
+        self.subMenuSensor.add_command(label="Get Data",
+                                       command=self.getData)
         self.subMenuSensor.add_command(label="Get Current Configuration",
                                        command=self.getSettings)
         self.subMenuSensor.add_command(label="Apply Current Configuration",
