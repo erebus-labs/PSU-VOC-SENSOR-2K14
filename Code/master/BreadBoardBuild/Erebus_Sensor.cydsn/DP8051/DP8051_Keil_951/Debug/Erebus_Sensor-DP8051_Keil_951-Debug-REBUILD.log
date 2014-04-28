@@ -1,0 +1,95 @@
+--------------- Rebuild Started: 04/26/2014 18:41:15 Project: Erebus_Sensor, Configuration: DP8051 Keil 9.51 Debug ---------------
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\main.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\USB_Access.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\EEPROM_Access.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\Utility.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\Interface.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\power_man.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\Sample_Handler.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\LED_Handler.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\cyfitter_cfg.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\CyBootAsmKeil.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\CyDmac.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\CyFlash.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\CyLib.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\cymem.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\cyPm.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\CySpc.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\cyutils.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\KeilStart.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\Vbus.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\Vbus_IRQ.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\USBUART.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\USBUART_audio.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\USBUART_boot.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\USBUART_cdc.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\USBUART_cls.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\USBUART_descr.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\USBUART_drv.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\USBUART_episr.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\USBUART_hid.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\USBUART_pm.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\USBUART_std.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\USBUART_vnd.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\USBUART_midi.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\USBUART_Dm.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\USBUART_Dp.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\EEPROM_R.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\USB_LED.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\EEPROM_LED.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\Em_EEPROM.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\ADC.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\ADC_PM.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\ADC_INT.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\TakeSample_IRQ.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\ADC_AMux.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\ADC_Ext_CP_Clk.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\ADC_IRQ.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\ADC_theACLK.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\StartCollection_B.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\StopCollection_B.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\Hibernate_B.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\Hibernate_IRQ.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\StopCollection_IRQ.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\StartCollection_IRQ.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\RTC.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\RTC_INT.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\TakeSample_B.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\Sensor_In.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\Blink_Clock.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\EEPROM_Blink_TI.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\EEPROM_Blink_TI_PM.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\USB_Blink_TI.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\USB_Blink_TI_PM.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\FLASH_LED.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\Flash_Blink_TI.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\Flash_Blink_TI_PM.obj"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\Erebus_Sensor.hex"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\Erebus_Sensor.elf"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\Erebus_Sensor.map"
+Deleting file ".\Erebus_Sensor.cycdx"
+Deleting file ".\Erebus_Sensor.svd"
+Deleting file ".\Erebus_Sensor.rpt"
+Deleting file ".\Erebus_Sensor_timing.html"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\.deps\C_FILE.P"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\.deps\DP8051_C_FILE.P"
+Deleting file ".\DP8051\DP8051_Keil_951\Debug\.deps\KEIL_8051_ASM_FILE.P"
+cydsfit.exe "-.appdatapath" "C:\Users\maxwell18\AppData\Local\Cypress Semiconductor\PSoC Creator\3.0" "-.fdsnotice" "-.fdswarpdepfile=warp_dependencies.txt" "-.fdselabdepfile=elab_dependencies.txt" "-.fdsbldfile=generated_files.txt" "-p" "C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\master\BreadBoardBuild\Erebus_Sensor.cydsn\Erebus_Sensor.cyprj" "-d" "CY8C3246PVI-147" "-s" "C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\master\BreadBoardBuild\Erebus_Sensor.cydsn\Generated_Source\PSoC3" "--" "-yv2" "-v3" "-ygs" "-q10" "-o2" "-.fftcfgtype=BE"
+Elaborating Design...
+ADD: pft.M0025: error: Clock Error: (The source clock's frequency is unknown. Source clocks must have a known frequency or an explicit divider must be used.).
+ * C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\master\BreadBoardBuild\Erebus_Sensor.cydsn\Erebus_Sensor.cydwr (BUS_CLK)
+ADD: pft.M0025: error: Clock Error: (Source clock 'PLL_OUT' contains an error.  Address the error on 'PLL_OUT' or select another source for this clock.).
+ * C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\master\BreadBoardBuild\Erebus_Sensor.cydsn\Erebus_Sensor.cydwr (MASTER_CLK)
+ADD: pft.M0025: error: Clock Error: (PLL_OUT must operate in the range of 24MHz to 50MHz for the currently selected device.).
+ * C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\master\BreadBoardBuild\Erebus_Sensor.cydsn\Erebus_Sensor.cydwr (PLL_OUT)
+ADD: pft.M0025: error: Clock Error: (Source clock 'BUS_CLK' contains an error.  Address the error on 'BUS_CLK' or select another source for this clock.).
+ * C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\USBFS_v2_60\PSoC3\USBFS_v2_60.cysch (Instance: Clock_vbus)
+ * C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\master\BreadBoardBuild\Erebus_Sensor.cydsn\Erebus_Sensor.cydwr (USBUART_Clock_vbus)
+ADD: pft.M0025: error: Clock Error: (Source clock 'MASTER_CLK' contains an error.  Address the error on 'MASTER_CLK' or select another source for this clock.).
+ * C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_DelSig_v3_0\PSoC3\ADC_DelSig_v3_0.cysch (Instance: Ext_CP_Clk)
+ * C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\master\BreadBoardBuild\Erebus_Sensor.cydsn\Erebus_Sensor.cydwr (ADC_Ext_CP_Clk)
+ADD: pft.M0025: error: Clock Error: (Source clock 'MASTER_CLK' contains an error.  Address the error on 'MASTER_CLK' or select another source for this clock.).
+ * C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_DelSig_v3_0\PSoC3\ADC_DelSig_v3_0.cysch (Instance: theACLK)
+ * C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\master\BreadBoardBuild\Erebus_Sensor.cydsn\Erebus_Sensor.cydwr (ADC_theACLK)
+Error: cdf.M0005: CyDsFit aborted due to errors, please address all errors and rerun CyDsFit. (App=cydsfit)
+--------------- Rebuild Failed: 04/26/2014 18:41:23 ---------------
