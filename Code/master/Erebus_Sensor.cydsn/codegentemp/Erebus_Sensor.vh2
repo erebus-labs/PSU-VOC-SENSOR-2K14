@@ -1,0 +1,2915 @@
+--
+--	Conversion of Erebus_Sensor.v to vh2:
+--
+--	Cypress Semiconductor - WARP Version 6.3 IR 41
+--	Sat Apr 26 11:43:43 2014
+--
+
+USE cypress.cypress.all;
+USE cypress.rtlpkg.all;
+ENTITY top_RTL IS
+ATTRIBUTE part_name of top_RTL:TYPE IS "cpsoc3";
+END top_RTL;
+--------------------------------------------------------
+ARCHITECTURE R_T_L OF top_RTL IS
+TERMINAL \USBUART:Net_1000\ : bit;
+TERMINAL \USBUART:Net_597\ : bit;
+SIGNAL Net_714 : bit;
+SIGNAL \USBUART:Net_79\ : bit;
+SIGNAL \USBUART:Net_81\ : bit;
+SIGNAL \USBUART:ept_int_8\ : bit;
+SIGNAL \USBUART:ept_int_7\ : bit;
+SIGNAL \USBUART:ept_int_6\ : bit;
+SIGNAL \USBUART:ept_int_5\ : bit;
+SIGNAL \USBUART:ept_int_4\ : bit;
+SIGNAL \USBUART:ept_int_3\ : bit;
+SIGNAL \USBUART:ept_int_2\ : bit;
+SIGNAL \USBUART:ept_int_1\ : bit;
+SIGNAL \USBUART:ept_int_0\ : bit;
+SIGNAL \USBUART:Net_95\ : bit;
+SIGNAL \USBUART:dma_req_7\ : bit;
+SIGNAL \USBUART:dma_req_6\ : bit;
+SIGNAL \USBUART:dma_req_5\ : bit;
+SIGNAL \USBUART:dma_req_4\ : bit;
+SIGNAL \USBUART:dma_req_3\ : bit;
+SIGNAL \USBUART:dma_req_2\ : bit;
+SIGNAL \USBUART:dma_req_1\ : bit;
+SIGNAL \USBUART:dma_req_0\ : bit;
+SIGNAL \USBUART:Net_824\ : bit;
+SIGNAL \USBUART:tmpOE__Dm_net_0\ : bit;
+SIGNAL zero : bit;
+SIGNAL \USBUART:tmpFB_0__Dm_net_0\ : bit;
+SIGNAL \USBUART:tmpIO_0__Dm_net_0\ : bit;
+TERMINAL \USBUART:tmpSIOVREF__Dm_net_0\ : bit;
+SIGNAL one : bit;
+SIGNAL \USBUART:tmpINTERRUPT_0__Dm_net_0\ : bit;
+SIGNAL \USBUART:tmpOE__Dp_net_0\ : bit;
+SIGNAL \USBUART:tmpFB_0__Dp_net_0\ : bit;
+SIGNAL \USBUART:tmpIO_0__Dp_net_0\ : bit;
+TERMINAL \USBUART:tmpSIOVREF__Dp_net_0\ : bit;
+SIGNAL \USBUART:Net_1010\ : bit;
+SIGNAL \USBUART:Net_1099\ : bit;
+SIGNAL \EEPROM_Blink_TI:Net_260\ : bit;
+SIGNAL Net_154 : bit;
+SIGNAL \EEPROM_Blink_TI:Net_55\ : bit;
+SIGNAL Net_146 : bit;
+SIGNAL \EEPROM_Blink_TI:Net_53\ : bit;
+SIGNAL Net_946 : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:ClockOutFromEnBlock\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:Clk_Ctl_i\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:control_7\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:control_6\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:control_5\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:control_4\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:control_3\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:control_2\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:control_1\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:control_0\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:ctrl_enable\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:ctrl_ten\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:ctrl_cmode_1\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:ctrl_cmode_0\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:ctrl_tmode_1\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:ctrl_tmode_0\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:ctrl_ic_1\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:ctrl_ic_0\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:fifo_load_polarized\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:capture_last\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:capt_fifo_load\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:timer_enable\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:run_mode\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:hwEnable\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:status_tc\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:trigger_enable\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:per_zero\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:tc_i\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:tc_reg_i\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:hwEnable_reg\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:capture_out_reg_i\ : bit;
+SIGNAL Net_158 : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:capt_fifo_load_int\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:runmode_enable\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:trig_reg\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:status_6\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:status_5\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:status_4\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:status_0\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:status_1\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:status_2\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:fifo_full\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:status_3\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:fifo_nempty\ : bit;
+SIGNAL Net_650 : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:cs_addr_2\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:cs_addr_1\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:cs_addr_0\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:zeros_3\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:zeros_2\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ce0_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ce0_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cl0_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cl0_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:nc0\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ff0_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ff0_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ce1_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ce1_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cl1_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cl1_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:z1_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:z1_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ff1_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ff1_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ov_msb_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ov_msb_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:co_msb_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:co_msb_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmsb_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmsb_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:so_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:so_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:nc3\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:nc4\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:f1_bus_stat_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:f1_bus_stat_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:f1_blk_stat_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:f1_blk_stat_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ce0_reg_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ce0_reg_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cl0_reg_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cl0_reg_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:z0_reg_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:z0_reg_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ff0_reg_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ff0_reg_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ce1_reg_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ce1_reg_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cl1_reg_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cl1_reg_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:z1_reg_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:z1_reg_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ff1_reg_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ff1_reg_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ov_msb_reg_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ov_msb_reg_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:co_msb_reg_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:co_msb_reg_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmsb_reg_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmsb_reg_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:so_reg_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:so_reg_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:f0_bus_stat_reg_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:f0_bus_stat_reg_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:f0_blk_stat_reg_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:f0_blk_stat_reg_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:f1_bus_stat_reg_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:f1_bus_stat_reg_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:f1_blk_stat_reg_0\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:f1_blk_stat_reg_0\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:carry\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:sh_right\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:sh_left\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:msb\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmp_eq_1\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmp_eq_0\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmp_lt_1\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmp_lt_0\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmp_zero_1\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmp_zero_0\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmp_ff_1\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmp_ff_0\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cap_1\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cap_0\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cfb\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ce0_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ce0_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cl0_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cl0_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ff0_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ff0_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ce1_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ce1_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cl1_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cl1_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:z1_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:z1_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ff1_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ff1_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ov_msb_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ov_msb_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:co_msb_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:co_msb_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmsb_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmsb_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:so_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:so_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:f1_bus_stat_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:f1_bus_stat_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:f1_blk_stat_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:f1_blk_stat_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ce0_reg_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ce0_reg_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cl0_reg_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cl0_reg_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:z0_reg_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:z0_reg_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ff0_reg_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ff0_reg_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ce1_reg_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ce1_reg_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cl1_reg_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cl1_reg_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:z1_reg_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:z1_reg_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ff1_reg_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ff1_reg_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ov_msb_reg_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:ov_msb_reg_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:co_msb_reg_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:co_msb_reg_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmsb_reg_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmsb_reg_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:so_reg_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:so_reg_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:f0_bus_stat_reg_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:f0_bus_stat_reg_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:f0_blk_stat_reg_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:f0_blk_stat_reg_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:f1_bus_stat_reg_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:f1_bus_stat_reg_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:f1_blk_stat_reg_1\ : bit;
+ATTRIBUTE port_state_att of \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:f1_blk_stat_reg_1\:SIGNAL IS 2;
+SIGNAL \EEPROM_Blink_TI:Net_102\ : bit;
+SIGNAL \EEPROM_Blink_TI:Net_266\ : bit;
+SIGNAL tmpOE__EEPROM_LED_net_0 : bit;
+SIGNAL Net_843 : bit;
+SIGNAL tmpFB_0__EEPROM_LED_net_0 : bit;
+SIGNAL tmpIO_0__EEPROM_LED_net_0 : bit;
+TERMINAL tmpSIOVREF__EEPROM_LED_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__EEPROM_LED_net_0 : bit;
+SIGNAL cy_tff_1 : bit;
+SIGNAL tmpOE__Vbus_net_0 : bit;
+SIGNAL Net_249 : bit;
+SIGNAL tmpIO_0__Vbus_net_0 : bit;
+TERMINAL tmpSIOVREF__Vbus_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Vbus_net_0 : bit;
+SIGNAL Net_408 : bit;
+SIGNAL Net_909 : bit;
+SIGNAL \LowFreq_DV:not_last_reset\ : bit;
+SIGNAL Net_887 : bit;
+SIGNAL Net_885 : bit;
+SIGNAL Net_1047 : bit;
+SIGNAL \LowFreq_DV:count_9\ : bit;
+SIGNAL \LowFreq_DV:count_8\ : bit;
+SIGNAL \LowFreq_DV:count_7\ : bit;
+SIGNAL \LowFreq_DV:count_6\ : bit;
+SIGNAL \LowFreq_DV:count_5\ : bit;
+SIGNAL \LowFreq_DV:count_4\ : bit;
+SIGNAL \LowFreq_DV:count_3\ : bit;
+SIGNAL \LowFreq_DV:count_2\ : bit;
+SIGNAL \LowFreq_DV:count_1\ : bit;
+SIGNAL \LowFreq_DV:count_0\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_9\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_8\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_7\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_6\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_5\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_4\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_3\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_2\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_1\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_0\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_31\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_30\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_29\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_28\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_27\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_26\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_25\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_24\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_23\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_22\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_21\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_20\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_19\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_18\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_17\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_16\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_15\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_14\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_13\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_12\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_11\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_10\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_9\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_8\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_7\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_6\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_5\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_4\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_3\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_2\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_1\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:b_0\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_31\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_30\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_29\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_28\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_27\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_26\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_25\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_24\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_23\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_22\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_21\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_20\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_19\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_18\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_17\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_16\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_15\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_14\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_13\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_12\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_11\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_10\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_9\ : bit;
+SIGNAL \LowFreq_DV:MODIN1_9\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_8\ : bit;
+SIGNAL \LowFreq_DV:MODIN1_8\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_7\ : bit;
+SIGNAL \LowFreq_DV:MODIN1_7\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_6\ : bit;
+SIGNAL \LowFreq_DV:MODIN1_6\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_5\ : bit;
+SIGNAL \LowFreq_DV:MODIN1_5\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_4\ : bit;
+SIGNAL \LowFreq_DV:MODIN1_4\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_3\ : bit;
+SIGNAL \LowFreq_DV:MODIN1_3\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_2\ : bit;
+SIGNAL \LowFreq_DV:MODIN1_2\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_1\ : bit;
+SIGNAL \LowFreq_DV:MODIN1_1\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:a_0\ : bit;
+SIGNAL \LowFreq_DV:MODIN1_0\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_31\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_30\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_29\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_28\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_27\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_26\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_25\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_24\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_23\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_22\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_21\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_20\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_19\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_18\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_17\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_16\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_15\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_14\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_13\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_12\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_11\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_10\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_9\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_8\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_7\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_6\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_5\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_4\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_3\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_2\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_1\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:b_0\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_31\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_31\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_30\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_30\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_29\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_29\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_28\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_28\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_27\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_27\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_26\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_26\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_25\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_25\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_24\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_24\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_23\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_23\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_22\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_22\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_21\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_21\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_20\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_20\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_19\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_19\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_18\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_18\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_17\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_17\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_16\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_16\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_15\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_15\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_14\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_14\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_13\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_13\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_12\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_12\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_11\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_11\ : bit;
+SIGNAL \LowFreq_DV:add_vi_vv_MODGEN_1_10\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_10\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_9\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_8\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_7\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_6\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_5\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_4\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_3\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_2\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_1\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:s_0\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_31\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_30\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_29\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_28\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_27\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_26\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_25\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_24\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_24\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_23\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_22\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_21\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_20\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_19\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_18\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_17\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_16\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_16\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_15\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_14\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_13\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_12\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_11\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_10\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_9\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_7\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_6\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_5\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_4\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_3\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_2\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_1\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_0\ : bit;
+SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\ : bit;
+SIGNAL \Vbus_Debounce:op_clk\ : bit;
+SIGNAL \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\ : bit;
+SIGNAL \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\ : bit;
+SIGNAL Net_556 : bit;
+SIGNAL Net_713 : bit;
+SIGNAL Net_712 : bit;
+SIGNAL tmpOE__USB_LED_net_0 : bit;
+SIGNAL Net_1103 : bit;
+SIGNAL tmpFB_0__USB_LED_net_0 : bit;
+SIGNAL tmpIO_0__USB_LED_net_0 : bit;
+TERMINAL tmpSIOVREF__USB_LED_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__USB_LED_net_0 : bit;
+SIGNAL tmpOE__TakeSample_B_net_0 : bit;
+SIGNAL Net_879 : bit;
+SIGNAL tmpIO_0__TakeSample_B_net_0 : bit;
+TERMINAL tmpSIOVREF__TakeSample_B_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__TakeSample_B_net_0 : bit;
+SIGNAL tmpOE__Sensor_In_net_0 : bit;
+SIGNAL tmpFB_0__Sensor_In_net_0 : bit;
+TERMINAL Net_871 : bit;
+SIGNAL tmpIO_0__Sensor_In_net_0 : bit;
+TERMINAL tmpSIOVREF__Sensor_In_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Sensor_In_net_0 : bit;
+TERMINAL \ADC:Net_244\ : bit;
+TERMINAL \ADC:Net_690\ : bit;
+TERMINAL \ADC:Net_35\ : bit;
+TERMINAL \ADC:Net_34\ : bit;
+TERMINAL \ADC:Net_677\ : bit;
+TERMINAL \ADC:Net_20\ : bit;
+SIGNAL \ADC:Net_488\ : bit;
+TERMINAL \ADC:Net_520\ : bit;
+SIGNAL \ADC:Net_481\ : bit;
+SIGNAL \ADC:Net_482\ : bit;
+SIGNAL \ADC:mod_reset\ : bit;
+SIGNAL \ADC:Net_93\ : bit;
+TERMINAL \ADC:Net_573\ : bit;
+TERMINAL \ADC:Net_41\ : bit;
+TERMINAL \ADC:Net_109\ : bit;
+SIGNAL \ADC:aclock\ : bit;
+SIGNAL \ADC:mod_dat_3\ : bit;
+SIGNAL \ADC:mod_dat_2\ : bit;
+SIGNAL \ADC:mod_dat_1\ : bit;
+SIGNAL \ADC:mod_dat_0\ : bit;
+SIGNAL \ADC:Net_245_7\ : bit;
+SIGNAL \ADC:Net_245_6\ : bit;
+SIGNAL \ADC:Net_245_5\ : bit;
+SIGNAL \ADC:Net_245_4\ : bit;
+SIGNAL \ADC:Net_245_3\ : bit;
+SIGNAL \ADC:Net_245_2\ : bit;
+SIGNAL \ADC:Net_245_1\ : bit;
+SIGNAL \ADC:Net_245_0\ : bit;
+TERMINAL \ADC:Net_352\ : bit;
+TERMINAL \ADC:Net_257\ : bit;
+TERMINAL \ADC:Net_249\ : bit;
+SIGNAL Net_566 : bit;
+SIGNAL \ADC:Net_250\ : bit;
+SIGNAL \ADC:Net_252\ : bit;
+SIGNAL \ADC:soc\ : bit;
+SIGNAL \ADC:Net_268\ : bit;
+SIGNAL \ADC:Net_270\ : bit;
+SIGNAL Net_865 : bit;
+SIGNAL \TakeSample_DB:op_clk\ : bit;
+SIGNAL \TakeSample_DB:DEBOUNCER[0]:d_sync_0\ : bit;
+SIGNAL \TakeSample_DB:DEBOUNCER[0]:d_sync_1\ : bit;
+SIGNAL Net_1048 : bit;
+SIGNAL Net_1050 : bit;
+SIGNAL Net_1049 : bit;
+SIGNAL tmpOE__StartCollection_B_net_0 : bit;
+SIGNAL Net_836 : bit;
+SIGNAL tmpIO_0__StartCollection_B_net_0 : bit;
+TERMINAL tmpSIOVREF__StartCollection_B_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__StartCollection_B_net_0 : bit;
+SIGNAL tmpOE__StopCollection_B_net_0 : bit;
+SIGNAL Net_850 : bit;
+SIGNAL tmpIO_0__StopCollection_B_net_0 : bit;
+TERMINAL tmpSIOVREF__StopCollection_B_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__StopCollection_B_net_0 : bit;
+SIGNAL tmpOE__Hibernate_B_net_0 : bit;
+SIGNAL Net_824 : bit;
+SIGNAL tmpIO_0__Hibernate_B_net_0 : bit;
+TERMINAL tmpSIOVREF__Hibernate_B_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Hibernate_B_net_0 : bit;
+SIGNAL \StartCollection_DB:op_clk\ : bit;
+SIGNAL \StartCollection_DB:DEBOUNCER[0]:d_sync_0\ : bit;
+SIGNAL \StartCollection_DB:DEBOUNCER[0]:d_sync_1\ : bit;
+SIGNAL Net_838 : bit;
+SIGNAL Net_841 : bit;
+SIGNAL Net_849 : bit;
+SIGNAL Net_840 : bit;
+SIGNAL \StopCollection_DB:op_clk\ : bit;
+SIGNAL \StopCollection_DB:DEBOUNCER[0]:d_sync_0\ : bit;
+SIGNAL \StopCollection_DB:DEBOUNCER[0]:d_sync_1\ : bit;
+SIGNAL Net_832 : bit;
+SIGNAL Net_835 : bit;
+SIGNAL Net_820 : bit;
+SIGNAL Net_834 : bit;
+SIGNAL \Hibernate_DB:op_clk\ : bit;
+SIGNAL \Hibernate_DB:DEBOUNCER[0]:d_sync_0\ : bit;
+SIGNAL \Hibernate_DB:DEBOUNCER[0]:d_sync_1\ : bit;
+SIGNAL Net_826 : bit;
+SIGNAL Net_829 : bit;
+SIGNAL Net_818 : bit;
+SIGNAL Net_828 : bit;
+SIGNAL \RTC:Net_5\ : bit;
+SIGNAL \USB_Blink_TI:Net_260\ : bit;
+SIGNAL Net_1206 : bit;
+SIGNAL \USB_Blink_TI:Net_55\ : bit;
+SIGNAL Net_1117 : bit;
+SIGNAL \USB_Blink_TI:Net_53\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:ClockOutFromEnBlock\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:Clk_Ctl_i\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:control_7\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:control_6\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:control_5\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:control_4\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:control_3\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:control_2\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:control_1\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:control_0\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:ctrl_enable\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:ctrl_ten\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:ctrl_cmode_1\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:ctrl_cmode_0\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:ctrl_tmode_1\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:ctrl_tmode_0\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:ctrl_ic_1\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:ctrl_ic_0\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:fifo_load_polarized\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:capture_last\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:capt_fifo_load\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:timer_enable\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:run_mode\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:hwEnable\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:status_tc\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:trigger_enable\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:per_zero\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:tc_i\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:tc_reg_i\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:hwEnable_reg\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:capture_out_reg_i\ : bit;
+SIGNAL Net_1210 : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:capt_fifo_load_int\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:runmode_enable\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:trig_reg\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:status_6\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:status_5\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:status_4\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:status_0\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:status_1\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:status_2\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:fifo_full\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:status_3\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:fifo_nempty\ : bit;
+SIGNAL Net_1111 : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:cs_addr_2\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:cs_addr_1\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:cs_addr_0\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:zeros_3\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:zeros_2\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:ce0_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:ce0_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:cl0_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:cl0_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:nc0\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:ff0_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:ff0_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:ce1_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:ce1_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:cl1_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:cl1_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:z1_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:z1_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:ff1_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:ff1_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:ov_msb_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:ov_msb_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:co_msb_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:co_msb_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:cmsb_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:cmsb_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:so_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:so_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:nc3\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:nc4\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:f1_bus_stat_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:f1_bus_stat_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:f1_blk_stat_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:f1_blk_stat_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:ce0_reg_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:ce0_reg_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:cl0_reg_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:cl0_reg_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:z0_reg_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:z0_reg_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:ff0_reg_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:ff0_reg_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:ce1_reg_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:ce1_reg_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:cl1_reg_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:cl1_reg_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:z1_reg_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:z1_reg_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:ff1_reg_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:ff1_reg_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:ov_msb_reg_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:ov_msb_reg_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:co_msb_reg_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:co_msb_reg_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:cmsb_reg_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:cmsb_reg_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:so_reg_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:so_reg_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:f0_bus_stat_reg_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:f0_bus_stat_reg_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:f0_blk_stat_reg_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:f0_blk_stat_reg_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:f1_bus_stat_reg_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:f1_bus_stat_reg_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:f1_blk_stat_reg_0\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:f1_blk_stat_reg_0\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:carry\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:sh_right\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:sh_left\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:msb\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:cmp_eq_1\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:cmp_eq_0\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:cmp_lt_1\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:cmp_lt_0\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:cmp_zero_1\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:cmp_zero_0\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:cmp_ff_1\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:cmp_ff_0\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:cap_1\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:cap_0\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:cfb\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:ce0_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:ce0_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:cl0_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:cl0_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:ff0_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:ff0_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:ce1_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:ce1_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:cl1_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:cl1_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:z1_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:z1_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:ff1_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:ff1_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:ov_msb_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:ov_msb_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:co_msb_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:co_msb_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:cmsb_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:cmsb_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:so_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:so_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:f1_bus_stat_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:f1_bus_stat_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:f1_blk_stat_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:f1_blk_stat_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:ce0_reg_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:ce0_reg_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:cl0_reg_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:cl0_reg_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:z0_reg_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:z0_reg_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:ff0_reg_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:ff0_reg_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:ce1_reg_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:ce1_reg_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:cl1_reg_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:cl1_reg_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:z1_reg_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:z1_reg_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:ff1_reg_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:ff1_reg_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:ov_msb_reg_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:ov_msb_reg_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:co_msb_reg_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:co_msb_reg_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:cmsb_reg_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:cmsb_reg_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:so_reg_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:so_reg_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:f0_bus_stat_reg_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:f0_bus_stat_reg_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:f0_blk_stat_reg_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:f0_blk_stat_reg_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:f1_bus_stat_reg_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:f1_bus_stat_reg_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:TimerUDB:sT16:timerdp:f1_blk_stat_reg_1\ : bit;
+ATTRIBUTE port_state_att of \USB_Blink_TI:TimerUDB:sT16:timerdp:f1_blk_stat_reg_1\:SIGNAL IS 2;
+SIGNAL \USB_Blink_TI:Net_102\ : bit;
+SIGNAL \USB_Blink_TI:Net_266\ : bit;
+SIGNAL cy_tff_2 : bit;
+SIGNAL tmpOE__FLASH_LED_net_0 : bit;
+SIGNAL Net_1178 : bit;
+SIGNAL tmpFB_0__FLASH_LED_net_0 : bit;
+SIGNAL tmpIO_0__FLASH_LED_net_0 : bit;
+TERMINAL tmpSIOVREF__FLASH_LED_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__FLASH_LED_net_0 : bit;
+SIGNAL \Flash_Blink_TI:Net_260\ : bit;
+SIGNAL Net_1212 : bit;
+SIGNAL \Flash_Blink_TI:Net_55\ : bit;
+SIGNAL Net_1186 : bit;
+SIGNAL \Flash_Blink_TI:Net_53\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:ClockOutFromEnBlock\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:Clk_Ctl_i\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:control_7\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:control_6\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:control_5\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:control_4\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:control_3\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:control_2\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:control_1\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:control_0\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:ctrl_enable\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:ctrl_ten\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:ctrl_cmode_1\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:ctrl_cmode_0\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:ctrl_tmode_1\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:ctrl_tmode_0\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:ctrl_ic_1\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:ctrl_ic_0\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:fifo_load_polarized\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:capture_last\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:capt_fifo_load\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:timer_enable\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:run_mode\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:hwEnable\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:status_tc\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:trigger_enable\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:per_zero\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:tc_i\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:tc_reg_i\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:hwEnable_reg\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:capture_out_reg_i\ : bit;
+SIGNAL Net_1216 : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:capt_fifo_load_int\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:runmode_enable\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:trig_reg\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:status_6\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:status_5\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:status_4\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:status_0\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:status_1\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:status_2\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:fifo_full\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:status_3\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:fifo_nempty\ : bit;
+SIGNAL Net_1180 : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:cs_addr_2\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:cs_addr_1\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:cs_addr_0\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:zeros_3\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:zeros_2\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:ce0_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:ce0_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:cl0_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:cl0_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:nc0\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:ff0_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:ff0_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:ce1_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:ce1_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:cl1_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:cl1_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:z1_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:z1_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:ff1_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:ff1_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:ov_msb_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:ov_msb_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:co_msb_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:co_msb_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:cmsb_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:cmsb_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:so_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:so_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:nc3\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:nc4\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:f1_bus_stat_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:f1_bus_stat_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:f1_blk_stat_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:f1_blk_stat_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:ce0_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:ce0_reg_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:cl0_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:cl0_reg_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:z0_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:z0_reg_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:ff0_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:ff0_reg_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:ce1_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:ce1_reg_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:cl1_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:cl1_reg_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:z1_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:z1_reg_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:ff1_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:ff1_reg_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:ov_msb_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:ov_msb_reg_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:co_msb_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:co_msb_reg_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:cmsb_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:cmsb_reg_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:so_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:so_reg_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:f0_bus_stat_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:f0_bus_stat_reg_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:f0_blk_stat_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:f0_blk_stat_reg_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:f1_bus_stat_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:f1_bus_stat_reg_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:f1_blk_stat_reg_0\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:f1_blk_stat_reg_0\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:carry\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:sh_right\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:sh_left\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:msb\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:cmp_eq_1\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:cmp_eq_0\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:cmp_lt_1\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:cmp_lt_0\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:cmp_zero_1\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:cmp_zero_0\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:cmp_ff_1\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:cmp_ff_0\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:cap_1\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:cap_0\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:cfb\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:ce0_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:ce0_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:cl0_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:cl0_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:ff0_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:ff0_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:ce1_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:ce1_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:cl1_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:cl1_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:z1_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:z1_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:ff1_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:ff1_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:ov_msb_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:ov_msb_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:co_msb_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:co_msb_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:cmsb_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:cmsb_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:so_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:so_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:f1_bus_stat_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:f1_bus_stat_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:f1_blk_stat_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:f1_blk_stat_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:ce0_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:ce0_reg_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:cl0_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:cl0_reg_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:z0_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:z0_reg_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:ff0_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:ff0_reg_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:ce1_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:ce1_reg_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:cl1_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:cl1_reg_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:z1_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:z1_reg_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:ff1_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:ff1_reg_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:ov_msb_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:ov_msb_reg_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:co_msb_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:co_msb_reg_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:cmsb_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:cmsb_reg_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:so_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:so_reg_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:f0_bus_stat_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:f0_bus_stat_reg_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:f0_blk_stat_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:f0_blk_stat_reg_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:f1_bus_stat_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:f1_bus_stat_reg_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:TimerUDB:sT16:timerdp:f1_blk_stat_reg_1\ : bit;
+ATTRIBUTE port_state_att of \Flash_Blink_TI:TimerUDB:sT16:timerdp:f1_blk_stat_reg_1\:SIGNAL IS 2;
+SIGNAL \Flash_Blink_TI:Net_102\ : bit;
+SIGNAL \Flash_Blink_TI:Net_266\ : bit;
+SIGNAL cy_tff_3 : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:capture_last\\D\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:tc_reg_i\\D\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:hwEnable_reg\\D\ : bit;
+SIGNAL \EEPROM_Blink_TI:TimerUDB:capture_out_reg_i\\D\ : bit;
+SIGNAL cy_tff_1D : bit;
+SIGNAL Net_408D : bit;
+SIGNAL \LowFreq_DV:not_last_reset\\D\ : bit;
+SIGNAL Net_1047D : bit;
+SIGNAL \LowFreq_DV:count_9\\D\ : bit;
+SIGNAL \LowFreq_DV:count_8\\D\ : bit;
+SIGNAL \LowFreq_DV:count_7\\D\ : bit;
+SIGNAL \LowFreq_DV:count_6\\D\ : bit;
+SIGNAL \LowFreq_DV:count_5\\D\ : bit;
+SIGNAL \LowFreq_DV:count_4\\D\ : bit;
+SIGNAL \LowFreq_DV:count_3\\D\ : bit;
+SIGNAL \LowFreq_DV:count_2\\D\ : bit;
+SIGNAL \LowFreq_DV:count_1\\D\ : bit;
+SIGNAL \LowFreq_DV:count_0\\D\ : bit;
+SIGNAL \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\\D\ : bit;
+SIGNAL \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\\D\ : bit;
+SIGNAL Net_713D : bit;
+SIGNAL Net_712D : bit;
+SIGNAL Net_865D : bit;
+SIGNAL \TakeSample_DB:DEBOUNCER[0]:d_sync_0\\D\ : bit;
+SIGNAL \TakeSample_DB:DEBOUNCER[0]:d_sync_1\\D\ : bit;
+SIGNAL Net_1050D : bit;
+SIGNAL Net_1049D : bit;
+SIGNAL \StartCollection_DB:DEBOUNCER[0]:d_sync_0\\D\ : bit;
+SIGNAL \StartCollection_DB:DEBOUNCER[0]:d_sync_1\\D\ : bit;
+SIGNAL Net_841D : bit;
+SIGNAL Net_849D : bit;
+SIGNAL Net_840D : bit;
+SIGNAL \StopCollection_DB:DEBOUNCER[0]:d_sync_0\\D\ : bit;
+SIGNAL \StopCollection_DB:DEBOUNCER[0]:d_sync_1\\D\ : bit;
+SIGNAL Net_835D : bit;
+SIGNAL Net_820D : bit;
+SIGNAL Net_834D : bit;
+SIGNAL \Hibernate_DB:DEBOUNCER[0]:d_sync_0\\D\ : bit;
+SIGNAL \Hibernate_DB:DEBOUNCER[0]:d_sync_1\\D\ : bit;
+SIGNAL Net_829D : bit;
+SIGNAL Net_818D : bit;
+SIGNAL Net_828D : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:capture_last\\D\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:tc_reg_i\\D\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:hwEnable_reg\\D\ : bit;
+SIGNAL \USB_Blink_TI:TimerUDB:capture_out_reg_i\\D\ : bit;
+SIGNAL cy_tff_2D : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:capture_last\\D\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:tc_reg_i\\D\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:hwEnable_reg\\D\ : bit;
+SIGNAL \Flash_Blink_TI:TimerUDB:capture_out_reg_i\\D\ : bit;
+SIGNAL cy_tff_3D : bit;
+BEGIN
+
+zero <=  ('0') ;
+
+one <=  ('1') ;
+
+\EEPROM_Blink_TI:TimerUDB:status_tc\ <= ((\EEPROM_Blink_TI:TimerUDB:control_7\ and \EEPROM_Blink_TI:TimerUDB:per_zero\));
+
+cy_tff_1D <= ((not Net_843 and Net_146)
+	OR (not Net_146 and Net_843));
+
+Net_1047D <= ((not \LowFreq_DV:count_4\ and not \LowFreq_DV:count_3\ and \LowFreq_DV:count_9\ and \LowFreq_DV:count_8\ and \LowFreq_DV:count_7\ and \LowFreq_DV:count_6\ and \LowFreq_DV:count_5\ and \LowFreq_DV:count_2\ and \LowFreq_DV:count_1\ and \LowFreq_DV:count_0\)
+	OR (not \LowFreq_DV:count_0\ and Net_1047)
+	OR (not \LowFreq_DV:count_1\ and Net_1047)
+	OR (Net_1047 and \LowFreq_DV:count_3\)
+	OR (not \LowFreq_DV:count_5\ and Net_1047)
+	OR (not \LowFreq_DV:count_6\ and Net_1047)
+	OR (not \LowFreq_DV:count_7\ and Net_1047)
+	OR (not \LowFreq_DV:count_8\ and Net_1047)
+	OR (Net_1047 and \LowFreq_DV:count_2\)
+	OR (not \LowFreq_DV:count_4\ and Net_1047)
+	OR (Net_1047 and \LowFreq_DV:count_9\)
+	OR not \LowFreq_DV:not_last_reset\);
+
+\LowFreq_DV:count_9\\D\ <= ((not \LowFreq_DV:count_9\ and \LowFreq_DV:not_last_reset\ and \LowFreq_DV:count_8\ and \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\)
+	OR (not \LowFreq_DV:count_0\ and not \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\ and \LowFreq_DV:count_9\)
+	OR (not \LowFreq_DV:count_1\ and not \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\ and \LowFreq_DV:count_9\)
+	OR (not \LowFreq_DV:count_2\ and not \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\ and \LowFreq_DV:count_9\)
+	OR (not \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\ and \LowFreq_DV:count_9\ and \LowFreq_DV:count_3\)
+	OR (not \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\ and \LowFreq_DV:count_9\ and \LowFreq_DV:count_4\)
+	OR (not \LowFreq_DV:count_5\ and not \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\ and \LowFreq_DV:count_9\)
+	OR (not \LowFreq_DV:count_6\ and not \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\ and \LowFreq_DV:count_9\)
+	OR (not \LowFreq_DV:count_7\ and not \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\ and \LowFreq_DV:count_9\)
+	OR (not \LowFreq_DV:count_8\ and \LowFreq_DV:count_9\)
+	OR (not \LowFreq_DV:not_last_reset\ and \LowFreq_DV:count_9\));
+
+\LowFreq_DV:count_8\\D\ <= ((not \LowFreq_DV:count_8\ and \LowFreq_DV:not_last_reset\ and \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\)
+	OR (not \LowFreq_DV:count_0\ and not \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\ and \LowFreq_DV:count_8\)
+	OR (not \LowFreq_DV:count_1\ and not \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\ and \LowFreq_DV:count_8\)
+	OR (not \LowFreq_DV:count_2\ and not \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\ and \LowFreq_DV:count_8\)
+	OR (not \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\ and \LowFreq_DV:count_8\ and \LowFreq_DV:count_3\)
+	OR (not \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\ and \LowFreq_DV:count_8\ and \LowFreq_DV:count_4\)
+	OR (not \LowFreq_DV:count_5\ and not \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\ and \LowFreq_DV:count_8\)
+	OR (not \LowFreq_DV:count_6\ and not \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\ and \LowFreq_DV:count_8\)
+	OR (not \LowFreq_DV:count_7\ and not \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\ and \LowFreq_DV:count_8\)
+	OR (not \LowFreq_DV:count_9\ and not \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\ and \LowFreq_DV:count_8\)
+	OR (not \LowFreq_DV:not_last_reset\ and \LowFreq_DV:count_8\));
+
+\LowFreq_DV:count_7\\D\ <= ((not \LowFreq_DV:count_9\ and not \LowFreq_DV:count_3\ and \LowFreq_DV:count_7\)
+	OR (not \LowFreq_DV:count_8\ and not \LowFreq_DV:count_3\ and \LowFreq_DV:count_7\)
+	OR (not \LowFreq_DV:count_7\ and \LowFreq_DV:not_last_reset\ and \LowFreq_DV:count_6\ and \LowFreq_DV:count_5\ and \LowFreq_DV:count_4\ and \LowFreq_DV:count_3\ and \LowFreq_DV:count_2\ and \LowFreq_DV:count_1\ and \LowFreq_DV:count_0\)
+	OR (not \LowFreq_DV:count_4\ and \LowFreq_DV:count_7\ and \LowFreq_DV:count_3\)
+	OR (not \LowFreq_DV:count_3\ and \LowFreq_DV:count_7\ and \LowFreq_DV:count_4\)
+	OR (not \LowFreq_DV:count_0\ and \LowFreq_DV:count_7\)
+	OR (not \LowFreq_DV:count_1\ and \LowFreq_DV:count_7\)
+	OR (not \LowFreq_DV:count_2\ and \LowFreq_DV:count_7\)
+	OR (not \LowFreq_DV:count_5\ and \LowFreq_DV:count_7\)
+	OR (not \LowFreq_DV:count_6\ and \LowFreq_DV:count_7\)
+	OR (not \LowFreq_DV:not_last_reset\ and \LowFreq_DV:count_7\));
+
+\LowFreq_DV:count_6\\D\ <= ((not \LowFreq_DV:count_9\ and not \LowFreq_DV:count_3\ and \LowFreq_DV:count_6\)
+	OR (not \LowFreq_DV:count_8\ and not \LowFreq_DV:count_3\ and \LowFreq_DV:count_6\)
+	OR (not \LowFreq_DV:count_7\ and not \LowFreq_DV:count_3\ and \LowFreq_DV:count_6\)
+	OR (not \LowFreq_DV:count_6\ and \LowFreq_DV:not_last_reset\ and \LowFreq_DV:count_5\ and \LowFreq_DV:count_4\ and \LowFreq_DV:count_3\ and \LowFreq_DV:count_2\ and \LowFreq_DV:count_1\ and \LowFreq_DV:count_0\)
+	OR (not \LowFreq_DV:count_4\ and \LowFreq_DV:count_6\ and \LowFreq_DV:count_3\)
+	OR (not \LowFreq_DV:count_3\ and \LowFreq_DV:count_6\ and \LowFreq_DV:count_4\)
+	OR (not \LowFreq_DV:count_0\ and \LowFreq_DV:count_6\)
+	OR (not \LowFreq_DV:count_1\ and \LowFreq_DV:count_6\)
+	OR (not \LowFreq_DV:count_2\ and \LowFreq_DV:count_6\)
+	OR (not \LowFreq_DV:count_5\ and \LowFreq_DV:count_6\)
+	OR (not \LowFreq_DV:not_last_reset\ and \LowFreq_DV:count_6\));
+
+\LowFreq_DV:count_5\\D\ <= ((not \LowFreq_DV:count_9\ and not \LowFreq_DV:count_3\ and \LowFreq_DV:count_5\)
+	OR (not \LowFreq_DV:count_8\ and not \LowFreq_DV:count_3\ and \LowFreq_DV:count_5\)
+	OR (not \LowFreq_DV:count_7\ and not \LowFreq_DV:count_3\ and \LowFreq_DV:count_5\)
+	OR (not \LowFreq_DV:count_6\ and not \LowFreq_DV:count_3\ and \LowFreq_DV:count_5\)
+	OR (not \LowFreq_DV:count_5\ and \LowFreq_DV:not_last_reset\ and \LowFreq_DV:count_4\ and \LowFreq_DV:count_3\ and \LowFreq_DV:count_2\ and \LowFreq_DV:count_1\ and \LowFreq_DV:count_0\)
+	OR (not \LowFreq_DV:count_4\ and \LowFreq_DV:count_5\ and \LowFreq_DV:count_3\)
+	OR (not \LowFreq_DV:count_3\ and \LowFreq_DV:count_5\ and \LowFreq_DV:count_4\)
+	OR (not \LowFreq_DV:count_0\ and \LowFreq_DV:count_5\)
+	OR (not \LowFreq_DV:count_1\ and \LowFreq_DV:count_5\)
+	OR (not \LowFreq_DV:count_2\ and \LowFreq_DV:count_5\)
+	OR (not \LowFreq_DV:not_last_reset\ and \LowFreq_DV:count_5\));
+
+\LowFreq_DV:count_4\\D\ <= ((not \LowFreq_DV:count_4\ and \LowFreq_DV:not_last_reset\ and \LowFreq_DV:count_3\ and \LowFreq_DV:count_2\ and \LowFreq_DV:count_1\ and \LowFreq_DV:count_0\)
+	OR (not \LowFreq_DV:count_0\ and \LowFreq_DV:count_4\)
+	OR (not \LowFreq_DV:count_1\ and \LowFreq_DV:count_4\)
+	OR (not \LowFreq_DV:count_2\ and \LowFreq_DV:count_4\)
+	OR (not \LowFreq_DV:count_3\ and \LowFreq_DV:count_4\)
+	OR (not \LowFreq_DV:not_last_reset\ and \LowFreq_DV:count_4\));
+
+\LowFreq_DV:count_3\\D\ <= ((not \LowFreq_DV:count_3\ and \LowFreq_DV:not_last_reset\ and \LowFreq_DV:count_4\ and \LowFreq_DV:count_2\ and \LowFreq_DV:count_1\ and \LowFreq_DV:count_0\)
+	OR (not \LowFreq_DV:count_5\ and not \LowFreq_DV:count_3\ and \LowFreq_DV:not_last_reset\ and \LowFreq_DV:count_2\ and \LowFreq_DV:count_1\ and \LowFreq_DV:count_0\)
+	OR (not \LowFreq_DV:count_6\ and not \LowFreq_DV:count_3\ and \LowFreq_DV:not_last_reset\ and \LowFreq_DV:count_2\ and \LowFreq_DV:count_1\ and \LowFreq_DV:count_0\)
+	OR (not \LowFreq_DV:count_7\ and not \LowFreq_DV:count_3\ and \LowFreq_DV:not_last_reset\ and \LowFreq_DV:count_2\ and \LowFreq_DV:count_1\ and \LowFreq_DV:count_0\)
+	OR (not \LowFreq_DV:count_8\ and not \LowFreq_DV:count_3\ and \LowFreq_DV:not_last_reset\ and \LowFreq_DV:count_2\ and \LowFreq_DV:count_1\ and \LowFreq_DV:count_0\)
+	OR (not \LowFreq_DV:count_9\ and not \LowFreq_DV:count_3\ and \LowFreq_DV:not_last_reset\ and \LowFreq_DV:count_2\ and \LowFreq_DV:count_1\ and \LowFreq_DV:count_0\)
+	OR (not \LowFreq_DV:count_0\ and \LowFreq_DV:count_3\)
+	OR (not \LowFreq_DV:count_1\ and \LowFreq_DV:count_3\)
+	OR (not \LowFreq_DV:count_2\ and \LowFreq_DV:count_3\)
+	OR (not \LowFreq_DV:not_last_reset\ and \LowFreq_DV:count_3\));
+
+\LowFreq_DV:count_2\\D\ <= ((not \LowFreq_DV:count_2\ and \LowFreq_DV:not_last_reset\ and \LowFreq_DV:count_1\ and \LowFreq_DV:count_0\)
+	OR (not \LowFreq_DV:count_0\ and \LowFreq_DV:count_2\)
+	OR (not \LowFreq_DV:count_1\ and \LowFreq_DV:count_2\)
+	OR (not \LowFreq_DV:not_last_reset\ and \LowFreq_DV:count_2\));
+
+\LowFreq_DV:count_1\\D\ <= ((not \LowFreq_DV:count_1\ and \LowFreq_DV:not_last_reset\ and \LowFreq_DV:count_0\)
+	OR (not \LowFreq_DV:count_0\ and \LowFreq_DV:count_1\)
+	OR (not \LowFreq_DV:not_last_reset\ and \LowFreq_DV:count_1\));
+
+\LowFreq_DV:count_0\\D\ <= ((not \LowFreq_DV:count_0\ and \LowFreq_DV:not_last_reset\)
+	OR (not \LowFreq_DV:not_last_reset\ and \LowFreq_DV:count_0\));
+
+\LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\ <= ((\LowFreq_DV:count_7\ and \LowFreq_DV:count_6\ and \LowFreq_DV:count_5\ and \LowFreq_DV:count_4\ and \LowFreq_DV:count_3\ and \LowFreq_DV:count_2\ and \LowFreq_DV:count_1\ and \LowFreq_DV:count_0\));
+
+Net_408D <= ((not \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\ and \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\)
+	OR (not \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\ and \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\));
+
+Net_865D <= ((not \TakeSample_DB:DEBOUNCER[0]:d_sync_0\ and \TakeSample_DB:DEBOUNCER[0]:d_sync_1\));
+
+Net_849D <= ((not \StartCollection_DB:DEBOUNCER[0]:d_sync_0\ and \StartCollection_DB:DEBOUNCER[0]:d_sync_1\));
+
+Net_820D <= ((not \StopCollection_DB:DEBOUNCER[0]:d_sync_0\ and \StopCollection_DB:DEBOUNCER[0]:d_sync_1\));
+
+Net_818D <= ((not \Hibernate_DB:DEBOUNCER[0]:d_sync_0\ and \Hibernate_DB:DEBOUNCER[0]:d_sync_1\));
+
+\USB_Blink_TI:TimerUDB:status_tc\ <= ((\USB_Blink_TI:TimerUDB:control_7\ and \USB_Blink_TI:TimerUDB:per_zero\));
+
+cy_tff_2D <= ((not Net_1117 and Net_1103)
+	OR (not Net_1103 and Net_1117));
+
+\Flash_Blink_TI:TimerUDB:status_tc\ <= ((\Flash_Blink_TI:TimerUDB:control_7\ and \Flash_Blink_TI:TimerUDB:per_zero\));
+
+cy_tff_3D <= ((not Net_1186 and Net_1178)
+	OR (not Net_1178 and Net_1186));
+
+\USBUART:USB\:cy_psoc3_usb_v1_0
+	GENERIC MAP(cy_registers=>"")
+	PORT MAP(dp=>\USBUART:Net_1000\,
+		dm=>\USBUART:Net_597\,
+		sof_int=>Net_714,
+		arb_int=>\USBUART:Net_79\,
+		usb_int=>\USBUART:Net_81\,
+		ept_int=>(\USBUART:ept_int_8\, \USBUART:ept_int_7\, \USBUART:ept_int_6\, \USBUART:ept_int_5\,
+			\USBUART:ept_int_4\, \USBUART:ept_int_3\, \USBUART:ept_int_2\, \USBUART:ept_int_1\,
+			\USBUART:ept_int_0\),
+		ord_int=>\USBUART:Net_95\,
+		dma_req=>(\USBUART:dma_req_7\, \USBUART:dma_req_6\, \USBUART:dma_req_5\, \USBUART:dma_req_4\,
+			\USBUART:dma_req_3\, \USBUART:dma_req_2\, \USBUART:dma_req_1\, \USBUART:dma_req_0\),
+		dma_termin=>\USBUART:Net_824\);
+\USBUART:sof_int\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>Net_714);
+\USBUART:arb_int\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>\USBUART:Net_79\);
+\USBUART:bus_reset\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>\USBUART:Net_81\);
+\USBUART:ep_0\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>\USBUART:ept_int_0\);
+\USBUART:ep_1\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>\USBUART:ept_int_1\);
+\USBUART:ep_2\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>\USBUART:ept_int_2\);
+\USBUART:ep_3\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>\USBUART:ept_int_3\);
+\USBUART:Dm\:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"2b269b96-47a4-4e9a-937e-76d4080bb211/8b77a6c4-10a0-4390-971c-672353e2a49c",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"NONCONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"",
+		sio_hyst=>"0",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		slew_rate=>"0",
+		spanning=>'1',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1)
+	PORT MAP(oe=>(one),
+		y=>(zero),
+		fb=>(\USBUART:tmpFB_0__Dm_net_0\),
+		analog=>\USBUART:Net_597\,
+		io=>(\USBUART:tmpIO_0__Dm_net_0\),
+		siovref=>(\USBUART:tmpSIOVREF__Dm_net_0\),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>one,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>one,
+		out_reset=>zero,
+		interrupt=>\USBUART:tmpINTERRUPT_0__Dm_net_0\);
+\USBUART:Dp\:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"2b269b96-47a4-4e9a-937e-76d4080bb211/618a72fc-5ddd-4df5-958f-a3d55102db42",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"10",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"I",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"",
+		sio_hyst=>"0",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"00",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1)
+	PORT MAP(oe=>(one),
+		y=>(zero),
+		fb=>(\USBUART:tmpFB_0__Dp_net_0\),
+		analog=>\USBUART:Net_1000\,
+		io=>(\USBUART:tmpIO_0__Dp_net_0\),
+		siovref=>(\USBUART:tmpSIOVREF__Dp_net_0\),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>one,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>one,
+		out_reset=>zero,
+		interrupt=>\USBUART:Net_1010\);
+\USBUART:dp_int\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>\USBUART:Net_1010\);
+\USBUART:Clock_vbus\:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"2b269b96-47a4-4e9a-937e-76d4080bb211/03f503a7-085a-4304-b786-de885b1c2f21",
+		source_clock_id=>"75C2148C-3656-4d8a-846D-0CAE99AB6FF7",
+		divisor=>0,
+		period=>"0",
+		is_direct=>'1',
+		is_digital=>'1')
+	PORT MAP(clock_out=>\USBUART:Net_1099\,
+		dig_domain_out=>open);
+\EEPROM_Blink_TI:TimerUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>Net_946,
+		enable=>one,
+		clock_out=>\EEPROM_Blink_TI:TimerUDB:ClockOutFromEnBlock\);
+\EEPROM_Blink_TI:TimerUDB:sCTRLReg:SyncCtl:cy_psoc3_udb_Ctl_Clk_Sync\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>Net_946,
+		enable=>one,
+		clock_out=>\EEPROM_Blink_TI:TimerUDB:Clk_Ctl_i\);
+\EEPROM_Blink_TI:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\:cy_psoc3_control
+	GENERIC MAP(cy_init_value=>"00000000",
+		cy_force_order=>'1',
+		cy_ctrl_mode_1=>"00000000",
+		cy_ctrl_mode_0=>"11111111",
+		cy_ext_reset=>'0')
+	PORT MAP(reset=>zero,
+		clock=>\EEPROM_Blink_TI:TimerUDB:Clk_Ctl_i\,
+		control=>(\EEPROM_Blink_TI:TimerUDB:control_7\, \EEPROM_Blink_TI:TimerUDB:control_6\, \EEPROM_Blink_TI:TimerUDB:control_5\, \EEPROM_Blink_TI:TimerUDB:control_4\,
+			\EEPROM_Blink_TI:TimerUDB:control_3\, \EEPROM_Blink_TI:TimerUDB:control_2\, \EEPROM_Blink_TI:TimerUDB:control_1\, \EEPROM_Blink_TI:TimerUDB:control_0\));
+\EEPROM_Blink_TI:TimerUDB:rstSts:stsreg\:cy_psoc3_statusi
+	GENERIC MAP(cy_force_order=>'1',
+		cy_md_select=>"0000011",
+		cy_int_mask=>"1111111")
+	PORT MAP(reset=>zero,
+		clock=>\EEPROM_Blink_TI:TimerUDB:ClockOutFromEnBlock\,
+		status=>(zero, zero, zero, \EEPROM_Blink_TI:TimerUDB:status_3\,
+			\EEPROM_Blink_TI:TimerUDB:status_2\, zero, \EEPROM_Blink_TI:TimerUDB:status_tc\),
+		interrupt=>\EEPROM_Blink_TI:Net_55\);
+\EEPROM_Blink_TI:TimerUDB:sT16:timerdp:u0\:cy_psoc3_dp
+	GENERIC MAP(cy_dpconfig=>"0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111000000000000000000000001000000000000000000011000",
+		d0_init=>"00000000",
+		d1_init=>"00000000",
+		a0_init=>"00000000",
+		a1_init=>"00000000",
+		ce0_sync=>'1',
+		cl0_sync=>'1',
+		z0_sync=>'1',
+		ff0_sync=>'1',
+		ce1_sync=>'1',
+		cl1_sync=>'1',
+		z1_sync=>'1',
+		ff1_sync=>'1',
+		ov_msb_sync=>'1',
+		co_msb_sync=>'1',
+		cmsb_sync=>'1',
+		so_sync=>'1',
+		f0_bus_sync=>'1',
+		f0_blk_sync=>'1',
+		f1_bus_sync=>'1',
+		f1_blk_sync=>'1')
+	PORT MAP(reset=>zero,
+		clk=>\EEPROM_Blink_TI:TimerUDB:ClockOutFromEnBlock\,
+		cs_addr=>(zero, \EEPROM_Blink_TI:TimerUDB:control_7\, \EEPROM_Blink_TI:TimerUDB:per_zero\),
+		route_si=>zero,
+		route_ci=>zero,
+		f0_load=>zero,
+		f1_load=>zero,
+		d0_load=>zero,
+		d1_load=>zero,
+		ce0=>open,
+		cl0=>open,
+		z0=>\EEPROM_Blink_TI:TimerUDB:nc0\,
+		ff0=>open,
+		ce1=>open,
+		cl1=>open,
+		z1=>open,
+		ff1=>open,
+		ov_msb=>open,
+		co_msb=>open,
+		cmsb=>open,
+		so=>open,
+		f0_bus_stat=>\EEPROM_Blink_TI:TimerUDB:nc3\,
+		f0_blk_stat=>\EEPROM_Blink_TI:TimerUDB:nc4\,
+		f1_bus_stat=>open,
+		f1_blk_stat=>open,
+		ce0_reg=>open,
+		cl0_reg=>open,
+		z0_reg=>open,
+		ff0_reg=>open,
+		ce1_reg=>open,
+		cl1_reg=>open,
+		z1_reg=>open,
+		ff1_reg=>open,
+		ov_msb_reg=>open,
+		co_msb_reg=>open,
+		cmsb_reg=>open,
+		so_reg=>open,
+		f0_bus_stat_reg=>open,
+		f0_blk_stat_reg=>open,
+		f1_bus_stat_reg=>open,
+		f1_blk_stat_reg=>open,
+		ci=>zero,
+		co=>\EEPROM_Blink_TI:TimerUDB:sT16:timerdp:carry\,
+		sir=>zero,
+		sor=>open,
+		sil=>\EEPROM_Blink_TI:TimerUDB:sT16:timerdp:sh_right\,
+		sol=>\EEPROM_Blink_TI:TimerUDB:sT16:timerdp:sh_left\,
+		msbi=>\EEPROM_Blink_TI:TimerUDB:sT16:timerdp:msb\,
+		msbo=>open,
+		cei=>(zero, zero),
+		ceo=>(\EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmp_eq_1\, \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmp_eq_0\),
+		cli=>(zero, zero),
+		clo=>(\EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmp_lt_1\, \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmp_lt_0\),
+		zi=>(zero, zero),
+		zo=>(\EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmp_zero_1\, \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmp_zero_0\),
+		fi=>(zero, zero),
+		fo=>(\EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmp_ff_1\, \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmp_ff_0\),
+		capi=>(zero, zero),
+		capo=>(\EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cap_1\, \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cap_0\),
+		cfbi=>zero,
+		cfbo=>\EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cfb\,
+		pi=>(zero, zero, zero, zero,
+			zero, zero, zero, zero),
+		po=>open);
+\EEPROM_Blink_TI:TimerUDB:sT16:timerdp:u1\:cy_psoc3_dp
+	GENERIC MAP(cy_dpconfig=>"0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000",
+		d0_init=>"00000000",
+		d1_init=>"00000000",
+		a0_init=>"00000000",
+		a1_init=>"00000000",
+		ce0_sync=>'1',
+		cl0_sync=>'1',
+		z0_sync=>'1',
+		ff0_sync=>'1',
+		ce1_sync=>'1',
+		cl1_sync=>'1',
+		z1_sync=>'1',
+		ff1_sync=>'1',
+		ov_msb_sync=>'1',
+		co_msb_sync=>'1',
+		cmsb_sync=>'1',
+		so_sync=>'1',
+		f0_bus_sync=>'1',
+		f0_blk_sync=>'1',
+		f1_bus_sync=>'1',
+		f1_blk_sync=>'1')
+	PORT MAP(reset=>zero,
+		clk=>\EEPROM_Blink_TI:TimerUDB:ClockOutFromEnBlock\,
+		cs_addr=>(zero, \EEPROM_Blink_TI:TimerUDB:control_7\, \EEPROM_Blink_TI:TimerUDB:per_zero\),
+		route_si=>zero,
+		route_ci=>zero,
+		f0_load=>zero,
+		f1_load=>zero,
+		d0_load=>zero,
+		d1_load=>zero,
+		ce0=>open,
+		cl0=>open,
+		z0=>\EEPROM_Blink_TI:TimerUDB:per_zero\,
+		ff0=>open,
+		ce1=>open,
+		cl1=>open,
+		z1=>open,
+		ff1=>open,
+		ov_msb=>open,
+		co_msb=>open,
+		cmsb=>open,
+		so=>open,
+		f0_bus_stat=>\EEPROM_Blink_TI:TimerUDB:status_3\,
+		f0_blk_stat=>\EEPROM_Blink_TI:TimerUDB:status_2\,
+		f1_bus_stat=>open,
+		f1_blk_stat=>open,
+		ce0_reg=>open,
+		cl0_reg=>open,
+		z0_reg=>open,
+		ff0_reg=>open,
+		ce1_reg=>open,
+		cl1_reg=>open,
+		z1_reg=>open,
+		ff1_reg=>open,
+		ov_msb_reg=>open,
+		co_msb_reg=>open,
+		cmsb_reg=>open,
+		so_reg=>open,
+		f0_bus_stat_reg=>open,
+		f0_blk_stat_reg=>open,
+		f1_bus_stat_reg=>open,
+		f1_blk_stat_reg=>open,
+		ci=>\EEPROM_Blink_TI:TimerUDB:sT16:timerdp:carry\,
+		co=>open,
+		sir=>\EEPROM_Blink_TI:TimerUDB:sT16:timerdp:sh_left\,
+		sor=>\EEPROM_Blink_TI:TimerUDB:sT16:timerdp:sh_right\,
+		sil=>zero,
+		sol=>open,
+		msbi=>zero,
+		msbo=>\EEPROM_Blink_TI:TimerUDB:sT16:timerdp:msb\,
+		cei=>(\EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmp_eq_1\, \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmp_eq_0\),
+		ceo=>open,
+		cli=>(\EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmp_lt_1\, \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmp_lt_0\),
+		clo=>open,
+		zi=>(\EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmp_zero_1\, \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmp_zero_0\),
+		zo=>open,
+		fi=>(\EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmp_ff_1\, \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cmp_ff_0\),
+		fo=>open,
+		capi=>(\EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cap_1\, \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cap_0\),
+		capo=>open,
+		cfbi=>\EEPROM_Blink_TI:TimerUDB:sT16:timerdp:cfb\,
+		cfbo=>open,
+		pi=>(zero, zero, zero, zero,
+			zero, zero, zero, zero),
+		po=>open);
+EEPROM_LED:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"52f31aa9-2f0a-497d-9a1f-1424095e13e6",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"1",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"",
+		sio_hyst=>"0",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1)
+	PORT MAP(oe=>(one),
+		y=>Net_843,
+		fb=>(tmpFB_0__EEPROM_LED_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__EEPROM_LED_net_0),
+		siovref=>(tmpSIOVREF__EEPROM_LED_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>one,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>one,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__EEPROM_LED_net_0);
+Blink_Clock:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"5a8722d1-490d-47ea-bd04-9a90fcfe57ff",
+		source_clock_id=>"",
+		divisor=>0,
+		period=>"1000000000000",
+		is_direct=>'0',
+		is_digital=>'1')
+	PORT MAP(clock_out=>Net_946,
+		dig_domain_out=>open);
+Vbus:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"4c15b41e-e284-4978-99e7-5aaee19bd0ce",
+		drive_mode=>"011",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"I",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"",
+		sio_hyst=>"0",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"00",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1)
+	PORT MAP(oe=>(one),
+		y=>(zero),
+		fb=>Net_249,
+		analog=>(open),
+		io=>(tmpIO_0__Vbus_net_0),
+		siovref=>(tmpSIOVREF__Vbus_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>one,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>one,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__Vbus_net_0);
+Vbus_IRQ:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>Net_408);
+\LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:gs(24):g2:g3:ub\:cy_buf
+	PORT MAP(x=>zero,
+		y=>\LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_24\);
+\LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:gs(16):g2:g3:ub\:cy_buf
+	PORT MAP(x=>zero,
+		y=>\LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_16\);
+\LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:gs(8):g2:g3:ub\:cy_buf
+	PORT MAP(x=>\LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\,
+		y=>\LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\);
+\Vbus_Debounce:ClkSync\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>Net_1047,
+		enable=>one,
+		clock_out=>\Vbus_Debounce:op_clk\);
+USB_LED:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"2cf5d462-3571-4294-a162-e64ac1ee780c",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"1",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"",
+		sio_hyst=>"0",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1)
+	PORT MAP(oe=>(one),
+		y=>Net_1103,
+		fb=>(tmpFB_0__USB_LED_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__USB_LED_net_0),
+		siovref=>(tmpSIOVREF__USB_LED_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>one,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>one,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__USB_LED_net_0);
+TakeSample_B:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"916b7ba2-2da0-474e-8982-582d25ad1bdf",
+		drive_mode=>"010",
+		ibuf_enabled=>"1",
+		init_dr_st=>"1",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"I",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"",
+		sio_hyst=>"0",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"00",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1)
+	PORT MAP(oe=>(one),
+		y=>(zero),
+		fb=>Net_879,
+		analog=>(open),
+		io=>(tmpIO_0__TakeSample_B_net_0),
+		siovref=>(tmpSIOVREF__TakeSample_B_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>one,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>one,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__TakeSample_B_net_0);
+Sensor_In:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"05a9c8de-3ba2-4909-8250-95fdc61c0bf4",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"",
+		sio_hyst=>"0",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1)
+	PORT MAP(oe=>(one),
+		y=>(zero),
+		fb=>(tmpFB_0__Sensor_In_net_0),
+		analog=>Net_871,
+		io=>(tmpIO_0__Sensor_In_net_0),
+		siovref=>(tmpSIOVREF__Sensor_In_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>one,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>one,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__Sensor_In_net_0);
+\ADC:vRef_2\:cy_vref_v1_0
+	GENERIC MAP(guid=>"15B3DB15-B7B3-4d62-A2DF-25EA392A7161",
+		name=>"Vssa (GND)",
+		autoenable=>'1',
+		ignoresleep=>'0')
+	PORT MAP(vout=>\ADC:Net_244\);
+\ADC:cy_analog_virtualmux_6_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC:Net_690\,
+		signal2=>\ADC:Net_35\);
+\ADC:cy_analog_noconnect_1\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\ADC:Net_34\);
+\ADC:cy_analog_virtualmux_4_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC:Net_677\,
+		signal2=>\ADC:Net_34\);
+\ADC:AMux\:cy_psoc3_amux_v1_0
+	GENERIC MAP(cy_registers=>"",
+		muxin_width=>2,
+		hw_control=>'0',
+		one_active=>'0',
+		init_mux_sel=>"00",
+		api_type=>0,
+		connect_mode=>1)
+	PORT MAP(muxin=>(\ADC:Net_690\, \ADC:Net_244\),
+		hw_ctrl_en=>(others => zero),
+		vout=>\ADC:Net_20\);
+\ADC:DSM\:cy_psoc3_ds_mod_v4_0
+	GENERIC MAP(cy_registers=>"",
+		resolution=>12)
+	PORT MAP(aclock=>\ADC:Net_488\,
+		vplus=>Net_871,
+		vminus=>\ADC:Net_520\,
+		modbit=>zero,
+		reset_udb=>zero,
+		reset_dec=>\ADC:mod_reset\,
+		clk_udb=>zero,
+		extclk_cp_udb=>\ADC:Net_93\,
+		ext_pin_1=>\ADC:Net_573\,
+		ext_pin_2=>\ADC:Net_41\,
+		ext_vssa=>\ADC:Net_109\,
+		qtz_ref=>\ADC:Net_677\,
+		dec_clock=>\ADC:aclock\,
+		mod_dat=>(\ADC:mod_dat_3\, \ADC:mod_dat_2\, \ADC:mod_dat_1\, \ADC:mod_dat_0\),
+		dout_udb=>(\ADC:Net_245_7\, \ADC:Net_245_6\, \ADC:Net_245_5\, \ADC:Net_245_4\,
+			\ADC:Net_245_3\, \ADC:Net_245_2\, \ADC:Net_245_1\, \ADC:Net_245_0\));
+\ADC:cy_analog_noconnect_5\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\ADC:Net_352\);
+\ADC:cy_analog_virtualmux_5_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC:Net_109\,
+		signal2=>\ADC:Net_352\);
+\ADC:Ext_CP_Clk\:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"3191f881-3e8e-486e-997a-395fee1f9105/b7604721-db56-4477-98c2-8fae77869066",
+		source_clock_id=>"61737EF6-3B74-48f9-8B91-F7473A442AE7",
+		divisor=>1,
+		period=>"0",
+		is_direct=>'0',
+		is_digital=>'1')
+	PORT MAP(clock_out=>\ADC:Net_93\,
+		dig_domain_out=>open);
+\ADC:cy_analog_noconnect_3\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\ADC:Net_257\);
+\ADC:cy_analog_noconnect_2\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\ADC:Net_249\);
+\ADC:cy_analog_virtualmux_3_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC:Net_41\,
+		signal2=>\ADC:Net_257\);
+\ADC:cy_analog_virtualmux_2_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC:Net_573\,
+		signal2=>\ADC:Net_249\);
+\ADC:cy_analog_virtualmux_1_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC:Net_520\,
+		signal2=>\ADC:Net_20\);
+\ADC:IRQ\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>Net_566);
+\ADC:theACLK\:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"3191f881-3e8e-486e-997a-395fee1f9105/edd15f43-b66b-457b-be3a-5342345270c8",
+		source_clock_id=>"61737EF6-3B74-48f9-8B91-F7473A442AE7",
+		divisor=>0,
+		period=>"6666666666.66667",
+		is_direct=>'0',
+		is_digital=>'0')
+	PORT MAP(clock_out=>\ADC:Net_488\,
+		dig_domain_out=>open);
+\ADC:DEC\:cy_psoc3_decimator_v1_0
+	GENERIC MAP(cy_registers=>"")
+	PORT MAP(aclock=>\ADC:aclock\,
+		mod_dat=>(\ADC:mod_dat_3\, \ADC:mod_dat_2\, \ADC:mod_dat_1\, \ADC:mod_dat_0\),
+		ext_start=>one,
+		mod_reset=>\ADC:mod_reset\,
+		interrupt=>Net_566);
+TakeSample_IRQ:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>Net_865);
+\TakeSample_DB:ClkSync\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>Net_1047,
+		enable=>one,
+		clock_out=>\TakeSample_DB:op_clk\);
+StartCollection_B:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"7bd73714-fc02-4433-9733-e47f5d6532cc",
+		drive_mode=>"010",
+		ibuf_enabled=>"1",
+		init_dr_st=>"1",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"I",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"",
+		sio_hyst=>"0",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"00",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1)
+	PORT MAP(oe=>(one),
+		y=>(zero),
+		fb=>Net_836,
+		analog=>(open),
+		io=>(tmpIO_0__StartCollection_B_net_0),
+		siovref=>(tmpSIOVREF__StartCollection_B_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>one,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>one,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__StartCollection_B_net_0);
+StopCollection_B:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"59f65110-8c59-4596-b9cb-7482b9b42450",
+		drive_mode=>"010",
+		ibuf_enabled=>"1",
+		init_dr_st=>"1",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"I",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"",
+		sio_hyst=>"0",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"00",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1)
+	PORT MAP(oe=>(one),
+		y=>(zero),
+		fb=>Net_850,
+		analog=>(open),
+		io=>(tmpIO_0__StopCollection_B_net_0),
+		siovref=>(tmpSIOVREF__StopCollection_B_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>one,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>one,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__StopCollection_B_net_0);
+Hibernate_B:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"d4aac9f7-8a51-4499-838a-2f873c2ed55e",
+		drive_mode=>"010",
+		ibuf_enabled=>"1",
+		init_dr_st=>"1",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"I",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"",
+		sio_hyst=>"0",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"00",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1)
+	PORT MAP(oe=>(one),
+		y=>(zero),
+		fb=>Net_824,
+		analog=>(open),
+		io=>(tmpIO_0__Hibernate_B_net_0),
+		siovref=>(tmpSIOVREF__Hibernate_B_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>one,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>one,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__Hibernate_B_net_0);
+\StartCollection_DB:ClkSync\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>Net_1047,
+		enable=>one,
+		clock_out=>\StartCollection_DB:op_clk\);
+\StopCollection_DB:ClkSync\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>Net_1047,
+		enable=>one,
+		clock_out=>\StopCollection_DB:op_clk\);
+\Hibernate_DB:ClkSync\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>Net_1047,
+		enable=>one,
+		clock_out=>\Hibernate_DB:op_clk\);
+Hibernate_IRQ:cy_isr_v1_0
+	GENERIC MAP(int_type=>"00")
+	PORT MAP(int_signal=>Net_818);
+StopCollection_IRQ:cy_isr_v1_0
+	GENERIC MAP(int_type=>"00")
+	PORT MAP(int_signal=>Net_820);
+StartCollection_IRQ:cy_isr_v1_0
+	GENERIC MAP(int_type=>"00")
+	PORT MAP(int_signal=>Net_849);
+\RTC:isr\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10")
+	PORT MAP(int_signal=>\RTC:Net_5\);
+\RTC:gsRef_1\:cy_gsref_v1_0
+	GENERIC MAP(guid=>"2C8B7907-32C2-4035-8A12-D819F94023EF")
+	PORT MAP(sig_out=>\RTC:Net_5\);
+LowFreq_CK:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"e5de0112-483b-4a85-acdf-10497fa0be26",
+		source_clock_id=>"315365C3-2E3E-4f04-84A2-BB564A173261",
+		divisor=>0,
+		period=>"0",
+		is_direct=>'1',
+		is_digital=>'1')
+	PORT MAP(clock_out=>Net_909,
+		dig_domain_out=>open);
+\USB_Blink_TI:TimerUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>Net_946,
+		enable=>one,
+		clock_out=>\USB_Blink_TI:TimerUDB:ClockOutFromEnBlock\);
+\USB_Blink_TI:TimerUDB:sCTRLReg:SyncCtl:cy_psoc3_udb_Ctl_Clk_Sync\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>Net_946,
+		enable=>one,
+		clock_out=>\USB_Blink_TI:TimerUDB:Clk_Ctl_i\);
+\USB_Blink_TI:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\:cy_psoc3_control
+	GENERIC MAP(cy_init_value=>"00000000",
+		cy_force_order=>'1',
+		cy_ctrl_mode_1=>"00000000",
+		cy_ctrl_mode_0=>"11111111",
+		cy_ext_reset=>'0')
+	PORT MAP(reset=>zero,
+		clock=>\USB_Blink_TI:TimerUDB:Clk_Ctl_i\,
+		control=>(\USB_Blink_TI:TimerUDB:control_7\, \USB_Blink_TI:TimerUDB:control_6\, \USB_Blink_TI:TimerUDB:control_5\, \USB_Blink_TI:TimerUDB:control_4\,
+			\USB_Blink_TI:TimerUDB:control_3\, \USB_Blink_TI:TimerUDB:control_2\, \USB_Blink_TI:TimerUDB:control_1\, \USB_Blink_TI:TimerUDB:control_0\));
+\USB_Blink_TI:TimerUDB:rstSts:stsreg\:cy_psoc3_statusi
+	GENERIC MAP(cy_force_order=>'1',
+		cy_md_select=>"0000011",
+		cy_int_mask=>"1111111")
+	PORT MAP(reset=>zero,
+		clock=>\USB_Blink_TI:TimerUDB:ClockOutFromEnBlock\,
+		status=>(zero, zero, zero, \USB_Blink_TI:TimerUDB:status_3\,
+			\USB_Blink_TI:TimerUDB:status_2\, zero, \USB_Blink_TI:TimerUDB:status_tc\),
+		interrupt=>\USB_Blink_TI:Net_55\);
+\USB_Blink_TI:TimerUDB:sT16:timerdp:u0\:cy_psoc3_dp
+	GENERIC MAP(cy_dpconfig=>"0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111000000000000000000000001000000000000000000011000",
+		d0_init=>"00000000",
+		d1_init=>"00000000",
+		a0_init=>"00000000",
+		a1_init=>"00000000",
+		ce0_sync=>'1',
+		cl0_sync=>'1',
+		z0_sync=>'1',
+		ff0_sync=>'1',
+		ce1_sync=>'1',
+		cl1_sync=>'1',
+		z1_sync=>'1',
+		ff1_sync=>'1',
+		ov_msb_sync=>'1',
+		co_msb_sync=>'1',
+		cmsb_sync=>'1',
+		so_sync=>'1',
+		f0_bus_sync=>'1',
+		f0_blk_sync=>'1',
+		f1_bus_sync=>'1',
+		f1_blk_sync=>'1')
+	PORT MAP(reset=>zero,
+		clk=>\USB_Blink_TI:TimerUDB:ClockOutFromEnBlock\,
+		cs_addr=>(zero, \USB_Blink_TI:TimerUDB:control_7\, \USB_Blink_TI:TimerUDB:per_zero\),
+		route_si=>zero,
+		route_ci=>zero,
+		f0_load=>zero,
+		f1_load=>zero,
+		d0_load=>zero,
+		d1_load=>zero,
+		ce0=>open,
+		cl0=>open,
+		z0=>\USB_Blink_TI:TimerUDB:nc0\,
+		ff0=>open,
+		ce1=>open,
+		cl1=>open,
+		z1=>open,
+		ff1=>open,
+		ov_msb=>open,
+		co_msb=>open,
+		cmsb=>open,
+		so=>open,
+		f0_bus_stat=>\USB_Blink_TI:TimerUDB:nc3\,
+		f0_blk_stat=>\USB_Blink_TI:TimerUDB:nc4\,
+		f1_bus_stat=>open,
+		f1_blk_stat=>open,
+		ce0_reg=>open,
+		cl0_reg=>open,
+		z0_reg=>open,
+		ff0_reg=>open,
+		ce1_reg=>open,
+		cl1_reg=>open,
+		z1_reg=>open,
+		ff1_reg=>open,
+		ov_msb_reg=>open,
+		co_msb_reg=>open,
+		cmsb_reg=>open,
+		so_reg=>open,
+		f0_bus_stat_reg=>open,
+		f0_blk_stat_reg=>open,
+		f1_bus_stat_reg=>open,
+		f1_blk_stat_reg=>open,
+		ci=>zero,
+		co=>\USB_Blink_TI:TimerUDB:sT16:timerdp:carry\,
+		sir=>zero,
+		sor=>open,
+		sil=>\USB_Blink_TI:TimerUDB:sT16:timerdp:sh_right\,
+		sol=>\USB_Blink_TI:TimerUDB:sT16:timerdp:sh_left\,
+		msbi=>\USB_Blink_TI:TimerUDB:sT16:timerdp:msb\,
+		msbo=>open,
+		cei=>(zero, zero),
+		ceo=>(\USB_Blink_TI:TimerUDB:sT16:timerdp:cmp_eq_1\, \USB_Blink_TI:TimerUDB:sT16:timerdp:cmp_eq_0\),
+		cli=>(zero, zero),
+		clo=>(\USB_Blink_TI:TimerUDB:sT16:timerdp:cmp_lt_1\, \USB_Blink_TI:TimerUDB:sT16:timerdp:cmp_lt_0\),
+		zi=>(zero, zero),
+		zo=>(\USB_Blink_TI:TimerUDB:sT16:timerdp:cmp_zero_1\, \USB_Blink_TI:TimerUDB:sT16:timerdp:cmp_zero_0\),
+		fi=>(zero, zero),
+		fo=>(\USB_Blink_TI:TimerUDB:sT16:timerdp:cmp_ff_1\, \USB_Blink_TI:TimerUDB:sT16:timerdp:cmp_ff_0\),
+		capi=>(zero, zero),
+		capo=>(\USB_Blink_TI:TimerUDB:sT16:timerdp:cap_1\, \USB_Blink_TI:TimerUDB:sT16:timerdp:cap_0\),
+		cfbi=>zero,
+		cfbo=>\USB_Blink_TI:TimerUDB:sT16:timerdp:cfb\,
+		pi=>(zero, zero, zero, zero,
+			zero, zero, zero, zero),
+		po=>open);
+\USB_Blink_TI:TimerUDB:sT16:timerdp:u1\:cy_psoc3_dp
+	GENERIC MAP(cy_dpconfig=>"0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000",
+		d0_init=>"00000000",
+		d1_init=>"00000000",
+		a0_init=>"00000000",
+		a1_init=>"00000000",
+		ce0_sync=>'1',
+		cl0_sync=>'1',
+		z0_sync=>'1',
+		ff0_sync=>'1',
+		ce1_sync=>'1',
+		cl1_sync=>'1',
+		z1_sync=>'1',
+		ff1_sync=>'1',
+		ov_msb_sync=>'1',
+		co_msb_sync=>'1',
+		cmsb_sync=>'1',
+		so_sync=>'1',
+		f0_bus_sync=>'1',
+		f0_blk_sync=>'1',
+		f1_bus_sync=>'1',
+		f1_blk_sync=>'1')
+	PORT MAP(reset=>zero,
+		clk=>\USB_Blink_TI:TimerUDB:ClockOutFromEnBlock\,
+		cs_addr=>(zero, \USB_Blink_TI:TimerUDB:control_7\, \USB_Blink_TI:TimerUDB:per_zero\),
+		route_si=>zero,
+		route_ci=>zero,
+		f0_load=>zero,
+		f1_load=>zero,
+		d0_load=>zero,
+		d1_load=>zero,
+		ce0=>open,
+		cl0=>open,
+		z0=>\USB_Blink_TI:TimerUDB:per_zero\,
+		ff0=>open,
+		ce1=>open,
+		cl1=>open,
+		z1=>open,
+		ff1=>open,
+		ov_msb=>open,
+		co_msb=>open,
+		cmsb=>open,
+		so=>open,
+		f0_bus_stat=>\USB_Blink_TI:TimerUDB:status_3\,
+		f0_blk_stat=>\USB_Blink_TI:TimerUDB:status_2\,
+		f1_bus_stat=>open,
+		f1_blk_stat=>open,
+		ce0_reg=>open,
+		cl0_reg=>open,
+		z0_reg=>open,
+		ff0_reg=>open,
+		ce1_reg=>open,
+		cl1_reg=>open,
+		z1_reg=>open,
+		ff1_reg=>open,
+		ov_msb_reg=>open,
+		co_msb_reg=>open,
+		cmsb_reg=>open,
+		so_reg=>open,
+		f0_bus_stat_reg=>open,
+		f0_blk_stat_reg=>open,
+		f1_bus_stat_reg=>open,
+		f1_blk_stat_reg=>open,
+		ci=>\USB_Blink_TI:TimerUDB:sT16:timerdp:carry\,
+		co=>open,
+		sir=>\USB_Blink_TI:TimerUDB:sT16:timerdp:sh_left\,
+		sor=>\USB_Blink_TI:TimerUDB:sT16:timerdp:sh_right\,
+		sil=>zero,
+		sol=>open,
+		msbi=>zero,
+		msbo=>\USB_Blink_TI:TimerUDB:sT16:timerdp:msb\,
+		cei=>(\USB_Blink_TI:TimerUDB:sT16:timerdp:cmp_eq_1\, \USB_Blink_TI:TimerUDB:sT16:timerdp:cmp_eq_0\),
+		ceo=>open,
+		cli=>(\USB_Blink_TI:TimerUDB:sT16:timerdp:cmp_lt_1\, \USB_Blink_TI:TimerUDB:sT16:timerdp:cmp_lt_0\),
+		clo=>open,
+		zi=>(\USB_Blink_TI:TimerUDB:sT16:timerdp:cmp_zero_1\, \USB_Blink_TI:TimerUDB:sT16:timerdp:cmp_zero_0\),
+		zo=>open,
+		fi=>(\USB_Blink_TI:TimerUDB:sT16:timerdp:cmp_ff_1\, \USB_Blink_TI:TimerUDB:sT16:timerdp:cmp_ff_0\),
+		fo=>open,
+		capi=>(\USB_Blink_TI:TimerUDB:sT16:timerdp:cap_1\, \USB_Blink_TI:TimerUDB:sT16:timerdp:cap_0\),
+		capo=>open,
+		cfbi=>\USB_Blink_TI:TimerUDB:sT16:timerdp:cfb\,
+		cfbo=>open,
+		pi=>(zero, zero, zero, zero,
+			zero, zero, zero, zero),
+		po=>open);
+FLASH_LED:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"5ad0d964-babc-442b-9c73-2b848f7d0e0d",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"1",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"",
+		sio_hyst=>"0",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1)
+	PORT MAP(oe=>(one),
+		y=>Net_1178,
+		fb=>(tmpFB_0__FLASH_LED_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__FLASH_LED_net_0),
+		siovref=>(tmpSIOVREF__FLASH_LED_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>one,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>one,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__FLASH_LED_net_0);
+\Flash_Blink_TI:TimerUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>Net_946,
+		enable=>one,
+		clock_out=>\Flash_Blink_TI:TimerUDB:ClockOutFromEnBlock\);
+\Flash_Blink_TI:TimerUDB:sCTRLReg:SyncCtl:cy_psoc3_udb_Ctl_Clk_Sync\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>Net_946,
+		enable=>one,
+		clock_out=>\Flash_Blink_TI:TimerUDB:Clk_Ctl_i\);
+\Flash_Blink_TI:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\:cy_psoc3_control
+	GENERIC MAP(cy_init_value=>"00000000",
+		cy_force_order=>'1',
+		cy_ctrl_mode_1=>"00000000",
+		cy_ctrl_mode_0=>"11111111",
+		cy_ext_reset=>'0')
+	PORT MAP(reset=>zero,
+		clock=>\Flash_Blink_TI:TimerUDB:Clk_Ctl_i\,
+		control=>(\Flash_Blink_TI:TimerUDB:control_7\, \Flash_Blink_TI:TimerUDB:control_6\, \Flash_Blink_TI:TimerUDB:control_5\, \Flash_Blink_TI:TimerUDB:control_4\,
+			\Flash_Blink_TI:TimerUDB:control_3\, \Flash_Blink_TI:TimerUDB:control_2\, \Flash_Blink_TI:TimerUDB:control_1\, \Flash_Blink_TI:TimerUDB:control_0\));
+\Flash_Blink_TI:TimerUDB:rstSts:stsreg\:cy_psoc3_statusi
+	GENERIC MAP(cy_force_order=>'1',
+		cy_md_select=>"0000011",
+		cy_int_mask=>"1111111")
+	PORT MAP(reset=>zero,
+		clock=>\Flash_Blink_TI:TimerUDB:ClockOutFromEnBlock\,
+		status=>(zero, zero, zero, \Flash_Blink_TI:TimerUDB:status_3\,
+			\Flash_Blink_TI:TimerUDB:status_2\, zero, \Flash_Blink_TI:TimerUDB:status_tc\),
+		interrupt=>\Flash_Blink_TI:Net_55\);
+\Flash_Blink_TI:TimerUDB:sT16:timerdp:u0\:cy_psoc3_dp
+	GENERIC MAP(cy_dpconfig=>"0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111000000000000000000000001000000000000000000011000",
+		d0_init=>"00000000",
+		d1_init=>"00000000",
+		a0_init=>"00000000",
+		a1_init=>"00000000",
+		ce0_sync=>'1',
+		cl0_sync=>'1',
+		z0_sync=>'1',
+		ff0_sync=>'1',
+		ce1_sync=>'1',
+		cl1_sync=>'1',
+		z1_sync=>'1',
+		ff1_sync=>'1',
+		ov_msb_sync=>'1',
+		co_msb_sync=>'1',
+		cmsb_sync=>'1',
+		so_sync=>'1',
+		f0_bus_sync=>'1',
+		f0_blk_sync=>'1',
+		f1_bus_sync=>'1',
+		f1_blk_sync=>'1')
+	PORT MAP(reset=>zero,
+		clk=>\Flash_Blink_TI:TimerUDB:ClockOutFromEnBlock\,
+		cs_addr=>(zero, \Flash_Blink_TI:TimerUDB:control_7\, \Flash_Blink_TI:TimerUDB:per_zero\),
+		route_si=>zero,
+		route_ci=>zero,
+		f0_load=>zero,
+		f1_load=>zero,
+		d0_load=>zero,
+		d1_load=>zero,
+		ce0=>open,
+		cl0=>open,
+		z0=>\Flash_Blink_TI:TimerUDB:nc0\,
+		ff0=>open,
+		ce1=>open,
+		cl1=>open,
+		z1=>open,
+		ff1=>open,
+		ov_msb=>open,
+		co_msb=>open,
+		cmsb=>open,
+		so=>open,
+		f0_bus_stat=>\Flash_Blink_TI:TimerUDB:nc3\,
+		f0_blk_stat=>\Flash_Blink_TI:TimerUDB:nc4\,
+		f1_bus_stat=>open,
+		f1_blk_stat=>open,
+		ce0_reg=>open,
+		cl0_reg=>open,
+		z0_reg=>open,
+		ff0_reg=>open,
+		ce1_reg=>open,
+		cl1_reg=>open,
+		z1_reg=>open,
+		ff1_reg=>open,
+		ov_msb_reg=>open,
+		co_msb_reg=>open,
+		cmsb_reg=>open,
+		so_reg=>open,
+		f0_bus_stat_reg=>open,
+		f0_blk_stat_reg=>open,
+		f1_bus_stat_reg=>open,
+		f1_blk_stat_reg=>open,
+		ci=>zero,
+		co=>\Flash_Blink_TI:TimerUDB:sT16:timerdp:carry\,
+		sir=>zero,
+		sor=>open,
+		sil=>\Flash_Blink_TI:TimerUDB:sT16:timerdp:sh_right\,
+		sol=>\Flash_Blink_TI:TimerUDB:sT16:timerdp:sh_left\,
+		msbi=>\Flash_Blink_TI:TimerUDB:sT16:timerdp:msb\,
+		msbo=>open,
+		cei=>(zero, zero),
+		ceo=>(\Flash_Blink_TI:TimerUDB:sT16:timerdp:cmp_eq_1\, \Flash_Blink_TI:TimerUDB:sT16:timerdp:cmp_eq_0\),
+		cli=>(zero, zero),
+		clo=>(\Flash_Blink_TI:TimerUDB:sT16:timerdp:cmp_lt_1\, \Flash_Blink_TI:TimerUDB:sT16:timerdp:cmp_lt_0\),
+		zi=>(zero, zero),
+		zo=>(\Flash_Blink_TI:TimerUDB:sT16:timerdp:cmp_zero_1\, \Flash_Blink_TI:TimerUDB:sT16:timerdp:cmp_zero_0\),
+		fi=>(zero, zero),
+		fo=>(\Flash_Blink_TI:TimerUDB:sT16:timerdp:cmp_ff_1\, \Flash_Blink_TI:TimerUDB:sT16:timerdp:cmp_ff_0\),
+		capi=>(zero, zero),
+		capo=>(\Flash_Blink_TI:TimerUDB:sT16:timerdp:cap_1\, \Flash_Blink_TI:TimerUDB:sT16:timerdp:cap_0\),
+		cfbi=>zero,
+		cfbo=>\Flash_Blink_TI:TimerUDB:sT16:timerdp:cfb\,
+		pi=>(zero, zero, zero, zero,
+			zero, zero, zero, zero),
+		po=>open);
+\Flash_Blink_TI:TimerUDB:sT16:timerdp:u1\:cy_psoc3_dp
+	GENERIC MAP(cy_dpconfig=>"0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000",
+		d0_init=>"00000000",
+		d1_init=>"00000000",
+		a0_init=>"00000000",
+		a1_init=>"00000000",
+		ce0_sync=>'1',
+		cl0_sync=>'1',
+		z0_sync=>'1',
+		ff0_sync=>'1',
+		ce1_sync=>'1',
+		cl1_sync=>'1',
+		z1_sync=>'1',
+		ff1_sync=>'1',
+		ov_msb_sync=>'1',
+		co_msb_sync=>'1',
+		cmsb_sync=>'1',
+		so_sync=>'1',
+		f0_bus_sync=>'1',
+		f0_blk_sync=>'1',
+		f1_bus_sync=>'1',
+		f1_blk_sync=>'1')
+	PORT MAP(reset=>zero,
+		clk=>\Flash_Blink_TI:TimerUDB:ClockOutFromEnBlock\,
+		cs_addr=>(zero, \Flash_Blink_TI:TimerUDB:control_7\, \Flash_Blink_TI:TimerUDB:per_zero\),
+		route_si=>zero,
+		route_ci=>zero,
+		f0_load=>zero,
+		f1_load=>zero,
+		d0_load=>zero,
+		d1_load=>zero,
+		ce0=>open,
+		cl0=>open,
+		z0=>\Flash_Blink_TI:TimerUDB:per_zero\,
+		ff0=>open,
+		ce1=>open,
+		cl1=>open,
+		z1=>open,
+		ff1=>open,
+		ov_msb=>open,
+		co_msb=>open,
+		cmsb=>open,
+		so=>open,
+		f0_bus_stat=>\Flash_Blink_TI:TimerUDB:status_3\,
+		f0_blk_stat=>\Flash_Blink_TI:TimerUDB:status_2\,
+		f1_bus_stat=>open,
+		f1_blk_stat=>open,
+		ce0_reg=>open,
+		cl0_reg=>open,
+		z0_reg=>open,
+		ff0_reg=>open,
+		ce1_reg=>open,
+		cl1_reg=>open,
+		z1_reg=>open,
+		ff1_reg=>open,
+		ov_msb_reg=>open,
+		co_msb_reg=>open,
+		cmsb_reg=>open,
+		so_reg=>open,
+		f0_bus_stat_reg=>open,
+		f0_blk_stat_reg=>open,
+		f1_bus_stat_reg=>open,
+		f1_blk_stat_reg=>open,
+		ci=>\Flash_Blink_TI:TimerUDB:sT16:timerdp:carry\,
+		co=>open,
+		sir=>\Flash_Blink_TI:TimerUDB:sT16:timerdp:sh_left\,
+		sor=>\Flash_Blink_TI:TimerUDB:sT16:timerdp:sh_right\,
+		sil=>zero,
+		sol=>open,
+		msbi=>zero,
+		msbo=>\Flash_Blink_TI:TimerUDB:sT16:timerdp:msb\,
+		cei=>(\Flash_Blink_TI:TimerUDB:sT16:timerdp:cmp_eq_1\, \Flash_Blink_TI:TimerUDB:sT16:timerdp:cmp_eq_0\),
+		ceo=>open,
+		cli=>(\Flash_Blink_TI:TimerUDB:sT16:timerdp:cmp_lt_1\, \Flash_Blink_TI:TimerUDB:sT16:timerdp:cmp_lt_0\),
+		clo=>open,
+		zi=>(\Flash_Blink_TI:TimerUDB:sT16:timerdp:cmp_zero_1\, \Flash_Blink_TI:TimerUDB:sT16:timerdp:cmp_zero_0\),
+		zo=>open,
+		fi=>(\Flash_Blink_TI:TimerUDB:sT16:timerdp:cmp_ff_1\, \Flash_Blink_TI:TimerUDB:sT16:timerdp:cmp_ff_0\),
+		fo=>open,
+		capi=>(\Flash_Blink_TI:TimerUDB:sT16:timerdp:cap_1\, \Flash_Blink_TI:TimerUDB:sT16:timerdp:cap_0\),
+		capo=>open,
+		cfbi=>\Flash_Blink_TI:TimerUDB:sT16:timerdp:cfb\,
+		cfbo=>open,
+		pi=>(zero, zero, zero, zero,
+			zero, zero, zero, zero),
+		po=>open);
+\EEPROM_Blink_TI:TimerUDB:capture_last\:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\EEPROM_Blink_TI:TimerUDB:ClockOutFromEnBlock\,
+		q=>\EEPROM_Blink_TI:TimerUDB:capture_last\);
+\EEPROM_Blink_TI:TimerUDB:tc_reg_i\:cy_dff
+	PORT MAP(d=>\EEPROM_Blink_TI:TimerUDB:status_tc\,
+		clk=>\EEPROM_Blink_TI:TimerUDB:ClockOutFromEnBlock\,
+		q=>Net_146);
+\EEPROM_Blink_TI:TimerUDB:hwEnable_reg\:cy_dff
+	PORT MAP(d=>\EEPROM_Blink_TI:TimerUDB:control_7\,
+		clk=>\EEPROM_Blink_TI:TimerUDB:ClockOutFromEnBlock\,
+		q=>\EEPROM_Blink_TI:TimerUDB:hwEnable_reg\);
+\EEPROM_Blink_TI:TimerUDB:capture_out_reg_i\:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\EEPROM_Blink_TI:TimerUDB:ClockOutFromEnBlock\,
+		q=>\EEPROM_Blink_TI:TimerUDB:capture_out_reg_i\);
+cy_tff_1:cy_dff
+	PORT MAP(d=>cy_tff_1D,
+		clk=>Net_946,
+		q=>Net_843);
+Net_408:cy_dff
+	PORT MAP(d=>Net_408D,
+		clk=>\Vbus_Debounce:op_clk\,
+		q=>Net_408);
+\LowFreq_DV:not_last_reset\:cy_dff
+	PORT MAP(d=>one,
+		clk=>Net_909,
+		q=>\LowFreq_DV:not_last_reset\);
+Net_1047:cy_dff
+	PORT MAP(d=>Net_1047D,
+		clk=>Net_909,
+		q=>Net_1047);
+\LowFreq_DV:count_9\:cy_dff
+	PORT MAP(d=>\LowFreq_DV:count_9\\D\,
+		clk=>Net_909,
+		q=>\LowFreq_DV:count_9\);
+\LowFreq_DV:count_8\:cy_dff
+	PORT MAP(d=>\LowFreq_DV:count_8\\D\,
+		clk=>Net_909,
+		q=>\LowFreq_DV:count_8\);
+\LowFreq_DV:count_7\:cy_dff
+	PORT MAP(d=>\LowFreq_DV:count_7\\D\,
+		clk=>Net_909,
+		q=>\LowFreq_DV:count_7\);
+\LowFreq_DV:count_6\:cy_dff
+	PORT MAP(d=>\LowFreq_DV:count_6\\D\,
+		clk=>Net_909,
+		q=>\LowFreq_DV:count_6\);
+\LowFreq_DV:count_5\:cy_dff
+	PORT MAP(d=>\LowFreq_DV:count_5\\D\,
+		clk=>Net_909,
+		q=>\LowFreq_DV:count_5\);
+\LowFreq_DV:count_4\:cy_dff
+	PORT MAP(d=>\LowFreq_DV:count_4\\D\,
+		clk=>Net_909,
+		q=>\LowFreq_DV:count_4\);
+\LowFreq_DV:count_3\:cy_dff
+	PORT MAP(d=>\LowFreq_DV:count_3\\D\,
+		clk=>Net_909,
+		q=>\LowFreq_DV:count_3\);
+\LowFreq_DV:count_2\:cy_dff
+	PORT MAP(d=>\LowFreq_DV:count_2\\D\,
+		clk=>Net_909,
+		q=>\LowFreq_DV:count_2\);
+\LowFreq_DV:count_1\:cy_dff
+	PORT MAP(d=>\LowFreq_DV:count_1\\D\,
+		clk=>Net_909,
+		q=>\LowFreq_DV:count_1\);
+\LowFreq_DV:count_0\:cy_dff
+	PORT MAP(d=>\LowFreq_DV:count_0\\D\,
+		clk=>Net_909,
+		q=>\LowFreq_DV:count_0\);
+\Vbus_Debounce:DEBOUNCER[0]:d_sync_0\:cy_dff
+	PORT MAP(d=>Net_249,
+		clk=>\Vbus_Debounce:op_clk\,
+		q=>\Vbus_Debounce:DEBOUNCER[0]:d_sync_0\);
+\Vbus_Debounce:DEBOUNCER[0]:d_sync_1\:cy_dff
+	PORT MAP(d=>\Vbus_Debounce:DEBOUNCER[0]:d_sync_0\,
+		clk=>\Vbus_Debounce:op_clk\,
+		q=>\Vbus_Debounce:DEBOUNCER[0]:d_sync_1\);
+Net_713:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\Vbus_Debounce:op_clk\,
+		q=>Net_713);
+Net_712:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\Vbus_Debounce:op_clk\,
+		q=>Net_712);
+Net_865:cy_dff
+	PORT MAP(d=>Net_865D,
+		clk=>\TakeSample_DB:op_clk\,
+		q=>Net_865);
+\TakeSample_DB:DEBOUNCER[0]:d_sync_0\:cy_dff
+	PORT MAP(d=>Net_879,
+		clk=>\TakeSample_DB:op_clk\,
+		q=>\TakeSample_DB:DEBOUNCER[0]:d_sync_0\);
+\TakeSample_DB:DEBOUNCER[0]:d_sync_1\:cy_dff
+	PORT MAP(d=>\TakeSample_DB:DEBOUNCER[0]:d_sync_0\,
+		clk=>\TakeSample_DB:op_clk\,
+		q=>\TakeSample_DB:DEBOUNCER[0]:d_sync_1\);
+Net_1050:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\TakeSample_DB:op_clk\,
+		q=>Net_1050);
+Net_1049:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\TakeSample_DB:op_clk\,
+		q=>Net_1049);
+\StartCollection_DB:DEBOUNCER[0]:d_sync_0\:cy_dff
+	PORT MAP(d=>Net_836,
+		clk=>\StartCollection_DB:op_clk\,
+		q=>\StartCollection_DB:DEBOUNCER[0]:d_sync_0\);
+\StartCollection_DB:DEBOUNCER[0]:d_sync_1\:cy_dff
+	PORT MAP(d=>\StartCollection_DB:DEBOUNCER[0]:d_sync_0\,
+		clk=>\StartCollection_DB:op_clk\,
+		q=>\StartCollection_DB:DEBOUNCER[0]:d_sync_1\);
+Net_841:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\StartCollection_DB:op_clk\,
+		q=>Net_841);
+Net_849:cy_dff
+	PORT MAP(d=>Net_849D,
+		clk=>\StartCollection_DB:op_clk\,
+		q=>Net_849);
+Net_840:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\StartCollection_DB:op_clk\,
+		q=>Net_840);
+\StopCollection_DB:DEBOUNCER[0]:d_sync_0\:cy_dff
+	PORT MAP(d=>Net_850,
+		clk=>\StopCollection_DB:op_clk\,
+		q=>\StopCollection_DB:DEBOUNCER[0]:d_sync_0\);
+\StopCollection_DB:DEBOUNCER[0]:d_sync_1\:cy_dff
+	PORT MAP(d=>\StopCollection_DB:DEBOUNCER[0]:d_sync_0\,
+		clk=>\StopCollection_DB:op_clk\,
+		q=>\StopCollection_DB:DEBOUNCER[0]:d_sync_1\);
+Net_835:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\StopCollection_DB:op_clk\,
+		q=>Net_835);
+Net_820:cy_dff
+	PORT MAP(d=>Net_820D,
+		clk=>\StopCollection_DB:op_clk\,
+		q=>Net_820);
+Net_834:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\StopCollection_DB:op_clk\,
+		q=>Net_834);
+\Hibernate_DB:DEBOUNCER[0]:d_sync_0\:cy_dff
+	PORT MAP(d=>Net_824,
+		clk=>\Hibernate_DB:op_clk\,
+		q=>\Hibernate_DB:DEBOUNCER[0]:d_sync_0\);
+\Hibernate_DB:DEBOUNCER[0]:d_sync_1\:cy_dff
+	PORT MAP(d=>\Hibernate_DB:DEBOUNCER[0]:d_sync_0\,
+		clk=>\Hibernate_DB:op_clk\,
+		q=>\Hibernate_DB:DEBOUNCER[0]:d_sync_1\);
+Net_829:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\Hibernate_DB:op_clk\,
+		q=>Net_829);
+Net_818:cy_dff
+	PORT MAP(d=>Net_818D,
+		clk=>\Hibernate_DB:op_clk\,
+		q=>Net_818);
+Net_828:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\Hibernate_DB:op_clk\,
+		q=>Net_828);
+\USB_Blink_TI:TimerUDB:capture_last\:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\USB_Blink_TI:TimerUDB:ClockOutFromEnBlock\,
+		q=>\USB_Blink_TI:TimerUDB:capture_last\);
+\USB_Blink_TI:TimerUDB:tc_reg_i\:cy_dff
+	PORT MAP(d=>\USB_Blink_TI:TimerUDB:status_tc\,
+		clk=>\USB_Blink_TI:TimerUDB:ClockOutFromEnBlock\,
+		q=>Net_1117);
+\USB_Blink_TI:TimerUDB:hwEnable_reg\:cy_dff
+	PORT MAP(d=>\USB_Blink_TI:TimerUDB:control_7\,
+		clk=>\USB_Blink_TI:TimerUDB:ClockOutFromEnBlock\,
+		q=>\USB_Blink_TI:TimerUDB:hwEnable_reg\);
+\USB_Blink_TI:TimerUDB:capture_out_reg_i\:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\USB_Blink_TI:TimerUDB:ClockOutFromEnBlock\,
+		q=>\USB_Blink_TI:TimerUDB:capture_out_reg_i\);
+cy_tff_2:cy_dff
+	PORT MAP(d=>cy_tff_2D,
+		clk=>Net_946,
+		q=>Net_1103);
+\Flash_Blink_TI:TimerUDB:capture_last\:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\Flash_Blink_TI:TimerUDB:ClockOutFromEnBlock\,
+		q=>\Flash_Blink_TI:TimerUDB:capture_last\);
+\Flash_Blink_TI:TimerUDB:tc_reg_i\:cy_dff
+	PORT MAP(d=>\Flash_Blink_TI:TimerUDB:status_tc\,
+		clk=>\Flash_Blink_TI:TimerUDB:ClockOutFromEnBlock\,
+		q=>Net_1186);
+\Flash_Blink_TI:TimerUDB:hwEnable_reg\:cy_dff
+	PORT MAP(d=>\Flash_Blink_TI:TimerUDB:control_7\,
+		clk=>\Flash_Blink_TI:TimerUDB:ClockOutFromEnBlock\,
+		q=>\Flash_Blink_TI:TimerUDB:hwEnable_reg\);
+\Flash_Blink_TI:TimerUDB:capture_out_reg_i\:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\Flash_Blink_TI:TimerUDB:ClockOutFromEnBlock\,
+		q=>\Flash_Blink_TI:TimerUDB:capture_out_reg_i\);
+cy_tff_3:cy_dff
+	PORT MAP(d=>cy_tff_3D,
+		clk=>Net_946,
+		q=>Net_1178);
+
+END R_T_L;

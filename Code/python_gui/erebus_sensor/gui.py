@@ -243,7 +243,9 @@ class ErebusGUI(tk.Frame):
             self._showNotConnected()
             return
 
-        if self.sensorHandle.applySettings(self.displayedSettings):
+        if self.sensorHandle.applySettings(self.sensorOptions.get(),
+                                           self.unitOptions.get(),
+                                           int(self.eSettingInterval.get().strip(' ,.'))):
             mb.showerror("", "Settings update failed. Please try again.")
 
         return

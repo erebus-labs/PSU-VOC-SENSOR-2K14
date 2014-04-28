@@ -12,6 +12,7 @@ import struct
 import sys
 import os
 from glob import glob
+from time import sleep
 
 # Module Level Variablesi
 
@@ -300,15 +301,13 @@ class ErebusSensor:
         try:
             self._sendCommand('GET_SETTINGS')
             package = self.handle.read(settings_count*2)
-            print("\nSettings packet: {}".format(package))
+            print("Retrieved Package: {}".format(package))
 
             try:
                 packet = struct.unpack('<' + 'B'*settings_count, package)
-                print("\nUpacked: {}".format(packet))
             except struct.error:
                 return -1
             
-            print("\nPacket: {}".format(packet))
             retStructure = Settings(sensor=sensorOptions[packet[0]],
 #            retStructure = Settings(sensor=sensorOptions[1],
                                     unit=unitOptions[packet[1]],
@@ -320,21 +319,35 @@ class ErebusSensor:
 
         return retStructure
 
-    def applySettings(self, newSettings):
+    def applySettings(self, sensor_string, unit_string, interval):
         status = 1
+
+        newSettings = Settings(sensor=sensor_string,
+                               unit=unit_string,
+                               interval=interval)
+
+        print("Settings Out: {}".format(newSettings.pack()))
         self._sendCommand('APPLY_SETTINGS')
-        self.handle.write(newSettings.pack())
 
-        reply = ''
+        if not self._await_result():
+            self.handle.write(newSettings.pack())
+            return self._await_result()
 
-        while reply not in self.host_replies:
-            print("\nWaiting...")
+        return 1
+
+    def _await_result(self):
+        
+        for x in range(8):
             reply = self.handle.read(self.reply_size)
+            if reply in self.host_replies.values():
+                break;
+            sleep(0.25)
+        else:
+            return 1
 
         if reply == self.host_replies['SUCCESS']:
-            status = 0
-
-        return status
-
+            return 0
+        else:
+            return 1
                 
                 
