@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   MAIN                                                                  04/27/2014 21:53:23 PAGE 1   
+C51 COMPILER V9.51   MAIN                                                                  04/28/2014 15:03:34 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE MAIN
@@ -46,14 +46,15 @@ line level    source
   35   1          
   36   1          // Enable individual interrupts as necessary
   37   1          Vbus_IRQ_Start();
-  38   1          
-  39   1          for(;;){}
-  40   1          
-  41   1          return (0);
-  42   1      }
-  43          
-  44          /* [] END OF FILE */
-C51 COMPILER V9.51   MAIN                                                                  04/27/2014 21:53:23 PAGE 2   
+  38   1          StartCollection_IRQ_Start();
+  39   1          
+  40   1          for(;;){}
+  41   1          
+  42   1          return (0);
+  43   1      }
+  44          
+  45          /* [] END OF FILE */
+C51 COMPILER V9.51   MAIN                                                                  04/28/2014 15:03:34 PAGE 2   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -83,23 +84,25 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0019 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 37
 001A 120000      E     LCALL   Vbus_IRQ_Start
-                                           ; SOURCE LINE # 39
-001D         ?C0002:
-001D 80FE              SJMP    ?C0002
-001F         ?C0003:
-                                           ; SOURCE LINE # 41
-001F E4                CLR     A
-0020 7E00              MOV     R6,#00H
-0022 7F00              MOV     R7,#00H
+                                           ; SOURCE LINE # 38
+001D 120000      E     LCALL   StartCollection_IRQ_Start
+                                           ; SOURCE LINE # 40
+0020         ?C0002:
+0020 80FE              SJMP    ?C0002
+0022         ?C0003:
                                            ; SOURCE LINE # 42
-0024         ?C0004:
-0024 22                RET     
+0022 E4                CLR     A
+0023 7E00              MOV     R6,#00H
+0025 7F00              MOV     R7,#00H
+                                           ; SOURCE LINE # 43
+0027         ?C0004:
+0027 22                RET     
              ; FUNCTION main (END)
 
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     37    ----
+   CODE SIZE        =     40    ----
    CONSTANT SIZE    =   1025    ----
    XDATA SIZE       =      3    ----
    PDATA SIZE       =   ----    ----

@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Erebus_Sensor-000\Erebus_Sensor\Source Files\Sample_Handler.c">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\StopCollection_IRQ\StopCollection_IRQ.c">
 <ExpandedNodeIds>
 <v>Erebus_Sensor-000</v>
 <v>Erebus_Sensor-000\Erebus_Sensor</v>
@@ -193,39 +193,49 @@
 <v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\project.h</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
-<v>Erebus_Sensor-000\Erebus_Sensor\Erebus_Sensor.cydwr</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Header Files</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Header Files\EEPROM_Access.h</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Header Files\EmEEPROM_Access.h</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Header Files\Interface.h</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Header Files\LED_Handler.h</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Header Files\main.h</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Header Files\power_man.h</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Header Files\Sample_Handler.h</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Header Files\USB_Access.h</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Header Files\Utility.h</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Source Files</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Source Files\EEPROM_Access.c</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Source Files\Interface.c</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Source Files\LED_Handler.c</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Source Files\main.c</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Source Files\power_man.c</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Source Files\Sample_Handler.c</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Source Files\USB_Access.c</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Source Files\Utility.c</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\ADC</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\ADC\ADC.c</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\ADC\ADC.h</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\ADC\ADC_INT.c</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\ADC\ADC_PM.c</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\ADC_AMux</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\ADC_AMux\ADC_AMux.c</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\ADC_AMux\ADC_AMux.h</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\ADC_Ext_CP_Clk</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\ADC_Ext_CP_Clk\ADC_Ext_CP_Clk.c</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\ADC_Ext_CP_Clk\ADC_Ext_CP_Clk.h</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\RTC\RTC_INT.c</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\Sensor_In</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\Sensor_In\Sensor_In.c</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\Sensor_In\Sensor_In.h</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\Sensor_In\Sensor_In_aliases.h</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\StartCollection_B</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\StartCollection_B\StartCollection_B.c</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\StartCollection_B\StartCollection_B.h</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\StartCollection_B\StartCollection_B_aliases.h</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\StartCollection_IRQ</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\StartCollection_IRQ\StartCollection_IRQ.c</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\StartCollection_IRQ\StartCollection_IRQ.h</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\StopCollection_B</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\StopCollection_B\StopCollection_B.c</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\StopCollection_B\StopCollection_B.h</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\StopCollection_B\StopCollection_B_aliases.h</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\StopCollection_IRQ</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\StopCollection_IRQ\StopCollection_IRQ.c</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\StopCollection_IRQ\StopCollection_IRQ.h</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\TakeSample_B</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\TakeSample_B\TakeSample_B.c</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\TakeSample_B\TakeSample_B.h</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\TakeSample_B\TakeSample_B_aliases.h</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\TakeSample_IRQ</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\TakeSample_IRQ\TakeSample_IRQ.c</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\TakeSample_IRQ\TakeSample_IRQ.h</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\USB_Blink_TI</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\USB_Blink_TI\USB_Blink_TI.c</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\USB_Blink_TI\USB_Blink_TI.h</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\USB_Blink_TI\USB_Blink_TI_PM.c</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\USB_LED</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\USB_LED\USB_LED.c</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\USB_LED\USB_LED.h</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\USB_LED\USB_LED_aliases.h</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\USBUART</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\USBUART\USBUART.c</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\USBUART\USBUART.h</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\USBUART\USBUART_audio.c</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\USBUART\USBUART_audio.h</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\USBUART\USBUART_boot.c</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\USBUART\USBUART_cdc.c</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\USBUART\USBUART_cdc.h</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\USBUART\USBUART_cdc.inf</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Erebus_Sensor-000">
@@ -324,6 +334,47 @@
 <VisibleNodeIds>
 <v>Erebus_Sensor-000</v>
 <v>Erebus_Sensor-000\Erebus_Sensor</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\ADC.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\ADC_AMux.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\ADC_Ext_CP_Clk.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\ADC_INT.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\ADC_IRQ.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\ADC_PM.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\ADC_theACLK.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\Blink_Clock.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\CyBootAsmKeil.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\CyDmac.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\CyFlash.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\CyLib.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\cymem.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\cyPm.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\CySpc.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\cyutils.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\EEPROM_Access.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\EEPROM_Blink_TI.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\EEPROM_Blink_TI_PM.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\EEPROM_LED.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\EEPROM_R.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\Em_EEPROM.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\Flash_Blink_TI.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\Flash_Blink_TI_PM.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\FLASH_LED.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\Hibernate_B.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\Hibernate_IRQ.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\Interface.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\KeilStart.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\LED_Handler.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\main.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\power_man.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\RTC.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\RTC_INT.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\Sample_Handler.lst</v>
+<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\Sensor_In.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -386,7 +437,21 @@
 </userData>
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
-<OpenDocs />
+<OpenDocs>
+<name v=".\TopDesign\TopDesign.cysch" />
+<name v=".\Erebus_Sensor.cydwr" />
+<name v=".\main.c" />
+<name v=".\USB_Access.c" />
+<name v=".\EEPROM_Access.c" />
+<name v=".\Sample_Handler.c" />
+<name v=".\generated_source\psoc3\Vbus.c" />
+<name v=".\Generated_Source\PSoC3\TakeSample_IRQ.c" />
+<name v=".\Interface.c" />
+<name v=".\Utility.h" />
+<name v=".\USB_Access.h" />
+<name v=".\EEPROM_Access.h" />
+<name v=".\Interface.h" />
+</OpenDocs>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

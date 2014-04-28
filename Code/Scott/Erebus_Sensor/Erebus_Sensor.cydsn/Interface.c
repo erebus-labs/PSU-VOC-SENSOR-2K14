@@ -33,12 +33,12 @@ void StartCollection_ISR(){
     header.day = RTC_ReadDayOfMonth();
     header.month = RTC_ReadMonth();
     header.year = RTC_ReadYear();
-    header.pad = 0x0;
 
     Em_EEPROM_Write((uint8*) (&header), TailPtr, header_size);
     TailPtr = TailPtr + header_size;
     
     TakeSample_IRQ_Start();
+    StopCollection_IRQ_Start();
     
     return;   
 }

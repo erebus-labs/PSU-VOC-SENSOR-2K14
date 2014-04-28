@@ -60,8 +60,8 @@ void sample_counter()
         sample_int_count = sample_int_count++;
     }
     
-    CyPmSaveClocks();
-    CyPmSleep(1,SLEEPMASK);
+//    CyPmSaveClocks();
+//    CyPmSleep(1,SLEEPMASK);
     
 }
 
@@ -81,8 +81,8 @@ void take_sample()
     
     TailPtr = TailPtr + 2;
     
-    CyPmSaveClocks();
-    CyPmSleep(1,SLEEPMASK);
+//    CyPmSaveClocks();
+//    CyPmSleep(1,SLEEPMASK);
     
 }
     

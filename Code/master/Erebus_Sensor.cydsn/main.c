@@ -35,6 +35,7 @@ int main()
     
     // Enable individual interrupts as necessary
     Vbus_IRQ_Start();
+    StartCollection_IRQ_Start();
     
     for(;;){}
     

@@ -19,7 +19,7 @@
     #include "USB_Access.h"
     
     void StartCollection_ISR();
-    void EndCollection_ISR();
+    void StopCollection_ISR();
     void Hibernate_ISR();
 
     // In this struct, year is listed first to avoid compiler
@@ -28,16 +28,15 @@
     
     struct header_package{
         uint16 start_block;
-        uint16 sample_sensor;
-        uint16 sample_unit;
-        uint16 sample_interval;
         uint16 year;
+        uint8 sample_sensor;
+        uint8 sample_unit;
+        uint8 sample_interval;
         uint8 second;
         uint8 minute;
         uint8 hour;
         uint8 day;
         uint8 month;
-        uint8 pad; // required to align for host when dumping data
     };
     
 #endif

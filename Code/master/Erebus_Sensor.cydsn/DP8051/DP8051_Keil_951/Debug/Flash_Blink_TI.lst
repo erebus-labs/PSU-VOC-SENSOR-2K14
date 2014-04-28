@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/26/2014 11:44:06 PAGE 1   
+C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/28/2014 14:01:26 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE FLASH_BLINK_TI
@@ -62,7 +62,7 @@ line level    source
   50   1          #if (Flash_Blink_TI_UsingFixedFunction)
                       /* Clear all bits but the enable bit (if it's already set) for Timer operation */
                       Flash_Blink_TI_CONTROL &= Flash_Blink_TI_CTRL_ENABLE;
-C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/26/2014 11:44:06 PAGE 2   
+C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/28/2014 14:01:26 PAGE 2   
 
               
                       /* Clear the mode bits for continuous run mode */
@@ -126,7 +126,7 @@ line level    source
               
                       /* Set the IRQ to use the status register interrupts */
                       Flash_Blink_TI_CONTROL2 |= Flash_Blink_TI_CTRL2_IRQ_SEL;
-C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/26/2014 11:44:06 PAGE 3   
+C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/28/2014 14:01:26 PAGE 3   
 
                   #endif /* Configuring registers of fixed function implementation */
  116   1      
@@ -190,7 +190,7 @@ line level    source
  174          *
  175          * Return:
  176          *  void
-C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/26/2014 11:44:06 PAGE 4   
+C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/28/2014 14:01:26 PAGE 4   
 
  177          *
  178          *******************************************************************************/
@@ -254,7 +254,7 @@ line level    source
  236          * Parameters:
  237          *  void
  238          *
-C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/26/2014 11:44:06 PAGE 5   
+C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/28/2014 14:01:26 PAGE 5   
 
  239          * Return:
  240          *  void
@@ -318,7 +318,7 @@ line level    source
  298          *  An existing hardware capture could be overwritten.
  299          *
  300          *******************************************************************************/
-C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/26/2014 11:44:06 PAGE 6   
+C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/28/2014 14:01:26 PAGE 6   
 
  301          void Flash_Blink_TI_SoftwareCapture(void) 
  302          {
@@ -382,7 +382,7 @@ line level    source
  360          *
  361          * Summary:
  362          *  Sets the bit-field of the control register.
-C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/26/2014 11:44:06 PAGE 7   
+C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/28/2014 14:01:26 PAGE 7   
 
  363          *
  364          * Parameters:
@@ -446,7 +446,7 @@ line level    source
                   #else
  423   1              CY_SET_REG16(Flash_Blink_TI_PERIOD_LSB_PTR, period);
  424   1          #endif /*Write Period value with appropriate resolution suffix depending on UDB or fixed function impl
-C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/26/2014 11:44:06 PAGE 8   
+C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/28/2014 14:01:26 PAGE 8   
 
              -ementation */
  425   1      }
@@ -510,7 +510,7 @@ line level    source
  482          * Function Name: Flash_Blink_TI_ReadCounter
  483          ********************************************************************************
  484          *
-C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/26/2014 11:44:06 PAGE 9   
+C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/28/2014 14:01:26 PAGE 9   
 
  485          * Summary:
  486          *  This function returns the current counter value.
@@ -574,7 +574,7 @@ line level    source
               *
               * Return:
               *  void
-C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/26/2014 11:44:06 PAGE 10  
+C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/28/2014 14:01:26 PAGE 10  
 
               *
               *******************************************************************************/
@@ -638,7 +638,7 @@ line level    source
               *
               * Summary:
               *  Sets the control bit enabling Hardware Trigger mode
-C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/26/2014 11:44:06 PAGE 11  
+C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/28/2014 14:01:26 PAGE 11  
 
               *
               * Parameters:
@@ -702,7 +702,7 @@ line level    source
               *******************************************************************************/
               void Flash_Blink_TI_SetInterruptCount(uint8 interruptCount) 
               {
-C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/26/2014 11:44:06 PAGE 12  
+C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/28/2014 14:01:26 PAGE 12  
 
                   /* This must only set to two bits of the control register associated */
                   interruptCount &= Flash_Blink_TI_CTRL_INTCNT_MASK;
@@ -766,7 +766,7 @@ line level    source
  730          * Function Name: Flash_Blink_TI_ClearFIFO
  731          ********************************************************************************
  732          *
-C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/26/2014 11:44:06 PAGE 13  
+C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/28/2014 14:01:26 PAGE 13  
 
  733          * Summary:
  734          *  This function clears all capture data from the capture FIFO
@@ -790,7 +790,7 @@ line level    source
  752          
  753          
  754          /* [] END OF FILE */
-C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/26/2014 11:44:06 PAGE 14  
+C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/28/2014 14:01:26 PAGE 14  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -854,7 +854,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
              ; FUNCTION Flash_Blink_TI_Start (BEGIN)
                                            ; SOURCE LINE # 214
-C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/26/2014 11:44:06 PAGE 15  
+C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/28/2014 14:01:26 PAGE 15  
 
                                            ; SOURCE LINE # 215
                                            ; SOURCE LINE # 216
@@ -918,7 +918,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 301
                                            ; SOURCE LINE # 302
                                            ; SOURCE LINE # 304
-C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/26/2014 11:44:06 PAGE 16  
+C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/28/2014 14:01:26 PAGE 16  
 
 0000 906406            MOV     DPTR,#06406H
 0003 E0                MOVX    A,@DPTR
@@ -982,7 +982,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0004 7926              MOV     R1,#026H
 0006 120000      E     LCALL   _cyread16_nodpx
                                            ; SOURCE LINE # 398
-C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/26/2014 11:44:06 PAGE 17  
+C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/28/2014 14:01:26 PAGE 17  
 
 0009         ?C0011:
 0009 22                RET     
@@ -1046,7 +1046,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0014 E0                MOVX    A,@DPTR
 0015 FD                MOV     R5,A
 0016 120000      E     LCALL   _cywrite16_nodpx
-C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/26/2014 11:44:06 PAGE 18  
+C51 COMPILER V9.51   FLASH_BLINK_TI                                                        04/28/2014 14:01:26 PAGE 18  
 
                                            ; SOURCE LINE # 478
 0019         ?C0014:

@@ -130,7 +130,7 @@ CY_ISR(StartCollection_IRQ_Interrupt)
 {
     /*  Place your Interrupt code here. */
     /* `#START StartCollection_IRQ_Interrupt` */
-
+    StartCollection_ISR();
     /* `#END` */
 
     /* PSoC3 ES1, ES2 RTC ISR PATCH  */ 
