@@ -276,7 +276,7 @@ class ErebusSensor:
             if not message:
                 blocks[-1].add_sample(word)
 
-            elif message == 0x2:
+            elif message == self.data_codes['START_BLOCK']:
                 blocks.append(DataBlock())
                 blocks[-1].year = next(iter_word_list)
 
@@ -295,9 +295,6 @@ class ErebusSensor:
                 temp = next(iter_word_list)
                 blocks[-1].day = (temp & 0xFF00) >> 8
                 blocks[-1].month = temp & 0x00FF
-
-            elif message == self.data_codes['NO_DATA']:
-                break
 
         for data_block in blocks:
             data_block.end()
