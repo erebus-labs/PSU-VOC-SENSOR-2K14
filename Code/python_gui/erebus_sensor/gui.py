@@ -172,11 +172,19 @@ class ErebusGUI(tk.Frame):
 
             if proceed and not self.connectSensor():
                 self._connectedMessage()
+                if self.sensorHandle.update_RTC():
+                    mb.showwarning("RTC Not Updated",
+                                   "Warning: The sensor is connected, but the "
+                                   "device's time could not be updated. Consider "
+                                   "disconnecting and reconnecting the sensor.")
+                    
             elif proceed:
                 self._disconnectedMessage(warning="Could not establish communication "
                                                   "with Erebus Sensor.")
+                self.sensorHandle = None
             else:
                 self._disconnectedMessage()
+                self.sensorHandle = None
                 
         return
 
@@ -258,7 +266,7 @@ class ErebusGUI(tk.Frame):
         
         dataBlocks = self.sensorHandle.getData()
 
-        if dataBlocks:
+        if isinstance(dataBlocks, list) and dataBlocks:
             with open('datadump.txt', 'a') as fo:
                 fo.write("".join(["\n\n", "*"*30,
                                   "\nErebus Sensor Data Dump",
@@ -273,8 +281,8 @@ class ErebusGUI(tk.Frame):
             mb.showinfo("", "There were no data samples to retrieve from the device.")
 
         else:
-            self._showNotConnected()
-
+            mb.showerror("", "There was an error retrieving data from the device. "
+                             "Please try again.")
         return
             
         

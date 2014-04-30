@@ -11,8 +11,9 @@ import serial
 import struct
 import sys
 import os
+import time
 from glob import glob
-from time import sleep
+from datetime import datetime
 
 # Module Level Variablesi
 
@@ -117,7 +118,8 @@ class ErebusSensor:
             'DUMP_DATA'       :0x02.to_bytes(1,byteorder='big'),
             'GET_SETTINGS'    :0x03.to_bytes(1,byteorder='big'),
             'APPLY_SETTINGS'  :0x04.to_bytes(1,byteorder='big'),
-            'HARD_RESET'      :0x05.to_bytes(1,byteorder='big')}
+            'HARD_RESET'      :0x05.to_bytes(1,byteorder='big'),
+            'UPDATE_RTC'      :0x06.to_bytes(1,byteorder='big')}
   
         self.device_replies = {
             'IDENTIFIER'      :0x01.to_bytes(1,byteorder='big'),
@@ -133,6 +135,12 @@ class ErebusSensor:
             'SAMPLE_MIN'      :0x02.to_bytes(1,byteorder='big'),
             'SAMPLE_HOUR'     :0x03.to_bytes(1,byteorder='big'),
             'SAMPLE_DAY'      :0x04.to_bytes(1,byteorder='big')}
+
+        self.data_codes = {
+            'START_BLOCK'     :0x2,
+            'PAD_BYTE'        :0x4,
+            'END_DATA'        :0x8,
+            'NO_DATA'         :0xA}
   
         for port in self._scanPorts():
   
@@ -208,7 +216,8 @@ class ErebusSensor:
             try:
               self._sendCommand('DUMP_DATA')
             except OSError:
-              return -1
+                print("Failed on Error.\n")
+                return -1
 
             # construct continuous list of 16-bit words out of incoming packets until the
             # last ones are received
@@ -220,13 +229,20 @@ class ErebusSensor:
 
                 packet = struct.unpack(packet_format_string, package)
 
+                # Check for no data before iterating over packet
+                if ((packet[0] & 0xF000) >> 12)  == self.data_codes['NO_DATA']:
+                    continue
+
                 for i, word in enumerate(packet):
                     message = (word & 0xF000) >> 12
-                    if message == 0x8:
+                
+                    if message == self.data_codes['END_DATA']:
                         bytes_sent = packet[i+1]
                         break
-                    elif message == 0x4:
+
+                    elif message == self.data_codes['PAD_BYTE']:
                         continue
+
                     else:
                         word_list.append(word)
 
@@ -280,13 +296,16 @@ class ErebusSensor:
                 blocks[-1].day = (temp & 0xFF00) >> 8
                 blocks[-1].month = temp & 0x00FF
 
+            elif message == self.data_codes['NO_DATA']:
+                break
+
         for data_block in blocks:
             data_block.end()
 
         if not result:    
             return blocks
         else:
-            return -1
+            return 1
 
     def close(self):
         self.handle.close()
@@ -311,9 +330,7 @@ class ErebusSensor:
                 return -1
             
             retStructure = Settings(sensor=sensorOptions[packet[0]],
-#            retStructure = Settings(sensor=sensorOptions[1],
                                     unit=unitOptions[packet[1]],
-#                                    unit=unitOptions[1],
                                     interval=int(packet[2]))
 
         except OSError:
@@ -342,7 +359,7 @@ class ErebusSensor:
             reply = self.handle.read(self.reply_size)
             if reply in self.host_replies.values():
                 break;
-            sleep(0.25)
+            time.sleep(0.25)
         else:
             return 1
 
@@ -350,5 +367,26 @@ class ErebusSensor:
             return 0
         else:
             return 1
-                
+
+    def update_RTC(self):
+        status = 1
+        now = time.localtime(time.time())
+
+        self._sendCommand('UPDATE_RTC')
+
+        time_block = struct.pack('>HBBBBB', 
+                                 now[0],    # year
+                                 now[5],    # second
+                                 now[4],    # minute
+                                 now[3],    # hour
+                                 now[2],    # day of month
+                                 now[1])    # month
+        print("Time Packet Out: {}\n".format(time_block))
+
+        if not self._await_result():
+            self.handle.write(time_block)
+            return self._await_result()
+
+        return 1
+
                 

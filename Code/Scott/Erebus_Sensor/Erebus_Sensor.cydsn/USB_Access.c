@@ -165,6 +165,17 @@ void dump_data(){
     uint8  i = 0;
     
     flash_LED_on();
+    
+    if (TailPtr == ExportPtr){
+        ExportBuffer[0] = NO_DATA;
+        
+        for (i=1; i< BUFFER_LEN; ++i){
+            ExportBuffer[i] = PADBYTE;
+        }
+        while(!USBUART_CDCIsReady() && Vbus_Read());
+        USBUART_PutData(ExportBuffer, BUFFER_LEN);
+    }
+            
     while (ExportPtr < TailPtr)
     {   
         while (i < BUFFER_LEN)

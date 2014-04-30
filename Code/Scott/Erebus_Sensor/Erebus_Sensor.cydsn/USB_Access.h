@@ -47,12 +47,12 @@
     // Outgoing Responses
     #define REPLY_LEN   1
     #define IDENTIFIER  0x01
-    #define NODATA      0x5
     
     // Data Packet Markers
     #define STARTBLOCK  0x2000 // This must be 16 bits - it is stored as uint16
     #define ENDDUMP     0x80
     #define PADBYTE     0x40
+    #define NO_DATA     0xA0
     
           
     // Structures
