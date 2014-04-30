@@ -1,0 +1,75 @@
+C51 COMPILER V9.51   RTC_HANDLER                                                           04/29/2014 21:21:59 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE RTC_HANDLER
+OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Debug\RTC_Handler.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\RTC_Handler.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\RTC_Handler.lst) CD DB NOIP OT(0,SIZE) DF
+                    -(DEBUG) INCDIR(.,.\Generated_Source\PSoC3) OJ(.\DP8051\DP8051_Keil_951\Debug\RTC_Handler.obj)
+
+line level    source
+
+   1          /* ========================================
+   2           *
+   3           * Copyright YOUR COMPANY, THE YEAR
+   4           * All Rights Reserved
+   5           * UNPUBLISHED, LICENSED SOFTWARE.
+   6           *
+   7           * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8           * WHICH IS THE PROPERTY OF your company.
+   9           *
+  10           * ========================================
+  11          */
+  12          
+  13          #include "RTC_Handler.h"
+  14          
+  15          uint8 sync_RTC(RTC_TIME_DATE* new_time){
+  16   1          RTC_DisableInt();
+  17   1          RTC_WriteTime(new_time);
+  18   1          RTC_EnableInt();
+  19   1          
+  20   1          return SUCCESS;
+  21   1      }
+  22          /* [] END OF FILE */
+C51 COMPILER V9.51   RTC_HANDLER                                                           04/29/2014 21:21:59 PAGE 2   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION _sync_RTC (BEGIN)
+                                           ; SOURCE LINE # 15
+0000 900000      R     MOV     DPTR,#new_time
+0003 120000      E     LCALL   ?C?PSTXDATA
+                                           ; SOURCE LINE # 16
+0006 120000      E     LCALL   RTC_DisableInt
+                                           ; SOURCE LINE # 17
+0009 900000      R     MOV     DPTR,#new_time
+000C 120000      E     LCALL   ?C?PLDXDATA
+000F 120000      E     LCALL   _RTC_WriteTime
+                                           ; SOURCE LINE # 18
+0012 120000      E     LCALL   RTC_EnableInt
+                                           ; SOURCE LINE # 20
+0015 7F02              MOV     R7,#02H
+                                           ; SOURCE LINE # 21
+0017         ?C0001:
+0017 22                RET     
+             ; FUNCTION _sync_RTC (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     24    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      3    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

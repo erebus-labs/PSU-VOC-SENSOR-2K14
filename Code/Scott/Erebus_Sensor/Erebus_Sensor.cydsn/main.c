@@ -27,8 +27,9 @@ int main()
         hard_reset();   
     }
 
-    // Enable and start EEPROM
+    // Start Components
     EEPROM_R_Start();
+    RTC_Start();
     
     // Enable global interrupts
     CyGlobalIntEnable;

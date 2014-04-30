@@ -9,8 +9,9 @@
  *
  * ========================================
 */
+
 #include "USB_Access.h"
-#include "EmEEPROM_Access.h" // Location of sampled data in flash
+
 /* This file provides function definitions for USB interactions */
 
 void USB_ISR(){
@@ -66,6 +67,16 @@ void USB_ISR(){
                             send_reply(FAIL);
                         }                  
                         break;
+                        
+                    case UPDATE_RTC:
+                        send_reply(SUCCESS);
+                        if (update_RTC() == SUCCESS){
+                            send_reply(SUCCESS);
+                        }
+                        else{
+                            send_reply(FAIL);
+                        }
+                        break;
                      
                     case HARD_RESET:
                         hard_reset();
@@ -74,6 +85,7 @@ void USB_ISR(){
                         
                     default:
                         send_reply(FAIL);
+                        break;
                 }
             }   
             else{
@@ -82,7 +94,7 @@ void USB_ISR(){
         }
     }
     
-    USB_Close();
+    USBUART_Stop();
     USB_LED_off();
     
     return;
@@ -124,8 +136,7 @@ uint8 apply_settings(){
             
             result = update_settings(new_settings);   
         }
-    }
-    
+    } 
     
     return result;
 }
@@ -228,6 +239,31 @@ void confirm_dump(){
     return;
 }
 
+uint8 update_RTC(){
+    uint8 result = FAIL;
+    uint8 time_buffer[TIME_LENGTH] = {0};
+    RTC_TIME_DATE new_time;
+    
+    while (!USBUART_DataIsReady() && Vbus_Read());
+    
+    if (Vbus_Read()){
+        if (retrieve(time_buffer, TIME_LENGTH) == SUCCESS){
+            new_time.Year = ((uint16) time_buffer[0]) << 0x8;
+            new_time.Year = new_time.Year | ((uint16) time_buffer[1]);
+            new_time.Sec = time_buffer[2];
+            new_time.Min = time_buffer[3];
+            new_time.Hour = time_buffer[4];
+            new_time.DayOfMonth = time_buffer[5];
+            new_time.Month = time_buffer[6];
+            
+            result = sync_RTC(&new_time);
+
+        }
+    }
+    
+    return result;
+}
+
 void CMD_hard_reset(){
 
     uint8 reset_flag = 0xFF;
@@ -247,8 +283,5 @@ void USB_Close(){
     
     return;
 }
-
-
-
 
 /* [] END OF FILE */

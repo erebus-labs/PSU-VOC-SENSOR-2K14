@@ -22,7 +22,7 @@
     #include "Project.h"
     #include "cytypes.h"
     #include "LED_Handler.h"
-    #include "USB_Access.h" // included for FAIL and SUCCESS macros
+    #include "Common.h"
 
     // MACROS
     

@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   USB_BLINK_TI                                                          04/28/2014 14:01:26 PAGE 1   
+C51 COMPILER V9.51   USB_BLINK_TI                                                          04/29/2014 20:56:24 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE USB_BLINK_TI
@@ -62,7 +62,7 @@ line level    source
                       /* Clear all bits but the enable bit (if it's already set) for Timer operation */
                       USB_Blink_TI_CONTROL &= USB_Blink_TI_CTRL_ENABLE;
               
-C51 COMPILER V9.51   USB_BLINK_TI                                                          04/28/2014 14:01:26 PAGE 2   
+C51 COMPILER V9.51   USB_BLINK_TI                                                          04/29/2014 20:56:24 PAGE 2   
 
                       /* Clear the mode bits for continuous run mode */
                       #if (CY_PSOC5A)
@@ -126,7 +126,7 @@ line level    source
                       /* Set the IRQ to use the status register interrupts */
                       USB_Blink_TI_CONTROL2 |= USB_Blink_TI_CTRL2_IRQ_SEL;
                   #endif /* Configuring registers of fixed function implementation */
-C51 COMPILER V9.51   USB_BLINK_TI                                                          04/28/2014 14:01:26 PAGE 3   
+C51 COMPILER V9.51   USB_BLINK_TI                                                          04/29/2014 20:56:24 PAGE 3   
 
  116   1      
  117   1          /* Set Initial values from Configuration */
@@ -190,7 +190,7 @@ line level    source
  175          * Return:
  176          *  void
  177          *
-C51 COMPILER V9.51   USB_BLINK_TI                                                          04/28/2014 14:01:26 PAGE 4   
+C51 COMPILER V9.51   USB_BLINK_TI                                                          04/29/2014 20:56:24 PAGE 4   
 
  178          *******************************************************************************/
  179          void USB_Blink_TI_Enable(void) 
@@ -254,7 +254,7 @@ line level    source
  237          *  void
  238          *
  239          * Return:
-C51 COMPILER V9.51   USB_BLINK_TI                                                          04/28/2014 14:01:26 PAGE 5   
+C51 COMPILER V9.51   USB_BLINK_TI                                                          04/29/2014 20:56:24 PAGE 5   
 
  240          *  void
  241          *
@@ -318,7 +318,7 @@ line level    source
  299          *
  300          *******************************************************************************/
  301          void USB_Blink_TI_SoftwareCapture(void) 
-C51 COMPILER V9.51   USB_BLINK_TI                                                          04/28/2014 14:01:26 PAGE 6   
+C51 COMPILER V9.51   USB_BLINK_TI                                                          04/29/2014 20:56:24 PAGE 6   
 
  302          {
  303   1          /* Generate a software capture by reading the counter register */
@@ -382,7 +382,7 @@ line level    source
  361          * Summary:
  362          *  Sets the bit-field of the control register.
  363          *
-C51 COMPILER V9.51   USB_BLINK_TI                                                          04/28/2014 14:01:26 PAGE 7   
+C51 COMPILER V9.51   USB_BLINK_TI                                                          04/29/2014 20:56:24 PAGE 7   
 
  364          * Parameters:
  365          *  control: The contents of the control register
@@ -446,7 +446,7 @@ line level    source
  423   1              CY_SET_REG16(USB_Blink_TI_PERIOD_LSB_PTR, period);
  424   1          #endif /*Write Period value with appropriate resolution suffix depending on UDB or fixed function impl
              -ementation */
-C51 COMPILER V9.51   USB_BLINK_TI                                                          04/28/2014 14:01:26 PAGE 8   
+C51 COMPILER V9.51   USB_BLINK_TI                                                          04/29/2014 20:56:24 PAGE 8   
 
  425   1      }
  426          
@@ -510,7 +510,7 @@ line level    source
  483          ********************************************************************************
  484          *
  485          * Summary:
-C51 COMPILER V9.51   USB_BLINK_TI                                                          04/28/2014 14:01:26 PAGE 9   
+C51 COMPILER V9.51   USB_BLINK_TI                                                          04/29/2014 20:56:24 PAGE 9   
 
  486          *  This function returns the current counter value.
  487          *
@@ -574,7 +574,7 @@ line level    source
               * Return:
               *  void
               *
-C51 COMPILER V9.51   USB_BLINK_TI                                                          04/28/2014 14:01:26 PAGE 10  
+C51 COMPILER V9.51   USB_BLINK_TI                                                          04/29/2014 20:56:24 PAGE 10  
 
               *******************************************************************************/
               void USB_Blink_TI_SetCaptureMode(uint8 captureMode) 
@@ -638,7 +638,7 @@ line level    source
               * Summary:
               *  Sets the control bit enabling Hardware Trigger mode
               *
-C51 COMPILER V9.51   USB_BLINK_TI                                                          04/28/2014 14:01:26 PAGE 11  
+C51 COMPILER V9.51   USB_BLINK_TI                                                          04/29/2014 20:56:24 PAGE 11  
 
               * Parameters:
               *  void
@@ -702,7 +702,7 @@ line level    source
               void USB_Blink_TI_SetInterruptCount(uint8 interruptCount) 
               {
                   /* This must only set to two bits of the control register associated */
-C51 COMPILER V9.51   USB_BLINK_TI                                                          04/28/2014 14:01:26 PAGE 12  
+C51 COMPILER V9.51   USB_BLINK_TI                                                          04/29/2014 20:56:24 PAGE 12  
 
                   interruptCount &= USB_Blink_TI_CTRL_INTCNT_MASK;
               
@@ -766,7 +766,7 @@ line level    source
  731          ********************************************************************************
  732          *
  733          * Summary:
-C51 COMPILER V9.51   USB_BLINK_TI                                                          04/28/2014 14:01:26 PAGE 13  
+C51 COMPILER V9.51   USB_BLINK_TI                                                          04/29/2014 20:56:24 PAGE 13  
 
  734          *  This function clears all capture data from the capture FIFO
  735          *
@@ -789,7 +789,7 @@ line level    source
  752          
  753          
  754          /* [] END OF FILE */
-C51 COMPILER V9.51   USB_BLINK_TI                                                          04/28/2014 14:01:26 PAGE 14  
+C51 COMPILER V9.51   USB_BLINK_TI                                                          04/29/2014 20:56:24 PAGE 14  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -853,7 +853,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
              ; FUNCTION USB_Blink_TI_Start (BEGIN)
                                            ; SOURCE LINE # 214
-C51 COMPILER V9.51   USB_BLINK_TI                                                          04/28/2014 14:01:26 PAGE 15  
+C51 COMPILER V9.51   USB_BLINK_TI                                                          04/29/2014 20:56:24 PAGE 15  
 
                                            ; SOURCE LINE # 215
                                            ; SOURCE LINE # 216
@@ -917,7 +917,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 301
                                            ; SOURCE LINE # 302
                                            ; SOURCE LINE # 304
-C51 COMPILER V9.51   USB_BLINK_TI                                                          04/28/2014 14:01:26 PAGE 16  
+C51 COMPILER V9.51   USB_BLINK_TI                                                          04/29/2014 20:56:24 PAGE 16  
 
 0000 906504            MOV     DPTR,#06504H
 0003 E0                MOVX    A,@DPTR
@@ -981,7 +981,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0004 7924              MOV     R1,#024H
 0006 120000      E     LCALL   _cyread16_nodpx
                                            ; SOURCE LINE # 398
-C51 COMPILER V9.51   USB_BLINK_TI                                                          04/28/2014 14:01:26 PAGE 17  
+C51 COMPILER V9.51   USB_BLINK_TI                                                          04/29/2014 20:56:24 PAGE 17  
 
 0009         ?C0011:
 0009 22                RET     
@@ -1045,7 +1045,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0014 E0                MOVX    A,@DPTR
 0015 FD                MOV     R5,A
 0016 120000      E     LCALL   _cywrite16_nodpx
-C51 COMPILER V9.51   USB_BLINK_TI                                                          04/28/2014 14:01:26 PAGE 18  
+C51 COMPILER V9.51   USB_BLINK_TI                                                          04/29/2014 20:56:24 PAGE 18  
 
                                            ; SOURCE LINE # 478
 0019         ?C0014:

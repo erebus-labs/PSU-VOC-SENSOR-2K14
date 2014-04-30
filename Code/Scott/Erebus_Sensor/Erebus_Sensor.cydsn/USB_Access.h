@@ -16,8 +16,11 @@
     // File Inclusions
     #include "Project.h"
     #include "EEPROM_Access.h"
+    #include "EmEEPROM_Access.h"
     #include "Utility.h"
     #include "LED_Handler.h"
+    #include "RTC_Handler.h"
+    #include "Common.h"
 
     // Macros
     #define BUFFER_LEN          64u  
@@ -34,6 +37,7 @@
     #define GET_SETTINGS    0x03
     #define CHANGE_SETTING  0x04
     #define HARD_RESET      0x05
+    #define UPDATE_RTC      0x06
     
     // Setting Codes
     #define SAMPLE_UNIT     0x01
@@ -44,11 +48,6 @@
     #define REPLY_LEN   1
     #define IDENTIFIER  0x01
     #define NODATA      0x5
-    
-    // The SUCCESS and FAIL macros are also used in EEPROM functions
-    // Do not modify them without also checking EEPROM_Access.c/.h
-    #define SUCCESS     0x02
-    #define FAIL        0x03
     
     // Data Packet Markers
     #define STARTBLOCK  0x2000 // This must be 16 bits - it is stored as uint16
@@ -65,6 +64,7 @@
     void send_settings();
     void dump_data();
     void confirm_dump();
+    uint8 update_RTC();
     void send_reply(uint8 buffer);
     void CMD_hard_reset();
     void USB_Close();
