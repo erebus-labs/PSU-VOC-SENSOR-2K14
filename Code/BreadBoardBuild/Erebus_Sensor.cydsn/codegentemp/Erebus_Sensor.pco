@@ -1,0 +1,115 @@
+# Erebus_Sensor
+# 2014-05-02 07:06:43Z
+
+# IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
+dont_use_io iocell 1 0
+# IO_1@[IOP=(1)][IoId=(1)] is reserved: SWDDebugEnabled
+dont_use_io iocell 1 1
+# IO_2@[IOP=(1)][IoId=(2)] is reserved: XresEnabled
+dont_use_io iocell 1 2
+# IO_3@[IOP=(1)][IoId=(3)] is reserved: SWDDebugEnabled
+dont_use_io iocell 1 3
+# IO_2@[IOP=(15)][IoId=(2)] is reserved: KhzXtalEnabled
+dont_use_io iocell 15 2
+# IO_3@[IOP=(15)][IoId=(3)] is reserved: KhzXtalEnabled
+dont_use_io iocell 15 3
+dont_use_location comparatorcell -1 -1 2
+dont_use_location comparatorcell -1 -1 3
+dont_use_location sccell -1 -1 0
+dont_use_location sccell -1 -1 1
+dont_use_location sccell -1 -1 2
+dont_use_location sccell -1 -1 3
+dont_use_location vidaccell -1 -1 1
+dont_use_location vidaccell -1 -1 2
+dont_use_location vidaccell -1 -1 3
+dont_use_location abufcell -1 -1 0
+dont_use_location abufcell -1 -1 2
+dont_use_location abufcell -1 -1 1
+dont_use_location abufcell -1 -1 3
+set_location "ClockBlock" clockblockcell -1 -1 0
+set_io "EEPROM_LED(0)" iocell 2 7
+set_io "FLASH_LED(0)" iocell 2 6
+set_io "Hibernate_B(0)" iocell 0 7
+set_location "Hibernate_IRQ" interrupt -1 -1 0
+set_location "Net_1047" 3 3 1 0
+set_location "Net_1047__SYNC" 2 4 5 1
+set_location "Net_1047__SYNC_1" 3 4 5 0
+set_location "Net_1047__SYNC_2" 2 4 5 0
+set_location "Net_1047__SYNC_3" 3 4 5 1
+set_location "Net_1047__SYNC_4" 3 2 5 0
+set_location "Net_1103" 0 3 1 1
+set_location "Net_1117" 0 3 1 0
+set_location "Net_1178" 0 4 0 1
+set_location "Net_1186" 0 4 1 3
+set_location "Net_146" 0 5 0 3
+set_location "Net_408" 3 2 1 0
+set_location "Net_818" 2 4 0 0
+set_location "Net_820" 2 4 1 0
+set_location "Net_843" 0 5 0 2
+set_location "Net_849" 3 4 0 0
+set_location "Net_865" 3 4 1 0
+set_location "PM" pmcell -1 -1 0
+set_io "Sensor_In(0)" iocell 0 0
+set_io "StartCollection_B(0)" iocell 0 4
+set_location "StartCollection_IRQ" interrupt -1 -1 1
+set_io "StopCollection_B(0)" iocell 0 5
+set_location "StopCollection_IRQ" interrupt -1 -1 2
+set_io "TakeSample_B(0)" iocell 0 1
+set_location "TakeSample_IRQ" interrupt -1 -1 3
+set_io "USB_LED(0)" iocell 2 5
+set_io "Vbus(0)" iocell 1 7
+set_location "Vbus_IRQ" interrupt -1 -1 4
+set_location "\ADC:DEC\" decimatorcell -1 -1 0
+set_location "\ADC:DSM\" dsmodcell -1 -1 0
+set_location "\ADC:IRQ\" interrupt -1 -1 29
+set_location "\EEPROM_Blink_TI:TimerUDB:rstSts:stsreg\" 1 5 4
+set_location "\EEPROM_Blink_TI:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\" 0 5 6
+set_location "\EEPROM_Blink_TI:TimerUDB:sT16:timerdp:u0\" 0 5 2
+set_location "\EEPROM_Blink_TI:TimerUDB:sT16:timerdp:u1\" 1 5 2
+set_location "\EEPROM_Blink_TI:TimerUDB:status_tc\" 1 5 1 3
+set_location "\Flash_Blink_TI:TimerUDB:rstSts:stsreg\" 0 4 4
+set_location "\Flash_Blink_TI:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\" 1 4 6
+set_location "\Flash_Blink_TI:TimerUDB:sT16:timerdp:u0\" 1 4 2
+set_location "\Flash_Blink_TI:TimerUDB:sT16:timerdp:u1\" 0 4 2
+set_location "\Flash_Blink_TI:TimerUDB:status_tc\" 0 4 0 2
+set_location "\Hibernate_DB:DEBOUNCER[0]:d_sync_0\" 2 4 0 2
+set_location "\Hibernate_DB:DEBOUNCER[0]:d_sync_1\" 2 4 0 1
+set_location "\LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\" 3 2 1 3
+set_location "\LowFreq_DV:count_0\" 2 2 0 3
+set_location "\LowFreq_DV:count_1\" 2 3 0 0
+set_location "\LowFreq_DV:count_2\" 2 3 1 0
+set_location "\LowFreq_DV:count_3\" 3 3 0 0
+set_location "\LowFreq_DV:count_4\" 3 2 0 3
+set_location "\LowFreq_DV:count_5\" 3 3 1 2
+set_location "\LowFreq_DV:count_6\" 3 3 0 3
+set_location "\LowFreq_DV:count_7\" 3 3 0 2
+set_location "\LowFreq_DV:count_8\" 3 2 0 0
+set_location "\LowFreq_DV:count_9\" 3 2 0 1
+set_location "\LowFreq_DV:not_last_reset\" 2 2 1 1
+set_location "\RTC:isr\" interrupt -1 -1 5
+set_location "\StartCollection_DB:DEBOUNCER[0]:d_sync_0\" 3 4 0 2
+set_location "\StartCollection_DB:DEBOUNCER[0]:d_sync_1\" 3 4 0 1
+set_location "\StopCollection_DB:DEBOUNCER[0]:d_sync_0\" 2 4 1 2
+set_location "\StopCollection_DB:DEBOUNCER[0]:d_sync_1\" 2 4 1 1
+set_location "\TakeSample_DB:DEBOUNCER[0]:d_sync_0\" 3 4 1 2
+set_location "\TakeSample_DB:DEBOUNCER[0]:d_sync_1\" 3 4 1 1
+set_io "\USBUART:Dm(0)\" iocell 15 7
+set_io "\USBUART:Dp(0)\" iocell 15 6
+set_location "\USBUART:Dp\" logicalport -1 -1 15
+set_location "\USBUART:USB\" usbcell -1 -1 0
+set_location "\USBUART:arb_int\" interrupt -1 -1 22
+set_location "\USBUART:bus_reset\" interrupt -1 -1 23
+set_location "\USBUART:dp_int\" interrupt -1 -1 12
+set_location "\USBUART:ep_0\" interrupt -1 -1 24
+set_location "\USBUART:ep_1\" interrupt -1 -1 6
+set_location "\USBUART:ep_2\" interrupt -1 -1 7
+set_location "\USBUART:ep_3\" interrupt -1 -1 8
+set_location "\USBUART:sof_int\" interrupt -1 -1 21
+set_location "\USB_Blink_TI:TimerUDB:rstSts:stsreg\" 1 3 4
+set_location "\USB_Blink_TI:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\" 1 3 6
+set_location "\USB_Blink_TI:TimerUDB:sT16:timerdp:u0\" 0 3 2
+set_location "\USB_Blink_TI:TimerUDB:sT16:timerdp:u1\" 1 3 2
+set_location "\USB_Blink_TI:TimerUDB:status_tc\" 1 3 0 2
+set_location "\Vbus_Debounce:DEBOUNCER[0]:d_sync_0\" 3 2 1 2
+set_location "\Vbus_Debounce:DEBOUNCER[0]:d_sync_1\" 3 2 1 1
+set_location "__ONE__" 1 0 0 2
