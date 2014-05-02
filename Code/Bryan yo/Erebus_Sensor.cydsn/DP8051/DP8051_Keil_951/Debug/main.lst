@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   MAIN                                                                  05/01/2014 20:13:38 PAGE 1   
+C51 COMPILER V9.51   MAIN                                                                  05/01/2014 22:22:13 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE MAIN
@@ -62,32 +62,33 @@ line level    source
   50   1          //Blink_Timer_WritePeriod(blink_rate);
   51   1          
   52   1          
-C51 COMPILER V9.51   MAIN                                                                  05/01/2014 20:13:38 PAGE 2   
+C51 COMPILER V9.51   MAIN                                                                  05/01/2014 22:22:13 PAGE 2   
 
-  53   1          RTC_Prep();
+  53   1          rtc_prep();
   54   1          
   55   1      
   56   1          while(1u)
   57   1          {
-  58   2              CyDelay(100);
-  59   2              
-  60   2              CyPmSaveClocks();
-  61   2              
-  62   2              RTC_1_DisableInt();
-  63   2              
-  64   2              CyPmSleep(PM_SLEEP_TIME_NONE,PM_SLEEP_SRC_ONE_PPS);
-  65   2              
-  66   2              CyPmRestoreClocks();
-  67   2              
-  68   2              RTC_1_EnableInt();
-  69   2              
-  70   2          }
-  71   1          
-  72   1          return;
-  73   1      }
-  74          
-  75          /* [] END OF FILE */
-C51 COMPILER V9.51   MAIN                                                                  05/01/2014 20:13:38 PAGE 3   
+  58   2              
+  59   2              CyDelay(100);
+  60   2              
+  61   2              CyPmSaveClocks();
+  62   2              
+  63   2              RTC_1_DisableInt();
+  64   2              
+  65   2              CyPmSleep(PM_SLEEP_TIME_NONE,PM_SLEEP_SRC_ONE_PPS);
+  66   2              
+  67   2              CyPmRestoreClocks(); 
+  68   2              
+  69   2              RTC_1_EnableInt();
+  70   2              
+  71   2          }
+  72   1          
+  73   1          return;
+  74   1      }
+  75          
+  76          /* [] END OF FILE */
+C51 COMPILER V9.51   MAIN                                                                  05/01/2014 22:22:13 PAGE 3   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -118,40 +119,40 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 41
 001C 120000      E     LCALL   Vbus_IRQ_Start
                                            ; SOURCE LINE # 53
-001F 120000      E     LCALL   RTC_Prep
+001F 120000      E     LCALL   rtc_prep
 0022         ?C0001:
                                            ; SOURCE LINE # 56
                                            ; SOURCE LINE # 57
-                                           ; SOURCE LINE # 58
+                                           ; SOURCE LINE # 59
 0022 7F64              MOV     R7,#064H
 0024 7E00              MOV     R6,#00H
 0026 7D00              MOV     R5,#00H
 0028 7C00              MOV     R4,#00H
 002A 120000      E     LCALL   _?CyDelay
-                                           ; SOURCE LINE # 60
+                                           ; SOURCE LINE # 61
 002D 120000      E     LCALL   CyPmSaveClocks
-                                           ; SOURCE LINE # 62
+                                           ; SOURCE LINE # 63
 0030 120000      E     LCALL   RTC_1_DisableInt
-                                           ; SOURCE LINE # 64
+                                           ; SOURCE LINE # 65
 0033 7D00              MOV     R5,#00H
 0035 7C08              MOV     R4,#08H
 0037 7F00              MOV     R7,#00H
 0039 120000      E     LCALL   _CyPmSleep
-                                           ; SOURCE LINE # 66
+                                           ; SOURCE LINE # 67
 003C 120000      E     LCALL   CyPmRestoreClocks
-                                           ; SOURCE LINE # 68
+                                           ; SOURCE LINE # 69
 003F 120000      E     LCALL   RTC_1_EnableInt
-                                           ; SOURCE LINE # 70
+                                           ; SOURCE LINE # 71
 0042 80DE              SJMP    ?C0001
 0044         ?C0002:
-                                           ; SOURCE LINE # 73
+                                           ; SOURCE LINE # 74
 0044         ?C0003:
 0044 22                RET     
              ; FUNCTION main (END)
 
 
 
-C51 COMPILER V9.51   MAIN                                                                  05/01/2014 20:13:38 PAGE 4   
+C51 COMPILER V9.51   MAIN                                                                  05/01/2014 22:22:13 PAGE 4   
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
    CODE SIZE        =     69    ----

@@ -50,11 +50,12 @@ void main()
     //Blink_Timer_WritePeriod(blink_rate);
     
     
-    RTC_Prep();
+    rtc_prep();
     
 
     while(1u)
     {
+        
         CyDelay(100);
         
         CyPmSaveClocks();
@@ -63,7 +64,7 @@ void main()
         
         CyPmSleep(PM_SLEEP_TIME_NONE,PM_SLEEP_SRC_ONE_PPS);
         
-        CyPmRestoreClocks();
+        CyPmRestoreClocks(); 
         
         RTC_1_EnableInt();
         
