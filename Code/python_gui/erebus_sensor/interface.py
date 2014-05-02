@@ -128,7 +128,8 @@ class ErebusSensor:
 
         self.host_replies = {
             'SUCCESS'         :0x02.to_bytes(1,byteorder='big'),
-            'FAIL'            :0x03.to_bytes(1,byteorder='big')}
+            'FAIL'            :0x03.to_bytes(1,byteorder='big'),
+            'NEXT'            :0x07.to_bytes(1,byteorder='big')}
   
         self.sample_codes = {
             'SAMPLE_SEC'      :0x01.to_bytes(1,byteorder='big'),
@@ -223,6 +224,7 @@ class ErebusSensor:
             # last ones are received
             while True:
                 package = self.handle.read(64)
+                self._sendReply('NEXT')
                 print("Package Received: {}\n".format(package))
                 if len(package) < 64:
                     continue
