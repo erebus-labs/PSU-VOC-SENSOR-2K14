@@ -1,5 +1,5 @@
 -- Project:   C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\Erebus_Sensor.cyprj
--- Generated: 04/29/2014 20:55:57
+-- Generated: 05/02/2014 02:18:36
 -- 
 
 ENTITY Erebus_Sensor IS
@@ -38,46 +38,41 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     SIGNAL FLASH_LED(0)__PA : bit;
     SIGNAL Hibernate_B(0)__PA : bit;
     SIGNAL Net_1047 : bit;
-    ATTRIBUTE placement_force OF Net_1047 : SIGNAL IS "U(2,3,A)0";
+    ATTRIBUTE placement_force OF Net_1047 : SIGNAL IS "U(2,2,B)0";
     SIGNAL Net_1047__SYNC_OUT : bit;
     SIGNAL Net_1047__SYNC_OUT_1 : bit;
     SIGNAL Net_1047__SYNC_OUT_2 : bit;
     SIGNAL Net_1047__SYNC_OUT_3 : bit;
     SIGNAL Net_1047__SYNC_OUT_4 : bit;
     SIGNAL Net_1103 : bit;
-    ATTRIBUTE placement_force OF Net_1103 : SIGNAL IS "U(3,0,A)1";
+    ATTRIBUTE placement_force OF Net_1103 : SIGNAL IS "U(3,4,B)1";
     SIGNAL Net_1117 : bit;
-    ATTRIBUTE placement_force OF Net_1117 : SIGNAL IS "U(3,0,A)0";
+    ATTRIBUTE placement_force OF Net_1117 : SIGNAL IS "U(3,3,A)0";
     SIGNAL Net_1178 : bit;
-    ATTRIBUTE placement_force OF Net_1178 : SIGNAL IS "U(2,2,A)1";
+    ATTRIBUTE placement_force OF Net_1178 : SIGNAL IS "U(3,4,B)2";
     SIGNAL Net_1186 : bit;
-    ATTRIBUTE placement_force OF Net_1186 : SIGNAL IS "U(2,2,A)0";
+    ATTRIBUTE placement_force OF Net_1186 : SIGNAL IS "U(3,3,A)1";
     SIGNAL Net_146 : bit;
-    ATTRIBUTE placement_force OF Net_146 : SIGNAL IS "U(2,1,A)0";
+    ATTRIBUTE placement_force OF Net_146 : SIGNAL IS "U(3,4,A)0";
     SIGNAL Net_249 : bit;
-    SIGNAL Net_249_SYNCOUT : bit;
     SIGNAL Net_408 : bit;
-    ATTRIBUTE placement_force OF Net_408 : SIGNAL IS "U(3,1,A)0";
+    ATTRIBUTE placement_force OF Net_408 : SIGNAL IS "U(2,3,B)0";
     SIGNAL Net_566 : bit;
     SIGNAL Net_714 : bit;
     SIGNAL Net_818 : bit;
-    ATTRIBUTE placement_force OF Net_818 : SIGNAL IS "U(3,4,B)0";
+    ATTRIBUTE placement_force OF Net_818 : SIGNAL IS "U(2,4,A)0";
     SIGNAL Net_820 : bit;
-    ATTRIBUTE placement_force OF Net_820 : SIGNAL IS "U(3,3,A)0";
+    ATTRIBUTE placement_force OF Net_820 : SIGNAL IS "U(3,0,A)0";
     SIGNAL Net_824 : bit;
-    SIGNAL Net_824_SYNCOUT : bit;
     SIGNAL Net_836 : bit;
-    SIGNAL Net_836_SYNCOUT : bit;
     SIGNAL Net_843 : bit;
-    ATTRIBUTE placement_force OF Net_843 : SIGNAL IS "U(2,1,A)1";
+    ATTRIBUTE placement_force OF Net_843 : SIGNAL IS "U(3,4,A)1";
     SIGNAL Net_849 : bit;
-    ATTRIBUTE placement_force OF Net_849 : SIGNAL IS "U(3,2,B)0";
+    ATTRIBUTE placement_force OF Net_849 : SIGNAL IS "U(3,1,A)0";
     SIGNAL Net_850 : bit;
-    SIGNAL Net_850_SYNCOUT : bit;
     SIGNAL Net_865 : bit;
-    ATTRIBUTE placement_force OF Net_865 : SIGNAL IS "U(3,2,A)0";
+    ATTRIBUTE placement_force OF Net_865 : SIGNAL IS "U(2,3,A)0";
     SIGNAL Net_879 : bit;
-    SIGNAL Net_879_SYNCOUT : bit;
     SIGNAL Net_946 : bit;
     ATTRIBUTE global_signal OF Net_946 : SIGNAL IS true;
     SIGNAL Net_946_local : bit;
@@ -123,7 +118,7 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     SIGNAL \EEPROM_Blink_TI:TimerUDB:status_2\ : bit;
     SIGNAL \EEPROM_Blink_TI:TimerUDB:status_3\ : bit;
     SIGNAL \EEPROM_Blink_TI:TimerUDB:status_tc\ : bit;
-    ATTRIBUTE placement_force OF \EEPROM_Blink_TI:TimerUDB:status_tc\ : SIGNAL IS "U(2,1,A)2";
+    ATTRIBUTE placement_force OF \EEPROM_Blink_TI:TimerUDB:status_tc\ : SIGNAL IS "U(2,4,B)1";
     SIGNAL \Flash_Blink_TI:TimerUDB:control_0\ : bit;
     SIGNAL \Flash_Blink_TI:TimerUDB:control_1\ : bit;
     SIGNAL \Flash_Blink_TI:TimerUDB:control_2\ : bit;
@@ -137,47 +132,47 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     SIGNAL \Flash_Blink_TI:TimerUDB:status_2\ : bit;
     SIGNAL \Flash_Blink_TI:TimerUDB:status_3\ : bit;
     SIGNAL \Flash_Blink_TI:TimerUDB:status_tc\ : bit;
-    ATTRIBUTE placement_force OF \Flash_Blink_TI:TimerUDB:status_tc\ : SIGNAL IS "U(2,2,A)2";
+    ATTRIBUTE placement_force OF \Flash_Blink_TI:TimerUDB:status_tc\ : SIGNAL IS "U(3,3,B)3";
     SIGNAL \Hibernate_DB:DEBOUNCER[0]:d_sync_0\ : bit;
-    ATTRIBUTE placement_force OF \Hibernate_DB:DEBOUNCER[0]:d_sync_0\ : SIGNAL IS "U(3,4,B)2";
+    ATTRIBUTE placement_force OF \Hibernate_DB:DEBOUNCER[0]:d_sync_0\ : SIGNAL IS "U(2,4,A)2";
     SIGNAL \Hibernate_DB:DEBOUNCER[0]:d_sync_1\ : bit;
-    ATTRIBUTE placement_force OF \Hibernate_DB:DEBOUNCER[0]:d_sync_1\ : SIGNAL IS "U(3,4,B)1";
+    ATTRIBUTE placement_force OF \Hibernate_DB:DEBOUNCER[0]:d_sync_1\ : SIGNAL IS "U(2,4,A)1";
     SIGNAL \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\ : bit;
-    ATTRIBUTE placement_force OF \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\ : SIGNAL IS "U(2,4,A)3";
+    ATTRIBUTE placement_force OF \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\ : SIGNAL IS "U(2,1,A)1";
     SIGNAL \LowFreq_DV:count_0\ : bit;
-    ATTRIBUTE placement_force OF \LowFreq_DV:count_0\ : SIGNAL IS "U(2,3,A)2";
+    ATTRIBUTE placement_force OF \LowFreq_DV:count_0\ : SIGNAL IS "U(2,0,A)3";
     SIGNAL \LowFreq_DV:count_1\ : bit;
-    ATTRIBUTE placement_force OF \LowFreq_DV:count_1\ : SIGNAL IS "U(2,3,B)3";
+    ATTRIBUTE placement_force OF \LowFreq_DV:count_1\ : SIGNAL IS "U(2,1,A)3";
     SIGNAL \LowFreq_DV:count_2\ : bit;
-    ATTRIBUTE placement_force OF \LowFreq_DV:count_2\ : SIGNAL IS "U(2,4,A)1";
+    ATTRIBUTE placement_force OF \LowFreq_DV:count_2\ : SIGNAL IS "U(2,1,B)3";
     SIGNAL \LowFreq_DV:count_3\ : bit;
-    ATTRIBUTE placement_force OF \LowFreq_DV:count_3\ : SIGNAL IS "U(2,3,B)0";
+    ATTRIBUTE placement_force OF \LowFreq_DV:count_3\ : SIGNAL IS "U(2,0,A)0";
     SIGNAL \LowFreq_DV:count_4\ : bit;
-    ATTRIBUTE placement_force OF \LowFreq_DV:count_4\ : SIGNAL IS "U(2,4,A)2";
+    ATTRIBUTE placement_force OF \LowFreq_DV:count_4\ : SIGNAL IS "U(2,2,A)3";
     SIGNAL \LowFreq_DV:count_5\ : bit;
-    ATTRIBUTE placement_force OF \LowFreq_DV:count_5\ : SIGNAL IS "U(2,3,A)1";
+    ATTRIBUTE placement_force OF \LowFreq_DV:count_5\ : SIGNAL IS "U(2,0,B)0";
     SIGNAL \LowFreq_DV:count_6\ : bit;
-    ATTRIBUTE placement_force OF \LowFreq_DV:count_6\ : SIGNAL IS "U(2,3,A)3";
+    ATTRIBUTE placement_force OF \LowFreq_DV:count_6\ : SIGNAL IS "U(2,1,A)0";
     SIGNAL \LowFreq_DV:count_7\ : bit;
-    ATTRIBUTE placement_force OF \LowFreq_DV:count_7\ : SIGNAL IS "U(2,3,B)2";
+    ATTRIBUTE placement_force OF \LowFreq_DV:count_7\ : SIGNAL IS "U(2,2,A)1";
     SIGNAL \LowFreq_DV:count_8\ : bit;
-    ATTRIBUTE placement_force OF \LowFreq_DV:count_8\ : SIGNAL IS "U(2,4,A)0";
+    ATTRIBUTE placement_force OF \LowFreq_DV:count_8\ : SIGNAL IS "U(2,1,B)0";
     SIGNAL \LowFreq_DV:count_9\ : bit;
-    ATTRIBUTE placement_force OF \LowFreq_DV:count_9\ : SIGNAL IS "U(2,4,B)1";
+    ATTRIBUTE placement_force OF \LowFreq_DV:count_9\ : SIGNAL IS "U(2,1,B)1";
     SIGNAL \LowFreq_DV:not_last_reset\ : bit;
-    ATTRIBUTE placement_force OF \LowFreq_DV:not_last_reset\ : SIGNAL IS "U(2,4,B)0";
+    ATTRIBUTE placement_force OF \LowFreq_DV:not_last_reset\ : SIGNAL IS "U(2,1,A)2";
     SIGNAL \StartCollection_DB:DEBOUNCER[0]:d_sync_0\ : bit;
-    ATTRIBUTE placement_force OF \StartCollection_DB:DEBOUNCER[0]:d_sync_0\ : SIGNAL IS "U(3,2,B)2";
+    ATTRIBUTE placement_force OF \StartCollection_DB:DEBOUNCER[0]:d_sync_0\ : SIGNAL IS "U(3,0,B)1";
     SIGNAL \StartCollection_DB:DEBOUNCER[0]:d_sync_1\ : bit;
-    ATTRIBUTE placement_force OF \StartCollection_DB:DEBOUNCER[0]:d_sync_1\ : SIGNAL IS "U(3,2,B)1";
+    ATTRIBUTE placement_force OF \StartCollection_DB:DEBOUNCER[0]:d_sync_1\ : SIGNAL IS "U(3,1,A)1";
     SIGNAL \StopCollection_DB:DEBOUNCER[0]:d_sync_0\ : bit;
-    ATTRIBUTE placement_force OF \StopCollection_DB:DEBOUNCER[0]:d_sync_0\ : SIGNAL IS "U(3,3,A)2";
+    ATTRIBUTE placement_force OF \StopCollection_DB:DEBOUNCER[0]:d_sync_0\ : SIGNAL IS "U(3,0,A)2";
     SIGNAL \StopCollection_DB:DEBOUNCER[0]:d_sync_1\ : bit;
-    ATTRIBUTE placement_force OF \StopCollection_DB:DEBOUNCER[0]:d_sync_1\ : SIGNAL IS "U(3,3,A)1";
+    ATTRIBUTE placement_force OF \StopCollection_DB:DEBOUNCER[0]:d_sync_1\ : SIGNAL IS "U(3,0,A)1";
     SIGNAL \TakeSample_DB:DEBOUNCER[0]:d_sync_0\ : bit;
-    ATTRIBUTE placement_force OF \TakeSample_DB:DEBOUNCER[0]:d_sync_0\ : SIGNAL IS "U(3,2,A)2";
+    ATTRIBUTE placement_force OF \TakeSample_DB:DEBOUNCER[0]:d_sync_0\ : SIGNAL IS "U(2,3,A)2";
     SIGNAL \TakeSample_DB:DEBOUNCER[0]:d_sync_1\ : bit;
-    ATTRIBUTE placement_force OF \TakeSample_DB:DEBOUNCER[0]:d_sync_1\ : SIGNAL IS "U(3,2,A)1";
+    ATTRIBUTE placement_force OF \TakeSample_DB:DEBOUNCER[0]:d_sync_1\ : SIGNAL IS "U(2,3,A)1";
     SIGNAL \\\USBUART:Dm(0)\\__PA\ : bit;
     SIGNAL \\\USBUART:Dp(0)\\__PA\ : bit;
     SIGNAL \USBUART:Net_1010\ : bit;
@@ -214,13 +209,13 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     SIGNAL \USB_Blink_TI:TimerUDB:status_2\ : bit;
     SIGNAL \USB_Blink_TI:TimerUDB:status_3\ : bit;
     SIGNAL \USB_Blink_TI:TimerUDB:status_tc\ : bit;
-    ATTRIBUTE placement_force OF \USB_Blink_TI:TimerUDB:status_tc\ : SIGNAL IS "U(3,0,B)0";
+    ATTRIBUTE placement_force OF \USB_Blink_TI:TimerUDB:status_tc\ : SIGNAL IS "U(2,3,B)3";
     SIGNAL \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\ : bit;
-    ATTRIBUTE placement_force OF \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\ : SIGNAL IS "U(3,1,A)2";
+    ATTRIBUTE placement_force OF \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\ : SIGNAL IS "U(2,4,B)2";
     SIGNAL \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\ : bit;
-    ATTRIBUTE placement_force OF \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\ : SIGNAL IS "U(3,1,A)1";
+    ATTRIBUTE placement_force OF \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\ : SIGNAL IS "U(2,3,B)1";
     SIGNAL __ONE__ : bit;
-    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(3,2,A)3";
+    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(0,0,A)1";
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
     SIGNAL __ZERO__ : bit;
     ATTRIBUTE GROUND OF __ZERO__ : SIGNAL IS true;
@@ -273,122 +268,117 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     ATTRIBUTE Location OF FLASH_LED(0) : LABEL IS "P0[1]";
     ATTRIBUTE lib_model OF Hibernate_B(0) : LABEL IS "iocell3";
     ATTRIBUTE Location OF Hibernate_B(0) : LABEL IS "P6[1]";
-    ATTRIBUTE Location OF Hibernate_B(0)_SYNC : LABEL IS "U(3,4)";
     ATTRIBUTE Location OF Hibernate_IRQ : LABEL IS "[IntrHod=(0)][IntrId=(0)]";
     ATTRIBUTE lib_model OF Net_1047 : LABEL IS "macrocell1";
-    ATTRIBUTE Location OF Net_1047 : LABEL IS "U(2,3)";
-    ATTRIBUTE Location OF Net_1047__SYNC : LABEL IS "U(3,4)";
-    ATTRIBUTE Location OF Net_1047__SYNC_1 : LABEL IS "U(3,2)";
-    ATTRIBUTE Location OF Net_1047__SYNC_2 : LABEL IS "U(3,3)";
-    ATTRIBUTE Location OF Net_1047__SYNC_3 : LABEL IS "U(3,2)";
-    ATTRIBUTE Location OF Net_1047__SYNC_4 : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF Net_1047 : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF Net_1047__SYNC : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF Net_1047__SYNC_1 : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF Net_1047__SYNC_2 : LABEL IS "U(3,0)";
+    ATTRIBUTE Location OF Net_1047__SYNC_3 : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF Net_1047__SYNC_4 : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF Net_1103 : LABEL IS "macrocell2";
-    ATTRIBUTE Location OF Net_1103 : LABEL IS "U(3,0)";
+    ATTRIBUTE Location OF Net_1103 : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF Net_1117 : LABEL IS "macrocell3";
-    ATTRIBUTE Location OF Net_1117 : LABEL IS "U(3,0)";
+    ATTRIBUTE Location OF Net_1117 : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF Net_1178 : LABEL IS "macrocell4";
-    ATTRIBUTE Location OF Net_1178 : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF Net_1178 : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF Net_1186 : LABEL IS "macrocell5";
-    ATTRIBUTE Location OF Net_1186 : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF Net_1186 : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF Net_146 : LABEL IS "macrocell6";
-    ATTRIBUTE Location OF Net_146 : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF Net_146 : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF Net_408 : LABEL IS "macrocell7";
-    ATTRIBUTE Location OF Net_408 : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF Net_408 : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF Net_818 : LABEL IS "macrocell8";
-    ATTRIBUTE Location OF Net_818 : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF Net_818 : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF Net_820 : LABEL IS "macrocell9";
-    ATTRIBUTE Location OF Net_820 : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF Net_820 : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF Net_843 : LABEL IS "macrocell10";
-    ATTRIBUTE Location OF Net_843 : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF Net_843 : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF Net_849 : LABEL IS "macrocell11";
-    ATTRIBUTE Location OF Net_849 : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF Net_849 : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF Net_865 : LABEL IS "macrocell12";
-    ATTRIBUTE Location OF Net_865 : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF Net_865 : LABEL IS "U(2,3)";
     ATTRIBUTE Location OF PM : LABEL IS "F(PM,0)";
     ATTRIBUTE lib_model OF Sensor_In(0) : LABEL IS "iocell4";
     ATTRIBUTE Location OF Sensor_In(0) : LABEL IS "P0[7]";
     ATTRIBUTE lib_model OF StartCollection_B(0) : LABEL IS "iocell5";
     ATTRIBUTE Location OF StartCollection_B(0) : LABEL IS "P3[0]";
-    ATTRIBUTE Location OF StartCollection_B(0)_SYNC : LABEL IS "U(3,2)";
     ATTRIBUTE Location OF StartCollection_IRQ : LABEL IS "[IntrHod=(0)][IntrId=(1)]";
     ATTRIBUTE lib_model OF StopCollection_B(0) : LABEL IS "iocell6";
     ATTRIBUTE Location OF StopCollection_B(0) : LABEL IS "P3[1]";
-    ATTRIBUTE Location OF StopCollection_B(0)_SYNC : LABEL IS "U(3,3)";
     ATTRIBUTE Location OF StopCollection_IRQ : LABEL IS "[IntrHod=(0)][IntrId=(2)]";
     ATTRIBUTE lib_model OF TakeSample_B(0) : LABEL IS "iocell7";
     ATTRIBUTE Location OF TakeSample_B(0) : LABEL IS "P15[5]";
-    ATTRIBUTE Location OF TakeSample_B(0)_SYNC : LABEL IS "U(3,2)";
     ATTRIBUTE Location OF TakeSample_IRQ : LABEL IS "[IntrHod=(0)][IntrId=(3)]";
     ATTRIBUTE lib_model OF USB_LED(0) : LABEL IS "iocell8";
     ATTRIBUTE Location OF USB_LED(0) : LABEL IS "P0[0]";
     ATTRIBUTE lib_model OF Vbus(0) : LABEL IS "iocell9";
     ATTRIBUTE Location OF Vbus(0) : LABEL IS "P6[0]";
-    ATTRIBUTE Location OF Vbus(0)_SYNC : LABEL IS "U(3,1)";
     ATTRIBUTE Location OF Vbus_IRQ : LABEL IS "[IntrHod=(0)][IntrId=(4)]";
     ATTRIBUTE Location OF \ADC:DEC\ : LABEL IS "F(Decimator,0)";
     ATTRIBUTE Location OF \ADC:DSM\ : LABEL IS "F(DSM,0)";
     ATTRIBUTE Location OF \ADC:IRQ\ : LABEL IS "[IntrHod=(0)][IntrId=(29)]";
     ATTRIBUTE lib_model OF \EEPROM_Blink_TI:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell1";
-    ATTRIBUTE Location OF \EEPROM_Blink_TI:TimerUDB:rstSts:stsreg\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \EEPROM_Blink_TI:TimerUDB:rstSts:stsreg\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF \EEPROM_Blink_TI:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell1";
-    ATTRIBUTE Location OF \EEPROM_Blink_TI:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \EEPROM_Blink_TI:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:u0\ : LABEL IS "datapathcell1";
-    ATTRIBUTE Location OF \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:u0\ : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:u0\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:u1\ : LABEL IS "datapathcell2";
-    ATTRIBUTE Location OF \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:u1\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:u1\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \EEPROM_Blink_TI:TimerUDB:status_tc\ : LABEL IS "macrocell13";
-    ATTRIBUTE Location OF \EEPROM_Blink_TI:TimerUDB:status_tc\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \EEPROM_Blink_TI:TimerUDB:status_tc\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \Flash_Blink_TI:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell2";
-    ATTRIBUTE Location OF \Flash_Blink_TI:TimerUDB:rstSts:stsreg\ : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF \Flash_Blink_TI:TimerUDB:rstSts:stsreg\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \Flash_Blink_TI:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell2";
-    ATTRIBUTE Location OF \Flash_Blink_TI:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF \Flash_Blink_TI:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \Flash_Blink_TI:TimerUDB:sT16:timerdp:u0\ : LABEL IS "datapathcell3";
-    ATTRIBUTE Location OF \Flash_Blink_TI:TimerUDB:sT16:timerdp:u0\ : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF \Flash_Blink_TI:TimerUDB:sT16:timerdp:u0\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \Flash_Blink_TI:TimerUDB:sT16:timerdp:u1\ : LABEL IS "datapathcell4";
-    ATTRIBUTE Location OF \Flash_Blink_TI:TimerUDB:sT16:timerdp:u1\ : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF \Flash_Blink_TI:TimerUDB:sT16:timerdp:u1\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \Flash_Blink_TI:TimerUDB:status_tc\ : LABEL IS "macrocell14";
-    ATTRIBUTE Location OF \Flash_Blink_TI:TimerUDB:status_tc\ : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF \Flash_Blink_TI:TimerUDB:status_tc\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \Hibernate_DB:DEBOUNCER[0]:d_sync_0\ : LABEL IS "macrocell15";
-    ATTRIBUTE Location OF \Hibernate_DB:DEBOUNCER[0]:d_sync_0\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \Hibernate_DB:DEBOUNCER[0]:d_sync_0\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \Hibernate_DB:DEBOUNCER[0]:d_sync_1\ : LABEL IS "macrocell16";
-    ATTRIBUTE Location OF \Hibernate_DB:DEBOUNCER[0]:d_sync_1\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \Hibernate_DB:DEBOUNCER[0]:d_sync_1\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\ : LABEL IS "macrocell17";
-    ATTRIBUTE Location OF \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\ : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \LowFreq_DV:count_0\ : LABEL IS "macrocell18";
-    ATTRIBUTE Location OF \LowFreq_DV:count_0\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \LowFreq_DV:count_0\ : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF \LowFreq_DV:count_1\ : LABEL IS "macrocell19";
-    ATTRIBUTE Location OF \LowFreq_DV:count_1\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \LowFreq_DV:count_1\ : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \LowFreq_DV:count_2\ : LABEL IS "macrocell20";
-    ATTRIBUTE Location OF \LowFreq_DV:count_2\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \LowFreq_DV:count_2\ : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \LowFreq_DV:count_3\ : LABEL IS "macrocell21";
-    ATTRIBUTE Location OF \LowFreq_DV:count_3\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \LowFreq_DV:count_3\ : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF \LowFreq_DV:count_4\ : LABEL IS "macrocell22";
-    ATTRIBUTE Location OF \LowFreq_DV:count_4\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \LowFreq_DV:count_4\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \LowFreq_DV:count_5\ : LABEL IS "macrocell23";
-    ATTRIBUTE Location OF \LowFreq_DV:count_5\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \LowFreq_DV:count_5\ : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF \LowFreq_DV:count_6\ : LABEL IS "macrocell24";
-    ATTRIBUTE Location OF \LowFreq_DV:count_6\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \LowFreq_DV:count_6\ : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \LowFreq_DV:count_7\ : LABEL IS "macrocell25";
-    ATTRIBUTE Location OF \LowFreq_DV:count_7\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \LowFreq_DV:count_7\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \LowFreq_DV:count_8\ : LABEL IS "macrocell26";
-    ATTRIBUTE Location OF \LowFreq_DV:count_8\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \LowFreq_DV:count_8\ : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \LowFreq_DV:count_9\ : LABEL IS "macrocell27";
-    ATTRIBUTE Location OF \LowFreq_DV:count_9\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \LowFreq_DV:count_9\ : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \LowFreq_DV:not_last_reset\ : LABEL IS "macrocell28";
-    ATTRIBUTE Location OF \LowFreq_DV:not_last_reset\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \LowFreq_DV:not_last_reset\ : LABEL IS "U(2,1)";
     ATTRIBUTE Location OF \RTC:isr\ : LABEL IS "[IntrHod=(0)][IntrId=(5)]";
     ATTRIBUTE lib_model OF \StartCollection_DB:DEBOUNCER[0]:d_sync_0\ : LABEL IS "macrocell29";
-    ATTRIBUTE Location OF \StartCollection_DB:DEBOUNCER[0]:d_sync_0\ : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF \StartCollection_DB:DEBOUNCER[0]:d_sync_0\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \StartCollection_DB:DEBOUNCER[0]:d_sync_1\ : LABEL IS "macrocell30";
-    ATTRIBUTE Location OF \StartCollection_DB:DEBOUNCER[0]:d_sync_1\ : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF \StartCollection_DB:DEBOUNCER[0]:d_sync_1\ : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF \StopCollection_DB:DEBOUNCER[0]:d_sync_0\ : LABEL IS "macrocell31";
-    ATTRIBUTE Location OF \StopCollection_DB:DEBOUNCER[0]:d_sync_0\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \StopCollection_DB:DEBOUNCER[0]:d_sync_0\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \StopCollection_DB:DEBOUNCER[0]:d_sync_1\ : LABEL IS "macrocell32";
-    ATTRIBUTE Location OF \StopCollection_DB:DEBOUNCER[0]:d_sync_1\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \StopCollection_DB:DEBOUNCER[0]:d_sync_1\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \TakeSample_DB:DEBOUNCER[0]:d_sync_0\ : LABEL IS "macrocell33";
-    ATTRIBUTE Location OF \TakeSample_DB:DEBOUNCER[0]:d_sync_0\ : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF \TakeSample_DB:DEBOUNCER[0]:d_sync_0\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \TakeSample_DB:DEBOUNCER[0]:d_sync_1\ : LABEL IS "macrocell34";
-    ATTRIBUTE Location OF \TakeSample_DB:DEBOUNCER[0]:d_sync_1\ : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF \TakeSample_DB:DEBOUNCER[0]:d_sync_1\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \USBUART:Dm(0)\ : LABEL IS "iocell10";
     ATTRIBUTE Location OF \USBUART:Dm(0)\ : LABEL IS "P15[7]";
     ATTRIBUTE lib_model OF \USBUART:Dp(0)\ : LABEL IS "iocell11";
@@ -404,21 +394,21 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     ATTRIBUTE Location OF \USBUART:ep_3\ : LABEL IS "[IntrHod=(0)][IntrId=(8)]";
     ATTRIBUTE Location OF \USBUART:sof_int\ : LABEL IS "[IntrHod=(0)][IntrId=(21)]";
     ATTRIBUTE lib_model OF \USB_Blink_TI:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell3";
-    ATTRIBUTE Location OF \USB_Blink_TI:TimerUDB:rstSts:stsreg\ : LABEL IS "U(3,0)";
+    ATTRIBUTE Location OF \USB_Blink_TI:TimerUDB:rstSts:stsreg\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \USB_Blink_TI:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell3";
-    ATTRIBUTE Location OF \USB_Blink_TI:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(3,0)";
+    ATTRIBUTE Location OF \USB_Blink_TI:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \USB_Blink_TI:TimerUDB:sT16:timerdp:u0\ : LABEL IS "datapathcell5";
-    ATTRIBUTE Location OF \USB_Blink_TI:TimerUDB:sT16:timerdp:u0\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF \USB_Blink_TI:TimerUDB:sT16:timerdp:u0\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \USB_Blink_TI:TimerUDB:sT16:timerdp:u1\ : LABEL IS "datapathcell6";
-    ATTRIBUTE Location OF \USB_Blink_TI:TimerUDB:sT16:timerdp:u1\ : LABEL IS "U(3,0)";
+    ATTRIBUTE Location OF \USB_Blink_TI:TimerUDB:sT16:timerdp:u1\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \USB_Blink_TI:TimerUDB:status_tc\ : LABEL IS "macrocell35";
-    ATTRIBUTE Location OF \USB_Blink_TI:TimerUDB:status_tc\ : LABEL IS "U(3,0)";
+    ATTRIBUTE Location OF \USB_Blink_TI:TimerUDB:status_tc\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\ : LABEL IS "macrocell36";
-    ATTRIBUTE Location OF \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\ : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\ : LABEL IS "macrocell37";
-    ATTRIBUTE Location OF \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\ : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF \Vbus_Debounce:DEBOUNCER[0]:d_sync_1\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell38";
-    ATTRIBUTE Location OF __ONE__ : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF __ONE__ : LABEL IS "U(0,0)";
     COMPONENT abufcell
     END COMPONENT;
     COMPONENT boostcell
@@ -1593,7 +1583,7 @@ BEGIN
 
     Hibernate_B(0):iocell
         GENERIC MAP(
-            in_sync_mode => 0,
+            in_sync_mode => 2,
             out_sync_mode => 0,
             oe_sync_mode => 0,
             logicalport => "Hibernate_B",
@@ -1610,12 +1600,6 @@ BEGIN
             out_clock => open,
             out_clock_en => '1',
             out_reset => '0');
-
-    Hibernate_B(0)_SYNC:synccell
-        PORT MAP(
-            in => Net_824,
-            out => Net_824_SYNCOUT,
-            clock => ClockBlock_BUS_CLK);
 
     Hibernate_IRQ:interrupt
         GENERIC MAP(
@@ -1937,7 +1921,7 @@ BEGIN
 
     StartCollection_B(0):iocell
         GENERIC MAP(
-            in_sync_mode => 0,
+            in_sync_mode => 2,
             out_sync_mode => 0,
             oe_sync_mode => 0,
             logicalport => "StartCollection_B",
@@ -1954,12 +1938,6 @@ BEGIN
             out_clock => open,
             out_clock_en => '1',
             out_reset => '0');
-
-    StartCollection_B(0)_SYNC:synccell
-        PORT MAP(
-            in => Net_836,
-            out => Net_836_SYNCOUT,
-            clock => ClockBlock_BUS_CLK);
 
     StartCollection_IRQ:interrupt
         GENERIC MAP(
@@ -2037,7 +2015,7 @@ BEGIN
 
     StopCollection_B(0):iocell
         GENERIC MAP(
-            in_sync_mode => 0,
+            in_sync_mode => 2,
             out_sync_mode => 0,
             oe_sync_mode => 0,
             logicalport => "StopCollection_B",
@@ -2054,12 +2032,6 @@ BEGIN
             out_clock => open,
             out_clock_en => '1',
             out_reset => '0');
-
-    StopCollection_B(0)_SYNC:synccell
-        PORT MAP(
-            in => Net_850,
-            out => Net_850_SYNCOUT,
-            clock => ClockBlock_BUS_CLK);
 
     StopCollection_IRQ:interrupt
         GENERIC MAP(
@@ -2137,7 +2109,7 @@ BEGIN
 
     TakeSample_B(0):iocell
         GENERIC MAP(
-            in_sync_mode => 0,
+            in_sync_mode => 2,
             out_sync_mode => 0,
             oe_sync_mode => 0,
             logicalport => "TakeSample_B",
@@ -2154,12 +2126,6 @@ BEGIN
             out_clock => open,
             out_clock_en => '1',
             out_reset => '0');
-
-    TakeSample_B(0)_SYNC:synccell
-        PORT MAP(
-            in => Net_879,
-            out => Net_879_SYNCOUT,
-            clock => ClockBlock_BUS_CLK);
 
     TakeSample_IRQ:interrupt
         GENERIC MAP(
@@ -2324,7 +2290,7 @@ BEGIN
 
     Vbus(0):iocell
         GENERIC MAP(
-            in_sync_mode => 0,
+            in_sync_mode => 2,
             out_sync_mode => 0,
             oe_sync_mode => 0,
             logicalport => "Vbus",
@@ -2341,12 +2307,6 @@ BEGIN
             out_clock => open,
             out_clock_en => '1',
             out_reset => '0');
-
-    Vbus(0)_SYNC:synccell
-        PORT MAP(
-            in => Net_249,
-            out => Net_249_SYNCOUT,
-            clock => ClockBlock_BUS_CLK);
 
     Vbus_IRQ:interrupt
         GENERIC MAP(
@@ -2669,7 +2629,7 @@ BEGIN
             eqn_main => "(main_0)")
         PORT MAP(
             q => \Hibernate_DB:DEBOUNCER[0]:d_sync_0\,
-            main_0 => Net_824_SYNCOUT,
+            main_0 => Net_824,
             clock_0 => ClockBlock_BUS_CLK,
             clk_en => Net_1047__SYNC_OUT);
 
@@ -2875,7 +2835,7 @@ BEGIN
             eqn_main => "(main_0)")
         PORT MAP(
             q => \StartCollection_DB:DEBOUNCER[0]:d_sync_0\,
-            main_0 => Net_836_SYNCOUT,
+            main_0 => Net_836,
             clock_0 => ClockBlock_BUS_CLK,
             clk_en => Net_1047__SYNC_OUT_1);
 
@@ -2893,7 +2853,7 @@ BEGIN
             eqn_main => "(main_0)")
         PORT MAP(
             q => \StopCollection_DB:DEBOUNCER[0]:d_sync_0\,
-            main_0 => Net_850_SYNCOUT,
+            main_0 => Net_850,
             clock_0 => ClockBlock_BUS_CLK,
             clk_en => Net_1047__SYNC_OUT_2);
 
@@ -2911,7 +2871,7 @@ BEGIN
             eqn_main => "(main_0)")
         PORT MAP(
             q => \TakeSample_DB:DEBOUNCER[0]:d_sync_0\,
-            main_0 => Net_879_SYNCOUT,
+            main_0 => Net_879,
             clock_0 => ClockBlock_BUS_CLK,
             clk_en => Net_1047__SYNC_OUT_3);
 
@@ -3315,7 +3275,7 @@ BEGIN
             eqn_main => "(main_0)")
         PORT MAP(
             q => \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\,
-            main_0 => Net_249_SYNCOUT,
+            main_0 => Net_249,
             clock_0 => ClockBlock_BUS_CLK,
             clk_en => Net_1047__SYNC_OUT_4);
 

@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        04/29/2014 20:56:07 PAGE 1   
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/02/2014 02:18:42 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE SAMPLE_HANDLER
@@ -62,7 +62,7 @@ line level    source
   51   1          /* Take sample if interval has been reached */
   52   1          if (sample_int_count == sample_interval)
   53   1          {
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        04/29/2014 20:56:07 PAGE 2   
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/02/2014 02:18:42 PAGE 2   
 
   54   2              take_sample();
   55   2              sample_int_count = 0;
@@ -100,7 +100,7 @@ line level    source
   87   1      }
   88              
   89          /* [] END OF FILE */
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        04/29/2014 20:56:07 PAGE 3   
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/02/2014 02:18:42 PAGE 3   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -164,7 +164,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0046         ?C0005:
                                            ; SOURCE LINE # 36
 0046 7F08              MOV     R7,#08H
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        04/29/2014 20:56:07 PAGE 4   
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/02/2014 02:18:42 PAGE 4   
 
 0048 120000      E     LCALL   _RTC_WriteIntervalMask
                                            ; SOURCE LINE # 37
@@ -228,7 +228,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0023 900000      R     MOV     DPTR,#sample_int_count
 0026 E4                CLR     A
 0027 75F001            MOV     B,#01H
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        04/29/2014 20:56:07 PAGE 5   
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/02/2014 02:18:42 PAGE 5   
 
 002A 120000      E     LCALL   ?C?ILDIX
 002D AFF0              MOV     R7,B
@@ -292,7 +292,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 80
 0043 120000      E     LCALL   flash_LED_off
                                            ; SOURCE LINE # 82
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        04/29/2014 20:56:07 PAGE 6   
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/02/2014 02:18:42 PAGE 6   
 
 0046 900000      E     MOV     DPTR,#TailPtr+01H
 0049 E4                CLR     A

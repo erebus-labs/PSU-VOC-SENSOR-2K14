@@ -140,7 +140,7 @@
     <peripheral>
       <name>Flash_Blink_TI</name>
       <description>No description available</description>
-      <baseAddress>0x6406</baseAddress>
+      <baseAddress>0x6404</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x92</size>
@@ -380,7 +380,7 @@
     <peripheral>
       <name>USB_Blink_TI</name>
       <description>No description available</description>
-      <baseAddress>0x6504</baseAddress>
+      <baseAddress>0x6406</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x92</size>
@@ -620,10 +620,10 @@
     <peripheral>
       <name>EEPROM_Blink_TI</name>
       <description>No description available</description>
-      <baseAddress>0x6506</baseAddress>
+      <baseAddress>0x6402</baseAddress>
       <addressBlock>
         <offset>0</offset>
-        <size>0x92</size>
+        <size>0x91</size>
         <usage>registers</usage>
       </addressBlock>
       <registers>
@@ -648,7 +648,7 @@
         <register>
           <name>EEPROM_Blink_TI_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x71</addressOffset>
+          <addressOffset>0x70</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -694,7 +694,7 @@
         <register>
           <name>EEPROM_Blink_TI_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x81</addressOffset>
+          <addressOffset>0x80</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -733,7 +733,7 @@
         <register>
           <name>EEPROM_Blink_TI_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x91</addressOffset>
+          <addressOffset>0x90</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>

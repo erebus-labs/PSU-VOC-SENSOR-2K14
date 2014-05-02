@@ -15,6 +15,12 @@
     
     #include "project.h"
     
+    #define USB     0x01
+    #define MEM     0x02
+    #define LOWBATT 0x03
+    #define ERROR   0x04
+    #define SAMPLE  0x05
+    
     void USB_LED_on();
     void USB_LED_off();
     void EEPROM_LED_on();

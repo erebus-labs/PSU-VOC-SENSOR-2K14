@@ -38,6 +38,7 @@
     #define CHANGE_SETTING  0x04
     #define HARD_RESET      0x05
     #define UPDATE_RTC      0x06
+    #define NEXT            0x07
     
     // Setting Codes
     #define SAMPLE_UNIT     0x01
@@ -62,8 +63,10 @@
     uint8 retrieve(uint8* buffer, uint8 num_bytes);
     uint8 apply_settings();
     void send_settings();
-    void dump_data();
+    uint8 dump_data();
     void confirm_dump();
+    void write_out(uint8* ExportBuffer);
+    uint8 wait_next();
     uint8 update_RTC();
     void send_reply(uint8 buffer);
     void CMD_hard_reset();

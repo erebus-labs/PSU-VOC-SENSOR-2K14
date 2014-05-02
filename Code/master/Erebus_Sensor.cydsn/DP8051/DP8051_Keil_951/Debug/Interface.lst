@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   INTERFACE                                                             04/29/2014 21:21:58 PAGE 1   
+C51 COMPILER V9.51   INTERFACE                                                             05/02/2014 02:48:46 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE INTERFACE
@@ -62,13 +62,13 @@ line level    source
   51   1          StopCollection_IRQ_Stop();
   52   1          TakeSample_IRQ_Stop();
   53   1          
-C51 COMPILER V9.51   INTERFACE                                                             04/29/2014 21:21:58 PAGE 2   
+C51 COMPILER V9.51   INTERFACE                                                             05/02/2014 02:48:46 PAGE 2   
 
   54   1          return;   
   55   1      }
   56          
   57          /* [] END OF FILE */
-C51 COMPILER V9.51   INTERFACE                                                             04/29/2014 21:21:58 PAGE 3   
+C51 COMPILER V9.51   INTERFACE                                                             05/02/2014 02:48:46 PAGE 3   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -132,7 +132,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0051 E9                MOV     A,R1
 0052 2401              ADD     A,#01H
 0054 F9                MOV     R1,A
-C51 COMPILER V9.51   INTERFACE                                                             04/29/2014 21:21:58 PAGE 4   
+C51 COMPILER V9.51   INTERFACE                                                             05/02/2014 02:48:46 PAGE 4   
 
 0055 EA                MOV     A,R2
 0056 3400              ADDC    A,#00H
@@ -196,7 +196,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00B5 120000      E     LCALL   ?C?ILDPTR
 00B8 FF                MOV     R7,A
 00B9 AEF0              MOV     R6,B
-C51 COMPILER V9.51   INTERFACE                                                             04/29/2014 21:21:58 PAGE 5   
+C51 COMPILER V9.51   INTERFACE                                                             05/02/2014 02:48:46 PAGE 5   
 
 00BB 900000      R     MOV     DPTR,#header+02H
 00BE EE                MOV     A,R6
@@ -260,7 +260,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 55
 0009         ?C0003:
 0009 22                RET     
-C51 COMPILER V9.51   INTERFACE                                                             04/29/2014 21:21:58 PAGE 6   
+C51 COMPILER V9.51   INTERFACE                                                             05/02/2014 02:48:46 PAGE 6   
 
              ; FUNCTION StopCollection_ISR (END)
 

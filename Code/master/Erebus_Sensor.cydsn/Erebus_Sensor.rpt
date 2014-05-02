@@ -1,13 +1,13 @@
-Loading plugins phase: Elapsed time ==> 0s.486ms
-Initializing data phase: Elapsed time ==> 2s.841ms
+Loading plugins phase: Elapsed time ==> 0s.421ms
+Initializing data phase: Elapsed time ==> 2s.046ms
 <CYPRESSTAG name="CyDsfit arguments...">
 cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\Erebus_Sensor.cyprj -d CY8C3866AXI-040 -s C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\Generated_Source\PSoC3 -- -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE</CYPRESSTAG>
 <CYPRESSTAG name="Design elaboration results...">
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 7s.554ms
+Elaboration phase: Elapsed time ==> 5s.437ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.192ms
+HDL generation phase: Elapsed time ==> 0s.140ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -41,7 +41,7 @@ Options  :    -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\Win7_
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Tue Apr 29 20:55:44 2014
+Fri May 02 02:18:27 2014
 
 
 ======================================================================
@@ -51,7 +51,7 @@ Options  :    -yv2 -q10 Erebus_Sensor.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Tue Apr 29 20:55:44 2014
+Fri May 02 02:18:27 2014
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\..\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\..\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'
@@ -103,7 +103,7 @@ Options  :    -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\Win7_
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Tue Apr 29 20:55:45 2014
+Fri May 02 02:18:27 2014
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -144,7 +144,7 @@ Options  :    -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\Win7_
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Tue Apr 29 20:55:47 2014
+Fri May 02 02:18:29 2014
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -833,14 +833,14 @@ CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\wa
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\bin/warp.exe
 Warp Arguments : -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya "-.fftprj=C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\Erebus_Sensor.cyprj" -dcpsoc3 Erebus_Sensor.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 4s.239ms
+Warp synthesis phase: Elapsed time ==> 2s.953ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V3.0.0.1539, Family: PSoC3, Started at: Tuesday, 29 April 2014 20:55:48
+cyp3fit: V3.0.0.1539, Family: PSoC3, Started at: Friday, 02 May 2014 02:18:30
 Options: -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\Erebus_Sensor.cyprj -d CY8C3866AXI-040 Erebus_Sensor.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.064ms
+Design parsing phase: Elapsed time ==> 0s.031ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
@@ -1070,7 +1070,7 @@ Design Equations
             Drive mode: RES_PULL_UP
             VTrip: CMOS
             Slew: FAST
-            Input Sync needed: False
+            Input Sync needed: True
             Output Sync needed: False
             SC shield enabled: False
             POR State: ANY
@@ -1148,7 +1148,7 @@ Design Equations
             Drive mode: RES_PULL_UP
             VTrip: CMOS
             Slew: FAST
-            Input Sync needed: False
+            Input Sync needed: True
             Output Sync needed: False
             SC shield enabled: False
             POR State: ANY
@@ -1187,7 +1187,7 @@ Design Equations
             Drive mode: RES_PULL_UP
             VTrip: CMOS
             Slew: FAST
-            Input Sync needed: False
+            Input Sync needed: True
             Output Sync needed: False
             SC shield enabled: False
             POR State: ANY
@@ -1226,7 +1226,7 @@ Design Equations
             Drive mode: RES_PULL_UP
             VTrip: CMOS
             Slew: FAST
-            Input Sync needed: False
+            Input Sync needed: True
             Output Sync needed: False
             SC shield enabled: False
             POR State: ANY
@@ -1304,7 +1304,7 @@ Design Equations
             Drive mode: RES_PULL_DOWN
             VTrip: CMOS
             Slew: FAST
-            Input Sync needed: False
+            Input Sync needed: True
             Output Sync needed: False
             SC shield enabled: False
             POR State: ANY
@@ -1612,7 +1612,7 @@ Design Equations
             Clock Enable: PosEdge(Net_1047__SYNC_OUT)
         Main Equation            : 1 pterm
         (
-              Net_824_SYNCOUT
+              Net_824
         );
         Output = \Hibernate_DB:DEBOUNCER[0]:d_sync_0\ (fanout=2)
 
@@ -1831,7 +1831,7 @@ Design Equations
             Clock Enable: PosEdge(Net_1047__SYNC_OUT_1)
         Main Equation            : 1 pterm
         (
-              Net_836_SYNCOUT
+              Net_836
         );
         Output = \StartCollection_DB:DEBOUNCER[0]:d_sync_0\ (fanout=2)
 
@@ -1855,7 +1855,7 @@ Design Equations
             Clock Enable: PosEdge(Net_1047__SYNC_OUT_2)
         Main Equation            : 1 pterm
         (
-              Net_850_SYNCOUT
+              Net_850
         );
         Output = \StopCollection_DB:DEBOUNCER[0]:d_sync_0\ (fanout=2)
 
@@ -1879,7 +1879,7 @@ Design Equations
             Clock Enable: PosEdge(Net_1047__SYNC_OUT_3)
         Main Equation            : 1 pterm
         (
-              Net_879_SYNCOUT
+              Net_879
         );
         Output = \TakeSample_DB:DEBOUNCER[0]:d_sync_0\ (fanout=2)
 
@@ -1914,7 +1914,7 @@ Design Equations
             Clock Enable: PosEdge(Net_1047__SYNC_OUT_4)
         Main Equation            : 1 pterm
         (
-              Net_249_SYNCOUT
+              Net_249
         );
         Output = \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\ (fanout=2)
 
@@ -2218,14 +2218,6 @@ Design Equations
     Sync listing
     ------------------------------------------------------------
 
-    synccell: Name =Hibernate_B(0)_SYNC
-        PORT MAP (
-            in => Net_824 ,
-            out => Net_824_SYNCOUT ,
-            clock => ClockBlock_BUS_CLK );
-        Clock Polarity: Active High
-        Clock Enable: True
-
     synccell: Name =Net_1047__SYNC
         PORT MAP (
             in => Net_1047 ,
@@ -2262,38 +2254,6 @@ Design Equations
         PORT MAP (
             in => Net_1047 ,
             out => Net_1047__SYNC_OUT_4 ,
-            clock => ClockBlock_BUS_CLK );
-        Clock Polarity: Active High
-        Clock Enable: True
-
-    synccell: Name =StartCollection_B(0)_SYNC
-        PORT MAP (
-            in => Net_836 ,
-            out => Net_836_SYNCOUT ,
-            clock => ClockBlock_BUS_CLK );
-        Clock Polarity: Active High
-        Clock Enable: True
-
-    synccell: Name =StopCollection_B(0)_SYNC
-        PORT MAP (
-            in => Net_850 ,
-            out => Net_850_SYNCOUT ,
-            clock => ClockBlock_BUS_CLK );
-        Clock Polarity: Active High
-        Clock Enable: True
-
-    synccell: Name =TakeSample_B(0)_SYNC
-        PORT MAP (
-            in => Net_879 ,
-            out => Net_879_SYNCOUT ,
-            clock => ClockBlock_BUS_CLK );
-        Clock Polarity: Active High
-        Clock Enable: True
-
-    synccell: Name =Vbus(0)_SYNC
-        PORT MAP (
-            in => Net_249 ,
-            out => Net_249_SYNCOUT ,
             clock => ClockBlock_BUS_CLK );
         Clock Polarity: Active High
         Clock Enable: True
@@ -2516,9 +2476,9 @@ UDB Macrocells                :   38 :  154 :  192 :  19.79%
 UDB Unique Pterms             :   41 :  343 :  384 :  10.68%
 UDB Total Pterms              :   48 :      :      : 
 UDB Datapath Cells            :    6 :   18 :   24 :  25.00%
-UDB Status Cells              :    6 :   18 :   24 :  25.00%
+UDB Status Cells              :    5 :   19 :   24 :  20.83%
             StatusI Registers :    3 
-                   Sync Cells :   10 (in 3 status cells)
+                   Sync Cells :    5 (in 2 status cells)
 UDB Control Cells             :    3 :   21 :   24 :  12.50%
             Control Registers :    3 
 DMA Channels                  :    0 :   24 :   24 :   0.00%
@@ -2539,9 +2499,9 @@ LCD Fixed Blocks              :    0 :    1 :    1 :   0.00%
 EMIF Fixed Blocks             :    0 :    1 :    1 :   0.00%
 LPF Fixed Blocks              :    0 :    2 :    2 :   0.00%
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.192ms
+Technology Mapping: Elapsed time ==> 0s.125ms
 Info: mpr.M0037: Unused pieces of the design have been optimized out. See the Tech mapping section of the report file for details. (App=cydsfit)
-Tech mapping phase: Elapsed time ==> 0s.342ms
+Tech mapping phase: Elapsed time ==> 0s.234ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 Info: apr.M0002: Analog signal "\ADC:Net_690\" is connected to one terminal only. (App=cydsfit)
@@ -2576,7 +2536,7 @@ DSM[0]@[FFB(DSM,0)] : \ADC:DSM\
 Vref[6]@[FFB(Vref,6)] : \ADC:vRef_2\
 USB[0]@[FFB(USB,0)] : \USBUART:USB\
 
-Analog Placement phase: Elapsed time ==> 0s.107ms
+Analog Placement phase: Elapsed time ==> 0s.093ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
 Analog Routing phase: Elapsed time ==> 0s.000ms
@@ -2657,7 +2617,7 @@ Dump of CyP35AnalogRoutingResultsDB
 IsVddaHalfUsedForComp = False
 IsVddaHalfUsedForSar0 = False
 IsVddaHalfUsedForSar1 = False
-Analog Code Generation phase: Elapsed time ==> 0s.792ms
+Analog Code Generation phase: Elapsed time ==> 0s.515ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="PLD Packing">
@@ -2668,33 +2628,33 @@ PLD Packing Summary
 ------------------------------------------------------------
             Resource Type : Used : Free :  Max :  % Used
     ====================================================
-                     PLDs :   13 :   35 :   48 :  27.08%
+                     PLDs :   18 :   30 :   48 :  37.50%
 
 <CYPRESSTAG name="PLD Statistics">
 
         PLD Resource Type :     Average/LAB
     =======================================
-                   Inputs :            5.62
-                   Pterms :            3.46
-               Macrocells :            2.92
+                   Inputs :            5.44
+                   Pterms :            2.61
+               Macrocells :            2.11
 </CYPRESSTAG>
 <CYPRESSTAG name="Packed PLD Contents">
 Packed PLD Contents not displayed at this verbose level.</CYPRESSTAG>
 </CYPRESSTAG>
-PLD Packing: Elapsed time ==> 0s.021ms
+PLD Packing: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Partitioning">
 <CYPRESSTAG name="Initial Partitioning Summary">
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.149ms
+Partitioning: Elapsed time ==> 0s.171ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Simulated Annealing">
-Annealing: Elapsed time ==> 0s.000ms
+Annealing: Elapsed time ==> 0s.015ms
 <CYPRESSTAG name="Simulated Annealing Results">
 The seed used for moves was 114161200.
-Inital cost was 428, final cost is 428 (0.00% improvement).</CYPRESSTAG>
+Inital cost was 402, final cost is 402 (0.00% improvement).</CYPRESSTAG>
 </CYPRESSTAG>
 <CYPRESSTAG name="Final Placement Summary">
 
@@ -2704,14 +2664,34 @@ Final Placement Summary
 
        Resource Type :      Count : Avg Inputs : Avg Outputs
     ========================================================
-                 UDB :         10 :       4.80 :       3.80
+                 UDB :         11 :       5.73 :       3.45
 <CYPRESSTAG name="Final Placement Details">
 <CYPRESSTAG name="Component Details">
 
 ------------------------------------------------------------
 Component Placement Details
 ------------------------------------------------------------
-UDB [UDB=(0,0)] is empty.
+UDB [UDB=(0,0)] contents:
+LAB@[UDB=(0,0)][LB=0] #macrocells=1, #inputs=0, #pterms=0
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=__ONE__, Mode=(Combinatorial) @ [UDB=(0,0)][LB=0][MC=1]
+        Total # of inputs        : 0
+        Total # of product terms : 0
+            Clock Enable: True
+        Main Equation            : 0 pterms
+        !(
+            0
+        );
+        Output = __ONE__ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
 UDB [UDB=(0,1)] is empty.
 UDB [UDB=(0,2)] is empty.
 UDB [UDB=(0,3)] is empty.
@@ -2724,385 +2704,9 @@ UDB [UDB=(1,3)] is empty.
 UDB [UDB=(1,4)] is empty.
 UDB [UDB=(1,5)] is empty.
 UDB [UDB=(2,0)] contents:
-datapathcell: Name =\USB_Blink_TI:TimerUDB:sT16:timerdp:u0\
-    PORT MAP (
-        clock => Net_946 ,
-        cs_addr_1 => \USB_Blink_TI:TimerUDB:control_7\ ,
-        cs_addr_0 => \USB_Blink_TI:TimerUDB:per_zero\ ,
-        chain_out => \USB_Blink_TI:TimerUDB:sT16:timerdp:carry\ );
-    Properties:
-    {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111000000000000000000000001000000000000000000011000"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-    Next in chain : \USB_Blink_TI:TimerUDB:sT16:timerdp:u1\
-
-UDB [UDB=(2,1)] contents:
-LAB@[UDB=(2,1)][LB=0] #macrocells=3, #inputs=3, #pterms=2
+LAB@[UDB=(2,0)][LB=0] #macrocells=2, #inputs=11, #pterms=6
 {
-    [McSlotId=0]:     MacroCell: Name=Net_146, Mode=(D-Register) @ [UDB=(2,1)][LB=0][MC=0]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_946) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \EEPROM_Blink_TI:TimerUDB:control_7\ * 
-              \EEPROM_Blink_TI:TimerUDB:per_zero\
-        );
-        Output = Net_146 (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=Net_843, Mode=(T-Register) @ [UDB=(2,1)][LB=0][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_946) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              Net_146
-        );
-        Output = Net_843 (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\EEPROM_Blink_TI:TimerUDB:status_tc\, Mode=(Combinatorial) @ [UDB=(2,1)][LB=0][MC=2]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \EEPROM_Blink_TI:TimerUDB:control_7\ * 
-              \EEPROM_Blink_TI:TimerUDB:per_zero\
-        );
-        Output = \EEPROM_Blink_TI:TimerUDB:status_tc\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
-}
-
-datapathcell: Name =\EEPROM_Blink_TI:TimerUDB:sT16:timerdp:u1\
-    PORT MAP (
-        clock => Net_946 ,
-        cs_addr_1 => \EEPROM_Blink_TI:TimerUDB:control_7\ ,
-        cs_addr_0 => \EEPROM_Blink_TI:TimerUDB:per_zero\ ,
-        z0_comb => \EEPROM_Blink_TI:TimerUDB:per_zero\ ,
-        f0_bus_stat_comb => \EEPROM_Blink_TI:TimerUDB:status_3\ ,
-        f0_blk_stat_comb => \EEPROM_Blink_TI:TimerUDB:status_2\ ,
-        chain_in => \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:carry\ );
-    Properties:
-    {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-    Previous in chain : \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:u0\
-
-statusicell: Name =\EEPROM_Blink_TI:TimerUDB:rstSts:stsreg\
-    PORT MAP (
-        clock => Net_946 ,
-        status_3 => \EEPROM_Blink_TI:TimerUDB:status_3\ ,
-        status_2 => \EEPROM_Blink_TI:TimerUDB:status_2\ ,
-        status_0 => \EEPROM_Blink_TI:TimerUDB:status_tc\ );
-    Properties:
-    {
-        cy_force_order = 1
-        cy_int_mask = "1111111"
-        cy_md_select = "0000011"
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-controlcell: Name =\EEPROM_Blink_TI:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\
-    PORT MAP (
-        clock => Net_946 ,
-        control_7 => \EEPROM_Blink_TI:TimerUDB:control_7\ ,
-        control_6 => \EEPROM_Blink_TI:TimerUDB:control_6\ ,
-        control_5 => \EEPROM_Blink_TI:TimerUDB:control_5\ ,
-        control_4 => \EEPROM_Blink_TI:TimerUDB:control_4\ ,
-        control_3 => \EEPROM_Blink_TI:TimerUDB:control_3\ ,
-        control_2 => \EEPROM_Blink_TI:TimerUDB:control_2\ ,
-        control_1 => \EEPROM_Blink_TI:TimerUDB:control_1\ ,
-        control_0 => \EEPROM_Blink_TI:TimerUDB:control_0\ );
-    Properties:
-    {
-        cy_ctrl_mode_0 = "11111111"
-        cy_ctrl_mode_1 = "00000000"
-        cy_ext_reset = 0
-        cy_force_order = 1
-        cy_init_value = "00000000"
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(2,2)] contents:
-LAB@[UDB=(2,2)][LB=0] #macrocells=3, #inputs=3, #pterms=2
-{
-    [McSlotId=0]:     MacroCell: Name=Net_1186, Mode=(D-Register) @ [UDB=(2,2)][LB=0][MC=0]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_946) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \Flash_Blink_TI:TimerUDB:control_7\ * 
-              \Flash_Blink_TI:TimerUDB:per_zero\
-        );
-        Output = Net_1186 (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=Net_1178, Mode=(T-Register) @ [UDB=(2,2)][LB=0][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_946) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              Net_1186
-        );
-        Output = Net_1178 (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\Flash_Blink_TI:TimerUDB:status_tc\, Mode=(Combinatorial) @ [UDB=(2,2)][LB=0][MC=2]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \Flash_Blink_TI:TimerUDB:control_7\ * 
-              \Flash_Blink_TI:TimerUDB:per_zero\
-        );
-        Output = \Flash_Blink_TI:TimerUDB:status_tc\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
-}
-
-datapathcell: Name =\Flash_Blink_TI:TimerUDB:sT16:timerdp:u1\
-    PORT MAP (
-        clock => Net_946 ,
-        cs_addr_1 => \Flash_Blink_TI:TimerUDB:control_7\ ,
-        cs_addr_0 => \Flash_Blink_TI:TimerUDB:per_zero\ ,
-        z0_comb => \Flash_Blink_TI:TimerUDB:per_zero\ ,
-        f0_bus_stat_comb => \Flash_Blink_TI:TimerUDB:status_3\ ,
-        f0_blk_stat_comb => \Flash_Blink_TI:TimerUDB:status_2\ ,
-        chain_in => \Flash_Blink_TI:TimerUDB:sT16:timerdp:carry\ );
-    Properties:
-    {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-    Previous in chain : \Flash_Blink_TI:TimerUDB:sT16:timerdp:u0\
-
-statusicell: Name =\Flash_Blink_TI:TimerUDB:rstSts:stsreg\
-    PORT MAP (
-        clock => Net_946 ,
-        status_3 => \Flash_Blink_TI:TimerUDB:status_3\ ,
-        status_2 => \Flash_Blink_TI:TimerUDB:status_2\ ,
-        status_0 => \Flash_Blink_TI:TimerUDB:status_tc\ );
-    Properties:
-    {
-        cy_force_order = 1
-        cy_int_mask = "1111111"
-        cy_md_select = "0000011"
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-controlcell: Name =\Flash_Blink_TI:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\
-    PORT MAP (
-        clock => Net_946 ,
-        control_7 => \Flash_Blink_TI:TimerUDB:control_7\ ,
-        control_6 => \Flash_Blink_TI:TimerUDB:control_6\ ,
-        control_5 => \Flash_Blink_TI:TimerUDB:control_5\ ,
-        control_4 => \Flash_Blink_TI:TimerUDB:control_4\ ,
-        control_3 => \Flash_Blink_TI:TimerUDB:control_3\ ,
-        control_2 => \Flash_Blink_TI:TimerUDB:control_2\ ,
-        control_1 => \Flash_Blink_TI:TimerUDB:control_1\ ,
-        control_0 => \Flash_Blink_TI:TimerUDB:control_0\ );
-    Properties:
-    {
-        cy_ctrl_mode_0 = "11111111"
-        cy_ctrl_mode_1 = "00000000"
-        cy_ext_reset = 0
-        cy_force_order = 1
-        cy_init_value = "00000000"
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(2,3)] contents:
-LAB@[UDB=(2,3)][LB=0] #macrocells=4, #inputs=12, #pterms=7
-{
-    [McSlotId=0]:     MacroCell: Name=Net_1047, Mode=(T-Register) @ [UDB=(2,3)][LB=0][MC=0]
-        Total # of inputs        : 12
-        Total # of product terms : 3
-        List of special equations: 
-            Clock  = (ClockBlock_100k)
-            Clock Enable: True
-        Main Equation            : 3 pterms
-        (
-              !\LowFreq_DV:not_last_reset\ * !Net_1047
-            + \LowFreq_DV:not_last_reset\ * Net_1047 * !\LowFreq_DV:count_9\ * 
-              \LowFreq_DV:count_8\ * \LowFreq_DV:count_7\ * 
-              \LowFreq_DV:count_6\ * \LowFreq_DV:count_5\ * 
-              \LowFreq_DV:count_4\ * !\LowFreq_DV:count_3\ * 
-              !\LowFreq_DV:count_2\ * \LowFreq_DV:count_1\ * 
-              \LowFreq_DV:count_0\
-            + !Net_1047 * \LowFreq_DV:count_9\ * \LowFreq_DV:count_8\ * 
-              \LowFreq_DV:count_7\ * \LowFreq_DV:count_6\ * 
-              \LowFreq_DV:count_5\ * !\LowFreq_DV:count_4\ * 
-              !\LowFreq_DV:count_3\ * \LowFreq_DV:count_2\ * 
-              \LowFreq_DV:count_1\ * \LowFreq_DV:count_0\
-        );
-        Output = Net_1047 (fanout=6)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\LowFreq_DV:count_5\, Mode=(T-Register) @ [UDB=(2,3)][LB=0][MC=1]
-        Total # of inputs        : 11
-        Total # of product terms : 2
-        List of special equations: 
-            Clock  = (ClockBlock_100k)
-            Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              \LowFreq_DV:not_last_reset\ * \LowFreq_DV:count_9\ * 
-              \LowFreq_DV:count_8\ * \LowFreq_DV:count_7\ * 
-              \LowFreq_DV:count_6\ * \LowFreq_DV:count_5\ * 
-              !\LowFreq_DV:count_4\ * !\LowFreq_DV:count_3\ * 
-              \LowFreq_DV:count_2\ * \LowFreq_DV:count_1\ * 
-              \LowFreq_DV:count_0\
-            + \LowFreq_DV:not_last_reset\ * \LowFreq_DV:count_4\ * 
-              \LowFreq_DV:count_3\ * \LowFreq_DV:count_2\ * 
-              \LowFreq_DV:count_1\ * \LowFreq_DV:count_0\
-        );
-        Output = \LowFreq_DV:count_5\ (fanout=8)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\LowFreq_DV:count_0\, Mode=(T-Register) @ [UDB=(2,3)][LB=0][MC=2]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_100k)
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \LowFreq_DV:not_last_reset\
-        );
-        Output = \LowFreq_DV:count_0\ (fanout=11)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\LowFreq_DV:count_6\, Mode=(T-Register) @ [UDB=(2,3)][LB=0][MC=3]
-        Total # of inputs        : 11
-        Total # of product terms : 2
-        List of special equations: 
-            Clock  = (ClockBlock_100k)
-            Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              \LowFreq_DV:not_last_reset\ * \LowFreq_DV:count_9\ * 
-              \LowFreq_DV:count_8\ * \LowFreq_DV:count_7\ * 
-              \LowFreq_DV:count_6\ * \LowFreq_DV:count_5\ * 
-              !\LowFreq_DV:count_4\ * !\LowFreq_DV:count_3\ * 
-              \LowFreq_DV:count_2\ * \LowFreq_DV:count_1\ * 
-              \LowFreq_DV:count_0\
-            + \LowFreq_DV:not_last_reset\ * \LowFreq_DV:count_5\ * 
-              \LowFreq_DV:count_4\ * \LowFreq_DV:count_3\ * 
-              \LowFreq_DV:count_2\ * \LowFreq_DV:count_1\ * 
-              \LowFreq_DV:count_0\
-        );
-        Output = \LowFreq_DV:count_6\ (fanout=8)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(2,3)][LB=1] #macrocells=3, #inputs=11, #pterms=8
-{
-    [McSlotId=0]:     MacroCell: Name=\LowFreq_DV:count_3\, Mode=(T-Register) @ [UDB=(2,3)][LB=1][MC=0]
+    [McSlotId=0]:     MacroCell: Name=\LowFreq_DV:count_3\, Mode=(T-Register) @ [UDB=(2,0)][LB=0][MC=0]
         Total # of inputs        : 11
         Total # of product terms : 5
         List of special equations: 
@@ -3125,7 +2729,196 @@ LAB@[UDB=(2,3)][LB=1] #macrocells=3, #inputs=11, #pterms=8
         }
 
     [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\LowFreq_DV:count_7\, Mode=(T-Register) @ [UDB=(2,3)][LB=1][MC=2]
+    [McSlotId=2]: (empty)
+    [McSlotId=3]:     MacroCell: Name=\LowFreq_DV:count_0\, Mode=(T-Register) @ [UDB=(2,0)][LB=0][MC=3]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_100k)
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \LowFreq_DV:not_last_reset\
+        );
+        Output = \LowFreq_DV:count_0\ (fanout=11)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(2,0)][LB=1] #macrocells=1, #inputs=11, #pterms=2
+{
+    [McSlotId=0]:     MacroCell: Name=\LowFreq_DV:count_5\, Mode=(T-Register) @ [UDB=(2,0)][LB=1][MC=0]
+        Total # of inputs        : 11
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (ClockBlock_100k)
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              \LowFreq_DV:not_last_reset\ * \LowFreq_DV:count_9\ * 
+              \LowFreq_DV:count_8\ * \LowFreq_DV:count_7\ * 
+              \LowFreq_DV:count_6\ * \LowFreq_DV:count_5\ * 
+              !\LowFreq_DV:count_4\ * !\LowFreq_DV:count_3\ * 
+              \LowFreq_DV:count_2\ * \LowFreq_DV:count_1\ * 
+              \LowFreq_DV:count_0\
+            + \LowFreq_DV:not_last_reset\ * \LowFreq_DV:count_4\ * 
+              \LowFreq_DV:count_3\ * \LowFreq_DV:count_2\ * 
+              \LowFreq_DV:count_1\ * \LowFreq_DV:count_0\
+        );
+        Output = \LowFreq_DV:count_5\ (fanout=8)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+UDB [UDB=(2,1)] contents:
+LAB@[UDB=(2,1)][LB=0] #macrocells=4, #inputs=11, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=\LowFreq_DV:count_6\, Mode=(T-Register) @ [UDB=(2,1)][LB=0][MC=0]
+        Total # of inputs        : 11
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (ClockBlock_100k)
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              \LowFreq_DV:not_last_reset\ * \LowFreq_DV:count_9\ * 
+              \LowFreq_DV:count_8\ * \LowFreq_DV:count_7\ * 
+              \LowFreq_DV:count_6\ * \LowFreq_DV:count_5\ * 
+              !\LowFreq_DV:count_4\ * !\LowFreq_DV:count_3\ * 
+              \LowFreq_DV:count_2\ * \LowFreq_DV:count_1\ * 
+              \LowFreq_DV:count_0\
+            + \LowFreq_DV:not_last_reset\ * \LowFreq_DV:count_5\ * 
+              \LowFreq_DV:count_4\ * \LowFreq_DV:count_3\ * 
+              \LowFreq_DV:count_2\ * \LowFreq_DV:count_1\ * 
+              \LowFreq_DV:count_0\
+        );
+        Output = \LowFreq_DV:count_6\ (fanout=8)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\, Mode=(Combinatorial) @ [UDB=(2,1)][LB=0][MC=1]
+        Total # of inputs        : 8
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \LowFreq_DV:count_7\ * \LowFreq_DV:count_6\ * 
+              \LowFreq_DV:count_5\ * \LowFreq_DV:count_4\ * 
+              \LowFreq_DV:count_3\ * \LowFreq_DV:count_2\ * 
+              \LowFreq_DV:count_1\ * \LowFreq_DV:count_0\
+        );
+        Output = \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\ (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\LowFreq_DV:not_last_reset\, Mode=(D-Register) @ [UDB=(2,1)][LB=0][MC=2]
+        Total # of inputs        : 0
+        Total # of product terms : 0
+        List of special equations: 
+            Clock  = (ClockBlock_100k)
+            Clock Enable: True
+        Main Equation            : 0 pterms
+        !(
+            0
+        );
+        Output = \LowFreq_DV:not_last_reset\ (fanout=11)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\LowFreq_DV:count_1\, Mode=(T-Register) @ [UDB=(2,1)][LB=0][MC=3]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_100k)
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \LowFreq_DV:not_last_reset\ * \LowFreq_DV:count_0\
+        );
+        Output = \LowFreq_DV:count_1\ (fanout=10)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(2,1)][LB=1] #macrocells=3, #inputs=12, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=\LowFreq_DV:count_8\, Mode=(T-Register) @ [UDB=(2,1)][LB=1][MC=0]
+        Total # of inputs        : 12
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (ClockBlock_100k)
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              \LowFreq_DV:not_last_reset\ * \LowFreq_DV:count_9\ * 
+              \LowFreq_DV:count_8\ * \LowFreq_DV:count_7\ * 
+              \LowFreq_DV:count_6\ * \LowFreq_DV:count_5\ * 
+              !\LowFreq_DV:count_4\ * !\LowFreq_DV:count_3\ * 
+              \LowFreq_DV:count_2\ * \LowFreq_DV:count_1\ * 
+              \LowFreq_DV:count_0\
+            + \LowFreq_DV:not_last_reset\ * 
+              \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\
+        );
+        Output = \LowFreq_DV:count_8\ (fanout=7)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\LowFreq_DV:count_9\, Mode=(T-Register) @ [UDB=(2,1)][LB=1][MC=1]
+        Total # of inputs        : 12
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (ClockBlock_100k)
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              \LowFreq_DV:not_last_reset\ * \LowFreq_DV:count_9\ * 
+              \LowFreq_DV:count_8\ * \LowFreq_DV:count_7\ * 
+              \LowFreq_DV:count_6\ * \LowFreq_DV:count_5\ * 
+              !\LowFreq_DV:count_4\ * !\LowFreq_DV:count_3\ * 
+              \LowFreq_DV:count_2\ * \LowFreq_DV:count_1\ * 
+              \LowFreq_DV:count_0\
+            + \LowFreq_DV:not_last_reset\ * \LowFreq_DV:count_8\ * 
+              \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\
+        );
+        Output = \LowFreq_DV:count_9\ (fanout=7)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]:     MacroCell: Name=\LowFreq_DV:count_2\, Mode=(T-Register) @ [UDB=(2,1)][LB=1][MC=3]
+        Total # of inputs        : 3
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_100k)
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \LowFreq_DV:not_last_reset\ * \LowFreq_DV:count_1\ * 
+              \LowFreq_DV:count_0\
+        );
+        Output = \LowFreq_DV:count_2\ (fanout=9)
+        Properties               : 
+        {
+        }
+}
+
+UDB [UDB=(2,2)] contents:
+LAB@[UDB=(2,2)][LB=0] #macrocells=2, #inputs=11, #pterms=3
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\LowFreq_DV:count_7\, Mode=(T-Register) @ [UDB=(2,2)][LB=0][MC=1]
         Total # of inputs        : 11
         Total # of product terms : 2
         List of special equations: 
@@ -3149,64 +2942,8 @@ LAB@[UDB=(2,3)][LB=1] #macrocells=3, #inputs=11, #pterms=8
         {
         }
 
-    [McSlotId=3]:     MacroCell: Name=\LowFreq_DV:count_1\, Mode=(T-Register) @ [UDB=(2,3)][LB=1][MC=3]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_100k)
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \LowFreq_DV:not_last_reset\ * \LowFreq_DV:count_0\
-        );
-        Output = \LowFreq_DV:count_1\ (fanout=10)
-        Properties               : 
-        {
-        }
-}
-
-UDB [UDB=(2,4)] contents:
-LAB@[UDB=(2,4)][LB=0] #macrocells=4, #inputs=12, #pterms=5
-{
-    [McSlotId=0]:     MacroCell: Name=\LowFreq_DV:count_8\, Mode=(T-Register) @ [UDB=(2,4)][LB=0][MC=0]
-        Total # of inputs        : 12
-        Total # of product terms : 2
-        List of special equations: 
-            Clock  = (ClockBlock_100k)
-            Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              \LowFreq_DV:not_last_reset\ * \LowFreq_DV:count_9\ * 
-              \LowFreq_DV:count_8\ * \LowFreq_DV:count_7\ * 
-              \LowFreq_DV:count_6\ * \LowFreq_DV:count_5\ * 
-              !\LowFreq_DV:count_4\ * !\LowFreq_DV:count_3\ * 
-              \LowFreq_DV:count_2\ * \LowFreq_DV:count_1\ * 
-              \LowFreq_DV:count_0\
-            + \LowFreq_DV:not_last_reset\ * 
-              \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\
-        );
-        Output = \LowFreq_DV:count_8\ (fanout=7)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\LowFreq_DV:count_2\, Mode=(T-Register) @ [UDB=(2,4)][LB=0][MC=1]
-        Total # of inputs        : 3
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_100k)
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \LowFreq_DV:not_last_reset\ * \LowFreq_DV:count_1\ * 
-              \LowFreq_DV:count_0\
-        );
-        Output = \LowFreq_DV:count_2\ (fanout=9)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\LowFreq_DV:count_4\, Mode=(T-Register) @ [UDB=(2,4)][LB=0][MC=2]
+    [McSlotId=2]: (empty)
+    [McSlotId=3]:     MacroCell: Name=\LowFreq_DV:count_4\, Mode=(T-Register) @ [UDB=(2,2)][LB=0][MC=3]
         Total # of inputs        : 5
         Total # of product terms : 1
         List of special equations: 
@@ -3222,118 +2959,32 @@ LAB@[UDB=(2,4)][LB=0] #macrocells=4, #inputs=12, #pterms=5
         Properties               : 
         {
         }
-
-    [McSlotId=3]:     MacroCell: Name=\LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\, Mode=(Combinatorial) @ [UDB=(2,4)][LB=0][MC=3]
-        Total # of inputs        : 8
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \LowFreq_DV:count_7\ * \LowFreq_DV:count_6\ * 
-              \LowFreq_DV:count_5\ * \LowFreq_DV:count_4\ * 
-              \LowFreq_DV:count_3\ * \LowFreq_DV:count_2\ * 
-              \LowFreq_DV:count_1\ * \LowFreq_DV:count_0\
-        );
-        Output = \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\ (fanout=2)
-        Properties               : 
-        {
-        }
 }
 
-LAB@[UDB=(2,4)][LB=1] #macrocells=2, #inputs=12, #pterms=2
+LAB@[UDB=(2,2)][LB=1] #macrocells=1, #inputs=12, #pterms=3
 {
-    [McSlotId=0]:     MacroCell: Name=\LowFreq_DV:not_last_reset\, Mode=(D-Register) @ [UDB=(2,4)][LB=1][MC=0]
-        Total # of inputs        : 0
-        Total # of product terms : 0
-        List of special equations: 
-            Clock  = (ClockBlock_100k)
-            Clock Enable: True
-        Main Equation            : 0 pterms
-        !(
-            0
-        );
-        Output = \LowFreq_DV:not_last_reset\ (fanout=11)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\LowFreq_DV:count_9\, Mode=(T-Register) @ [UDB=(2,4)][LB=1][MC=1]
+    [McSlotId=0]:     MacroCell: Name=Net_1047, Mode=(T-Register) @ [UDB=(2,2)][LB=1][MC=0]
         Total # of inputs        : 12
-        Total # of product terms : 2
+        Total # of product terms : 3
         List of special equations: 
             Clock  = (ClockBlock_100k)
             Clock Enable: True
-        Main Equation            : 2 pterms
+        Main Equation            : 3 pterms
         (
-              \LowFreq_DV:not_last_reset\ * \LowFreq_DV:count_9\ * 
+              !\LowFreq_DV:not_last_reset\ * !Net_1047
+            + \LowFreq_DV:not_last_reset\ * Net_1047 * !\LowFreq_DV:count_9\ * 
               \LowFreq_DV:count_8\ * \LowFreq_DV:count_7\ * 
               \LowFreq_DV:count_6\ * \LowFreq_DV:count_5\ * 
-              !\LowFreq_DV:count_4\ * !\LowFreq_DV:count_3\ * 
-              \LowFreq_DV:count_2\ * \LowFreq_DV:count_1\ * 
+              \LowFreq_DV:count_4\ * !\LowFreq_DV:count_3\ * 
+              !\LowFreq_DV:count_2\ * \LowFreq_DV:count_1\ * 
               \LowFreq_DV:count_0\
-            + \LowFreq_DV:not_last_reset\ * \LowFreq_DV:count_8\ * 
-              \LowFreq_DV:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\
+            + !Net_1047 * \LowFreq_DV:count_9\ * \LowFreq_DV:count_8\ * 
+              \LowFreq_DV:count_7\ * \LowFreq_DV:count_6\ * 
+              \LowFreq_DV:count_5\ * !\LowFreq_DV:count_4\ * 
+              !\LowFreq_DV:count_3\ * \LowFreq_DV:count_2\ * 
+              \LowFreq_DV:count_1\ * \LowFreq_DV:count_0\
         );
-        Output = \LowFreq_DV:count_9\ (fanout=7)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-UDB [UDB=(2,5)] is empty.
-UDB [UDB=(3,0)] contents:
-LAB@[UDB=(3,0)][LB=0] #macrocells=2, #inputs=3, #pterms=2
-{
-    [McSlotId=0]:     MacroCell: Name=Net_1117, Mode=(D-Register) @ [UDB=(3,0)][LB=0][MC=0]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_946) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \USB_Blink_TI:TimerUDB:control_7\ * 
-              \USB_Blink_TI:TimerUDB:per_zero\
-        );
-        Output = Net_1117 (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=Net_1103, Mode=(T-Register) @ [UDB=(3,0)][LB=0][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_946) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              Net_1117
-        );
-        Output = Net_1103 (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(3,0)][LB=1] #macrocells=1, #inputs=2, #pterms=1
-{
-    [McSlotId=0]:     MacroCell: Name=\USB_Blink_TI:TimerUDB:status_tc\, Mode=(Combinatorial) @ [UDB=(3,0)][LB=1][MC=0]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \USB_Blink_TI:TimerUDB:control_7\ * 
-              \USB_Blink_TI:TimerUDB:per_zero\
-        );
-        Output = \USB_Blink_TI:TimerUDB:status_tc\ (fanout=1)
+        Output = Net_1047 (fanout=6)
         Properties               : 
         {
         }
@@ -3417,10 +3068,61 @@ controlcell: Name =\USB_Blink_TI:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\
     Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(3,1)] contents:
-LAB@[UDB=(3,1)][LB=0] #macrocells=3, #inputs=3, #pterms=4
+UDB [UDB=(2,3)] contents:
+LAB@[UDB=(2,3)][LB=0] #macrocells=3, #inputs=3, #pterms=3
 {
-    [McSlotId=0]:     MacroCell: Name=Net_408, Mode=(D-Register) @ [UDB=(3,1)][LB=0][MC=0]
+    [McSlotId=0]:     MacroCell: Name=Net_865, Mode=(D-Register) @ [UDB=(2,3)][LB=0][MC=0]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: PosEdge(Net_1047__SYNC_OUT_3)
+        Main Equation            : 1 pterm
+        (
+              !\TakeSample_DB:DEBOUNCER[0]:d_sync_0\ * 
+              \TakeSample_DB:DEBOUNCER[0]:d_sync_1\
+        );
+        Output = Net_865 (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\TakeSample_DB:DEBOUNCER[0]:d_sync_1\, Mode=(D-Register) @ [UDB=(2,3)][LB=0][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: PosEdge(Net_1047__SYNC_OUT_3)
+        Main Equation            : 1 pterm
+        (
+              \TakeSample_DB:DEBOUNCER[0]:d_sync_0\
+        );
+        Output = \TakeSample_DB:DEBOUNCER[0]:d_sync_1\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\TakeSample_DB:DEBOUNCER[0]:d_sync_0\, Mode=(D-Register) @ [UDB=(2,3)][LB=0][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: PosEdge(Net_1047__SYNC_OUT_3)
+        Main Equation            : 1 pterm
+        (
+              Net_879
+        );
+        Output = \TakeSample_DB:DEBOUNCER[0]:d_sync_0\ (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(2,3)][LB=1] #macrocells=3, #inputs=4, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=Net_408, Mode=(D-Register) @ [UDB=(2,3)][LB=1][MC=0]
         Total # of inputs        : 2
         Total # of product terms : 2
         List of special equations: 
@@ -3438,7 +3140,7 @@ LAB@[UDB=(3,1)][LB=0] #macrocells=3, #inputs=3, #pterms=4
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\Vbus_Debounce:DEBOUNCER[0]:d_sync_1\, Mode=(D-Register) @ [UDB=(3,1)][LB=0][MC=1]
+    [McSlotId=1]:     MacroCell: Name=\Vbus_Debounce:DEBOUNCER[0]:d_sync_1\, Mode=(D-Register) @ [UDB=(2,3)][LB=1][MC=1]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -3453,7 +3155,148 @@ LAB@[UDB=(3,1)][LB=0] #macrocells=3, #inputs=3, #pterms=4
         {
         }
 
-    [McSlotId=2]:     MacroCell: Name=\Vbus_Debounce:DEBOUNCER[0]:d_sync_0\, Mode=(D-Register) @ [UDB=(3,1)][LB=0][MC=2]
+    [McSlotId=2]: (empty)
+    [McSlotId=3]:     MacroCell: Name=\USB_Blink_TI:TimerUDB:status_tc\, Mode=(Combinatorial) @ [UDB=(2,3)][LB=1][MC=3]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \USB_Blink_TI:TimerUDB:control_7\ * 
+              \USB_Blink_TI:TimerUDB:per_zero\
+        );
+        Output = \USB_Blink_TI:TimerUDB:status_tc\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+datapathcell: Name =\Flash_Blink_TI:TimerUDB:sT16:timerdp:u0\
+    PORT MAP (
+        clock => Net_946 ,
+        cs_addr_1 => \Flash_Blink_TI:TimerUDB:control_7\ ,
+        cs_addr_0 => \Flash_Blink_TI:TimerUDB:per_zero\ ,
+        chain_out => \Flash_Blink_TI:TimerUDB:sT16:timerdp:carry\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111000000000000000000000001000000000000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Next in chain : \Flash_Blink_TI:TimerUDB:sT16:timerdp:u1\
+
+synccell: Name =Net_1047__SYNC_4
+    PORT MAP (
+        in => Net_1047 ,
+        out => Net_1047__SYNC_OUT_4 ,
+        clock => ClockBlock_BUS_CLK );
+    Properties:
+    {
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+synccell: Name =Net_1047__SYNC_3
+    PORT MAP (
+        in => Net_1047 ,
+        out => Net_1047__SYNC_OUT_3 ,
+        clock => ClockBlock_BUS_CLK );
+    Properties:
+    {
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(2,4)] contents:
+LAB@[UDB=(2,4)][LB=0] #macrocells=3, #inputs=3, #pterms=3
+{
+    [McSlotId=0]:     MacroCell: Name=Net_818, Mode=(D-Register) @ [UDB=(2,4)][LB=0][MC=0]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: PosEdge(Net_1047__SYNC_OUT)
+        Main Equation            : 1 pterm
+        (
+              !\Hibernate_DB:DEBOUNCER[0]:d_sync_0\ * 
+              \Hibernate_DB:DEBOUNCER[0]:d_sync_1\
+        );
+        Output = Net_818 (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\Hibernate_DB:DEBOUNCER[0]:d_sync_1\, Mode=(D-Register) @ [UDB=(2,4)][LB=0][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: PosEdge(Net_1047__SYNC_OUT)
+        Main Equation            : 1 pterm
+        (
+              \Hibernate_DB:DEBOUNCER[0]:d_sync_0\
+        );
+        Output = \Hibernate_DB:DEBOUNCER[0]:d_sync_1\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\Hibernate_DB:DEBOUNCER[0]:d_sync_0\, Mode=(D-Register) @ [UDB=(2,4)][LB=0][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: PosEdge(Net_1047__SYNC_OUT)
+        Main Equation            : 1 pterm
+        (
+              Net_824
+        );
+        Output = \Hibernate_DB:DEBOUNCER[0]:d_sync_0\ (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(2,4)][LB=1] #macrocells=2, #inputs=3, #pterms=2
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\EEPROM_Blink_TI:TimerUDB:status_tc\, Mode=(Combinatorial) @ [UDB=(2,4)][LB=1][MC=1]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \EEPROM_Blink_TI:TimerUDB:control_7\ * 
+              \EEPROM_Blink_TI:TimerUDB:per_zero\
+        );
+        Output = \EEPROM_Blink_TI:TimerUDB:status_tc\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\Vbus_Debounce:DEBOUNCER[0]:d_sync_0\, Mode=(D-Register) @ [UDB=(2,4)][LB=1][MC=2]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -3461,9 +3304,434 @@ LAB@[UDB=(3,1)][LB=0] #macrocells=3, #inputs=3, #pterms=4
             Clock Enable: PosEdge(Net_1047__SYNC_OUT_4)
         Main Equation            : 1 pterm
         (
-              Net_249_SYNCOUT
+              Net_249
         );
         Output = \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\ (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]: (empty)
+}
+
+datapathcell: Name =\EEPROM_Blink_TI:TimerUDB:sT16:timerdp:u1\
+    PORT MAP (
+        clock => Net_946 ,
+        cs_addr_1 => \EEPROM_Blink_TI:TimerUDB:control_7\ ,
+        cs_addr_0 => \EEPROM_Blink_TI:TimerUDB:per_zero\ ,
+        z0_comb => \EEPROM_Blink_TI:TimerUDB:per_zero\ ,
+        f0_bus_stat_comb => \EEPROM_Blink_TI:TimerUDB:status_3\ ,
+        f0_blk_stat_comb => \EEPROM_Blink_TI:TimerUDB:status_2\ ,
+        chain_in => \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:carry\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:u0\
+
+synccell: Name =Net_1047__SYNC
+    PORT MAP (
+        in => Net_1047 ,
+        out => Net_1047__SYNC_OUT ,
+        clock => ClockBlock_BUS_CLK );
+    Properties:
+    {
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(2,5)] is empty.
+UDB [UDB=(3,0)] contents:
+LAB@[UDB=(3,0)][LB=0] #macrocells=3, #inputs=3, #pterms=3
+{
+    [McSlotId=0]:     MacroCell: Name=Net_820, Mode=(D-Register) @ [UDB=(3,0)][LB=0][MC=0]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: PosEdge(Net_1047__SYNC_OUT_2)
+        Main Equation            : 1 pterm
+        (
+              !\StopCollection_DB:DEBOUNCER[0]:d_sync_0\ * 
+              \StopCollection_DB:DEBOUNCER[0]:d_sync_1\
+        );
+        Output = Net_820 (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\StopCollection_DB:DEBOUNCER[0]:d_sync_1\, Mode=(D-Register) @ [UDB=(3,0)][LB=0][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: PosEdge(Net_1047__SYNC_OUT_2)
+        Main Equation            : 1 pterm
+        (
+              \StopCollection_DB:DEBOUNCER[0]:d_sync_0\
+        );
+        Output = \StopCollection_DB:DEBOUNCER[0]:d_sync_1\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\StopCollection_DB:DEBOUNCER[0]:d_sync_0\, Mode=(D-Register) @ [UDB=(3,0)][LB=0][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: PosEdge(Net_1047__SYNC_OUT_2)
+        Main Equation            : 1 pterm
+        (
+              Net_850
+        );
+        Output = \StopCollection_DB:DEBOUNCER[0]:d_sync_0\ (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(3,0)][LB=1] #macrocells=1, #inputs=1, #pterms=1
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\StartCollection_DB:DEBOUNCER[0]:d_sync_0\, Mode=(D-Register) @ [UDB=(3,0)][LB=1][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: PosEdge(Net_1047__SYNC_OUT_1)
+        Main Equation            : 1 pterm
+        (
+              Net_836
+        );
+        Output = \StartCollection_DB:DEBOUNCER[0]:d_sync_0\ (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+synccell: Name =Net_1047__SYNC_2
+    PORT MAP (
+        in => Net_1047 ,
+        out => Net_1047__SYNC_OUT_2 ,
+        clock => ClockBlock_BUS_CLK );
+    Properties:
+    {
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(3,1)] contents:
+LAB@[UDB=(3,1)][LB=0] #macrocells=2, #inputs=2, #pterms=2
+{
+    [McSlotId=0]:     MacroCell: Name=Net_849, Mode=(D-Register) @ [UDB=(3,1)][LB=0][MC=0]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: PosEdge(Net_1047__SYNC_OUT_1)
+        Main Equation            : 1 pterm
+        (
+              !\StartCollection_DB:DEBOUNCER[0]:d_sync_0\ * 
+              \StartCollection_DB:DEBOUNCER[0]:d_sync_1\
+        );
+        Output = Net_849 (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\StartCollection_DB:DEBOUNCER[0]:d_sync_1\, Mode=(D-Register) @ [UDB=(3,1)][LB=0][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: PosEdge(Net_1047__SYNC_OUT_1)
+        Main Equation            : 1 pterm
+        (
+              \StartCollection_DB:DEBOUNCER[0]:d_sync_0\
+        );
+        Output = \StartCollection_DB:DEBOUNCER[0]:d_sync_1\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+synccell: Name =Net_1047__SYNC_1
+    PORT MAP (
+        in => Net_1047 ,
+        out => Net_1047__SYNC_OUT_1 ,
+        clock => ClockBlock_BUS_CLK );
+    Properties:
+    {
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(3,2)] contents:
+datapathcell: Name =\USB_Blink_TI:TimerUDB:sT16:timerdp:u0\
+    PORT MAP (
+        clock => Net_946 ,
+        cs_addr_1 => \USB_Blink_TI:TimerUDB:control_7\ ,
+        cs_addr_0 => \USB_Blink_TI:TimerUDB:per_zero\ ,
+        chain_out => \USB_Blink_TI:TimerUDB:sT16:timerdp:carry\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111000000000000000000000001000000000000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Next in chain : \USB_Blink_TI:TimerUDB:sT16:timerdp:u1\
+
+UDB [UDB=(3,3)] contents:
+LAB@[UDB=(3,3)][LB=0] #macrocells=2, #inputs=4, #pterms=2
+{
+    [McSlotId=0]:     MacroCell: Name=Net_1117, Mode=(D-Register) @ [UDB=(3,3)][LB=0][MC=0]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_946) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \USB_Blink_TI:TimerUDB:control_7\ * 
+              \USB_Blink_TI:TimerUDB:per_zero\
+        );
+        Output = Net_1117 (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=Net_1186, Mode=(D-Register) @ [UDB=(3,3)][LB=0][MC=1]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_946) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \Flash_Blink_TI:TimerUDB:control_7\ * 
+              \Flash_Blink_TI:TimerUDB:per_zero\
+        );
+        Output = Net_1186 (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(3,3)][LB=1] #macrocells=1, #inputs=2, #pterms=1
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]:     MacroCell: Name=\Flash_Blink_TI:TimerUDB:status_tc\, Mode=(Combinatorial) @ [UDB=(3,3)][LB=1][MC=3]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \Flash_Blink_TI:TimerUDB:control_7\ * 
+              \Flash_Blink_TI:TimerUDB:per_zero\
+        );
+        Output = \Flash_Blink_TI:TimerUDB:status_tc\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+datapathcell: Name =\Flash_Blink_TI:TimerUDB:sT16:timerdp:u1\
+    PORT MAP (
+        clock => Net_946 ,
+        cs_addr_1 => \Flash_Blink_TI:TimerUDB:control_7\ ,
+        cs_addr_0 => \Flash_Blink_TI:TimerUDB:per_zero\ ,
+        z0_comb => \Flash_Blink_TI:TimerUDB:per_zero\ ,
+        f0_bus_stat_comb => \Flash_Blink_TI:TimerUDB:status_3\ ,
+        f0_blk_stat_comb => \Flash_Blink_TI:TimerUDB:status_2\ ,
+        chain_in => \Flash_Blink_TI:TimerUDB:sT16:timerdp:carry\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \Flash_Blink_TI:TimerUDB:sT16:timerdp:u0\
+
+statusicell: Name =\Flash_Blink_TI:TimerUDB:rstSts:stsreg\
+    PORT MAP (
+        clock => Net_946 ,
+        status_3 => \Flash_Blink_TI:TimerUDB:status_3\ ,
+        status_2 => \Flash_Blink_TI:TimerUDB:status_2\ ,
+        status_0 => \Flash_Blink_TI:TimerUDB:status_tc\ );
+    Properties:
+    {
+        cy_force_order = 1
+        cy_int_mask = "1111111"
+        cy_md_select = "0000011"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+controlcell: Name =\Flash_Blink_TI:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\
+    PORT MAP (
+        clock => Net_946 ,
+        control_7 => \Flash_Blink_TI:TimerUDB:control_7\ ,
+        control_6 => \Flash_Blink_TI:TimerUDB:control_6\ ,
+        control_5 => \Flash_Blink_TI:TimerUDB:control_5\ ,
+        control_4 => \Flash_Blink_TI:TimerUDB:control_4\ ,
+        control_3 => \Flash_Blink_TI:TimerUDB:control_3\ ,
+        control_2 => \Flash_Blink_TI:TimerUDB:control_2\ ,
+        control_1 => \Flash_Blink_TI:TimerUDB:control_1\ ,
+        control_0 => \Flash_Blink_TI:TimerUDB:control_0\ );
+    Properties:
+    {
+        cy_ctrl_mode_0 = "11111111"
+        cy_ctrl_mode_1 = "00000000"
+        cy_ext_reset = 0
+        cy_force_order = 1
+        cy_init_value = "00000000"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(3,4)] contents:
+LAB@[UDB=(3,4)][LB=0] #macrocells=2, #inputs=3, #pterms=2
+{
+    [McSlotId=0]:     MacroCell: Name=Net_146, Mode=(D-Register) @ [UDB=(3,4)][LB=0][MC=0]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_946) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \EEPROM_Blink_TI:TimerUDB:control_7\ * 
+              \EEPROM_Blink_TI:TimerUDB:per_zero\
+        );
+        Output = Net_146 (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=Net_843, Mode=(T-Register) @ [UDB=(3,4)][LB=0][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_946) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_146
+        );
+        Output = Net_843 (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(3,4)][LB=1] #macrocells=2, #inputs=2, #pterms=2
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=Net_1103, Mode=(T-Register) @ [UDB=(3,4)][LB=1][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_946) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_1117
+        );
+        Output = Net_1103 (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=Net_1178, Mode=(T-Register) @ [UDB=(3,4)][LB=1][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_946) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_1186
+        );
+        Output = Net_1178 (fanout=1)
         Properties               : 
         {
         }
@@ -3505,364 +3773,39 @@ datapathcell: Name =\EEPROM_Blink_TI:TimerUDB:sT16:timerdp:u0\
     Clock Enable: True
     Next in chain : \EEPROM_Blink_TI:TimerUDB:sT16:timerdp:u1\
 
-synccell: Name =Net_1047__SYNC_4
-    PORT MAP (
-        in => Net_1047 ,
-        out => Net_1047__SYNC_OUT_4 ,
-        clock => ClockBlock_BUS_CLK );
-    Properties:
-    {
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-synccell: Name =Vbus(0)_SYNC
-    PORT MAP (
-        in => Net_249 ,
-        out => Net_249_SYNCOUT ,
-        clock => ClockBlock_BUS_CLK );
-    Properties:
-    {
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(3,2)] contents:
-LAB@[UDB=(3,2)][LB=0] #macrocells=4, #inputs=3, #pterms=3
-{
-    [McSlotId=0]:     MacroCell: Name=Net_865, Mode=(D-Register) @ [UDB=(3,2)][LB=0][MC=0]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: PosEdge(Net_1047__SYNC_OUT_3)
-        Main Equation            : 1 pterm
-        (
-              !\TakeSample_DB:DEBOUNCER[0]:d_sync_0\ * 
-              \TakeSample_DB:DEBOUNCER[0]:d_sync_1\
-        );
-        Output = Net_865 (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\TakeSample_DB:DEBOUNCER[0]:d_sync_1\, Mode=(D-Register) @ [UDB=(3,2)][LB=0][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: PosEdge(Net_1047__SYNC_OUT_3)
-        Main Equation            : 1 pterm
-        (
-              \TakeSample_DB:DEBOUNCER[0]:d_sync_0\
-        );
-        Output = \TakeSample_DB:DEBOUNCER[0]:d_sync_1\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\TakeSample_DB:DEBOUNCER[0]:d_sync_0\, Mode=(D-Register) @ [UDB=(3,2)][LB=0][MC=2]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: PosEdge(Net_1047__SYNC_OUT_3)
-        Main Equation            : 1 pterm
-        (
-              Net_879_SYNCOUT
-        );
-        Output = \TakeSample_DB:DEBOUNCER[0]:d_sync_0\ (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=__ONE__, Mode=(Combinatorial) @ [UDB=(3,2)][LB=0][MC=3]
-        Total # of inputs        : 0
-        Total # of product terms : 0
-            Clock Enable: True
-        Main Equation            : 0 pterms
-        !(
-            0
-        );
-        Output = __ONE__ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(3,2)][LB=1] #macrocells=3, #inputs=3, #pterms=3
-{
-    [McSlotId=0]:     MacroCell: Name=Net_849, Mode=(D-Register) @ [UDB=(3,2)][LB=1][MC=0]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: PosEdge(Net_1047__SYNC_OUT_1)
-        Main Equation            : 1 pterm
-        (
-              !\StartCollection_DB:DEBOUNCER[0]:d_sync_0\ * 
-              \StartCollection_DB:DEBOUNCER[0]:d_sync_1\
-        );
-        Output = Net_849 (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\StartCollection_DB:DEBOUNCER[0]:d_sync_1\, Mode=(D-Register) @ [UDB=(3,2)][LB=1][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: PosEdge(Net_1047__SYNC_OUT_1)
-        Main Equation            : 1 pterm
-        (
-              \StartCollection_DB:DEBOUNCER[0]:d_sync_0\
-        );
-        Output = \StartCollection_DB:DEBOUNCER[0]:d_sync_1\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\StartCollection_DB:DEBOUNCER[0]:d_sync_0\, Mode=(D-Register) @ [UDB=(3,2)][LB=1][MC=2]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: PosEdge(Net_1047__SYNC_OUT_1)
-        Main Equation            : 1 pterm
-        (
-              Net_836_SYNCOUT
-        );
-        Output = \StartCollection_DB:DEBOUNCER[0]:d_sync_0\ (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
-}
-
-datapathcell: Name =\Flash_Blink_TI:TimerUDB:sT16:timerdp:u0\
+statusicell: Name =\EEPROM_Blink_TI:TimerUDB:rstSts:stsreg\
     PORT MAP (
         clock => Net_946 ,
-        cs_addr_1 => \Flash_Blink_TI:TimerUDB:control_7\ ,
-        cs_addr_0 => \Flash_Blink_TI:TimerUDB:per_zero\ ,
-        chain_out => \Flash_Blink_TI:TimerUDB:sT16:timerdp:carry\ );
+        status_3 => \EEPROM_Blink_TI:TimerUDB:status_3\ ,
+        status_2 => \EEPROM_Blink_TI:TimerUDB:status_2\ ,
+        status_0 => \EEPROM_Blink_TI:TimerUDB:status_tc\ );
     Properties:
     {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111000000000000000000000001000000000000000000011000"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-    Next in chain : \Flash_Blink_TI:TimerUDB:sT16:timerdp:u1\
-
-synccell: Name =Net_1047__SYNC_1
-    PORT MAP (
-        in => Net_1047 ,
-        out => Net_1047__SYNC_OUT_1 ,
-        clock => ClockBlock_BUS_CLK );
-    Properties:
-    {
+        cy_force_order = 1
+        cy_int_mask = "1111111"
+        cy_md_select = "0000011"
     }
     Clock Polarity: Active High
     Clock Enable: True
 
-synccell: Name =Net_1047__SYNC_3
+controlcell: Name =\EEPROM_Blink_TI:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\
     PORT MAP (
-        in => Net_1047 ,
-        out => Net_1047__SYNC_OUT_3 ,
-        clock => ClockBlock_BUS_CLK );
+        clock => Net_946 ,
+        control_7 => \EEPROM_Blink_TI:TimerUDB:control_7\ ,
+        control_6 => \EEPROM_Blink_TI:TimerUDB:control_6\ ,
+        control_5 => \EEPROM_Blink_TI:TimerUDB:control_5\ ,
+        control_4 => \EEPROM_Blink_TI:TimerUDB:control_4\ ,
+        control_3 => \EEPROM_Blink_TI:TimerUDB:control_3\ ,
+        control_2 => \EEPROM_Blink_TI:TimerUDB:control_2\ ,
+        control_1 => \EEPROM_Blink_TI:TimerUDB:control_1\ ,
+        control_0 => \EEPROM_Blink_TI:TimerUDB:control_0\ );
     Properties:
     {
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-synccell: Name =TakeSample_B(0)_SYNC
-    PORT MAP (
-        in => Net_879 ,
-        out => Net_879_SYNCOUT ,
-        clock => ClockBlock_BUS_CLK );
-    Properties:
-    {
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-synccell: Name =StartCollection_B(0)_SYNC
-    PORT MAP (
-        in => Net_836 ,
-        out => Net_836_SYNCOUT ,
-        clock => ClockBlock_BUS_CLK );
-    Properties:
-    {
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(3,3)] contents:
-LAB@[UDB=(3,3)][LB=0] #macrocells=3, #inputs=3, #pterms=3
-{
-    [McSlotId=0]:     MacroCell: Name=Net_820, Mode=(D-Register) @ [UDB=(3,3)][LB=0][MC=0]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: PosEdge(Net_1047__SYNC_OUT_2)
-        Main Equation            : 1 pterm
-        (
-              !\StopCollection_DB:DEBOUNCER[0]:d_sync_0\ * 
-              \StopCollection_DB:DEBOUNCER[0]:d_sync_1\
-        );
-        Output = Net_820 (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\StopCollection_DB:DEBOUNCER[0]:d_sync_1\, Mode=(D-Register) @ [UDB=(3,3)][LB=0][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: PosEdge(Net_1047__SYNC_OUT_2)
-        Main Equation            : 1 pterm
-        (
-              \StopCollection_DB:DEBOUNCER[0]:d_sync_0\
-        );
-        Output = \StopCollection_DB:DEBOUNCER[0]:d_sync_1\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\StopCollection_DB:DEBOUNCER[0]:d_sync_0\, Mode=(D-Register) @ [UDB=(3,3)][LB=0][MC=2]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: PosEdge(Net_1047__SYNC_OUT_2)
-        Main Equation            : 1 pterm
-        (
-              Net_850_SYNCOUT
-        );
-        Output = \StopCollection_DB:DEBOUNCER[0]:d_sync_0\ (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
-}
-
-synccell: Name =Net_1047__SYNC_2
-    PORT MAP (
-        in => Net_1047 ,
-        out => Net_1047__SYNC_OUT_2 ,
-        clock => ClockBlock_BUS_CLK );
-    Properties:
-    {
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-synccell: Name =StopCollection_B(0)_SYNC
-    PORT MAP (
-        in => Net_850 ,
-        out => Net_850_SYNCOUT ,
-        clock => ClockBlock_BUS_CLK );
-    Properties:
-    {
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(3,4)] contents:
-LAB@[UDB=(3,4)][LB=1] #macrocells=3, #inputs=3, #pterms=3
-{
-    [McSlotId=0]:     MacroCell: Name=Net_818, Mode=(D-Register) @ [UDB=(3,4)][LB=1][MC=0]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: PosEdge(Net_1047__SYNC_OUT)
-        Main Equation            : 1 pterm
-        (
-              !\Hibernate_DB:DEBOUNCER[0]:d_sync_0\ * 
-              \Hibernate_DB:DEBOUNCER[0]:d_sync_1\
-        );
-        Output = Net_818 (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\Hibernate_DB:DEBOUNCER[0]:d_sync_1\, Mode=(D-Register) @ [UDB=(3,4)][LB=1][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: PosEdge(Net_1047__SYNC_OUT)
-        Main Equation            : 1 pterm
-        (
-              \Hibernate_DB:DEBOUNCER[0]:d_sync_0\
-        );
-        Output = \Hibernate_DB:DEBOUNCER[0]:d_sync_1\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\Hibernate_DB:DEBOUNCER[0]:d_sync_0\, Mode=(D-Register) @ [UDB=(3,4)][LB=1][MC=2]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: PosEdge(Net_1047__SYNC_OUT)
-        Main Equation            : 1 pterm
-        (
-              Net_824_SYNCOUT
-        );
-        Output = \Hibernate_DB:DEBOUNCER[0]:d_sync_0\ (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
-}
-
-synccell: Name =Net_1047__SYNC
-    PORT MAP (
-        in => Net_1047 ,
-        out => Net_1047__SYNC_OUT ,
-        clock => ClockBlock_BUS_CLK );
-    Properties:
-    {
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-synccell: Name =Hibernate_B(0)_SYNC
-    PORT MAP (
-        in => Net_824 ,
-        out => Net_824_SYNCOUT ,
-        clock => ClockBlock_BUS_CLK );
-    Properties:
-    {
+        cy_ctrl_mode_0 = "11111111"
+        cy_ctrl_mode_1 = "00000000"
+        cy_ext_reset = 0
+        cy_force_order = 1
+        cy_init_value = "00000000"
     }
     Clock Polarity: Active High
     Clock Enable: True
@@ -4165,7 +4108,7 @@ Pin : Name = StartCollection_B(0)
         Drive mode: RES_PULL_UP
         VTrip: CMOS
         Slew: FAST
-        Input Sync needed: False
+        Input Sync needed: True
         Output Sync needed: False
         SC shield enabled: False
         POR State: ANY
@@ -4205,7 +4148,7 @@ Pin : Name = StopCollection_B(0)
         Drive mode: RES_PULL_UP
         VTrip: CMOS
         Slew: FAST
-        Input Sync needed: False
+        Input Sync needed: True
         Output Sync needed: False
         SC shield enabled: False
         POR State: ANY
@@ -4248,7 +4191,7 @@ Pin : Name = Vbus(0)
         Drive mode: RES_PULL_DOWN
         VTrip: CMOS
         Slew: FAST
-        Input Sync needed: False
+        Input Sync needed: True
         Output Sync needed: False
         SC shield enabled: False
         POR State: ANY
@@ -4288,7 +4231,7 @@ Pin : Name = Hibernate_B(0)
         Drive mode: RES_PULL_UP
         VTrip: CMOS
         Slew: FAST
-        Input Sync needed: False
+        Input Sync needed: True
         Output Sync needed: False
         SC shield enabled: False
         POR State: ANY
@@ -4392,7 +4335,7 @@ Pin : Name = TakeSample_B(0)
         Drive mode: RES_PULL_UP
         VTrip: CMOS
         Slew: FAST
-        Input Sync needed: False
+        Input Sync needed: True
         Output Sync needed: False
         SC shield enabled: False
         POR State: ANY
@@ -4689,31 +4632,31 @@ Port | Pin | Fixed |      Type |       Drive Mode |                 Name | Conne
 </CYPRESSTAG>
 </CYPRESSTAG>
 Digital component placer commit/Report: Elapsed time ==> 0s.000ms
-Digital Placement phase: Elapsed time ==> 2s.847ms
+Digital Placement phase: Elapsed time ==> 1s.953ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 Routing successful.
-Digital Routing phase: Elapsed time ==> 3s.861ms
+Digital Routing phase: Elapsed time ==> 2s.500ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream and API generation">
-Bitstream and API generation phase: Elapsed time ==> 0s.328ms
+Bitstream and API generation phase: Elapsed time ==> 0s.234ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream verification">
-Bitstream verification phase: Elapsed time ==> 0s.093ms
+Bitstream verification phase: Elapsed time ==> 0s.062ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Timing report is in Erebus_Sensor_timing.html.
-Static timing analysis phase: Elapsed time ==> 0s.984ms
+Static timing analysis phase: Elapsed time ==> 0s.593ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
 Data reporting phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.468ms
+Design database save phase: Elapsed time ==> 0s.296ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 9s.913ms
+cydsfit: Elapsed time ==> 6s.546ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 9s.956ms
-API generation phase: Elapsed time ==> 3s.140ms
-Dependency generation phase: Elapsed time ==> 0s.023ms
+Fitter phase: Elapsed time ==> 6s.578ms
+API generation phase: Elapsed time ==> 1s.875ms
+Dependency generation phase: Elapsed time ==> 0s.000ms
 Cleanup phase: Elapsed time ==> 0s.000ms

@@ -1,5 +1,5 @@
 -- Project:   Erebus_Sensor
--- Generated: 04/29/2014 20:55:50
+-- Generated: 05/02/2014 02:18:31
 -- 
 
 ENTITY Erebus_Sensor IS
@@ -49,23 +49,18 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     SIGNAL Net_1186 : bit;
     SIGNAL Net_146 : bit;
     SIGNAL Net_249 : bit;
-    SIGNAL Net_249_SYNCOUT : bit;
     SIGNAL Net_408 : bit;
     SIGNAL Net_566 : bit;
     SIGNAL Net_714 : bit;
     SIGNAL Net_818 : bit;
     SIGNAL Net_820 : bit;
     SIGNAL Net_824 : bit;
-    SIGNAL Net_824_SYNCOUT : bit;
     SIGNAL Net_836 : bit;
-    SIGNAL Net_836_SYNCOUT : bit;
     SIGNAL Net_843 : bit;
     SIGNAL Net_849 : bit;
     SIGNAL Net_850 : bit;
-    SIGNAL Net_850_SYNCOUT : bit;
     SIGNAL Net_865 : bit;
     SIGNAL Net_879 : bit;
-    SIGNAL Net_879_SYNCOUT : bit;
     SIGNAL Net_946 : bit;
     ATTRIBUTE global_signal OF Net_946 : SIGNAL IS true;
     SIGNAL Net_946_local : bit;
@@ -1503,7 +1498,7 @@ BEGIN
 
     Hibernate_B(0):iocell
         GENERIC MAP(
-            in_sync_mode => 0,
+            in_sync_mode => 2,
             out_sync_mode => 0,
             oe_sync_mode => 0,
             logicalport => "Hibernate_B",
@@ -1520,14 +1515,6 @@ BEGIN
             out_clock => open,
             out_clock_en => '1',
             out_reset => '0');
-
-    Hibernate_B(0)_SYNC:synccell
-        GENERIC MAP(
-            clk_inv => '0')
-        PORT MAP(
-            in => Net_824,
-            out => Net_824_SYNCOUT,
-            clock => ClockBlock_BUS_CLK);
 
     Hibernate_IRQ:interrupt
         GENERIC MAP(
@@ -1876,7 +1863,7 @@ BEGIN
 
     StartCollection_B(0):iocell
         GENERIC MAP(
-            in_sync_mode => 0,
+            in_sync_mode => 2,
             out_sync_mode => 0,
             oe_sync_mode => 0,
             logicalport => "StartCollection_B",
@@ -1893,14 +1880,6 @@ BEGIN
             out_clock => open,
             out_clock_en => '1',
             out_reset => '0');
-
-    StartCollection_B(0)_SYNC:synccell
-        GENERIC MAP(
-            clk_inv => '0')
-        PORT MAP(
-            in => Net_836,
-            out => Net_836_SYNCOUT,
-            clock => ClockBlock_BUS_CLK);
 
     StartCollection_IRQ:interrupt
         GENERIC MAP(
@@ -1978,7 +1957,7 @@ BEGIN
 
     StopCollection_B(0):iocell
         GENERIC MAP(
-            in_sync_mode => 0,
+            in_sync_mode => 2,
             out_sync_mode => 0,
             oe_sync_mode => 0,
             logicalport => "StopCollection_B",
@@ -1995,14 +1974,6 @@ BEGIN
             out_clock => open,
             out_clock_en => '1',
             out_reset => '0');
-
-    StopCollection_B(0)_SYNC:synccell
-        GENERIC MAP(
-            clk_inv => '0')
-        PORT MAP(
-            in => Net_850,
-            out => Net_850_SYNCOUT,
-            clock => ClockBlock_BUS_CLK);
 
     StopCollection_IRQ:interrupt
         GENERIC MAP(
@@ -2080,7 +2051,7 @@ BEGIN
 
     TakeSample_B(0):iocell
         GENERIC MAP(
-            in_sync_mode => 0,
+            in_sync_mode => 2,
             out_sync_mode => 0,
             oe_sync_mode => 0,
             logicalport => "TakeSample_B",
@@ -2097,14 +2068,6 @@ BEGIN
             out_clock => open,
             out_clock_en => '1',
             out_reset => '0');
-
-    TakeSample_B(0)_SYNC:synccell
-        GENERIC MAP(
-            clk_inv => '0')
-        PORT MAP(
-            in => Net_879,
-            out => Net_879_SYNCOUT,
-            clock => ClockBlock_BUS_CLK);
 
     TakeSample_IRQ:interrupt
         GENERIC MAP(
@@ -2269,7 +2232,7 @@ BEGIN
 
     Vbus(0):iocell
         GENERIC MAP(
-            in_sync_mode => 0,
+            in_sync_mode => 2,
             out_sync_mode => 0,
             oe_sync_mode => 0,
             logicalport => "Vbus",
@@ -2286,14 +2249,6 @@ BEGIN
             out_clock => open,
             out_clock_en => '1',
             out_reset => '0');
-
-    Vbus(0)_SYNC:synccell
-        GENERIC MAP(
-            clk_inv => '0')
-        PORT MAP(
-            in => Net_249,
-            out => Net_249_SYNCOUT,
-            clock => ClockBlock_BUS_CLK);
 
     Vbus_IRQ:interrupt
         GENERIC MAP(
@@ -2626,7 +2581,7 @@ BEGIN
             clken_inv => '0')
         PORT MAP(
             q => \Hibernate_DB:DEBOUNCER[0]:d_sync_0\,
-            main_0 => Net_824_SYNCOUT,
+            main_0 => Net_824,
             clock_0 => ClockBlock_BUS_CLK,
             clk_en => Net_1047__SYNC_OUT);
 
@@ -2847,7 +2802,7 @@ BEGIN
             clken_inv => '0')
         PORT MAP(
             q => \StartCollection_DB:DEBOUNCER[0]:d_sync_0\,
-            main_0 => Net_836_SYNCOUT,
+            main_0 => Net_836,
             clock_0 => ClockBlock_BUS_CLK,
             clk_en => Net_1047__SYNC_OUT_1);
 
@@ -2869,7 +2824,7 @@ BEGIN
             clken_inv => '0')
         PORT MAP(
             q => \StopCollection_DB:DEBOUNCER[0]:d_sync_0\,
-            main_0 => Net_850_SYNCOUT,
+            main_0 => Net_850,
             clock_0 => ClockBlock_BUS_CLK,
             clk_en => Net_1047__SYNC_OUT_2);
 
@@ -2891,7 +2846,7 @@ BEGIN
             clken_inv => '0')
         PORT MAP(
             q => \TakeSample_DB:DEBOUNCER[0]:d_sync_0\,
-            main_0 => Net_879_SYNCOUT,
+            main_0 => Net_879,
             clock_0 => ClockBlock_BUS_CLK,
             clk_en => Net_1047__SYNC_OUT_3);
 
@@ -3303,7 +3258,7 @@ BEGIN
             clken_inv => '0')
         PORT MAP(
             q => \Vbus_Debounce:DEBOUNCER[0]:d_sync_0\,
-            main_0 => Net_249_SYNCOUT,
+            main_0 => Net_249,
             clock_0 => ClockBlock_BUS_CLK,
             clk_en => Net_1047__SYNC_OUT_4);
 

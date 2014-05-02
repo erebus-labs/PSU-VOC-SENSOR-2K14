@@ -50,8 +50,12 @@ void USB_ISR(){
                         break;
                     
                     case DUMP_DATA:
-                        dump_data();
-                        confirm_dump();
+                        if (dump_data()){
+                            confirm_dump();
+                        }
+                        else{
+                            send_reply(FAIL);
+                        }
                         break;
                         
                     case GET_SETTINGS:
@@ -103,19 +107,18 @@ void USB_ISR(){
 uint8 retrieve(uint8* buffer, uint8 num_bytes){
     uint16 count = 0;
     uint8 attempts = 0;
-    uint8 result = SUCCESS;
+    uint8 result = FAIL;
     
     count = USBUART_GetCount(); 
     
-    // If data in buffer is the right amount for a command,
-    // retrieve it
+    // If data in buffer is the right amount retrieve it
     if(count == num_bytes){
         USBUART_GetData(buffer, num_bytes);
+        result = SUCCESS;
     }
     // Otherwise, flush the USB buffer and report fail
-    else{
+    else if (count > 0){
         USBUART_GetChar();
-        result = FAIL;
     }
     
     return result;
@@ -158,22 +161,26 @@ void send_settings(){
     return;   
 }
 
-void dump_data(){
+uint8 dump_data(){
     uint8  ExportBuffer[BUFFER_LEN]; // 64 Bytes per USB data packet.
     uint8* ExportPtr =(uint8*) MemoryLocation; 
     uint16 DataCnt = 0;
-    uint8  i = 0;
+    uint8 i = 0;
+    uint8 result = SUCCESS;
     
     flash_LED_on();
     
-    if (TailPtr == ExportPtr){
+    if(TailPtr == ExportPtr){
         ExportBuffer[0] = NO_DATA;
         
         for (i=1; i< BUFFER_LEN; ++i){
             ExportBuffer[i] = PADBYTE;
         }
-        while(!USBUART_CDCIsReady() && Vbus_Read());
-        USBUART_PutData(ExportBuffer, BUFFER_LEN);
+        write_out(ExportBuffer);
+        
+        if (wait_next() == FAIL){
+            result = FAIL;
+        }     
     }
             
     while (ExportPtr < TailPtr)
@@ -194,9 +201,13 @@ void dump_data(){
             }           
         }
         
-        while(!USBUART_CDCIsReady() && Vbus_Read());
-        USBUART_PutData(ExportBuffer, BUFFER_LEN); // Send 64 byte packet of data from memory
+        write_out(ExportBuffer); // Send 64 byte packet of data from memory
         i = 0;
+        
+        if (wait_next() == FAIL){
+            result = FAIL;
+            goto exit;
+        }
     }
     
     // Add the size trailer packet to get total transmission size
@@ -210,13 +221,45 @@ void dump_data(){
     ExportBuffer[2] = (uint8)(DataCnt >> 8);;          // Count of Total Bytes Sent
     ExportBuffer[3] = (uint8)0x00FF & DataCnt;
     
-    // Wait for UART to be ready
-    while(!USBUART_CDCIsReady() && Vbus_Read());
-    USBUART_PutData(ExportBuffer, 64u);
+    write_out(ExportBuffer);
     
     flash_LED_off();
+
+exit:
+    return result;
+}
+
+void write_out(uint8* ExportBuffer){
+    while(!USBUART_CDCIsReady() && Vbus_Read());
+    USBUART_PutData(ExportBuffer, BUFFER_LEN);
+
+    while(!USBUART_CDCIsReady() && Vbus_Read());
+    USBUART_PutData(ExportBuffer, 0);
     
     return;
+}
+    
+uint8 wait_next(){
+    uint8 reply = 0;
+    uint8 retrieve_status = 0;
+    uint8 continue_status = FAIL;
+
+    while(!reply && Vbus_Read()){
+            
+        while(!USBUART_GetCount() && Vbus_Read()); 
+        retrieve_status = retrieve(&reply, COMMAND_LENGTH);
+        if(retrieve_status == SUCCESS){
+            if(reply == NEXT){
+                continue_status = SUCCESS;
+                break;
+            }
+            else if(reply == FAIL){
+                continue_status = FAIL;
+            }
+        }
+    }    
+    
+    return continue_status;
 }
 
 void send_reply(uint8 message){
@@ -234,16 +277,21 @@ void confirm_dump(){
     uint8 result = 0;
     uint8 command = 0;
     
-    while(1){
+    while(Vbus_Read()){
         while(!USBUART_DataIsReady() && Vbus_Read());
         
         result = retrieve(&command, COMMAND_LENGTH);
         
         if(result == SUCCESS){
+                    
             if (command == SUCCESS){
                 TailPtr = (uint8*) MemoryLocation;
+                break;
             }
-            break;
+            
+            else if (command == FAIL){
+                break;
+            }
         }
     }
     
