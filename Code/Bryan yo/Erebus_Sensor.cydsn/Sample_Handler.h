@@ -11,9 +11,10 @@
 */
 #include "project.h"
 
-void rtc_init(void);
+void RTC_Prep(void);
 void take_sample(void);
 uint16 sample_counter(void);
 void RTC_Int_Handler(void);
 
+extern uint16 sample_int_counter;
 /* [] END OF FILE */

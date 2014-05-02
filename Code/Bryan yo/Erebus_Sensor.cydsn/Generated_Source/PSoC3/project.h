@@ -43,6 +43,8 @@
 #include <Sensor_VIn_aliases.h>
 #include <ADC.h>
 #include <RTC_1.h>
+#include <Sample_LED.h>
+#include <Sample_LED_aliases.h>
 #include <USBUART_Dm.h>
 #include <USBUART_Dm_aliases.h>
 #include <USBUART_Dp.h>

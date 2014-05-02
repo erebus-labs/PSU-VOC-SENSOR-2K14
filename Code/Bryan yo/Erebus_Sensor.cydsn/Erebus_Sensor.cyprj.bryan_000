@@ -32,6 +32,8 @@
 <dep name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
 <dep name=".\Generated_Source\PSoC3\Project.h" />
 <dep name=".\Generated_Source\PSoC3\RTC_1.h" />
+<dep name=".\Generated_Source\PSoC3\Sample_LED.h" />
+<dep name=".\Generated_Source\PSoC3\Sample_LED_aliases.h" />
 <dep name=".\Generated_Source\PSoC3\Sensor_VIn.h" />
 <dep name=".\Generated_Source\PSoC3\Sensor_VIn_aliases.h" />
 <dep name=".\Generated_Source\PSoC3\USBUART.h" />
@@ -81,6 +83,8 @@
 <file name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
 <file name=".\Generated_Source\PSoC3\Project.h" />
 <file name=".\Generated_Source\PSoC3\RTC_1.h" />
+<file name=".\Generated_Source\PSoC3\Sample_LED.h" />
+<file name=".\Generated_Source\PSoC3\Sample_LED_aliases.h" />
 <file name=".\Generated_Source\PSoC3\Sensor_VIn.h" />
 <file name=".\Generated_Source\PSoC3\Sensor_VIn_aliases.h" />
 <file name=".\Generated_Source\PSoC3\USBUART.h" />
@@ -130,6 +134,8 @@
 <dep name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
 <dep name=".\Generated_Source\PSoC3\Project.h" />
 <dep name=".\Generated_Source\PSoC3\RTC_1.h" />
+<dep name=".\Generated_Source\PSoC3\Sample_LED.h" />
+<dep name=".\Generated_Source\PSoC3\Sample_LED_aliases.h" />
 <dep name=".\Generated_Source\PSoC3\Sensor_VIn.h" />
 <dep name=".\Generated_Source\PSoC3\Sensor_VIn_aliases.h" />
 <dep name=".\Generated_Source\PSoC3\USBUART.h" />
@@ -186,6 +192,8 @@
 <dep name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
 <dep name=".\Generated_Source\PSoC3\Project.h" />
 <dep name=".\Generated_Source\PSoC3\RTC_1.h" />
+<dep name=".\Generated_Source\PSoC3\Sample_LED.h" />
+<dep name=".\Generated_Source\PSoC3\Sample_LED_aliases.h" />
 <dep name=".\Generated_Source\PSoC3\Sensor_VIn.h" />
 <dep name=".\Generated_Source\PSoC3\Sensor_VIn_aliases.h" />
 <dep name=".\Generated_Source\PSoC3\USBUART.h" />
@@ -241,6 +249,8 @@
 <dep name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
 <dep name=".\Generated_Source\PSoC3\Project.h" />
 <dep name=".\Generated_Source\PSoC3\RTC_1.h" />
+<dep name=".\Generated_Source\PSoC3\Sample_LED.h" />
+<dep name=".\Generated_Source\PSoC3\Sample_LED_aliases.h" />
 <dep name=".\Generated_Source\PSoC3\Sensor_VIn.h" />
 <dep name=".\Generated_Source\PSoC3\Sensor_VIn_aliases.h" />
 <dep name=".\Generated_Source\PSoC3\USBUART.h" />
@@ -271,6 +281,7 @@
 <dep name=".\Generated_Source\PSoC3\timer_clock.h" />
 <dep name=".\EEPROM_Access.h" />
 <dep name=".\EmEEPROM_Access.h" />
+<dep name=".\Sample_Handler.h" />
 <dep name=".\main.c" />
 <dep name=".\main.h" />
 </file>
@@ -528,6 +539,8 @@
 <dep name=".\Generated_Source\PSoC3\LED_aliases.h" />
 <dep name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
 <dep name=".\Generated_Source\PSoC3\RTC_1.h" />
+<dep name=".\Generated_Source\PSoC3\Sample_LED.h" />
+<dep name=".\Generated_Source\PSoC3\Sample_LED_aliases.h" />
 <dep name=".\Generated_Source\PSoC3\Sensor_VIn.h" />
 <dep name=".\Generated_Source\PSoC3\Sensor_VIn_aliases.h" />
 <dep name=".\Generated_Source\PSoC3\USBUART.h" />
@@ -560,6 +573,17 @@
 <dep name=".\Sample_Handler.h" />
 </file>
 <file name=".\Generated_Source\PSoC3\RTC_1_INT.c" />
+<file name=".\DP8051\DP8051_Keil_951\Debug\Sample_LED.obj">
+<dep name=".\Generated_Source\PSoC3\Sample_LED.h" />
+<dep name=".\Generated_Source\PSoC3\Sample_LED_aliases.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice.h" />
+<dep name=".\Generated_Source\PSoC3\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC3\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC3\cypins.h" />
+<dep name=".\Generated_Source\PSoC3\cytypes.h" />
+<dep name=".\Generated_Source\PSoC3\Sample_LED.c" />
+</file>
+<file name=".\Generated_Source\PSoC3\Sample_LED.c" />
 <file name=".\DP8051\DP8051_Keil_951\Debug\Sensor_VIn.obj">
 <dep name=".\Generated_Source\PSoC3\Sensor_VIn.h" />
 <dep name=".\Generated_Source\PSoC3\Sensor_VIn_aliases.h" />
@@ -772,6 +796,8 @@
 <dep name=".\Generated_Source\PSoC3\LED_aliases.h" />
 <dep name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
 <dep name=".\Generated_Source\PSoC3\RTC_1.h" />
+<dep name=".\Generated_Source\PSoC3\Sample_LED.h" />
+<dep name=".\Generated_Source\PSoC3\Sample_LED_aliases.h" />
 <dep name=".\Generated_Source\PSoC3\Sensor_VIn.h" />
 <dep name=".\Generated_Source\PSoC3\Sensor_VIn_aliases.h" />
 <dep name=".\Generated_Source\PSoC3\USBUART.h" />
@@ -878,6 +904,8 @@
 <dep name=".\Generated_Source\PSoC3\PSoC3_8051.h" />
 <dep name=".\Generated_Source\PSoC3\Project.h" />
 <dep name=".\Generated_Source\PSoC3\RTC_1.h" />
+<dep name=".\Generated_Source\PSoC3\Sample_LED.h" />
+<dep name=".\Generated_Source\PSoC3\Sample_LED_aliases.h" />
 <dep name=".\Generated_Source\PSoC3\Sensor_VIn.h" />
 <dep name=".\Generated_Source\PSoC3\Sensor_VIn_aliases.h" />
 <dep name=".\Generated_Source\PSoC3\USBUART.h" />
@@ -1046,6 +1074,7 @@
 <dep name=".\DP8051\DP8051_Keil_951\Debug\Sensor_VIn.obj" />
 <dep name=".\DP8051\DP8051_Keil_951\Debug\RTC_1.obj" />
 <dep name=".\DP8051\DP8051_Keil_951\Debug\RTC_1_INT.obj" />
+<dep name=".\DP8051\DP8051_Keil_951\Debug\Sample_LED.obj" />
 <dep name=".\DP8051\DP8051_Keil_951\Debug\Erebus_Sensor.lib" />
 <dep name="${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\DP8051\DP8051_Keil_951\Debug\CyComponentLibrary.lib" />
 </file>
@@ -1110,6 +1139,7 @@
 <name_val_pair name=".\Generated_Source\PSoC3\RTC_1.c" v="&quot;NOIV &quot;&quot;LARGE &quot;&quot;MODDP2 &quot;&quot;OMF2 &quot;&quot;VB(1) &quot;&quot;PR(${OutputDir}\${CompileFile}.lst) &quot;&quot;CD &quot;&quot;DB &quot;&quot;NOIP &quot;&quot;OT(0, Size) &quot;&quot;DF (DEBUG) &quot;&quot;INCDIR(., .\Generated_Source\PSoC3) &quot;" />
 <name_val_pair name=".\Generated_Source\PSoC3\RTC_1_INT.c" v="&quot;NOIV &quot;&quot;LARGE &quot;&quot;MODDP2 &quot;&quot;OMF2 &quot;&quot;VB(1) &quot;&quot;PR(${OutputDir}\${CompileFile}.lst) &quot;&quot;CD &quot;&quot;DB &quot;&quot;NOIP &quot;&quot;OT(0, Size) &quot;&quot;DF (DEBUG) &quot;&quot;INCDIR(., .\Generated_Source\PSoC3) &quot;" />
 <name_val_pair name="C:\Users\bryan_000\Documents\GitHub\frack-n-sensor\Code\Bryan yo\Erebus_Sensor.cydsn\DP8051\DP8051_Keil_951\Debug\Erebus_Sensor.hex" v="&quot; TO &quot;&quot;'${OutputDir}\${ProjectShortName}.omf' &quot;&quot;PR(${OutputDir}\${ProjectShortName}.map) &quot;&quot;IX &quot;&quot;CODE &quot;&quot;DW(16) &quot;&quot;RU &quot;&quot;CL(XDATA(X:0x0000-X:0x1FFF)) &quot;&quot;CL(CODE(C:0x0000-C:0xFFFF)) &quot;&quot;CL(CONST(C:0x0000-C:0xFFFF)) &quot;" />
+<name_val_pair name=".\Generated_Source\PSoC3\Sample_LED.c" v="&quot;NOIV &quot;&quot;LARGE &quot;&quot;MODDP2 &quot;&quot;OMF2 &quot;&quot;VB(1) &quot;&quot;PR(${OutputDir}\${CompileFile}.lst) &quot;&quot;CD &quot;&quot;DB &quot;&quot;NOIP &quot;&quot;OT(0, Size) &quot;&quot;DF (DEBUG) &quot;&quot;INCDIR(., .\Generated_Source\PSoC3) &quot;" />
 </name>
 </genericCmdLineData>
 <codeGenCmdLineTag v="&quot;-.appdatapath&quot; &quot;C:\Users\bryan_000\AppData\Local\Cypress Semiconductor\PSoC Creator\3.0&quot; &quot;-.fdsnotice&quot; &quot;-.fdswarpdepfile=warp_dependencies.txt&quot; &quot;-.fdselabdepfile=elab_dependencies.txt&quot; &quot;-.fdsbldfile=generated_files.txt&quot; &quot;-p&quot; &quot;C:\Users\bryan_000\Documents\GitHub\frack-n-sensor\Code\Bryan yo\Erebus_Sensor.cydsn\Erebus_Sensor.cyprj&quot; &quot;-d&quot; &quot;CY8C3866AXI-040&quot; &quot;-s&quot; &quot;C:\Users\bryan_000\Documents\GitHub\frack-n-sensor\Code\Bryan yo\Erebus_Sensor.cydsn\Generated_Source\PSoC3&quot; &quot;--&quot; &quot;-yv2&quot; &quot;-v3&quot; &quot;-ygs&quot; &quot;-q10&quot; &quot;-o2&quot; &quot;-.fftcfgtype=BE&quot; " />
@@ -1811,6 +1841,44 @@
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_gsref_v2_0\Custom\cycenteredtextcontrol.resx</v>
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_gsref_v2_0\Custom\cygsrefidcontrol.resx</v>
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_gsref_v2_0</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\cy_pins_v1_90.cyprimitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\cy_pins_v1_90.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\cy_pins_v1_90.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\cy_pins_v1_90.cystate</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\cygeneralcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\cygeneralcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\cyinputcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\cyinputcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\cymappingcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\cymappingcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\cyoutputcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\cyoutputcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\cypinaliasdialog.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\cypinaliasdialog.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\cypinscontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\cypinscontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\cyporcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\cyporcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\cytypecontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\cytypecontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\Resource1.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\cyclockingcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\cyclockingcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\cygeneralcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\cyinputcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\cymappingcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\cyoutputcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\cypinaliasdialog.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\cypinscontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\cyporcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\cytypecontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\Resource1.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\Custom\cyclockingcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\PSoC3\API\pins.c</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\PSoC3\API\pins.h</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v1_90\PSoC3\API\aliases.h</v>
 <v>.\Erebus_Sensor.cydwr</v>
 <v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\cy_boot_v4_0\PSoC3\API\CyBootAsmKeil.a51</v>
 <v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\cy_boot_v4_0\PSoC3\API\CyDmac.c</v>
@@ -2028,6 +2096,9 @@
 <v>.\Generated_Source\PSoC3\RTC_1.c</v>
 <v>.\Generated_Source\PSoC3\RTC_1.h</v>
 <v>.\Generated_Source\PSoC3\RTC_1_INT.c</v>
+<v>.\Generated_Source\PSoC3\Sample_LED.c</v>
+<v>.\Generated_Source\PSoC3\Sample_LED.h</v>
+<v>.\Generated_Source\PSoC3\Sample_LED_aliases.h</v>
 </gen_list>
 <warp_dep>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\ieee\work\stdlogic.vif</v>
@@ -2045,7 +2116,7 @@
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\or_v1_0\or_v1_0.v</v>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\stdlogic\rtlpkg.vif</v>
 </warp_dep>
-<deps_time v="130428729287750402" />
+<deps_time v="130434727314812988" />
 <top_block v="TopDesign" />
 <last_generation v="0" />
 </CyGuid_925cc1e1-309e-4e08-b0a1-09a83c35b157>
@@ -2057,10 +2128,9 @@
 <v>Off-Chip</v>
 </tree_states_tab_names>
 <tree_states>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Cypress Component Catalog\System">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Cypress Component Catalog\Ports and Pins">
 <ExpandedNodeIds>
 <v>Cypress Component Catalog</v>
-<v>Cypress Component Catalog\Ports and Pins</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
 <v>Cypress Component Catalog</v>
@@ -2071,10 +2141,6 @@
 <v>Cypress Component Catalog\Display</v>
 <v>Cypress Component Catalog\Filters</v>
 <v>Cypress Component Catalog\Ports and Pins</v>
-<v>Cypress Component Catalog\Ports and Pins\Analog Pin [v1.90]</v>
-<v>Cypress Component Catalog\Ports and Pins\Digital Bidirectional Pin [v1.90]</v>
-<v>Cypress Component Catalog\Ports and Pins\Digital Input Pin [v1.90]</v>
-<v>Cypress Component Catalog\Ports and Pins\Digital Output Pin [v1.90]</v>
 <v>Cypress Component Catalog\Power Supervision</v>
 <v>Cypress Component Catalog\System</v>
 <v>Cypress Component Catalog\Thermal Management</v>
@@ -2100,8 +2166,28 @@
 </dataGuid>
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
-<deps_time v="130428729399920670" />
+<deps_time v="130434727431517824" />
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
+</dataGuid>
+<dataGuid v="bf610382-39c6-441f-80b8-b04622ea7845">
+<CyGuid_bf610382-39c6-441f-80b8-b04622ea7845 type_name="CyDesigner.Common.Debugger.CyWatchedVariableList" version="1">
+<debugger_watch_list />
+</CyGuid_bf610382-39c6-441f-80b8-b04622ea7845>
+</dataGuid>
+<dataGuid v="237c8ed1-e161-4c9d-af97-582eda6d6952">
+<CyGuid_d442b0b8-dd66-4eee-b5be-1cb213792b31 type_name="CyDesigner.PSoC.P3Fit.Common.DesignWideResources.DeviceEditor.CyCustomAnalogDevData" version="1" ZoomToPage="True" ZoomScale="0.3863886" ScrollX="-301" ScrollY="2">
+<ComponentStates>
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.PSoC.P3Fit.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="\ADC:Net_520\" Color="-9580801" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.PSoC.P3Fit.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="AmuxNet::\ADC:AMux\" Color="-8213505" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.PSoC.P3Fit.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="\ADC:Net_244\" Color="-8289793" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.PSoC.P3Fit.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="\ADC:Net_690\" Color="-4160769" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.PSoC.P3Fit.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="Net_564" Color="-37377" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.PSoC.P3Fit.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="\ADC:Net_573\" Color="-32064" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.PSoC.P3Fit.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="\ADC:Net_41\" Color="-32383" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.PSoC.P3Fit.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="\ADC:Net_109\" Color="-24190" />
+<CyGuid_50eb6c77-9735-4e57-8808-b714f60fbc0d type_name="CyDesigner.PSoC.P3Fit.Common.DesignWideResources.DeviceEditor.CyItemState" version="1" Name="\ADC:Net_677\" Color="-16255" />
+</ComponentStates>
+</CyGuid_d442b0b8-dd66-4eee-b5be-1cb213792b31>
 </dataGuid>
 </userData>
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
