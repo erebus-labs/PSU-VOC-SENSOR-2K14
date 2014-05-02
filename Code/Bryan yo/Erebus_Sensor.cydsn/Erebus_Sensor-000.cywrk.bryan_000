@@ -189,17 +189,6 @@
 <v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\EEPROM_LED</v>
 <v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\EEPROM_LED\EEPROM_LED.c</v>
 <v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\EEPROM_LED\EEPROM_LED.h</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\EEPROM_LED\EEPROM_LED_aliases.h</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\EEPROM_R</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\EEPROM_R\EEPROM_R.c</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\EEPROM_R\EEPROM_R.h</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\Em_EEPROM</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\Em_EEPROM\Em_EEPROM.c</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\Em_EEPROM\Em_EEPROM.h</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\LED</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\LED\LED.c</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\LED\LED.h</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\Generated_Source\PSoC3\LED\LED_aliases.h</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -317,16 +306,6 @@
 <v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\RTC_1.lst</v>
 <v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\RTC_1_INT.lst</v>
 <v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\Sample_Handler.lst</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\Sample_LED.lst</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\Sensor_VIn.lst</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\timer_clock.lst</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\USB_Access.lst</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\USB_LED.lst</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\USBUART.lst</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\USBUART_audio.lst</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\USBUART_boot.lst</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\USBUART_cdc.lst</v>
-<v>Erebus_Sensor-000\Erebus_Sensor\DP8051\DP8051_Keil_951\Debug\Listing Files\USBUART_cls.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>

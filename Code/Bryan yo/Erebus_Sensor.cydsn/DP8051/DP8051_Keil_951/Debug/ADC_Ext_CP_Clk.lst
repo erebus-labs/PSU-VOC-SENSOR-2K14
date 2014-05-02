@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 19:52:19 PAGE 1   
+C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 20:13:46 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE ADC_EXT_CP_CLK
@@ -62,7 +62,7 @@ line level    source
   50   1      }
   51          
   52          
-C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 19:52:19 PAGE 2   
+C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 20:13:46 PAGE 2   
 
   53          /*******************************************************************************
   54          * Function Name: ADC_Ext_CP_Clk_Stop
@@ -126,7 +126,7 @@ line level    source
                       CLK_DIST_DMASK = 0x00u;
               #else
  114   2              CLK_DIST_DMASK = ADC_Ext_CP_Clk_CLKEN_MASK;
-C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 19:52:19 PAGE 3   
+C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 20:13:46 PAGE 3   
 
  115   2              CLK_DIST_AMASK = 0x00u;
  116   2      #endif /* ADC_Ext_CP_Clk__CFG3 */
@@ -190,7 +190,7 @@ line level    source
  174          * Summary:
  175          *  Modifies the clock divider and, thus, the frequency. When the clock divider
  176          *  register is set to zero or changed from zero, the clock will be temporarily
-C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 19:52:19 PAGE 4   
+C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 20:13:46 PAGE 4   
 
  177          *  disabled in order to change the SSS mode bit. If the clock is enabled when
  178          *  SetDividerRegister is called, then the source clock must be running.
@@ -254,7 +254,7 @@ line level    source
  236   4                      CLK_DIST_DMASK = ADC_Ext_CP_Clk_CLKEN_MASK;
  237   4                      CLK_DIST_AMASK = 0x00u;
  238   4      #endif /* ADC_Ext_CP_Clk__CFG3 */
-C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 19:52:19 PAGE 5   
+C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 20:13:46 PAGE 5   
 
  239   4                      /* Clear mask of bus clock. */
  240   4                      CLK_DIST_BCFG2 &= (uint8)(~BCFG2_MASK);
@@ -318,7 +318,7 @@ line level    source
  298          {
  299   1          return CY_GET_REG16(ADC_Ext_CP_Clk_DIV_PTR);
  300   1      }
-C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 19:52:19 PAGE 6   
+C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 20:13:46 PAGE 6   
 
  301          
  302          
@@ -382,7 +382,7 @@ line level    source
  360          *   See the Technical Reference Manual for details about setting the mode of
  361          *   the clock. Specifically, see the CLKDIST.DCFG.CFG2 register.
  362          *
-C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 19:52:19 PAGE 7   
+C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 20:13:46 PAGE 7   
 
  363          * Returns:
  364          *  None
@@ -446,7 +446,7 @@ line level    source
  422   1          uint8 oldSrc = ADC_Ext_CP_Clk_GetSourceRegister();
  423   1      
  424   1          if (((oldSrc != ((uint8)CYCLK_SRC_SEL_CLK_SYNC_D)) && 
-C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 19:52:19 PAGE 8   
+C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 20:13:46 PAGE 8   
 
  425   1              (clkSource == ((uint8)CYCLK_SRC_SEL_CLK_SYNC_D))) && (currDiv == 0u))
  426   1          {
@@ -510,7 +510,7 @@ line level    source
               *   clkPhase must be from 1 to 11 inclusive. Other values, including 0,
               *   disable the clock. clkPhase = 1 produces a 0ns delay and clkPhase = 11 
               *   produces a 10ns delay.
-C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 19:52:19 PAGE 9   
+C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 20:13:46 PAGE 9   
 
               *
               * Returns:
@@ -547,7 +547,7 @@ line level    source
  519          
  520          
  521          /* [] END OF FILE */
-C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 19:52:19 PAGE 10  
+C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 20:13:46 PAGE 10  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -611,7 +611,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0000 9043A2            MOV     DPTR,#043A2H
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
-C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 19:52:19 PAGE 11  
+C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 20:13:46 PAGE 11  
 
 0005 EF                MOV     A,R7
 0006 5401              ANL     A,#01H
@@ -675,7 +675,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0056 FF                MOV     R7,A
 0057 EF                MOV     A,R7
 0058 5401              ANL     A,#01H
-C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 19:52:19 PAGE 12  
+C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 20:13:46 PAGE 12  
 
 005A FF                MOV     R7,A
 005B 7E00              MOV     R6,#00H
@@ -739,7 +739,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 161
 000D 9043B2            MOV     DPTR,#043B2H
 0010 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 19:52:19 PAGE 13  
+C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 20:13:46 PAGE 13  
 
 0011 FF                MOV     R7,A
 0012 EF                MOV     A,R7
@@ -803,7 +803,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 002B E0                MOVX    A,@DPTR
 002C FC                MOV     R4,A
 002D A3                INC     DPTR
-C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 19:52:19 PAGE 14  
+C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 20:13:46 PAGE 14  
 
 002E E0                MOVX    A,@DPTR
 002F FD                MOV     R5,A
@@ -867,7 +867,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0075 7B02              MOV     R3,#02H
 0077 7A40              MOV     R2,#040H
 0079 7980              MOV     R1,#080H
-C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 19:52:19 PAGE 15  
+C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 20:13:46 PAGE 15  
 
 007B 900000      R     MOV     DPTR,#clkDivider
 007E E0                MOVX    A,@DPTR
@@ -931,7 +931,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00BF 7401              MOV     A,#01H
 00C1 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 237
-C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 19:52:19 PAGE 16  
+C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 20:13:46 PAGE 16  
 
 00C2 904014            MOV     DPTR,#04014H
 00C5 E4                CLR     A
@@ -995,7 +995,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0110 4E                ORL     A,R6
 0111 70F1              JNZ     ?C0019
 0113         ?C0020:
-C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 19:52:19 PAGE 17  
+C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 20:13:46 PAGE 17  
 
                                            ; SOURCE LINE # 253
 0113 9043A2            MOV     DPTR,#043A2H
@@ -1059,7 +1059,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 015A 904001            MOV     DPTR,#04001H
 015D E0                MOVX    A,@DPTR
 015E FF                MOV     R7,A
-C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 19:52:19 PAGE 18  
+C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 20:13:46 PAGE 18  
 
 015F EF                MOV     A,R7
 0160 5401              ANL     A,#01H
@@ -1123,7 +1123,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 300
 0009         ?C0028:
 0009 22                RET     
-C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 19:52:19 PAGE 19  
+C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 20:13:46 PAGE 19  
 
              ; FUNCTION ADC_Ext_CP_Clk_GetDividerRegister (END)
 
@@ -1187,7 +1187,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0022 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 370
 0023         ?C0030:
-C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 19:52:19 PAGE 20  
+C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 20:13:46 PAGE 20  
 
 0023 22                RET     
              ; FUNCTION _ADC_Ext_CP_Clk_ClearModeRegister (END)
@@ -1251,7 +1251,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0034 904082            MOV     DPTR,#04082H
 0037 E0                MOVX    A,@DPTR
 0038 FF                MOV     R7,A
-C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 19:52:19 PAGE 21  
+C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 20:13:46 PAGE 21  
 
 0039 EF                MOV     A,R7
 003A 4440              ORL     A,#040H
@@ -1315,7 +1315,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0086 EF                MOV     A,R7
 0087 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 440
-C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 19:52:19 PAGE 22  
+C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 20:13:46 PAGE 22  
 
 0088 904082            MOV     DPTR,#04082H
 008B E0                MOVX    A,@DPTR
@@ -1379,7 +1379,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
    EDATA SIZE       =   ----    ----
-C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 19:52:19 PAGE 23  
+C51 COMPILER V9.51   ADC_EXT_CP_CLK                                                        05/01/2014 20:13:46 PAGE 23  
 
    HDATA SIZE       =   ----    ----
    XDATA CONST SIZE =   ----    ----

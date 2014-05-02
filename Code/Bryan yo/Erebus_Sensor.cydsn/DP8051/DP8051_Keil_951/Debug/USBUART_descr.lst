@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   USBUART_DESCR                                                         05/01/2014 19:52:16 PAGE 1   
+C51 COMPILER V9.51   USBUART_DESCR                                                         05/01/2014 20:13:43 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE USBUART_DESCR
@@ -62,7 +62,7 @@ line level    source
   50          /* iManufacturer                           */ 0x01u,
   51          /* iProduct                                */ 0x02u,
   52          /* iSerialNumber                           */ 0x80u,
-C51 COMPILER V9.51   USBUART_DESCR                                                         05/01/2014 19:52:16 PAGE 2   
+C51 COMPILER V9.51   USBUART_DESCR                                                         05/01/2014 20:13:43 PAGE 2   
 
   53          /* bNumConfigurations                      */ 0x01u
   54          };
@@ -126,7 +126,7 @@ line level    source
  112          /*  Endpoint Descriptor Length             */ 0x07u,
  113          /*  DescriptorType: ENDPOINT               */ 0x05u,
  114          /*  bEndpointAddress                       */ 0x81u,
-C51 COMPILER V9.51   USBUART_DESCR                                                         05/01/2014 19:52:16 PAGE 3   
+C51 COMPILER V9.51   USBUART_DESCR                                                         05/01/2014 20:13:43 PAGE 3   
 
  115          /*  bmAttributes                           */ 0x03u,
  116          /*  wMaxPacketSize                         */ 0x08u, 0x00u,
@@ -190,7 +190,7 @@ line level    source
  174           (uint8)'S', 0u,(uint8)'e', 0u,(uint8)'n', 0u,(uint8)'s', 0u,(uint8)'o', 0u,
  175           (uint8)'r', 0u,(uint8)' ', 0u,(uint8)'R', 0u,(uint8)'e', 0u,(uint8)'v', 0u,
  176           (uint8)' ', 0u,(uint8)'0', 0u,(uint8)'.', 0u,(uint8)'1', 0u,
-C51 COMPILER V9.51   USBUART_DESCR                                                         05/01/2014 19:52:16 PAGE 4   
+C51 COMPILER V9.51   USBUART_DESCR                                                         05/01/2014 20:13:43 PAGE 4   
 
  177          /*********************************************************************/
  178          /* Marks the end of the list.              */ 0x00u};
@@ -254,7 +254,7 @@ line level    source
  236          
  237          #if defined(USBUART_ENABLE_MSOS_STRING)
  238          
-C51 COMPILER V9.51   USBUART_DESCR                                                         05/01/2014 19:52:16 PAGE 5   
+C51 COMPILER V9.51   USBUART_DESCR                                                         05/01/2014 20:13:43 PAGE 5   
 
  239              /******************************************************************************
  240              *  USB Microsoft OS String Descriptor
@@ -302,7 +302,7 @@ line level    source
  279          
  280          
  281          /* [] END OF FILE */
-C51 COMPILER V9.51   USBUART_DESCR                                                         05/01/2014 19:52:16 PAGE 6   
+C51 COMPILER V9.51   USBUART_DESCR                                                         05/01/2014 20:13:43 PAGE 6   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 

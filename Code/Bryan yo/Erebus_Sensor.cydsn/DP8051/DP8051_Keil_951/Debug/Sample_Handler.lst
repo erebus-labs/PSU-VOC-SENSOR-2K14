@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 19:52:12 PAGE 1   
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 20:13:39 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE SAMPLE_HANDLER
@@ -62,7 +62,7 @@ line level    source
   51   2                  break;
   52   2          }
   53   1          
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 19:52:12 PAGE 2   
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 20:13:39 PAGE 2   
 
   54   1          sample_int_count = 0u;
   55   1       }
@@ -86,68 +86,53 @@ line level    source
   73          {
   74   1          uint16 sample_interval;
   75   1          
-  76   1          uint8 tmp;
-  77   1          
-  78   1          uint16 EE_SAMPLE_INTERVAL = 2u;
-  79   1          
-  80   1          //sample_interval = get_variable(EE_SAMPLE_INTERVAL);
-  81   1          sample_interval = EE_SAMPLE_INTERVAL;
-  82   1              
-  83   1          /* Take sample if interval has been reached */
-  84   1          if (sample_int_count == sample_interval)
-  85   1          {
-  86   2              take_sample();
-  87   2              sample_int_count = 0u;
-  88   2              
-  89   2              //LED Debug------------------
-  90   2              
-  91   2              tmp = Sample_LED_Read();
-  92   2                 
-  93   2              if(tmp)
-  94   2                  {
-  95   3                      Sample_LED_Write(0u);
-  96   3                  }
-  97   2              else
-  98   2                  {
-  99   3                      Sample_LED_Write(1u);
- 100   3                  }
- 101   2              //---------------------------
- 102   2              
- 103   2              return 1u;
- 104   2          }
- 105   1          /* Increment counter and go back to sleep if interval has not been reached */
- 106   1          else
- 107   1          {
- 108   2              sample_int_count = sample_int_count++;
- 109   2              
- 110   2              return 0u;
- 111   2          }
- 112   1      }
- 113          
- 114          void take_sample()
- 115          {
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 19:52:12 PAGE 3   
+  76   1          
+  77   1          uint16 EE_SAMPLE_INTERVAL = 2u;
+  78   1          
+  79   1          //sample_interval = get_variable(EE_SAMPLE_INTERVAL);
+  80   1          sample_interval = EE_SAMPLE_INTERVAL;
+  81   1              
+  82   1          /* Take sample if interval has been reached */
+  83   1          if (sample_int_count == sample_interval)
+  84   1          {
+  85   2              take_sample();
+  86   2              sample_int_count = 0u;
+  87   2              
+  88   2              return 1u;
+  89   2          }
+  90   1          /* Increment counter and go back to sleep if interval has not been reached */
+  91   1          else
+  92   1          {
+  93   2              sample_int_count++;
+  94   2              
+  95   2              return 0u;
+  96   2          }
+  97   1      }
+  98          
+  99          void take_sample()
+ 100          {
+ 101   1          uint16 SampledData=0; 
+ 102   1          uint8 pin_stat;
+ 103   1          
+ 104   1          
+ 105   1          pin_stat = Sample_LED_Read();
+ 106   1          
+ 107   1          if (pin_stat)
+ 108   1          {
+ 109   2              Sample_LED_Write(0u);
+ 110   2          }
+ 111   1          else
+ 112   1          {
+ 113   2              Sample_LED_Write(1u);
+ 114   2          }
+ 115   1          
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 20:13:39 PAGE 3   
 
- 116   1          uint16 SampledData=0; 
- 117   1          uint8 pin_stat;
- 118   1          
- 119   1          
- 120   1          pin_stat = Sample_LED_Read();
- 121   1          
- 122   1          if (pin_stat)
- 123   1          {
- 124   2              Sample_LED_Write(0u);
- 125   2          }
- 126   1          else
- 127   1          {
- 128   2              Sample_LED_Write(1u);
- 129   2          }
- 130   1          
- 131   1      }
- 132              
- 133          /* [] END OF FILE */
-*** WARNING C291 IN LINE 112 OF .\Sample_Handler.c: not every exit path returns a value
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 19:52:12 PAGE 4   
+ 116   1      }
+ 117              
+ 118          /* [] END OF FILE */
+*** WARNING C291 IN LINE 97 OF .\Sample_Handler.c: not every exit path returns a value
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 20:13:39 PAGE 4   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -211,7 +196,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 004C 120000      E     LCALL   _RTC_1_WriteIntervalMask
                                            ; SOURCE LINE # 36
 004F 8021              SJMP    ?C0001
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 19:52:12 PAGE 5   
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 20:13:39 PAGE 5   
 
                                            ; SOURCE LINE # 37
 0051         ?C0004:
@@ -275,7 +260,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 63
                                            ; SOURCE LINE # 64
 000C 120000      R     LCALL   take_sample
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 19:52:12 PAGE 6   
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 20:13:39 PAGE 6   
 
                                            ; SOURCE LINE # 65
 000F         ?C0010:
@@ -287,14 +272,14 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION sample_counter (BEGIN)
                                            ; SOURCE LINE # 72
                                            ; SOURCE LINE # 73
-                                           ; SOURCE LINE # 78
+                                           ; SOURCE LINE # 77
 0000 900000      R     MOV     DPTR,#EE_SAMPLE_INTERVAL
 0003 E4                CLR     A
 0004 F0                MOVX    @DPTR,A
 0005 A3                INC     DPTR
 0006 7402              MOV     A,#02H
 0008 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 81
+                                           ; SOURCE LINE # 80
 0009 900000      R     MOV     DPTR,#EE_SAMPLE_INTERVAL
 000C E0                MOVX    A,@DPTR
 000D FE                MOV     R6,A
@@ -307,7 +292,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0016 A3                INC     DPTR
 0017 EF                MOV     A,R7
 0018 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 84
+                                           ; SOURCE LINE # 83
 0019 900000      R     MOV     DPTR,#sample_interval
 001C E0                MOVX    A,@DPTR
 001D FE                MOV     R6,A
@@ -321,127 +306,92 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0027 E0                MOVX    A,@DPTR
 0028 FD                MOV     R5,A
 0029 ED                MOV     A,R5
-002A 6F                XRL     A,R7
-002B 7002              JNZ     ?C0020
+002A B50715            CJNE    A,AR7,?C0012
 002D EC                MOV     A,R4
-002E 6E                XRL     A,R6
-002F         ?C0020:
-002F 702D              JNZ     ?C0012
+002E B50611            CJNE    A,AR6,?C0012
+                                           ; SOURCE LINE # 84
                                            ; SOURCE LINE # 85
-                                           ; SOURCE LINE # 86
 0031 120000      R     LCALL   take_sample
-                                           ; SOURCE LINE # 87
+                                           ; SOURCE LINE # 86
 0034 900000      R     MOV     DPTR,#sample_int_count
 0037 E4                CLR     A
 0038 F0                MOVX    @DPTR,A
 0039 A3                INC     DPTR
 003A E4                CLR     A
 003B F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 91
-003C 120000      E     LCALL   Sample_LED_Read
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 19:52:12 PAGE 7   
+                                           ; SOURCE LINE # 88
+003C 7E00              MOV     R6,#00H
+003E 7F01              MOV     R7,#01H
+0040 22                RET     
+                                           ; SOURCE LINE # 89
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 20:13:39 PAGE 7   
 
-003F 900000      R     MOV     DPTR,#tmp
-0042 EF                MOV     A,R7
-0043 F0                MOVX    @DPTR,A
+0041 22                RET     
+0042         ?C0012:
+                                           ; SOURCE LINE # 92
                                            ; SOURCE LINE # 93
-0044 900000      R     MOV     DPTR,#tmp
-0047 E0                MOVX    A,@DPTR
-0048 FF                MOV     R7,A
-0049 EF                MOV     A,R7
-004A 6007              JZ      ?C0013
-                                           ; SOURCE LINE # 94
+0042 900000      R     MOV     DPTR,#sample_int_count
+0045 E4                CLR     A
+0046 75F001            MOV     B,#01H
+0049 120000      E     LCALL   ?C?IILDX
                                            ; SOURCE LINE # 95
-004C 7F00              MOV     R7,#00H
-004E 120000      E     LCALL   _Sample_LED_Write
+004C E4                CLR     A
+004D 7E00              MOV     R6,#00H
+004F 7F00              MOV     R7,#00H
                                            ; SOURCE LINE # 96
-0051 8005              SJMP    ?C0014
-0053         ?C0013:
-                                           ; SOURCE LINE # 98
-                                           ; SOURCE LINE # 99
-0053 7F01              MOV     R7,#01H
-0055 120000      E     LCALL   _Sample_LED_Write
-                                           ; SOURCE LINE # 100
-0058         ?C0014:
-                                           ; SOURCE LINE # 103
-0058 7E00              MOV     R6,#00H
-005A 7F01              MOV     R7,#01H
-005C 22                RET     
-                                           ; SOURCE LINE # 104
-005D 22                RET     
-005E         ?C0012:
-                                           ; SOURCE LINE # 107
-                                           ; SOURCE LINE # 108
-005E 900000      R     MOV     DPTR,#sample_int_count
-0061 E4                CLR     A
-0062 75F001            MOV     B,#01H
-0065 120000      E     LCALL   ?C?ILDIX
-0068 AFF0              MOV     R7,B
-006A FE                MOV     R6,A
-006B 900000      R     MOV     DPTR,#sample_int_count
-006E EE                MOV     A,R6
-006F F0                MOVX    @DPTR,A
-0070 A3                INC     DPTR
-0071 EF                MOV     A,R7
-0072 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 110
-0073 E4                CLR     A
-0074 7E00              MOV     R6,#00H
-0076 7F00              MOV     R7,#00H
-                                           ; SOURCE LINE # 111
-0078         ?C0016:
-                                           ; SOURCE LINE # 112
-0078         ?C0015:
-0078 22                RET     
+0051         ?C0014:
+                                           ; SOURCE LINE # 97
+0051         ?C0013:
+0051 22                RET     
              ; FUNCTION sample_counter (END)
 
              ; FUNCTION take_sample (BEGIN)
-                                           ; SOURCE LINE # 114
-                                           ; SOURCE LINE # 115
-                                           ; SOURCE LINE # 116
+                                           ; SOURCE LINE # 99
+                                           ; SOURCE LINE # 100
+                                           ; SOURCE LINE # 101
 0000 900000      R     MOV     DPTR,#SampledData
 0003 E4                CLR     A
 0004 F0                MOVX    @DPTR,A
 0005 A3                INC     DPTR
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 19:52:12 PAGE 8   
-
 0006 E4                CLR     A
 0007 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 120
+                                           ; SOURCE LINE # 105
 0008 120000      E     LCALL   Sample_LED_Read
 000B 900000      R     MOV     DPTR,#pin_stat
 000E EF                MOV     A,R7
 000F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 122
+                                           ; SOURCE LINE # 107
 0010 900000      R     MOV     DPTR,#pin_stat
 0013 E0                MOVX    A,@DPTR
 0014 FF                MOV     R7,A
 0015 EF                MOV     A,R7
-0016 6006              JZ      ?C0017
-                                           ; SOURCE LINE # 123
-                                           ; SOURCE LINE # 124
+0016 6006              JZ      ?C0015
+                                           ; SOURCE LINE # 108
+                                           ; SOURCE LINE # 109
 0018 7F00              MOV     R7,#00H
 001A 120000      E     LCALL   _Sample_LED_Write
-                                           ; SOURCE LINE # 125
+                                           ; SOURCE LINE # 110
 001D 22                RET     
-001E         ?C0017:
-                                           ; SOURCE LINE # 127
-                                           ; SOURCE LINE # 128
+001E         ?C0015:
+                                           ; SOURCE LINE # 112
+                                           ; SOURCE LINE # 113
 001E 7F01              MOV     R7,#01H
 0020 120000      E     LCALL   _Sample_LED_Write
-                                           ; SOURCE LINE # 129
-0023         ?C0018:
-                                           ; SOURCE LINE # 131
-0023         ?C0019:
+                                           ; SOURCE LINE # 114
+0023         ?C0016:
+                                           ; SOURCE LINE # 116
+0023         ?C0017:
 0023 22                RET     
              ; FUNCTION take_sample (END)
 
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    296    ----
+   CODE SIZE        =    257    ----
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 20:13:39 PAGE 8   
+
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =     13    ----
+   XDATA SIZE       =     12    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----

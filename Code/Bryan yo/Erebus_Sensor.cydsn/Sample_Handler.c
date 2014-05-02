@@ -73,7 +73,6 @@ uint16 sample_counter()
 {
     uint16 sample_interval;
     
-    uint8 tmp;
     
     uint16 EE_SAMPLE_INTERVAL = 2u;
     
@@ -86,26 +85,12 @@ uint16 sample_counter()
         take_sample();
         sample_int_count = 0u;
         
-        //LED Debug------------------
-        
-        tmp = Sample_LED_Read();
-           
-        if(tmp)
-            {
-                Sample_LED_Write(0u);
-            }
-        else
-            {
-                Sample_LED_Write(1u);
-            }
-        //---------------------------
-        
         return 1u;
     }
     /* Increment counter and go back to sleep if interval has not been reached */
     else
     {
-        sample_int_count = sample_int_count++;
+        sample_int_count++;
         
         return 0u;
     }
