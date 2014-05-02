@@ -16,49 +16,55 @@
     // File Inclusions
     #include "Project.h"
     #include "EEPROM_Access.h"
+    #include "EmEEPROM_Access.h"
     #include "Utility.h"
+    #include "LED_Handler.h"
+    #include "RTC_Handler.h"
+    #include "Common.h"
 
     // Macros
     #define BUFFER_LEN          64u  
     #define SPLIT_PACKET_DELAY  10
     #define MAX_ATTEMPTS        10
-    #define COMMAND_LENGTH      5
+    #define COMMAND_LENGTH      1
         
     /* Message Codes for USB Communications */
     
     // Incoming commands
+    #define NULL_BYTE       0x00
     #define IDENTIFY        0x01
     #define DUMP_DATA       0x02
-    #define SEND_SETTINGS   0x03
+    #define GET_SETTINGS    0x03
     #define CHANGE_SETTING  0x04
     #define HARD_RESET      0x05
+    #define UPDATE_RTC      0x06
     
     // Setting Codes
     #define SAMPLE_UNIT     0x01
     #define SAMPLE_INTERVAL 0x02
     #define SENSOR          0x03    
 
-
     // Outgoing Responses
     #define REPLY_LEN   1
     #define IDENTIFIER  0x01
-    #define SUCCESS     0x02
-    #define FAIL        0x03
+    
+    // Data Packet Markers
+    #define STARTBLOCK  0x2000 // This must be 16 bits - it is stored as uint16
+    #define ENDDUMP     0x80
+    #define PADBYTE     0x40
+    #define NO_DATA     0xA0
     
           
     // Structures
-    typedef struct usb_command{
-        uint8 command;
-        uint16 target;
-        uint16 value;
-    }command;
-    
+
     // Function Prototypes
     void USB_ISR();
-    uint8 retrieve(command* instruction);
-    void apply_setting(command instruction);
+    uint8 retrieve(uint8* buffer, uint8 num_bytes);
+    uint8 apply_settings();
+    void send_settings();
     void dump_data();
     void confirm_dump();
+    uint8 update_RTC();
     void send_reply(uint8 buffer);
     void CMD_hard_reset();
     void USB_Close();

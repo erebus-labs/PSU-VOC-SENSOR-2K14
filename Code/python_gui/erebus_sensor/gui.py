@@ -12,6 +12,7 @@ import tkinter as tk
 import tkinter.messagebox as mb
 import time
 import copy
+from datetime import datetime
 
 # Project Imports
 import erebus_sensor.interface as interface
@@ -21,7 +22,6 @@ class ErebusGUI(tk.Frame):
 
         # Configure GUI-wide variables
         self.sensorHandle = None
-        self.sensorSettings = None
         self.displayedSettings = interface.Settings()
 
         # Initialize Window
@@ -57,7 +57,8 @@ class ErebusGUI(tk.Frame):
         # Create Sensor Menu Entry 
         self.subMenuSensor = tk.Menu(self.menuBar, tearoff=0)
         self.menuBar.add_cascade(label="Sensor", menu=self.subMenuSensor)
-        self.subMenuSensor.add_command(label="Get Data")
+        self.subMenuSensor.add_command(label="Get Data",
+                                       command=self.getData)
         self.subMenuSensor.add_command(label="Get Current Configuration",
                                        command=self.getSettings)
         self.subMenuSensor.add_command(label="Apply Current Configuration",
@@ -171,11 +172,19 @@ class ErebusGUI(tk.Frame):
 
             if proceed and not self.connectSensor():
                 self._connectedMessage()
+                if self.sensorHandle.update_RTC():
+                    mb.showwarning("RTC Not Updated",
+                                   "Warning: The sensor is connected, but the "
+                                   "device's time could not be updated. Consider "
+                                   "disconnecting and reconnecting the sensor.")
+                    
             elif proceed:
                 self._disconnectedMessage(warning="Could not establish communication "
                                                   "with Erebus Sensor.")
+                self.sensorHandle = None
             else:
                 self._disconnectedMessage()
+                self.sensorHandle = None
                 
         return
 
@@ -195,6 +204,12 @@ class ErebusGUI(tk.Frame):
 
         return
 
+    def _showNotConnected(self):
+        mb.showerror("", "Erebus sensor is not currently connected. Please connect "
+                         "the sensor and try again.")
+
+        return
+
     def connectSensor(self):
         connectLimit = 12
         status = 1
@@ -210,41 +225,64 @@ class ErebusGUI(tk.Frame):
         return status
 
     def disconnectSensor(self):
-        self.sensorHandle.close()
-        self.sensorHandle = None
+        if self.sensorHandle != None:
+            self.sensorHandle.close()
+            self.sensorHandle = None
         return
 
     def getSettings(self):
         if self.sensorHandle == None:
-            mb.showerror("", "Erebus sensor is not currently connected. Please connect "
-                             "the sensor and try again.")
+            self._showNotConnected()
             return
 
-        self.sensorSettings = self.sensorHandle.getSettings()
+        sensorSettings = self.sensorHandle.getSettings()
+        if sensorSettings == -1:
+            mb.showerror("", "Settings could not be retrieved. Please try again.")
+            return
 
-        self.sensorOptions.set(self.sensorSettings.SENSOR)
+        self.sensorOptions.set(sensorSettings.SENSOR)
         self.eSettingInterval.delete(0, tk.END)
-        self.eSettingInterval.insert(0, str(self.sensorSettings.SAMPLE_INTERVAL))
-        self.unitOptions.set(self.sensorSettings.SAMPLE_UNIT)
+        self.eSettingInterval.insert(0, str(sensorSettings.SAMPLE_INTERVAL))
+        self.unitOptions.set(sensorSettings.SAMPLE_UNIT)
         
         return
 
     def applySettings(self):
         if self.sensorHandle == None:
-            mb.showerror("", "Erebus sensor is not currently connected. Please connect "
-                             "the sensor and try again.")
+            self._showNotConnected()
             return
 
-        if self.sensorSettings == None:
-            self.sensorSettings = self.sensorHandle.getSettings()
-
-        newSettings = self.sensorSettings.extractDiff(self.displayedSettings)
-
-        if self.sensorHandle.applySettings(newSettings):
+        if self.sensorHandle.applySettings(self.sensorOptions.get(),
+                                           self.unitOptions.get(),
+                                           int(self.eSettingInterval.get().strip(' ,.'))):
             mb.showerror("", "Settings update failed. Please try again.")
 
-        self.sensorSettings = copy.deepcopy(self.displayedSettings)
+        return
 
+    def getData(self):
+        if self.sensorHandle == None:
+            self._showNotConnected()
+            return
+        
+        dataBlocks = self.sensorHandle.getData()
+
+        if isinstance(dataBlocks, list) and dataBlocks:
+            with open('datadump.txt', 'a') as fo:
+                fo.write("".join(["\n\n", "*"*30,
+                                  "\nErebus Sensor Data Dump",
+                                  "\n{} Blocks of data samples".format(len(dataBlocks)),
+                                  "\nDump Time: {}".format(str(datetime.now())),
+                                  "\n", "*"*30]))
+
+                for block in dataBlocks:
+                    fo.write(str(block))
+            
+        elif dataBlocks == []:
+            mb.showinfo("", "There were no data samples to retrieve from the device.")
+
+        else:
+            mb.showerror("", "There was an error retrieving data from the device. "
+                             "Please try again.")
         return
             
         
