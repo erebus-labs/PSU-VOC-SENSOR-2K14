@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        04/24/2014 21:15:30 PAGE 1   
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 19:52:12 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE SAMPLE_HANDLER
@@ -28,447 +28,420 @@ line level    source
   17          
   18          uint16 sample_int_count;
   19          
-  20          void rtc_init()
+  20          void RTC_Prep()
   21          {
   22   1          uint16 sample_unit;
   23   1          
-  24   1          uint8 EE_SAMPLE_UNIT = 1;
+  24   1          uint8 EE_SAMPLE_UNIT = 1u;
   25   1          
-  26   1          sample_unit = get_variable(EE_SAMPLE_UNIT);
-  27   1          
-  28   1          switch (sample_unit)
-  29   1          {
-  30   2              case 1: /* Seconds */
-  31   2                  RTC_1_WriteIntervalMask(0x01u);
-  32   2                  break;
-  33   2              case 2: /* Minutes */
-  34   2                  RTC_1_WriteIntervalMask(0x02u);
-  35   2                  break;
-  36   2              case 3: /* Hours */
-  37   2                  RTC_1_WriteIntervalMask(0x04u);
-  38   2                  break;
-  39   2              case 4: /* Days */
-  40   2                  RTC_1_WriteIntervalMask(0x08u);
-  41   2                  break;
-  42   2              case 5: /* Weeks */
-  43   2                  RTC_1_WriteIntervalMask(0x10u);
-  44   2                  break;
-  45   2              case 6: /* Months */
-  46   2                  RTC_1_WriteIntervalMask(0x20);
-  47   2                  break;
-  48   2              case 7: /* Years */
-  49   2                  RTC_1_WriteIntervalMask(0x30u);
-  50   2                  break;
-  51   2          }
-  52   1          
-  53   1          sample_int_count = 0;
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        04/24/2014 21:15:30 PAGE 2   
+  26   1          //sample_unit = get_variable(EE_SAMPLE_UNIT);
+  27   1          sample_unit = EE_SAMPLE_UNIT;
+  28   1          
+  29   1          switch (sample_unit)
+  30   1          {
+  31   2              case 1: /* Seconds */
+  32   2                  RTC_1_WriteIntervalMask(RTC_1_INTERVAL_SEC_MASK);
+  33   2                  break;
+  34   2              case 2: /* Minutes */
+  35   2                  RTC_1_WriteIntervalMask(RTC_1_INTERVAL_MIN_MASK);
+  36   2                  break;
+  37   2              case 3: /* Hours */
+  38   2                  RTC_1_WriteIntervalMask(RTC_1_INTERVAL_HOUR_MASK);
+  39   2                  break;
+  40   2              case 4: /* Days */
+  41   2                  RTC_1_WriteIntervalMask(RTC_1_INTERVAL_DAY_MASK);
+  42   2                  break;
+  43   2              case 5: /* Weeks */
+  44   2                  RTC_1_WriteIntervalMask(RTC_1_INTERVAL_WEEK_MASK);
+  45   2                  break;
+  46   2              case 6: /* Months */
+  47   2                  RTC_1_WriteIntervalMask(RTC_1_INTERVAL_MONTH_MASK);
+  48   2                  break;
+  49   2              case 7: /* Years */
+  50   2                  RTC_1_WriteIntervalMask(RTC_1_INTERVAL_YEAR_MASK);
+  51   2                  break;
+  52   2          }
+  53   1          
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 19:52:12 PAGE 2   
 
-  54   1       }
-  55          
-  56          void RTC_Int_Handler()
-  57          {
-  58   1          
-  59   1          CyPmReadStatus(4);
+  54   1          sample_int_count = 0u;
+  55   1       }
+  56          
+  57          void RTC_Int_Handler()
+  58          {
+  59   1          CyPmReadStatus(4u);
   60   1          
-  61   1          if (sample_counter())
-  62   1          {
-  63   2              take_sample();
-  64   2          }
-  65   1          
-  66   1          CyPmSaveClocks();
-  67   1          CyPmSleep(1,2112);
-  68   1          
-  69   1      }
-  70          
-  71          uint16 sample_counter()
-  72          {
-  73   1          uint16 sample_interval;
-  74   1          
-  75   1          uint8 EE_SAMPLE_INTERVAL = 1;
-  76   1          
-  77   1          sample_interval = get_variable(EE_SAMPLE_INTERVAL);
-  78   1          
-  79   1          /* Take sample if interval has been reached */
-  80   1          if (sample_int_count == sample_interval)
-  81   1          {
-  82   2              take_sample();
-  83   2              sample_int_count = 0;
-  84   2              
-  85   2              return 1;
-  86   2          }
-  87   1          /* Increment counter and go back to sleep if interval has not been reached */
-  88   1          else
-  89   1          {
-  90   2              sample_int_count = sample_int_count++;
-  91   2              
-  92   2              return 0;
-  93   2          }
-  94   1      }
-  95          
-  96          void take_sample()
-  97          {
-  98   1          uint16 SampledData=0; 
-  99   1          
- 100   1          Em_EEPROM_Start(); 
- 101   1          ADC_Start();
- 102   1          
- 103   1          /* ADC */
- 104   1          SampledData = ADC_Read16(); /* Function Starts, Converts, Stops, and Returns from ADC */
- 105   1          if (SampledData & 0x8000)
- 106   1              {
- 107   2              SampledData = 0;        /* Ignore negative ADC results */
- 108   2              }
- 109   1              else if (SampledData >= 0xfff)
- 110   1              {
- 111   2              SampledData = 0xfff;    /* Ignore high ADC results */
- 112   2          }
- 113   1          
- 114   1          
- 115   1          /* EEP */
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        04/24/2014 21:15:30 PAGE 3   
+  61   1          
+  62   1          if (sample_counter())
+  63   1          {
+  64   2              take_sample();
+  65   2          }
+  66   1          
+  67   1          //CyPmSaveClocks();
+  68   1          //CyPmSleep(1,2112);
+  69   1          
+  70   1      }
+  71          
+  72          uint16 sample_counter()
+  73          {
+  74   1          uint16 sample_interval;
+  75   1          
+  76   1          uint8 tmp;
+  77   1          
+  78   1          uint16 EE_SAMPLE_INTERVAL = 2u;
+  79   1          
+  80   1          //sample_interval = get_variable(EE_SAMPLE_INTERVAL);
+  81   1          sample_interval = EE_SAMPLE_INTERVAL;
+  82   1              
+  83   1          /* Take sample if interval has been reached */
+  84   1          if (sample_int_count == sample_interval)
+  85   1          {
+  86   2              take_sample();
+  87   2              sample_int_count = 0u;
+  88   2              
+  89   2              //LED Debug------------------
+  90   2              
+  91   2              tmp = Sample_LED_Read();
+  92   2                 
+  93   2              if(tmp)
+  94   2                  {
+  95   3                      Sample_LED_Write(0u);
+  96   3                  }
+  97   2              else
+  98   2                  {
+  99   3                      Sample_LED_Write(1u);
+ 100   3                  }
+ 101   2              //---------------------------
+ 102   2              
+ 103   2              return 1u;
+ 104   2          }
+ 105   1          /* Increment counter and go back to sleep if interval has not been reached */
+ 106   1          else
+ 107   1          {
+ 108   2              sample_int_count = sample_int_count++;
+ 109   2              
+ 110   2              return 0u;
+ 111   2          }
+ 112   1      }
+ 113          
+ 114          void take_sample()
+ 115          {
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 19:52:12 PAGE 3   
 
- 116   1          Em_EEPROM_Write(&SampledData,TailPtr,2u);
-*** WARNING C182 IN LINE 116 OF .\Sample_Handler.c: pointer to different objects
- 117   1          
- 118   1          TailPtr = TailPtr + 2;
+ 116   1          uint16 SampledData=0; 
+ 117   1          uint8 pin_stat;
+ 118   1          
  119   1          
- 120   1      }
- 121              
- 122          /* [] END OF FILE */
-*** WARNING C291 IN LINE 94 OF .\Sample_Handler.c: not every exit path returns a value
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        04/24/2014 21:15:30 PAGE 4   
+ 120   1          pin_stat = Sample_LED_Read();
+ 121   1          
+ 122   1          if (pin_stat)
+ 123   1          {
+ 124   2              Sample_LED_Write(0u);
+ 125   2          }
+ 126   1          else
+ 127   1          {
+ 128   2              Sample_LED_Write(1u);
+ 129   2          }
+ 130   1          
+ 131   1      }
+ 132              
+ 133          /* [] END OF FILE */
+*** WARNING C291 IN LINE 112 OF .\Sample_Handler.c: not every exit path returns a value
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 19:52:12 PAGE 4   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
 
-             ; FUNCTION rtc_init (BEGIN)
+             ; FUNCTION RTC_Prep (BEGIN)
                                            ; SOURCE LINE # 20
                                            ; SOURCE LINE # 21
                                            ; SOURCE LINE # 24
 0000 900000      R     MOV     DPTR,#EE_SAMPLE_UNIT
 0003 7401              MOV     A,#01H
 0005 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 26
+                                           ; SOURCE LINE # 27
 0006 900000      R     MOV     DPTR,#EE_SAMPLE_UNIT
 0009 E0                MOVX    A,@DPTR
 000A FF                MOV     R7,A
 000B 7E00              MOV     R6,#00H
-000D 120000      E     LCALL   _get_variable
-0010 900000      R     MOV     DPTR,#sample_unit
-0013 EE                MOV     A,R6
+000D 900000      R     MOV     DPTR,#sample_unit
+0010 EE                MOV     A,R6
+0011 F0                MOVX    @DPTR,A
+0012 A3                INC     DPTR
+0013 EF                MOV     A,R7
 0014 F0                MOVX    @DPTR,A
-0015 A3                INC     DPTR
-0016 EF                MOV     A,R7
-0017 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 28
-0018 900000      R     MOV     DPTR,#sample_unit
-001B E0                MOVX    A,@DPTR
-001C FE                MOV     R6,A
-001D A3                INC     DPTR
-001E E0                MOVX    A,@DPTR
-001F FF                MOV     R7,A
-0020 EF                MOV     A,R7
-0021 8EF0              MOV     B,R6
-0023 120000      E     LCALL   ?C?ICASE
-0026 0000        R     DW      ?C0002
-0028 0001              DW      01H
-002A 0000        R     DW      ?C0003
-002C 0002              DW      02H
-002E 0000        R     DW      ?C0004
-0030 0003              DW      03H
-0032 0000        R     DW      ?C0005
-0034 0004              DW      04H
-0036 0000        R     DW      ?C0006
-0038 0005              DW      05H
-003A 0000        R     DW      ?C0007
-003C 0006              DW      06H
-003E 0000        R     DW      ?C0008
-0040 0007              DW      07H
-0042 0000              DW      00H
-0044 0000        R     DW      ?C0001
                                            ; SOURCE LINE # 29
+0015 900000      R     MOV     DPTR,#sample_unit
+0018 E0                MOVX    A,@DPTR
+0019 FE                MOV     R6,A
+001A A3                INC     DPTR
+001B E0                MOVX    A,@DPTR
+001C FF                MOV     R7,A
+001D EF                MOV     A,R7
+001E 8EF0              MOV     B,R6
+0020 120000      E     LCALL   ?C?ICASE
+0023 0000        R     DW      ?C0002
+0025 0001              DW      01H
+0027 0000        R     DW      ?C0003
+0029 0002              DW      02H
+002B 0000        R     DW      ?C0004
+002D 0003              DW      03H
+002F 0000        R     DW      ?C0005
+0031 0004              DW      04H
+0033 0000        R     DW      ?C0006
+0035 0005              DW      05H
+0037 0000        R     DW      ?C0007
+0039 0006              DW      06H
+003B 0000        R     DW      ?C0008
+003D 0007              DW      07H
+003F 0000              DW      00H
+0041 0000        R     DW      ?C0001
                                            ; SOURCE LINE # 30
-0046         ?C0002:
                                            ; SOURCE LINE # 31
-0046 7F01              MOV     R7,#01H
-0048 120000      E     LCALL   _RTC_1_WriteIntervalMask
+0043         ?C0002:
                                            ; SOURCE LINE # 32
-004B 8028              SJMP    ?C0001
+0043 7F01              MOV     R7,#01H
+0045 120000      E     LCALL   _RTC_1_WriteIntervalMask
                                            ; SOURCE LINE # 33
-004D         ?C0003:
+0048 8028              SJMP    ?C0001
                                            ; SOURCE LINE # 34
-004D 7F02              MOV     R7,#02H
-004F 120000      E     LCALL   _RTC_1_WriteIntervalMask
+004A         ?C0003:
                                            ; SOURCE LINE # 35
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        04/24/2014 21:15:30 PAGE 5   
-
-0052 8021              SJMP    ?C0001
+004A 7F02              MOV     R7,#02H
+004C 120000      E     LCALL   _RTC_1_WriteIntervalMask
                                            ; SOURCE LINE # 36
-0054         ?C0004:
+004F 8021              SJMP    ?C0001
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 19:52:12 PAGE 5   
+
                                            ; SOURCE LINE # 37
-0054 7F04              MOV     R7,#04H
-0056 120000      E     LCALL   _RTC_1_WriteIntervalMask
+0051         ?C0004:
                                            ; SOURCE LINE # 38
-0059 801A              SJMP    ?C0001
+0051 7F04              MOV     R7,#04H
+0053 120000      E     LCALL   _RTC_1_WriteIntervalMask
                                            ; SOURCE LINE # 39
-005B         ?C0005:
+0056 801A              SJMP    ?C0001
                                            ; SOURCE LINE # 40
-005B 7F08              MOV     R7,#08H
-005D 120000      E     LCALL   _RTC_1_WriteIntervalMask
+0058         ?C0005:
                                            ; SOURCE LINE # 41
-0060 8013              SJMP    ?C0001
+0058 7F08              MOV     R7,#08H
+005A 120000      E     LCALL   _RTC_1_WriteIntervalMask
                                            ; SOURCE LINE # 42
-0062         ?C0006:
+005D 8013              SJMP    ?C0001
                                            ; SOURCE LINE # 43
-0062 7F10              MOV     R7,#010H
-0064 120000      E     LCALL   _RTC_1_WriteIntervalMask
+005F         ?C0006:
                                            ; SOURCE LINE # 44
-0067 800C              SJMP    ?C0001
+005F 7F10              MOV     R7,#010H
+0061 120000      E     LCALL   _RTC_1_WriteIntervalMask
                                            ; SOURCE LINE # 45
-0069         ?C0007:
+0064 800C              SJMP    ?C0001
                                            ; SOURCE LINE # 46
-0069 7F20              MOV     R7,#020H
-006B 120000      E     LCALL   _RTC_1_WriteIntervalMask
+0066         ?C0007:
                                            ; SOURCE LINE # 47
-006E 8005              SJMP    ?C0001
+0066 7F20              MOV     R7,#020H
+0068 120000      E     LCALL   _RTC_1_WriteIntervalMask
                                            ; SOURCE LINE # 48
-0070         ?C0008:
+006B 8005              SJMP    ?C0001
                                            ; SOURCE LINE # 49
-0070 7F30              MOV     R7,#030H
-0072 120000      E     LCALL   _RTC_1_WriteIntervalMask
+006D         ?C0008:
                                            ; SOURCE LINE # 50
+006D 7F40              MOV     R7,#040H
+006F 120000      E     LCALL   _RTC_1_WriteIntervalMask
                                            ; SOURCE LINE # 51
-0075         ?C0001:
-                                           ; SOURCE LINE # 53
-0075 900000      R     MOV     DPTR,#sample_int_count
+                                           ; SOURCE LINE # 52
+0072         ?C0001:
+                                           ; SOURCE LINE # 54
+0072 900000      R     MOV     DPTR,#sample_int_count
+0075 E4                CLR     A
+0076 F0                MOVX    @DPTR,A
+0077 A3                INC     DPTR
 0078 E4                CLR     A
 0079 F0                MOVX    @DPTR,A
-007A A3                INC     DPTR
-007B E4                CLR     A
-007C F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 54
-007D         ?C0009:
-007D 22                RET     
-             ; FUNCTION rtc_init (END)
+                                           ; SOURCE LINE # 55
+007A         ?C0009:
+007A 22                RET     
+             ; FUNCTION RTC_Prep (END)
 
              ; FUNCTION RTC_Int_Handler (BEGIN)
-                                           ; SOURCE LINE # 56
                                            ; SOURCE LINE # 57
+                                           ; SOURCE LINE # 58
                                            ; SOURCE LINE # 59
 0000 7F04              MOV     R7,#04H
 0002 120000      E     LCALL   _CyPmReadStatus
-                                           ; SOURCE LINE # 61
+                                           ; SOURCE LINE # 62
 0005 120000      R     LCALL   sample_counter
 0008 EF                MOV     A,R7
 0009 4E                ORL     A,R6
-000A 6003              JZ      ?C0010
-                                           ; SOURCE LINE # 62
+000A 6003              JZ      ?C0011
                                            ; SOURCE LINE # 63
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        04/24/2014 21:15:30 PAGE 6   
-
-000C 120000      R     LCALL   take_sample
                                            ; SOURCE LINE # 64
+000C 120000      R     LCALL   take_sample
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 19:52:12 PAGE 6   
+
+                                           ; SOURCE LINE # 65
 000F         ?C0010:
-                                           ; SOURCE LINE # 66
-000F 120000      E     LCALL   CyPmSaveClocks
-                                           ; SOURCE LINE # 67
-0012 7D40              MOV     R5,#040H
-0014 7C08              MOV     R4,#08H
-0016 7F01              MOV     R7,#01H
-0018 120000      E     LCALL   _CyPmSleep
-                                           ; SOURCE LINE # 69
-001B         ?C0011:
-001B 22                RET     
+                                           ; SOURCE LINE # 70
+000F         ?C0011:
+000F 22                RET     
              ; FUNCTION RTC_Int_Handler (END)
 
              ; FUNCTION sample_counter (BEGIN)
-                                           ; SOURCE LINE # 71
                                            ; SOURCE LINE # 72
-                                           ; SOURCE LINE # 75
+                                           ; SOURCE LINE # 73
+                                           ; SOURCE LINE # 78
 0000 900000      R     MOV     DPTR,#EE_SAMPLE_INTERVAL
-0003 7401              MOV     A,#01H
-0005 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 77
-0006 900000      R     MOV     DPTR,#EE_SAMPLE_INTERVAL
-0009 E0                MOVX    A,@DPTR
-000A FF                MOV     R7,A
-000B 7E00              MOV     R6,#00H
-000D 120000      E     LCALL   _get_variable
-0010 900000      R     MOV     DPTR,#sample_interval
-0013 EE                MOV     A,R6
-0014 F0                MOVX    @DPTR,A
-0015 A3                INC     DPTR
-0016 EF                MOV     A,R7
-0017 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 80
-0018 900000      R     MOV     DPTR,#sample_interval
-001B E0                MOVX    A,@DPTR
-001C FE                MOV     R6,A
-001D A3                INC     DPTR
-001E E0                MOVX    A,@DPTR
-001F FF                MOV     R7,A
-0020 900000      R     MOV     DPTR,#sample_int_count
-0023 E0                MOVX    A,@DPTR
-0024 FC                MOV     R4,A
-0025 A3                INC     DPTR
-0026 E0                MOVX    A,@DPTR
-0027 FD                MOV     R5,A
-0028 ED                MOV     A,R5
-0029 B50715            CJNE    A,AR7,?C0012
-002C EC                MOV     A,R4
-002D B50611            CJNE    A,AR6,?C0012
-                                           ; SOURCE LINE # 81
-                                           ; SOURCE LINE # 82
-0030 120000      R     LCALL   take_sample
-                                           ; SOURCE LINE # 83
-0033 900000      R     MOV     DPTR,#sample_int_count
-0036 E4                CLR     A
-0037 F0                MOVX    @DPTR,A
-0038 A3                INC     DPTR
-0039 E4                CLR     A
-003A F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 85
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        04/24/2014 21:15:30 PAGE 7   
-
-003B 7E00              MOV     R6,#00H
-003D 7F01              MOV     R7,#01H
-003F 22                RET     
-                                           ; SOURCE LINE # 86
-0040 22                RET     
-0041         ?C0012:
-                                           ; SOURCE LINE # 89
-                                           ; SOURCE LINE # 90
-0041 900000      R     MOV     DPTR,#sample_int_count
-0044 E4                CLR     A
-0045 75F001            MOV     B,#01H
-0048 120000      E     LCALL   ?C?ILDIX
-004B AFF0              MOV     R7,B
-004D FE                MOV     R6,A
-004E 900000      R     MOV     DPTR,#sample_int_count
-0051 EE                MOV     A,R6
-0052 F0                MOVX    @DPTR,A
-0053 A3                INC     DPTR
-0054 EF                MOV     A,R7
-0055 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 92
-0056 E4                CLR     A
-0057 7E00              MOV     R6,#00H
-0059 7F00              MOV     R7,#00H
-                                           ; SOURCE LINE # 93
-005B         ?C0014:
-                                           ; SOURCE LINE # 94
-005B         ?C0013:
-005B 22                RET     
-             ; FUNCTION sample_counter (END)
-
-             ; FUNCTION take_sample (BEGIN)
-                                           ; SOURCE LINE # 96
-                                           ; SOURCE LINE # 97
-                                           ; SOURCE LINE # 98
-0000 900000      R     MOV     DPTR,#SampledData
 0003 E4                CLR     A
 0004 F0                MOVX    @DPTR,A
 0005 A3                INC     DPTR
-0006 E4                CLR     A
-0007 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 100
-0008 120000      E     LCALL   Em_EEPROM_Start
-                                           ; SOURCE LINE # 101
-000B 120000      E     LCALL   ADC_Start
-                                           ; SOURCE LINE # 104
-000E 120000      E     LCALL   ADC_Read16
-0011 900000      R     MOV     DPTR,#SampledData
+0006 7402              MOV     A,#02H
+0008 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 81
+0009 900000      R     MOV     DPTR,#EE_SAMPLE_INTERVAL
+000C E0                MOVX    A,@DPTR
+000D FE                MOV     R6,A
+000E A3                INC     DPTR
+000F E0                MOVX    A,@DPTR
+0010 FF                MOV     R7,A
+0011 900000      R     MOV     DPTR,#sample_interval
 0014 EE                MOV     A,R6
 0015 F0                MOVX    @DPTR,A
 0016 A3                INC     DPTR
 0017 EF                MOV     A,R7
 0018 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 105
-0019 900000      R     MOV     DPTR,#SampledData
+                                           ; SOURCE LINE # 84
+0019 900000      R     MOV     DPTR,#sample_interval
 001C E0                MOVX    A,@DPTR
 001D FE                MOV     R6,A
 001E A3                INC     DPTR
 001F E0                MOVX    A,@DPTR
 0020 FF                MOV     R7,A
-0021 EE                MOV     A,R6
-0022 30E70A            JNB     ACC.7,?C0015
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        04/24/2014 21:15:30 PAGE 8   
+0021 900000      R     MOV     DPTR,#sample_int_count
+0024 E0                MOVX    A,@DPTR
+0025 FC                MOV     R4,A
+0026 A3                INC     DPTR
+0027 E0                MOVX    A,@DPTR
+0028 FD                MOV     R5,A
+0029 ED                MOV     A,R5
+002A 6F                XRL     A,R7
+002B 7002              JNZ     ?C0020
+002D EC                MOV     A,R4
+002E 6E                XRL     A,R6
+002F         ?C0020:
+002F 702D              JNZ     ?C0012
+                                           ; SOURCE LINE # 85
+                                           ; SOURCE LINE # 86
+0031 120000      R     LCALL   take_sample
+                                           ; SOURCE LINE # 87
+0034 900000      R     MOV     DPTR,#sample_int_count
+0037 E4                CLR     A
+0038 F0                MOVX    @DPTR,A
+0039 A3                INC     DPTR
+003A E4                CLR     A
+003B F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 91
+003C 120000      E     LCALL   Sample_LED_Read
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 19:52:12 PAGE 7   
 
-                                           ; SOURCE LINE # 106
+003F 900000      R     MOV     DPTR,#tmp
+0042 EF                MOV     A,R7
+0043 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 93
+0044 900000      R     MOV     DPTR,#tmp
+0047 E0                MOVX    A,@DPTR
+0048 FF                MOV     R7,A
+0049 EF                MOV     A,R7
+004A 6007              JZ      ?C0013
+                                           ; SOURCE LINE # 94
+                                           ; SOURCE LINE # 95
+004C 7F00              MOV     R7,#00H
+004E 120000      E     LCALL   _Sample_LED_Write
+                                           ; SOURCE LINE # 96
+0051 8005              SJMP    ?C0014
+0053         ?C0013:
+                                           ; SOURCE LINE # 98
+                                           ; SOURCE LINE # 99
+0053 7F01              MOV     R7,#01H
+0055 120000      E     LCALL   _Sample_LED_Write
+                                           ; SOURCE LINE # 100
+0058         ?C0014:
+                                           ; SOURCE LINE # 103
+0058 7E00              MOV     R6,#00H
+005A 7F01              MOV     R7,#01H
+005C 22                RET     
+                                           ; SOURCE LINE # 104
+005D 22                RET     
+005E         ?C0012:
                                            ; SOURCE LINE # 107
-0025 900000      R     MOV     DPTR,#SampledData
-0028 E4                CLR     A
-0029 F0                MOVX    @DPTR,A
-002A A3                INC     DPTR
-002B E4                CLR     A
-002C F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 108
-002D 801B              SJMP    ?C0016
-002F         ?C0015:
-                                           ; SOURCE LINE # 109
-002F 900000      R     MOV     DPTR,#SampledData
-0032 E0                MOVX    A,@DPTR
-0033 FE                MOV     R6,A
-0034 A3                INC     DPTR
-0035 E0                MOVX    A,@DPTR
-0036 FF                MOV     R7,A
-0037 C3                CLR     C
-0038 EF                MOV     A,R7
-0039 94FF              SUBB    A,#0FFH
-003B EE                MOV     A,R6
-003C 940F              SUBB    A,#0FH
-003E 400A              JC      ?C0016
+005E 900000      R     MOV     DPTR,#sample_int_count
+0061 E4                CLR     A
+0062 75F001            MOV     B,#01H
+0065 120000      E     LCALL   ?C?ILDIX
+0068 AFF0              MOV     R7,B
+006A FE                MOV     R6,A
+006B 900000      R     MOV     DPTR,#sample_int_count
+006E EE                MOV     A,R6
+006F F0                MOVX    @DPTR,A
+0070 A3                INC     DPTR
+0071 EF                MOV     A,R7
+0072 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 110
+0073 E4                CLR     A
+0074 7E00              MOV     R6,#00H
+0076 7F00              MOV     R7,#00H
                                            ; SOURCE LINE # 111
-0040 900000      R     MOV     DPTR,#SampledData
-0043 740F              MOV     A,#0FH
-0045 F0                MOVX    @DPTR,A
-0046 A3                INC     DPTR
-0047 74FF              MOV     A,#0FFH
-0049 F0                MOVX    @DPTR,A
+0078         ?C0016:
                                            ; SOURCE LINE # 112
-004A         ?C0017:
-004A         ?C0016:
-                                           ; SOURCE LINE # 116
-004A 7B01              MOV     R3,#01H
-004C 7A00        R     MOV     R2,#HIGH SampledData
-004E 7900        R     MOV     R1,#LOW SampledData
-0050 C003              PUSH    AR3
-0052 C002              PUSH    AR2
-0054 C001              PUSH    AR1
-0056 900000      E     MOV     DPTR,#TailPtr
-0059 120000      E     LCALL   ?C?PLDXDATA
-005C 900000      E     MOV     DPTR,#?_Em_EEPROM_Write?BYTE+03H
-005F 120000      E     LCALL   ?C?PSTXDATA
-0062 900000      E     MOV     DPTR,#?_Em_EEPROM_Write?BYTE+06H
-0065 E4                CLR     A
-0066 F0                MOVX    @DPTR,A
-0067 A3                INC     DPTR
-0068 7402              MOV     A,#02H
-006A F0                MOVX    @DPTR,A
-006B D001              POP     AR1
-006D D002              POP     AR2
-006F D003              POP     AR3
-0071 120000      E     LCALL   _Em_EEPROM_Write
-                                           ; SOURCE LINE # 118
-0074 900000      E     MOV     DPTR,#TailPtr+01H
-0077 E4                CLR     A
-0078 75F002            MOV     B,#02H
-007B 120000      E     LCALL   ?C?IILDX
-                                           ; SOURCE LINE # 120
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        04/24/2014 21:15:30 PAGE 9   
+0078         ?C0015:
+0078 22                RET     
+             ; FUNCTION sample_counter (END)
 
-007E         ?C0018:
-007E 22                RET     
+             ; FUNCTION take_sample (BEGIN)
+                                           ; SOURCE LINE # 114
+                                           ; SOURCE LINE # 115
+                                           ; SOURCE LINE # 116
+0000 900000      R     MOV     DPTR,#SampledData
+0003 E4                CLR     A
+0004 F0                MOVX    @DPTR,A
+0005 A3                INC     DPTR
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 19:52:12 PAGE 8   
+
+0006 E4                CLR     A
+0007 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 120
+0008 120000      E     LCALL   Sample_LED_Read
+000B 900000      R     MOV     DPTR,#pin_stat
+000E EF                MOV     A,R7
+000F F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 122
+0010 900000      R     MOV     DPTR,#pin_stat
+0013 E0                MOVX    A,@DPTR
+0014 FF                MOV     R7,A
+0015 EF                MOV     A,R7
+0016 6006              JZ      ?C0017
+                                           ; SOURCE LINE # 123
+                                           ; SOURCE LINE # 124
+0018 7F00              MOV     R7,#00H
+001A 120000      E     LCALL   _Sample_LED_Write
+                                           ; SOURCE LINE # 125
+001D 22                RET     
+001E         ?C0017:
+                                           ; SOURCE LINE # 127
+                                           ; SOURCE LINE # 128
+001E 7F01              MOV     R7,#01H
+0020 120000      E     LCALL   _Sample_LED_Write
+                                           ; SOURCE LINE # 129
+0023         ?C0018:
+                                           ; SOURCE LINE # 131
+0023         ?C0019:
+0023 22                RET     
              ; FUNCTION take_sample (END)
 
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    373    ----
+   CODE SIZE        =    296    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =     10    ----
+   XDATA SIZE       =     13    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
@@ -480,4 +453,4 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
 END OF MODULE INFORMATION.
 
 
-C51 COMPILATION COMPLETE.  2 WARNING(S),  0 ERROR(S)
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

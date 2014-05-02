@@ -823,6 +823,21 @@
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\RTC_1_INT.c</FilePath>
             </File>
+            <File>
+              <FileName>Sample_LED.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Sample_LED.c</FilePath>
+            </File>
+            <File>
+              <FileName>Sample_LED.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Sample_LED.h</FilePath>
+            </File>
+            <File>
+              <FileName>Sample_LED_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Sample_LED_aliases.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
@@ -1647,6 +1662,21 @@
               <FileName>RTC_1_INT.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\RTC_1_INT.c</FilePath>
+            </File>
+            <File>
+              <FileName>Sample_LED.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Sample_LED.c</FilePath>
+            </File>
+            <File>
+              <FileName>Sample_LED.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Sample_LED.h</FilePath>
+            </File>
+            <File>
+              <FileName>Sample_LED_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Sample_LED_aliases.h</FilePath>
             </File>
           </Files>
         </Group>
