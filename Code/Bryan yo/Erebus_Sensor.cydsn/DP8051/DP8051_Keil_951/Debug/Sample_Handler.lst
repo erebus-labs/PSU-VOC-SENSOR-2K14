@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 22:31:53 PAGE 1   
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/02/2014 16:38:21 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE SAMPLE_HANDLER
@@ -32,7 +32,7 @@ line level    source
   21          {
   22   1          uint16 sample_unit;
   23   1          
-  24   1          uint8 EE_SAMPLE_UNIT = 1u;
+  24   1          uint8 EE_SAMPLE_UNIT = 2u;
   25   1          
   26   1          //sample_unit = get_variable(EE_SAMPLE_UNIT);
   27   1          sample_unit = EE_SAMPLE_UNIT;
@@ -61,8 +61,8 @@ line level    source
   50          {
   51   1          uint16 sample_interval;
   52   1         
-  53   1          uint16 EE_SAMPLE_INTERVAL = 2u;
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 22:31:53 PAGE 2   
+  53   1          uint16 EE_SAMPLE_INTERVAL = 1u;
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/02/2014 16:38:21 PAGE 2   
 
   54   1          
   55   1          
@@ -109,7 +109,7 @@ line level    source
   96   1      }
   97              
   98          /* [] END OF FILE */
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 22:31:53 PAGE 3   
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/02/2014 16:38:21 PAGE 3   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -119,7 +119,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 21
                                            ; SOURCE LINE # 24
 0000 900000      R     MOV     DPTR,#EE_SAMPLE_UNIT
-0003 7401              MOV     A,#01H
+0003 7402              MOV     A,#02H
 0005 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 27
 0006 900000      R     MOV     DPTR,#EE_SAMPLE_UNIT
@@ -173,7 +173,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0045 7F04              MOV     R7,#04H
 0047 120000      E     LCALL   _RTC_1_WriteIntervalMask
                                            ; SOURCE LINE # 39
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 22:31:53 PAGE 4   
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/02/2014 16:38:21 PAGE 4   
 
 004A 8005              SJMP    ?C0001
                                            ; SOURCE LINE # 40
@@ -204,7 +204,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0003 E4                CLR     A
 0004 F0                MOVX    @DPTR,A
 0005 A3                INC     DPTR
-0006 7402              MOV     A,#02H
+0006 7401              MOV     A,#01H
 0008 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 57
 0009 7F04              MOV     R7,#04H
@@ -237,7 +237,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0030 900000      R     MOV     DPTR,#sample_int_count
 0033 E0                MOVX    A,@DPTR
 0034 FC                MOV     R4,A
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 22:31:53 PAGE 5   
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/02/2014 16:38:21 PAGE 5   
 
 0035 A3                INC     DPTR
 0036 E0                MOVX    A,@DPTR
@@ -301,7 +301,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0023         ?C0011:
 0023 22                RET     
              ; FUNCTION take_sample (END)
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/01/2014 22:31:53 PAGE 6   
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        05/02/2014 16:38:21 PAGE 6   
 
 
 

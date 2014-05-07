@@ -21,7 +21,7 @@ void rtc_prep()
 {
     uint16 sample_unit;
     
-    uint8 EE_SAMPLE_UNIT = 1u;
+    uint8 EE_SAMPLE_UNIT = 2u;
     
     //sample_unit = get_variable(EE_SAMPLE_UNIT);
     sample_unit = EE_SAMPLE_UNIT;
@@ -50,7 +50,7 @@ void sample_counter()
 {
     uint16 sample_interval;
    
-    uint16 EE_SAMPLE_INTERVAL = 2u;
+    uint16 EE_SAMPLE_INTERVAL = 1u;
     
     
     // Begin interrupt handling
