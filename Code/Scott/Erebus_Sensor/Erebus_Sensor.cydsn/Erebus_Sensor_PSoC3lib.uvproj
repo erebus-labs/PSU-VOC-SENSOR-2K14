@@ -634,21 +634,6 @@
               <FilePath>.\Generated_Source\PSoC3\EEPROM_R.h</FilePath>
             </File>
             <File>
-              <FileName>USB_LED.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USB_LED.c</FilePath>
-            </File>
-            <File>
-              <FileName>USB_LED.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USB_LED.h</FilePath>
-            </File>
-            <File>
-              <FileName>USB_LED_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USB_LED_aliases.h</FilePath>
-            </File>
-            <File>
               <FileName>Vbus_IRQ.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\Vbus_IRQ.c</FilePath>
@@ -687,16 +672,6 @@
               <FileName>ADC_INT.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\ADC_INT.c</FilePath>
-            </File>
-            <File>
-              <FileName>TakeSample_IRQ.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\TakeSample_IRQ.c</FilePath>
-            </File>
-            <File>
-              <FileName>TakeSample_IRQ.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\TakeSample_IRQ.h</FilePath>
             </File>
             <File>
               <FileName>ADC_AMux.c</FileName>
@@ -739,21 +714,6 @@
               <FilePath>.\Generated_Source\PSoC3\ADC_theACLK.h</FilePath>
             </File>
             <File>
-              <FileName>EEPROM_LED.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\EEPROM_LED.c</FilePath>
-            </File>
-            <File>
-              <FileName>EEPROM_LED.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\EEPROM_LED.h</FilePath>
-            </File>
-            <File>
-              <FileName>EEPROM_LED_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\EEPROM_LED_aliases.h</FilePath>
-            </File>
-            <File>
               <FileName>StartCollection_B.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\StartCollection_B.c</FilePath>
@@ -782,31 +742,6 @@
               <FileName>StopCollection_B_aliases.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\StopCollection_B_aliases.h</FilePath>
-            </File>
-            <File>
-              <FileName>Hibernate_B.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Hibernate_B.c</FilePath>
-            </File>
-            <File>
-              <FileName>Hibernate_B.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Hibernate_B.h</FilePath>
-            </File>
-            <File>
-              <FileName>Hibernate_B_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Hibernate_B_aliases.h</FilePath>
-            </File>
-            <File>
-              <FileName>Hibernate_IRQ.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Hibernate_IRQ.c</FilePath>
-            </File>
-            <File>
-              <FileName>Hibernate_IRQ.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Hibernate_IRQ.h</FilePath>
             </File>
             <File>
               <FileName>StopCollection_IRQ.c</FileName>
@@ -844,21 +779,6 @@
               <FilePath>.\Generated_Source\PSoC3\RTC_INT.c</FilePath>
             </File>
             <File>
-              <FileName>TakeSample_B.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\TakeSample_B.c</FilePath>
-            </File>
-            <File>
-              <FileName>TakeSample_B.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\TakeSample_B.h</FilePath>
-            </File>
-            <File>
-              <FileName>TakeSample_B_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\TakeSample_B_aliases.h</FilePath>
-            </File>
-            <File>
               <FileName>Sensor_In.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\Sensor_In.c</FilePath>
@@ -874,74 +794,64 @@
               <FilePath>.\Generated_Source\PSoC3\Sensor_In_aliases.h</FilePath>
             </File>
             <File>
-              <FileName>Blink_Clock.c</FileName>
+              <FileName>RGB_LED.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Blink_Clock.c</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\RGB_LED.c</FilePath>
             </File>
             <File>
-              <FileName>Blink_Clock.h</FileName>
+              <FileName>RGB_LED.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Blink_Clock.h</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\RGB_LED.h</FilePath>
             </File>
             <File>
-              <FileName>EEPROM_Blink_TI.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\EEPROM_Blink_TI.c</FilePath>
-            </File>
-            <File>
-              <FileName>EEPROM_Blink_TI.h</FileName>
+              <FileName>RGB_LED_aliases.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\EEPROM_Blink_TI.h</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\RGB_LED_aliases.h</FilePath>
             </File>
             <File>
-              <FileName>EEPROM_Blink_TI_PM.c</FileName>
+              <FileName>LED_PWM.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\EEPROM_Blink_TI_PM.c</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\LED_PWM.c</FilePath>
             </File>
             <File>
-              <FileName>USB_Blink_TI.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USB_Blink_TI.c</FilePath>
-            </File>
-            <File>
-              <FileName>USB_Blink_TI.h</FileName>
+              <FileName>LED_PWM.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USB_Blink_TI.h</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\LED_PWM.h</FilePath>
             </File>
             <File>
-              <FileName>USB_Blink_TI_PM.c</FileName>
+              <FileName>LED_PWM_PM.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USB_Blink_TI_PM.c</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\LED_PWM_PM.c</FilePath>
             </File>
             <File>
-              <FileName>FLASH_LED.c</FileName>
+              <FileName>PWM_CLK.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\FLASH_LED.c</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\PWM_CLK.c</FilePath>
             </File>
             <File>
-              <FileName>FLASH_LED.h</FileName>
+              <FileName>PWM_CLK.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\FLASH_LED.h</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\PWM_CLK.h</FilePath>
             </File>
             <File>
-              <FileName>FLASH_LED_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\FLASH_LED_aliases.h</FilePath>
-            </File>
-            <File>
-              <FileName>Flash_Blink_TI.c</FileName>
+              <FileName>LED0_CTRL.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Flash_Blink_TI.c</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\LED0_CTRL.c</FilePath>
             </File>
             <File>
-              <FileName>Flash_Blink_TI.h</FileName>
+              <FileName>LED0_CTRL.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Flash_Blink_TI.h</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\LED0_CTRL.h</FilePath>
             </File>
             <File>
-              <FileName>Flash_Blink_TI_PM.c</FileName>
+              <FileName>LED1_CTRL.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Flash_Blink_TI_PM.c</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\LED1_CTRL.c</FilePath>
+            </File>
+            <File>
+              <FileName>LED1_CTRL.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\LED1_CTRL.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1579,21 +1489,6 @@
               <FilePath>.\Generated_Source\PSoC3\EEPROM_R.h</FilePath>
             </File>
             <File>
-              <FileName>USB_LED.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USB_LED.c</FilePath>
-            </File>
-            <File>
-              <FileName>USB_LED.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USB_LED.h</FilePath>
-            </File>
-            <File>
-              <FileName>USB_LED_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USB_LED_aliases.h</FilePath>
-            </File>
-            <File>
               <FileName>Vbus_IRQ.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\Vbus_IRQ.c</FilePath>
@@ -1632,16 +1527,6 @@
               <FileName>ADC_INT.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\ADC_INT.c</FilePath>
-            </File>
-            <File>
-              <FileName>TakeSample_IRQ.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\TakeSample_IRQ.c</FilePath>
-            </File>
-            <File>
-              <FileName>TakeSample_IRQ.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\TakeSample_IRQ.h</FilePath>
             </File>
             <File>
               <FileName>ADC_AMux.c</FileName>
@@ -1684,21 +1569,6 @@
               <FilePath>.\Generated_Source\PSoC3\ADC_theACLK.h</FilePath>
             </File>
             <File>
-              <FileName>EEPROM_LED.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\EEPROM_LED.c</FilePath>
-            </File>
-            <File>
-              <FileName>EEPROM_LED.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\EEPROM_LED.h</FilePath>
-            </File>
-            <File>
-              <FileName>EEPROM_LED_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\EEPROM_LED_aliases.h</FilePath>
-            </File>
-            <File>
               <FileName>StartCollection_B.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\StartCollection_B.c</FilePath>
@@ -1727,31 +1597,6 @@
               <FileName>StopCollection_B_aliases.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\StopCollection_B_aliases.h</FilePath>
-            </File>
-            <File>
-              <FileName>Hibernate_B.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Hibernate_B.c</FilePath>
-            </File>
-            <File>
-              <FileName>Hibernate_B.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Hibernate_B.h</FilePath>
-            </File>
-            <File>
-              <FileName>Hibernate_B_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Hibernate_B_aliases.h</FilePath>
-            </File>
-            <File>
-              <FileName>Hibernate_IRQ.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Hibernate_IRQ.c</FilePath>
-            </File>
-            <File>
-              <FileName>Hibernate_IRQ.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Hibernate_IRQ.h</FilePath>
             </File>
             <File>
               <FileName>StopCollection_IRQ.c</FileName>
@@ -1789,21 +1634,6 @@
               <FilePath>.\Generated_Source\PSoC3\RTC_INT.c</FilePath>
             </File>
             <File>
-              <FileName>TakeSample_B.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\TakeSample_B.c</FilePath>
-            </File>
-            <File>
-              <FileName>TakeSample_B.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\TakeSample_B.h</FilePath>
-            </File>
-            <File>
-              <FileName>TakeSample_B_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\TakeSample_B_aliases.h</FilePath>
-            </File>
-            <File>
               <FileName>Sensor_In.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\Sensor_In.c</FilePath>
@@ -1819,74 +1649,64 @@
               <FilePath>.\Generated_Source\PSoC3\Sensor_In_aliases.h</FilePath>
             </File>
             <File>
-              <FileName>Blink_Clock.c</FileName>
+              <FileName>RGB_LED.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Blink_Clock.c</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\RGB_LED.c</FilePath>
             </File>
             <File>
-              <FileName>Blink_Clock.h</FileName>
+              <FileName>RGB_LED.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Blink_Clock.h</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\RGB_LED.h</FilePath>
             </File>
             <File>
-              <FileName>EEPROM_Blink_TI.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\EEPROM_Blink_TI.c</FilePath>
-            </File>
-            <File>
-              <FileName>EEPROM_Blink_TI.h</FileName>
+              <FileName>RGB_LED_aliases.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\EEPROM_Blink_TI.h</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\RGB_LED_aliases.h</FilePath>
             </File>
             <File>
-              <FileName>EEPROM_Blink_TI_PM.c</FileName>
+              <FileName>LED_PWM.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\EEPROM_Blink_TI_PM.c</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\LED_PWM.c</FilePath>
             </File>
             <File>
-              <FileName>USB_Blink_TI.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USB_Blink_TI.c</FilePath>
-            </File>
-            <File>
-              <FileName>USB_Blink_TI.h</FileName>
+              <FileName>LED_PWM.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USB_Blink_TI.h</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\LED_PWM.h</FilePath>
             </File>
             <File>
-              <FileName>USB_Blink_TI_PM.c</FileName>
+              <FileName>LED_PWM_PM.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\USB_Blink_TI_PM.c</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\LED_PWM_PM.c</FilePath>
             </File>
             <File>
-              <FileName>FLASH_LED.c</FileName>
+              <FileName>PWM_CLK.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\FLASH_LED.c</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\PWM_CLK.c</FilePath>
             </File>
             <File>
-              <FileName>FLASH_LED.h</FileName>
+              <FileName>PWM_CLK.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\FLASH_LED.h</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\PWM_CLK.h</FilePath>
             </File>
             <File>
-              <FileName>FLASH_LED_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\FLASH_LED_aliases.h</FilePath>
-            </File>
-            <File>
-              <FileName>Flash_Blink_TI.c</FileName>
+              <FileName>LED0_CTRL.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Flash_Blink_TI.c</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\LED0_CTRL.c</FilePath>
             </File>
             <File>
-              <FileName>Flash_Blink_TI.h</FileName>
+              <FileName>LED0_CTRL.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Flash_Blink_TI.h</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\LED0_CTRL.h</FilePath>
             </File>
             <File>
-              <FileName>Flash_Blink_TI_PM.c</FileName>
+              <FileName>LED1_CTRL.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\Flash_Blink_TI_PM.c</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\LED1_CTRL.c</FilePath>
+            </File>
+            <File>
+              <FileName>LED1_CTRL.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\LED1_CTRL.h</FilePath>
             </File>
           </Files>
         </Group>

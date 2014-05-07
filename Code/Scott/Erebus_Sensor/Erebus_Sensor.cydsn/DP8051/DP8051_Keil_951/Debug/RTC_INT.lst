@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 1   
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE RTC_INT
@@ -41,7 +41,7 @@ line level    source
   30          *  Place your includes, defines and code here
   31          *******************************************************************************/
   32          /* `#START RTC_ISR_DEFINITION` */
-  33          
+  33          #include "Sample_Handler.h"
   34          /* `#END` */
   35          
   36          
@@ -62,10 +62,10 @@ line level    source
   51          static void RTC_EverySecondHandler(void)
   52          {
   53   1          /*  Place your every second handler code here. */
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 2   
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 2   
 
   54   1          /* `#START EVERY_SECOND_HANDLER_CODE` */
-  55   1      
+  55   1          sample_counter();
   56   1          /* `#END` */
   57   1      }
   58          
@@ -88,7 +88,7 @@ line level    source
   75          {
   76   1          /*  Place your every minute handler code here. */
   77   1          /* `#START EVERY_MINUTE_HANDLER_CODE` */
-  78   1      
+  78   1          sample_counter();
   79   1          /* `#END` */
   80   1      }
   81          
@@ -111,7 +111,7 @@ line level    source
   98          {
   99   1          /*  Place your every hour handler code here. */
  100   1          /* `#START EVERY_HOUR_HANDLER_CODE` */
- 101   1      
+ 101   1          sample_counter();
  102   1          /* `#END` */
  103   1      }
  104          
@@ -126,7 +126,7 @@ line level    source
  113          * Parameters:
  114          *  None.
  115          *
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 3   
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 3   
 
  116          * Return:
  117          *  None.
@@ -136,7 +136,7 @@ line level    source
  121          {
  122   1          /*  Place your everyday handler code here. */
  123   1          /* `#START EVERY_DAY_HANDLER_CODE` */
- 124   1      
+ 124   1          sample_counter();
  125   1          /* `#END` */
  126   1      }
  127          
@@ -159,7 +159,7 @@ line level    source
  144          {
  145   1          /*  Place your every week handler code here. */
  146   1          /* `#START EVERY_WEEK_HANDLER_CODE` */
- 147   1      
+ 147   1          sample_counter();
  148   1          /* `#END` */
  149   1      }
  150          
@@ -182,7 +182,7 @@ line level    source
  167          {
  168   1          /*  Place your every month handler code here. */
  169   1          /* `#START EVERY_MONTH_HANDLER_CODE` */
- 170   1      
+ 170   1          sample_counter();
  171   1          /* `#END` */
  172   1      }
  173          
@@ -190,7 +190,7 @@ line level    source
  175          /*******************************************************************************
  176          * Function Name:   RTC_EveryYearHandler
  177          ********************************************************************************
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 4   
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 4   
 
  178          *
  179          * Summary:
@@ -207,7 +207,7 @@ line level    source
  190          {
  191   1          /*  Place your every year handler code here. */
  192   1          /* `#START EVERY_YEAR_HANDLER_CODE` */
- 193   1      
+ 193   1          sample_counter();
  194   1          /* `#END` */
  195   1      }
  196          
@@ -254,7 +254,7 @@ line level    source
  237          {
  238   1          uint8 RTC_tmp;
  239   1      
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 5   
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 5   
 
  240   1          /* Clear OPPS interrupt status flag */
  241   1          (void) CyPmReadStatus(CY_PM_ONEPPS_INT);
@@ -318,7 +318,7 @@ line level    source
  299   4                          (RTC_currentTimeDate.DayOfMonth >
  300   4                                          RTC_daysInMonths[RTC_currentTimeDate.Month - 1u])))
  301   4                      {
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 6   
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 6   
 
  302   5                          /* Inc Month */
  303   5                          RTC_currentTimeDate.Month++;
@@ -382,7 +382,7 @@ line level    source
  361   6      
  362   6                          } /* Month > 12 */
  363   5      
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 7   
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 7   
 
  364   5                          /* Alarm MONTH */
  365   5                          if(0u != RTC_IS_BIT_SET(RTC_alarmCfgMask,
@@ -446,7 +446,7 @@ line level    source
  423   5                          else
  424   5                          {
  425   6                              /* Clear day of week alarm */
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 8   
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 8   
 
  426   6                              RTC_alarmCurStatus &= (uint8)(~RTC_ALARM_DAYOFWEEK_MASK);
  427   6                          }
@@ -510,7 +510,7 @@ line level    source
  486   4                                                 RTC_alarmCurStatus,
  486   4                                                 RTC_statusDateTime);
  487   4      
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 9   
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 9   
 
  488   4                      /* Every Day */
  489   4                      if(0u != RTC_IS_BIT_SET(RTC_intervalCfgMask,
@@ -574,7 +574,7 @@ line level    source
                                           * in DST offset which is out of complete hour
                                           */
                                           RTC_currentTimeDate.Min -=
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 10  
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 10  
 
                                                               RTC_dstOffsetMin % (RTC_HOUR_ELAPSED + 1u);
               
@@ -638,7 +638,7 @@ line level    source
               
                                                       RTC_currentTimeDate.Year--;
               
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 11  
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 11  
 
                                                       if(1u == RTC_LEAP_YEAR(RTC_currentTimeDate.Year))
                                                       {
@@ -702,7 +702,7 @@ line level    source
               
                                           if(RTC_currentTimeDate.Hour > RTC_DAY_ELAPSED)
                                           {
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 12  
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 12  
 
                                               /* Adjust hour, add day */
                                               RTC_currentTimeDate.Hour -= (RTC_DAY_ELAPSED + 1u);
@@ -766,7 +766,7 @@ line level    source
               
                                                       RTC_EveryYearHandler();
                                                   }
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 13  
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 13  
 
                                                   RTC_EveryMonthHandler();
                                               }
@@ -830,7 +830,7 @@ line level    source
                                   /* Alarm DAYOFMONTH */
                                   if(0u != RTC_IS_BIT_SET(RTC_alarmCfgMask,
                                                                        RTC_ALARM_DAYOFMONTH_MASK))
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 14  
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 14  
 
                                   {
                                       if(RTC_alarmCfgTimeDate.DayOfMonth == RTC_currentTimeDate.DayOfMonth)
@@ -894,7 +894,7 @@ line level    source
  855   3      
  856   3                  /* Set Alarm flag event */
  857   3                  RTC_tmp = RTC_alarmCfgMask;
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 15  
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 15  
 
  858   3                  RTC_SET_ALARM(RTC_tmp,
  860   3                                             RTC_alarmCurStatus,
@@ -958,11 +958,11 @@ line level    source
  917   1      
  918   1      }
  919          
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 16  
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 16  
 
  920          
  921          /* [] END OF FILE */
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 17  
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 17  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -970,64 +970,78 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION RTC_EverySecondHandler (BEGIN)
                                            ; SOURCE LINE # 51
                                            ; SOURCE LINE # 52
+                                           ; SOURCE LINE # 55
+0000 120000      E     LCALL   sample_counter
                                            ; SOURCE LINE # 57
-0000         ?C0001:
-0000 22                RET     
+0003         ?C0001:
+0003 22                RET     
              ; FUNCTION RTC_EverySecondHandler (END)
 
              ; FUNCTION RTC_EveryMinuteHandler (BEGIN)
                                            ; SOURCE LINE # 74
                                            ; SOURCE LINE # 75
+                                           ; SOURCE LINE # 78
+0000 120000      E     LCALL   sample_counter
                                            ; SOURCE LINE # 80
-0000         ?C0002:
-0000 22                RET     
+0003         ?C0002:
+0003 22                RET     
              ; FUNCTION RTC_EveryMinuteHandler (END)
 
              ; FUNCTION RTC_EveryHourHandler (BEGIN)
                                            ; SOURCE LINE # 97
                                            ; SOURCE LINE # 98
+                                           ; SOURCE LINE # 101
+0000 120000      E     LCALL   sample_counter
                                            ; SOURCE LINE # 103
-0000         ?C0003:
-0000 22                RET     
+0003         ?C0003:
+0003 22                RET     
              ; FUNCTION RTC_EveryHourHandler (END)
 
              ; FUNCTION RTC_EveryDayHandler (BEGIN)
                                            ; SOURCE LINE # 120
                                            ; SOURCE LINE # 121
+                                           ; SOURCE LINE # 124
+0000 120000      E     LCALL   sample_counter
                                            ; SOURCE LINE # 126
-0000         ?C0004:
-0000 22                RET     
+0003         ?C0004:
+0003 22                RET     
              ; FUNCTION RTC_EveryDayHandler (END)
 
              ; FUNCTION RTC_EveryWeekHandler (BEGIN)
                                            ; SOURCE LINE # 143
                                            ; SOURCE LINE # 144
+                                           ; SOURCE LINE # 147
+0000 120000      E     LCALL   sample_counter
                                            ; SOURCE LINE # 149
-0000         ?C0005:
-0000 22                RET     
+0003         ?C0005:
+0003 22                RET     
              ; FUNCTION RTC_EveryWeekHandler (END)
 
              ; FUNCTION RTC_EveryMonthHandler (BEGIN)
                                            ; SOURCE LINE # 166
                                            ; SOURCE LINE # 167
+                                           ; SOURCE LINE # 170
+0000 120000      E     LCALL   sample_counter
                                            ; SOURCE LINE # 172
-0000         ?C0006:
-0000 22                RET     
+0003         ?C0006:
+0003 22                RET     
              ; FUNCTION RTC_EveryMonthHandler (END)
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 18  
+
 
              ; FUNCTION RTC_EveryYearHandler (BEGIN)
                                            ; SOURCE LINE # 189
                                            ; SOURCE LINE # 190
+                                           ; SOURCE LINE # 193
+0000 120000      E     LCALL   sample_counter
                                            ; SOURCE LINE # 195
-0000         ?C0007:
-0000 22                RET     
+0003         ?C0007:
+0003 22                RET     
              ; FUNCTION RTC_EveryYearHandler (END)
 
              ; FUNCTION RTC_ISR (BEGIN)
 0000 C0E0              PUSH    ACC
 0002 C0F0              PUSH    B
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 18  
-
 0004 C083              PUSH    DPH
 0006 C082              PUSH    DPL
 0008 C085              PUSH    DPH1
@@ -1076,6 +1090,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 004E F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 255
 004F 900000      E     MOV     DPTR,#RTC_currentTimeDate+01H
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 19  
+
 0052 E0                MOVX    A,@DPTR
 0053 FF                MOV     R7,A
 0054 EF                MOV     A,R7
@@ -1090,8 +1106,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0061 04                INC     A
 0062 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 261
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 19  
-
 0063 900000      E     MOV     DPTR,#RTC_currentTimeDate+01H
 0066 E4                CLR     A
 0067 F0                MOVX    @DPTR,A
@@ -1140,6 +1154,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 283
 00A2         ?C0011:
                                            ; SOURCE LINE # 290
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 20  
+
 00A2 900000      E     MOV     DPTR,#RTC_statusDateTime
 00A5 E0                MOVX    A,@DPTR
 00A6 FF                MOV     R7,A
@@ -1154,8 +1170,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00B4 E0                MOVX    A,@DPTR
 00B5 FF                MOV     R7,A
 00B6 EF                MOV     A,R7
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 20  
-
 00B7 B40223            CJNE    A,#02H,?C0014
 00BA 900000      E     MOV     DPTR,#RTC_currentTimeDate+07H
 00BD E0                MOVX    A,@DPTR
@@ -1204,6 +1218,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00FB EF                MOV     A,R7
 00FC 900000      E     MOV     DPTR,#RTC_daysInMonths-01H
 00FF 93                MOVC    A,@A+DPTR
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 21  
+
 0100 FF                MOV     R7,A
 0101 900000      E     MOV     DPTR,#RTC_currentTimeDate+04H
 0104 E0                MOVX    A,@DPTR
@@ -1218,8 +1234,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 010F FF                MOV     R7,A
 0110 EF                MOV     A,R7
 0111 5402              ANL     A,#02H
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 21  
-
 0113 FF                MOV     R7,A
 0114 7E00              MOV     R6,#00H
 0116 EF                MOV     A,R7
@@ -1268,6 +1282,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0153 75F001            MOV     B,#01H
 0156 120000      E     LCALL   ?C?IILDX
                                            ; SOURCE LINE # 315
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 22  
+
 0159 900000      E     MOV     DPTR,#RTC_currentTimeDate+07H
 015C 7401              MOV     A,#01H
 015E F0                MOVX    @DPTR,A
@@ -1282,8 +1298,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0168 900000      E     MOV     DPTR,#RTC_currentTimeDate+08H
 016B E0                MOVX    A,@DPTR
 016C FE                MOV     R6,A
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 22  
-
 016D A3                INC     DPTR
 016E E0                MOVX    A,@DPTR
 016F FF                MOV     R7,A
@@ -1332,6 +1346,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01AD E0                MOVX    A,@DPTR
 01AE FF                MOV     R7,A
 01AF EF                MOV     A,R7
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 23  
+
 01B0 4402              ORL     A,#02H
 01B2 FF                MOV     R7,A
 01B3 900000      E     MOV     DPTR,#RTC_statusDateTime
@@ -1346,8 +1362,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01BD E0                MOVX    A,@DPTR
 01BE FF                MOV     R7,A
 01BF EF                MOV     A,R7
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 23  
-
 01C0 54FD              ANL     A,#0FDH
 01C2 FF                MOV     R7,A
 01C3 900000      E     MOV     DPTR,#RTC_statusDateTime
@@ -1396,6 +1410,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 340
 01FA 900000      E     MOV     DPTR,#RTC_alarmCurStatus
 01FD E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 24  
+
 01FE FF                MOV     R7,A
 01FF EF                MOV     A,R7
 0200 4480              ORL     A,#080H
@@ -1410,8 +1426,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 345
 020A 900000      E     MOV     DPTR,#RTC_alarmCurStatus
 020D E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 24  
-
 020E FF                MOV     R7,A
 020F EF                MOV     A,R7
 0210 547F              ANL     A,#07FH
@@ -1460,6 +1474,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0247 6013              JZ      ?C0028
 0249 900000      E     MOV     DPTR,#RTC_statusDateTime
 024C E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 25  
+
 024D FF                MOV     R7,A
 024E EF                MOV     A,R7
 024F 4408              ORL     A,#08H
@@ -1474,8 +1490,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 025C         ?C0027:
 025C         ?C0028:
                                            ; SOURCE LINE # 356
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 25  
-
 025C 900000      E     MOV     DPTR,#RTC_intervalCfgMask
 025F E0                MOVX    A,@DPTR
 0260 FF                MOV     R7,A
@@ -1524,6 +1538,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 368
 0293 900000      E     MOV     DPTR,#RTC_currentTimeDate+07H
 0296 E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 26  
+
 0297 FF                MOV     R7,A
 0298 900000      E     MOV     DPTR,#RTC_alarmCfgTimeDate+07H
 029B E0                MOVX    A,@DPTR
@@ -1538,8 +1554,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 02A6 EF                MOV     A,R7
 02A7 4440              ORL     A,#040H
 02A9 FF                MOV     R7,A
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 26  
-
 02AA 900000      E     MOV     DPTR,#RTC_alarmCurStatus
 02AD EF                MOV     A,R7
 02AE F0                MOVX    @DPTR,A
@@ -1588,6 +1602,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 02E1 E0                MOVX    A,@DPTR
 02E2 FE                MOV     R6,A
 02E3 EF                MOV     A,R7
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 27  
+
 02E4 B50604            CJNE    A,AR6,?C0045
 02E7 7F01              MOV     R7,#01H
 02E9 8002              SJMP    ?C0046
@@ -1602,8 +1618,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 02F5 EF                MOV     A,R7
 02F6 4408              ORL     A,#08H
 02F8 FF                MOV     R7,A
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 27  
-
 02F9 900000      E     MOV     DPTR,#RTC_statusDateTime
 02FC EF                MOV     A,R7
 02FD F0                MOVX    @DPTR,A
@@ -1652,6 +1666,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 032E 4E                ORL     A,R6
 032F 7004              JNZ     ?C0051
 0331 7F01              MOV     R7,#01H
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 28  
+
 0333 8002              SJMP    ?C0052
 0335         ?C0051:
 0335 7F00              MOV     R7,#00H
@@ -1666,8 +1682,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 033F 900000      E     MOV     DPTR,#RTC_alarmCfgTimeDate+03H
 0342 E0                MOVX    A,@DPTR
 0343 FE                MOV     R6,A
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 28  
-
 0344 EE                MOV     A,R6
 0345 B50710            CJNE    A,AR7,?C0053
                                            ; SOURCE LINE # 419
@@ -1716,6 +1730,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 037B         ?C0056:
 037B 7F00              MOV     R7,#00H
 037D         ?C0057:
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 29  
+
 037D EF                MOV     A,R7
 037E 6036              JZ      ?C0055
                                            ; SOURCE LINE # 433
@@ -1730,8 +1746,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 038B E0                MOVX    A,@DPTR
 038C FC                MOV     R4,A
 038D A3                INC     DPTR
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 29  
-
 038E E0                MOVX    A,@DPTR
 038F FD                MOV     R5,A
 0390 ED                MOV     A,R5
@@ -1780,6 +1794,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 03C4 4E                ORL     A,R6
 03C5 7004              JNZ     ?C0061
 03C7 7F01              MOV     R7,#01H
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 30  
+
 03C9 8002              SJMP    ?C0062
 03CB         ?C0061:
 03CB 7F00              MOV     R7,#00H
@@ -1794,8 +1810,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 03D5 900000      E     MOV     DPTR,#RTC_alarmCfgTimeDate+04H
 03D8 E0                MOVX    A,@DPTR
 03D9 FE                MOV     R6,A
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 30  
-
 03DA EE                MOV     A,R6
 03DB B50710            CJNE    A,AR7,?C0063
                                            ; SOURCE LINE # 451
@@ -1844,6 +1858,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 040E 900000      R     MOV     DPTR,#RTC_tmp
 0411 E0                MOVX    A,@DPTR
 0412 FF                MOV     R7,A
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 31  
+
 0413 900000      E     MOV     DPTR,#RTC_alarmCurStatus
 0416 E0                MOVX    A,@DPTR
 0417 FE                MOV     R6,A
@@ -1858,8 +1874,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0424 7F01              MOV     R7,#01H
 0426 8002              SJMP    ?C0070
 0428         ?C0069:
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 31  
-
 0428 7F00              MOV     R7,#00H
 042A         ?C0070:
 042A EF                MOV     A,R7
@@ -1908,6 +1922,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0460 E0                MOVX    A,@DPTR
 0461 FF                MOV     R7,A
 0462 EF                MOV     A,R7
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 32  
+
 0463 B4011D            CJNE    A,#01H,?C0010
                                            ; SOURCE LINE # 496
                                            ; SOURCE LINE # 498
@@ -1922,8 +1938,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0472 6410              XRL     A,#010H
 0474 4E                ORL     A,R6
 0475 7004              JNZ     ?C0076
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 32  
-
 0477 7F01              MOV     R7,#01H
 0479 8002              SJMP    ?C0077
 047B         ?C0076:
@@ -1972,6 +1986,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 04A6 FF                MOV     R7,A
 04A7 900000      E     MOV     DPTR,#RTC_statusDateTime
 04AA EF                MOV     A,R7
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 33  
+
 04AB F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 517
 04AC         ?C0079:
@@ -1986,8 +2002,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 04B7 EF                MOV     A,R7
 04B8 6404              XRL     A,#04H
 04BA 4E                ORL     A,R6
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 33  
-
 04BB 7004              JNZ     ?C0081
 04BD 7F01              MOV     R7,#01H
 04BF 8002              SJMP    ?C0082
@@ -2036,6 +2050,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 854
 04F2         ?C0080:
                                            ; SOURCE LINE # 857
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 34  
+
 04F2 900000      E     MOV     DPTR,#RTC_alarmCfgMask
 04F5 E0                MOVX    A,@DPTR
 04F6 FF                MOV     R7,A
@@ -2050,8 +2066,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0501 EF                MOV     A,R7
 0502 6032              JZ      ?C0086
 0504 900000      R     MOV     DPTR,#RTC_tmp
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 34  
-
 0507 E0                MOVX    A,@DPTR
 0508 FF                MOV     R7,A
 0509 900000      E     MOV     DPTR,#RTC_alarmCurStatus
@@ -2100,6 +2114,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0544 4E                ORL     A,R6
 0545 7004              JNZ     ?C0092
 0547 7F01              MOV     R7,#01H
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 35  
+
 0549 8002              SJMP    ?C0093
 054B         ?C0092:
 054B 7F00              MOV     R7,#00H
@@ -2114,8 +2130,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 867
 0553         ?C0009:
                                            ; SOURCE LINE # 870
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 35  
-
 0553 900000      E     MOV     DPTR,#RTC_alarmCfgMask
 0556 E0                MOVX    A,@DPTR
 0557 FF                MOV     R7,A
@@ -2164,6 +2178,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 058E E0                MOVX    A,@DPTR
 058F FF                MOV     R7,A
 0590 EF                MOV     A,R7
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 36  
+
 0591 54FD              ANL     A,#0FDH
 0593 FF                MOV     R7,A
 0594 900000      E     MOV     DPTR,#RTC_alarmCurStatus
@@ -2178,8 +2194,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 059C E0                MOVX    A,@DPTR
 059D FF                MOV     R7,A
 059E 900000      R     MOV     DPTR,#RTC_tmp
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 36  
-
 05A1 EF                MOV     A,R7
 05A2 F0                MOVX    @DPTR,A
 05A3         ?C0101:
@@ -2228,6 +2242,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 889
 05DD 900000      E     MOV     DPTR,#RTC_intervalCfgMask
 05E0 E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 37  
+
 05E1 FF                MOV     R7,A
 05E2 EF                MOV     A,R7
 05E3 5402              ANL     A,#02H
@@ -2242,8 +2258,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 05F2         ?C0106:
 05F2 7F00              MOV     R7,#00H
 05F4         ?C0107:
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 37  
-
 05F4 EF                MOV     A,R7
 05F5 6003              JZ      ?C0008
                                            ; SOURCE LINE # 890
@@ -2292,6 +2306,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 062A FF                MOV     R7,A
 062B 900000      E     MOV     DPTR,#RTC_alarmCurStatus
 062E EF                MOV     A,R7
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 38  
+
 062F F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 901
 0630 800E              SJMP    ?C0108
@@ -2306,8 +2322,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 063A FF                MOV     R7,A
 063B 900000      E     MOV     DPTR,#RTC_alarmCurStatus
 063E EF                MOV     A,R7
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 38  
-
 063F F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 905
 0640         ?C0112:
@@ -2356,6 +2370,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0679 FF                MOV     R7,A
 067A 900000      E     MOV     DPTR,#RTC_statusDateTime
 067D EF                MOV     A,R7
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 39  
+
 067E F0                MOVX    @DPTR,A
 067F 900000      E     MOV     DPTR,#RTC_alarmCurStatus
 0682 E4                CLR     A
@@ -2370,8 +2386,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0689 EF                MOV     A,R7
 068A 5401              ANL     A,#01H
 068C FF                MOV     R7,A
-C51 COMPILER V9.51   RTC_INT                                                               05/02/2014 02:18:51 PAGE 39  
-
 068D 7E00              MOV     R6,#00H
 068F EF                MOV     A,R7
 0690 6401              XRL     A,#01H
@@ -2414,12 +2428,14 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   1739    ----
+   CODE SIZE        =   1760    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =      1    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
+C51 COMPILER V9.51   RTC_INT                                                               05/07/2014 01:13:24 PAGE 40  
+
    BIT SIZE         =   ----    ----
    EDATA SIZE       =   ----    ----
    HDATA SIZE       =   ----    ----

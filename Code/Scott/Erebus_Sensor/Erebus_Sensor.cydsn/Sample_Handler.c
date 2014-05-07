@@ -11,79 +11,44 @@
 */
 #include "Sample_Handler.h"
 
-static uint16 sample_int_count;
-static uint8 sample_interval;
-
-void rtc_setup()
-{
-    uint8 sample_unit;
-    
-    sample_unit = get_variable(EE_SAMPLE_UNIT);
-    sample_interval = get_variable(EE_SAMPLE_INTERVAL);
-    
-    switch (sample_unit)
-    {
-        case SAMPLE_SEC: /* Seconds */
-            RTC_WriteIntervalMask(0x01u);
-            break;
-        case SAMPLE_MIN: /* Minutes */
-            RTC_WriteIntervalMask(0x02u);
-            break;
-        case SAMPLE_HOUR: /* Hours */
-            RTC_WriteIntervalMask(0x04u);
-            break;
-        case SAMPLE_DAY: /* Days */
-            RTC_WriteIntervalMask(0x08u);
-            break;
-    }
-    
-    sample_int_count = 0;
- }
-
-void RTC_Int_Handler()
-{
-    sample_counter();
-}
+static uint16 sample_int_count = 0;
+uint8 sample_interval;
 
 void sample_counter()
 {
+    // Begin interrupt handling
+    CyPmReadStatus(4u);
+    //End interrupt handling
     
-    /* Take sample if interval has been reached */
+    /* Take sample if interval has been reached */   
+    ++sample_int_count;
+    
     if (sample_int_count == sample_interval)
     {
         take_sample();
         sample_int_count = 0;
     }
-    /* Increment counter and go back to sleep if interval has not been reached */
-    else
-    {
-        sample_int_count = sample_int_count++;
-    }
-    
-//    CyPmSaveClocks();
-//    CyPmSleep(1,SLEEPMASK);
-    
+ 
+    return;   
 }
 
 void take_sample()
 {
     uint16 SampledData = 0;
-
-    ADC_Start();
+    LED_on(SAMPLE);
+    ADC_Wakeup();
     
     /* ADC */
     SampledData = ADC_Read16(); /* Function Starts, Converts, Stops, and Returns from ADC */
     
     /* EEP */
-    flash_LED_on();
     Em_EEPROM_Write((uint8*) (&SampledData),TailPtr,2u);
-    flash_LED_off();
     
     TailPtr = TailPtr + 2;
+    ADC_Sleep();
+    LED_off(SAMPLE);
     
-//    CyPmSaveClocks();
-//    CyPmSleep(1,SLEEPMASK);
-    
+    return;    
 }
     
 /* [] END OF FILE */

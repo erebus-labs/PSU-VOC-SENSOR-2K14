@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   RTC_HANDLER                                                           05/02/2014 02:18:43 PAGE 1   
+C51 COMPILER V9.51   RTC_HANDLER                                                           05/07/2014 01:13:21 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE RTC_HANDLER
@@ -23,44 +23,160 @@ line level    source
   12          
   13          #include "RTC_Handler.h"
   14          
-  15          uint8 sync_RTC(RTC_TIME_DATE* new_time){
-  16   1          RTC_DisableInt();
-  17   1          RTC_WriteTime(new_time);
-  18   1          RTC_EnableInt();
-  19   1          
-  20   1          return SUCCESS;
-  21   1      }
-  22          /* [] END OF FILE */
-C51 COMPILER V9.51   RTC_HANDLER                                                           05/02/2014 02:18:43 PAGE 2   
+  15          uint8 RTC_int_mask = 0x0u;
+  16          
+  17          void rtc_setup()
+  18          {
+  19   1          uint8 sample_unit;
+  20   1          
+  21   1          sample_unit = get_variable(EE_SAMPLE_UNIT);
+  22   1          // sample_interval is global, defined in Sample_Handler.c  
+  23   1          sample_interval = get_variable(EE_SAMPLE_INTERVAL);
+  24   1         
+  25   1          switch (sample_unit)
+  26   1          {
+  27   2              case SAMPLE_SEC: /* Seconds */
+  28   2                  RTC_int_mask = SECOND_MASK;
+  29   2                  break;
+  30   2              case SAMPLE_MIN: /* Minutes */
+  31   2                  RTC_int_mask = MINUTE_MASK;
+  32   2                  break;
+  33   2              case SAMPLE_HOUR: /* Hours */
+  34   2                  RTC_int_mask = HOUR_MASK;
+  35   2                  break;
+  36   2              case SAMPLE_DAY: /* Days */
+  37   2                  RTC_int_mask = DAY_MASK;
+  38   2                  break;
+  39   2          }
+  40   1          
+  41   1          // Start by clearing interval interrupt masks - the appropriate interrupt will
+  42   1          // be enabled by the start collection button interrupt
+  43   1          RTC_WriteIntervalMask(NONE_MASK);
+  44   1          RTC_EnableInt();
+  45   1          
+  46   1          return;
+  47   1       }
+  48          
+  49          uint8 sync_RTC(RTC_TIME_DATE* new_time){
+  50   1          
+  51   1          RTC_DisableInt();
+  52   1          RTC_WriteTime(new_time);
+  53   1          RTC_EnableInt();
+C51 COMPILER V9.51   RTC_HANDLER                                                           05/07/2014 01:13:21 PAGE 2   
+
+  54   1          
+  55   1          return SUCCESS;
+  56   1      }
+  57          /* [] END OF FILE */
+C51 COMPILER V9.51   RTC_HANDLER                                                           05/07/2014 01:13:21 PAGE 3   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
 
+             ; FUNCTION rtc_setup (BEGIN)
+                                           ; SOURCE LINE # 17
+                                           ; SOURCE LINE # 18
+                                           ; SOURCE LINE # 21
+0000 7F01              MOV     R7,#01H
+0002 7E00              MOV     R6,#00H
+0004 120000      E     LCALL   _get_variable
+0007 900000      R     MOV     DPTR,#sample_unit
+000A EF                MOV     A,R7
+000B F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 23
+000C 7F02              MOV     R7,#02H
+000E 7E00              MOV     R6,#00H
+0010 120000      E     LCALL   _get_variable
+0013 900000      E     MOV     DPTR,#sample_interval
+0016 EF                MOV     A,R7
+0017 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 25
+0018 900000      R     MOV     DPTR,#sample_unit
+001B E0                MOVX    A,@DPTR
+001C FF                MOV     R7,A
+001D EF                MOV     A,R7
+001E 120000      E     LCALL   ?C?CCASE
+0021 0000        R     DW      ?C0002
+0023 00                DB      00H
+0024 0000        R     DW      ?C0003
+0026 01                DB      01H
+0027 0000        R     DW      ?C0004
+0029 02                DB      02H
+002A 0000        R     DW      ?C0005
+002C 03                DB      03H
+002D 0000              DW      00H
+002F 0000        R     DW      ?C0001
+                                           ; SOURCE LINE # 26
+                                           ; SOURCE LINE # 27
+0031         ?C0002:
+                                           ; SOURCE LINE # 28
+0031 900000      R     MOV     DPTR,#RTC_int_mask
+0034 7401              MOV     A,#01H
+0036 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 29
+0037 8016              SJMP    ?C0001
+                                           ; SOURCE LINE # 30
+0039         ?C0003:
+                                           ; SOURCE LINE # 31
+0039 900000      R     MOV     DPTR,#RTC_int_mask
+003C 7402              MOV     A,#02H
+003E F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 32
+003F 800E              SJMP    ?C0001
+                                           ; SOURCE LINE # 33
+0041         ?C0004:
+                                           ; SOURCE LINE # 34
+0041 900000      R     MOV     DPTR,#RTC_int_mask
+0044 7404              MOV     A,#04H
+0046 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 35
+0047 8006              SJMP    ?C0001
+                                           ; SOURCE LINE # 36
+C51 COMPILER V9.51   RTC_HANDLER                                                           05/07/2014 01:13:21 PAGE 4   
+
+0049         ?C0005:
+                                           ; SOURCE LINE # 37
+0049 900000      R     MOV     DPTR,#RTC_int_mask
+004C 7408              MOV     A,#08H
+004E F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 38
+                                           ; SOURCE LINE # 39
+004F         ?C0001:
+                                           ; SOURCE LINE # 43
+004F 7F00              MOV     R7,#00H
+0051 120000      E     LCALL   _RTC_WriteIntervalMask
+                                           ; SOURCE LINE # 44
+0054 120000      E     LCALL   RTC_EnableInt
+                                           ; SOURCE LINE # 47
+0057         ?C0006:
+0057 22                RET     
+             ; FUNCTION rtc_setup (END)
+
              ; FUNCTION _sync_RTC (BEGIN)
-                                           ; SOURCE LINE # 15
+                                           ; SOURCE LINE # 49
 0000 900000      R     MOV     DPTR,#new_time
 0003 120000      E     LCALL   ?C?PSTXDATA
-                                           ; SOURCE LINE # 16
+                                           ; SOURCE LINE # 51
 0006 120000      E     LCALL   RTC_DisableInt
-                                           ; SOURCE LINE # 17
+                                           ; SOURCE LINE # 52
 0009 900000      R     MOV     DPTR,#new_time
 000C 120000      E     LCALL   ?C?PLDXDATA
 000F 120000      E     LCALL   _RTC_WriteTime
-                                           ; SOURCE LINE # 18
+                                           ; SOURCE LINE # 53
 0012 120000      E     LCALL   RTC_EnableInt
-                                           ; SOURCE LINE # 20
+                                           ; SOURCE LINE # 55
 0015 7F02              MOV     R7,#02H
-                                           ; SOURCE LINE # 21
-0017         ?C0001:
+                                           ; SOURCE LINE # 56
+0017         ?C0007:
 0017 22                RET     
              ; FUNCTION _sync_RTC (END)
 
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     24    ----
+   CODE SIZE        =    112    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =      3    ----
+   XDATA SIZE       =      5    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----

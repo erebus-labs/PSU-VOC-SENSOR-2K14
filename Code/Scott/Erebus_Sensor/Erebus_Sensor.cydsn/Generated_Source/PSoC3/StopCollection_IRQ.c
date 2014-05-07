@@ -26,6 +26,7 @@
 ********************************************************************************/
 /* `#START StopCollection_IRQ_intc` */
 #include "Interface.h"
+#include "LED_Handler.h"
 /* `#END` */
 
 
@@ -130,7 +131,26 @@ CY_ISR(StopCollection_IRQ_Interrupt)
 {
     /*  Place your Interrupt code here. */
     /* `#START StopCollection_IRQ_Interrupt` */
-    StopCollection_ISR();
+    
+    #ifdef SLEEP_EN
+    CyPmRestoreClocks(); 
+    RTC_EnableInt();
+    #endif 
+    
+    CyDelay(500);
+    
+    if (!StopCollection_B_Read()){
+        StopCollection_ISR();
+        blink_green();
+    }
+    else{
+        blink_red();
+    }
+    
+    // In case there was bouncing, clear any more pending interrupts of this type
+    StopCollection_B_ClearInterrupt();
+    StopCollection_IRQ_ClearPending();
+    
     /* `#END` */
 
     /* PSoC3 ES1, ES2 RTC ISR PATCH  */ 

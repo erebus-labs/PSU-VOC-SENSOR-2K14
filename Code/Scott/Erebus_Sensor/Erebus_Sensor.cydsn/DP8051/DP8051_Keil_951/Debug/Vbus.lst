@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   VBUS                                                                  05/02/2014 02:18:44 PAGE 1   
+C51 COMPILER V9.51   VBUS                                                                  05/07/2014 01:07:27 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE VBUS
@@ -62,7 +62,7 @@ line level    source
   51          *
   52          * Return: 
   53          *  None
-C51 COMPILER V9.51   VBUS                                                                  05/02/2014 02:18:44 PAGE 2   
+C51 COMPILER V9.51   VBUS                                                                  05/07/2014 01:07:27 PAGE 2   
 
   54          *
   55          *******************************************************************************/
@@ -118,34 +118,34 @@ line level    source
  105          
  106          /* If Interrupts Are Enabled for this Pins component */ 
  107          #if defined(Vbus_INTSTAT) 
-              
-                  /*******************************************************************************
-                  * Function Name: Vbus_ClearInterrupt
-                  ********************************************************************************
-                  *
-                  * Summary:
-                  *  Clears any active interrupts attached to port and returns the value of the 
-                  *  interrupt status register.
-C51 COMPILER V9.51   VBUS                                                                  05/02/2014 02:18:44 PAGE 3   
+ 108          
+ 109              /*******************************************************************************
+ 110              * Function Name: Vbus_ClearInterrupt
+ 111              ********************************************************************************
+ 112              *
+ 113              * Summary:
+ 114              *  Clears any active interrupts attached to port and returns the value of the 
+ 115              *  interrupt status register.
+C51 COMPILER V9.51   VBUS                                                                  05/07/2014 01:07:27 PAGE 3   
 
-                  *
-                  * Parameters:  
-                  *  None 
-                  *
-                  * Return: 
-                  *  Returns the value of the interrupt status register
-                  *  
-                  *******************************************************************************/
-                  uint8 Vbus_ClearInterrupt(void) 
-                  {
-                      return (Vbus_INTSTAT & Vbus_MASK) >> Vbus_SHIFT;
-                  }
-              
-              #endif /* If Interrupts Are Enabled for this Pins component */ 
+ 116              *
+ 117              * Parameters:  
+ 118              *  None 
+ 119              *
+ 120              * Return: 
+ 121              *  Returns the value of the interrupt status register
+ 122              *  
+ 123              *******************************************************************************/
+ 124              uint8 Vbus_ClearInterrupt(void) 
+ 125              {
+ 126   1              return (Vbus_INTSTAT & Vbus_MASK) >> Vbus_SHIFT;
+ 127   1          }
+ 128          
+ 129          #endif /* If Interrupts Are Enabled for this Pins component */ 
  130          
  131          
  132          /* [] END OF FILE */
-C51 COMPILER V9.51   VBUS                                                                  05/02/2014 02:18:44 PAGE 4   
+C51 COMPILER V9.51   VBUS                                                                  05/07/2014 01:07:27 PAGE 4   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -209,7 +209,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0017 EE                MOV     A,R6
 0018 4F                ORL     A,R7
 0019 FF                MOV     R7,A
-C51 COMPILER V9.51   VBUS                                                                  05/02/2014 02:18:44 PAGE 5   
+C51 COMPILER V9.51   VBUS                                                                  05/07/2014 01:07:27 PAGE 5   
 
 001A 905030            MOV     DPTR,#05030H
 001D EF                MOV     A,R7
@@ -251,12 +251,30 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000B 22                RET     
              ; FUNCTION Vbus_ReadDataReg (END)
 
+             ; FUNCTION Vbus_ClearInterrupt (BEGIN)
+                                           ; SOURCE LINE # 124
+                                           ; SOURCE LINE # 125
+                                           ; SOURCE LINE # 126
+0000 904586            MOV     DPTR,#04586H
+0003 E0                MOVX    A,@DPTR
+0004 FF                MOV     R7,A
+0005 EF                MOV     A,R7
+0006 5401              ANL     A,#01H
+0008 FF                MOV     R7,A
+0009 7E00              MOV     R6,#00H
+                                           ; SOURCE LINE # 127
+000B         ?C0005:
+000B 22                RET     
+             ; FUNCTION Vbus_ClearInterrupt (END)
+
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     98    ----
+   CODE SIZE        =    110    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =      3    ----
+C51 COMPILER V9.51   VBUS                                                                  05/07/2014 01:07:27 PAGE 6   
+
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----

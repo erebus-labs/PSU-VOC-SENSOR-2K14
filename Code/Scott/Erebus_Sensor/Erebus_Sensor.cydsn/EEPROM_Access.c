@@ -24,16 +24,12 @@ uint8 update_settings(settings_group new_settings){
     uint8 result = SUCCESS;
     cystatus status;
     
-    int test;
-    
-    EEPROM_LED_on();
+    LED_on(MEM);
     
     // Allocate array to hold EEPROM variables
     
     rows_used = ceil(bytes_used/CYDEV_EEPROM_ROW_SIZE);
     buffer = malloc(((uint16) rows_used) * CYDEV_EEPROM_ROW_SIZE);
-    
-    test = sizeof(buffer);
     
     dst_ptr = buffer;
     remainder = (rows_used * 16) - EEPROM_BYTES_USED;
@@ -78,7 +74,7 @@ uint8 update_settings(settings_group new_settings){
     // Free buffer memory
     free(buffer);
     
-    EEPROM_LED_off();
+    LED_off(MEM);
     
 exit:   
     return result;   
@@ -87,11 +83,11 @@ exit:
 uint8 get_variable(uint16 var_index){
     uint8 value = 10;
     
-    EEPROM_LED_on();
+    LED_on(MEM);
     
     value = CY_GET_REG8(CYDEV_EE_BASE + var_index);
     
-    EEPROM_LED_off();
+    LED_off(MEM);
     
     return value;
 }

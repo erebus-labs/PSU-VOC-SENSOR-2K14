@@ -20,17 +20,22 @@ void USB_ISR(){
 
     uint8 result = 0;
     uint8 command = 0;
-    USB_LED_on();
-           
-    /* Start USBFS Operation with 5V operation */
+    StartCollection_IRQ_Stop();
+    StopCollection_IRQ_Stop();
+    Vbus_IRQ_Stop();
+    RTC_WriteIntervalMask(NONE_MASK);
     USBUART_Start(0u, USBUART_5V_OPERATION);
+    LED_on(USB);
     
     /* Wait for Device to enumerate */
     while(!USBUART_GetConfiguration() && Vbus_Read());
 
     /* Enumeration is done, enable OUT endpoint for receive data from Host */
     USBUART_CDC_Init();
-      
+    
+    // Ensure buffer is clear
+    USBUART_GetChar();
+    
     while(Vbus_Read())
     {  
         if(USBUART_DataIsReady() != 0u){   /* Check for input data from PC */
@@ -98,8 +103,8 @@ void USB_ISR(){
         }
     }
     
-    USBUART_Stop();
-    USB_LED_off();
+    USB_Close();
+    LED_off(USB);
     
     return;
 }
@@ -168,7 +173,7 @@ uint8 dump_data(){
     uint8 i = 0;
     uint8 result = SUCCESS;
     
-    flash_LED_on();
+    LED_on(MEM);
     
     if(TailPtr == ExportPtr){
         ExportBuffer[0] = NO_DATA;
@@ -223,7 +228,7 @@ uint8 dump_data(){
     
     write_out(ExportBuffer);
     
-    flash_LED_off();
+    LED_off(MEM);
 
 exit:
     return result;
@@ -327,18 +332,20 @@ void CMD_hard_reset(){
 
     uint8 reset_flag = 0xFF;
     
-    flash_LED_on();
+    LED_on(MEM);
     Em_EEPROM_Write(&reset_flag, &hard_reset_flag, 1u);
-    flash_LED_off();
+    LED_off(MEM);
     
     return;
 }
 
 void USB_Close(){
     
+    rtc_setup();   
     EEPROM_R_Stop();
     USBUART_Stop();
-    CySoftwareReset();
+    StartCollection_IRQ_Start();
+    Vbus_IRQ_Start();
     
     return;
 }

@@ -131,7 +131,20 @@ CY_ISR(Vbus_IRQ_Interrupt)
     /*  Place your Interrupt code here. */
     /* `#START Vbus_IRQ_Interrupt` */
     
-    USB_ISR();
+    // Restore from sleep
+    #ifdef SLEEP_EN
+    CyPmRestoreClocks(); 
+    RTC_EnableInt();
+    #endif 
+    
+    CyDelay(500);
+    
+    if (Vbus_Read()){
+        // Call actual interrupt routine
+        USB_ISR();
+    }
+    
+    Vbus_ClearInterrupt();
 
     /* `#END` */
 

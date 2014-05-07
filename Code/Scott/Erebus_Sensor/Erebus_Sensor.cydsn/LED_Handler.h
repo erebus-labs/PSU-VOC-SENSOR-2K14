@@ -14,6 +14,7 @@
     #define _LED_HANDLER_H_
     
     #include "project.h"
+    #include "main.h"
     
     #define USB     0x01
     #define MEM     0x02
@@ -21,12 +22,16 @@
     #define ERROR   0x04
     #define SAMPLE  0x05
     
-    void USB_LED_on();
-    void USB_LED_off();
-    void EEPROM_LED_on();
-    void EEPROM_LED_off();
-    void flash_LED_on();
-    void flash_LED_off();    
+    #define OFF     0x00
+    #define RED     0x01
+    #define BLUE    0x02
+    #define GREEN   0x03
+    
+    #define LED_DELAY 100
+    void LED_on(uint8 target);   
+    void LED_off(uint8 target);
+    void blink_red();
+    void blink_green();
     
 #endif
 

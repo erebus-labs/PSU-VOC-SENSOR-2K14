@@ -21,6 +21,10 @@
     #include "EmEEPROM_Access.h"
     #include "Utility.h"
     #include "Sample_Handler.h"
+    #include "RTC_Handler.h"
+    
+    extern uint8 low_power_flag;
+    
         
     // Macros
 

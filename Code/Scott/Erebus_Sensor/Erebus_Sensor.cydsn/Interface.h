@@ -17,6 +17,7 @@
     #include "EmEEPROM_Access.h"
     #include "EEPROM_Access.h"
     #include "USB_Access.h"
+    #include "RTC_Handler.h"
     
     void StartCollection_ISR();
     void StopCollection_ISR();

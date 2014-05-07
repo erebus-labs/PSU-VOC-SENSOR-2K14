@@ -40,7 +40,7 @@ void StartCollection_ISR(){
     
     StopCollection_IRQ_Start();
     StartCollection_IRQ_Stop();
-    TakeSample_IRQ_Start();
+    RTC_WriteIntervalMask(RTC_int_mask);
     
     return;   
 }
@@ -49,7 +49,7 @@ void StopCollection_ISR(){
     
     StartCollection_IRQ_Start();
     StopCollection_IRQ_Stop();
-    TakeSample_IRQ_Stop();
+    RTC_WriteIntervalMask(NONE_MASK);
     
     return;   
 }

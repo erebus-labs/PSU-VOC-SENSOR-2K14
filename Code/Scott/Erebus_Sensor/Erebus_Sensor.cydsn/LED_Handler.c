@@ -12,35 +12,125 @@
 
 #include "LED_Handler.h"
 
-void USB_LED_on(){
-    USB_Blink_TI_Start();
+static uint8 state;
+
+void LED_on(uint8 target){
+    
+    switch (target){   
+    
+        case USB:
+            /* Green */
+            LED0_CTRL_Write(GREEN);
+            LED1_CTRL_Write(GREEN);
+            break;
+        
+        case ERROR:
+            /* Red */
+            LED0_CTRL_Write(RED);
+            LED1_CTRL_Write(RED);
+            break;
+            
+        case LOWBATT:
+            /* Yellow */
+            LED0_CTRL_Write(GREEN);
+            LED1_CTRL_Write(RED);
+            break;
+        
+        case SAMPLE:
+            /* BLUE */
+            LED0_CTRL_Write(BLUE);
+            LED1_CTRL_Write(GREEN);
+            break;  
+            
+        case MEM:
+            /* Cyan */
+            LED0_CTRL_Write(BLUE);
+            LED1_CTRL_Write(BLUE);  
+            break;
+    }
     return;
 }
 
-void USB_LED_off(){
-    USB_Blink_TI_Stop();
+void LED_off(uint8 target){
+    
+    switch (target){
+        
+        case USB:
+            /* Green */
+            LED0_CTRL_Write(OFF);
+            LED1_CTRL_Write(OFF);
+            break;
+   
+        case SAMPLE:
+                
+            if (low_power_flag){
+                LED0_CTRL_Write(GREEN);
+                LED1_CTRL_Write(RED);
+            }
+            
+            else{
+                LED0_CTRL_Write(OFF);
+                LED1_CTRL_Write(OFF);
+            }      
+            break;  
+            
+        case MEM:         
+            if (Vbus_Read()){
+                LED0_CTRL_Write(GREEN);
+                LED1_CTRL_Write(GREEN);
+            }
+            else{
+                LED0_CTRL_Write(OFF);
+                LED1_CTRL_Write(OFF);
+            } 
+            break;
+    }
+    
     return;
 }
 
-void EEPROM_LED_on(){
-    EEPROM_Blink_TI_Start();
+void blink_green(){
+    
+    uint8 i;
+    
+    /* This loop has an odd structure so that there is no delay after it's turned off
+       the last time */
+    
+    LED_on(USB); // pretend it's USB since USB is solid green
+    for(i=4;i>0;--i){
+
+        CyDelay(LED_DELAY);
+        LED_off(USB);
+        CyDelay(LED_DELAY);
+        LED_on(USB);
+
+    }
+    CyDelay(LED_DELAY);
+    LED_off(USB);
+    
     return;
 }
 
-void EEPROM_LED_off(){
-    EEPROM_Blink_TI_Stop();
+void blink_red(){
+    
+    uint8 i;
+    
+    /* This loop has an odd structure so that there is no delay after it's turned off
+       the last time */
+    
+    LED_on(ERROR); // pretend it's ERROR since ERROR is solid red
+    for(i=4;i>0;--i){
+
+        CyDelay(LED_DELAY);
+        LED_off(USB); // leave off as USB - ERROR has no off
+        CyDelay(LED_DELAY);
+        LED_on(ERROR);
+
+    }
+    CyDelay(LED_DELAY);
+    LED_off(USB);
+    
     return;
 }
-
-void flash_LED_on(){
-    Flash_Blink_TI_Start();
-    return;
-}
-
-void flash_LED_off(){
-    Flash_Blink_TI_Stop();
-    return;
-}
-
 
 /* [] END OF FILE */
