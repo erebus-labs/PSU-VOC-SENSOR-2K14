@@ -1,5 +1,5 @@
 -- Project:   Erebus_Sensor
--- Generated: 05/07/2014 01:07:15
+-- Generated: 05/07/2014 04:35:46
 -- 
 
 ENTITY Erebus_Sensor IS
@@ -21,6 +21,8 @@ END Erebus_Sensor;
 
 ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     SIGNAL ClockBlock_100k : bit;
+    SIGNAL ClockBlock_100k__SYNC_OUT : bit;
+    SIGNAL ClockBlock_100k__SYNC_OUT_1 : bit;
     SIGNAL ClockBlock_1k : bit;
     SIGNAL ClockBlock_32k : bit;
     SIGNAL ClockBlock_BUS_CLK : bit;
@@ -33,9 +35,6 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     SIGNAL ClockBlock_XTAL : bit;
     SIGNAL ClockBlock_XTAL_32KHZ : bit;
     SIGNAL Net_1300 : bit;
-    SIGNAL Net_1309 : bit;
-    ATTRIBUTE global_signal OF Net_1309 : SIGNAL IS true;
-    SIGNAL Net_1309_local : bit;
     SIGNAL Net_1347 : bit;
     SIGNAL Net_1398 : bit;
     SIGNAL Net_1409 : bit;
@@ -1118,13 +1117,29 @@ BEGIN
             dsi_glb_div => open,
             dclk_glb_0 => \ADC:Net_93\,
             dclk_0 => \ADC:Net_93_local\,
-            dclk_glb_1 => Net_1309,
-            dclk_1 => Net_1309_local,
             aclk_glb_0 => \ADC:Net_488\,
             aclk_0 => \ADC:Net_488_local\,
             clk_a_dig_glb_0 => \ADC:Net_488_adig\,
             clk_a_dig_0 => \ADC:Net_488_adig_local\,
             aclk_glb_ff_0 => \ClockBlock.aclk_glb_ff_0__sig\);
+
+    ClockBlock_100k__SYNC:synccell
+        GENERIC MAP(
+            clk_inv => '0')
+        PORT MAP(
+            in => ClockBlock_100k,
+            out => ClockBlock_100k__SYNC_OUT,
+            clock => ClockBlock_BUS_CLK,
+            clk_en => open);
+
+    ClockBlock_100k__SYNC_1:synccell
+        GENERIC MAP(
+            clk_inv => '0')
+        PORT MAP(
+            in => ClockBlock_100k,
+            out => ClockBlock_100k__SYNC_OUT_1,
+            clock => ClockBlock_BUS_CLK,
+            clk_en => open);
 
     Net_1300:macrocell
         GENERIC MAP(
@@ -1153,20 +1168,24 @@ BEGIN
     Net_1409:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1)",
-            clk_inv => '0')
+            clk_inv => '0',
+            clken_inv => '0')
         PORT MAP(
             q => Net_1409,
-            clock_0 => Net_1309,
+            clock_0 => ClockBlock_BUS_CLK,
+            clk_en => ClockBlock_100k__SYNC_OUT,
             main_0 => \LED_PWM:PWMUDB:control_7\,
             main_1 => \LED_PWM:PWMUDB:cmp1_less\);
 
     Net_1415:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * !main_2)",
-            clk_inv => '0')
+            clk_inv => '0',
+            clken_inv => '0')
         PORT MAP(
             q => Net_1415,
-            clock_0 => Net_1309,
+            clock_0 => ClockBlock_BUS_CLK,
+            clk_en => ClockBlock_100k__SYNC_OUT,
             main_0 => \LED_PWM:PWMUDB:control_7\,
             main_1 => \LED_PWM:PWMUDB:cmp2_eq\,
             main_2 => \LED_PWM:PWMUDB:cmp2_less\);
@@ -1489,7 +1508,7 @@ BEGIN
 
     StartCollection_IRQ:interrupt
         GENERIC MAP(
-            int_type => "00")
+            int_type => "10")
         PORT MAP(
             interrupt => Net_849,
             clock => ClockBlock_BUS_CLK);
@@ -1583,7 +1602,7 @@ BEGIN
 
     StopCollection_IRQ:interrupt
         GENERIC MAP(
-            int_type => "00")
+            int_type => "10")
         PORT MAP(
             interrupt => Net_1524,
             clock => ClockBlock_BUS_CLK);
@@ -1768,9 +1787,10 @@ BEGIN
             cy_ext_reset => 0,
             cy_force_order => 1,
             cy_init_value => "00000000",
-            clk_inv => '0')
+            clk_inv => '0',
+            clken_inv => '0')
         PORT MAP(
-            clock => Net_1309,
+            clock => ClockBlock_BUS_CLK,
             control_7 => \LED_PWM:PWMUDB:control_7\,
             control_6 => \LED_PWM:PWMUDB:control_6\,
             control_5 => \LED_PWM:PWMUDB:control_5\,
@@ -1779,16 +1799,19 @@ BEGIN
             control_2 => \LED_PWM:PWMUDB:control_2\,
             control_1 => \LED_PWM:PWMUDB:control_1\,
             control_0 => \LED_PWM:PWMUDB:control_0\,
+            clk_en => ClockBlock_100k__SYNC_OUT_1,
             busclk => ClockBlock_BUS_CLK);
 
     \LED_PWM:PWMUDB:runmode_enable\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
-            clk_inv => '0')
+            clk_inv => '0',
+            clken_inv => '0')
         PORT MAP(
             q => \LED_PWM:PWMUDB:runmode_enable\,
             main_0 => \LED_PWM:PWMUDB:control_7\,
-            clock_0 => Net_1309);
+            clock_0 => ClockBlock_BUS_CLK,
+            clk_en => ClockBlock_100k__SYNC_OUT);
 
     \LED_PWM:PWMUDB:sP8:pwmdp:u0\:datapathcell
         GENERIC MAP(
@@ -1815,15 +1838,17 @@ BEGIN
             z1_sync => 1,
             uses_p_in => '0',
             uses_p_out => '0',
-            clk_inv => '0')
+            clk_inv => '0',
+            clken_inv => '0')
         PORT MAP(
-            clock => Net_1309,
+            clock => ClockBlock_BUS_CLK,
             cs_addr_2 => \LED_PWM:PWMUDB:tc_i\,
             cs_addr_1 => \LED_PWM:PWMUDB:runmode_enable\,
             cl0_comb => \LED_PWM:PWMUDB:cmp1_less\,
             z0_comb => \LED_PWM:PWMUDB:tc_i\,
             ce1_comb => \LED_PWM:PWMUDB:cmp2_eq\,
             cl1_comb => \LED_PWM:PWMUDB:cmp2_less\,
+            clk_en => ClockBlock_100k__SYNC_OUT,
             busclk => ClockBlock_BUS_CLK);
 
     \RTC:isr\:interrupt

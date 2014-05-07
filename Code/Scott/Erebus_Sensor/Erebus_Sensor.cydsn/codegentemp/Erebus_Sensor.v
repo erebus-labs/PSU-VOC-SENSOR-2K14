@@ -1,6 +1,6 @@
 // ======================================================================
 // Erebus_Sensor.v generated from TopDesign.cysch
-// 05/07/2014 at 01:07
+// 05/07/2014 at 04:35
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -764,7 +764,7 @@ endmodule
 // top
 module top ;
 
-          wire  Net_1334;
+          wire  Net_1529;
           wire  Net_1489;
           wire  Net_1488;
           wire  Net_1487;
@@ -1310,14 +1310,14 @@ module top ;
 
 
 	cy_isr_v1_0
-		#(.int_type(2'b00))
+		#(.int_type(2'b10))
 		StopCollection_IRQ
 		 (.int_signal(Net_1524));
 
 
 
 	cy_isr_v1_0
-		#(.int_type(2'b00))
+		#(.int_type(2'b10))
 		StartCollection_IRQ
 		 (.int_signal(Net_849));
 
@@ -1379,10 +1379,10 @@ module top ;
 
 	cy_clock_v1_0
 		#(.id("48e889b6-c199-4b3a-bd89-d32bdd0d158d"),
-		  .source_clock_id(""),
+		  .source_clock_id("315365C3-2E3E-4f04-84A2-BB564A173261"),
 		  .divisor(0),
-		  .period("83333333.3333333"),
-		  .is_direct(0),
+		  .period("0"),
+		  .is_direct(1),
 		  .is_digital(1))
 		PWM_CLK
 		 (.clock_out(Net_1309));

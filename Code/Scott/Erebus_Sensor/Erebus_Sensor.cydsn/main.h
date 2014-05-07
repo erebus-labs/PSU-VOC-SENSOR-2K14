@@ -18,15 +18,11 @@
     #include "project.h"
         
     #include "EEPROM_Access.h"
-    #include "EmEEPROM_Access.h"
+    #include "Interface.h"
+    #include "USB_Access.h"
     #include "Utility.h"
-    #include "Sample_Handler.h"
     #include "RTC_Handler.h"
-    
-    extern uint8 low_power_flag;
-    
-        
-    // Macros
+    #include "Macros.h"
 
 #endif
 /* [] END OF FILE */

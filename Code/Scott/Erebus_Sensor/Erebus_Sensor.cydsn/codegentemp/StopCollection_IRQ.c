@@ -25,8 +25,9 @@
 *  Place your includes, defines and code here 
 ********************************************************************************/
 /* `#START StopCollection_IRQ_intc` */
-#include "Interface.h"
-#include "LED_Handler.h"
+    #include "Interface.h"
+    #include "Globals.h"
+    #include "Macros.h"
 /* `#END` */
 
 
@@ -135,21 +136,12 @@ CY_ISR(StopCollection_IRQ_Interrupt)
     #ifdef SLEEP_EN
     CyPmRestoreClocks(); 
     RTC_EnableInt();
+    LED_PWM_Wakeup();
     #endif 
     
-    CyDelay(500);
-    
-    if (StartCollection_B_Read()){
-        StopCollection_ISR();
-        blink_green();
-    }
-    else{
-        blink_red();
-    }
-    
-    // In case there was bouncing, clear any more pending interrupts of this type
-    StopCollection_B_ClearInterrupt();
-    
+    LED_on(BUTTON);
+    DataStop_waiting = 1;
+        
     /* `#END` */
 
     /* PSoC3 ES1, ES2 RTC ISR PATCH  */ 

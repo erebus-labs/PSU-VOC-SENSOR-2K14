@@ -824,16 +824,6 @@
               <FilePath>.\Generated_Source\PSoC3\LED_PWM_PM.c</FilePath>
             </File>
             <File>
-              <FileName>PWM_CLK.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\PWM_CLK.c</FilePath>
-            </File>
-            <File>
-              <FileName>PWM_CLK.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\PWM_CLK.h</FilePath>
-            </File>
-            <File>
               <FileName>LED0_CTRL.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\LED0_CTRL.c</FilePath>
@@ -1677,16 +1667,6 @@
               <FileName>LED_PWM_PM.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\LED_PWM_PM.c</FilePath>
-            </File>
-            <File>
-              <FileName>PWM_CLK.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\PWM_CLK.c</FilePath>
-            </File>
-            <File>
-              <FileName>PWM_CLK.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\PWM_CLK.h</FilePath>
             </File>
             <File>
               <FileName>LED0_CTRL.c</FileName>

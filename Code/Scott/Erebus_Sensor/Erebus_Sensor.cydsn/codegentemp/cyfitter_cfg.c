@@ -87,22 +87,22 @@ static void CyClockStartupError(uint8 errorCode)
 
 #define cfg_byte_table ((const void CYFAR *)0x080000u)
 /* IOPINS0_0 Address: CYREG_PRT0_DM0 Size (bytes): 8 */
-#define BS_IOPINS0_0_VAL ((const uint8 CYFAR *)0x000801BCu)
+#define BS_IOPINS0_0_VAL ((const uint8 CYFAR *)0x000801D8u)
 
 /* IOPINS0_7 Address: CYREG_PRT12_DR Size (bytes): 10 */
-#define BS_IOPINS0_7_VAL ((const uint8 CYFAR *)0x000801C4u)
+#define BS_IOPINS0_7_VAL ((const uint8 CYFAR *)0x000801E0u)
 
 /* IOPINS0_8 Address: CYREG_PRT15_DR Size (bytes): 10 */
-#define BS_IOPINS0_8_VAL ((const uint8 CYFAR *)0x000801D0u)
+#define BS_IOPINS0_8_VAL ((const uint8 CYFAR *)0x000801ECu)
 
 /* IOPINS0_3 Address: CYREG_PRT3_DR Size (bytes): 10 */
-#define BS_IOPINS0_3_VAL ((const uint8 CYFAR *)0x000801DCu)
+#define BS_IOPINS0_3_VAL ((const uint8 CYFAR *)0x000801F8u)
 
 /* IOPINS0_6 Address: CYREG_PRT6_DM0 Size (bytes): 8 */
-#define BS_IOPINS0_6_VAL ((const uint8 CYFAR *)0x000801E8u)
+#define BS_IOPINS0_6_VAL ((const uint8 CYFAR *)0x00080204u)
 
 /* CYDEV_CLKDIST_ACFG0_CFG0 Address: CYREG_CLKDIST_ACFG0_CFG0 Size (bytes): 4 */
-#define BS_CYDEV_CLKDIST_ACFG0_CFG0_VAL ((const uint8 CYFAR *)0x000801F0u)
+#define BS_CYDEV_CLKDIST_ACFG0_CFG0_VAL ((const uint8 CYFAR *)0x0008020Cu)
 
 
 /*******************************************************************************
@@ -132,8 +132,6 @@ static void ClockSetup(void)
 	/* Configure Digital Clocks based on settings from Clock DWR */
 	CY_SET_XTND_REG16((void CYFAR *)(CYREG_CLKDIST_DCFG0_CFG0), 0x0000u);
 	CY_SET_REG8((void CYXDATA *)(CYREG_CLKDIST_DCFG0_CFG0 + 0x2u), 0x50u);
-	CY_SET_XTND_REG16((void CYFAR *)(CYREG_CLKDIST_DCFG1_CFG0), 0x0001u);
-	CY_SET_REG8((void CYXDATA *)(CYREG_CLKDIST_DCFG1_CFG0 + 0x2u), 0x19u);
 
 	/* Configure Analog Clocks based on settings from Clock DWR */
 	CYCONFIGCPY((void CYFAR *)(CYREG_CLKDIST_ACFG0_CFG0), (const void CYFAR *)(BS_CYDEV_CLKDIST_ACFG0_CFG0_VAL), 4u);
@@ -170,7 +168,7 @@ static void ClockSetup(void)
 	CY_SET_REG8((void CYXDATA *)(CYREG_CLKDIST_LD), 0x02u);
 	CY_SET_REG8((void CYXDATA *)(CYREG_CLKDIST_DLY1), 0x04u);
 
-	CY_SET_REG8((void CYXDATA *)(CYREG_PM_ACT_CFG2), ((CY_GET_REG8((void CYXDATA *)CYREG_PM_ACT_CFG2) | 0x03u)));
+	CY_SET_REG8((void CYXDATA *)(CYREG_PM_ACT_CFG2), ((CY_GET_REG8((void CYXDATA *)CYREG_PM_ACT_CFG2) | 0x01u)));
 	CY_SET_REG8((void CYXDATA *)(CYREG_PM_ACT_CFG1), ((CY_GET_REG8((void CYXDATA *)CYREG_PM_ACT_CFG1) | 0x01u)));
 	CY_SET_REG8((void CYXDATA *)(CYREG_PM_ACT_CFG0), ((CY_GET_REG8((void CYXDATA *)CYREG_PM_ACT_CFG0) | 0x80u)));
 }

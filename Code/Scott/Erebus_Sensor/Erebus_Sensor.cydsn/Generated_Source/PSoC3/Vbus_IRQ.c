@@ -25,7 +25,9 @@
 *  Place your includes, defines and code here 
 ********************************************************************************/
 /* `#START Vbus_IRQ_intc` */
-    #include "USB_Access.h"
+    #include "Interface.h"
+    #include "Globals.h"
+    #include "Macros.h"
 /* `#END` */
 
 
@@ -135,17 +137,11 @@ CY_ISR(Vbus_IRQ_Interrupt)
     #ifdef SLEEP_EN
     CyPmRestoreClocks(); 
     RTC_EnableInt();
+    LED_off(ALL);
+    LED_PWM_Wakeup();
     #endif 
     
-    CyDelay(500);
-    
-    if (Vbus_Read()){
-        // Call actual interrupt routine
-        USB_ISR();
-    }
-    
-    Vbus_ClearInterrupt();
-    Vbus_IRQ_ClearPending();
+    USB_waiting = 1;
 
     /* `#END` */
 

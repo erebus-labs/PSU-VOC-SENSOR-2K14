@@ -14,7 +14,7 @@
 
 /* This file provides function definitions for USB interactions */
 
-void USB_ISR(){
+void Run_USB(){
     
     // Power has just been applied to the Vbus pin, so we enter USB communication mode
 
@@ -32,9 +32,6 @@ void USB_ISR(){
 
     /* Enumeration is done, enable OUT endpoint for receive data from Host */
     USBUART_CDC_Init();
-    
-    // Ensure buffer is clear
-    USBUART_GetChar();
     
     while(Vbus_Read())
     {  
@@ -88,7 +85,7 @@ void USB_ISR(){
                         break;
                      
                     case HARD_RESET:
-                        hard_reset();
+                        CMD_hard_reset();
                         send_reply(SUCCESS);
                         break;
                         
@@ -104,7 +101,6 @@ void USB_ISR(){
     }
     
     USB_Close();
-    LED_off(USB);
     
     return;
 }
@@ -346,6 +342,7 @@ void USB_Close(){
     USBUART_Stop();
     StartCollection_IRQ_Start();
     Vbus_IRQ_Start();
+    LED_off(USB);
     
     return;
 }

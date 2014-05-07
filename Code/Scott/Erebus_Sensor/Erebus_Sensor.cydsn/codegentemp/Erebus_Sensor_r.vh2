@@ -1,5 +1,5 @@
 -- Project:   Erebus_Sensor
--- Generated: 05/07/2014 01:07:16
+-- Generated: 05/07/2014 04:35:47
 -- 
 
 ENTITY Erebus_Sensor IS
@@ -21,6 +21,8 @@ END Erebus_Sensor;
 
 ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     SIGNAL ClockBlock_100k : bit;
+    SIGNAL ClockBlock_100k__SYNC_OUT : bit;
+    SIGNAL ClockBlock_100k__SYNC_OUT_1 : bit;
     SIGNAL ClockBlock_1k : bit;
     SIGNAL ClockBlock_32k : bit;
     SIGNAL ClockBlock_BUS_CLK : bit;
@@ -34,9 +36,6 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     SIGNAL ClockBlock_XTAL_32KHZ : bit;
     SIGNAL Net_1300 : bit;
     ATTRIBUTE placement_force OF Net_1300 : SIGNAL IS "U(3,5,A)0";
-    SIGNAL Net_1309 : bit;
-    ATTRIBUTE global_signal OF Net_1309 : SIGNAL IS true;
-    SIGNAL Net_1309_local : bit;
     SIGNAL Net_1347 : bit;
     SIGNAL Net_1398 : bit;
     ATTRIBUTE placement_force OF Net_1398 : SIGNAL IS "U(3,5,A)1";
@@ -135,7 +134,7 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     SIGNAL \USBUART:ept_int_7\ : bit;
     SIGNAL \USBUART:ept_int_8\ : bit;
     SIGNAL __ONE__ : bit;
-    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(2,5,A)0";
+    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(1,3,A)3";
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
     SIGNAL __ZERO__ : bit;
     ATTRIBUTE GROUND OF __ZERO__ : SIGNAL IS true;
@@ -145,6 +144,8 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     ATTRIBUTE GROUND OF zero : SIGNAL IS true;
     SIGNAL \ClockBlock.aclk_glb_ff_0__sig\ : bit;
     ATTRIBUTE Location OF ClockBlock : LABEL IS "F(Clock,0)";
+    ATTRIBUTE Location OF ClockBlock_100k__SYNC : LABEL IS "U(3,5)";
+    ATTRIBUTE Location OF ClockBlock_100k__SYNC_1 : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF Net_1300 : LABEL IS "macrocell1";
     ATTRIBUTE Location OF Net_1300 : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF Net_1398 : LABEL IS "macrocell2";
@@ -205,7 +206,7 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     ATTRIBUTE Location OF \USBUART:ep_3\ : LABEL IS "[IntrHod=(0)][IntrId=(3)]";
     ATTRIBUTE Location OF \USBUART:sof_int\ : LABEL IS "[IntrHod=(0)][IntrId=(21)]";
     ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell7";
-    ATTRIBUTE Location OF __ONE__ : LABEL IS "U(2,5)";
+    ATTRIBUTE Location OF __ONE__ : LABEL IS "U(1,3)";
     COMPONENT abufcell
     END COMPONENT;
     COMPONENT boostcell
@@ -1129,13 +1130,25 @@ BEGIN
             dsi_glb_div => open,
             dclk_glb_0 => \ADC:Net_93\,
             dclk_0 => \ADC:Net_93_local\,
-            dclk_glb_1 => Net_1309,
-            dclk_1 => Net_1309_local,
             aclk_glb_0 => \ADC:Net_488\,
             aclk_0 => \ADC:Net_488_local\,
             clk_a_dig_glb_0 => \ADC:Net_488_adig\,
             clk_a_dig_0 => \ADC:Net_488_adig_local\,
             aclk_glb_ff_0 => \ClockBlock.aclk_glb_ff_0__sig\);
+
+    ClockBlock_100k__SYNC:synccell
+        PORT MAP(
+            in => ClockBlock_100k,
+            out => ClockBlock_100k__SYNC_OUT,
+            clock => ClockBlock_BUS_CLK,
+            clk_en => open);
+
+    ClockBlock_100k__SYNC_1:synccell
+        PORT MAP(
+            in => ClockBlock_100k,
+            out => ClockBlock_100k__SYNC_OUT_1,
+            clock => ClockBlock_BUS_CLK,
+            clk_en => open);
 
     Net_1300:macrocell
         GENERIC MAP(
@@ -1166,7 +1179,8 @@ BEGIN
             eqn_main => "(main_0 * main_1)")
         PORT MAP(
             q => Net_1409,
-            clock_0 => Net_1309,
+            clock_0 => ClockBlock_BUS_CLK,
+            clk_en => ClockBlock_100k__SYNC_OUT,
             main_0 => \LED_PWM:PWMUDB:control_7\,
             main_1 => \LED_PWM:PWMUDB:cmp1_less\);
 
@@ -1175,7 +1189,8 @@ BEGIN
             eqn_main => "(main_0 * !main_1 * !main_2)")
         PORT MAP(
             q => Net_1415,
-            clock_0 => Net_1309,
+            clock_0 => ClockBlock_BUS_CLK,
+            clk_en => ClockBlock_100k__SYNC_OUT,
             main_0 => \LED_PWM:PWMUDB:control_7\,
             main_1 => \LED_PWM:PWMUDB:cmp2_eq\,
             main_2 => \LED_PWM:PWMUDB:cmp2_less\);
@@ -1498,7 +1513,7 @@ BEGIN
 
     StartCollection_IRQ:interrupt
         GENERIC MAP(
-            int_type => "00")
+            int_type => "10")
         PORT MAP(
             interrupt => Net_849,
             clock => ClockBlock_BUS_CLK);
@@ -1592,7 +1607,7 @@ BEGIN
 
     StopCollection_IRQ:interrupt
         GENERIC MAP(
-            int_type => "00")
+            int_type => "10")
         PORT MAP(
             interrupt => Net_1524,
             clock => ClockBlock_BUS_CLK);
@@ -1778,7 +1793,7 @@ BEGIN
             cy_force_order => 1,
             cy_init_value => "00000000")
         PORT MAP(
-            clock => Net_1309,
+            clock => ClockBlock_BUS_CLK,
             control_7 => \LED_PWM:PWMUDB:control_7\,
             control_6 => \LED_PWM:PWMUDB:control_6\,
             control_5 => \LED_PWM:PWMUDB:control_5\,
@@ -1787,6 +1802,7 @@ BEGIN
             control_2 => \LED_PWM:PWMUDB:control_2\,
             control_1 => \LED_PWM:PWMUDB:control_1\,
             control_0 => \LED_PWM:PWMUDB:control_0\,
+            clk_en => ClockBlock_100k__SYNC_OUT_1,
             busclk => ClockBlock_BUS_CLK);
 
     \LED_PWM:PWMUDB:runmode_enable\:macrocell
@@ -1795,7 +1811,8 @@ BEGIN
         PORT MAP(
             q => \LED_PWM:PWMUDB:runmode_enable\,
             main_0 => \LED_PWM:PWMUDB:control_7\,
-            clock_0 => Net_1309);
+            clock_0 => ClockBlock_BUS_CLK,
+            clk_en => ClockBlock_100k__SYNC_OUT);
 
     \LED_PWM:PWMUDB:sP8:pwmdp:u0\:datapathcell
         GENERIC MAP(
@@ -1823,13 +1840,14 @@ BEGIN
             uses_p_in => '0',
             uses_p_out => '0')
         PORT MAP(
-            clock => Net_1309,
+            clock => ClockBlock_BUS_CLK,
             cs_addr_2 => \LED_PWM:PWMUDB:tc_i\,
             cs_addr_1 => \LED_PWM:PWMUDB:runmode_enable\,
             cl0_comb => \LED_PWM:PWMUDB:cmp1_less\,
             z0_comb => \LED_PWM:PWMUDB:tc_i\,
             ce1_comb => \LED_PWM:PWMUDB:cmp2_eq\,
             cl1_comb => \LED_PWM:PWMUDB:cmp2_less\,
+            clk_en => ClockBlock_100k__SYNC_OUT,
             busclk => ClockBlock_BUS_CLK);
 
     \RTC:isr\:interrupt

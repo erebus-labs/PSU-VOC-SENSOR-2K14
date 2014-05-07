@@ -1622,6 +1622,18 @@ library (timing) {
     cell (datapathcell1) {
         pin (clk_en) {
             direction : input;
+            timing () {
+                timing_type : setup_rising;
+                related_pin : "clock";
+                intrinsic_rise : 2.10;
+                intrinsic_fall : 2.10;
+            }
+            timing () {
+                timing_type : hold_rising;
+                related_pin : "clock";
+                intrinsic_rise : 0.00;
+                intrinsic_fall : 0.00;
+            }
         }
         pin (reset) {
             direction : input;

@@ -2,7 +2,7 @@
 --	Conversion of Erebus_Sensor.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Wed May 07 01:07:14 2014
+--	Wed May 07 04:35:44 2014
 --
 
 USE cypress.cypress.all;
@@ -1027,10 +1027,10 @@ StopCollection_B:cy_psoc3_pins_v1_10
 		out_reset=>zero,
 		interrupt=>Net_1524);
 StopCollection_IRQ:cy_isr_v1_0
-	GENERIC MAP(int_type=>"00")
+	GENERIC MAP(int_type=>"10")
 	PORT MAP(int_signal=>Net_1524);
 StartCollection_IRQ:cy_isr_v1_0
-	GENERIC MAP(int_type=>"00")
+	GENERIC MAP(int_type=>"10")
 	PORT MAP(int_signal=>Net_849);
 \USBUART:USB\:cy_psoc3_usb_v1_0
 	GENERIC MAP(cy_registers=>"")
@@ -1338,10 +1338,10 @@ StartCollection_IRQ:cy_isr_v1_0
 PWM_CLK:cy_clock_v1_0
 	GENERIC MAP(cy_registers=>"",
 		id=>"48e889b6-c199-4b3a-bd89-d32bdd0d158d",
-		source_clock_id=>"",
+		source_clock_id=>"315365C3-2E3E-4f04-84A2-BB564A173261",
 		divisor=>0,
-		period=>"83333333.3333333",
-		is_direct=>'0',
+		period=>"0",
+		is_direct=>'1',
 		is_digital=>'1')
 	PORT MAP(clock_out=>Net_1309,
 		dig_domain_out=>open);

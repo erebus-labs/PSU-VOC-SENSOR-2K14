@@ -14,15 +14,17 @@
     #define _INTERFACE_H_
     
     #include "project.h"
-    #include "EmEEPROM_Access.h"
     #include "EEPROM_Access.h"
-    #include "USB_Access.h"
     #include "RTC_Handler.h"
+    #include "USB_Access.h"
+    #include "Globals.h"
+    #include "Macros.h"
     
-    void StartCollection_ISR();
-    void StopCollection_ISR();
-    void Hibernate_ISR();
-
+    void StartCollection();
+    void StopCollection();
+    void LED_on(uint8 target);   
+    void LED_off(uint8 target);
+    
     // In this struct, year is listed first to avoid compiler
     // padding - #pragma pack(n) is not a recognized directive
     // for the compiler

@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   VBUS_IRQ                                                              05/07/2014 01:47:23 PAGE 1   
+C51 COMPILER V9.51   VBUS_IRQ                                                              05/07/2014 04:58:00 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE VBUS_IRQ
@@ -36,383 +36,379 @@ line level    source
   25          *  Place your includes, defines and code here 
   26          ********************************************************************************/
   27          /* `#START Vbus_IRQ_intc` */
-  28              #include "USB_Access.h"
-  29          /* `#END` */
-  30          
-  31          
-  32          /*******************************************************************************
-  33          * Function Name: Vbus_IRQ_Start
-  34          ********************************************************************************
-  35          *
-  36          * Summary:
-  37          *  Set up the interrupt and enable it.
-  38          *
-  39          * Parameters:  
-  40          *   None
-  41          *
-  42          * Return:
-  43          *   None
-  44          *
-  45          *******************************************************************************/
-  46          void Vbus_IRQ_Start(void) 
-  47          {
-  48   1          /* For all we know the interrupt is active. */
-  49   1          Vbus_IRQ_Disable();
-  50   1      
-  51   1          /* Set the ISR to point to the Vbus_IRQ Interrupt. */
-  52   1          Vbus_IRQ_SetVector(&Vbus_IRQ_Interrupt);
-  53   1      
-C51 COMPILER V9.51   VBUS_IRQ                                                              05/07/2014 01:47:23 PAGE 2   
+  28              #include "Interface.h"
+  29              #include "Globals.h"
+  30              #include "Macros.h"
+  31          /* `#END` */
+  32          
+  33          
+  34          /*******************************************************************************
+  35          * Function Name: Vbus_IRQ_Start
+  36          ********************************************************************************
+  37          *
+  38          * Summary:
+  39          *  Set up the interrupt and enable it.
+  40          *
+  41          * Parameters:  
+  42          *   None
+  43          *
+  44          * Return:
+  45          *   None
+  46          *
+  47          *******************************************************************************/
+  48          void Vbus_IRQ_Start(void) 
+  49          {
+  50   1          /* For all we know the interrupt is active. */
+  51   1          Vbus_IRQ_Disable();
+  52   1      
+  53   1          /* Set the ISR to point to the Vbus_IRQ Interrupt. */
+C51 COMPILER V9.51   VBUS_IRQ                                                              05/07/2014 04:58:00 PAGE 2   
 
-  54   1          /* Set the priority. */
-  55   1          Vbus_IRQ_SetPriority((uint8)Vbus_IRQ_INTC_PRIOR_NUMBER);
-  56   1      
-  57   1          /* Enable it. */
-  58   1          Vbus_IRQ_Enable();
-  59   1      }
-  60          
-  61          
-  62          /*******************************************************************************
-  63          * Function Name: Vbus_IRQ_StartEx
-  64          ********************************************************************************
-  65          *
-  66          * Summary:
-  67          *  Set up the interrupt and enable it.
-  68          *
-  69          * Parameters:  
-  70          *   address: Address of the ISR to set in the interrupt vector table.
-  71          *
-  72          * Return:
-  73          *   None
-  74          *
-  75          *******************************************************************************/
-  76          void Vbus_IRQ_StartEx(cyisraddress address) 
-  77          {
-  78   1          /* For all we know the interrupt is active. */
-  79   1          Vbus_IRQ_Disable();
-  80   1      
-  81   1          /* Set the ISR to point to the Vbus_IRQ Interrupt. */
-  82   1          Vbus_IRQ_SetVector(address);
-  83   1      
-  84   1          /* Set the priority. */
-  85   1          Vbus_IRQ_SetPriority((uint8)Vbus_IRQ_INTC_PRIOR_NUMBER);
-  86   1      
-  87   1          /* Enable it. */
-  88   1          Vbus_IRQ_Enable();
-  89   1      }
-  90          
-  91          
-  92          /*******************************************************************************
-  93          * Function Name: Vbus_IRQ_Stop
-  94          ********************************************************************************
-  95          *
-  96          * Summary:
-  97          *   Disables and removes the interrupt.
-  98          *
-  99          * Parameters:  
- 100          *   None
- 101          *
- 102          * Return:
- 103          *   None
- 104          *
- 105          *******************************************************************************/
- 106          void Vbus_IRQ_Stop(void) 
- 107          {
- 108   1          /* Disable this interrupt. */
- 109   1          Vbus_IRQ_Disable();
- 110   1      }
- 111          
- 112          
- 113          /*******************************************************************************
- 114          * Function Name: Vbus_IRQ_Interrupt
- 115          ********************************************************************************
-C51 COMPILER V9.51   VBUS_IRQ                                                              05/07/2014 01:47:23 PAGE 3   
+  54   1          Vbus_IRQ_SetVector(&Vbus_IRQ_Interrupt);
+  55   1      
+  56   1          /* Set the priority. */
+  57   1          Vbus_IRQ_SetPriority((uint8)Vbus_IRQ_INTC_PRIOR_NUMBER);
+  58   1      
+  59   1          /* Enable it. */
+  60   1          Vbus_IRQ_Enable();
+  61   1      }
+  62          
+  63          
+  64          /*******************************************************************************
+  65          * Function Name: Vbus_IRQ_StartEx
+  66          ********************************************************************************
+  67          *
+  68          * Summary:
+  69          *  Set up the interrupt and enable it.
+  70          *
+  71          * Parameters:  
+  72          *   address: Address of the ISR to set in the interrupt vector table.
+  73          *
+  74          * Return:
+  75          *   None
+  76          *
+  77          *******************************************************************************/
+  78          void Vbus_IRQ_StartEx(cyisraddress address) 
+  79          {
+  80   1          /* For all we know the interrupt is active. */
+  81   1          Vbus_IRQ_Disable();
+  82   1      
+  83   1          /* Set the ISR to point to the Vbus_IRQ Interrupt. */
+  84   1          Vbus_IRQ_SetVector(address);
+  85   1      
+  86   1          /* Set the priority. */
+  87   1          Vbus_IRQ_SetPriority((uint8)Vbus_IRQ_INTC_PRIOR_NUMBER);
+  88   1      
+  89   1          /* Enable it. */
+  90   1          Vbus_IRQ_Enable();
+  91   1      }
+  92          
+  93          
+  94          /*******************************************************************************
+  95          * Function Name: Vbus_IRQ_Stop
+  96          ********************************************************************************
+  97          *
+  98          * Summary:
+  99          *   Disables and removes the interrupt.
+ 100          *
+ 101          * Parameters:  
+ 102          *   None
+ 103          *
+ 104          * Return:
+ 105          *   None
+ 106          *
+ 107          *******************************************************************************/
+ 108          void Vbus_IRQ_Stop(void) 
+ 109          {
+ 110   1          /* Disable this interrupt. */
+ 111   1          Vbus_IRQ_Disable();
+ 112   1      }
+ 113          
+ 114          
+ 115          /*******************************************************************************
+C51 COMPILER V9.51   VBUS_IRQ                                                              05/07/2014 04:58:00 PAGE 3   
 
- 116          * Summary:
- 117          *   The default Interrupt Service Routine for Vbus_IRQ.
- 118          *
- 119          *   Add custom code between the coments to keep the next version of this file
- 120          *   from over writting your code.
- 121          *
- 122          * Parameters:  
- 123          *   None
- 124          *
- 125          * Return:
- 126          *   None
- 127          *
- 128          *******************************************************************************/
- 129          CY_ISR(Vbus_IRQ_Interrupt)
- 130          {
- 131   1          /*  Place your Interrupt code here. */
- 132   1          /* `#START Vbus_IRQ_Interrupt` */
- 133   1          
- 134   1          // Restore from sleep
- 135   1          #ifdef SLEEP_EN
-                  CyPmRestoreClocks(); 
-                  RTC_EnableInt();
-                  #endif 
- 139   1          
- 140   1          CyDelay(500);
- 141   1          
- 142   1          if (Vbus_Read()){
- 143   2              // Call actual interrupt routine
- 144   2              USB_ISR();
- 145   2          }
- 146   1          
- 147   1          Vbus_ClearInterrupt();
- 148   1          Vbus_IRQ_ClearPending();
- 149   1      
- 150   1          /* `#END` */
- 151   1      
- 152   1          /* PSoC3 ES1, ES2 RTC ISR PATCH  */ 
- 153   1          #if(CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3)
- 154   1              #if((CYDEV_CHIP_REVISION_USED <= CYDEV_CHIP_REVISION_3A_ES2) && (Vbus_IRQ__ES2_PATCH ))      
+ 116          * Function Name: Vbus_IRQ_Interrupt
+ 117          ********************************************************************************
+ 118          * Summary:
+ 119          *   The default Interrupt Service Routine for Vbus_IRQ.
+ 120          *
+ 121          *   Add custom code between the coments to keep the next version of this file
+ 122          *   from over writting your code.
+ 123          *
+ 124          * Parameters:  
+ 125          *   None
+ 126          *
+ 127          * Return:
+ 128          *   None
+ 129          *
+ 130          *******************************************************************************/
+ 131          CY_ISR(Vbus_IRQ_Interrupt)
+ 132          {
+ 133   1          /*  Place your Interrupt code here. */
+ 134   1          /* `#START Vbus_IRQ_Interrupt` */
+ 135   1          
+ 136   1          // Restore from sleep
+ 137   1          #ifdef SLEEP_EN
+ 138   1          CyPmRestoreClocks(); 
+ 139   1          RTC_EnableInt();
+ 140   1          LED_off(ALL);
+ 141   1          LED_PWM_Wakeup();
+ 142   1          #endif 
+ 143   1          
+ 144   1          USB_waiting = 1;
+ 145   1      
+ 146   1          /* `#END` */
+ 147   1      
+ 148   1          /* PSoC3 ES1, ES2 RTC ISR PATCH  */ 
+ 149   1          #if(CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3)
+ 150   1              #if((CYDEV_CHIP_REVISION_USED <= CYDEV_CHIP_REVISION_3A_ES2) && (Vbus_IRQ__ES2_PATCH ))      
                           Vbus_IRQ_ISR_PATCH();
                       #endif /* CYDEV_CHIP_REVISION_USED */
- 157   1          #endif /* (CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3) */
- 158   1      }
- 159          
- 160          
- 161          /*******************************************************************************
- 162          * Function Name: Vbus_IRQ_SetVector
- 163          ********************************************************************************
- 164          *
- 165          * Summary:
- 166          *   Change the ISR vector for the Interrupt. Note calling Vbus_IRQ_Start
- 167          *   will override any effect this method would have had. To set the vector 
- 168          *   before the component has been started use Vbus_IRQ_StartEx instead.
- 169          *
- 170          * Parameters:
- 171          *   address: Address of the ISR to set in the interrupt vector table.
- 172          *
- 173          * Return:
- 174          *   None
- 175          *
- 176          *******************************************************************************/
- 177          void Vbus_IRQ_SetVector(cyisraddress address) 
-C51 COMPILER V9.51   VBUS_IRQ                                                              05/07/2014 01:47:23 PAGE 4   
+ 153   1          #endif /* (CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3) */
+ 154   1      }
+ 155          
+ 156          
+ 157          /*******************************************************************************
+ 158          * Function Name: Vbus_IRQ_SetVector
+ 159          ********************************************************************************
+ 160          *
+ 161          * Summary:
+ 162          *   Change the ISR vector for the Interrupt. Note calling Vbus_IRQ_Start
+ 163          *   will override any effect this method would have had. To set the vector 
+ 164          *   before the component has been started use Vbus_IRQ_StartEx instead.
+ 165          *
+ 166          * Parameters:
+ 167          *   address: Address of the ISR to set in the interrupt vector table.
+ 168          *
+ 169          * Return:
+ 170          *   None
+ 171          *
+ 172          *******************************************************************************/
+ 173          void Vbus_IRQ_SetVector(cyisraddress address) 
+ 174          {
+ 175   1          CY_SET_REG16(Vbus_IRQ_INTC_VECTOR, (uint16) address);
+ 176   1      }
+ 177          
+C51 COMPILER V9.51   VBUS_IRQ                                                              05/07/2014 04:58:00 PAGE 4   
 
- 178          {
- 179   1          CY_SET_REG16(Vbus_IRQ_INTC_VECTOR, (uint16) address);
- 180   1      }
- 181          
- 182          
- 183          /*******************************************************************************
- 184          * Function Name: Vbus_IRQ_GetVector
- 185          ********************************************************************************
- 186          *
- 187          * Summary:
- 188          *   Gets the "address" of the current ISR vector for the Interrupt.
- 189          *
- 190          * Parameters:
- 191          *   None
- 192          *
- 193          * Return:
- 194          *   Address of the ISR in the interrupt vector table.
- 195          *
- 196          *******************************************************************************/
- 197          cyisraddress Vbus_IRQ_GetVector(void) 
- 198          {
- 199   1          return (cyisraddress) CY_GET_REG16(Vbus_IRQ_INTC_VECTOR);
- 200   1      }
- 201          
- 202          
- 203          /*******************************************************************************
- 204          * Function Name: Vbus_IRQ_SetPriority
- 205          ********************************************************************************
- 206          *
- 207          * Summary:
- 208          *   Sets the Priority of the Interrupt. Note calling Vbus_IRQ_Start
- 209          *   or Vbus_IRQ_StartEx will override any effect this method would 
- 210          *   have had. This method should only be called after Vbus_IRQ_Start or 
- 211          *   Vbus_IRQ_StartEx has been called. To set the initial
- 212          *   priority for the component use the cydwr file in the tool.
- 213          *
- 214          * Parameters:
- 215          *   priority: Priority of the interrupt. 0 - 7, 0 being the highest.
- 216          *
- 217          * Return:
- 218          *   None
- 219          *
- 220          *******************************************************************************/
- 221          void Vbus_IRQ_SetPriority(uint8 priority) 
- 222          {
- 223   1          *Vbus_IRQ_INTC_PRIOR = priority << 5;
- 224   1      }
- 225          
- 226          
- 227          /*******************************************************************************
- 228          * Function Name: Vbus_IRQ_GetPriority
- 229          ********************************************************************************
- 230          *
- 231          * Summary:
- 232          *   Gets the Priority of the Interrupt.
- 233          *
- 234          * Parameters:
- 235          *   None
- 236          *
- 237          * Return:
- 238          *   Priority of the interrupt. 0 - 7, 0 being the highest.
- 239          *
-C51 COMPILER V9.51   VBUS_IRQ                                                              05/07/2014 01:47:23 PAGE 5   
+ 178          
+ 179          /*******************************************************************************
+ 180          * Function Name: Vbus_IRQ_GetVector
+ 181          ********************************************************************************
+ 182          *
+ 183          * Summary:
+ 184          *   Gets the "address" of the current ISR vector for the Interrupt.
+ 185          *
+ 186          * Parameters:
+ 187          *   None
+ 188          *
+ 189          * Return:
+ 190          *   Address of the ISR in the interrupt vector table.
+ 191          *
+ 192          *******************************************************************************/
+ 193          cyisraddress Vbus_IRQ_GetVector(void) 
+ 194          {
+ 195   1          return (cyisraddress) CY_GET_REG16(Vbus_IRQ_INTC_VECTOR);
+ 196   1      }
+ 197          
+ 198          
+ 199          /*******************************************************************************
+ 200          * Function Name: Vbus_IRQ_SetPriority
+ 201          ********************************************************************************
+ 202          *
+ 203          * Summary:
+ 204          *   Sets the Priority of the Interrupt. Note calling Vbus_IRQ_Start
+ 205          *   or Vbus_IRQ_StartEx will override any effect this method would 
+ 206          *   have had. This method should only be called after Vbus_IRQ_Start or 
+ 207          *   Vbus_IRQ_StartEx has been called. To set the initial
+ 208          *   priority for the component use the cydwr file in the tool.
+ 209          *
+ 210          * Parameters:
+ 211          *   priority: Priority of the interrupt. 0 - 7, 0 being the highest.
+ 212          *
+ 213          * Return:
+ 214          *   None
+ 215          *
+ 216          *******************************************************************************/
+ 217          void Vbus_IRQ_SetPriority(uint8 priority) 
+ 218          {
+ 219   1          *Vbus_IRQ_INTC_PRIOR = priority << 5;
+ 220   1      }
+ 221          
+ 222          
+ 223          /*******************************************************************************
+ 224          * Function Name: Vbus_IRQ_GetPriority
+ 225          ********************************************************************************
+ 226          *
+ 227          * Summary:
+ 228          *   Gets the Priority of the Interrupt.
+ 229          *
+ 230          * Parameters:
+ 231          *   None
+ 232          *
+ 233          * Return:
+ 234          *   Priority of the interrupt. 0 - 7, 0 being the highest.
+ 235          *
+ 236          *******************************************************************************/
+ 237          uint8 Vbus_IRQ_GetPriority(void) 
+ 238          {
+ 239   1          uint8 priority;
+C51 COMPILER V9.51   VBUS_IRQ                                                              05/07/2014 04:58:00 PAGE 5   
 
- 240          *******************************************************************************/
- 241          uint8 Vbus_IRQ_GetPriority(void) 
- 242          {
- 243   1          uint8 priority;
- 244   1      
- 245   1      
- 246   1          priority = *Vbus_IRQ_INTC_PRIOR >> 5;
- 247   1      
- 248   1          return priority;
- 249   1      }
- 250          
- 251          
- 252          /*******************************************************************************
- 253          * Function Name: Vbus_IRQ_Enable
- 254          ********************************************************************************
- 255          *
- 256          * Summary:
- 257          *   Enables the interrupt.
- 258          *
- 259          * Parameters:
- 260          *   None
- 261          *
- 262          * Return:
- 263          *   None
- 264          *
- 265          *******************************************************************************/
- 266          void Vbus_IRQ_Enable(void) 
- 267          {
- 268   1          /* Enable the general interrupt. */
- 269   1          *Vbus_IRQ_INTC_SET_EN = Vbus_IRQ__INTC_MASK;
- 270   1      }
- 271          
- 272          
- 273          /*******************************************************************************
- 274          * Function Name: Vbus_IRQ_GetState
- 275          ********************************************************************************
- 276          *
- 277          * Summary:
- 278          *   Gets the state (enabled, disabled) of the Interrupt.
- 279          *
- 280          * Parameters:
- 281          *   None
- 282          *
- 283          * Return:
- 284          *   1 if enabled, 0 if disabled.
- 285          *
- 286          *******************************************************************************/
- 287          uint8 Vbus_IRQ_GetState(void) 
- 288          {
- 289   1          /* Get the state of the general interrupt. */
- 290   1          return ((*Vbus_IRQ_INTC_SET_EN & (uint8)Vbus_IRQ__INTC_MASK) != 0u) ? 1u:0u;
- 291   1      }
- 292          
- 293          
- 294          /*******************************************************************************
- 295          * Function Name: Vbus_IRQ_Disable
- 296          ********************************************************************************
- 297          *
- 298          * Summary:
- 299          *   Disables the Interrupt.
- 300          *
- 301          * Parameters:
-C51 COMPILER V9.51   VBUS_IRQ                                                              05/07/2014 01:47:23 PAGE 6   
+ 240   1      
+ 241   1      
+ 242   1          priority = *Vbus_IRQ_INTC_PRIOR >> 5;
+ 243   1      
+ 244   1          return priority;
+ 245   1      }
+ 246          
+ 247          
+ 248          /*******************************************************************************
+ 249          * Function Name: Vbus_IRQ_Enable
+ 250          ********************************************************************************
+ 251          *
+ 252          * Summary:
+ 253          *   Enables the interrupt.
+ 254          *
+ 255          * Parameters:
+ 256          *   None
+ 257          *
+ 258          * Return:
+ 259          *   None
+ 260          *
+ 261          *******************************************************************************/
+ 262          void Vbus_IRQ_Enable(void) 
+ 263          {
+ 264   1          /* Enable the general interrupt. */
+ 265   1          *Vbus_IRQ_INTC_SET_EN = Vbus_IRQ__INTC_MASK;
+ 266   1      }
+ 267          
+ 268          
+ 269          /*******************************************************************************
+ 270          * Function Name: Vbus_IRQ_GetState
+ 271          ********************************************************************************
+ 272          *
+ 273          * Summary:
+ 274          *   Gets the state (enabled, disabled) of the Interrupt.
+ 275          *
+ 276          * Parameters:
+ 277          *   None
+ 278          *
+ 279          * Return:
+ 280          *   1 if enabled, 0 if disabled.
+ 281          *
+ 282          *******************************************************************************/
+ 283          uint8 Vbus_IRQ_GetState(void) 
+ 284          {
+ 285   1          /* Get the state of the general interrupt. */
+ 286   1          return ((*Vbus_IRQ_INTC_SET_EN & (uint8)Vbus_IRQ__INTC_MASK) != 0u) ? 1u:0u;
+ 287   1      }
+ 288          
+ 289          
+ 290          /*******************************************************************************
+ 291          * Function Name: Vbus_IRQ_Disable
+ 292          ********************************************************************************
+ 293          *
+ 294          * Summary:
+ 295          *   Disables the Interrupt.
+ 296          *
+ 297          * Parameters:
+ 298          *   None
+ 299          *
+ 300          * Return:
+ 301          *   None
+C51 COMPILER V9.51   VBUS_IRQ                                                              05/07/2014 04:58:00 PAGE 6   
 
- 302          *   None
- 303          *
- 304          * Return:
- 305          *   None
- 306          *
- 307          *******************************************************************************/
- 308          void Vbus_IRQ_Disable(void) 
- 309          {
- 310   1          /* Disable the general interrupt. */
- 311   1          *Vbus_IRQ_INTC_CLR_EN = Vbus_IRQ__INTC_MASK;
- 312   1      }
- 313          
- 314          
- 315          /*******************************************************************************
- 316          * Function Name: Vbus_IRQ_SetPending
- 317          ********************************************************************************
+ 302          *
+ 303          *******************************************************************************/
+ 304          void Vbus_IRQ_Disable(void) 
+ 305          {
+ 306   1          /* Disable the general interrupt. */
+ 307   1          *Vbus_IRQ_INTC_CLR_EN = Vbus_IRQ__INTC_MASK;
+ 308   1      }
+ 309          
+ 310          
+ 311          /*******************************************************************************
+ 312          * Function Name: Vbus_IRQ_SetPending
+ 313          ********************************************************************************
+ 314          *
+ 315          * Summary:
+ 316          *   Causes the Interrupt to enter the pending state, a software method of
+ 317          *   generating the interrupt.
  318          *
- 319          * Summary:
- 320          *   Causes the Interrupt to enter the pending state, a software method of
- 321          *   generating the interrupt.
- 322          *
- 323          * Parameters:
- 324          *   None
- 325          *
- 326          * Return:
- 327          *   None
- 328          *
- 329          *******************************************************************************/
- 330          void Vbus_IRQ_SetPending(void) 
- 331          {
- 332   1          *Vbus_IRQ_INTC_SET_PD = Vbus_IRQ__INTC_MASK;
- 333   1      }
- 334          
- 335          
- 336          /*******************************************************************************
- 337          * Function Name: Vbus_IRQ_ClearPending
- 338          ********************************************************************************
- 339          *
- 340          * Summary:
- 341          *   Clears a pending interrupt.
- 342          *
- 343          * Parameters:
- 344          *   None
- 345          *
- 346          * Return:
- 347          *   None
- 348          *
- 349          *******************************************************************************/
- 350          void Vbus_IRQ_ClearPending(void) 
- 351          {
- 352   1          *Vbus_IRQ_INTC_CLR_PD = Vbus_IRQ__INTC_MASK;
- 353   1      }
- 354          
- 355          #endif /* End check for removal by optimization */
- 356          
- 357          
- 358          /* [] END OF FILE */
-C51 COMPILER V9.51   VBUS_IRQ                                                              05/07/2014 01:47:23 PAGE 7   
+ 319          * Parameters:
+ 320          *   None
+ 321          *
+ 322          * Return:
+ 323          *   None
+ 324          *
+ 325          *******************************************************************************/
+ 326          void Vbus_IRQ_SetPending(void) 
+ 327          {
+ 328   1          *Vbus_IRQ_INTC_SET_PD = Vbus_IRQ__INTC_MASK;
+ 329   1      }
+ 330          
+ 331          
+ 332          /*******************************************************************************
+ 333          * Function Name: Vbus_IRQ_ClearPending
+ 334          ********************************************************************************
+ 335          *
+ 336          * Summary:
+ 337          *   Clears a pending interrupt.
+ 338          *
+ 339          * Parameters:
+ 340          *   None
+ 341          *
+ 342          * Return:
+ 343          *   None
+ 344          *
+ 345          *******************************************************************************/
+ 346          void Vbus_IRQ_ClearPending(void) 
+ 347          {
+ 348   1          *Vbus_IRQ_INTC_CLR_PD = Vbus_IRQ__INTC_MASK;
+ 349   1      }
+ 350          
+ 351          #endif /* End check for removal by optimization */
+ 352          
+ 353          
+ 354          /* [] END OF FILE */
+C51 COMPILER V9.51   VBUS_IRQ                                                              05/07/2014 04:58:00 PAGE 7   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
 
              ; FUNCTION Vbus_IRQ_Start (BEGIN)
-                                           ; SOURCE LINE # 46
-                                           ; SOURCE LINE # 47
+                                           ; SOURCE LINE # 48
                                            ; SOURCE LINE # 49
+                                           ; SOURCE LINE # 51
 0000 120000      R     LCALL   Vbus_IRQ_Disable
-                                           ; SOURCE LINE # 52
+                                           ; SOURCE LINE # 54
 0003 7E00        R     MOV     R6,#HIGH Vbus_IRQ_Interrupt
 0005 7F00        R     MOV     R7,#LOW Vbus_IRQ_Interrupt
 0007 120000      R     LCALL   _Vbus_IRQ_SetVector
-                                           ; SOURCE LINE # 55
+                                           ; SOURCE LINE # 57
 000A 7F07              MOV     R7,#07H
 000C 120000      R     LCALL   _Vbus_IRQ_SetPriority
-                                           ; SOURCE LINE # 58
+                                           ; SOURCE LINE # 60
 000F 120000      R     LCALL   Vbus_IRQ_Enable
-                                           ; SOURCE LINE # 59
+                                           ; SOURCE LINE # 61
 0012         ?C0001:
 0012 22                RET     
              ; FUNCTION Vbus_IRQ_Start (END)
 
              ; FUNCTION _Vbus_IRQ_StartEx (BEGIN)
-                                           ; SOURCE LINE # 76
+                                           ; SOURCE LINE # 78
 0000 900000      R     MOV     DPTR,#address
 0003 EE                MOV     A,R6
 0004 F0                MOVX    @DPTR,A
 0005 A3                INC     DPTR
 0006 EF                MOV     A,R7
 0007 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 77
                                            ; SOURCE LINE # 79
+                                           ; SOURCE LINE # 81
 0008 120000      R     LCALL   Vbus_IRQ_Disable
-                                           ; SOURCE LINE # 82
+                                           ; SOURCE LINE # 84
 000B 900000      R     MOV     DPTR,#address
 000E E0                MOVX    A,@DPTR
 000F FE                MOV     R6,A
@@ -420,28 +416,28 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0011 E0                MOVX    A,@DPTR
 0012 FF                MOV     R7,A
 0013 120000      R     LCALL   _Vbus_IRQ_SetVector
-                                           ; SOURCE LINE # 85
+                                           ; SOURCE LINE # 87
 0016 7F07              MOV     R7,#07H
 0018 120000      R     LCALL   _Vbus_IRQ_SetPriority
-                                           ; SOURCE LINE # 88
+                                           ; SOURCE LINE # 90
 001B 120000      R     LCALL   Vbus_IRQ_Enable
-                                           ; SOURCE LINE # 89
+                                           ; SOURCE LINE # 91
 001E         ?C0002:
 001E 22                RET     
              ; FUNCTION _Vbus_IRQ_StartEx (END)
 
              ; FUNCTION Vbus_IRQ_Stop (BEGIN)
-                                           ; SOURCE LINE # 106
-                                           ; SOURCE LINE # 107
+                                           ; SOURCE LINE # 108
                                            ; SOURCE LINE # 109
+                                           ; SOURCE LINE # 111
 0000 120000      R     LCALL   Vbus_IRQ_Disable
-                                           ; SOURCE LINE # 110
+                                           ; SOURCE LINE # 112
 0003         ?C0003:
 0003 22                RET     
              ; FUNCTION Vbus_IRQ_Stop (END)
 
              ; FUNCTION Vbus_IRQ_Interrupt (BEGIN)
-C51 COMPILER V9.51   VBUS_IRQ                                                              05/07/2014 01:47:23 PAGE 8   
+C51 COMPILER V9.51   VBUS_IRQ                                                              05/07/2014 04:58:00 PAGE 8   
 
 0000 C0E0              PUSH    ACC
 0002 C0F0              PUSH    B
@@ -463,59 +459,54 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0025 C005              PUSH    AR5
 0027 C006              PUSH    AR6
 0029 C007              PUSH    AR7
-                                           ; SOURCE LINE # 129
+                                           ; SOURCE LINE # 131
+                                           ; SOURCE LINE # 138
+002B 120000      E     LCALL   CyPmRestoreClocks
+                                           ; SOURCE LINE # 139
+002E 120000      E     LCALL   RTC_EnableInt
                                            ; SOURCE LINE # 140
-002B 7FF4              MOV     R7,#0F4H
-002D 7E01              MOV     R6,#01H
-002F 7D00              MOV     R5,#00H
-0031 7C00              MOV     R4,#00H
-0033 120000      E     LCALL   _?CyDelay
-                                           ; SOURCE LINE # 142
-0036 120000      E     LCALL   Vbus_Read
-0039 EF                MOV     A,R7
-003A 6003              JZ      ?C0004
+0031 7F00              MOV     R7,#00H
+0033 120000      E     LCALL   _LED_off
+                                           ; SOURCE LINE # 141
+0036 120000      E     LCALL   LED_PWM_Wakeup
                                            ; SOURCE LINE # 144
-003C 120000      E     LCALL   USB_ISR
-                                           ; SOURCE LINE # 145
+0039 900000      E     MOV     DPTR,#USB_waiting
+003C 7401              MOV     A,#01H
+003E F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 154
 003F         ?C0004:
-                                           ; SOURCE LINE # 147
-003F 120000      E     LCALL   Vbus_ClearInterrupt
-                                           ; SOURCE LINE # 148
-0042 120000      R     LCALL   Vbus_IRQ_ClearPending
-                                           ; SOURCE LINE # 158
-0045         ?C0005:
-0045 D007              POP     AR7
-0047 D006              POP     AR6
-0049 D005              POP     AR5
-004B D004              POP     AR4
-004D D003              POP     AR3
-004F D002              POP     AR2
-0051 D001              POP     AR1
-0053 D000              POP     AR0
-0055 D0D0              POP     PSW
-0057 D000        E     POP     ?C?XPAGE1SFR
-0059 D086              POP     DPS
-005B D084              POP     DPL1
-005D D085              POP     DPH1
-005F D082              POP     DPL
-0061 D083              POP     DPH
-0063 D0F0              POP     B
-0065 D0E0              POP     ACC
-0067 32                RETI    
+003F D007              POP     AR7
+0041 D006              POP     AR6
+0043 D005              POP     AR5
+0045 D004              POP     AR4
+0047 D003              POP     AR3
+0049 D002              POP     AR2
+004B D001              POP     AR1
+004D D000              POP     AR0
+004F D0D0              POP     PSW
+0051 D000        E     POP     ?C?XPAGE1SFR
+0053 D086              POP     DPS
+0055 D084              POP     DPL1
+0057 D085              POP     DPH1
+0059 D082              POP     DPL
+005B D083              POP     DPH
+005D D0F0              POP     B
+005F D0E0              POP     ACC
+0061 32                RETI    
              ; FUNCTION Vbus_IRQ_Interrupt (END)
 
              ; FUNCTION _Vbus_IRQ_SetVector (BEGIN)
-C51 COMPILER V9.51   VBUS_IRQ                                                              05/07/2014 01:47:23 PAGE 9   
-
-                                           ; SOURCE LINE # 177
+                                           ; SOURCE LINE # 173
 0000 900000      R     MOV     DPTR,#address
 0003 EE                MOV     A,R6
 0004 F0                MOVX    @DPTR,A
 0005 A3                INC     DPTR
+C51 COMPILER V9.51   VBUS_IRQ                                                              05/07/2014 04:58:00 PAGE 9   
+
 0006 EF                MOV     A,R7
 0007 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 178
-                                           ; SOURCE LINE # 179
+                                           ; SOURCE LINE # 174
+                                           ; SOURCE LINE # 175
 0008 7B02              MOV     R3,#02H
 000A 7A44              MOV     R2,#044H
 000C 7914              MOV     R1,#014H
@@ -528,31 +519,31 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0016 AD07              MOV     R5,AR7
 0018 AC06              MOV     R4,AR6
 001A 120000      E     LCALL   _cywrite16_nodpx
-                                           ; SOURCE LINE # 180
-001D         ?C0006:
+                                           ; SOURCE LINE # 176
+001D         ?C0005:
 001D 22                RET     
              ; FUNCTION _Vbus_IRQ_SetVector (END)
 
              ; FUNCTION Vbus_IRQ_GetVector (BEGIN)
-                                           ; SOURCE LINE # 197
-                                           ; SOURCE LINE # 198
-                                           ; SOURCE LINE # 199
+                                           ; SOURCE LINE # 193
+                                           ; SOURCE LINE # 194
+                                           ; SOURCE LINE # 195
 0000 7B02              MOV     R3,#02H
 0002 7A44              MOV     R2,#044H
 0004 7914              MOV     R1,#014H
 0006 120000      E     LCALL   _cyread16_nodpx
-                                           ; SOURCE LINE # 200
-0009         ?C0007:
+                                           ; SOURCE LINE # 196
+0009         ?C0006:
 0009 22                RET     
              ; FUNCTION Vbus_IRQ_GetVector (END)
 
              ; FUNCTION _Vbus_IRQ_SetPriority (BEGIN)
-                                           ; SOURCE LINE # 221
+                                           ; SOURCE LINE # 217
 0000 900000      R     MOV     DPTR,#priority
 0003 EF                MOV     A,R7
 0004 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 222
-                                           ; SOURCE LINE # 223
+                                           ; SOURCE LINE # 218
+                                           ; SOURCE LINE # 219
 0005 900000      R     MOV     DPTR,#priority
 0008 E0                MOVX    A,@DPTR
 0009 FF                MOV     R7,A
@@ -564,18 +555,18 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0010 90448A            MOV     DPTR,#0448AH
 0013 EF                MOV     A,R7
 0014 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 224
-0015         ?C0008:
+                                           ; SOURCE LINE # 220
+0015         ?C0007:
 0015 22                RET     
              ; FUNCTION _Vbus_IRQ_SetPriority (END)
 
-C51 COMPILER V9.51   VBUS_IRQ                                                              05/07/2014 01:47:23 PAGE 10  
-
              ; FUNCTION Vbus_IRQ_GetPriority (BEGIN)
-                                           ; SOURCE LINE # 241
+                                           ; SOURCE LINE # 237
+                                           ; SOURCE LINE # 238
                                            ; SOURCE LINE # 242
-                                           ; SOURCE LINE # 246
 0000 90448A            MOV     DPTR,#0448AH
+C51 COMPILER V9.51   VBUS_IRQ                                                              05/07/2014 04:58:00 PAGE 10  
+
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
 0005 EF                MOV     A,R7
@@ -586,88 +577,88 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000B 900000      R     MOV     DPTR,#priority
 000E EF                MOV     A,R7
 000F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 248
+                                           ; SOURCE LINE # 244
 0010 900000      R     MOV     DPTR,#priority
 0013 E0                MOVX    A,@DPTR
 0014 FF                MOV     R7,A
-                                           ; SOURCE LINE # 249
-0015         ?C0009:
+                                           ; SOURCE LINE # 245
+0015         ?C0008:
 0015 22                RET     
              ; FUNCTION Vbus_IRQ_GetPriority (END)
 
              ; FUNCTION Vbus_IRQ_Enable (BEGIN)
-                                           ; SOURCE LINE # 266
-                                           ; SOURCE LINE # 267
-                                           ; SOURCE LINE # 269
+                                           ; SOURCE LINE # 262
+                                           ; SOURCE LINE # 263
+                                           ; SOURCE LINE # 265
 0000 9044C1            MOV     DPTR,#044C1H
 0003 7404              MOV     A,#04H
 0005 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 270
-0006         ?C0010:
+                                           ; SOURCE LINE # 266
+0006         ?C0009:
 0006 22                RET     
              ; FUNCTION Vbus_IRQ_Enable (END)
 
              ; FUNCTION Vbus_IRQ_GetState (BEGIN)
-                                           ; SOURCE LINE # 287
-                                           ; SOURCE LINE # 288
-                                           ; SOURCE LINE # 290
+                                           ; SOURCE LINE # 283
+                                           ; SOURCE LINE # 284
+                                           ; SOURCE LINE # 286
 0000 9044C1            MOV     DPTR,#044C1H
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
 0005 EF                MOV     A,R7
-0006 30E204            JNB     ACC.2,?C0011
+0006 30E204            JNB     ACC.2,?C0010
 0009 7F01              MOV     R7,#01H
-000B 8002              SJMP    ?C0012
-000D         ?C0011:
+000B 8002              SJMP    ?C0011
+000D         ?C0010:
 000D 7F00              MOV     R7,#00H
+000F         ?C0011:
+                                           ; SOURCE LINE # 287
 000F         ?C0012:
-                                           ; SOURCE LINE # 291
-000F         ?C0013:
 000F 22                RET     
              ; FUNCTION Vbus_IRQ_GetState (END)
 
              ; FUNCTION Vbus_IRQ_Disable (BEGIN)
-                                           ; SOURCE LINE # 308
-                                           ; SOURCE LINE # 309
-                                           ; SOURCE LINE # 311
+                                           ; SOURCE LINE # 304
+                                           ; SOURCE LINE # 305
+                                           ; SOURCE LINE # 307
 0000 9044C9            MOV     DPTR,#044C9H
 0003 7404              MOV     A,#04H
 0005 F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   VBUS_IRQ                                                              05/07/2014 01:47:23 PAGE 11  
-
-                                           ; SOURCE LINE # 312
-0006         ?C0014:
+                                           ; SOURCE LINE # 308
+0006         ?C0013:
 0006 22                RET     
              ; FUNCTION Vbus_IRQ_Disable (END)
 
+C51 COMPILER V9.51   VBUS_IRQ                                                              05/07/2014 04:58:00 PAGE 11  
+
              ; FUNCTION Vbus_IRQ_SetPending (BEGIN)
-                                           ; SOURCE LINE # 330
-                                           ; SOURCE LINE # 331
-                                           ; SOURCE LINE # 332
+                                           ; SOURCE LINE # 326
+                                           ; SOURCE LINE # 327
+                                           ; SOURCE LINE # 328
 0000 9044D1            MOV     DPTR,#044D1H
 0003 7404              MOV     A,#04H
 0005 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 333
-0006         ?C0015:
+                                           ; SOURCE LINE # 329
+0006         ?C0014:
 0006 22                RET     
              ; FUNCTION Vbus_IRQ_SetPending (END)
 
              ; FUNCTION Vbus_IRQ_ClearPending (BEGIN)
-                                           ; SOURCE LINE # 350
-                                           ; SOURCE LINE # 351
-                                           ; SOURCE LINE # 352
+                                           ; SOURCE LINE # 346
+                                           ; SOURCE LINE # 347
+                                           ; SOURCE LINE # 348
 0000 9044D9            MOV     DPTR,#044D9H
 0003 7404              MOV     A,#04H
 0005 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 353
-0006         ?C0016:
+                                           ; SOURCE LINE # 349
+0006         ?C0015:
 0006 22                RET     
              ; FUNCTION Vbus_IRQ_ClearPending (END)
 
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    286    ----
+   CODE SIZE        =    280    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =      6    ----
    PDATA SIZE       =   ----    ----

@@ -45,7 +45,6 @@
 #include <USBUART_pvt.h>
 #include <LED1_CTRL.h>
 #include <LED_PWM.h>
-#include <PWM_CLK.h>
 #include <ADC_AMux.h>
 #include <ADC_Ext_CP_Clk.h>
 #include <ADC_IRQ.h>

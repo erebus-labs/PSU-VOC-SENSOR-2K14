@@ -52,6 +52,9 @@ static void RTC_EverySecondHandler(void)
 {
     /*  Place your every second handler code here. */
     /* `#START EVERY_SECOND_HANDLER_CODE` */
+    CyPmRestoreClocks(); 
+    RTC_EnableInt();
+    LED_PWM_Wakeup();
     sample_counter();
     /* `#END` */
 }
@@ -75,6 +78,9 @@ static void RTC_EveryMinuteHandler(void)
 {
     /*  Place your every minute handler code here. */
     /* `#START EVERY_MINUTE_HANDLER_CODE` */
+    CyPmRestoreClocks(); 
+    RTC_EnableInt();
+    LED_PWM_Wakeup();
     sample_counter();
     /* `#END` */
 }
@@ -98,6 +104,9 @@ static void RTC_EveryHourHandler(void)
 {
     /*  Place your every hour handler code here. */
     /* `#START EVERY_HOUR_HANDLER_CODE` */
+    CyPmRestoreClocks(); 
+    RTC_EnableInt();
+    LED_PWM_Wakeup();
     sample_counter();
     /* `#END` */
 }
@@ -121,6 +130,9 @@ static void RTC_EveryDayHandler(void)
 {
     /*  Place your everyday handler code here. */
     /* `#START EVERY_DAY_HANDLER_CODE` */
+    CyPmRestoreClocks(); 
+    RTC_EnableInt();
+    LED_PWM_Wakeup();
     sample_counter();
     /* `#END` */
 }
@@ -144,7 +156,6 @@ static void RTC_EveryWeekHandler(void)
 {
     /*  Place your every week handler code here. */
     /* `#START EVERY_WEEK_HANDLER_CODE` */
-    sample_counter();
     /* `#END` */
 }
 
@@ -167,7 +178,6 @@ static void RTC_EveryMonthHandler(void)
 {
     /*  Place your every month handler code here. */
     /* `#START EVERY_MONTH_HANDLER_CODE` */
-    sample_counter();
     /* `#END` */
 }
 
@@ -190,7 +200,6 @@ static void RTC_EveryYearHandler(void)
 {
     /*  Place your every year handler code here. */
     /* `#START EVERY_YEAR_HANDLER_CODE` */
-    sample_counter();
     /* `#END` */
 }
 

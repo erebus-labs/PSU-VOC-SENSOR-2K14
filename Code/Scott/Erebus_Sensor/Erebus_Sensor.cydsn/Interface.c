@@ -12,12 +12,7 @@
 
 #include "Interface.h"
 
-void Hibernate_ISR(){
-    
-    return;   
-}
-
-void StartCollection_ISR(){
+void StartCollection(){
     
     struct header_package header;
     uint8 header_size = sizeof(struct header_package);
@@ -45,13 +40,103 @@ void StartCollection_ISR(){
     return;   
 }
 
-void StopCollection_ISR(){
+void StopCollection(){
     
     StartCollection_IRQ_Start();
     StopCollection_IRQ_Stop();
     RTC_WriteIntervalMask(NONE_MASK);
     
     return;   
+}
+
+void LED_on(uint8 target){
+    
+    switch (target){   
+    
+        case USB:
+            /* Green */
+            LED0_CTRL_Write(GREEN);
+            LED1_CTRL_Write(GREEN);
+            break;
+        
+        case ERROR:
+            /* Red */
+            LED0_CTRL_Write(RED);
+            LED1_CTRL_Write(RED);
+            break;
+            
+        case LOWBATT:
+            /* Yellow */
+            LED0_CTRL_Write(GREEN);
+            LED1_CTRL_Write(RED);
+            break;
+        
+        case SAMPLE:
+            /* BLUE */
+            LED0_CTRL_Write(BLUE);
+            LED1_CTRL_Write(GREEN);
+            break;  
+            
+        case MEM:
+            /* Cyan */
+            LED0_CTRL_Write(BLUE);
+            LED1_CTRL_Write(BLUE);  
+            break;
+        
+        case BUTTON:
+            /* Magenta */
+            LED0_CTRL_Write(BLUE);
+            LED1_CTRL_Write(RED);
+            break;
+    }
+    return;
+}
+
+void LED_off(uint8 target){
+    
+    switch (target){
+        
+        case ALL:
+            LED0_CTRL_Write(OFF);
+            LED1_CTRL_Write(OFF);
+            break;
+        
+        case USB:
+            LED0_CTRL_Write(OFF);
+            LED1_CTRL_Write(OFF);
+            break;
+   
+        case SAMPLE:
+                
+            if (low_power_flag){
+                LED0_CTRL_Write(GREEN);
+                LED1_CTRL_Write(RED);
+            }
+            
+            else{
+                LED0_CTRL_Write(OFF);
+                LED1_CTRL_Write(OFF);
+            }      
+            break;  
+            
+        case MEM:         
+            if (Vbus_Read()){
+                LED0_CTRL_Write(GREEN);
+                LED1_CTRL_Write(GREEN);
+            }
+            else{
+                LED0_CTRL_Write(OFF);
+                LED1_CTRL_Write(OFF);
+            } 
+            break;
+            
+        case BUTTON:
+            LED0_CTRL_Write(OFF);
+            LED1_CTRL_Write(OFF);
+            break;
+    }
+    
+    return;
 }
 
 /* [] END OF FILE */
