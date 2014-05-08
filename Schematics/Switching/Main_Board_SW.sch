@@ -14587,7 +14587,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 <wire x1="-5.08" y1="-40.64" x2="-116.84" y2="-40.64" width="0.1524" layer="97"/>
 <wire x1="-116.84" y1="-40.64" x2="-116.84" y2="127" width="0.1524" layer="97"/>
 <text x="114.3" y="127" size="6.4516" layer="97">Erebus Labs </text>
-<text x="104.14" y="129.54" size="6.4516" layer="97">Main Sensor Board</text>
+<text x="106.68" y="134.62" size="6.4516" layer="97">Main Sensor Board</text>
 <text x="132.08" y="104.14" size="6.4516" layer="97">Rev 2</text>
 <text x="-63.5" y="60.96" size="1.778" layer="97">IC3</text>
 <text x="-63.5" y="0" size="1.778" layer="97">IC4</text>
