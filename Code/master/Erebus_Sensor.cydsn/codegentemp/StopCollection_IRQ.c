@@ -25,7 +25,9 @@
 *  Place your includes, defines and code here 
 ********************************************************************************/
 /* `#START StopCollection_IRQ_intc` */
-#include "Interface.h"
+    #include "Interface.h"
+    #include "Globals.h"
+    #include "Macros.h"
 /* `#END` */
 
 
@@ -130,7 +132,14 @@ CY_ISR(StopCollection_IRQ_Interrupt)
 {
     /*  Place your Interrupt code here. */
     /* `#START StopCollection_IRQ_Interrupt` */
-    StopCollection_ISR();
+    
+    #ifdef SLEEP_EN
+    CyPmRestoreClocks(); 
+    RTC_EnableInt();
+    #endif 
+    
+    DataStop_waiting = 1;
+        
     /* `#END` */
 
     /* PSoC3 ES1, ES2 RTC ISR PATCH  */ 

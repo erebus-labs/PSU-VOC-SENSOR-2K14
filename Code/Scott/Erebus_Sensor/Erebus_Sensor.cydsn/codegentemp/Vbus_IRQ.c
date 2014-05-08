@@ -137,6 +137,7 @@ CY_ISR(Vbus_IRQ_Interrupt)
     #ifdef SLEEP_EN
     CyPmRestoreClocks(); 
     RTC_EnableInt();
+    LED_off(ALL);
     LED_PWM_Wakeup();
     #endif 
     

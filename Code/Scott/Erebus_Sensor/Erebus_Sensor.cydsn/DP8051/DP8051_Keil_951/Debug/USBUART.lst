@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 1   
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE USBUART
@@ -62,7 +62,7 @@ line level    source
   51          * Global data allocation
   52          ***************************************/
   53          
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 2   
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 2   
 
   54          uint8 USBUART_initVar = 0u;
   55          #if(USBUART_EP_MM != USBUART__EP_MANUAL)
@@ -126,7 +126,7 @@ line level    source
  113   2          }
  114   1          USBUART_InitComponent(device, mode);
  115   1      }
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 3   
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 3   
 
  116          
  117          
@@ -190,7 +190,7 @@ line level    source
  175   1          USBUART_DM_INP_DIS_REG &= ((uint8)(~USBUART_DM_MASK));
  176   1          USBUART_DP_INP_DIS_REG &= ((uint8)(~USBUART_DP_MASK));
  177   1      
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 4   
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 4   
 
  178   1          /* Enable USBIO */
  179   1          USBUART_PM_USB_CR0_REG |= USBUART_PM_USB_CR0_PD_N;
@@ -254,7 +254,7 @@ line level    source
  237   1          /* Set the Data Endpoint 5 Interrupt. */
  238   1          #if(USBUART_EP5_ISR_REMOVE == 0u)
                       (void) CyIntSetVector(USBUART_EP_5_VECT_NUM,   &USBUART_EP_5_ISR);
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 5   
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 5   
 
                       CyIntSetPriority(USBUART_EP_5_VECT_NUM, USBUART_EP_5_PRIOR);
                   #endif   /* End USBUART_EP5_ISR_REMOVE */
@@ -318,7 +318,7 @@ line level    source
  299          *       descriptor. The device number can be found in the Device Descriptor Tab
  300          *       of "Configure" dialog, under the settings of desired Device Descriptor,
  301          *       in the "Device Number" field.
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 6   
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 6   
 
  302          *   USBUART_transferState: This variable used by the communication
  303          *       functions to handle current transfer state. Initialized to
@@ -382,7 +382,7 @@ line level    source
  361   1          #if(USBUART_EP8_ISR_REMOVE == 0u)
                       CyIntEnable(USBUART_EP_8_VECT_NUM);
                   #endif   /* End USBUART_EP8_ISR_REMOVE */
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 7   
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 7   
 
  364   1          #if((USBUART_EP_MM != USBUART__EP_MANUAL) && (USBUART_ARB_ISR_REMOVE == 0u))
                       /* usb arb interrupt enable */
@@ -446,7 +446,7 @@ line level    source
  423   1          /* Finally, Enable d+ pullup and select iomode to USB mode*/
  424   1          CY_SET_REG8(USBUART_USBIO_CR1_PTR, USBUART_USBIO_CR1_USBPUEN);
  425   1      }
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 8   
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 8   
 
  426          
  427          
@@ -510,7 +510,7 @@ line level    source
  485   1          USBUART_interfaceNumber = 0u;
  486   1          USBUART_configurationChanged = 0u;
  487   1          USBUART_deviceAddress  = 0u;
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 9   
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 9   
 
  488   1          USBUART_deviceStatus = 0u;
  489   1      
@@ -574,7 +574,7 @@ line level    source
  547   1          USBUART_PM_STBY_CFG_REG &= (uint8)(~USBUART_PM_STBY_EN_FSUSB);
  548   1      
  549   1          /* Disable the reset and EP interrupts */
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 10  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 10  
 
  550   1          CyIntDisable(USBUART_BUS_RESET_VECT_NUM);
  551   1          CyIntDisable(USBUART_EP_0_VECT_NUM);
@@ -638,7 +638,7 @@ line level    source
  609   1          CY_SET_REG8(USBUART_CR1_PTR, (r & ((uint8)(~USBUART_CR1_BUS_ACTIVITY))));
  610   1      
  611   1          return((r & USBUART_CR1_BUS_ACTIVITY) >> USBUART_CR1_BUS_ACTIVITY_SHIFT);
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 11  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 11  
 
  612   1      }
  613          
@@ -702,7 +702,7 @@ line level    source
  671          ********************************************************************************
  672          *
  673          * Summary:
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 12  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 12  
 
  674          *  Returns the alternate setting from current interface
  675          *
@@ -766,7 +766,7 @@ line level    source
  733   1      
  734   1          if((epNumber > USBUART_EP0) && (epNumber < USBUART_MAX_EP))
  735   1          {
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 13  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 13  
 
  736   2              ri = ((epNumber - USBUART_EP1) << USBUART_EPX_CNTX_ADDR_SHIFT);
  737   2      
@@ -830,7 +830,7 @@ line level    source
                               #if(USBUART_DMA1_REMOVE == 0u)
                                   USBUART_DmaChan[epNumber] = USBUART_ep1_DmaInitialize(
                                       USBUART_DMA_BYTES_PER_BURST, USBUART_DMA_REQUEST_PER_BURST, src, dst);
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 14  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 14  
 
                               #endif   /* End USBUART_DMA1_REMOVE */
                               break;
@@ -894,7 +894,7 @@ line level    source
                   * Summary: Stops and free DMA
                   *
                   * Parameters:
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 15  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 15  
 
                   *  epNumber: Contains the data endpoint number or
                   *           USBUART_MAX_EP to stop all DMAs
@@ -958,7 +958,7 @@ line level    source
  919   1          #endif /* End USBUART_EP_MM == USBUART__EP_MANUAL */
  920   1      
  921   1          if((epNumber > USBUART_EP0) && (epNumber < USBUART_MAX_EP))
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 16  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 16  
 
  922   1          {
  923   2              ri = ((epNumber - USBUART_EP1) << USBUART_EPX_CNTX_ADDR_SHIFT);
@@ -1022,7 +1022,7 @@ line level    source
                           }
                       #endif /* End USBUART_EP_MM == USBUART__EP_DMAMANUAL */
  982   2      
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 17  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 17  
 
  983   2              #if(USBUART_EP_MM == USBUART__EP_DMAAUTO)
                           if(pData != NULL)
@@ -1086,7 +1086,7 @@ line level    source
 1040          *  No.
 1041          *
 1042          *******************************************************************************/
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 18  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 18  
 
 1043          uint16 USBUART_ReadOutEP(uint8 epNumber, uint8 pData[], uint16 length)
 1044                                                                                  
@@ -1150,7 +1150,7 @@ line level    source
 1101   2      
 1102   2              #if(USBUART_EP_MM == USBUART__EP_DMAAUTO)
                           /* Enable DMA in mode3 for transferring data */
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 19  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 19  
 
                           (void) CyDmaChDisable(USBUART_DmaChan[epNumber]);
                           (void) CyDmaTdSetConfiguration(USBUART_DmaTd[epNumber], length, USBUART_DmaTd[epNumber],
@@ -1214,7 +1214,7 @@ line level    source
 1161          
 1162          
 1163          /*******************************************************************************
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 20  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 20  
 
 1164          * Function Name: USBUART_DisableOutEP
 1165          ********************************************************************************
@@ -1278,7 +1278,7 @@ line level    source
 1223          * Parameters:
 1224          *  epNumber: Endpoint Number
 1225          *            Valid values are between 1 and 8.
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 21  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 21  
 
 1226          *
 1227          * Returns
@@ -1342,7 +1342,7 @@ line level    source
                   ********************************************************************************
                   *
                   * Summary:
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 22  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 22  
 
                   *  Determines VBUS presence for Self Powered Devices.
                   *
@@ -1392,7 +1392,7 @@ line level    source
 1333          
 1334          
 1335          /* [] END OF FILE */
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 23  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 23  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -1456,7 +1456,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0016 E0                MOVX    A,@DPTR
 0017 FF                MOV     R7,A
 0018 EF                MOV     A,R7
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 24  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 24  
 
 0019 4401              ORL     A,#01H
 001B FF                MOV     R7,A
@@ -1520,7 +1520,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0068 120000      E     LCALL   _CyDelayUs
                                            ; SOURCE LINE # 175
 006B 9051F8            MOV     DPTR,#051F8H
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 25  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 25  
 
 006E E0                MOVX    A,@DPTR
 006F FF                MOV     R7,A
@@ -1584,7 +1584,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00BD 120000      E     LCALL   _CyIntSetPriority
                                            ; SOURCE LINE # 205
 00C0 7C00        E     MOV     R4,#HIGH USBUART_SOF_ISR
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 26  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 26  
 
 00C2 7D00        E     MOV     R5,#LOW USBUART_SOF_ISR
 00C4 7F15              MOV     R7,#015H
@@ -1648,7 +1648,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000D 7480              MOV     A,#080H
 000F F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 339
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 27  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 27  
 
 0010 9044C3            MOV     DPTR,#044C3H
 0013 7401              MOV     A,#01H
@@ -1712,7 +1712,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0059 E0                MOVX    A,@DPTR
 005A FF                MOV     R7,A
 005B 900000      E     MOV     DPTR,#USBUART_device
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 28  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 28  
 
 005E EF                MOV     A,R7
 005F F0                MOVX    @DPTR,A
@@ -1776,7 +1776,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0009 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 485
 000A 900000      E     MOV     DPTR,#USBUART_interfaceNumber
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 29  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 29  
 
 000D E4                CLR     A
 000E F0                MOVX    @DPTR,A
@@ -1840,7 +1840,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 001F EF                MOV     A,R7
 0020 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 547
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 30  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 30  
 
 0021 9043B5            MOV     DPTR,#043B5H
 0024 E0                MOVX    A,@DPTR
@@ -1904,7 +1904,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 605
                                            ; SOURCE LINE # 608
 0000 906009            MOV     DPTR,#06009H
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 31  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 31  
 
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
@@ -1968,7 +1968,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000D 900000      E     MOV     DPTR,#USBUART_configurationChanged
 0010 E0                MOVX    A,@DPTR
 0011 FF                MOV     R7,A
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 32  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 32  
 
 0012 900000      R     MOV     DPTR,#res
 0015 EF                MOV     A,R7
@@ -2032,7 +2032,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0018 E0                MOVX    A,@DPTR
 0019 FF                MOV     R7,A
                                            ; SOURCE LINE # 707
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 33  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 33  
 
 001A         ?C0016:
 001A 22                RET     
@@ -2096,7 +2096,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0049 EF                MOV     A,R7
 004A F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 738
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 34  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 34  
 
 004B 900000      R     MOV     DPTR,#ri
 004E E0                MOVX    A,@DPTR
@@ -2160,7 +2160,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 009D F0                MOVX    @DPTR,A
 009E A3                INC     DPTR
 009F EF                MOV     A,R7
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 35  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 35  
 
 00A0 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 741
@@ -2224,7 +2224,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0038 F8                MOV     R0,A
 0039 540F              ANL     A,#0FH
 003B C8                XCH     A,R0
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 36  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 36  
 
 003C 68                XRL     A,R0
 003D FF                MOV     R7,A
@@ -2288,7 +2288,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 008A 9F                SUBB    A,R7
 008B EC                MOV     A,R4
 008C 9E                SUBB    A,R6
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 37  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 37  
 
 008D 4028              JC      ?C0020
                                            ; SOURCE LINE # 929
@@ -2352,7 +2352,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00DA FF                MOV     R7,A
 00DB 900000      R     MOV     DPTR,#ri
 00DE E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 38  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 38  
 
 00DF FE                MOV     R6,A
 00E0 EE                MOV     A,R6
@@ -2416,7 +2416,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0138         ?C0045:
 0138 6051              JZ      ?C0021
                                            ; SOURCE LINE # 941
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 39  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 39  
 
                                            ; SOURCE LINE # 943
 013A 900000      R     MOV     DPTR,#i
@@ -2480,7 +2480,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0186 120000      E     LCALL   ?C?IILDX
 0189 80B7              SJMP    ?C0022
 018B         ?C0023:
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 40  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 40  
 
                                            ; SOURCE LINE # 947
 018B         ?C0021:
@@ -2544,7 +2544,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0008 120000      E     LCALL   ?C?PSTXDATA
                                            ; SOURCE LINE # 1045
                                            ; SOURCE LINE # 1055
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 41  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 41  
 
 000B 900000      R     MOV     DPTR,#epNumber
 000E E0                MOVX    A,@DPTR
@@ -2608,7 +2608,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 006A 48                ORL     A,R0
 006B FE                MOV     R6,A
 006C 900000      R     MOV     DPTR,#ri
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 42  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 42  
 
 006F EF                MOV     A,R7
 0070 F0                MOVX    @DPTR,A
@@ -2672,7 +2672,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00BB F0                MOVX    @DPTR,A
 00BC A3                INC     DPTR
 00BD EF                MOV     A,R7
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 43  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 43  
 
 00BE F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 1066
@@ -2736,7 +2736,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0104 900000      R     MOV     DPTR,#i
 0107 E4                CLR     A
 0108 75F001            MOV     B,#01H
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 44  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 44  
 
 010B 120000      E     LCALL   ?C?IILDX
 010E 80B7              SJMP    ?C0028
@@ -2800,7 +2800,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0020 7E00              MOV     R6,#00H
 0022 EF                MOV     A,R7
 0023 24FF              ADD     A,#0FFH
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 45  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 45  
 
 0025 FF                MOV     R7,A
 0026 EE                MOV     A,R6
@@ -2864,7 +2864,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0078 8D82              MOV     DPL,R5
 007A 8C83              MOV     DPH,R4
 007C EF                MOV     A,R7
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 46  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 46  
 
 007D F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 1159
@@ -2928,7 +2928,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0041 FF                MOV     R7,A
 0042 7E00              MOV     R6,#00H
 0044 EF                MOV     A,R7
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 47  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 47  
 
 0045 240E              ADD     A,#0EH
 0047 FF                MOV     R7,A
@@ -2992,7 +2992,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1237
                                            ; SOURCE LINE # 1238
 0020 900000      R     MOV     DPTR,#epNumber
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 48  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 48  
 
 0023 E0                MOVX    A,@DPTR
 0024 FF                MOV     R7,A
@@ -3056,7 +3056,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0003 EF                MOV     A,R7
 0004 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 1269
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 49  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 49  
 
                                            ; SOURCE LINE # 1270
 0005 900000      R     MOV     DPTR,#powerStatus
@@ -3120,7 +3120,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0017 7401              MOV     A,#01H
 0019 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 1329
-C51 COMPILER V9.51   USBUART                                                               05/07/2014 04:35:57 PAGE 50  
+C51 COMPILER V9.51   USBUART                                                               05/07/2014 23:18:35 PAGE 50  
 
 001A         ?C0043:
                                            ; SOURCE LINE # 1331

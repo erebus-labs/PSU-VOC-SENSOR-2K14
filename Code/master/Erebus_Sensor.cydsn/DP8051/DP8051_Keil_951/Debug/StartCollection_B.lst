@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   STARTCOLLECTION_B                                                     05/02/2014 02:18:49 PAGE 1   
+C51 COMPILER V9.51   STARTCOLLECTION_B                                                     05/07/2014 23:18:38 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE STARTCOLLECTION_B
@@ -62,7 +62,7 @@ line level    source
   49          * Parameters:  
   50          *  mode:  Change the pins to this drive mode.
   51          *
-C51 COMPILER V9.51   STARTCOLLECTION_B                                                     05/02/2014 02:18:49 PAGE 2   
+C51 COMPILER V9.51   STARTCOLLECTION_B                                                     05/07/2014 23:18:38 PAGE 2   
 
   52          * Return: 
   53          *  None
@@ -120,34 +120,34 @@ line level    source
  105          
  106          /* If Interrupts Are Enabled for this Pins component */ 
  107          #if defined(StartCollection_B_INTSTAT) 
-              
-                  /*******************************************************************************
-                  * Function Name: StartCollection_B_ClearInterrupt
-                  ********************************************************************************
-                  *
-                  * Summary:
-C51 COMPILER V9.51   STARTCOLLECTION_B                                                     05/02/2014 02:18:49 PAGE 3   
+ 108          
+ 109              /*******************************************************************************
+ 110              * Function Name: StartCollection_B_ClearInterrupt
+ 111              ********************************************************************************
+ 112              *
+ 113              * Summary:
+C51 COMPILER V9.51   STARTCOLLECTION_B                                                     05/07/2014 23:18:38 PAGE 3   
 
-                  *  Clears any active interrupts attached to port and returns the value of the 
-                  *  interrupt status register.
-                  *
-                  * Parameters:  
-                  *  None 
-                  *
-                  * Return: 
-                  *  Returns the value of the interrupt status register
-                  *  
-                  *******************************************************************************/
-                  uint8 StartCollection_B_ClearInterrupt(void) 
-                  {
-                      return (StartCollection_B_INTSTAT & StartCollection_B_MASK) >> StartCollection_B_SHIFT;
-                  }
-              
-              #endif /* If Interrupts Are Enabled for this Pins component */ 
+ 114              *  Clears any active interrupts attached to port and returns the value of the 
+ 115              *  interrupt status register.
+ 116              *
+ 117              * Parameters:  
+ 118              *  None 
+ 119              *
+ 120              * Return: 
+ 121              *  Returns the value of the interrupt status register
+ 122              *  
+ 123              *******************************************************************************/
+ 124              uint8 StartCollection_B_ClearInterrupt(void) 
+ 125              {
+ 126   1              return (StartCollection_B_INTSTAT & StartCollection_B_MASK) >> StartCollection_B_SHIFT;
+ 127   1          }
+ 128          
+ 129          #endif /* If Interrupts Are Enabled for this Pins component */ 
  130          
  131          
  132          /* [] END OF FILE */
-C51 COMPILER V9.51   STARTCOLLECTION_B                                                     05/02/2014 02:18:49 PAGE 4   
+C51 COMPILER V9.51   STARTCOLLECTION_B                                                     05/07/2014 23:18:38 PAGE 4   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -211,7 +211,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0017 EE                MOV     A,R6
 0018 4F                ORL     A,R7
 0019 FF                MOV     R7,A
-C51 COMPILER V9.51   STARTCOLLECTION_B                                                     05/02/2014 02:18:49 PAGE 5   
+C51 COMPILER V9.51   STARTCOLLECTION_B                                                     05/07/2014 23:18:38 PAGE 5   
 
 001A 905018            MOV     DPTR,#05018H
 001D EF                MOV     A,R7
@@ -253,12 +253,30 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000B 22                RET     
              ; FUNCTION StartCollection_B_ReadDataReg (END)
 
+             ; FUNCTION StartCollection_B_ClearInterrupt (BEGIN)
+                                           ; SOURCE LINE # 124
+                                           ; SOURCE LINE # 125
+                                           ; SOURCE LINE # 126
+0000 904583            MOV     DPTR,#04583H
+0003 E0                MOVX    A,@DPTR
+0004 FF                MOV     R7,A
+0005 EF                MOV     A,R7
+0006 5401              ANL     A,#01H
+0008 FF                MOV     R7,A
+0009 7E00              MOV     R6,#00H
+                                           ; SOURCE LINE # 127
+000B         ?C0005:
+000B 22                RET     
+             ; FUNCTION StartCollection_B_ClearInterrupt (END)
+
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     98    ----
+   CODE SIZE        =    110    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =      3    ----
+C51 COMPILER V9.51   STARTCOLLECTION_B                                                     05/07/2014 23:18:38 PAGE 6   
+
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----

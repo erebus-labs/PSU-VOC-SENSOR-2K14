@@ -23,6 +23,8 @@
     #include "Utility.h"
     #include "RTC_Handler.h"
     #include "Macros.h"
+    #include "Sample_Handler.h"
+    #include "Interrupt_Handler.h"
 
 #endif
 /* [] END OF FILE */

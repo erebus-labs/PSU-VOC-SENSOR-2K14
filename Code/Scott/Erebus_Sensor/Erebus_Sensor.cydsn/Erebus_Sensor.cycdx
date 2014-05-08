@@ -80,12 +80,19 @@
     <register name="USBUART_EP_TYPE" address="0x608F" bitWidth="8" desc="Endpoint Type (IN/OUT) Indication" />
     <register name="USBUART_USB_CLK_EN" address="0x609D" bitWidth="8" desc="USB Block Clock Enable Register" />
   </block>
-  <block name="StopCollection_IRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="or_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="StartCollection_B" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="StopCollection_B" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="or_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="StopCollection_IRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="or_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="PWM_CLK" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="SOLID_LED_CTRL" BASE="0x0" SIZE="0x0" desc="" visible="true">
+    <register name="SOLID_LED_CTRL_CONTROL_REG" address="0x6473" bitWidth="8" desc="" />
+  </block>
+  <block name="PWM1_CTRL" BASE="0x0" SIZE="0x0" desc="" visible="true">
+    <register name="PWM1_CTRL_CONTROL_REG" address="0x6474" bitWidth="8" desc="" />
+  </block>
+  <block name="cy_constant_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="LED_PWM" BASE="0x0" SIZE="0x0" desc="" visible="true">
     <block name="vmIRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
@@ -94,14 +101,14 @@
     <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <block name="vmCompare" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <block name="PWMUDB" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <register name="LED_PWM__COMPARE1" address="0x6421" bitWidth="8" desc="UDB.D0 - Assigned Compare1 Value" />
-    <register name="LED_PWM__COMPARE2" address="0x6431" bitWidth="8" desc="UDB.D1 - Assigned Compare2 Value" />
-    <register name="LED_PWM_Control_Reg" address="0x6470" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value">
+    <register name="LED_PWM__COMPARE1" address="0x6423" bitWidth="8" desc="UDB.D0 - Assigned Compare1 Value" />
+    <register name="LED_PWM__COMPARE2" address="0x6433" bitWidth="8" desc="UDB.D1 - Assigned Compare2 Value" />
+    <register name="LED_PWM_Control_Reg" address="0x6475" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value">
       <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable the PWM" />
       <field name="CTRL_CMPMODE2" from="5" to="3" access="RW" resetVal="" desc="Compare mode 2" />
       <field name="CTRL_CMPMODE1" from="2" to="0" access="RW" resetVal="" desc="Compare mode 1" />
     </register>
-    <register name="LED_PWM_STATUS_AUX_CTRL" address="0x6491" bitWidth="8" desc="UDB Auxilliary Control Register">
+    <register name="LED_PWM_STATUS_AUX_CTRL" address="0x6493" bitWidth="8" desc="UDB Auxilliary Control Register">
       <field name="FIFO0_CLR" from="0" to="0" access="RW" resetVal="" desc="FIFO0 clear">
         <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
         <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
@@ -128,10 +135,40 @@
       </field>
     </register>
   </block>
-  <block name="LED1_CTRL" BASE="0x0" SIZE="0x0" desc="" visible="true">
-    <register name="LED1_CTRL_CONTROL_REG" address="0x6471" bitWidth="8" desc="" />
+  <block name="or_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="demux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Vbus" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="RTC" BASE="0x0" SIZE="0x0" desc="RTC" visible="true">
+    <block name="isr" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="gsRef_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <register name="PM_TW_CFG2" address="0x4382" bitWidth="8" desc="Power timers enable and interrupt enable configuration register">
+      <field name="ONEPPC interrupt enable" from="5" to="5" access="RW" resetVal="" desc="When set and one pulse-per-second is enabled, an interrupt is issued when the pulse occurs">
+        <value name="Enabled" value="1" desc="The ONEPPC interrupt is issued. Only if ONEPPC is enabled." />
+        <value name="Disabled" value="0" desc="No ONEPPC interrupt is issued." />
+      </field>
+      <field name="ONEPPC enable" from="4" to="4" access="RW" resetVal="" desc="ONEPPC enable">
+        <value name="Enabled" value="1" desc="The ONEPPC is enabled." />
+        <value name="Disabled" value="0" desc="The ONEPPC is disabled." />
+      </field>
+      <field name="CTW interrupt enable" from="3" to="3" access="RW" resetVal="" desc="An interrupt issue when the CTW reaches the selected interval">
+        <value name="Enabled" value="1" desc="The CTW interrupt is issued. Only if CTW is enabled." />
+        <value name="Disabled" value="0" desc="No CTW interrupt is issued." />
+      </field>
+      <field name="CTW enable" from="2" to="2" access="RW" resetVal="" desc="CTW enable">
+        <value name="Enabled" value="1" desc="The CTW is enabled." />
+        <value name="Disabled" value="0" desc="The CTW is disabled." />
+      </field>
+    </register>
+    <register name="PM_INT_SR" address="0x4390" bitWidth="8" desc="Power Manager Interrupt Status Register">
+      <field name="onepps_int" from="2" to="2" access="RW" resetVal="" desc="When set, a onepps event has occured." />
+      <field name="ctw_int" from="1" to="1" access="RW" resetVal="" desc="When set, a limited active ready event has occured" />
+      <field name="ftw_int" from="0" to="0" access="RW" resetVal="" desc="When set, a fast timewheel event has occured" />
+    </register>
   </block>
-  <block name="cy_constant_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="demux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="RGB_LED" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="EEPROM_R" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Sensor_In" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="ADC" BASE="0x0" SIZE="0x0" desc="" visible="true">
     <block name="cy_analog_virtualmux_5" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <block name="cy_analog_noconnect_5" BASE="0x0" SIZE="0x0" desc="" visible="true" />
@@ -953,43 +990,9 @@
       </field>
     </register>
   </block>
-  <block name="or_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="demux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="RGB_LED" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="RTC" BASE="0x0" SIZE="0x0" desc="RTC" visible="true">
-    <block name="isr" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="gsRef_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <register name="PM_TW_CFG2" address="0x4382" bitWidth="8" desc="Power timers enable and interrupt enable configuration register">
-      <field name="ONEPPC interrupt enable" from="5" to="5" access="RW" resetVal="" desc="When set and one pulse-per-second is enabled, an interrupt is issued when the pulse occurs">
-        <value name="Enabled" value="1" desc="The ONEPPC interrupt is issued. Only if ONEPPC is enabled." />
-        <value name="Disabled" value="0" desc="No ONEPPC interrupt is issued." />
-      </field>
-      <field name="ONEPPC enable" from="4" to="4" access="RW" resetVal="" desc="ONEPPC enable">
-        <value name="Enabled" value="1" desc="The ONEPPC is enabled." />
-        <value name="Disabled" value="0" desc="The ONEPPC is disabled." />
-      </field>
-      <field name="CTW interrupt enable" from="3" to="3" access="RW" resetVal="" desc="An interrupt issue when the CTW reaches the selected interval">
-        <value name="Enabled" value="1" desc="The CTW interrupt is issued. Only if CTW is enabled." />
-        <value name="Disabled" value="0" desc="No CTW interrupt is issued." />
-      </field>
-      <field name="CTW enable" from="2" to="2" access="RW" resetVal="" desc="CTW enable">
-        <value name="Enabled" value="1" desc="The CTW is enabled." />
-        <value name="Disabled" value="0" desc="The CTW is disabled." />
-      </field>
-    </register>
-    <register name="PM_INT_SR" address="0x4390" bitWidth="8" desc="Power Manager Interrupt Status Register">
-      <field name="onepps_int" from="2" to="2" access="RW" resetVal="" desc="When set, a onepps event has occured." />
-      <field name="ctw_int" from="1" to="1" access="RW" resetVal="" desc="When set, a limited active ready event has occured" />
-      <field name="ftw_int" from="0" to="0" access="RW" resetVal="" desc="When set, a fast timewheel event has occured" />
-    </register>
-  </block>
-  <block name="demux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="Vbus" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="EEPROM_R" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="Sensor_In" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="LED0_CTRL" BASE="0x0" SIZE="0x0" desc="" visible="true">
-    <register name="LED0_CTRL_CONTROL_REG" address="0x6472" bitWidth="8" desc="" />
-  </block>
   <block name="Vbus_IRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="Em_EEPROM" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="PWM0_CTRL" BASE="0x0" SIZE="0x0" desc="" visible="true">
+    <register name="PWM0_CTRL_CONTROL_REG" address="0x6472" bitWidth="8" desc="" />
+  </block>
 </blockRegMap>

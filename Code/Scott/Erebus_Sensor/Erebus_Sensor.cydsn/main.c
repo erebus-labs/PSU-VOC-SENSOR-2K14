@@ -24,6 +24,14 @@ uint8 low_power_flag;
 uint8 USB_waiting;
 uint8 DataStart_waiting;
 uint8 DataStop_waiting;
+uint8 Sample_waiting;
+
+// RTC
+uint8 sample_interval;
+
+// Sampling
+uint16 sample_int_count;
+
 
 int main()
 {
@@ -31,6 +39,8 @@ int main()
     USB_waiting = 0;
     DataStart_waiting = 0;
     DataStop_waiting = 0;
+    Sample_waiting = 0;
+    sample_int_count = 0;
     
     // Check for hard reset flag
     if (hard_reset_flag){
@@ -40,16 +50,12 @@ int main()
 
     // Start Components
     EEPROM_R_Start();
-    LED_PWM_Start();
-    ADC_Start();
-    ADC_Sleep();
     RTC_Start();
     rtc_setup();
-    
-    // Set interrupts for pins that can wake the chip
-    CY_SET_REG8(CYREG_PICU12_INTTYPE6, 0x02); //Port 12, pin 6, falling edge
-    CY_SET_REG8(CYREG_PICU3_INTTYPE0, 0x02); //Port 3, pin 0, falling edge
-    CY_SET_REG8(CYREG_PICU6_INTTYPE0, 0x01); //Port 6, pin 0, rising edge
+    LED_PWM_Start();
+    LED_PWM_Sleep();
+    ADC_Start();
+    ADC_Sleep();
     
     // Enable global interrupts
     CyGlobalIntEnable;
@@ -59,44 +65,60 @@ int main()
     StartCollection_IRQ_Start();
     
     for(;;){       
-        
-        #ifdef SLEEP_EN 
-        LED_PWM_Sleep();
-        RTC_DisableInt();
-        CyPmSaveClocks();        
-      
-        CyPmSleep(PM_SLEEP_TIME_ONE_PPS, (PM_SLEEP_SRC_ONE_PPS | PM_SLEEP_SRC_PICU));     
 
-        CyPmRestoreClocks(); 
-        RTC_EnableInt();
-        LED_PWM_Wakeup();
-        #endif
-        
-        if(USB_waiting){
-            Run_USB();
-            Vbus_ClearInterrupt();
-            Vbus_IRQ_ClearPending();
-            USB_waiting = 0;
+        if (Sample_waiting){
+            ++sample_int_count;
+    
+            if (sample_int_count == sample_interval)
+            {
+                LED_on(BLUE);
+                take_sample();
+                
+                sample_int_count = 0;
+                
+                CyDelay(LED_DELAY);
+                LED_off();
+            }
+            Sample_waiting = 0;
         }
-        
+                
         else if(DataStart_waiting){
+            LED_on(GREEN);
+            clear_buttons();            
             StartCollection();
-            DataStart_waiting = 0;
             CyDelay(LED_DELAY);
-            StartCollection_B_ClearInterrupt();
-            StartCollection_IRQ_ClearPending();
-            LED_off(BUTTON);
+            LED_off();
         }
         
         else if(DataStop_waiting){
-            StopCollection();
-            DataStop_waiting = 0;
+            LED_on(RED);            
+            clear_buttons();            
+            StopCollection();           
             CyDelay(LED_DELAY);
-            StopCollection_B_ClearInterrupt();
-            StopCollection_IRQ_ClearPending();
-            LED_off(BUTTON);
+            LED_off();
         }
         
+        else if(USB_waiting){
+            LED_PWM_Wakeup();
+            LED_on(CYAN);
+            usb_prep();
+            Run_USB();
+            usb_exit();
+            clear_vbus();
+            LED_off();
+        }
+                
+        #ifdef SLEEP_EN 
+        RTC_DisableInt();
+        CyPmSaveClocks();        
+      
+        CyPmSleep(PM_SLEEP_TIME_NONE, (PM_SLEEP_SRC_ONE_PPS | PM_SLEEP_SRC_PICU));     
+
+        CyPmRestoreClocks(); 
+        RTC_EnableInt();
+
+        #endif
+       
     }
     
     return (0);

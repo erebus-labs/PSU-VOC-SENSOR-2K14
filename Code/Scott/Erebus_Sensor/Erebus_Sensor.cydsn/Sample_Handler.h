@@ -19,7 +19,6 @@
     
     void rtc_prep(void);
     void take_sample(void);
-    void sample_counter(void);
     void RTC_Int_Handler(void);
     
 #endif

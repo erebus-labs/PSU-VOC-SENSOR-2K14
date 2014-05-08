@@ -14,16 +14,11 @@
     #define _SAMPLE_HANDLER_H_
     
     #include "project.h"
-    #include "EmEEPROM_Access.h"
-    #include "EEPROM_Access.h"
-    #include "RTC.h"
-    #include "LED_Handler.h"
+    #include "Interface.h"
+    #include "Globals.h"
     
-    #define SLEEPMASK 2112
-    
-    void rtc_setup(void);
+    void rtc_prep(void);
     void take_sample(void);
-    void sample_counter(void);
     void RTC_Int_Handler(void);
     
 #endif

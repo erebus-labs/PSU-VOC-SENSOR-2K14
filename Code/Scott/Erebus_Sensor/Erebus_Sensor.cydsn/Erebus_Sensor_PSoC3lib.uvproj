@@ -824,24 +824,34 @@
               <FilePath>.\Generated_Source\PSoC3\LED_PWM_PM.c</FilePath>
             </File>
             <File>
-              <FileName>LED0_CTRL.c</FileName>
+              <FileName>PWM0_CTRL.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\LED0_CTRL.c</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\PWM0_CTRL.c</FilePath>
             </File>
             <File>
-              <FileName>LED0_CTRL.h</FileName>
+              <FileName>PWM0_CTRL.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\LED0_CTRL.h</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\PWM0_CTRL.h</FilePath>
             </File>
             <File>
-              <FileName>LED1_CTRL.c</FileName>
+              <FileName>PWM1_CTRL.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\LED1_CTRL.c</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\PWM1_CTRL.c</FilePath>
             </File>
             <File>
-              <FileName>LED1_CTRL.h</FileName>
+              <FileName>PWM1_CTRL.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\LED1_CTRL.h</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\PWM1_CTRL.h</FilePath>
+            </File>
+            <File>
+              <FileName>SOLID_LED_CTRL.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\SOLID_LED_CTRL.c</FilePath>
+            </File>
+            <File>
+              <FileName>SOLID_LED_CTRL.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\SOLID_LED_CTRL.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1669,24 +1679,34 @@
               <FilePath>.\Generated_Source\PSoC3\LED_PWM_PM.c</FilePath>
             </File>
             <File>
-              <FileName>LED0_CTRL.c</FileName>
+              <FileName>PWM0_CTRL.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\LED0_CTRL.c</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\PWM0_CTRL.c</FilePath>
             </File>
             <File>
-              <FileName>LED0_CTRL.h</FileName>
+              <FileName>PWM0_CTRL.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\LED0_CTRL.h</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\PWM0_CTRL.h</FilePath>
             </File>
             <File>
-              <FileName>LED1_CTRL.c</FileName>
+              <FileName>PWM1_CTRL.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\LED1_CTRL.c</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\PWM1_CTRL.c</FilePath>
             </File>
             <File>
-              <FileName>LED1_CTRL.h</FileName>
+              <FileName>PWM1_CTRL.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\LED1_CTRL.h</FilePath>
+              <FilePath>.\Generated_Source\PSoC3\PWM1_CTRL.h</FilePath>
+            </File>
+            <File>
+              <FileName>SOLID_LED_CTRL.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\SOLID_LED_CTRL.c</FilePath>
+            </File>
+            <File>
+              <FileName>SOLID_LED_CTRL.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\SOLID_LED_CTRL.h</FilePath>
             </File>
           </Files>
         </Group>

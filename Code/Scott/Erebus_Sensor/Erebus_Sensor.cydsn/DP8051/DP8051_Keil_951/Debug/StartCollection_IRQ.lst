@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   STARTCOLLECTION_IRQ                                                   05/07/2014 04:58:01 PAGE 1   
+C51 COMPILER V9.51   STARTCOLLECTION_IRQ                                                   05/08/2014 00:59:16 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE STARTCOLLECTION_IRQ
@@ -62,7 +62,7 @@ line level    source
   50   1          /* For all we know the interrupt is active. */
   51   1          StartCollection_IRQ_Disable();
   52   1      
-C51 COMPILER V9.51   STARTCOLLECTION_IRQ                                                   05/07/2014 04:58:01 PAGE 2   
+C51 COMPILER V9.51   STARTCOLLECTION_IRQ                                                   05/08/2014 00:59:16 PAGE 2   
 
   53   1          /* Set the ISR to point to the StartCollection_IRQ Interrupt. */
   54   1          StartCollection_IRQ_SetVector(&StartCollection_IRQ_Interrupt);
@@ -126,7 +126,7 @@ line level    source
  112   1      }
  113          
  114          
-C51 COMPILER V9.51   STARTCOLLECTION_IRQ                                                   05/07/2014 04:58:01 PAGE 3   
+C51 COMPILER V9.51   STARTCOLLECTION_IRQ                                                   05/08/2014 00:59:16 PAGE 3   
 
  115          /*******************************************************************************
  116          * Function Name: StartCollection_IRQ_Interrupt
@@ -148,234 +148,226 @@ line level    source
  132          {
  133   1          /*  Place your Interrupt code here. */
  134   1          /* `#START StartCollection_IRQ_Interrupt` */
- 135   1          
- 136   1          #ifdef SLEEP_EN
- 137   1          CyPmRestoreClocks(); 
- 138   1          RTC_EnableInt();
- 139   1          LED_off(ALL);
- 140   1          LED_PWM_Wakeup();
- 141   1          #endif 
- 142   1          
- 143   1          LED_on(BUTTON);
- 144   1          DataStart_waiting = 1;
- 145   1          
- 146   1          /* `#END` */
- 147   1      
- 148   1          /* PSoC3 ES1, ES2 RTC ISR PATCH  */ 
- 149   1          #if(CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3)
- 150   1              #if((CYDEV_CHIP_REVISION_USED <= CYDEV_CHIP_REVISION_3A_ES2) && (StartCollection_IRQ__ES2_PATCH ))
+ 135   1      
+ 136   1          DataStart_waiting = 1;
+ 137   1          
+ 138   1          /* `#END` */
+ 139   1      
+ 140   1          /* PSoC3 ES1, ES2 RTC ISR PATCH  */ 
+ 141   1          #if(CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3)
+ 142   1              #if((CYDEV_CHIP_REVISION_USED <= CYDEV_CHIP_REVISION_3A_ES2) && (StartCollection_IRQ__ES2_PATCH ))
              -      
                           StartCollection_IRQ_ISR_PATCH();
                       #endif /* CYDEV_CHIP_REVISION_USED */
- 153   1          #endif /* (CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3) */
- 154   1      }
- 155          
- 156          
- 157          /*******************************************************************************
- 158          * Function Name: StartCollection_IRQ_SetVector
- 159          ********************************************************************************
+ 145   1          #endif /* (CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3) */
+ 146   1      }
+ 147          
+ 148          
+ 149          /*******************************************************************************
+ 150          * Function Name: StartCollection_IRQ_SetVector
+ 151          ********************************************************************************
+ 152          *
+ 153          * Summary:
+ 154          *   Change the ISR vector for the Interrupt. Note calling StartCollection_IRQ_Start
+ 155          *   will override any effect this method would have had. To set the vector 
+ 156          *   before the component has been started use StartCollection_IRQ_StartEx instead.
+ 157          *
+ 158          * Parameters:
+ 159          *   address: Address of the ISR to set in the interrupt vector table.
  160          *
- 161          * Summary:
- 162          *   Change the ISR vector for the Interrupt. Note calling StartCollection_IRQ_Start
- 163          *   will override any effect this method would have had. To set the vector 
- 164          *   before the component has been started use StartCollection_IRQ_StartEx instead.
- 165          *
- 166          * Parameters:
- 167          *   address: Address of the ISR to set in the interrupt vector table.
- 168          *
- 169          * Return:
- 170          *   None
- 171          *
- 172          *******************************************************************************/
- 173          void StartCollection_IRQ_SetVector(cyisraddress address) 
- 174          {
- 175   1          CY_SET_REG16(StartCollection_IRQ_INTC_VECTOR, (uint16) address);
-C51 COMPILER V9.51   STARTCOLLECTION_IRQ                                                   05/07/2014 04:58:01 PAGE 4   
+ 161          * Return:
+ 162          *   None
+ 163          *
+ 164          *******************************************************************************/
+ 165          void StartCollection_IRQ_SetVector(cyisraddress address) 
+ 166          {
+ 167   1          CY_SET_REG16(StartCollection_IRQ_INTC_VECTOR, (uint16) address);
+ 168   1      }
+ 169          
+ 170          
+ 171          /*******************************************************************************
+ 172          * Function Name: StartCollection_IRQ_GetVector
+ 173          ********************************************************************************
+ 174          *
+ 175          * Summary:
+C51 COMPILER V9.51   STARTCOLLECTION_IRQ                                                   05/08/2014 00:59:16 PAGE 4   
 
- 176   1      }
- 177          
- 178          
- 179          /*******************************************************************************
- 180          * Function Name: StartCollection_IRQ_GetVector
- 181          ********************************************************************************
- 182          *
- 183          * Summary:
- 184          *   Gets the "address" of the current ISR vector for the Interrupt.
- 185          *
- 186          * Parameters:
- 187          *   None
- 188          *
- 189          * Return:
- 190          *   Address of the ISR in the interrupt vector table.
- 191          *
- 192          *******************************************************************************/
- 193          cyisraddress StartCollection_IRQ_GetVector(void) 
- 194          {
- 195   1          return (cyisraddress) CY_GET_REG16(StartCollection_IRQ_INTC_VECTOR);
- 196   1      }
- 197          
- 198          
- 199          /*******************************************************************************
- 200          * Function Name: StartCollection_IRQ_SetPriority
- 201          ********************************************************************************
- 202          *
- 203          * Summary:
- 204          *   Sets the Priority of the Interrupt. Note calling StartCollection_IRQ_Start
- 205          *   or StartCollection_IRQ_StartEx will override any effect this method would 
- 206          *   have had. This method should only be called after StartCollection_IRQ_Start or 
- 207          *   StartCollection_IRQ_StartEx has been called. To set the initial
- 208          *   priority for the component use the cydwr file in the tool.
- 209          *
- 210          * Parameters:
- 211          *   priority: Priority of the interrupt. 0 - 7, 0 being the highest.
- 212          *
- 213          * Return:
- 214          *   None
- 215          *
- 216          *******************************************************************************/
- 217          void StartCollection_IRQ_SetPriority(uint8 priority) 
- 218          {
- 219   1          *StartCollection_IRQ_INTC_PRIOR = priority << 5;
- 220   1      }
- 221          
- 222          
- 223          /*******************************************************************************
- 224          * Function Name: StartCollection_IRQ_GetPriority
- 225          ********************************************************************************
- 226          *
- 227          * Summary:
- 228          *   Gets the Priority of the Interrupt.
- 229          *
- 230          * Parameters:
- 231          *   None
- 232          *
- 233          * Return:
- 234          *   Priority of the interrupt. 0 - 7, 0 being the highest.
- 235          *
- 236          *******************************************************************************/
- 237          uint8 StartCollection_IRQ_GetPriority(void) 
-C51 COMPILER V9.51   STARTCOLLECTION_IRQ                                                   05/07/2014 04:58:01 PAGE 5   
+ 176          *   Gets the "address" of the current ISR vector for the Interrupt.
+ 177          *
+ 178          * Parameters:
+ 179          *   None
+ 180          *
+ 181          * Return:
+ 182          *   Address of the ISR in the interrupt vector table.
+ 183          *
+ 184          *******************************************************************************/
+ 185          cyisraddress StartCollection_IRQ_GetVector(void) 
+ 186          {
+ 187   1          return (cyisraddress) CY_GET_REG16(StartCollection_IRQ_INTC_VECTOR);
+ 188   1      }
+ 189          
+ 190          
+ 191          /*******************************************************************************
+ 192          * Function Name: StartCollection_IRQ_SetPriority
+ 193          ********************************************************************************
+ 194          *
+ 195          * Summary:
+ 196          *   Sets the Priority of the Interrupt. Note calling StartCollection_IRQ_Start
+ 197          *   or StartCollection_IRQ_StartEx will override any effect this method would 
+ 198          *   have had. This method should only be called after StartCollection_IRQ_Start or 
+ 199          *   StartCollection_IRQ_StartEx has been called. To set the initial
+ 200          *   priority for the component use the cydwr file in the tool.
+ 201          *
+ 202          * Parameters:
+ 203          *   priority: Priority of the interrupt. 0 - 7, 0 being the highest.
+ 204          *
+ 205          * Return:
+ 206          *   None
+ 207          *
+ 208          *******************************************************************************/
+ 209          void StartCollection_IRQ_SetPriority(uint8 priority) 
+ 210          {
+ 211   1          *StartCollection_IRQ_INTC_PRIOR = priority << 5;
+ 212   1      }
+ 213          
+ 214          
+ 215          /*******************************************************************************
+ 216          * Function Name: StartCollection_IRQ_GetPriority
+ 217          ********************************************************************************
+ 218          *
+ 219          * Summary:
+ 220          *   Gets the Priority of the Interrupt.
+ 221          *
+ 222          * Parameters:
+ 223          *   None
+ 224          *
+ 225          * Return:
+ 226          *   Priority of the interrupt. 0 - 7, 0 being the highest.
+ 227          *
+ 228          *******************************************************************************/
+ 229          uint8 StartCollection_IRQ_GetPriority(void) 
+ 230          {
+ 231   1          uint8 priority;
+ 232   1      
+ 233   1      
+ 234   1          priority = *StartCollection_IRQ_INTC_PRIOR >> 5;
+ 235   1      
+ 236   1          return priority;
+ 237   1      }
+C51 COMPILER V9.51   STARTCOLLECTION_IRQ                                                   05/08/2014 00:59:16 PAGE 5   
 
- 238          {
- 239   1          uint8 priority;
- 240   1      
- 241   1      
- 242   1          priority = *StartCollection_IRQ_INTC_PRIOR >> 5;
- 243   1      
- 244   1          return priority;
- 245   1      }
- 246          
- 247          
- 248          /*******************************************************************************
- 249          * Function Name: StartCollection_IRQ_Enable
- 250          ********************************************************************************
- 251          *
- 252          * Summary:
- 253          *   Enables the interrupt.
- 254          *
- 255          * Parameters:
- 256          *   None
- 257          *
- 258          * Return:
- 259          *   None
- 260          *
- 261          *******************************************************************************/
- 262          void StartCollection_IRQ_Enable(void) 
- 263          {
- 264   1          /* Enable the general interrupt. */
- 265   1          *StartCollection_IRQ_INTC_SET_EN = StartCollection_IRQ__INTC_MASK;
- 266   1      }
- 267          
- 268          
- 269          /*******************************************************************************
- 270          * Function Name: StartCollection_IRQ_GetState
- 271          ********************************************************************************
- 272          *
- 273          * Summary:
- 274          *   Gets the state (enabled, disabled) of the Interrupt.
- 275          *
- 276          * Parameters:
- 277          *   None
- 278          *
- 279          * Return:
- 280          *   1 if enabled, 0 if disabled.
- 281          *
- 282          *******************************************************************************/
- 283          uint8 StartCollection_IRQ_GetState(void) 
- 284          {
- 285   1          /* Get the state of the general interrupt. */
- 286   1          return ((*StartCollection_IRQ_INTC_SET_EN & (uint8)StartCollection_IRQ__INTC_MASK) != 0u) ? 1u:0u;
- 287   1      }
- 288          
- 289          
- 290          /*******************************************************************************
- 291          * Function Name: StartCollection_IRQ_Disable
- 292          ********************************************************************************
- 293          *
- 294          * Summary:
- 295          *   Disables the Interrupt.
- 296          *
- 297          * Parameters:
- 298          *   None
- 299          *
-C51 COMPILER V9.51   STARTCOLLECTION_IRQ                                                   05/07/2014 04:58:01 PAGE 6   
+ 238          
+ 239          
+ 240          /*******************************************************************************
+ 241          * Function Name: StartCollection_IRQ_Enable
+ 242          ********************************************************************************
+ 243          *
+ 244          * Summary:
+ 245          *   Enables the interrupt.
+ 246          *
+ 247          * Parameters:
+ 248          *   None
+ 249          *
+ 250          * Return:
+ 251          *   None
+ 252          *
+ 253          *******************************************************************************/
+ 254          void StartCollection_IRQ_Enable(void) 
+ 255          {
+ 256   1          /* Enable the general interrupt. */
+ 257   1          *StartCollection_IRQ_INTC_SET_EN = StartCollection_IRQ__INTC_MASK;
+ 258   1      }
+ 259          
+ 260          
+ 261          /*******************************************************************************
+ 262          * Function Name: StartCollection_IRQ_GetState
+ 263          ********************************************************************************
+ 264          *
+ 265          * Summary:
+ 266          *   Gets the state (enabled, disabled) of the Interrupt.
+ 267          *
+ 268          * Parameters:
+ 269          *   None
+ 270          *
+ 271          * Return:
+ 272          *   1 if enabled, 0 if disabled.
+ 273          *
+ 274          *******************************************************************************/
+ 275          uint8 StartCollection_IRQ_GetState(void) 
+ 276          {
+ 277   1          /* Get the state of the general interrupt. */
+ 278   1          return ((*StartCollection_IRQ_INTC_SET_EN & (uint8)StartCollection_IRQ__INTC_MASK) != 0u) ? 1u:0u;
+ 279   1      }
+ 280          
+ 281          
+ 282          /*******************************************************************************
+ 283          * Function Name: StartCollection_IRQ_Disable
+ 284          ********************************************************************************
+ 285          *
+ 286          * Summary:
+ 287          *   Disables the Interrupt.
+ 288          *
+ 289          * Parameters:
+ 290          *   None
+ 291          *
+ 292          * Return:
+ 293          *   None
+ 294          *
+ 295          *******************************************************************************/
+ 296          void StartCollection_IRQ_Disable(void) 
+ 297          {
+ 298   1          /* Disable the general interrupt. */
+ 299   1          *StartCollection_IRQ_INTC_CLR_EN = StartCollection_IRQ__INTC_MASK;
+C51 COMPILER V9.51   STARTCOLLECTION_IRQ                                                   05/08/2014 00:59:16 PAGE 6   
 
- 300          * Return:
- 301          *   None
- 302          *
- 303          *******************************************************************************/
- 304          void StartCollection_IRQ_Disable(void) 
- 305          {
- 306   1          /* Disable the general interrupt. */
- 307   1          *StartCollection_IRQ_INTC_CLR_EN = StartCollection_IRQ__INTC_MASK;
- 308   1      }
- 309          
- 310          
- 311          /*******************************************************************************
- 312          * Function Name: StartCollection_IRQ_SetPending
- 313          ********************************************************************************
- 314          *
- 315          * Summary:
- 316          *   Causes the Interrupt to enter the pending state, a software method of
- 317          *   generating the interrupt.
- 318          *
- 319          * Parameters:
- 320          *   None
- 321          *
- 322          * Return:
- 323          *   None
- 324          *
- 325          *******************************************************************************/
- 326          void StartCollection_IRQ_SetPending(void) 
- 327          {
- 328   1          *StartCollection_IRQ_INTC_SET_PD = StartCollection_IRQ__INTC_MASK;
- 329   1      }
- 330          
- 331          
- 332          /*******************************************************************************
- 333          * Function Name: StartCollection_IRQ_ClearPending
- 334          ********************************************************************************
- 335          *
- 336          * Summary:
- 337          *   Clears a pending interrupt.
- 338          *
- 339          * Parameters:
- 340          *   None
- 341          *
- 342          * Return:
- 343          *   None
- 344          *
- 345          *******************************************************************************/
- 346          void StartCollection_IRQ_ClearPending(void) 
- 347          {
- 348   1          *StartCollection_IRQ_INTC_CLR_PD = StartCollection_IRQ__INTC_MASK;
- 349   1      }
- 350          
- 351          #endif /* End check for removal by optimization */
- 352          
- 353          
- 354          /* [] END OF FILE */
-C51 COMPILER V9.51   STARTCOLLECTION_IRQ                                                   05/07/2014 04:58:01 PAGE 7   
+ 300   1      }
+ 301          
+ 302          
+ 303          /*******************************************************************************
+ 304          * Function Name: StartCollection_IRQ_SetPending
+ 305          ********************************************************************************
+ 306          *
+ 307          * Summary:
+ 308          *   Causes the Interrupt to enter the pending state, a software method of
+ 309          *   generating the interrupt.
+ 310          *
+ 311          * Parameters:
+ 312          *   None
+ 313          *
+ 314          * Return:
+ 315          *   None
+ 316          *
+ 317          *******************************************************************************/
+ 318          void StartCollection_IRQ_SetPending(void) 
+ 319          {
+ 320   1          *StartCollection_IRQ_INTC_SET_PD = StartCollection_IRQ__INTC_MASK;
+ 321   1      }
+ 322          
+ 323          
+ 324          /*******************************************************************************
+ 325          * Function Name: StartCollection_IRQ_ClearPending
+ 326          ********************************************************************************
+ 327          *
+ 328          * Summary:
+ 329          *   Clears a pending interrupt.
+ 330          *
+ 331          * Parameters:
+ 332          *   None
+ 333          *
+ 334          * Return:
+ 335          *   None
+ 336          *
+ 337          *******************************************************************************/
+ 338          void StartCollection_IRQ_ClearPending(void) 
+ 339          {
+ 340   1          *StartCollection_IRQ_INTC_CLR_PD = StartCollection_IRQ__INTC_MASK;
+ 341   1      }
+ 342          
+ 343          #endif /* End check for removal by optimization */
+ 344          
+ 345          
+ 346          /* [] END OF FILE */
+C51 COMPILER V9.51   STARTCOLLECTION_IRQ                                                   05/08/2014 00:59:16 PAGE 7   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -439,79 +431,44 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION StartCollection_IRQ_Stop (END)
 
              ; FUNCTION StartCollection_IRQ_Interrupt (BEGIN)
-C51 COMPILER V9.51   STARTCOLLECTION_IRQ                                                   05/07/2014 04:58:01 PAGE 8   
+C51 COMPILER V9.51   STARTCOLLECTION_IRQ                                                   05/08/2014 00:59:16 PAGE 8   
 
 0000 C0E0              PUSH    ACC
-0002 C0F0              PUSH    B
-0004 C083              PUSH    DPH
-0006 C082              PUSH    DPL
-0008 C085              PUSH    DPH1
-000A C084              PUSH    DPL1
-000C C086              PUSH    DPS
-000E 758600            MOV     DPS,#00H
-0011 C000        E     PUSH    ?C?XPAGE1SFR
-0013 750000      E     MOV     ?C?XPAGE1SFR,#?C?XPAGE1RST
-0016 C0D0              PUSH    PSW
-0018 75D000            MOV     PSW,#00H
-001B C000              PUSH    AR0
-001D C001              PUSH    AR1
-001F C002              PUSH    AR2
-0021 C003              PUSH    AR3
-0023 C004              PUSH    AR4
-0025 C005              PUSH    AR5
-0027 C006              PUSH    AR6
-0029 C007              PUSH    AR7
+0002 C083              PUSH    DPH
+0004 C082              PUSH    DPL
+0006 C085              PUSH    DPH1
+0008 C084              PUSH    DPL1
+000A C086              PUSH    DPS
+000C 758600            MOV     DPS,#00H
+000F C000        E     PUSH    ?C?XPAGE1SFR
+0011 750000      E     MOV     ?C?XPAGE1SFR,#?C?XPAGE1RST
                                            ; SOURCE LINE # 131
-                                           ; SOURCE LINE # 137
-002B 120000      E     LCALL   CyPmRestoreClocks
-                                           ; SOURCE LINE # 138
-002E 120000      E     LCALL   RTC_EnableInt
-                                           ; SOURCE LINE # 139
-0031 7F00              MOV     R7,#00H
-0033 120000      E     LCALL   _LED_off
-                                           ; SOURCE LINE # 140
-0036 120000      E     LCALL   LED_PWM_Wakeup
-                                           ; SOURCE LINE # 143
-0039 7F06              MOV     R7,#06H
-003B 120000      E     LCALL   _LED_on
-                                           ; SOURCE LINE # 144
-003E 900000      E     MOV     DPTR,#DataStart_waiting
-0041 7401              MOV     A,#01H
-0043 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 154
-0044         ?C0004:
-0044 D007              POP     AR7
-0046 D006              POP     AR6
-0048 D005              POP     AR5
-004A D004              POP     AR4
-004C D003              POP     AR3
-004E D002              POP     AR2
-0050 D001              POP     AR1
-0052 D000              POP     AR0
-0054 D0D0              POP     PSW
-0056 D000        E     POP     ?C?XPAGE1SFR
-0058 D086              POP     DPS
-005A D084              POP     DPL1
-005C D085              POP     DPH1
-005E D082              POP     DPL
-0060 D083              POP     DPH
-0062 D0F0              POP     B
-0064 D0E0              POP     ACC
-0066 32                RETI    
+                                           ; SOURCE LINE # 136
+0014 900000      E     MOV     DPTR,#DataStart_waiting
+0017 7401              MOV     A,#01H
+0019 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 146
+001A         ?C0004:
+001A D000        E     POP     ?C?XPAGE1SFR
+001C D086              POP     DPS
+001E D084              POP     DPL1
+0020 D085              POP     DPH1
+0022 D082              POP     DPL
+0024 D083              POP     DPH
+0026 D0E0              POP     ACC
+0028 32                RETI    
              ; FUNCTION StartCollection_IRQ_Interrupt (END)
 
              ; FUNCTION _StartCollection_IRQ_SetVector (BEGIN)
-                                           ; SOURCE LINE # 173
+                                           ; SOURCE LINE # 165
 0000 900000      R     MOV     DPTR,#address
-C51 COMPILER V9.51   STARTCOLLECTION_IRQ                                                   05/07/2014 04:58:01 PAGE 9   
-
 0003 EE                MOV     A,R6
 0004 F0                MOVX    @DPTR,A
 0005 A3                INC     DPTR
 0006 EF                MOV     A,R7
 0007 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 174
-                                           ; SOURCE LINE # 175
+                                           ; SOURCE LINE # 166
+                                           ; SOURCE LINE # 167
 0008 7B02              MOV     R3,#02H
 000A 7A44              MOV     R2,#044H
 000C 790E              MOV     R1,#0EH
@@ -524,31 +481,33 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0016 AD07              MOV     R5,AR7
 0018 AC06              MOV     R4,AR6
 001A 120000      E     LCALL   _cywrite16_nodpx
-                                           ; SOURCE LINE # 176
+                                           ; SOURCE LINE # 168
 001D         ?C0005:
 001D 22                RET     
              ; FUNCTION _StartCollection_IRQ_SetVector (END)
 
              ; FUNCTION StartCollection_IRQ_GetVector (BEGIN)
-                                           ; SOURCE LINE # 193
-                                           ; SOURCE LINE # 194
-                                           ; SOURCE LINE # 195
+                                           ; SOURCE LINE # 185
+                                           ; SOURCE LINE # 186
+                                           ; SOURCE LINE # 187
 0000 7B02              MOV     R3,#02H
 0002 7A44              MOV     R2,#044H
 0004 790E              MOV     R1,#0EH
 0006 120000      E     LCALL   _cyread16_nodpx
-                                           ; SOURCE LINE # 196
+                                           ; SOURCE LINE # 188
+C51 COMPILER V9.51   STARTCOLLECTION_IRQ                                                   05/08/2014 00:59:16 PAGE 9   
+
 0009         ?C0006:
 0009 22                RET     
              ; FUNCTION StartCollection_IRQ_GetVector (END)
 
              ; FUNCTION _StartCollection_IRQ_SetPriority (BEGIN)
-                                           ; SOURCE LINE # 217
+                                           ; SOURCE LINE # 209
 0000 900000      R     MOV     DPTR,#priority
 0003 EF                MOV     A,R7
 0004 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 218
-                                           ; SOURCE LINE # 219
+                                           ; SOURCE LINE # 210
+                                           ; SOURCE LINE # 211
 0005 900000      R     MOV     DPTR,#priority
 0008 E0                MOVX    A,@DPTR
 0009 FF                MOV     R7,A
@@ -560,17 +519,15 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0010 904487            MOV     DPTR,#04487H
 0013 EF                MOV     A,R7
 0014 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 220
+                                           ; SOURCE LINE # 212
 0015         ?C0007:
 0015 22                RET     
              ; FUNCTION _StartCollection_IRQ_SetPriority (END)
 
              ; FUNCTION StartCollection_IRQ_GetPriority (BEGIN)
-                                           ; SOURCE LINE # 237
-C51 COMPILER V9.51   STARTCOLLECTION_IRQ                                                   05/07/2014 04:58:01 PAGE 10  
-
-                                           ; SOURCE LINE # 238
-                                           ; SOURCE LINE # 242
+                                           ; SOURCE LINE # 229
+                                           ; SOURCE LINE # 230
+                                           ; SOURCE LINE # 234
 0000 904487            MOV     DPTR,#04487H
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
@@ -582,31 +539,33 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000B 900000      R     MOV     DPTR,#priority
 000E EF                MOV     A,R7
 000F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 244
+                                           ; SOURCE LINE # 236
 0010 900000      R     MOV     DPTR,#priority
 0013 E0                MOVX    A,@DPTR
 0014 FF                MOV     R7,A
-                                           ; SOURCE LINE # 245
+                                           ; SOURCE LINE # 237
 0015         ?C0008:
 0015 22                RET     
              ; FUNCTION StartCollection_IRQ_GetPriority (END)
 
              ; FUNCTION StartCollection_IRQ_Enable (BEGIN)
-                                           ; SOURCE LINE # 262
-                                           ; SOURCE LINE # 263
-                                           ; SOURCE LINE # 265
+                                           ; SOURCE LINE # 254
+                                           ; SOURCE LINE # 255
+                                           ; SOURCE LINE # 257
 0000 9044C0            MOV     DPTR,#044C0H
 0003 7480              MOV     A,#080H
 0005 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 266
+                                           ; SOURCE LINE # 258
 0006         ?C0009:
 0006 22                RET     
              ; FUNCTION StartCollection_IRQ_Enable (END)
+C51 COMPILER V9.51   STARTCOLLECTION_IRQ                                                   05/08/2014 00:59:16 PAGE 10  
+
 
              ; FUNCTION StartCollection_IRQ_GetState (BEGIN)
-                                           ; SOURCE LINE # 283
-                                           ; SOURCE LINE # 284
-                                           ; SOURCE LINE # 286
+                                           ; SOURCE LINE # 275
+                                           ; SOURCE LINE # 276
+                                           ; SOURCE LINE # 278
 0000 9044C0            MOV     DPTR,#044C0H
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
@@ -617,45 +576,43 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000D         ?C0010:
 000D 7F00              MOV     R7,#00H
 000F         ?C0011:
-                                           ; SOURCE LINE # 287
+                                           ; SOURCE LINE # 279
 000F         ?C0012:
 000F 22                RET     
              ; FUNCTION StartCollection_IRQ_GetState (END)
 
              ; FUNCTION StartCollection_IRQ_Disable (BEGIN)
-                                           ; SOURCE LINE # 304
-                                           ; SOURCE LINE # 305
-                                           ; SOURCE LINE # 307
+                                           ; SOURCE LINE # 296
+                                           ; SOURCE LINE # 297
+                                           ; SOURCE LINE # 299
 0000 9044C8            MOV     DPTR,#044C8H
 0003 7480              MOV     A,#080H
 0005 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 308
+                                           ; SOURCE LINE # 300
 0006         ?C0013:
-C51 COMPILER V9.51   STARTCOLLECTION_IRQ                                                   05/07/2014 04:58:01 PAGE 11  
-
 0006 22                RET     
              ; FUNCTION StartCollection_IRQ_Disable (END)
 
              ; FUNCTION StartCollection_IRQ_SetPending (BEGIN)
-                                           ; SOURCE LINE # 326
-                                           ; SOURCE LINE # 327
-                                           ; SOURCE LINE # 328
+                                           ; SOURCE LINE # 318
+                                           ; SOURCE LINE # 319
+                                           ; SOURCE LINE # 320
 0000 9044D0            MOV     DPTR,#044D0H
 0003 7480              MOV     A,#080H
 0005 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 329
+                                           ; SOURCE LINE # 321
 0006         ?C0014:
 0006 22                RET     
              ; FUNCTION StartCollection_IRQ_SetPending (END)
 
              ; FUNCTION StartCollection_IRQ_ClearPending (BEGIN)
-                                           ; SOURCE LINE # 346
-                                           ; SOURCE LINE # 347
-                                           ; SOURCE LINE # 348
+                                           ; SOURCE LINE # 338
+                                           ; SOURCE LINE # 339
+                                           ; SOURCE LINE # 340
 0000 9044D8            MOV     DPTR,#044D8H
 0003 7480              MOV     A,#080H
 0005 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 349
+                                           ; SOURCE LINE # 341
 0006         ?C0015:
 0006 22                RET     
              ; FUNCTION StartCollection_IRQ_ClearPending (END)
@@ -663,9 +620,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    285    ----
+   CODE SIZE        =    223    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =      6    ----
+C51 COMPILER V9.51   STARTCOLLECTION_IRQ                                                   05/08/2014 00:59:16 PAGE 11  
+
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----

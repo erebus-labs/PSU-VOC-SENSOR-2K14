@@ -49,92 +49,40 @@ void StopCollection(){
     return;   
 }
 
-void LED_on(uint8 target){
+void LED_on(uint8 color){
     
-    switch (target){   
+    switch (color){   
     
-        case USB:
-            /* Green */
-            LED0_CTRL_Write(GREEN);
-            LED1_CTRL_Write(GREEN);
-            break;
-        
-        case ERROR:
-            /* Red */
-            LED0_CTRL_Write(RED);
-            LED1_CTRL_Write(RED);
+        case RED:
+        case GREEN:
+        case BLUE:
+            SOLID_LED_CTRL_Write(color);
             break;
             
-        case LOWBATT:
-            /* Yellow */
-            LED0_CTRL_Write(GREEN);
-            LED1_CTRL_Write(RED);
+        case MAGENTA:
+            PWM0_CTRL_Write(PWM_BLUE);
+            PWM1_CTRL_Write(PWM_RED);
+            break;
+                
+        case YELLOW:
+            PWM0_CTRL_Write(PWM_GREEN);
+            PWM1_CTRL_Write(PWM_RED);
             break;
         
-        case SAMPLE:
-            /* BLUE */
-            LED0_CTRL_Write(BLUE);
-            LED1_CTRL_Write(GREEN);
-            break;  
+        case CYAN:
+            PWM0_CTRL_Write(PWM_GREEN);
+            PWM1_CTRL_Write(PWM_BLUE);
+            break;          
             
-        case MEM:
-            /* Cyan */
-            LED0_CTRL_Write(BLUE);
-            LED1_CTRL_Write(BLUE);  
-            break;
-        
-        case BUTTON:
-            /* Magenta */
-            LED0_CTRL_Write(BLUE);
-            LED1_CTRL_Write(RED);
-            break;
     }
     return;
 }
 
-void LED_off(uint8 target){
+void LED_off(){
     
-    switch (target){
-        
-        case ALL:
-            LED0_CTRL_Write(OFF);
-            LED1_CTRL_Write(OFF);
-            break;
-        
-        case USB:
-            LED0_CTRL_Write(OFF);
-            LED1_CTRL_Write(OFF);
-            break;
-   
-        case SAMPLE:
-                
-            if (low_power_flag){
-                LED0_CTRL_Write(GREEN);
-                LED1_CTRL_Write(RED);
-            }
-            
-            else{
-                LED0_CTRL_Write(OFF);
-                LED1_CTRL_Write(OFF);
-            }      
-            break;  
-            
-        case MEM:         
-            if (Vbus_Read()){
-                LED0_CTRL_Write(GREEN);
-                LED1_CTRL_Write(GREEN);
-            }
-            else{
-                LED0_CTRL_Write(OFF);
-                LED1_CTRL_Write(OFF);
-            } 
-            break;
-            
-        case BUTTON:
-            LED0_CTRL_Write(OFF);
-            LED1_CTRL_Write(OFF);
-            break;
-    }
+    SOLID_LED_CTRL_Write(OFF);
+    PWM0_CTRL_Write(OFF);
+    PWM1_CTRL_Write(OFF);   
     
     return;
 }

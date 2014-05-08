@@ -22,8 +22,8 @@
     
     void StartCollection();
     void StopCollection();
-    void LED_on(uint8 target);   
-    void LED_off(uint8 target);
+    void LED_on(uint8 color);   
+    void LED_off();
     
     // In this struct, year is listed first to avoid compiler
     // padding - #pragma pack(n) is not a recognized directive

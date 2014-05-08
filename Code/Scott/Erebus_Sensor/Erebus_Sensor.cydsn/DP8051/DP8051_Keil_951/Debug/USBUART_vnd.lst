@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   USBUART_VND                                                           05/07/2014 04:35:59 PAGE 1   
+C51 COMPILER V9.51   USBUART_VND                                                           05/07/2014 23:18:37 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE USBUART_VND
@@ -62,7 +62,7 @@ line level    source
   51          * Reentrant:
   52          *  No.
   53          *
-C51 COMPILER V9.51   USBUART_VND                                                           05/07/2014 04:35:59 PAGE 2   
+C51 COMPILER V9.51   USBUART_VND                                                           05/07/2014 23:18:37 PAGE 2   
 
   54          *******************************************************************************/
   55          uint8 USBUART_HandleVendorRqst(void) 
@@ -107,7 +107,7 @@ line level    source
   94          
   95          
   96          /* [] END OF FILE */
-C51 COMPILER V9.51   USBUART_VND                                                           05/07/2014 04:35:59 PAGE 3   
+C51 COMPILER V9.51   USBUART_VND                                                           05/07/2014 23:18:37 PAGE 3   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -171,7 +171,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 70
                                            ; SOURCE LINE # 71
 004A         ?C0004:
-C51 COMPILER V9.51   USBUART_VND                                                           05/07/2014 04:35:59 PAGE 4   
+C51 COMPILER V9.51   USBUART_VND                                                           05/07/2014 23:18:37 PAGE 4   
 
                                            ; SOURCE LINE # 72
                                            ; SOURCE LINE # 73

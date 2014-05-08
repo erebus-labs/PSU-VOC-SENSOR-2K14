@@ -14,15 +14,13 @@
 
 /* This file provides function definitions for USB interactions */
 
-void USB_ISR(){
+void Run_USB(){
     
     // Power has just been applied to the Vbus pin, so we enter USB communication mode
 
     uint8 result = 0;
     uint8 command = 0;
-    USB_LED_on();
-           
-    /* Start USBFS Operation with 5V operation */
+
     USBUART_Start(0u, USBUART_5V_OPERATION);
     
     /* Wait for Device to enumerate */
@@ -30,7 +28,7 @@ void USB_ISR(){
 
     /* Enumeration is done, enable OUT endpoint for receive data from Host */
     USBUART_CDC_Init();
-      
+    
     while(Vbus_Read())
     {  
         if(USBUART_DataIsReady() != 0u){   /* Check for input data from PC */
@@ -83,7 +81,7 @@ void USB_ISR(){
                         break;
                      
                     case HARD_RESET:
-                        hard_reset();
+                        CMD_hard_reset();
                         send_reply(SUCCESS);
                         break;
                         
@@ -98,8 +96,7 @@ void USB_ISR(){
         }
     }
     
-    USBUART_Stop();
-    USB_LED_off();
+    USB_Close();
     
     return;
 }
@@ -168,8 +165,6 @@ uint8 dump_data(){
     uint8 i = 0;
     uint8 result = SUCCESS;
     
-    flash_LED_on();
-    
     if(TailPtr == ExportPtr){
         ExportBuffer[0] = NO_DATA;
         
@@ -222,8 +217,6 @@ uint8 dump_data(){
     ExportBuffer[3] = (uint8)0x00FF & DataCnt;
     
     write_out(ExportBuffer);
-    
-    flash_LED_off();
 
 exit:
     return result;
@@ -327,19 +320,16 @@ void CMD_hard_reset(){
 
     uint8 reset_flag = 0xFF;
     
-    flash_LED_on();
     Em_EEPROM_Write(&reset_flag, &hard_reset_flag, 1u);
-    flash_LED_off();
     
     return;
 }
 
 void USB_Close(){
     
-    EEPROM_R_Stop();
+    rtc_setup();   
     USBUART_Stop();
-    CySoftwareReset();
-    
+
     return;
 }
 

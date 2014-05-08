@@ -26,7 +26,7 @@
 #include <Vbus_aliases.h>
 #include <Vbus_IRQ.h>
 #include <Em_EEPROM.h>
-#include <LED0_CTRL.h>
+#include <PWM0_CTRL.h>
 #include <EEPROM_R.h>
 #include <Sensor_In.h>
 #include <Sensor_In_aliases.h>
@@ -43,8 +43,9 @@
 #include <USBUART_hid.h>
 #include <USBUART_midi.h>
 #include <USBUART_pvt.h>
-#include <LED1_CTRL.h>
+#include <PWM1_CTRL.h>
 #include <LED_PWM.h>
+#include <SOLID_LED_CTRL.h>
 #include <ADC_AMux.h>
 #include <ADC_Ext_CP_Clk.h>
 #include <ADC_IRQ.h>

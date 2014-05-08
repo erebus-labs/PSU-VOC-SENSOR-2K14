@@ -2,7 +2,7 @@
 --	Conversion of Erebus_Sensor.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Wed May 07 04:35:44 2014
+--	Wed May 07 23:18:21 2014
 --
 
 USE cypress.cypress.all;
@@ -27,9 +27,9 @@ SIGNAL Net_1468 : bit;
 SIGNAL tmpOE__RGB_LED_net_2 : bit;
 SIGNAL tmpOE__RGB_LED_net_1 : bit;
 SIGNAL tmpOE__RGB_LED_net_0 : bit;
-SIGNAL Net_1398 : bit;
-SIGNAL Net_1300 : bit;
-SIGNAL Net_843 : bit;
+SIGNAL Net_1541 : bit;
+SIGNAL Net_1531 : bit;
+SIGNAL Net_1532 : bit;
 SIGNAL tmpFB_2__RGB_LED_net_2 : bit;
 SIGNAL tmpFB_2__RGB_LED_net_1 : bit;
 SIGNAL tmpFB_2__RGB_LED_net_0 : bit;
@@ -40,6 +40,7 @@ TERMINAL tmpSIOVREF__RGB_LED_net_0 : bit;
 SIGNAL zero : bit;
 SIGNAL one : bit;
 SIGNAL tmpINTERRUPT_0__RGB_LED_net_0 : bit;
+SIGNAL Net_1566 : bit;
 SIGNAL Net_1467 : bit;
 SIGNAL \demux_1:tmp__demux_1_0_reg\ : bit;
 SIGNAL Net_1410_1 : bit;
@@ -56,36 +57,36 @@ SIGNAL tmpFB_0__Vbus_net_0 : bit;
 SIGNAL tmpIO_0__Vbus_net_0 : bit;
 TERMINAL tmpSIOVREF__Vbus_net_0 : bit;
 SIGNAL Net_1525 : bit;
-SIGNAL \LED0_CTRL:clk\ : bit;
-SIGNAL \LED0_CTRL:rst\ : bit;
-SIGNAL \LED0_CTRL:control_bus_7\ : bit;
-ATTRIBUTE port_state_att of \LED0_CTRL:control_bus_7\:SIGNAL IS 2;
-SIGNAL \LED0_CTRL:control_out_7\ : bit;
-SIGNAL \LED0_CTRL:control_bus_6\ : bit;
-ATTRIBUTE port_state_att of \LED0_CTRL:control_bus_6\:SIGNAL IS 2;
-SIGNAL \LED0_CTRL:control_out_6\ : bit;
-SIGNAL \LED0_CTRL:control_bus_5\ : bit;
-ATTRIBUTE port_state_att of \LED0_CTRL:control_bus_5\:SIGNAL IS 2;
-SIGNAL \LED0_CTRL:control_out_5\ : bit;
-SIGNAL \LED0_CTRL:control_bus_4\ : bit;
-ATTRIBUTE port_state_att of \LED0_CTRL:control_bus_4\:SIGNAL IS 2;
-SIGNAL \LED0_CTRL:control_out_4\ : bit;
-SIGNAL \LED0_CTRL:control_bus_3\ : bit;
-ATTRIBUTE port_state_att of \LED0_CTRL:control_bus_3\:SIGNAL IS 2;
-SIGNAL \LED0_CTRL:control_out_3\ : bit;
-SIGNAL \LED0_CTRL:control_bus_2\ : bit;
-ATTRIBUTE port_state_att of \LED0_CTRL:control_bus_2\:SIGNAL IS 2;
-SIGNAL \LED0_CTRL:control_out_2\ : bit;
-SIGNAL \LED0_CTRL:control_out_1\ : bit;
-SIGNAL \LED0_CTRL:control_out_0\ : bit;
-SIGNAL \LED0_CTRL:control_7\ : bit;
-SIGNAL \LED0_CTRL:control_6\ : bit;
-SIGNAL \LED0_CTRL:control_5\ : bit;
-SIGNAL \LED0_CTRL:control_4\ : bit;
-SIGNAL \LED0_CTRL:control_3\ : bit;
-SIGNAL \LED0_CTRL:control_2\ : bit;
-SIGNAL \LED0_CTRL:control_1\ : bit;
-SIGNAL \LED0_CTRL:control_0\ : bit;
+SIGNAL \PWM0_CTRL:clk\ : bit;
+SIGNAL \PWM0_CTRL:rst\ : bit;
+SIGNAL \PWM0_CTRL:control_bus_7\ : bit;
+ATTRIBUTE port_state_att of \PWM0_CTRL:control_bus_7\:SIGNAL IS 2;
+SIGNAL \PWM0_CTRL:control_out_7\ : bit;
+SIGNAL \PWM0_CTRL:control_bus_6\ : bit;
+ATTRIBUTE port_state_att of \PWM0_CTRL:control_bus_6\:SIGNAL IS 2;
+SIGNAL \PWM0_CTRL:control_out_6\ : bit;
+SIGNAL \PWM0_CTRL:control_bus_5\ : bit;
+ATTRIBUTE port_state_att of \PWM0_CTRL:control_bus_5\:SIGNAL IS 2;
+SIGNAL \PWM0_CTRL:control_out_5\ : bit;
+SIGNAL \PWM0_CTRL:control_bus_4\ : bit;
+ATTRIBUTE port_state_att of \PWM0_CTRL:control_bus_4\:SIGNAL IS 2;
+SIGNAL \PWM0_CTRL:control_out_4\ : bit;
+SIGNAL \PWM0_CTRL:control_bus_3\ : bit;
+ATTRIBUTE port_state_att of \PWM0_CTRL:control_bus_3\:SIGNAL IS 2;
+SIGNAL \PWM0_CTRL:control_out_3\ : bit;
+SIGNAL \PWM0_CTRL:control_bus_2\ : bit;
+ATTRIBUTE port_state_att of \PWM0_CTRL:control_bus_2\:SIGNAL IS 2;
+SIGNAL \PWM0_CTRL:control_out_2\ : bit;
+SIGNAL \PWM0_CTRL:control_out_1\ : bit;
+SIGNAL \PWM0_CTRL:control_out_0\ : bit;
+SIGNAL \PWM0_CTRL:control_7\ : bit;
+SIGNAL \PWM0_CTRL:control_6\ : bit;
+SIGNAL \PWM0_CTRL:control_5\ : bit;
+SIGNAL \PWM0_CTRL:control_4\ : bit;
+SIGNAL \PWM0_CTRL:control_3\ : bit;
+SIGNAL \PWM0_CTRL:control_2\ : bit;
+SIGNAL \PWM0_CTRL:control_1\ : bit;
+SIGNAL \PWM0_CTRL:control_0\ : bit;
 SIGNAL tmpOE__Sensor_In_net_0 : bit;
 SIGNAL tmpFB_0__Sensor_In_net_0 : bit;
 TERMINAL Net_871 : bit;
@@ -174,36 +175,37 @@ SIGNAL \USBUART:tmpIO_0__Dp_net_0\ : bit;
 TERMINAL \USBUART:tmpSIOVREF__Dp_net_0\ : bit;
 SIGNAL \USBUART:Net_1010\ : bit;
 SIGNAL \USBUART:Net_1099\ : bit;
-SIGNAL \LED1_CTRL:clk\ : bit;
-SIGNAL \LED1_CTRL:rst\ : bit;
-SIGNAL \LED1_CTRL:control_bus_7\ : bit;
-ATTRIBUTE port_state_att of \LED1_CTRL:control_bus_7\:SIGNAL IS 2;
-SIGNAL \LED1_CTRL:control_out_7\ : bit;
-SIGNAL \LED1_CTRL:control_bus_6\ : bit;
-ATTRIBUTE port_state_att of \LED1_CTRL:control_bus_6\:SIGNAL IS 2;
-SIGNAL \LED1_CTRL:control_out_6\ : bit;
-SIGNAL \LED1_CTRL:control_bus_5\ : bit;
-ATTRIBUTE port_state_att of \LED1_CTRL:control_bus_5\:SIGNAL IS 2;
-SIGNAL \LED1_CTRL:control_out_5\ : bit;
-SIGNAL \LED1_CTRL:control_bus_4\ : bit;
-ATTRIBUTE port_state_att of \LED1_CTRL:control_bus_4\:SIGNAL IS 2;
-SIGNAL \LED1_CTRL:control_out_4\ : bit;
-SIGNAL \LED1_CTRL:control_bus_3\ : bit;
-ATTRIBUTE port_state_att of \LED1_CTRL:control_bus_3\:SIGNAL IS 2;
-SIGNAL \LED1_CTRL:control_out_3\ : bit;
-SIGNAL \LED1_CTRL:control_bus_2\ : bit;
-ATTRIBUTE port_state_att of \LED1_CTRL:control_bus_2\:SIGNAL IS 2;
-SIGNAL \LED1_CTRL:control_out_2\ : bit;
-SIGNAL \LED1_CTRL:control_out_1\ : bit;
-SIGNAL \LED1_CTRL:control_out_0\ : bit;
-SIGNAL \LED1_CTRL:control_7\ : bit;
-SIGNAL \LED1_CTRL:control_6\ : bit;
-SIGNAL \LED1_CTRL:control_5\ : bit;
-SIGNAL \LED1_CTRL:control_4\ : bit;
-SIGNAL \LED1_CTRL:control_3\ : bit;
-SIGNAL \LED1_CTRL:control_2\ : bit;
-SIGNAL \LED1_CTRL:control_1\ : bit;
-SIGNAL \LED1_CTRL:control_0\ : bit;
+SIGNAL Net_1565 : bit;
+SIGNAL \PWM1_CTRL:clk\ : bit;
+SIGNAL \PWM1_CTRL:rst\ : bit;
+SIGNAL \PWM1_CTRL:control_bus_7\ : bit;
+ATTRIBUTE port_state_att of \PWM1_CTRL:control_bus_7\:SIGNAL IS 2;
+SIGNAL \PWM1_CTRL:control_out_7\ : bit;
+SIGNAL \PWM1_CTRL:control_bus_6\ : bit;
+ATTRIBUTE port_state_att of \PWM1_CTRL:control_bus_6\:SIGNAL IS 2;
+SIGNAL \PWM1_CTRL:control_out_6\ : bit;
+SIGNAL \PWM1_CTRL:control_bus_5\ : bit;
+ATTRIBUTE port_state_att of \PWM1_CTRL:control_bus_5\:SIGNAL IS 2;
+SIGNAL \PWM1_CTRL:control_out_5\ : bit;
+SIGNAL \PWM1_CTRL:control_bus_4\ : bit;
+ATTRIBUTE port_state_att of \PWM1_CTRL:control_bus_4\:SIGNAL IS 2;
+SIGNAL \PWM1_CTRL:control_out_4\ : bit;
+SIGNAL \PWM1_CTRL:control_bus_3\ : bit;
+ATTRIBUTE port_state_att of \PWM1_CTRL:control_bus_3\:SIGNAL IS 2;
+SIGNAL \PWM1_CTRL:control_out_3\ : bit;
+SIGNAL \PWM1_CTRL:control_bus_2\ : bit;
+ATTRIBUTE port_state_att of \PWM1_CTRL:control_bus_2\:SIGNAL IS 2;
+SIGNAL \PWM1_CTRL:control_out_2\ : bit;
+SIGNAL \PWM1_CTRL:control_out_1\ : bit;
+SIGNAL \PWM1_CTRL:control_out_0\ : bit;
+SIGNAL \PWM1_CTRL:control_7\ : bit;
+SIGNAL \PWM1_CTRL:control_6\ : bit;
+SIGNAL \PWM1_CTRL:control_5\ : bit;
+SIGNAL \PWM1_CTRL:control_4\ : bit;
+SIGNAL \PWM1_CTRL:control_3\ : bit;
+SIGNAL \PWM1_CTRL:control_2\ : bit;
+SIGNAL \PWM1_CTRL:control_1\ : bit;
+SIGNAL \PWM1_CTRL:control_0\ : bit;
 SIGNAL Net_1308 : bit;
 SIGNAL \LED_PWM:PWMUDB:km_run\ : bit;
 SIGNAL \LED_PWM:PWMUDB:min_kill_reg\ : bit;
@@ -536,6 +538,30 @@ SIGNAL Net_1480 : bit;
 SIGNAL \LED_PWM:Net_113\ : bit;
 SIGNAL \LED_PWM:Net_107\ : bit;
 SIGNAL \LED_PWM:Net_114\ : bit;
+SIGNAL Net_1568 : bit;
+SIGNAL \SOLID_LED_CTRL:clk\ : bit;
+SIGNAL \SOLID_LED_CTRL:rst\ : bit;
+SIGNAL \SOLID_LED_CTRL:control_out_0\ : bit;
+SIGNAL \SOLID_LED_CTRL:control_out_1\ : bit;
+SIGNAL \SOLID_LED_CTRL:control_out_2\ : bit;
+SIGNAL Net_1567 : bit;
+SIGNAL \SOLID_LED_CTRL:control_out_3\ : bit;
+SIGNAL Net_1569 : bit;
+SIGNAL \SOLID_LED_CTRL:control_out_4\ : bit;
+SIGNAL Net_1570 : bit;
+SIGNAL \SOLID_LED_CTRL:control_out_5\ : bit;
+SIGNAL Net_1571 : bit;
+SIGNAL \SOLID_LED_CTRL:control_out_6\ : bit;
+SIGNAL Net_1572 : bit;
+SIGNAL \SOLID_LED_CTRL:control_out_7\ : bit;
+SIGNAL \SOLID_LED_CTRL:control_7\ : bit;
+SIGNAL \SOLID_LED_CTRL:control_6\ : bit;
+SIGNAL \SOLID_LED_CTRL:control_5\ : bit;
+SIGNAL \SOLID_LED_CTRL:control_4\ : bit;
+SIGNAL \SOLID_LED_CTRL:control_3\ : bit;
+SIGNAL \SOLID_LED_CTRL:control_2\ : bit;
+SIGNAL \SOLID_LED_CTRL:control_1\ : bit;
+SIGNAL \SOLID_LED_CTRL:control_0\ : bit;
 SIGNAL \LED_PWM:PWMUDB:min_kill_reg\\D\ : bit;
 SIGNAL \LED_PWM:PWMUDB:prevCapture\\D\ : bit;
 SIGNAL \LED_PWM:PWMUDB:trig_last\\D\ : bit;
@@ -554,11 +580,13 @@ zero <=  ('0') ;
 
 tmpOE__RGB_LED_net_2 <=  ('1') ;
 
-Net_1398 <= ((Net_1410_1 and Net_1410_0 and Net_1409)
-	OR (Net_1460_1 and Net_1460_0 and Net_1415));
+Net_1541 <= ((Net_1410_1 and Net_1410_0 and Net_1409)
+	OR (Net_1460_1 and Net_1460_0 and Net_1415)
+	OR Net_1566);
 
-Net_1300 <= ((not Net_1410_0 and Net_1410_1 and Net_1409)
-	OR (not Net_1460_0 and Net_1460_1 and Net_1415));
+Net_1531 <= ((not Net_1410_0 and Net_1410_1 and Net_1409)
+	OR (not Net_1460_0 and Net_1460_1 and Net_1415)
+	OR Net_1565);
 
 \LED_PWM:PWMUDB:sc_kill_tmp\\D\ <= (not \LED_PWM:PWMUDB:tc_i\);
 
@@ -575,8 +603,9 @@ Net_1300 <= ((not Net_1410_0 and Net_1410_1 and Net_1409)
 
 \LED_PWM:PWMUDB:pwm2_i\ <= ((not \LED_PWM:PWMUDB:cmp2_eq\ and not \LED_PWM:PWMUDB:cmp2_less\ and \LED_PWM:PWMUDB:control_7\));
 
-Net_843 <= ((not Net_1410_1 and Net_1410_0 and Net_1409)
-	OR (not Net_1460_1 and Net_1460_0 and Net_1415));
+Net_1532 <= ((not Net_1410_1 and Net_1410_0 and Net_1409)
+	OR (not Net_1460_1 and Net_1460_0 and Net_1415)
+	OR Net_1568);
 
 \RTC:isr\:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10")
@@ -636,7 +665,7 @@ RGB_LED:cy_psoc3_pins_v1_10
 		pa_out_clock_en=>-1,
 		pa_out_reset=>-1)
 	PORT MAP(oe=>(tmpOE__RGB_LED_net_2, tmpOE__RGB_LED_net_2, tmpOE__RGB_LED_net_2),
-		y=>(Net_1398, Net_1300, Net_843),
+		y=>(Net_1541, Net_1531, Net_1532),
 		fb=>(tmpFB_2__RGB_LED_net_2, tmpFB_2__RGB_LED_net_1, tmpFB_2__RGB_LED_net_0),
 		analog=>(open, open, open),
 		io=>(tmpIO_2__RGB_LED_net_2, tmpIO_2__RGB_LED_net_1, tmpIO_2__RGB_LED_net_0),
@@ -717,7 +746,7 @@ Vbus:cy_psoc3_pins_v1_10
 Vbus_IRQ:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10")
 	PORT MAP(int_signal=>Net_1525);
-\LED0_CTRL:Sync:ctrl_reg\:cy_psoc3_control
+\PWM0_CTRL:Sync:ctrl_reg\:cy_psoc3_control
 	GENERIC MAP(cy_init_value=>"00000000",
 		cy_force_order=>'1',
 		cy_ctrl_mode_1=>"00000000",
@@ -725,8 +754,8 @@ Vbus_IRQ:cy_isr_v1_0
 		cy_ext_reset=>'0')
 	PORT MAP(reset=>zero,
 		clock=>zero,
-		control=>(\LED0_CTRL:control_7\, \LED0_CTRL:control_6\, \LED0_CTRL:control_5\, \LED0_CTRL:control_4\,
-			\LED0_CTRL:control_3\, \LED0_CTRL:control_2\, Net_1410_1, Net_1410_0));
+		control=>(\PWM0_CTRL:control_7\, \PWM0_CTRL:control_6\, \PWM0_CTRL:control_5\, \PWM0_CTRL:control_4\,
+			\PWM0_CTRL:control_3\, \PWM0_CTRL:control_2\, Net_1410_1, Net_1410_0));
 Sensor_In:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"05a9c8de-3ba2-4909-8250-95fdc61c0bf4",
 		drive_mode=>"000",
@@ -1210,7 +1239,7 @@ StartCollection_IRQ:cy_isr_v1_0
 		is_digital=>'1')
 	PORT MAP(clock_out=>\USBUART:Net_1099\,
 		dig_domain_out=>open);
-\LED1_CTRL:Sync:ctrl_reg\:cy_psoc3_control
+\PWM1_CTRL:Sync:ctrl_reg\:cy_psoc3_control
 	GENERIC MAP(cy_init_value=>"00000000",
 		cy_force_order=>'1',
 		cy_ctrl_mode_1=>"00000000",
@@ -1218,8 +1247,8 @@ StartCollection_IRQ:cy_isr_v1_0
 		cy_ext_reset=>'0')
 	PORT MAP(reset=>zero,
 		clock=>zero,
-		control=>(\LED1_CTRL:control_7\, \LED1_CTRL:control_6\, \LED1_CTRL:control_5\, \LED1_CTRL:control_4\,
-			\LED1_CTRL:control_3\, \LED1_CTRL:control_2\, Net_1460_1, Net_1460_0));
+		control=>(\PWM1_CTRL:control_7\, \PWM1_CTRL:control_6\, \PWM1_CTRL:control_5\, \PWM1_CTRL:control_4\,
+			\PWM1_CTRL:control_3\, \PWM1_CTRL:control_2\, Net_1460_1, Net_1460_0));
 \LED_PWM:PWMUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
 	PORT MAP(clock_in=>Net_1309,
@@ -1345,6 +1374,16 @@ PWM_CLK:cy_clock_v1_0
 		is_digital=>'1')
 	PORT MAP(clock_out=>Net_1309,
 		dig_domain_out=>open);
+\SOLID_LED_CTRL:Sync:ctrl_reg\:cy_psoc3_control
+	GENERIC MAP(cy_init_value=>"00000000",
+		cy_force_order=>'1',
+		cy_ctrl_mode_1=>"00000000",
+		cy_ctrl_mode_0=>"00000000",
+		cy_ext_reset=>'0')
+	PORT MAP(reset=>zero,
+		clock=>zero,
+		control=>(\SOLID_LED_CTRL:control_7\, \SOLID_LED_CTRL:control_6\, \SOLID_LED_CTRL:control_5\, \SOLID_LED_CTRL:control_4\,
+			\SOLID_LED_CTRL:control_3\, Net_1566, Net_1565, Net_1568));
 \LED_PWM:PWMUDB:min_kill_reg\:cy_dsrff
 	PORT MAP(d=>tmpOE__RGB_LED_net_2,
 		s=>zero,

@@ -25,7 +25,9 @@
 *  Place your includes, defines and code here 
 ********************************************************************************/
 /* `#START Vbus_IRQ_intc` */
-    #include "USB_Access.h"
+    #include "Interface.h"
+    #include "Globals.h"
+    #include "Macros.h"
 /* `#END` */
 
 
@@ -131,7 +133,15 @@ CY_ISR(Vbus_IRQ_Interrupt)
     /*  Place your Interrupt code here. */
     /* `#START Vbus_IRQ_Interrupt` */
     
-    USB_ISR();
+    // Restore from sleep
+    #ifdef SLEEP_EN
+    CyPmRestoreClocks(); 
+    RTC_EnableInt();
+    LED_off(ALL);
+    LED_PWM_Wakeup();
+    #endif 
+    
+    USB_waiting = 1;
 
     /* `#END` */
 

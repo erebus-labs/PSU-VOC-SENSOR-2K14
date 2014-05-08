@@ -12,12 +12,7 @@
 
 #include "Interface.h"
 
-void Hibernate_ISR(){
-    
-    return;   
-}
-
-void StartCollection_ISR(){
+void StartCollection(){
     
     struct header_package header;
     uint8 header_size = sizeof(struct header_package);
@@ -40,18 +35,56 @@ void StartCollection_ISR(){
     
     StopCollection_IRQ_Start();
     StartCollection_IRQ_Stop();
-    TakeSample_IRQ_Start();
+    RTC_WriteIntervalMask(RTC_int_mask);
     
     return;   
 }
 
-void StopCollection_ISR(){
+void StopCollection(){
     
     StartCollection_IRQ_Start();
     StopCollection_IRQ_Stop();
-    TakeSample_IRQ_Stop();
+    RTC_WriteIntervalMask(NONE_MASK);
     
     return;   
+}
+
+void LED_on(uint8 color){
+    
+    switch (color){   
+    
+        case RED:
+        case GREEN:
+        case BLUE:
+            SOLID_LED_CTRL_Write(color);
+            break;
+            
+        case MAGENTA:
+            PWM0_CTRL_Write(PWM_BLUE);
+            PWM1_CTRL_Write(PWM_RED);
+            break;
+                
+        case YELLOW:
+            PWM0_CTRL_Write(PWM_GREEN);
+            PWM1_CTRL_Write(PWM_RED);
+            break;
+        
+        case CYAN:
+            PWM0_CTRL_Write(PWM_GREEN);
+            PWM1_CTRL_Write(PWM_BLUE);
+            break;          
+            
+    }
+    return;
+}
+
+void LED_off(){
+    
+    SOLID_LED_CTRL_Write(OFF);
+    PWM0_CTRL_Write(OFF);
+    PWM1_CTRL_Write(OFF);   
+    
+    return;
 }
 
 /* [] END OF FILE */
