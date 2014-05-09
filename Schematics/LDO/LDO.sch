@@ -12571,12 +12571,6 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <text x="-2.54" y="-5.08" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
 <pin name="+3V3" x="0" y="-2.54" visible="off" length="short" direction="sup" rot="R90"/>
 </symbol>
-<symbol name="AGND">
-<wire x1="-1.905" y1="0" x2="1.905" y2="0" width="0.254" layer="94"/>
-<wire x1="-1.0922" y1="-0.508" x2="1.0922" y2="-0.508" width="0.254" layer="94"/>
-<text x="-2.54" y="-5.08" size="1.778" layer="96" rot="R90">&gt;VALUE</text>
-<pin name="AGND" x="0" y="2.54" visible="off" length="short" direction="sup" rot="R270"/>
-</symbol>
 <symbol name="PE">
 <wire x1="-1.905" y1="0" x2="1.905" y2="0" width="0.254" layer="94"/>
 <wire x1="-1.0922" y1="-0.508" x2="1.0922" y2="-0.508" width="0.254" layer="94"/>
@@ -12617,19 +12611,6 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
 <gates>
 <gate name="G$1" symbol="+3V3" x="0" y="0"/>
-</gates>
-<devices>
-<device name="">
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-<deviceset name="AGND" prefix="AGND">
-<description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
-<gates>
-<gate name="VR1" symbol="AGND" x="0" y="0"/>
 </gates>
 <devices>
 <device name="">
@@ -17541,11 +17522,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 <part name="+3V11" library="supply1" deviceset="+3V3" device=""/>
 <part name="+3V12" library="supply1" deviceset="+3V3" device=""/>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
-<part name="AGND6" library="supply1" deviceset="AGND" device=""/>
-<part name="AGND7" library="supply1" deviceset="AGND" device=""/>
-<part name="AGND8" library="supply1" deviceset="AGND" device=""/>
 <part name="PE1" library="supply1" deviceset="PE" device=""/>
-<part name="AGND1" library="supply1" deviceset="AGND" device=""/>
 <part name="GND6" library="supply1" deviceset="GND" device=""/>
 <part name="GND10" library="supply1" deviceset="GND" device=""/>
 <part name="GND12" library="supply1" deviceset="GND" device=""/>
@@ -17554,6 +17531,10 @@ Samtec FTSH-105-01-L-DV-K</description>
 <part name="H2" library="holes" deviceset="MOUNT-HOLE" device="3.0"/>
 <part name="H3" library="holes" deviceset="MOUNT-HOLE" device="3.0"/>
 <part name="H4" library="holes" deviceset="MOUNT-HOLE" device="3.0"/>
+<part name="GND14" library="supply1" deviceset="GND" device=""/>
+<part name="GND15" library="supply1" deviceset="GND" device=""/>
+<part name="GND16" library="supply1" deviceset="GND" device=""/>
+<part name="GND21" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -17769,11 +17750,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 <instance part="+3V11" gate="G$1" x="-25.4" y="2.54"/>
 <instance part="+3V12" gate="G$1" x="-17.78" y="45.72"/>
 <instance part="GND4" gate="1" x="-22.86" y="58.42"/>
-<instance part="AGND6" gate="VR1" x="35.56" y="88.9"/>
-<instance part="AGND7" gate="VR1" x="63.5" y="81.28"/>
-<instance part="AGND8" gate="VR1" x="66.04" y="73.66"/>
 <instance part="PE1" gate="M" x="127" y="-15.24"/>
-<instance part="AGND1" gate="VR1" x="-17.78" y="71.12"/>
 <instance part="GND6" gate="1" x="-38.1" y="35.56"/>
 <instance part="GND10" gate="1" x="-45.72" y="35.56"/>
 <instance part="GND12" gate="1" x="-66.04" y="35.56"/>
@@ -17782,6 +17759,10 @@ Samtec FTSH-105-01-L-DV-K</description>
 <instance part="H2" gate="G$1" x="35.56" y="-27.94"/>
 <instance part="H3" gate="G$1" x="48.26" y="-27.94"/>
 <instance part="H4" gate="G$1" x="58.42" y="-27.94"/>
+<instance part="GND14" gate="1" x="-17.78" y="71.12"/>
+<instance part="GND15" gate="1" x="35.56" y="88.9"/>
+<instance part="GND16" gate="1" x="66.04" y="73.66"/>
+<instance part="GND21" gate="1" x="63.5" y="81.28"/>
 </instances>
 <busses>
 </busses>
@@ -18011,6 +17992,33 @@ Samtec FTSH-105-01-L-DV-K</description>
 <pinref part="C7" gate="G$1" pin="-"/>
 <wire x1="-76.2" y1="53.34" x2="-76.2" y2="38.1" width="0.1524" layer="91"/>
 <pinref part="GND13" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="C15" gate="G$1" pin="1"/>
+<pinref part="GND14" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="C14" gate="G$1" pin="1"/>
+<wire x1="35.56" y1="91.44" x2="33.02" y2="91.44" width="0.1524" layer="91"/>
+<pinref part="X2" gate="G$1" pin="3"/>
+<wire x1="17.78" y1="111.76" x2="17.78" y2="93.98" width="0.1524" layer="91"/>
+<wire x1="17.78" y1="93.98" x2="33.02" y2="93.98" width="0.1524" layer="91"/>
+<wire x1="33.02" y1="93.98" x2="33.02" y2="91.44" width="0.1524" layer="91"/>
+<junction x="33.02" y="91.44"/>
+<pinref part="GND15" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="U$1" gate="G$1" pin="47"/>
+<wire x1="45.72" y1="78.74" x2="66.04" y2="78.74" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="78.74" x2="66.04" y2="76.2" width="0.1524" layer="91"/>
+<pinref part="C3" gate="G$1" pin="1"/>
+<wire x1="66.04" y1="76.2" x2="63.5" y2="76.2" width="0.1524" layer="91"/>
+<pinref part="GND16" gate="1" pin="GND"/>
+<junction x="66.04" y="76.2"/>
+</segment>
+<segment>
+<pinref part="C6" gate="G$1" pin="1"/>
+<pinref part="GND21" gate="1" pin="GND"/>
 </segment>
 </net>
 <net name="N$11" class="0">
@@ -18319,35 +18327,6 @@ Samtec FTSH-105-01-L-DV-K</description>
 <pinref part="R6" gate="G$1" pin="1"/>
 <wire x1="93.98" y1="30.48" x2="93.98" y2="20.32" width="0.1524" layer="91"/>
 <pinref part="X1" gate="G$1" pin="1"/>
-</segment>
-</net>
-<net name="AGND" class="0">
-<segment>
-<pinref part="C14" gate="G$1" pin="1"/>
-<wire x1="35.56" y1="91.44" x2="33.02" y2="91.44" width="0.1524" layer="91"/>
-<pinref part="AGND6" gate="VR1" pin="AGND"/>
-<pinref part="X2" gate="G$1" pin="3"/>
-<wire x1="17.78" y1="111.76" x2="17.78" y2="93.98" width="0.1524" layer="91"/>
-<wire x1="17.78" y1="93.98" x2="33.02" y2="93.98" width="0.1524" layer="91"/>
-<wire x1="33.02" y1="93.98" x2="33.02" y2="91.44" width="0.1524" layer="91"/>
-<junction x="33.02" y="91.44"/>
-</segment>
-<segment>
-<pinref part="C6" gate="G$1" pin="1"/>
-<pinref part="AGND7" gate="VR1" pin="AGND"/>
-</segment>
-<segment>
-<pinref part="U$1" gate="G$1" pin="47"/>
-<wire x1="45.72" y1="78.74" x2="66.04" y2="78.74" width="0.1524" layer="91"/>
-<wire x1="66.04" y1="78.74" x2="66.04" y2="76.2" width="0.1524" layer="91"/>
-<pinref part="C3" gate="G$1" pin="1"/>
-<wire x1="66.04" y1="76.2" x2="63.5" y2="76.2" width="0.1524" layer="91"/>
-<pinref part="AGND8" gate="VR1" pin="AGND"/>
-<junction x="66.04" y="76.2"/>
-</segment>
-<segment>
-<pinref part="C15" gate="G$1" pin="1"/>
-<pinref part="AGND1" gate="VR1" pin="AGND"/>
 </segment>
 </net>
 <net name="ANALOGINPUT" class="0">
