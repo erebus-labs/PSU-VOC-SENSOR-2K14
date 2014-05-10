@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.4">
+<eagle version="6.3">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -14411,6 +14411,239 @@ Samtec FTSH-105-01-L-DV-K</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="holes">
+<description>&lt;b&gt;Mounting Holes and Pads&lt;/b&gt;&lt;p&gt;
+&lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+<package name="2,8">
+<description>&lt;b&gt;MOUNTING HOLE&lt;/b&gt; 2.8 mm with drill center</description>
+<wire x1="-1.778" y1="0" x2="0" y2="-1.778" width="2.286" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="1.778" x2="1.778" y2="0" width="2.286" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="0.635" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="2.921" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="2.54" width="2.032" layer="40"/>
+<circle x="0" y="0" radius="2.54" width="2.032" layer="39"/>
+<circle x="0" y="0" radius="2.54" width="2.032" layer="41"/>
+<circle x="0" y="0" radius="2.54" width="2.032" layer="42"/>
+<circle x="0" y="0" radius="2.54" width="2.032" layer="43"/>
+<circle x="0" y="0" radius="1.5" width="0.2032" layer="21"/>
+<hole x="0" y="0" drill="2.8"/>
+</package>
+<package name="3,0">
+<description>&lt;b&gt;MOUNTING HOLE&lt;/b&gt; 3.0 mm with drill center</description>
+<wire x1="-2.159" y1="0" x2="0" y2="-2.159" width="2.4892" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="2.159" x2="2.159" y2="0" width="2.4892" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="3.429" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="0.762" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="39"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="43"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="40"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="41"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="42"/>
+<circle x="0" y="0" radius="1.6" width="0.2032" layer="21"/>
+<text x="-1.27" y="-3.81" size="1.27" layer="48">3,0</text>
+<hole x="0" y="0" drill="3"/>
+</package>
+<package name="3,3">
+<description>&lt;b&gt;MOUNTING HOLE&lt;/b&gt; 3.3 mm with drill center</description>
+<wire x1="-2.159" y1="0" x2="0" y2="-2.159" width="2.4892" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="2.159" x2="2.159" y2="0" width="2.4892" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="3.429" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="0.762" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="3.048" width="2.54" layer="39"/>
+<circle x="0" y="0" radius="3.048" width="2.54" layer="40"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="43"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="41"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="42"/>
+<circle x="0" y="0" radius="1.75" width="0.2032" layer="21"/>
+<hole x="0" y="0" drill="3.3"/>
+</package>
+<package name="3,6">
+<description>&lt;b&gt;MOUNTING HOLE&lt;/b&gt; 3.6 mm with drill center</description>
+<wire x1="-2.159" y1="0" x2="0" y2="-2.159" width="2.4892" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="2.159" x2="2.159" y2="0" width="2.4892" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="3.429" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="0.762" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="3.048" width="2.7686" layer="39"/>
+<circle x="0" y="0" radius="3.048" width="2.7686" layer="40"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="43"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="41"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="42"/>
+<circle x="0" y="0" radius="1.9" width="0.2032" layer="21"/>
+<hole x="0" y="0" drill="3.6"/>
+</package>
+<package name="4,1">
+<description>&lt;b&gt;MOUNTING HOLE&lt;/b&gt; 4.1 mm with drill center</description>
+<wire x1="-2.54" y1="0" x2="0" y2="-2.54" width="3.9116" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="2.54" x2="2.54" y2="0" width="3.9116" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="4.4958" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="0.762" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="3.81" width="2.54" layer="39"/>
+<circle x="0" y="0" radius="3.81" width="2.54" layer="40"/>
+<circle x="0" y="0" radius="3.81" width="2.54" layer="41"/>
+<circle x="0" y="0" radius="3.81" width="2.54" layer="42"/>
+<circle x="0" y="0" radius="3.81" width="2.54" layer="43"/>
+<circle x="0" y="0" radius="2.15" width="0.1524" layer="21"/>
+<hole x="0" y="0" drill="4.1"/>
+</package>
+<package name="4,5">
+<description>&lt;b&gt;MOUNTING HOLE&lt;/b&gt; 4.5 mm with drill center</description>
+<wire x1="4.445" y1="0" x2="2.159" y2="0" width="0.0508" layer="21"/>
+<wire x1="0" y1="4.445" x2="0" y2="2.159" width="0.0508" layer="21"/>
+<wire x1="-2.159" y1="0" x2="-4.445" y2="0" width="0.0508" layer="21"/>
+<wire x1="0" y1="-2.159" x2="0" y2="-4.445" width="0.0508" layer="21"/>
+<wire x1="-2.54" y1="0" x2="0" y2="-2.54" width="3.9116" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="2.54" x2="2.54" y2="0" width="3.9116" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="4.4958" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="0.762" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="4.699" width="4.5466" layer="39"/>
+<circle x="0" y="0" radius="4.699" width="4.5466" layer="40"/>
+<circle x="0" y="0" radius="3.8184" width="2.54" layer="41"/>
+<circle x="0" y="0" radius="3.81" width="2.54" layer="42"/>
+<circle x="0" y="0" radius="3.81" width="2.54" layer="43"/>
+<circle x="0" y="0" radius="2.35" width="0.1524" layer="21"/>
+<text x="-1.27" y="-4.445" size="1.27" layer="48">4,5</text>
+<hole x="0" y="0" drill="4.5"/>
+</package>
+<package name="5,0">
+<description>&lt;b&gt;MOUNTING HOLE&lt;/b&gt; 5.0 mm with drill center</description>
+<wire x1="4.445" y1="0" x2="2.159" y2="0" width="0.0508" layer="21"/>
+<wire x1="0" y1="4.445" x2="0" y2="2.159" width="0.0508" layer="21"/>
+<wire x1="-2.159" y1="0" x2="-4.445" y2="0" width="0.0508" layer="21"/>
+<wire x1="0" y1="-2.159" x2="0" y2="-4.445" width="0.0508" layer="21"/>
+<wire x1="-2.54" y1="0" x2="0" y2="-2.54" width="3.9116" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="2.54" x2="2.54" y2="0" width="3.9116" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="4.4958" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="0.762" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="4.699" width="4.5466" layer="39"/>
+<circle x="0" y="0" radius="4.699" width="4.5466" layer="40"/>
+<circle x="0" y="0" radius="4.826" width="2.54" layer="43"/>
+<circle x="0" y="0" radius="4.826" width="2.54" layer="42"/>
+<circle x="0" y="0" radius="4.826" width="2.54" layer="41"/>
+<circle x="0" y="0" radius="2.6" width="0.1524" layer="21"/>
+<text x="-1.27" y="-4.445" size="1.27" layer="48">5,0</text>
+<hole x="0" y="0" drill="5"/>
+</package>
+<package name="3,2">
+<description>&lt;b&gt;MOUNTING HOLE&lt;/b&gt; 3.2 mm with drill center</description>
+<wire x1="-2.159" y1="0" x2="0" y2="-2.159" width="2.4892" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="2.159" x2="2.159" y2="0" width="2.4892" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="3.429" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="0.762" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="39"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="43"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="40"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="41"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="42"/>
+<circle x="0" y="0" radius="1.7" width="0.2032" layer="21"/>
+<hole x="0" y="0" drill="3.2"/>
+</package>
+<package name="4,3">
+<description>&lt;b&gt;MOUNTING HOLE&lt;/b&gt; 4.3 mm with drill center</description>
+<wire x1="-2.54" y1="0" x2="0" y2="-2.54" width="3.9116" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="2.54" x2="2.54" y2="0" width="3.9116" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="4.4958" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="0.762" width="0.1524" layer="51"/>
+<circle x="0" y="0" radius="4.699" width="4.5466" layer="39"/>
+<circle x="0" y="0" radius="4.699" width="4.5466" layer="40"/>
+<circle x="0" y="0" radius="3.8184" width="2.54" layer="41"/>
+<circle x="0" y="0" radius="3.81" width="2.54" layer="42"/>
+<circle x="0" y="0" radius="3.81" width="2.54" layer="43"/>
+<circle x="0" y="0" radius="2.25" width="0.1524" layer="21"/>
+<hole x="0" y="0" drill="4.3"/>
+</package>
+<package name="5,5">
+<description>&lt;b&gt;MOUNTING HOLE&lt;/b&gt; 5.5 mm with drill center</description>
+<wire x1="4.445" y1="0" x2="2.159" y2="0" width="0.0508" layer="21"/>
+<wire x1="0" y1="4.445" x2="0" y2="2.159" width="0.0508" layer="21"/>
+<wire x1="-2.159" y1="0" x2="-4.445" y2="0" width="0.0508" layer="21"/>
+<wire x1="0" y1="-2.159" x2="0" y2="-4.445" width="0.0508" layer="21"/>
+<wire x1="-2.54" y1="0" x2="0" y2="-2.54" width="3.9116" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="2.54" x2="2.54" y2="0" width="3.9116" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="4.4958" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="0.762" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="4.699" width="4.5466" layer="39"/>
+<circle x="0" y="0" radius="4.699" width="4.5466" layer="40"/>
+<circle x="0" y="0" radius="4.826" width="2.54" layer="43"/>
+<circle x="0" y="0" radius="4.826" width="2.54" layer="42"/>
+<circle x="0" y="0" radius="4.826" width="2.54" layer="41"/>
+<circle x="0" y="0" radius="2.85" width="0.1524" layer="21"/>
+<hole x="0" y="0" drill="5.5"/>
+</package>
+</packages>
+<symbols>
+<symbol name="MOUNT-HOLE">
+<wire x1="0" y1="1.27" x2="1.27" y2="0" width="1.524" layer="94" curve="-90" cap="flat"/>
+<wire x1="-1.27" y1="0" x2="0" y2="-1.27" width="1.524" layer="94" curve="90" cap="flat"/>
+<wire x1="-0.508" y1="0" x2="0.508" y2="0" width="0.0508" layer="94"/>
+<wire x1="0" y1="0.508" x2="0" y2="-0.508" width="0.0508" layer="94"/>
+<circle x="0" y="0" radius="2.032" width="0.0508" layer="94"/>
+<circle x="0" y="0" radius="0.508" width="0.0508" layer="94"/>
+<text x="2.032" y="0.5842" size="1.778" layer="95">&gt;NAME</text>
+<text x="2.032" y="-2.4638" size="1.778" layer="96">&gt;VALUE</text>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="MOUNT-HOLE" prefix="H">
+<description>&lt;b&gt;MOUNTING HOLE&lt;/b&gt; with drill center marker</description>
+<gates>
+<gate name="G$1" symbol="MOUNT-HOLE" x="0" y="0"/>
+</gates>
+<devices>
+<device name="2.8" package="2,8">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="3.0" package="3,0">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="3.3" package="3,3">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="3.6" package="3,6">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="4.1" package="4,1">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="4.5" package="4,5">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="5.0" package="5,0">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="3.2" package="3,2">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="4.3" package="4,3">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="5.5" package="5,5">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -14465,7 +14698,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 <part name="GND27" library="supply1" deviceset="GND" device=""/>
 <part name="R5" library="rcl" deviceset="R-US_" device="R0603" value="22"/>
 <part name="X1" library="usb_con-update" deviceset="MINI-USB-SHIELD-" device="UX60-MB-5ST"/>
-<part name="SWA" library="linear-technology-2" deviceset="SWITCHER" device=""/>
+<part name="REGULATOR_5" library="linear-technology-2" deviceset="SWITCHER" device=""/>
 <part name="SUPPLY4" library="supply2" deviceset="V+" device=""/>
 <part name="R16" library="resistor" deviceset="R-US_" device="R1206" value="499K"/>
 <part name="R17" library="rcl" deviceset="R-US_" device="R0805" value="10k"/>
@@ -14482,7 +14715,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 <part name="C28" library="rcl" deviceset="C-US" device="C0805" value="22uF"/>
 <part name="R25" library="rcl" deviceset="R-US_" device="R0805" value="649k"/>
 <part name="GND29" library="supply1" deviceset="GND" device=""/>
-<part name="SWD" library="linear-technology-2" deviceset="SWITCHER" device=""/>
+<part name="REGULATOR_3.3" library="linear-technology-2" deviceset="SWITCHER" device=""/>
 <part name="SUPPLY6" library="supply2" deviceset="V+" device=""/>
 <part name="R19" library="resistor" deviceset="R-US_" device="R1206" value="499k"/>
 <part name="R20" library="rcl" deviceset="R-US_" device="R0805" value="10k"/>
@@ -14506,7 +14739,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 <part name="FRAME1" library="frames" deviceset="FRAME_B_L" device="" value="3"/>
 <part name="U$5" library="Switches_SPST" deviceset="SPST" device=""/>
 <part name="U$6" library="Switches_SPST" deviceset="SPST" device=""/>
-<part name="U$7" library="RGB_LED" deviceset="RGB_LED" device=""/>
+<part name="RGB_LED" library="RGB_LED" deviceset="RGB_LED" device=""/>
 <part name="R2" library="rcl" deviceset="R-US_" device="R0805" value="100"/>
 <part name="R3" library="rcl" deviceset="R-US_" device="R0805" value="180"/>
 <part name="R7" library="rcl" deviceset="R-US_" device="R0805" value="100"/>
@@ -14546,6 +14779,10 @@ Samtec FTSH-105-01-L-DV-K</description>
 <part name="R9" library="rcl" deviceset="R-US_" device="R0402" value="2"/>
 <part name="C31" library="rcl" deviceset="C-US" device="C1210" value="47uF"/>
 <part name="C32" library="rcl" deviceset="C-US" device="C0603" value="1uF"/>
+<part name="H1" library="holes" deviceset="MOUNT-HOLE" device="2.8"/>
+<part name="H2" library="holes" deviceset="MOUNT-HOLE" device="2.8"/>
+<part name="H3" library="holes" deviceset="MOUNT-HOLE" device="2.8"/>
+<part name="H4" library="holes" deviceset="MOUNT-HOLE" device="2.8"/>
 </parts>
 <sheets>
 <sheet>
@@ -14695,7 +14932,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 <attribute name="VALUE" x="127.762" y="24.13" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="X1" gate="G$1" x="165.1" y="7.62"/>
-<instance part="SWA" gate="G$1" x="-33.02" y="33.02"/>
+<instance part="REGULATOR_5" gate="G$1" x="-33.02" y="33.02"/>
 <instance part="SUPPLY4" gate="1" x="-38.1" y="86.36"/>
 <instance part="R16" gate="G$1" x="-73.66" y="60.96" rot="R90"/>
 <instance part="R17" gate="G$1" x="-38.1" y="58.42" smashed="yes" rot="R90">
@@ -14727,7 +14964,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 <attribute name="VALUE" x="-9.398" y="62.23" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="GND29" gate="1" x="-25.4" y="66.04"/>
-<instance part="SWD" gate="G$1" x="-33.02" y="-27.94"/>
+<instance part="REGULATOR_3.3" gate="G$1" x="-33.02" y="-27.94"/>
 <instance part="SUPPLY6" gate="1" x="-38.1" y="20.32"/>
 <instance part="R19" gate="G$1" x="-73.66" y="0" rot="R90"/>
 <instance part="R20" gate="G$1" x="-38.1" y="-2.54" smashed="yes" rot="R90">
@@ -14770,7 +15007,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 </instance>
 <instance part="U$5" gate="G$1" x="25.4" y="0"/>
 <instance part="U$6" gate="G$1" x="25.4" y="-10.16"/>
-<instance part="U$7" gate="G$1" x="50.8" y="-43.18" rot="R180"/>
+<instance part="RGB_LED" gate="G$1" x="50.8" y="-43.18" rot="R180"/>
 <instance part="R2" gate="G$1" x="43.18" y="-22.86" smashed="yes" rot="R90">
 <attribute name="NAME" x="39.1414" y="-24.13" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="41.402" y="-24.13" size="1.778" layer="96" rot="R90"/>
@@ -14837,6 +15074,10 @@ Samtec FTSH-105-01-L-DV-K</description>
 </instance>
 <instance part="C31" gate="G$1" x="-25.4" y="-25.4"/>
 <instance part="C32" gate="G$1" x="-17.78" y="12.7"/>
+<instance part="H1" gate="G$1" x="185.42" y="10.16"/>
+<instance part="H2" gate="G$1" x="185.42" y="5.08"/>
+<instance part="H3" gate="G$1" x="185.42" y="0"/>
+<instance part="H4" gate="G$1" x="185.42" y="-5.08"/>
 </instances>
 <busses>
 </busses>
@@ -15014,22 +15255,22 @@ Samtec FTSH-105-01-L-DV-K</description>
 <junction x="-25.4" y="68.58"/>
 </segment>
 <segment>
-<pinref part="SWD" gate="G$1" pin="GND1"/>
+<pinref part="REGULATOR_3.3" gate="G$1" pin="GND1"/>
 <wire x1="-71.12" y1="-7.62" x2="-76.2" y2="-7.62" width="0.1524" layer="91"/>
 <wire x1="-76.2" y1="-7.62" x2="-76.2" y2="-12.7" width="0.1524" layer="91"/>
-<pinref part="SWD" gate="G$1" pin="GND2"/>
+<pinref part="REGULATOR_3.3" gate="G$1" pin="GND2"/>
 <wire x1="-76.2" y1="-12.7" x2="-71.12" y2="-12.7" width="0.1524" layer="91"/>
 <wire x1="-76.2" y1="-12.7" x2="-76.2" y2="-15.24" width="0.1524" layer="91"/>
 <junction x="-76.2" y="-12.7"/>
-<pinref part="SWD" gate="G$1" pin="PGND1"/>
+<pinref part="REGULATOR_3.3" gate="G$1" pin="PGND1"/>
 <wire x1="-76.2" y1="-15.24" x2="-71.12" y2="-15.24" width="0.1524" layer="91"/>
 <wire x1="-76.2" y1="-15.24" x2="-76.2" y2="-22.86" width="0.1524" layer="91"/>
 <junction x="-76.2" y="-15.24"/>
-<pinref part="SWD" gate="G$1" pin="PGND2"/>
+<pinref part="REGULATOR_3.3" gate="G$1" pin="PGND2"/>
 <wire x1="-76.2" y1="-22.86" x2="-71.12" y2="-22.86" width="0.1524" layer="91"/>
 <wire x1="-76.2" y1="-22.86" x2="-76.2" y2="-25.4" width="0.1524" layer="91"/>
 <junction x="-76.2" y="-22.86"/>
-<pinref part="SWD" gate="G$1" pin="GND3"/>
+<pinref part="REGULATOR_3.3" gate="G$1" pin="GND3"/>
 <wire x1="-76.2" y1="-25.4" x2="-71.12" y2="-25.4" width="0.1524" layer="91"/>
 <wire x1="-76.2" y1="-25.4" x2="-76.2" y2="-30.48" width="0.1524" layer="91"/>
 <junction x="-76.2" y="-25.4"/>
@@ -15037,10 +15278,10 @@ Samtec FTSH-105-01-L-DV-K</description>
 <wire x1="-71.12" y1="-30.48" x2="-55.88" y2="-30.48" width="0.1524" layer="91"/>
 <wire x1="-55.88" y1="-30.48" x2="-43.18" y2="-30.48" width="0.1524" layer="91"/>
 <wire x1="-43.18" y1="-30.48" x2="-43.18" y2="-25.4" width="0.1524" layer="91"/>
-<pinref part="SWD" gate="G$1" pin="GND5"/>
+<pinref part="REGULATOR_3.3" gate="G$1" pin="GND5"/>
 <wire x1="-43.18" y1="-25.4" x2="-43.18" y2="-7.62" width="0.1524" layer="91"/>
 <wire x1="-43.18" y1="-7.62" x2="-45.72" y2="-7.62" width="0.1524" layer="91"/>
-<pinref part="SWD" gate="G$1" pin="GND4"/>
+<pinref part="REGULATOR_3.3" gate="G$1" pin="GND4"/>
 <wire x1="-45.72" y1="-25.4" x2="-43.18" y2="-25.4" width="0.1524" layer="91"/>
 <junction x="-43.18" y="-25.4"/>
 <pinref part="GND30" gate="1" pin="GND"/>
@@ -15091,22 +15332,22 @@ Samtec FTSH-105-01-L-DV-K</description>
 <wire x1="50.8" y1="7.62" x2="58.42" y2="7.62" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="SWA" gate="G$1" pin="GND1"/>
+<pinref part="REGULATOR_5" gate="G$1" pin="GND1"/>
 <wire x1="-71.12" y1="53.34" x2="-76.2" y2="53.34" width="0.1524" layer="91"/>
 <wire x1="-76.2" y1="53.34" x2="-76.2" y2="48.26" width="0.1524" layer="91"/>
-<pinref part="SWA" gate="G$1" pin="GND2"/>
+<pinref part="REGULATOR_5" gate="G$1" pin="GND2"/>
 <wire x1="-76.2" y1="48.26" x2="-71.12" y2="48.26" width="0.1524" layer="91"/>
 <wire x1="-76.2" y1="48.26" x2="-76.2" y2="45.72" width="0.1524" layer="91"/>
 <junction x="-76.2" y="48.26"/>
-<pinref part="SWA" gate="G$1" pin="PGND1"/>
+<pinref part="REGULATOR_5" gate="G$1" pin="PGND1"/>
 <wire x1="-76.2" y1="45.72" x2="-71.12" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="-76.2" y1="45.72" x2="-76.2" y2="38.1" width="0.1524" layer="91"/>
 <junction x="-76.2" y="45.72"/>
-<pinref part="SWA" gate="G$1" pin="PGND2"/>
+<pinref part="REGULATOR_5" gate="G$1" pin="PGND2"/>
 <wire x1="-76.2" y1="38.1" x2="-71.12" y2="38.1" width="0.1524" layer="91"/>
 <wire x1="-76.2" y1="38.1" x2="-76.2" y2="35.56" width="0.1524" layer="91"/>
 <junction x="-76.2" y="38.1"/>
-<pinref part="SWA" gate="G$1" pin="GND3"/>
+<pinref part="REGULATOR_5" gate="G$1" pin="GND3"/>
 <wire x1="-76.2" y1="35.56" x2="-71.12" y2="35.56" width="0.1524" layer="91"/>
 <wire x1="-76.2" y1="35.56" x2="-76.2" y2="30.48" width="0.1524" layer="91"/>
 <junction x="-76.2" y="35.56"/>
@@ -15114,10 +15355,10 @@ Samtec FTSH-105-01-L-DV-K</description>
 <wire x1="-73.66" y1="30.48" x2="-58.42" y2="30.48" width="0.1524" layer="91"/>
 <wire x1="-58.42" y1="30.48" x2="-43.18" y2="30.48" width="0.1524" layer="91"/>
 <wire x1="-43.18" y1="30.48" x2="-43.18" y2="35.56" width="0.1524" layer="91"/>
-<pinref part="SWA" gate="G$1" pin="GND5"/>
+<pinref part="REGULATOR_5" gate="G$1" pin="GND5"/>
 <wire x1="-43.18" y1="35.56" x2="-43.18" y2="53.34" width="0.1524" layer="91"/>
 <wire x1="-43.18" y1="53.34" x2="-45.72" y2="53.34" width="0.1524" layer="91"/>
-<pinref part="SWA" gate="G$1" pin="GND4"/>
+<pinref part="REGULATOR_5" gate="G$1" pin="GND4"/>
 <wire x1="-45.72" y1="35.56" x2="-43.18" y2="35.56" width="0.1524" layer="91"/>
 <junction x="-43.18" y="35.56"/>
 <pinref part="C25" gate="G$1" pin="2"/>
@@ -15202,7 +15443,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 <wire x1="-17.78" y1="76.2" x2="-7.62" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="-7.62" y1="76.2" x2="-7.62" y2="68.58" width="0.1524" layer="91"/>
 <junction x="-25.4" y="76.2"/>
-<pinref part="SWA" gate="G$1" pin="VO"/>
+<pinref part="REGULATOR_5" gate="G$1" pin="VO"/>
 <wire x1="-45.72" y1="40.64" x2="-40.64" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="-40.64" y1="40.64" x2="-40.64" y2="20.32" width="0.1524" layer="91"/>
 <wire x1="-40.64" y1="20.32" x2="-114.3" y2="20.32" width="0.1524" layer="91"/>
@@ -15260,7 +15501,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 </net>
 <net name="+3V3" class="0">
 <segment>
-<pinref part="U$7" gate="G$1" pin="VCC1"/>
+<pinref part="RGB_LED" gate="G$1" pin="VCC1"/>
 <wire x1="50.8" y1="-48.26" x2="33.02" y2="-48.26" width="0.1524" layer="91"/>
 <wire x1="33.02" y1="-48.26" x2="33.02" y2="-40.64" width="0.1524" layer="91"/>
 <pinref part="+3V1" gate="G$1" pin="+3V3"/>
@@ -15290,7 +15531,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 <wire x1="-17.78" y1="15.24" x2="-15.24" y2="15.24" width="0.1524" layer="91"/>
 <wire x1="-15.24" y1="15.24" x2="-15.24" y2="5.08" width="0.1524" layer="91"/>
 <junction x="-25.4" y="15.24"/>
-<pinref part="SWD" gate="G$1" pin="VO"/>
+<pinref part="REGULATOR_3.3" gate="G$1" pin="VO"/>
 <wire x1="-45.72" y1="-20.32" x2="-40.64" y2="-20.32" width="0.1524" layer="91"/>
 <wire x1="-40.64" y1="-20.32" x2="-40.64" y2="-38.1" width="0.1524" layer="91"/>
 <wire x1="-40.64" y1="-38.1" x2="-114.3" y2="-38.1" width="0.1524" layer="91"/>
@@ -15392,11 +15633,11 @@ Samtec FTSH-105-01-L-DV-K</description>
 <junction x="-38.1" y="68.58"/>
 <wire x1="-40.64" y1="68.58" x2="-38.1" y2="68.58" width="0.1524" layer="91"/>
 <wire x1="-40.64" y1="68.58" x2="-40.64" y2="66.04" width="0.1524" layer="91"/>
-<pinref part="SWA" gate="G$1" pin="PVI"/>
+<pinref part="REGULATOR_5" gate="G$1" pin="PVI"/>
 <wire x1="-40.64" y1="66.04" x2="-40.64" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="-40.64" y1="45.72" x2="-40.64" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="-40.64" y1="43.18" x2="-45.72" y2="43.18" width="0.1524" layer="91"/>
-<pinref part="SWA" gate="G$1" pin="VI"/>
+<pinref part="REGULATOR_5" gate="G$1" pin="VI"/>
 <wire x1="-45.72" y1="45.72" x2="-40.64" y2="45.72" width="0.1524" layer="91"/>
 <junction x="-40.64" y="45.72"/>
 <wire x1="-40.64" y1="45.72" x2="-33.02" y2="45.72" width="0.1524" layer="91"/>
@@ -15419,10 +15660,10 @@ Samtec FTSH-105-01-L-DV-K</description>
 <junction x="-38.1" y="7.62"/>
 <wire x1="-40.64" y1="7.62" x2="-38.1" y2="7.62" width="0.1524" layer="91"/>
 <wire x1="-40.64" y1="7.62" x2="-40.64" y2="-15.24" width="0.1524" layer="91"/>
-<pinref part="SWD" gate="G$1" pin="PVI"/>
+<pinref part="REGULATOR_3.3" gate="G$1" pin="PVI"/>
 <wire x1="-40.64" y1="-15.24" x2="-40.64" y2="-17.78" width="0.1524" layer="91"/>
 <wire x1="-40.64" y1="-17.78" x2="-45.72" y2="-17.78" width="0.1524" layer="91"/>
-<pinref part="SWD" gate="G$1" pin="VI"/>
+<pinref part="REGULATOR_3.3" gate="G$1" pin="VI"/>
 <wire x1="-45.72" y1="-15.24" x2="-40.64" y2="-15.24" width="0.1524" layer="91"/>
 <junction x="-40.64" y="-15.24"/>
 <wire x1="-40.64" y1="-15.24" x2="-33.02" y2="-15.24" width="0.1524" layer="91"/>
@@ -15563,7 +15804,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 </net>
 <net name="N$25" class="0">
 <segment>
-<pinref part="SWA" gate="G$1" pin="RUN"/>
+<pinref part="REGULATOR_5" gate="G$1" pin="RUN"/>
 <pinref part="R16" gate="G$1" pin="1"/>
 <wire x1="-71.12" y1="50.8" x2="-73.66" y2="50.8" width="0.1524" layer="91"/>
 <wire x1="-73.66" y1="50.8" x2="-73.66" y2="55.88" width="0.1524" layer="91"/>
@@ -15575,7 +15816,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 </net>
 <net name="N$27" class="0">
 <segment>
-<pinref part="SWA" gate="G$1" pin="PWM"/>
+<pinref part="REGULATOR_5" gate="G$1" pin="PWM"/>
 <wire x1="-45.72" y1="38.1" x2="-38.1" y2="38.1" width="0.1524" layer="91"/>
 <pinref part="R17" gate="G$1" pin="1"/>
 <wire x1="-38.1" y1="38.1" x2="-38.1" y2="53.34" width="0.1524" layer="91"/>
@@ -15583,7 +15824,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 </net>
 <net name="N$26" class="0">
 <segment>
-<pinref part="SWA" gate="G$1" pin="SW1"/>
+<pinref part="REGULATOR_5" gate="G$1" pin="SW1"/>
 <wire x1="-71.12" y1="43.18" x2="-81.28" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="-81.28" y1="43.18" x2="-81.28" y2="50.8" width="0.1524" layer="91"/>
 <pinref part="L1" gate="G$1" pin="P$2"/>
@@ -15597,7 +15838,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 </net>
 <net name="N$28" class="0">
 <segment>
-<pinref part="SWA" gate="G$1" pin="SW2"/>
+<pinref part="REGULATOR_5" gate="G$1" pin="SW2"/>
 <wire x1="-71.12" y1="40.64" x2="-81.28" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="-81.28" y1="40.64" x2="-81.28" y2="30.48" width="0.1524" layer="91"/>
 <pinref part="L1" gate="G$1" pin="P$1"/>
@@ -15613,7 +15854,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 <pinref part="C26" gate="G$1" pin="1"/>
 <wire x1="-27.94" y1="43.18" x2="-35.56" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="-35.56" y1="43.18" x2="-35.56" y2="48.26" width="0.1524" layer="91"/>
-<pinref part="SWA" gate="G$1" pin="VC"/>
+<pinref part="REGULATOR_5" gate="G$1" pin="VC"/>
 <wire x1="-35.56" y1="48.26" x2="-45.72" y2="48.26" width="0.1524" layer="91"/>
 <junction x="-35.56" y="48.26"/>
 </segment>
@@ -15627,7 +15868,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 </net>
 <net name="N$30" class="0">
 <segment>
-<pinref part="SWA" gate="G$1" pin="FB"/>
+<pinref part="REGULATOR_5" gate="G$1" pin="FB"/>
 <wire x1="-45.72" y1="50.8" x2="-30.48" y2="50.8" width="0.1524" layer="91"/>
 <wire x1="-30.48" y1="50.8" x2="-7.62" y2="50.8" width="0.1524" layer="91"/>
 <pinref part="C27" gate="G$1" pin="2"/>
@@ -15655,7 +15896,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 </net>
 <net name="N$32" class="0">
 <segment>
-<pinref part="SWD" gate="G$1" pin="RUN"/>
+<pinref part="REGULATOR_3.3" gate="G$1" pin="RUN"/>
 <pinref part="R19" gate="G$1" pin="1"/>
 <wire x1="-71.12" y1="-10.16" x2="-73.66" y2="-10.16" width="0.1524" layer="91"/>
 <wire x1="-73.66" y1="-10.16" x2="-73.66" y2="-5.08" width="0.1524" layer="91"/>
@@ -15667,7 +15908,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 </net>
 <net name="N$33" class="0">
 <segment>
-<pinref part="SWD" gate="G$1" pin="PWM"/>
+<pinref part="REGULATOR_3.3" gate="G$1" pin="PWM"/>
 <wire x1="-45.72" y1="-22.86" x2="-38.1" y2="-22.86" width="0.1524" layer="91"/>
 <pinref part="R20" gate="G$1" pin="1"/>
 <wire x1="-38.1" y1="-22.86" x2="-38.1" y2="-7.62" width="0.1524" layer="91"/>
@@ -15675,7 +15916,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 </net>
 <net name="N$34" class="0">
 <segment>
-<pinref part="SWD" gate="G$1" pin="SW1"/>
+<pinref part="REGULATOR_3.3" gate="G$1" pin="SW1"/>
 <wire x1="-71.12" y1="-17.78" x2="-81.28" y2="-17.78" width="0.1524" layer="91"/>
 <wire x1="-81.28" y1="-17.78" x2="-81.28" y2="-10.16" width="0.1524" layer="91"/>
 <pinref part="L2" gate="G$1" pin="P$2"/>
@@ -15689,7 +15930,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 </net>
 <net name="N$35" class="0">
 <segment>
-<pinref part="SWD" gate="G$1" pin="SW2"/>
+<pinref part="REGULATOR_3.3" gate="G$1" pin="SW2"/>
 <wire x1="-71.12" y1="-20.32" x2="-81.28" y2="-20.32" width="0.1524" layer="91"/>
 <wire x1="-81.28" y1="-20.32" x2="-81.28" y2="-30.48" width="0.1524" layer="91"/>
 <pinref part="L2" gate="G$1" pin="P$1"/>
@@ -15705,7 +15946,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 <pinref part="C23" gate="G$1" pin="1"/>
 <wire x1="-27.94" y1="-17.78" x2="-35.56" y2="-17.78" width="0.1524" layer="91"/>
 <wire x1="-35.56" y1="-17.78" x2="-35.56" y2="-12.7" width="0.1524" layer="91"/>
-<pinref part="SWD" gate="G$1" pin="VC"/>
+<pinref part="REGULATOR_3.3" gate="G$1" pin="VC"/>
 <wire x1="-35.56" y1="-12.7" x2="-45.72" y2="-12.7" width="0.1524" layer="91"/>
 <junction x="-35.56" y="-12.7"/>
 </segment>
@@ -15725,7 +15966,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 <wire x1="-15.24" y1="-17.78" x2="-20.32" y2="-17.78" width="0.1524" layer="91"/>
 <pinref part="R24" gate="G$1" pin="2"/>
 <junction x="-15.24" y="-17.78"/>
-<pinref part="SWD" gate="G$1" pin="FB"/>
+<pinref part="REGULATOR_3.3" gate="G$1" pin="FB"/>
 <wire x1="-45.72" y1="-10.16" x2="-30.48" y2="-10.16" width="0.1524" layer="91"/>
 <wire x1="-30.48" y1="-10.16" x2="-15.24" y2="-10.16" width="0.1524" layer="91"/>
 <wire x1="-15.24" y1="-10.16" x2="-15.24" y2="-12.7" width="0.1524" layer="91"/>
@@ -15810,21 +16051,21 @@ Samtec FTSH-105-01-L-DV-K</description>
 <net name="N$10" class="0">
 <segment>
 <pinref part="R2" gate="G$1" pin="1"/>
-<pinref part="U$7" gate="G$1" pin="G4"/>
+<pinref part="RGB_LED" gate="G$1" pin="G4"/>
 <wire x1="43.18" y1="-27.94" x2="43.18" y2="-30.48" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$12" class="0">
 <segment>
 <pinref part="R3" gate="G$1" pin="1"/>
-<pinref part="U$7" gate="G$1" pin="R3"/>
+<pinref part="RGB_LED" gate="G$1" pin="R3"/>
 <wire x1="50.8" y1="-27.94" x2="50.8" y2="-30.48" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$15" class="0">
 <segment>
 <pinref part="R7" gate="G$1" pin="1"/>
-<pinref part="U$7" gate="G$1" pin="B2"/>
+<pinref part="RGB_LED" gate="G$1" pin="B2"/>
 <wire x1="58.42" y1="-27.94" x2="58.42" y2="-30.48" width="0.1524" layer="91"/>
 </segment>
 </net>
