@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.3">
+<eagle version="6.4">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -14835,6 +14835,10 @@ Samtec FTSH-105-01-L-DV-K</description>
 <text x="40.64" y="96.52" size="1.778" layer="97">+ Analog Input</text>
 <text x="213.36" y="-83.82" size="2.54" layer="94">2</text>
 <text x="134.62" y="-91.44" size="2.54" layer="94">4/28/2014</text>
+<text x="53.34" y="-43.18" size="1.778" layer="95">D10</text>
+<text x="53.34" y="-45.72" size="1.778" layer="95">RGB</text>
+<text x="27.94" y="-10.16" size="1.778" layer="95">B1</text>
+<text x="27.94" y="0" size="1.778" layer="95">B2</text>
 </plain>
 <instances>
 <instance part="U$1" gate="G$1" x="63.5" y="48.26"/>

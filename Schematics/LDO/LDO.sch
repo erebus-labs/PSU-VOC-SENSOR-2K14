@@ -17468,7 +17468,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 <part name="D3" library="diode" deviceset="DIODE-" device="DO41-7.6" value="1N4002"/>
 <part name="D4" library="diode" deviceset="DIODE-" device="DO41-7.6" value="1N4002"/>
 <part name="R8" library="rcl" deviceset="R-US_" device="M1206" value="240"/>
-<part name="R9" library="rcl" deviceset="R-US_" device="M1206" value="380"/>
+<part name="R9" library="rcl" deviceset="R-US_" device="M1206" value="383"/>
 <part name="GND17" library="supply1" deviceset="GND" device=""/>
 <part name="GND18" library="supply1" deviceset="GND" device=""/>
 <part name="GND19" library="supply1" deviceset="GND" device=""/>
@@ -17513,7 +17513,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 <part name="FRAME1" library="frames" deviceset="FRAME_B_L" device="" value="3"/>
 <part name="U$5" library="Switches_SPST" deviceset="SPST" device=""/>
 <part name="U$6" library="Switches_SPST" deviceset="SPST" device=""/>
-<part name="U$2" library="RGB_LED" deviceset="RGB_LED" device=""/>
+<part name="D6" library="RGB_LED" deviceset="RGB_LED" device=""/>
 <part name="R16" library="rcl" deviceset="R-US_" device="R0603" value="180"/>
 <part name="R17" library="rcl" deviceset="R-US_" device="R0603" value="100"/>
 <part name="R18" library="rcl" deviceset="R-US_" device="R0603" value="100"/>
@@ -17581,10 +17581,17 @@ Samtec FTSH-105-01-L-DV-K</description>
 <text x="-10.16" y="104.14" size="1.778" layer="97">+ Analog Input</text>
 <text x="213.36" y="-83.82" size="2.54" layer="94">2</text>
 <text x="134.62" y="-91.44" size="2.54" layer="94">4/28/2014</text>
+<text x="2.54" y="-35.56" size="1.778" layer="95">D10</text>
+<text x="2.54" y="-38.1" size="1.778" layer="95">RGB LED</text>
+<text x="-15.24" y="5.08" size="1.778" layer="95">B1</text>
+<text x="-15.24" y="-5.08" size="1.778" layer="95">B2</text>
 </plain>
 <instances>
 <instance part="U$1" gate="G$1" x="20.32" y="55.88"/>
-<instance part="X2" gate="G$1" x="20.32" y="116.84" rot="R90"/>
+<instance part="X2" gate="G$1" x="20.32" y="116.84" smashed="yes" rot="R90">
+<attribute name="NAME" x="15.24" y="121.92" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="33.528" y="111.76" size="1.778" layer="96" rot="R90"/>
+</instance>
 <instance part="ISP" gate="G$1" x="53.34" y="2.54"/>
 <instance part="POWER_IN" gate="G$1" x="-60.96" y="93.98"/>
 <instance part="R1" gate="G$1" x="73.66" y="33.02" rot="R90"/>
@@ -17688,8 +17695,8 @@ Samtec FTSH-105-01-L-DV-K</description>
 <instance part="+3V5" gate="G$1" x="48.26" y="127"/>
 <instance part="+3V7" gate="G$1" x="53.34" y="124.46"/>
 <instance part="R14" gate="G$1" x="7.62" y="114.3" smashed="yes" rot="R90">
-<attribute name="NAME" x="13.7414" y="115.57" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="10.922" y="113.03" size="1.778" layer="96" rot="R90"/>
+<attribute name="NAME" x="6.1214" y="107.95" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="10.922" y="115.57" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="R15" gate="G$1" x="0" y="114.3" smashed="yes" rot="R90">
 <attribute name="NAME" x="3.5814" y="115.57" size="1.778" layer="95" rot="R90"/>
@@ -17730,7 +17737,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 </instance>
 <instance part="U$5" gate="G$1" x="-17.78" y="7.62"/>
 <instance part="U$6" gate="G$1" x="-17.78" y="-2.54"/>
-<instance part="U$2" gate="G$1" x="0" y="-35.56" rot="R180"/>
+<instance part="D6" gate="G$1" x="0" y="-35.56" rot="R180"/>
 <instance part="R16" gate="G$1" x="0" y="-15.24" smashed="yes" rot="R90">
 <attribute name="NAME" x="-1.4986" y="-19.05" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="-4.318" y="-19.05" size="1.778" layer="96" rot="R90"/>
@@ -18177,7 +18184,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 <wire x1="68.58" y1="38.1" x2="45.72" y2="38.1" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U$2" gate="G$1" pin="VCC1"/>
+<pinref part="D6" gate="G$1" pin="VCC1"/>
 <wire x1="0" y1="-40.64" x2="-17.78" y2="-40.64" width="0.1524" layer="91"/>
 <wire x1="-17.78" y1="-40.64" x2="-17.78" y2="-17.78" width="0.1524" layer="91"/>
 <pinref part="P+8" gate="G$1" pin="+3V3"/>
@@ -18493,20 +18500,20 @@ Samtec FTSH-105-01-L-DV-K</description>
 </net>
 <net name="N$24" class="0">
 <segment>
-<pinref part="U$2" gate="G$1" pin="G4"/>
+<pinref part="D6" gate="G$1" pin="G4"/>
 <pinref part="R17" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="N$25" class="0">
 <segment>
-<pinref part="U$2" gate="G$1" pin="R3"/>
+<pinref part="D6" gate="G$1" pin="R3"/>
 <pinref part="R16" gate="G$1" pin="1"/>
 <wire x1="0" y1="-22.86" x2="0" y2="-20.32" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$26" class="0">
 <segment>
-<pinref part="U$2" gate="G$1" pin="B2"/>
+<pinref part="D6" gate="G$1" pin="B2"/>
 <pinref part="R18" gate="G$1" pin="1"/>
 <wire x1="7.62" y1="-22.86" x2="7.62" y2="-20.32" width="0.1524" layer="91"/>
 </segment>
