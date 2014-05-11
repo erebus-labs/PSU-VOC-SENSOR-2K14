@@ -46,6 +46,7 @@ set_io "StopCollection_B(0)" iocell 12 6
 set_location "\RTC:isr\" interrupt -1 -1 0
 set_location "PM" pmcell -1 -1 0
 set_io "RGB_LED(2)" iocell 0 2
+set_io "Batt_Monitor(0)" iocell 0 5
 set_io "Sensor_In(0)" iocell 0 7
 # Note: port 15 is the logical name for port 8
 set_io "\USBUART:Dm(0)\" iocell 15 7

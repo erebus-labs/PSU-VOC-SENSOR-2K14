@@ -32,6 +32,16 @@ extern void cfg_write_bytes_code(const void CYCODE *table);
 extern void cfg_write_bytes(const void CYFAR *table);
 /* Analog Set/Unset methods */
 extern void SetAnalogRoutingPumps(uint8 enabled);
+extern void ADC_MUX_Set(uint8 channel);
+extern void ADC_MUX_Unset(uint8 channel);
+/* ADC_MUX__addrTable is an implementation detail of the AMux.
+   Code that depends on it may be incompatible with other versions
+   of PSoC Creator. */
+extern uint8 CYXDATA * const CYCODE ADC_MUX__addrTable[2];
+/* ADC_MUX__maskTable is an implementation detail of the AMux.
+   Code that depends on it may be incompatible with other versions
+   of PSoC Creator. */
+extern const uint8 CYCODE ADC_MUX__maskTable[2];
 extern void ADC_AMux_Set(uint8 channel);
 extern void ADC_AMux_Unset(uint8 channel);
 /* ADC_AMux__addrTable is an implementation detail of the AMux.

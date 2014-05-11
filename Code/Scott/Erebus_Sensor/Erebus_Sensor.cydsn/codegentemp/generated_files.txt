@@ -72,8 +72,13 @@
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\LED_PWM.c" value="DP8051_C_FILE;LED_PWM" />
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\LED_PWM.h" value="NONE;LED_PWM" />
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\LED_PWM_PM.c" value="DP8051_C_FILE;LED_PWM" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Batt_Monitor.c" value="DP8051_C_FILE;Batt_Monitor" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Batt_Monitor.h" value="NONE;Batt_Monitor" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Batt_Monitor_aliases.h" value="NONE;Batt_Monitor" />
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\SOLID_LED_CTRL.c" value="DP8051_C_FILE;SOLID_LED_CTRL" />
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\SOLID_LED_CTRL.h" value="NONE;SOLID_LED_CTRL" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\ADC_MUX.c" value="DP8051_C_FILE;ADC_MUX" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\ADC_MUX.h" value="NONE;ADC_MUX" />
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\ADC_AMux.c" value="DP8051_C_FILE;ADC_AMux" />
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\ADC_AMux.h" value="NONE;ADC_AMux" />
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\ADC_Ext_CP_Clk.c" value="DP8051_C_FILE;ADC_Ext_CP_Clk" />

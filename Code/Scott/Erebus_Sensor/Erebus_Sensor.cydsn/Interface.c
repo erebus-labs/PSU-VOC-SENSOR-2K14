@@ -35,7 +35,8 @@ void StartCollection(){
     
     StopCollection_IRQ_Start();
     StartCollection_IRQ_Stop();
-    RTC_WriteIntervalMask(RTC_int_mask);
+    sample_enable = 1;
+    sample_int_count = 0;
     
     return;   
 }
@@ -44,7 +45,7 @@ void StopCollection(){
     
     StartCollection_IRQ_Start();
     StopCollection_IRQ_Stop();
-    RTC_WriteIntervalMask(NONE_MASK);
+    sample_enable = 0;
     
     return;   
 }

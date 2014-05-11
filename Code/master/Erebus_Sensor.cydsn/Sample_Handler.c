@@ -27,5 +27,25 @@ void take_sample()
     ADC_Sleep();
     return;    
 }
+
+void check_battery(){
+    uint16 SampledData = 0;
+    ADC_Wakeup();
+    ADC_MUX_Select(BATT_PIN);
+    
+    SampledData = ADC_Read16(); /* Function Starts, Converts, Stops, and Returns from ADC */
+    
+    if (SampledData <= BATT_THRESHOLD){
+        low_power_flag = 1;
+    }
+    else{
+        low_power_flag = 0;
+    }
+    
+    ADC_Sleep();
+    ADC_MUX_FastSelect(SAMPLE_PIN);
+    
+    return;
+}
     
 /* [] END OF FILE */

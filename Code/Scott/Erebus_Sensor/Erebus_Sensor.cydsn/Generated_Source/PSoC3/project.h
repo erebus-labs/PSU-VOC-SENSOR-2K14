@@ -45,7 +45,10 @@
 #include <USBUART_pvt.h>
 #include <PWM1_CTRL.h>
 #include <LED_PWM.h>
+#include <Batt_Monitor.h>
+#include <Batt_Monitor_aliases.h>
 #include <SOLID_LED_CTRL.h>
+#include <ADC_MUX.h>
 #include <ADC_AMux.h>
 #include <ADC_Ext_CP_Clk.h>
 #include <ADC_IRQ.h>

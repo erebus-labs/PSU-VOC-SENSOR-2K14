@@ -491,27 +491,6 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>SOLID_LED_CTRL</name>
-      <description>No description available</description>
-      <baseAddress>0x6473</baseAddress>
-      <addressBlock>
-        <offset>0</offset>
-        <size>0x1</size>
-        <usage>registers</usage>
-      </addressBlock>
-      <registers>
-        <register>
-          <name>SOLID_LED_CTRL_CONTROL_REG</name>
-          <description>No description available</description>
-          <addressOffset>0x0</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-      </registers>
-    </peripheral>
-    <peripheral>
       <name>PWM1_CTRL</name>
       <description>No description available</description>
       <baseAddress>0x6474</baseAddress>
@@ -523,6 +502,27 @@
       <registers>
         <register>
           <name>PWM1_CTRL_CONTROL_REG</name>
+          <description>No description available</description>
+          <addressOffset>0x0</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>SOLID_LED_CTRL</name>
+      <description>No description available</description>
+      <baseAddress>0x6473</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x1</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>SOLID_LED_CTRL_CONTROL_REG</name>
           <description>No description available</description>
           <addressOffset>0x0</addressOffset>
           <size>8</size>

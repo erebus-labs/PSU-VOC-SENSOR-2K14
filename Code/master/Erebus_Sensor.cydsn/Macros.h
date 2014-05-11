@@ -109,11 +109,25 @@
     
     // PWM Color Codes
     #define PWM_RED     0x01
-    #define PWM_GREEN   0x02
-    #define PWM_BLUE    0x03
+    #define PWM_BLUE    0x02
+    #define PWM_GREEN   0x03
 
-        
-    #define LED_DELAY 25
+    #define LED_DELAY   25
+    
+    
+    
+    /* ADC Multiplexer */
+    #define SAMPLE_PIN  0x0
+    #define BATT_PIN    0x1
+    
+    
+    
+    /* Battery Checking */
+    #define BATT_CHECK_INTERVAL 1
+    #define BATT_THRESHOLD 3500     // ~3.0v
+    #define LOWBATT_BLINK_INTERVAL 3
+    #define LOWBATT_BLINK_DELAY (LED_DELAY * 4)
+    
     
 #endif
 

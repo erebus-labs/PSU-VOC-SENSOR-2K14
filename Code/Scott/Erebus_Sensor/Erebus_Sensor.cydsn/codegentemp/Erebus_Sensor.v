@@ -1,6 +1,6 @@
 // ======================================================================
 // Erebus_Sensor.v generated from TopDesign.cysch
-// 05/07/2014 at 23:18
+// 05/10/2014 at 13:45
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -812,6 +812,9 @@ module top ;
           wire  Net_1490;
           wire  Net_1405;
           wire  Net_1478;
+    electrical  Net_1602;
+    electrical  Net_1603;
+    electrical  Net_1593;
           wire  Net_1541;
           wire  Net_1532;
           wire  Net_1531;
@@ -829,7 +832,6 @@ module top ;
           wire  Net_1525;
           wire  Net_1524;
           wire  Net_849;
-    electrical  Net_871;
           wire  Net_1415;
           wire  Net_1409;
           wire  Net_1309;
@@ -1160,7 +1162,7 @@ module top ;
 		 (.oe(tmpOE__Sensor_In_net),
 		  .y({1'b0}),
 		  .fb({tmpFB_0__Sensor_In_net[0:0]}),
-		  .analog({Net_871}),
+		  .analog({Net_1602}),
 		  .io({tmpIO_0__Sensor_In_net[0:0]}),
 		  .siovref(tmpSIOVREF__Sensor_In_net),
 		  .interrupt({tmpINTERRUPT_0__Sensor_In_net[0:0]}),
@@ -1174,7 +1176,7 @@ module top ;
 	assign tmpOE__Sensor_In_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
     ADC_DelSig_v3_0_1 ADC (
-        .vplus(Net_871),
+        .vplus(Net_1593),
         .vminus(Net_558),
         .soc(1'b1),
         .eoc(Net_566),
@@ -1398,6 +1400,76 @@ module top ;
 		 (.clock_out(Net_1309));
 
 
+	wire [0:0] tmpOE__Batt_Monitor_net;
+	wire [0:0] tmpFB_0__Batt_Monitor_net;
+	wire [0:0] tmpIO_0__Batt_Monitor_net;
+	wire [0:0] tmpINTERRUPT_0__Batt_Monitor_net;
+	electrical [0:0] tmpSIOVREF__Batt_Monitor_net;
+
+	cy_psoc3_pins_v1_10
+		#(.id("0895e0c5-22fd-4e04-a47c-17021ab62788"),
+		  .drive_mode(3'b000),
+		  .ibuf_enabled(1'b0),
+		  .init_dr_st(1'b0),
+		  .input_clk_en(0),
+		  .input_sync(1'b1),
+		  .input_sync_mode(1'b0),
+		  .intr_mode(2'b00),
+		  .invert_in_clock(0),
+		  .invert_in_clock_en(0),
+		  .invert_in_reset(0),
+		  .invert_out_clock(0),
+		  .invert_out_clock_en(0),
+		  .invert_out_reset(0),
+		  .io_voltage(""),
+		  .layout_mode("CONTIGUOUS"),
+		  .oe_conn(1'b0),
+		  .oe_reset(0),
+		  .oe_sync(1'b0),
+		  .output_clk_en(0),
+		  .output_clock_mode(1'b0),
+		  .output_conn(1'b0),
+		  .output_mode(1'b0),
+		  .output_reset(0),
+		  .output_sync(1'b0),
+		  .pa_in_clock(-1),
+		  .pa_in_clock_en(-1),
+		  .pa_in_reset(-1),
+		  .pa_out_clock(-1),
+		  .pa_out_clock_en(-1),
+		  .pa_out_reset(-1),
+		  .pin_aliases(""),
+		  .pin_mode("A"),
+		  .por_state(4),
+		  .use_annotation(1'b0),
+		  .sio_group_cnt(0),
+		  .sio_hyst(1'b0),
+		  .sio_ibuf(""),
+		  .sio_info(2'b00),
+		  .sio_obuf(""),
+		  .sio_refsel(""),
+		  .sio_vtrip(""),
+		  .slew_rate(1'b0),
+		  .spanning(0),
+		  .vtrip(2'b10),
+		  .width(1))
+		Batt_Monitor
+		 (.oe(tmpOE__Batt_Monitor_net),
+		  .y({1'b0}),
+		  .fb({tmpFB_0__Batt_Monitor_net[0:0]}),
+		  .analog({Net_1603}),
+		  .io({tmpIO_0__Batt_Monitor_net[0:0]}),
+		  .siovref(tmpSIOVREF__Batt_Monitor_net),
+		  .interrupt({tmpINTERRUPT_0__Batt_Monitor_net[0:0]}),
+		  .in_clock({1'b0}),
+		  .in_clock_en({1'b1}),
+		  .in_reset({1'b0}),
+		  .out_clock({1'b0}),
+		  .out_clock_en({1'b1}),
+		  .out_reset({1'b0}));
+
+	assign tmpOE__Batt_Monitor_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
     CyControlReg_v1_70 SOLID_LED_CTRL (
         .control_1(Net_1565),
         .control_2(Net_1566),
@@ -1421,6 +1493,24 @@ module top ;
     defparam SOLID_LED_CTRL.BusDisplay = 0;
     defparam SOLID_LED_CTRL.ExtrReset = 0;
     defparam SOLID_LED_CTRL.NumOutputs = 3;
+
+    // -- AMux ADC_MUX start -- ***
+    // -- Mux A --
+    
+    cy_psoc3_amux_v1_0 ADC_MUX(
+        .muxin({
+            Net_1603,
+            Net_1602
+            }),
+        .vout(Net_1593)
+        );
+    
+    defparam ADC_MUX.muxin_width = 2;
+    defparam ADC_MUX.init_mux_sel = 2'h0;
+    defparam ADC_MUX.one_active = 1;
+    defparam ADC_MUX.connect_mode = 0;
+    
+    // -- AMux ADC_MUX end --
 
 
 

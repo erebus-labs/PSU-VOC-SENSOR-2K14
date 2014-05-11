@@ -853,6 +853,31 @@
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\SOLID_LED_CTRL.h</FilePath>
             </File>
+            <File>
+              <FileName>Batt_Monitor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Batt_Monitor.c</FilePath>
+            </File>
+            <File>
+              <FileName>Batt_Monitor.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Batt_Monitor.h</FilePath>
+            </File>
+            <File>
+              <FileName>Batt_Monitor_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Batt_Monitor_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>ADC_MUX.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\ADC_MUX.c</FilePath>
+            </File>
+            <File>
+              <FileName>ADC_MUX.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\ADC_MUX.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
@@ -1707,6 +1732,31 @@
               <FileName>SOLID_LED_CTRL.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\SOLID_LED_CTRL.h</FilePath>
+            </File>
+            <File>
+              <FileName>Batt_Monitor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Batt_Monitor.c</FilePath>
+            </File>
+            <File>
+              <FileName>Batt_Monitor.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Batt_Monitor.h</FilePath>
+            </File>
+            <File>
+              <FileName>Batt_Monitor_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Batt_Monitor_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>ADC_MUX.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\ADC_MUX.c</FilePath>
+            </File>
+            <File>
+              <FileName>ADC_MUX.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\ADC_MUX.h</FilePath>
             </File>
           </Files>
         </Group>

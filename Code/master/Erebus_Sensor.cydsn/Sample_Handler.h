@@ -17,9 +17,8 @@
     #include "Interface.h"
     #include "Globals.h"
     
-    void rtc_prep(void);
-    void take_sample(void);
-    void RTC_Int_Handler(void);
+    void check_battery();
+    void take_sample();
     
 #endif
 

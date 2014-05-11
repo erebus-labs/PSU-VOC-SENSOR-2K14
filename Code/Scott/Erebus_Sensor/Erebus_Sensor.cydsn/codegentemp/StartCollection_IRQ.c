@@ -132,11 +132,6 @@ CY_ISR(StartCollection_IRQ_Interrupt)
 {
     /*  Place your Interrupt code here. */
     /* `#START StartCollection_IRQ_Interrupt` */
-    
-    #ifdef SLEEP_EN
-    CyPmRestoreClocks(); 
-    RTC_EnableInt();
-    #endif 
 
     DataStart_waiting = 1;
     
