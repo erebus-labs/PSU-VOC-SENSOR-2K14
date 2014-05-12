@@ -16,31 +16,24 @@ uint8 RTC_int_mask = 0x0u;
 
 void rtc_setup()
 {
-    uint8 sample_unit;
-    
+
+    // sample_interval and sample_unit are global, defined in main.c    
     sample_unit = get_variable(EE_SAMPLE_UNIT);
-    // sample_interval is global, defined in Sample_Handler.c  
     sample_interval = get_variable(EE_SAMPLE_INTERVAL);
-   
+    
+    RTC_int_mask = MINUTE_MASK | SECOND_MASK;
+    
     switch (sample_unit)
     {
-        case SAMPLE_SEC: /* Seconds */
-            RTC_int_mask = SECOND_MASK;
-            break;
-        case SAMPLE_MIN: /* Minutes */
-            RTC_int_mask = MINUTE_MASK;
-            break;
         case SAMPLE_HOUR: /* Hours */
-            RTC_int_mask = HOUR_MASK;
+            RTC_int_mask = RTC_int_mask | HOUR_MASK;
             break;
         case SAMPLE_DAY: /* Days */
-            RTC_int_mask = DAY_MASK;
+            RTC_int_mask = RTC_int_mask | DAY_MASK;
             break;
     }
     
-    // Start by clearing interval interrupt masks - the appropriate interrupt will
-    // be enabled by the start collection button interrupt
-    RTC_WriteIntervalMask(NONE_MASK);
+    RTC_WriteIntervalMask(RTC_int_mask);
     RTC_EnableInt();
     
     return;

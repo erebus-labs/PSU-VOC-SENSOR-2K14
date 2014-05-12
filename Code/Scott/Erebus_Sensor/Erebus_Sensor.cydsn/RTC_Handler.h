@@ -14,6 +14,7 @@
     #define _RTC_HANDLER_H_
     
     #include "project.h"
+    #include "Globals.h"
     #include "EEPROM_Access.h"
     
     void rtc_setup();

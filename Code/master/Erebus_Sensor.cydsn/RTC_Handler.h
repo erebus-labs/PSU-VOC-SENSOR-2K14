@@ -14,11 +14,11 @@
     #define _RTC_HANDLER_H_
     
     #include "project.h"
-    #include "Common.h"
+    #include "Globals.h"
+    #include "EEPROM_Access.h"
     
-    #define TIME_LENGTH 7
-
-    uint8 sync_RTC(RTC_TIME_DATE* new_time);
+    void rtc_setup();
+    uint8 sync_RTC(RTC_TIME_DATE* new_time);  
     
 #endif
 

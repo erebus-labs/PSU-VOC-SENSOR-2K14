@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   MAIN                                                                  05/07/2014 04:57:56 PAGE 1   
+C51 COMPILER V9.51   MAIN                                                                  05/10/2014 17:01:56 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE MAIN
@@ -31,276 +31,341 @@ line level    source
   20          const uint8 CYCODE hard_reset_flag;
   21          
   22          // Flags
-  23          uint8 low_power_flag;
-  24          uint8 USB_waiting;
-  25          uint8 DataStart_waiting;
-  26          uint8 DataStop_waiting;
-  27          
-  28          int main()
-  29          {
-  30   1          low_power_flag = 0;
-  31   1          USB_waiting = 0;
-  32   1          DataStart_waiting = 0;
-  33   1          DataStop_waiting = 0;
-  34   1          
-  35   1          // Check for hard reset flag
-  36   1          if (hard_reset_flag){
-  37   2              hard_reset();   
-  38   2          }
-  39   1          /* Initialization*/
-  40   1      
-  41   1          // Start Components
-  42   1          EEPROM_R_Start();
-  43   1          LED_PWM_Start();
-  44   1          ADC_Start();
-  45   1          ADC_Sleep();
-  46   1          RTC_Start();
-  47   1          rtc_setup();
-  48   1          
-  49   1          // Set interrupts for pins that can wake the chip
-  50   1          CY_SET_REG8(CYREG_PICU12_INTTYPE6, 0x02); //Port 12, pin 6, falling edge
-  51   1          CY_SET_REG8(CYREG_PICU3_INTTYPE0, 0x02); //Port 3, pin 0, falling edge
-  52   1          CY_SET_REG8(CYREG_PICU6_INTTYPE0, 0x01); //Port 6, pin 0, rising edge
-  53   1          
-C51 COMPILER V9.51   MAIN                                                                  05/07/2014 04:57:56 PAGE 2   
+  23          uint8 low_power_flag = 0;
+  24          uint8 USB_waiting = 0;
+  25          uint8 DataStart_waiting = 0;
+  26          uint8 DataStop_waiting = 0;
+  27          uint8 Sample_waiting = 0;
+  28          uint8 BatteryCheck_waiting = 0;
+  29          uint8 LowPowerBlink_waiting = 0;
+  30          
+  31          // RTC
+  32          uint8 sample_interval = 0;
+  33          uint8 sample_enable = 0;
+  34          
+  35          // Sampling
+  36          uint8 sample_int_count = 0;
+  37          uint8 sample_unit = 0;
+  38          uint8 battery_check_count = 0;
+  39          uint8 low_batt_blink_count = 0;
+  40          
+  41          int main()
+  42          {
+  43   1      
+  44   1          
+  45   1          // Check for hard reset flag
+  46   1          if (hard_reset_flag){
+  47   2              hard_reset();   
+  48   2          }
+  49   1          /* Initialization*/
+  50   1      
+  51   1          // Start Components
+  52   1          EEPROM_R_Start();
+  53   1          RTC_Start();
+C51 COMPILER V9.51   MAIN                                                                  05/10/2014 17:01:56 PAGE 2   
 
-  54   1          // Enable global interrupts
-  55   1          CyGlobalIntEnable;
-  56   1          
-  57   1          // Enable individual interrupts as necessary   
-  58   1          Vbus_IRQ_Start();
-  59   1          StartCollection_IRQ_Start();
-  60   1          
-  61   1          for(;;){       
-  62   2              
-  63   2              #ifdef SLEEP_EN 
-  64   2              LED_PWM_Sleep();
-  65   2              RTC_DisableInt();
-  66   2              CyPmSaveClocks();        
-  67   2            
-  68   2              CyPmSleep(PM_SLEEP_TIME_ONE_PPS, (PM_SLEEP_SRC_ONE_PPS | PM_SLEEP_SRC_PICU));     
-  69   2      
-  70   2              CyPmRestoreClocks(); 
-  71   2              RTC_EnableInt();
-  72   2              LED_PWM_Wakeup();
-  73   2              #endif
-  74   2              
-  75   2              if(USB_waiting){
-  76   3                  Run_USB();
-  77   3                  Vbus_ClearInterrupt();
-  78   3                  Vbus_IRQ_ClearPending();
-  79   3                  USB_waiting = 0;
-  80   3              }
-  81   2              
-  82   2              else if(DataStart_waiting){
-  83   3                  StartCollection();
-  84   3                  DataStart_waiting = 0;
-  85   3                  CyDelay(LED_DELAY);
-  86   3                  StartCollection_B_ClearInterrupt();
-  87   3                  StartCollection_IRQ_ClearPending();
-  88   3                  LED_off(BUTTON);
-  89   3              }
-  90   2              
-  91   2              else if(DataStop_waiting){
-  92   3                  StopCollection();
-  93   3                  DataStop_waiting = 0;
-  94   3                  CyDelay(LED_DELAY);
-  95   3                  StopCollection_B_ClearInterrupt();
-  96   3                  StopCollection_IRQ_ClearPending();
-  97   3                  LED_off(BUTTON);
-  98   3              }
-  99   2              
- 100   2          }
- 101   1          
- 102   1          return (0);
- 103   1      }
- 104          
- 105          /* [] END OF FILE */
-C51 COMPILER V9.51   MAIN                                                                  05/07/2014 04:57:56 PAGE 3   
+  54   1          rtc_setup();
+  55   1          LED_PWM_Start();
+  56   1          LED_PWM_Sleep();
+  57   1          ADC_Start();
+  58   1          ADC_Sleep();
+  59   1          ADC_MUX_Start();
+  60   1          ADC_MUX_Select(SAMPLE_PIN);
+  61   1          
+  62   1          // Enable global interrupts
+  63   1          CyGlobalIntEnable;
+  64   1          
+  65   1          // Enable individual interrupts as necessary   
+  66   1          Vbus_IRQ_Start();
+  67   1          StartCollection_IRQ_Start();
+  68   1              
+  69   1          for(;;){       
+  70   2      
+  71   2              if (Sample_waiting){
+  72   3                  LED_on(BLUE);
+  73   3                  take_sample();          
+  74   3                  CyDelay(LED_DELAY);
+  75   3                  LED_off();
+  76   3                  Sample_waiting = 0;
+  77   3              }
+  78   2               
+  79   2              if(DataStart_waiting){
+  80   3                  LED_on(GREEN);
+  81   3                  clear_buttons();            
+  82   3                  StartCollection();
+  83   3                  CyDelay(LED_DELAY);
+  84   3                  LED_off();
+  85   3              }
+  86   2              
+  87   2              if(DataStop_waiting){
+  88   3                  LED_on(RED);            
+  89   3                  clear_buttons();            
+  90   3                  StopCollection();           
+  91   3                  CyDelay(LED_DELAY);
+  92   3                  LED_off();
+  93   3              }
+  94   2              
+  95   2              if(USB_waiting){
+  96   3                  LED_PWM_Wakeup();
+  97   3                  LED_on(CYAN);
+  98   3                  usb_prep();
+  99   3                  Run_USB();
+ 100   3                  usb_exit();
+ 101   3                  clear_vbus();
+ 102   3                  LED_off();
+ 103   3              }        
+ 104   2              
+ 105   2              if (BatteryCheck_waiting){
+ 106   3                  check_battery();
+ 107   3                  BatteryCheck_waiting = 0;
+ 108   3              }
+ 109   2              
+ 110   2              if(LowPowerBlink_waiting){
+ 111   3                  LED_PWM_Wakeup();
+ 112   3                  LED_on(YELLOW);
+ 113   3                  CyDelay(LOWBATT_BLINK_DELAY);
+ 114   3                  LED_off();
+ 115   3                  LowPowerBlink_waiting = 0;
+C51 COMPILER V9.51   MAIN                                                                  05/10/2014 17:01:56 PAGE 3   
+
+ 116   3              }
+ 117   2                      
+ 118   2              #ifdef SLEEP_EN 
+ 119   2              RTC_DisableInt();
+ 120   2              CyPmSaveClocks();        
+ 121   2            
+ 122   2              CyPmSleep(PM_SLEEP_TIME_NONE, (PM_SLEEP_SRC_ONE_PPS | PM_SLEEP_SRC_PICU));     
+ 123   2      
+ 124   2              CyPmRestoreClocks(); 
+ 125   2              RTC_EnableInt();
+ 126   2      
+ 127   2              #endif
+ 128   2             
+ 129   2          }
+ 130   1          
+ 131   1          return (0);
+ 132   1      }
+ 133          
+ 134          /* [] END OF FILE */
+C51 COMPILER V9.51   MAIN                                                                  05/10/2014 17:01:56 PAGE 4   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
 
              ; FUNCTION main (BEGIN)
-                                           ; SOURCE LINE # 28
-                                           ; SOURCE LINE # 29
-                                           ; SOURCE LINE # 30
-0000 900000      R     MOV     DPTR,#low_power_flag
-0003 E4                CLR     A
-0004 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 31
-0005 900000      R     MOV     DPTR,#USB_waiting
-0008 E4                CLR     A
-0009 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 32
-000A 900000      R     MOV     DPTR,#DataStart_waiting
-000D E4                CLR     A
-000E F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 33
-000F 900000      R     MOV     DPTR,#DataStop_waiting
-0012 E4                CLR     A
-0013 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 36
-0014 900000      R     MOV     DPTR,#hard_reset_flag
-0017 E4                CLR     A
-0018 93                MOVC    A,@A+DPTR
-0019 FF                MOV     R7,A
-001A EF                MOV     A,R7
-001B 6003              JZ      ?C0001
-                                           ; SOURCE LINE # 37
-001D 120000      E     LCALL   hard_reset
-                                           ; SOURCE LINE # 38
-0020         ?C0001:
+                                           ; SOURCE LINE # 41
                                            ; SOURCE LINE # 42
-0020 120000      E     LCALL   EEPROM_R_Start
-                                           ; SOURCE LINE # 43
-0023 120000      E     LCALL   LED_PWM_Start
-                                           ; SOURCE LINE # 44
-0026 120000      E     LCALL   ADC_Start
-                                           ; SOURCE LINE # 45
-0029 120000      E     LCALL   ADC_Sleep
                                            ; SOURCE LINE # 46
-002C 120000      E     LCALL   RTC_Start
+0000 900000      R     MOV     DPTR,#hard_reset_flag
+0003 E4                CLR     A
+0004 93                MOVC    A,@A+DPTR
+0005 FF                MOV     R7,A
+0006 EF                MOV     A,R7
+0007 6003              JZ      ?C0001
                                            ; SOURCE LINE # 47
-002F 120000      E     LCALL   rtc_setup
-                                           ; SOURCE LINE # 50
-0032 904566            MOV     DPTR,#04566H
-0035 7402              MOV     A,#02H
-0037 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 51
-0038 904518            MOV     DPTR,#04518H
-003B 7402              MOV     A,#02H
-003D F0                MOVX    @DPTR,A
+0009 120000      E     LCALL   hard_reset
+                                           ; SOURCE LINE # 48
+000C         ?C0001:
                                            ; SOURCE LINE # 52
-003E 904530            MOV     DPTR,#04530H
-0041 7401              MOV     A,#01H
-0043 F0                MOVX    @DPTR,A
+000C 120000      E     LCALL   EEPROM_R_Start
+                                           ; SOURCE LINE # 53
+000F 120000      E     LCALL   RTC_Start
+                                           ; SOURCE LINE # 54
+0012 120000      E     LCALL   rtc_setup
                                            ; SOURCE LINE # 55
-0044 D2AF              SETB    EA
-0046 9044F4            MOV     DPTR,#044F4H
-0049 74FD              MOV     A,#0FDH
-004B F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   MAIN                                                                  05/07/2014 04:57:56 PAGE 4   
-
+0015 120000      E     LCALL   LED_PWM_Start
+                                           ; SOURCE LINE # 56
+0018 120000      E     LCALL   LED_PWM_Sleep
+                                           ; SOURCE LINE # 57
+001B 120000      E     LCALL   ADC_Start
                                            ; SOURCE LINE # 58
-004C 120000      E     LCALL   Vbus_IRQ_Start
+001E 120000      E     LCALL   ADC_Sleep
                                            ; SOURCE LINE # 59
-004F 120000      E     LCALL   StartCollection_IRQ_Start
-                                           ; SOURCE LINE # 61
-0052         ?C0002:
-                                           ; SOURCE LINE # 64
-0052 120000      E     LCALL   LED_PWM_Sleep
-                                           ; SOURCE LINE # 65
-0055 120000      E     LCALL   RTC_DisableInt
+0021 120000      E     LCALL   ADC_MUX_Start
+                                           ; SOURCE LINE # 60
+0024 7F00              MOV     R7,#00H
+0026 120000      E     LCALL   _ADC_MUX_FastSelect
+                                           ; SOURCE LINE # 63
+0029 D2AF              SETB    EA
+002B 9044F4            MOV     DPTR,#044F4H
+002E 74FD              MOV     A,#0FDH
+0030 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 66
-0058 120000      E     LCALL   CyPmSaveClocks
-                                           ; SOURCE LINE # 68
-005B 7D40              MOV     R5,#040H
-005D 7C08              MOV     R4,#08H
-005F 7F01              MOV     R7,#01H
-0061 120000      E     LCALL   _CyPmSleep
-                                           ; SOURCE LINE # 70
-0064 120000      E     LCALL   CyPmRestoreClocks
+0031 120000      E     LCALL   Vbus_IRQ_Start
+                                           ; SOURCE LINE # 67
+0034 120000      E     LCALL   StartCollection_IRQ_Start
+                                           ; SOURCE LINE # 69
+0037         ?C0002:
                                            ; SOURCE LINE # 71
-0067 120000      E     LCALL   RTC_EnableInt
+0037 900000      R     MOV     DPTR,#Sample_waiting
+003A E0                MOVX    A,@DPTR
+003B FF                MOV     R7,A
+003C EF                MOV     A,R7
+003D 601B              JZ      ?C0004
                                            ; SOURCE LINE # 72
-006A 120000      E     LCALL   LED_PWM_Wakeup
-                                           ; SOURCE LINE # 75
-006D 900000      R     MOV     DPTR,#USB_waiting
-0070 E0                MOVX    A,@DPTR
-0071 FF                MOV     R7,A
-0072 EF                MOV     A,R7
-0073 6010              JZ      ?C0004
-                                           ; SOURCE LINE # 76
-0075 120000      E     LCALL   Run_USB
-                                           ; SOURCE LINE # 77
-0078 120000      E     LCALL   Vbus_ClearInterrupt
-                                           ; SOURCE LINE # 78
-007B 120000      E     LCALL   Vbus_IRQ_ClearPending
-                                           ; SOURCE LINE # 79
-007E 900000      R     MOV     DPTR,#USB_waiting
-0081 E4                CLR     A
-0082 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 80
-0083 80CD              SJMP    ?C0002
-0085         ?C0004:
-                                           ; SOURCE LINE # 82
-0085 900000      R     MOV     DPTR,#DataStart_waiting
-0088 E0                MOVX    A,@DPTR
-0089 FF                MOV     R7,A
-008A EF                MOV     A,R7
-008B 6020              JZ      ?C0006
-                                           ; SOURCE LINE # 83
-008D 120000      E     LCALL   StartCollection
-                                           ; SOURCE LINE # 84
-0090 900000      R     MOV     DPTR,#DataStart_waiting
-0093 E4                CLR     A
-0094 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 85
-0095 7FFA              MOV     R7,#0FAH
-0097 7E00              MOV     R6,#00H
-0099 7D00              MOV     R5,#00H
-009B 7C00              MOV     R4,#00H
-009D 120000      E     LCALL   _?CyDelay
-                                           ; SOURCE LINE # 86
-00A0 120000      E     LCALL   StartCollection_B_ClearInterrupt
-C51 COMPILER V9.51   MAIN                                                                  05/07/2014 04:57:56 PAGE 5   
+003F 7F02              MOV     R7,#02H
+0041 120000      E     LCALL   _LED_on
+                                           ; SOURCE LINE # 73
+0044 120000      E     LCALL   take_sample
+                                           ; SOURCE LINE # 74
+0047 7F19              MOV     R7,#019H
+0049 7E00              MOV     R6,#00H
+004B 7D00              MOV     R5,#00H
+C51 COMPILER V9.51   MAIN                                                                  05/10/2014 17:01:56 PAGE 5   
 
+004D 7C00              MOV     R4,#00H
+004F 120000      E     LCALL   _?CyDelay
+                                           ; SOURCE LINE # 75
+0052 120000      E     LCALL   LED_off
+                                           ; SOURCE LINE # 76
+0055 900000      R     MOV     DPTR,#Sample_waiting
+0058 E4                CLR     A
+0059 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 77
+005A         ?C0004:
+                                           ; SOURCE LINE # 79
+005A 900000      R     MOV     DPTR,#DataStart_waiting
+005D E0                MOVX    A,@DPTR
+005E FF                MOV     R7,A
+005F EF                MOV     A,R7
+0060 6019              JZ      ?C0005
+                                           ; SOURCE LINE # 80
+0062 7F04              MOV     R7,#04H
+0064 120000      E     LCALL   _LED_on
+                                           ; SOURCE LINE # 81
+0067 120000      E     LCALL   clear_buttons
+                                           ; SOURCE LINE # 82
+006A 120000      E     LCALL   StartCollection
+                                           ; SOURCE LINE # 83
+006D 7F19              MOV     R7,#019H
+006F 7E00              MOV     R6,#00H
+0071 7D00              MOV     R5,#00H
+0073 7C00              MOV     R4,#00H
+0075 120000      E     LCALL   _?CyDelay
+                                           ; SOURCE LINE # 84
+0078 120000      E     LCALL   LED_off
+                                           ; SOURCE LINE # 85
+007B         ?C0005:
                                            ; SOURCE LINE # 87
-00A3 120000      E     LCALL   StartCollection_IRQ_ClearPending
+007B 900000      R     MOV     DPTR,#DataStop_waiting
+007E E0                MOVX    A,@DPTR
+007F FF                MOV     R7,A
+0080 EF                MOV     A,R7
+0081 6019              JZ      ?C0006
                                            ; SOURCE LINE # 88
-00A6 7F06              MOV     R7,#06H
-00A8 120000      E     LCALL   _LED_off
+0083 7F01              MOV     R7,#01H
+0085 120000      E     LCALL   _LED_on
                                            ; SOURCE LINE # 89
-00AB 80A5              SJMP    ?C0002
-00AD         ?C0006:
+0088 120000      E     LCALL   clear_buttons
+                                           ; SOURCE LINE # 90
+008B 120000      E     LCALL   StopCollection
                                            ; SOURCE LINE # 91
-00AD 900000      R     MOV     DPTR,#DataStop_waiting
-00B0 E0                MOVX    A,@DPTR
-00B1 FF                MOV     R7,A
-00B2 EF                MOV     A,R7
-00B3 609D              JZ      ?C0002
+008E 7F19              MOV     R7,#019H
+0090 7E00              MOV     R6,#00H
+0092 7D00              MOV     R5,#00H
+0094 7C00              MOV     R4,#00H
+0096 120000      E     LCALL   _?CyDelay
                                            ; SOURCE LINE # 92
-00B5 120000      E     LCALL   StopCollection
+0099 120000      E     LCALL   LED_off
                                            ; SOURCE LINE # 93
-00B8 900000      R     MOV     DPTR,#DataStop_waiting
-00BB E4                CLR     A
-00BC F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 94
-00BD 7FFA              MOV     R7,#0FAH
-00BF 7E00              MOV     R6,#00H
-00C1 7D00              MOV     R5,#00H
-00C3 7C00              MOV     R4,#00H
-00C5 120000      E     LCALL   _?CyDelay
+009C         ?C0006:
                                            ; SOURCE LINE # 95
-00C8 120000      E     LCALL   StopCollection_B_ClearInterrupt
+009C 900000      R     MOV     DPTR,#USB_waiting
+009F E0                MOVX    A,@DPTR
+00A0 FF                MOV     R7,A
+00A1 EF                MOV     A,R7
+00A2 6017              JZ      ?C0007
+C51 COMPILER V9.51   MAIN                                                                  05/10/2014 17:01:56 PAGE 6   
+
                                            ; SOURCE LINE # 96
-00CB 120000      E     LCALL   StopCollection_IRQ_ClearPending
+00A4 120000      E     LCALL   LED_PWM_Wakeup
                                            ; SOURCE LINE # 97
-00CE 7F06              MOV     R7,#06H
-00D0 120000      E     LCALL   _LED_off
+00A7 7F06              MOV     R7,#06H
+00A9 120000      E     LCALL   _LED_on
                                            ; SOURCE LINE # 98
-00D3         ?C0008:
-00D3         ?C0007:
-00D3         ?C0005:
+00AC 120000      E     LCALL   usb_prep
+                                           ; SOURCE LINE # 99
+00AF 120000      E     LCALL   Run_USB
                                            ; SOURCE LINE # 100
-00D3 020000      R     LJMP    ?C0002
-00D6         ?C0003:
+00B2 120000      E     LCALL   usb_exit
+                                           ; SOURCE LINE # 101
+00B5 120000      E     LCALL   clear_vbus
                                            ; SOURCE LINE # 102
-00D6 E4                CLR     A
-00D7 7E00              MOV     R6,#00H
-00D9 7F00              MOV     R7,#00H
+00B8 120000      E     LCALL   LED_off
                                            ; SOURCE LINE # 103
-00DB         ?C0009:
-00DB 22                RET     
+00BB         ?C0007:
+                                           ; SOURCE LINE # 105
+00BB 900000      R     MOV     DPTR,#BatteryCheck_waiting
+00BE E0                MOVX    A,@DPTR
+00BF FF                MOV     R7,A
+00C0 EF                MOV     A,R7
+00C1 6008              JZ      ?C0008
+                                           ; SOURCE LINE # 106
+00C3 120000      E     LCALL   check_battery
+                                           ; SOURCE LINE # 107
+00C6 900000      R     MOV     DPTR,#BatteryCheck_waiting
+00C9 E4                CLR     A
+00CA F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 108
+00CB         ?C0008:
+                                           ; SOURCE LINE # 110
+00CB 900000      R     MOV     DPTR,#LowPowerBlink_waiting
+00CE E0                MOVX    A,@DPTR
+00CF FF                MOV     R7,A
+00D0 EF                MOV     A,R7
+00D1 601B              JZ      ?C0009
+                                           ; SOURCE LINE # 111
+00D3 120000      E     LCALL   LED_PWM_Wakeup
+                                           ; SOURCE LINE # 112
+00D6 7F05              MOV     R7,#05H
+00D8 120000      E     LCALL   _LED_on
+                                           ; SOURCE LINE # 113
+00DB 7F64              MOV     R7,#064H
+00DD 7E00              MOV     R6,#00H
+00DF 7D00              MOV     R5,#00H
+00E1 7C00              MOV     R4,#00H
+00E3 120000      E     LCALL   _?CyDelay
+                                           ; SOURCE LINE # 114
+00E6 120000      E     LCALL   LED_off
+                                           ; SOURCE LINE # 115
+00E9 900000      R     MOV     DPTR,#LowPowerBlink_waiting
+00EC E4                CLR     A
+00ED F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 116
+00EE         ?C0009:
+                                           ; SOURCE LINE # 119
+00EE 120000      E     LCALL   RTC_DisableInt
+                                           ; SOURCE LINE # 120
+00F1 120000      E     LCALL   CyPmSaveClocks
+                                           ; SOURCE LINE # 122
+00F4 7D40              MOV     R5,#040H
+C51 COMPILER V9.51   MAIN                                                                  05/10/2014 17:01:56 PAGE 7   
+
+00F6 7C08              MOV     R4,#08H
+00F8 7F00              MOV     R7,#00H
+00FA 120000      E     LCALL   _CyPmSleep
+                                           ; SOURCE LINE # 124
+00FD 120000      E     LCALL   CyPmRestoreClocks
+                                           ; SOURCE LINE # 125
+0100 120000      E     LCALL   RTC_EnableInt
+                                           ; SOURCE LINE # 129
+0103 020000      R     LJMP    ?C0002
+0106         ?C0003:
+                                           ; SOURCE LINE # 131
+0106 E4                CLR     A
+0107 7E00              MOV     R6,#00H
+0109 7F00              MOV     R7,#00H
+                                           ; SOURCE LINE # 132
+010B         ?C0010:
+010B 22                RET     
              ; FUNCTION main (END)
 
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    220    ----
+   CODE SIZE        =    268    ----
    CONSTANT SIZE    =   1025    ----
-   XDATA SIZE       =      7    ----
+   XDATA SIZE       =     16    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
@@ -308,8 +373,6 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    EDATA SIZE       =   ----    ----
    HDATA SIZE       =   ----    ----
    XDATA CONST SIZE =   ----    ----
-C51 COMPILER V9.51   MAIN                                                                  05/07/2014 04:57:56 PAGE 6   
-
    FAR CONST SIZE   =   ----    ----
 END OF MODULE INFORMATION.
 

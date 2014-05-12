@@ -133,13 +133,6 @@ CY_ISR(StopCollection_IRQ_Interrupt)
     /*  Place your Interrupt code here. */
     /* `#START StopCollection_IRQ_Interrupt` */
     
-    #ifdef SLEEP_EN
-    CyPmRestoreClocks(); 
-    RTC_EnableInt();
-    LED_PWM_Wakeup();
-    #endif 
-    
-    LED_on(BUTTON);
     DataStop_waiting = 1;
         
     /* `#END` */

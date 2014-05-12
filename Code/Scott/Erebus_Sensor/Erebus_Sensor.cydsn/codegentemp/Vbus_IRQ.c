@@ -132,14 +132,7 @@ CY_ISR(Vbus_IRQ_Interrupt)
 {
     /*  Place your Interrupt code here. */
     /* `#START Vbus_IRQ_Interrupt` */
-    
-    // Restore from sleep
-    #ifdef SLEEP_EN
-    CyPmRestoreClocks(); 
-    RTC_EnableInt();
-    LED_PWM_Wakeup();
-    #endif 
-    
+
     USB_waiting = 1;
 
     /* `#END` */

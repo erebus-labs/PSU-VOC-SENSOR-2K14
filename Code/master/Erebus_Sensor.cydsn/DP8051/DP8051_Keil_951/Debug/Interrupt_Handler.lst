@@ -1,0 +1,160 @@
+C51 COMPILER V9.51   INTERRUPT_HANDLER                                                     05/10/2014 16:55:35 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE INTERRUPT_HANDLER
+OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Debug\Interrupt_Handler.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\Interrupt_Handler.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\Interrupt_Handler.lst) CD DB NOIP O
+                    -T(0,SIZE) DF(DEBUG) INCDIR(.,.\Generated_Source\PSoC3) OJ(.\DP8051\DP8051_Keil_951\Debug\Interrupt_Handler.obj)
+
+line level    source
+
+   1          /* ========================================
+   2           *
+   3           * Copyright YOUR COMPANY, THE YEAR
+   4           * All Rights Reserved
+   5           * UNPUBLISHED, LICENSED SOFTWARE.
+   6           *
+   7           * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8           * WHICH IS THE PROPERTY OF your company.
+   9           *
+  10           * ========================================
+  11          */
+  12          
+  13          #include "Interrupt_Handler.h"
+  14          
+  15          void clear_buttons(){
+  16   1                      
+  17   1          // Clear any pending stop or start interrupts
+  18   1          StopCollection_B_ClearInterrupt();
+  19   1          StopCollection_IRQ_ClearPending();
+  20   1          DataStop_waiting = 0;
+  21   1          StartCollection_B_ClearInterrupt();
+  22   1          StartCollection_IRQ_ClearPending();  
+  23   1          DataStart_waiting = 0;  
+  24   1          
+  25   1          return;
+  26   1      }
+  27          
+  28          void clear_vbus(){
+  29   1          
+  30   1          Vbus_ClearInterrupt();
+  31   1          Vbus_IRQ_ClearPending();
+  32   1          USB_waiting = 0; 
+  33   1          return;
+  34   1      }
+  35          
+  36          void usb_prep(){
+  37   1          
+  38   1          StartCollection_IRQ_Stop();
+  39   1          StopCollection_IRQ_Stop();
+  40   1          Vbus_IRQ_Stop();
+  41   1          RTC_WriteIntervalMask(NONE_MASK);
+  42   1          return;
+  43   1      }
+  44          
+  45          void usb_exit(){
+  46   1          
+  47   1          StartCollection_IRQ_Start();
+  48   1          Vbus_IRQ_Start();
+  49   1          
+  50   1          // We don't reset the RTC_WriteIntervalMask register on the
+  51   1          // way out - that will be done when a new sample collection
+  52   1          // block starts
+  53   1             
+C51 COMPILER V9.51   INTERRUPT_HANDLER                                                     05/10/2014 16:55:35 PAGE 2   
+
+  54   1          return;
+  55   1      }
+  56          
+  57          /* [] END OF FILE */
+C51 COMPILER V9.51   INTERRUPT_HANDLER                                                     05/10/2014 16:55:35 PAGE 3   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION clear_buttons (BEGIN)
+                                           ; SOURCE LINE # 15
+                                           ; SOURCE LINE # 18
+0000 120000      E     LCALL   StopCollection_B_ClearInterrupt
+                                           ; SOURCE LINE # 19
+0003 120000      E     LCALL   StopCollection_IRQ_ClearPending
+                                           ; SOURCE LINE # 20
+0006 900000      E     MOV     DPTR,#DataStop_waiting
+0009 E4                CLR     A
+000A F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 21
+000B 120000      E     LCALL   StartCollection_B_ClearInterrupt
+                                           ; SOURCE LINE # 22
+000E 120000      E     LCALL   StartCollection_IRQ_ClearPending
+                                           ; SOURCE LINE # 23
+0011 900000      E     MOV     DPTR,#DataStart_waiting
+0014 E4                CLR     A
+0015 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 26
+0016         ?C0001:
+0016 22                RET     
+             ; FUNCTION clear_buttons (END)
+
+             ; FUNCTION clear_vbus (BEGIN)
+                                           ; SOURCE LINE # 28
+                                           ; SOURCE LINE # 30
+0000 120000      E     LCALL   Vbus_ClearInterrupt
+                                           ; SOURCE LINE # 31
+0003 120000      E     LCALL   Vbus_IRQ_ClearPending
+                                           ; SOURCE LINE # 32
+0006 900000      E     MOV     DPTR,#USB_waiting
+0009 E4                CLR     A
+000A F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 34
+000B         ?C0002:
+000B 22                RET     
+             ; FUNCTION clear_vbus (END)
+
+             ; FUNCTION usb_prep (BEGIN)
+                                           ; SOURCE LINE # 36
+                                           ; SOURCE LINE # 38
+0000 120000      E     LCALL   StartCollection_IRQ_Stop
+                                           ; SOURCE LINE # 39
+0003 120000      E     LCALL   StopCollection_IRQ_Stop
+                                           ; SOURCE LINE # 40
+0006 120000      E     LCALL   Vbus_IRQ_Stop
+                                           ; SOURCE LINE # 41
+0009 7F00              MOV     R7,#00H
+000B 120000      E     LCALL   _RTC_WriteIntervalMask
+                                           ; SOURCE LINE # 43
+000E         ?C0003:
+000E 22                RET     
+             ; FUNCTION usb_prep (END)
+
+             ; FUNCTION usb_exit (BEGIN)
+                                           ; SOURCE LINE # 45
+                                           ; SOURCE LINE # 47
+0000 120000      E     LCALL   StartCollection_IRQ_Start
+                                           ; SOURCE LINE # 48
+C51 COMPILER V9.51   INTERRUPT_HANDLER                                                     05/10/2014 16:55:35 PAGE 4   
+
+0003 120000      E     LCALL   Vbus_IRQ_Start
+                                           ; SOURCE LINE # 55
+0006         ?C0004:
+0006 22                RET     
+             ; FUNCTION usb_exit (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     57    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

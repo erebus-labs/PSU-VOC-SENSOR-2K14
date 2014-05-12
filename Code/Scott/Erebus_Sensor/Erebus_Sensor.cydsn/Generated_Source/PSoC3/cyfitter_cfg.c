@@ -87,22 +87,22 @@ static void CyClockStartupError(uint8 errorCode)
 
 #define cfg_byte_table ((const void CYFAR *)0x080000u)
 /* IOPINS0_0 Address: CYREG_PRT0_DM0 Size (bytes): 8 */
-#define BS_IOPINS0_0_VAL ((const uint8 CYFAR *)0x000801D8u)
+#define BS_IOPINS0_0_VAL ((const uint8 CYFAR *)0x00080214u)
 
 /* IOPINS0_7 Address: CYREG_PRT12_DR Size (bytes): 10 */
-#define BS_IOPINS0_7_VAL ((const uint8 CYFAR *)0x000801E0u)
+#define BS_IOPINS0_7_VAL ((const uint8 CYFAR *)0x0008021Cu)
 
 /* IOPINS0_8 Address: CYREG_PRT15_DR Size (bytes): 10 */
-#define BS_IOPINS0_8_VAL ((const uint8 CYFAR *)0x000801ECu)
+#define BS_IOPINS0_8_VAL ((const uint8 CYFAR *)0x00080228u)
 
 /* IOPINS0_3 Address: CYREG_PRT3_DR Size (bytes): 10 */
-#define BS_IOPINS0_3_VAL ((const uint8 CYFAR *)0x000801F8u)
+#define BS_IOPINS0_3_VAL ((const uint8 CYFAR *)0x00080234u)
 
 /* IOPINS0_6 Address: CYREG_PRT6_DM0 Size (bytes): 8 */
-#define BS_IOPINS0_6_VAL ((const uint8 CYFAR *)0x00080204u)
+#define BS_IOPINS0_6_VAL ((const uint8 CYFAR *)0x00080240u)
 
 /* CYDEV_CLKDIST_ACFG0_CFG0 Address: CYREG_CLKDIST_ACFG0_CFG0 Size (bytes): 4 */
-#define BS_CYDEV_CLKDIST_ACFG0_CFG0_VAL ((const uint8 CYFAR *)0x0008020Cu)
+#define BS_CYDEV_CLKDIST_ACFG0_CFG0_VAL ((const uint8 CYFAR *)0x00080248u)
 
 
 /*******************************************************************************
@@ -198,8 +198,7 @@ static void AnalogSetDefault(void)
 	uint8 bg_xover_inl_trim = CY_GET_XTND_REG8((void CYFAR *)(CYREG_FLSHID_MFG_CFG_BG_XOVER_INL_TRIM + 1u));
 	CY_SET_REG8((void CYXDATA *)(CYREG_BG_DFT0), (bg_xover_inl_trim & 0x07u));
 	CY_SET_REG8((void CYXDATA *)(CYREG_BG_DFT1), ((bg_xover_inl_trim >> 4) & 0x0Fu));
-	CY_SET_REG8((void CYXDATA *)CYREG_PRT0_AG, 0x80u);
-	CY_SET_REG8((void CYXDATA *)CYREG_DSM0_SW0, 0x80u);
+	CY_SET_REG8((void CYXDATA *)CYREG_DSM0_SW0, 0xA0u);
 	CY_SET_REG8((void CYXDATA *)CYREG_PUMP_CR0, 0x44u);
 }
 
@@ -236,6 +235,63 @@ void SetAnalogRoutingPumps(uint8 enabled)
 }
 
 #define CY_AMUX_UNUSED CYREG_BOOST_SR
+/* This is an implementation detail of the AMux. Code that depends on it may be
+   incompatible with other versions of PSoC Creator. */
+uint8 CYXDATA * const CYCODE ADC_MUX__addrTable[2] = {
+	(uint8 CYXDATA *)CYREG_PRT0_AG, 
+	(uint8 CYXDATA *)CYREG_PRT0_AG, 
+};
+
+/* This is an implementation detail of the AMux. Code that depends on it may be
+   incompatible with other versions of PSoC Creator. */
+const uint8 CYCODE ADC_MUX__maskTable[2] = {
+	0x80u, 
+	0x20u, 
+};
+
+/*******************************************************************************
+* Function Name: ADC_MUX_Set
+********************************************************************************
+* Summary:
+*  This function is used to set a particular channel as active on the AMux.
+*
+* Parameters:  
+*   channel - The mux channel input to set as active
+*
+* Return:
+*   void
+*
+*******************************************************************************/
+void ADC_MUX_Set(uint8 channel)
+{
+	if (channel < 2)
+	{
+		*ADC_MUX__addrTable[channel] |= ADC_MUX__maskTable[channel];
+	}
+}
+
+/*******************************************************************************
+* Function Name: ADC_MUX_Unset
+********************************************************************************
+* Summary:
+*  This function is used to clear a particular channel from being active on the
+*  AMux.
+*
+* Parameters:  
+*   channel - The mux channel input to mark inactive
+*
+* Return:
+*   void
+*
+*******************************************************************************/
+void ADC_MUX_Unset(uint8 channel)
+{
+	if (channel < 2)
+	{
+		*ADC_MUX__addrTable[channel] &= (uint8)~ADC_MUX__maskTable[channel];
+	}
+}
+
 /* This is an implementation detail of the AMux. Code that depends on it may be
    incompatible with other versions of PSoC Creator. */
 uint8 CYXDATA * const CYCODE ADC_AMux__addrTable[2] = {

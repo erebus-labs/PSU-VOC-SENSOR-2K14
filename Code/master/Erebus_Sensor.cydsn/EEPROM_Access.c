@@ -24,16 +24,10 @@ uint8 update_settings(settings_group new_settings){
     uint8 result = SUCCESS;
     cystatus status;
     
-    int test;
-    
-    EEPROM_LED_on();
-    
     // Allocate array to hold EEPROM variables
     
     rows_used = ceil(bytes_used/CYDEV_EEPROM_ROW_SIZE);
     buffer = malloc(((uint16) rows_used) * CYDEV_EEPROM_ROW_SIZE);
-    
-    test = sizeof(buffer);
     
     dst_ptr = buffer;
     remainder = (rows_used * 16) - EEPROM_BYTES_USED;
@@ -56,7 +50,11 @@ uint8 update_settings(settings_group new_settings){
     buffer[2] = new_settings.sample_interval;
     
     // Erase EEPROM
+    // Disable interrupts during EEPROM operation
+    CyGlobalIntDisable;
     status = EEPROM_R_EraseSector(SECTOR_NUMBER);
+    CyGlobalIntEnable;
+    
     if (status != CYRET_SUCCESS){
         result = FAIL;
         goto exit;
@@ -66,7 +64,11 @@ uint8 update_settings(settings_group new_settings){
     i = 0;
     src_ptr = buffer;
     while ((i < rows_used) && (i < EEPROM_ROWS)){
+        // Disable interrupts during EEPROM operation
+        CyGlobalIntDisable;
         status = EEPROM_R_Write(src_ptr, i);
+        CyGlobalIntEnable;
+        
         if (status != CYRET_SUCCESS){
            result = FAIL;
         goto exit;
@@ -78,8 +80,6 @@ uint8 update_settings(settings_group new_settings){
     // Free buffer memory
     free(buffer);
     
-    EEPROM_LED_off();
-    
 exit:   
     return result;   
 }
@@ -87,11 +87,7 @@ exit:
 uint8 get_variable(uint16 var_index){
     uint8 value = 10;
     
-    EEPROM_LED_on();
-    
     value = CY_GET_REG8(CYDEV_EE_BASE + var_index);
-    
-    EEPROM_LED_off();
     
     return value;
 }

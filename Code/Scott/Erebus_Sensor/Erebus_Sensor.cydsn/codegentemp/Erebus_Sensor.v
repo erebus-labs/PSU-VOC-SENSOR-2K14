@@ -1,6 +1,6 @@
 // ======================================================================
 // Erebus_Sensor.v generated from TopDesign.cysch
-// 05/07/2014 at 04:35
+// 05/10/2014 at 13:45
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -764,6 +764,13 @@ endmodule
 // top
 module top ;
 
+          wire  Net_1574;
+          wire  Net_1573;
+          wire  Net_1572;
+          wire  Net_1571;
+          wire  Net_1570;
+          wire  Net_1569;
+          wire  Net_1567;
           wire  Net_1529;
           wire  Net_1489;
           wire  Net_1488;
@@ -805,23 +812,28 @@ module top ;
           wire  Net_1490;
           wire  Net_1405;
           wire  Net_1478;
+    electrical  Net_1602;
+    electrical  Net_1603;
+    electrical  Net_1593;
+          wire  Net_1541;
+          wire  Net_1532;
+          wire  Net_1531;
+          wire  Net_1566;
+          wire  Net_1461;
+          wire  Net_1462;
+          wire  Net_1568;
+          wire  Net_1464;
+          wire  Net_1479;
+          wire  Net_1565;
+          wire  Net_1467;
+          wire  Net_1468;
+          wire [1:0] Net_1460;
+          wire [1:0] Net_1410;
           wire  Net_1525;
           wire  Net_1524;
           wire  Net_849;
-    electrical  Net_871;
-          wire  Net_1398;
-          wire  Net_1300;
-          wire  Net_843;
-          wire  Net_1462;
-          wire  Net_1479;
-          wire  Net_1468;
-          wire  Net_1464;
-          wire  Net_1467;
-          wire  Net_1461;
-          wire [1:0] Net_1460;
           wire  Net_1415;
           wire  Net_1409;
-          wire [1:0] Net_1410;
           wire  Net_1309;
           wire  Net_1308;
 
@@ -929,7 +941,7 @@ module top ;
 		  .width(3))
 		RGB_LED
 		 (.oe(tmpOE__RGB_LED_net),
-		  .y({Net_1398, Net_1300, Net_843}),
+		  .y({Net_1541, Net_1531, Net_1532}),
 		  .fb({tmpFB_2__RGB_LED_net[2:0]}),
 		  .io({tmpIO_2__RGB_LED_net[2:0]}),
 		  .siovref(tmpSIOVREF__RGB_LED_net),
@@ -944,7 +956,7 @@ module top ;
 	assign tmpOE__RGB_LED_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{3'b111} : {3'b111};
 
 
-    assign Net_1398 = Net_1468 | Net_1467;
+    assign Net_1541 = Net_1566 | Net_1468 | Net_1467;
 
     // -- De Mux start --
     if (1)
@@ -1068,7 +1080,7 @@ module top ;
 		 (.int_signal(Net_1525));
 
 
-    CyControlReg_v1_70 LED0_CTRL (
+    CyControlReg_v1_70 PWM0_CTRL (
         .control_1(Net_1490),
         .control_2(Net_1491),
         .control_3(Net_1492),
@@ -1080,18 +1092,18 @@ module top ;
         .clock(1'b0),
         .reset(1'b0),
         .control_bus(Net_1410[1:0]));
-    defparam LED0_CTRL.Bit0Mode = 0;
-    defparam LED0_CTRL.Bit1Mode = 0;
-    defparam LED0_CTRL.Bit2Mode = 0;
-    defparam LED0_CTRL.Bit3Mode = 0;
-    defparam LED0_CTRL.Bit4Mode = 0;
-    defparam LED0_CTRL.Bit5Mode = 0;
-    defparam LED0_CTRL.Bit6Mode = 0;
-    defparam LED0_CTRL.Bit7Mode = 0;
-    defparam LED0_CTRL.BitValue = 0;
-    defparam LED0_CTRL.BusDisplay = 1;
-    defparam LED0_CTRL.ExtrReset = 0;
-    defparam LED0_CTRL.NumOutputs = 2;
+    defparam PWM0_CTRL.Bit0Mode = 0;
+    defparam PWM0_CTRL.Bit1Mode = 0;
+    defparam PWM0_CTRL.Bit2Mode = 0;
+    defparam PWM0_CTRL.Bit3Mode = 0;
+    defparam PWM0_CTRL.Bit4Mode = 0;
+    defparam PWM0_CTRL.Bit5Mode = 0;
+    defparam PWM0_CTRL.Bit6Mode = 0;
+    defparam PWM0_CTRL.Bit7Mode = 0;
+    defparam PWM0_CTRL.BitValue = 0;
+    defparam PWM0_CTRL.BusDisplay = 1;
+    defparam PWM0_CTRL.ExtrReset = 0;
+    defparam PWM0_CTRL.NumOutputs = 2;
 
 	wire [0:0] tmpOE__Sensor_In_net;
 	wire [0:0] tmpFB_0__Sensor_In_net;
@@ -1150,7 +1162,7 @@ module top ;
 		 (.oe(tmpOE__Sensor_In_net),
 		  .y({1'b0}),
 		  .fb({tmpFB_0__Sensor_In_net[0:0]}),
-		  .analog({Net_871}),
+		  .analog({Net_1602}),
 		  .io({tmpIO_0__Sensor_In_net[0:0]}),
 		  .siovref(tmpSIOVREF__Sensor_In_net),
 		  .interrupt({tmpINTERRUPT_0__Sensor_In_net[0:0]}),
@@ -1164,7 +1176,7 @@ module top ;
 	assign tmpOE__Sensor_In_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
     ADC_DelSig_v3_0_1 ADC (
-        .vplus(Net_871),
+        .vplus(Net_1593),
         .vminus(Net_558),
         .soc(1'b1),
         .eoc(Net_566),
@@ -1327,9 +1339,9 @@ module top ;
         .vbusdet(1'b0));
 
 
-    assign Net_1300 = Net_1479 | Net_1464;
+    assign Net_1531 = Net_1565 | Net_1479 | Net_1464;
 
-    CyControlReg_v1_70 LED1_CTRL (
+    CyControlReg_v1_70 PWM1_CTRL (
         .control_1(Net_1500),
         .control_2(Net_1501),
         .control_3(Net_1502),
@@ -1341,18 +1353,18 @@ module top ;
         .clock(1'b0),
         .reset(1'b0),
         .control_bus(Net_1460[1:0]));
-    defparam LED1_CTRL.Bit0Mode = 0;
-    defparam LED1_CTRL.Bit1Mode = 0;
-    defparam LED1_CTRL.Bit2Mode = 0;
-    defparam LED1_CTRL.Bit3Mode = 0;
-    defparam LED1_CTRL.Bit4Mode = 0;
-    defparam LED1_CTRL.Bit5Mode = 0;
-    defparam LED1_CTRL.Bit6Mode = 0;
-    defparam LED1_CTRL.Bit7Mode = 0;
-    defparam LED1_CTRL.BitValue = 0;
-    defparam LED1_CTRL.BusDisplay = 1;
-    defparam LED1_CTRL.ExtrReset = 0;
-    defparam LED1_CTRL.NumOutputs = 2;
+    defparam PWM1_CTRL.Bit0Mode = 0;
+    defparam PWM1_CTRL.Bit1Mode = 0;
+    defparam PWM1_CTRL.Bit2Mode = 0;
+    defparam PWM1_CTRL.Bit3Mode = 0;
+    defparam PWM1_CTRL.Bit4Mode = 0;
+    defparam PWM1_CTRL.Bit5Mode = 0;
+    defparam PWM1_CTRL.Bit6Mode = 0;
+    defparam PWM1_CTRL.Bit7Mode = 0;
+    defparam PWM1_CTRL.BitValue = 0;
+    defparam PWM1_CTRL.BusDisplay = 1;
+    defparam PWM1_CTRL.ExtrReset = 0;
+    defparam PWM1_CTRL.NumOutputs = 2;
 
     assign Net_1308 = 1'h0;
 
@@ -1374,7 +1386,7 @@ module top ;
     defparam LED_PWM.Resolution = 8;
 
 
-    assign Net_843 = Net_1462 | Net_1461;
+    assign Net_1532 = Net_1568 | Net_1462 | Net_1461;
 
 
 	cy_clock_v1_0
@@ -1387,6 +1399,118 @@ module top ;
 		PWM_CLK
 		 (.clock_out(Net_1309));
 
+
+	wire [0:0] tmpOE__Batt_Monitor_net;
+	wire [0:0] tmpFB_0__Batt_Monitor_net;
+	wire [0:0] tmpIO_0__Batt_Monitor_net;
+	wire [0:0] tmpINTERRUPT_0__Batt_Monitor_net;
+	electrical [0:0] tmpSIOVREF__Batt_Monitor_net;
+
+	cy_psoc3_pins_v1_10
+		#(.id("0895e0c5-22fd-4e04-a47c-17021ab62788"),
+		  .drive_mode(3'b000),
+		  .ibuf_enabled(1'b0),
+		  .init_dr_st(1'b0),
+		  .input_clk_en(0),
+		  .input_sync(1'b1),
+		  .input_sync_mode(1'b0),
+		  .intr_mode(2'b00),
+		  .invert_in_clock(0),
+		  .invert_in_clock_en(0),
+		  .invert_in_reset(0),
+		  .invert_out_clock(0),
+		  .invert_out_clock_en(0),
+		  .invert_out_reset(0),
+		  .io_voltage(""),
+		  .layout_mode("CONTIGUOUS"),
+		  .oe_conn(1'b0),
+		  .oe_reset(0),
+		  .oe_sync(1'b0),
+		  .output_clk_en(0),
+		  .output_clock_mode(1'b0),
+		  .output_conn(1'b0),
+		  .output_mode(1'b0),
+		  .output_reset(0),
+		  .output_sync(1'b0),
+		  .pa_in_clock(-1),
+		  .pa_in_clock_en(-1),
+		  .pa_in_reset(-1),
+		  .pa_out_clock(-1),
+		  .pa_out_clock_en(-1),
+		  .pa_out_reset(-1),
+		  .pin_aliases(""),
+		  .pin_mode("A"),
+		  .por_state(4),
+		  .use_annotation(1'b0),
+		  .sio_group_cnt(0),
+		  .sio_hyst(1'b0),
+		  .sio_ibuf(""),
+		  .sio_info(2'b00),
+		  .sio_obuf(""),
+		  .sio_refsel(""),
+		  .sio_vtrip(""),
+		  .slew_rate(1'b0),
+		  .spanning(0),
+		  .vtrip(2'b10),
+		  .width(1))
+		Batt_Monitor
+		 (.oe(tmpOE__Batt_Monitor_net),
+		  .y({1'b0}),
+		  .fb({tmpFB_0__Batt_Monitor_net[0:0]}),
+		  .analog({Net_1603}),
+		  .io({tmpIO_0__Batt_Monitor_net[0:0]}),
+		  .siovref(tmpSIOVREF__Batt_Monitor_net),
+		  .interrupt({tmpINTERRUPT_0__Batt_Monitor_net[0:0]}),
+		  .in_clock({1'b0}),
+		  .in_clock_en({1'b1}),
+		  .in_reset({1'b0}),
+		  .out_clock({1'b0}),
+		  .out_clock_en({1'b1}),
+		  .out_reset({1'b0}));
+
+	assign tmpOE__Batt_Monitor_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
+    CyControlReg_v1_70 SOLID_LED_CTRL (
+        .control_1(Net_1565),
+        .control_2(Net_1566),
+        .control_3(Net_1567),
+        .control_0(Net_1568),
+        .control_4(Net_1569),
+        .control_5(Net_1570),
+        .control_6(Net_1571),
+        .control_7(Net_1572),
+        .clock(1'b0),
+        .reset(1'b0));
+    defparam SOLID_LED_CTRL.Bit0Mode = 0;
+    defparam SOLID_LED_CTRL.Bit1Mode = 0;
+    defparam SOLID_LED_CTRL.Bit2Mode = 0;
+    defparam SOLID_LED_CTRL.Bit3Mode = 0;
+    defparam SOLID_LED_CTRL.Bit4Mode = 0;
+    defparam SOLID_LED_CTRL.Bit5Mode = 0;
+    defparam SOLID_LED_CTRL.Bit6Mode = 0;
+    defparam SOLID_LED_CTRL.Bit7Mode = 0;
+    defparam SOLID_LED_CTRL.BitValue = 0;
+    defparam SOLID_LED_CTRL.BusDisplay = 0;
+    defparam SOLID_LED_CTRL.ExtrReset = 0;
+    defparam SOLID_LED_CTRL.NumOutputs = 3;
+
+    // -- AMux ADC_MUX start -- ***
+    // -- Mux A --
+    
+    cy_psoc3_amux_v1_0 ADC_MUX(
+        .muxin({
+            Net_1603,
+            Net_1602
+            }),
+        .vout(Net_1593)
+        );
+    
+    defparam ADC_MUX.muxin_width = 2;
+    defparam ADC_MUX.init_mux_sel = 2'h0;
+    defparam ADC_MUX.one_active = 1;
+    defparam ADC_MUX.connect_mode = 0;
+    
+    // -- AMux ADC_MUX end --
 
 
 

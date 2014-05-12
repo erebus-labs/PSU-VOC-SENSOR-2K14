@@ -13,6 +13,40 @@
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\cyfitterkeil.inc" value="NONE;" />
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\cyfitter.h" value="NONE;" />
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\cydisabledsheets.h" value="NONE;" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\RTC.c" value="DP8051_C_FILE;RTC" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\RTC.h" value="NONE;RTC" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\RTC_INT.c" value="DP8051_C_FILE;RTC" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\RGB_LED.c" value="DP8051_C_FILE;RGB_LED" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\RGB_LED.h" value="NONE;RGB_LED" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\RGB_LED_aliases.h" value="NONE;RGB_LED" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Vbus.c" value="DP8051_C_FILE;Vbus" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Vbus.h" value="NONE;Vbus" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Vbus_aliases.h" value="NONE;Vbus" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Vbus_IRQ.c" value="DP8051_C_FILE;Vbus_IRQ" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Vbus_IRQ.h" value="NONE;Vbus_IRQ" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Em_EEPROM.c" value="DP8051_C_FILE;Em_EEPROM" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Em_EEPROM.h" value="NONE;Em_EEPROM" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\PWM0_CTRL.c" value="DP8051_C_FILE;PWM0_CTRL" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\PWM0_CTRL.h" value="NONE;PWM0_CTRL" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\EEPROM_R.c" value="DP8051_C_FILE;EEPROM_R" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\EEPROM_R.h" value="NONE;EEPROM_R" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Sensor_In.c" value="DP8051_C_FILE;Sensor_In" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Sensor_In.h" value="NONE;Sensor_In" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Sensor_In_aliases.h" value="NONE;Sensor_In" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\ADC.c" value="DP8051_C_FILE;ADC" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\ADC.h" value="NONE;ADC" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\ADC_PM.c" value="DP8051_C_FILE;ADC" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\ADC_INT.c" value="DP8051_C_FILE;ADC" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\StartCollection_B.c" value="DP8051_C_FILE;StartCollection_B" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\StartCollection_B.h" value="NONE;StartCollection_B" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\StartCollection_B_aliases.h" value="NONE;StartCollection_B" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\StopCollection_B.c" value="DP8051_C_FILE;StopCollection_B" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\StopCollection_B.h" value="NONE;StopCollection_B" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\StopCollection_B_aliases.h" value="NONE;StopCollection_B" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\StopCollection_IRQ.c" value="DP8051_C_FILE;StopCollection_IRQ" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\StopCollection_IRQ.h" value="NONE;StopCollection_IRQ" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\StartCollection_IRQ.c" value="DP8051_C_FILE;StartCollection_IRQ" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\StartCollection_IRQ.h" value="NONE;StartCollection_IRQ" />
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\USBUART.c" value="DP8051_C_FILE;USBUART" />
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\USBUART.h" value="NONE;USBUART" />
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\USBUART_audio.c" value="DP8051_C_FILE;USBUART" />
@@ -33,71 +67,18 @@
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\USBUART_midi.c" value="DP8051_C_FILE;USBUART" />
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\USBUART_midi.h" value="NONE;USBUART" />
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\USBUART_pvt.h" value="NONE;USBUART" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\EEPROM_Blink_TI.c" value="DP8051_C_FILE;EEPROM_Blink_TI" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\EEPROM_Blink_TI.h" value="NONE;EEPROM_Blink_TI" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\EEPROM_Blink_TI_PM.c" value="DP8051_C_FILE;EEPROM_Blink_TI" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\EEPROM_LED.c" value="DP8051_C_FILE;EEPROM_LED" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\EEPROM_LED.h" value="NONE;EEPROM_LED" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\EEPROM_LED_aliases.h" value="NONE;EEPROM_LED" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Blink_Clock.c" value="DP8051_C_FILE;Blink_Clock" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Blink_Clock.h" value="NONE;Blink_Clock" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Vbus.c" value="DP8051_C_FILE;Vbus" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Vbus.h" value="NONE;Vbus" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Vbus_aliases.h" value="NONE;Vbus" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Vbus_IRQ.c" value="DP8051_C_FILE;Vbus_IRQ" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Vbus_IRQ.h" value="NONE;Vbus_IRQ" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\EEPROM_R.c" value="DP8051_C_FILE;EEPROM_R" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\EEPROM_R.h" value="NONE;EEPROM_R" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\USB_LED.c" value="DP8051_C_FILE;USB_LED" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\USB_LED.h" value="NONE;USB_LED" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\USB_LED_aliases.h" value="NONE;USB_LED" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\TakeSample_B.c" value="DP8051_C_FILE;TakeSample_B" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\TakeSample_B.h" value="NONE;TakeSample_B" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\TakeSample_B_aliases.h" value="NONE;TakeSample_B" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Em_EEPROM.c" value="DP8051_C_FILE;Em_EEPROM" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Em_EEPROM.h" value="NONE;Em_EEPROM" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Sensor_In.c" value="DP8051_C_FILE;Sensor_In" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Sensor_In.h" value="NONE;Sensor_In" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Sensor_In_aliases.h" value="NONE;Sensor_In" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\ADC.c" value="DP8051_C_FILE;ADC" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\ADC.h" value="NONE;ADC" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\ADC_PM.c" value="DP8051_C_FILE;ADC" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\ADC_INT.c" value="DP8051_C_FILE;ADC" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\TakeSample_IRQ.c" value="DP8051_C_FILE;TakeSample_IRQ" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\TakeSample_IRQ.h" value="NONE;TakeSample_IRQ" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\StartCollection_B.c" value="DP8051_C_FILE;StartCollection_B" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\StartCollection_B.h" value="NONE;StartCollection_B" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\StartCollection_B_aliases.h" value="NONE;StartCollection_B" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\StopCollection_B.c" value="DP8051_C_FILE;StopCollection_B" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\StopCollection_B.h" value="NONE;StopCollection_B" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\StopCollection_B_aliases.h" value="NONE;StopCollection_B" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Hibernate_B.c" value="DP8051_C_FILE;Hibernate_B" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Hibernate_B.h" value="NONE;Hibernate_B" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Hibernate_B_aliases.h" value="NONE;Hibernate_B" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Hibernate_IRQ.c" value="DP8051_C_FILE;Hibernate_IRQ" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Hibernate_IRQ.h" value="NONE;Hibernate_IRQ" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\StopCollection_IRQ.c" value="DP8051_C_FILE;StopCollection_IRQ" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\StopCollection_IRQ.h" value="NONE;StopCollection_IRQ" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\StartCollection_IRQ.c" value="DP8051_C_FILE;StartCollection_IRQ" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\StartCollection_IRQ.h" value="NONE;StartCollection_IRQ" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\RTC.c" value="DP8051_C_FILE;RTC" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\RTC.h" value="NONE;RTC" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\RTC_INT.c" value="DP8051_C_FILE;RTC" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\USB_Blink_TI.c" value="DP8051_C_FILE;USB_Blink_TI" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\USB_Blink_TI.h" value="NONE;USB_Blink_TI" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\USB_Blink_TI_PM.c" value="DP8051_C_FILE;USB_Blink_TI" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\FLASH_LED.c" value="DP8051_C_FILE;FLASH_LED" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\FLASH_LED.h" value="NONE;FLASH_LED" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\FLASH_LED_aliases.h" value="NONE;FLASH_LED" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Flash_Blink_TI.c" value="DP8051_C_FILE;Flash_Blink_TI" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Flash_Blink_TI.h" value="NONE;Flash_Blink_TI" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Flash_Blink_TI_PM.c" value="DP8051_C_FILE;Flash_Blink_TI" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\USBUART_Dm.c" value="DP8051_C_FILE;USBUART_Dm" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\USBUART_Dm.h" value="NONE;USBUART_Dm" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\USBUART_Dm_aliases.h" value="NONE;USBUART_Dm" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\USBUART_Dp.c" value="DP8051_C_FILE;USBUART_Dp" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\USBUART_Dp.h" value="NONE;USBUART_Dp" />
-  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\USBUART_Dp_aliases.h" value="NONE;USBUART_Dp" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\PWM1_CTRL.c" value="DP8051_C_FILE;PWM1_CTRL" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\PWM1_CTRL.h" value="NONE;PWM1_CTRL" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\LED_PWM.c" value="DP8051_C_FILE;LED_PWM" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\LED_PWM.h" value="NONE;LED_PWM" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\LED_PWM_PM.c" value="DP8051_C_FILE;LED_PWM" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Batt_Monitor.c" value="DP8051_C_FILE;Batt_Monitor" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Batt_Monitor.h" value="NONE;Batt_Monitor" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\Batt_Monitor_aliases.h" value="NONE;Batt_Monitor" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\SOLID_LED_CTRL.c" value="DP8051_C_FILE;SOLID_LED_CTRL" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\SOLID_LED_CTRL.h" value="NONE;SOLID_LED_CTRL" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\ADC_MUX.c" value="DP8051_C_FILE;ADC_MUX" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\ADC_MUX.h" value="NONE;ADC_MUX" />
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\ADC_AMux.c" value="DP8051_C_FILE;ADC_AMux" />
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\ADC_AMux.h" value="NONE;ADC_AMux" />
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\ADC_Ext_CP_Clk.c" value="DP8051_C_FILE;ADC_Ext_CP_Clk" />
@@ -106,6 +87,12 @@
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\ADC_IRQ.h" value="NONE;ADC_IRQ" />
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\ADC_theACLK.c" value="DP8051_C_FILE;ADC_theACLK" />
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\ADC_theACLK.h" value="NONE;ADC_theACLK" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\USBUART_Dm.c" value="DP8051_C_FILE;USBUART_Dm" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\USBUART_Dm.h" value="NONE;USBUART_Dm" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\USBUART_Dm_aliases.h" value="NONE;USBUART_Dm" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\USBUART_Dp.c" value="DP8051_C_FILE;USBUART_Dp" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\USBUART_Dp.h" value="NONE;USBUART_Dp" />
+  <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\USBUART_Dp_aliases.h" value="NONE;USBUART_Dp" />
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\CyBootAsmKeil.a51" value="KEIL_8051_ASM_FILE;cy_boot" />
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\CyDmac.c" value="DP8051_C_FILE;cy_boot" />
   <file name="C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\codegentemp\CyDmac.h" value="NONE;cy_boot" />

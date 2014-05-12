@@ -491,9 +491,51 @@
       </registers>
     </peripheral>
     <peripheral>
+      <name>PWM1_CTRL</name>
+      <description>No description available</description>
+      <baseAddress>0x6474</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x1</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>PWM1_CTRL_CONTROL_REG</name>
+          <description>No description available</description>
+          <addressOffset>0x0</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>SOLID_LED_CTRL</name>
+      <description>No description available</description>
+      <baseAddress>0x6473</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x1</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>SOLID_LED_CTRL_CONTROL_REG</name>
+          <description>No description available</description>
+          <addressOffset>0x0</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
       <name>LED_PWM</name>
       <description>No description available</description>
-      <baseAddress>0x6421</baseAddress>
+      <baseAddress>0x6423</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x71</size>
@@ -521,7 +563,7 @@
         <register>
           <name>LED_PWM_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x4F</addressOffset>
+          <addressOffset>0x52</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -678,23 +720,133 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>LED1_CTRL</name>
-      <description>No description available</description>
-      <baseAddress>0x6471</baseAddress>
+      <name>RTC</name>
+      <description>RTC</description>
+      <baseAddress>0x4382</baseAddress>
       <addressBlock>
         <offset>0</offset>
-        <size>0x1</size>
+        <size>0xF</size>
         <usage>registers</usage>
       </addressBlock>
       <registers>
         <register>
-          <name>LED1_CTRL_CONTROL_REG</name>
-          <description>No description available</description>
+          <name>PM_TW_CFG2</name>
+          <description>Power timers enable and interrupt enable configuration register</description>
           <addressOffset>0x0</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
           <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>ONEPPC_interrupt_enable</name>
+              <description>When set and one pulse-per-second is enabled, an interrupt is issued when the pulse occurs</description>
+              <lsb>5</lsb>
+              <msb>5</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>Enabled</name>
+                  <description>The ONEPPC interrupt is issued. Only if ONEPPC is enabled.</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Disabled</name>
+                  <description>No ONEPPC interrupt is issued.</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>ONEPPC_enable</name>
+              <description>ONEPPC enable</description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>Enabled</name>
+                  <description>The ONEPPC is enabled.</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Disabled</name>
+                  <description>The ONEPPC is disabled.</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CTW_interrupt_enable</name>
+              <description>An interrupt issue when the CTW reaches the selected interval</description>
+              <lsb>3</lsb>
+              <msb>3</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>Enabled</name>
+                  <description>The CTW interrupt is issued. Only if CTW is enabled.</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Disabled</name>
+                  <description>No CTW interrupt is issued.</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+            <field>
+              <name>CTW_enable</name>
+              <description>CTW enable</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <access>read-write</access>
+              <enumeratedValues>
+                <enumeratedValue>
+                  <name>Enabled</name>
+                  <description>The CTW is enabled.</description>
+                  <value>1</value>
+                </enumeratedValue>
+                <enumeratedValue>
+                  <name>Disabled</name>
+                  <description>The CTW is disabled.</description>
+                  <value>0</value>
+                </enumeratedValue>
+              </enumeratedValues>
+            </field>
+          </fields>
+        </register>
+        <register>
+          <name>PM_INT_SR</name>
+          <description>Power Manager Interrupt Status Register</description>
+          <addressOffset>0xE</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>onepps_int</name>
+              <description>When set, a onepps event has occured.</description>
+              <lsb>2</lsb>
+              <msb>2</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>ctw_int</name>
+              <description>When set, a limited active ready event has occured</description>
+              <lsb>1</lsb>
+              <msb>1</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>ftw_int</name>
+              <description>When set, a fast timewheel event has occured</description>
+              <lsb>0</lsb>
+              <msb>0</msb>
+              <access>read-write</access>
+            </field>
+          </fields>
         </register>
       </registers>
     </peripheral>
@@ -4726,138 +4878,7 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>RTC</name>
-      <description>RTC</description>
-      <baseAddress>0x4382</baseAddress>
-      <addressBlock>
-        <offset>0</offset>
-        <size>0xF</size>
-        <usage>registers</usage>
-      </addressBlock>
-      <registers>
-        <register>
-          <name>PM_TW_CFG2</name>
-          <description>Power timers enable and interrupt enable configuration register</description>
-          <addressOffset>0x0</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>ONEPPC_interrupt_enable</name>
-              <description>When set and one pulse-per-second is enabled, an interrupt is issued when the pulse occurs</description>
-              <lsb>5</lsb>
-              <msb>5</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>Enabled</name>
-                  <description>The ONEPPC interrupt is issued. Only if ONEPPC is enabled.</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>Disabled</name>
-                  <description>No ONEPPC interrupt is issued.</description>
-                  <value>0</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>ONEPPC_enable</name>
-              <description>ONEPPC enable</description>
-              <lsb>4</lsb>
-              <msb>4</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>Enabled</name>
-                  <description>The ONEPPC is enabled.</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>Disabled</name>
-                  <description>The ONEPPC is disabled.</description>
-                  <value>0</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CTW_interrupt_enable</name>
-              <description>An interrupt issue when the CTW reaches the selected interval</description>
-              <lsb>3</lsb>
-              <msb>3</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>Enabled</name>
-                  <description>The CTW interrupt is issued. Only if CTW is enabled.</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>Disabled</name>
-                  <description>No CTW interrupt is issued.</description>
-                  <value>0</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CTW_enable</name>
-              <description>CTW enable</description>
-              <lsb>2</lsb>
-              <msb>2</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>Enabled</name>
-                  <description>The CTW is enabled.</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>Disabled</name>
-                  <description>The CTW is disabled.</description>
-                  <value>0</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>PM_INT_SR</name>
-          <description>Power Manager Interrupt Status Register</description>
-          <addressOffset>0xE</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>onepps_int</name>
-              <description>When set, a onepps event has occured.</description>
-              <lsb>2</lsb>
-              <msb>2</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>ctw_int</name>
-              <description>When set, a limited active ready event has occured</description>
-              <lsb>1</lsb>
-              <msb>1</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>ftw_int</name>
-              <description>When set, a fast timewheel event has occured</description>
-              <lsb>0</lsb>
-              <msb>0</msb>
-              <access>read-write</access>
-            </field>
-          </fields>
-        </register>
-      </registers>
-    </peripheral>
-    <peripheral>
-      <name>LED0_CTRL</name>
+      <name>PWM0_CTRL</name>
       <description>No description available</description>
       <baseAddress>0x6472</baseAddress>
       <addressBlock>
@@ -4867,7 +4888,7 @@
       </addressBlock>
       <registers>
         <register>
-          <name>LED0_CTRL_CONTROL_REG</name>
+          <name>PWM0_CTRL_CONTROL_REG</name>
           <description>No description available</description>
           <addressOffset>0x0</addressOffset>
           <size>8</size>

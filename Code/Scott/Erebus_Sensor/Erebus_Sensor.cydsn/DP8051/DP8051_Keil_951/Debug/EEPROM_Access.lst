@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   EEPROM_ACCESS                                                         05/07/2014 04:57:58 PAGE 1   
+C51 COMPILER V9.51   EEPROM_ACCESS                                                         05/10/2014 16:55:33 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE EEPROM_ACCESS
@@ -35,79 +35,79 @@ line level    source
   24   1          uint8 result = SUCCESS;
   25   1          cystatus status;
   26   1          
-  27   1          LED_on(MEM);
+  27   1          // Allocate array to hold EEPROM variables
   28   1          
-  29   1          // Allocate array to hold EEPROM variables
-  30   1          
-  31   1          rows_used = ceil(bytes_used/CYDEV_EEPROM_ROW_SIZE);
-  32   1          buffer = malloc(((uint16) rows_used) * CYDEV_EEPROM_ROW_SIZE);
-  33   1          
-  34   1          dst_ptr = buffer;
-  35   1          remainder = (rows_used * 16) - EEPROM_BYTES_USED;
-  36   1          
-  37   1          // Copy all variables into RAM
-  38   1          for (i=0; i<EEPROM_BYTES_USED; ++i){
-  39   2              *dst_ptr = CY_GET_REG8(CYDEV_EE_BASE + i);
-  40   2              ++dst_ptr;      
-  41   2          }
-  42   1          
-  43   1          // Fill remainder of buffer with zeros
-  44   1          while (i < remainder){
-  45   2              *dst_ptr = 0;
-  46   2              ++i;
-  47   2          }
-  48   1          
-  49   1          // Modify variables in RAM
-  50   1          buffer[0] = new_settings.sensor;
-  51   1          buffer[1] = new_settings.sample_unit;
-  52   1          buffer[2] = new_settings.sample_interval;
-  53   1          
-C51 COMPILER V9.51   EEPROM_ACCESS                                                         05/07/2014 04:57:58 PAGE 2   
+  29   1          rows_used = ceil(bytes_used/CYDEV_EEPROM_ROW_SIZE);
+  30   1          buffer = malloc(((uint16) rows_used) * CYDEV_EEPROM_ROW_SIZE);
+  31   1          
+  32   1          dst_ptr = buffer;
+  33   1          remainder = (rows_used * 16) - EEPROM_BYTES_USED;
+  34   1          
+  35   1          // Copy all variables into RAM
+  36   1          for (i=0; i<EEPROM_BYTES_USED; ++i){
+  37   2              *dst_ptr = CY_GET_REG8(CYDEV_EE_BASE + i);
+  38   2              ++dst_ptr;      
+  39   2          }
+  40   1          
+  41   1          // Fill remainder of buffer with zeros
+  42   1          while (i < remainder){
+  43   2              *dst_ptr = 0;
+  44   2              ++i;
+  45   2          }
+  46   1          
+  47   1          // Modify variables in RAM
+  48   1          buffer[0] = new_settings.sensor;
+  49   1          buffer[1] = new_settings.sample_unit;
+  50   1          buffer[2] = new_settings.sample_interval;
+  51   1          
+  52   1          // Erase EEPROM
+  53   1          // Disable interrupts during EEPROM operation
+C51 COMPILER V9.51   EEPROM_ACCESS                                                         05/10/2014 16:55:33 PAGE 2   
 
-  54   1          // Erase EEPROM
+  54   1          CyGlobalIntDisable;
   55   1          status = EEPROM_R_EraseSector(SECTOR_NUMBER);
-  56   1          if (status != CYRET_SUCCESS){
-  57   2              result = FAIL;
-  58   2              goto exit;
-  59   2          }
-  60   1          
-  61   1          // Write back modified EEPROM Variables
-  62   1          i = 0;
-  63   1          src_ptr = buffer;
-  64   1          while ((i < rows_used) && (i < EEPROM_ROWS)){
-  65   2              status = EEPROM_R_Write(src_ptr, i);
-  66   2              if (status != CYRET_SUCCESS){
-  67   3                 result = FAIL;
-  68   3              goto exit;
-  69   3          }
-  70   2              src_ptr = src_ptr + CYDEV_EEPROM_ROW_SIZE;
-  71   2              ++i;
-  72   2          }
-  73   1           
-  74   1          // Free buffer memory
-  75   1          free(buffer);
-  76   1          
-  77   1          LED_off(MEM);
-  78   1          
-  79   1      exit:   
-  80   1          return result;   
-  81   1      }
-  82          
-  83          uint8 get_variable(uint16 var_index){
-  84   1          uint8 value = 10;
-  85   1          
-  86   1          LED_on(MEM);
-  87   1          
-  88   1          value = CY_GET_REG8(CYDEV_EE_BASE + var_index);
+  56   1          CyGlobalIntEnable;
+  57   1          
+  58   1          if (status != CYRET_SUCCESS){
+  59   2              result = FAIL;
+  60   2              goto exit;
+  61   2          }
+  62   1          
+  63   1          // Write back modified EEPROM Variables
+  64   1          i = 0;
+  65   1          src_ptr = buffer;
+  66   1          while ((i < rows_used) && (i < EEPROM_ROWS)){
+  67   2              // Disable interrupts during EEPROM operation
+  68   2              CyGlobalIntDisable;
+  69   2              status = EEPROM_R_Write(src_ptr, i);
+  70   2              CyGlobalIntEnable;
+  71   2              
+  72   2              if (status != CYRET_SUCCESS){
+  73   3                 result = FAIL;
+  74   3              goto exit;
+  75   3          }
+  76   2              src_ptr = src_ptr + CYDEV_EEPROM_ROW_SIZE;
+  77   2              ++i;
+  78   2          }
+  79   1           
+  80   1          // Free buffer memory
+  81   1          free(buffer);
+  82   1          
+  83   1      exit:   
+  84   1          return result;   
+  85   1      }
+  86          
+  87          uint8 get_variable(uint16 var_index){
+  88   1          uint8 value = 10;
   89   1          
-  90   1          LED_off(MEM);
+  90   1          value = CY_GET_REG8(CYDEV_EE_BASE + var_index);
   91   1          
   92   1          return value;
   93   1      }
   94          
   95          
   96          /* [] END OF FILE */
-C51 COMPILER V9.51   EEPROM_ACCESS                                                         05/07/2014 04:57:58 PAGE 3   
+C51 COMPILER V9.51   EEPROM_ACCESS                                                         05/10/2014 16:55:33 PAGE 3   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -143,344 +143,366 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0029 900000      R     MOV     DPTR,#result
 002C 7402              MOV     A,#02H
 002E F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 27
-002F 7F02              MOV     R7,#02H
-0031 120000      E     LCALL   _LED_on
-                                           ; SOURCE LINE # 31
-0034 7B00              MOV     R3,#00H
-0036 7A00              MOV     R2,#00H
-0038 7980              MOV     R1,#080H
-003A 7841              MOV     R0,#041H
-003C 900000      R     MOV     DPTR,#bytes_used
-003F 120000      E     LCALL   ?C?LLDXDATA
-0042 120000      E     LCALL   ?C?FPDIV
-0045 120000      E     LCALL   _ceil
-0048 900000      R     MOV     DPTR,#rows_used
-004B 120000      E     LCALL   ?C?LSTXDATA
+                                           ; SOURCE LINE # 29
+002F 7B00              MOV     R3,#00H
+0031 7A00              MOV     R2,#00H
+0033 7980              MOV     R1,#080H
+0035 7841              MOV     R0,#041H
+0037 900000      R     MOV     DPTR,#bytes_used
+003A 120000      E     LCALL   ?C?LLDXDATA
+003D 120000      E     LCALL   ?C?FPDIV
+0040 120000      E     LCALL   _ceil
+0043 900000      R     MOV     DPTR,#rows_used
+0046 120000      E     LCALL   ?C?LSTXDATA
+                                           ; SOURCE LINE # 30
+0049 900000      R     MOV     DPTR,#rows_used
+004C 120000      E     LCALL   ?C?LLDXDATA
+004F 120000      E     LCALL   ?C?CASTF
+0052 EF                MOV     A,R7
+0053 C4                SWAP    A
+0054 F8                MOV     R0,A
+0055 540F              ANL     A,#0FH
+0057 C8                XCH     A,R0
+0058 68                XRL     A,R0
+0059 FF                MOV     R7,A
+005A EE                MOV     A,R6
+005B C4                SWAP    A
+005C 54F0              ANL     A,#0F0H
+005E 48                ORL     A,R0
+005F FE                MOV     R6,A
+0060 120000      E     LCALL   _malloc
+C51 COMPILER V9.51   EEPROM_ACCESS                                                         05/10/2014 16:55:33 PAGE 4   
+
+0063 AA06              MOV     R2,AR6
+0065 A907              MOV     R1,AR7
+0067 7B01              MOV     R3,#01H
+0069 900000      R     MOV     DPTR,#buffer
+006C 120000      E     LCALL   ?C?PSTXDATA
                                            ; SOURCE LINE # 32
-004E 900000      R     MOV     DPTR,#rows_used
-0051 120000      E     LCALL   ?C?LLDXDATA
-0054 120000      E     LCALL   ?C?CASTF
-0057 EF                MOV     A,R7
-0058 C4                SWAP    A
-0059 F8                MOV     R0,A
-005A 540F              ANL     A,#0FH
-005C C8                XCH     A,R0
-005D 68                XRL     A,R0
-005E FF                MOV     R7,A
-005F EE                MOV     A,R6
-0060 C4                SWAP    A
-0061 54F0              ANL     A,#0F0H
-C51 COMPILER V9.51   EEPROM_ACCESS                                                         05/07/2014 04:57:58 PAGE 4   
-
-0063 48                ORL     A,R0
-0064 FE                MOV     R6,A
-0065 120000      E     LCALL   _malloc
-0068 AA06              MOV     R2,AR6
-006A A907              MOV     R1,AR7
-006C 7B01              MOV     R3,#01H
-006E 900000      R     MOV     DPTR,#buffer
-0071 120000      E     LCALL   ?C?PSTXDATA
-                                           ; SOURCE LINE # 34
-0074 900000      R     MOV     DPTR,#buffer
-0077 120000      E     LCALL   ?C?PLDXDATA
-007A 900000      R     MOV     DPTR,#dst_ptr
-007D 120000      E     LCALL   ?C?PSTXDATA
-                                           ; SOURCE LINE # 35
-0080 7F00              MOV     R7,#00H
-0082 7E00              MOV     R6,#00H
-0084 7D80              MOV     R5,#080H
-0086 7C41              MOV     R4,#041H
-0088 900000      R     MOV     DPTR,#rows_used
-008B 120000      E     LCALL   ?C?LLDXDATA0
-008E 120000      E     LCALL   ?C?FPMUL
-0091 7B00              MOV     R3,#00H
-0093 7A00              MOV     R2,#00H
-0095 7940              MOV     R1,#040H
-0097 78C0              MOV     R0,#0C0H
-0099 120000      E     LCALL   ?C?FPADD
-009C 120000      E     LCALL   ?C?CASTF
-009F 900000      R     MOV     DPTR,#remainder
-00A2 EE                MOV     A,R6
-00A3 F0                MOVX    @DPTR,A
-00A4 A3                INC     DPTR
-00A5 EF                MOV     A,R7
+006F 900000      R     MOV     DPTR,#buffer
+0072 120000      E     LCALL   ?C?PLDXDATA
+0075 900000      R     MOV     DPTR,#dst_ptr
+0078 120000      E     LCALL   ?C?PSTXDATA
+                                           ; SOURCE LINE # 33
+007B 7F00              MOV     R7,#00H
+007D 7E00              MOV     R6,#00H
+007F 7D80              MOV     R5,#080H
+0081 7C41              MOV     R4,#041H
+0083 900000      R     MOV     DPTR,#rows_used
+0086 120000      E     LCALL   ?C?LLDXDATA0
+0089 120000      E     LCALL   ?C?FPMUL
+008C 7B00              MOV     R3,#00H
+008E 7A00              MOV     R2,#00H
+0090 7940              MOV     R1,#040H
+0092 78C0              MOV     R0,#0C0H
+0094 120000      E     LCALL   ?C?FPADD
+0097 120000      E     LCALL   ?C?CASTF
+009A 900000      R     MOV     DPTR,#remainder
+009D EE                MOV     A,R6
+009E F0                MOVX    @DPTR,A
+009F A3                INC     DPTR
+00A0 EF                MOV     A,R7
+00A1 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 36
+00A2 900000      R     MOV     DPTR,#i
+00A5 E4                CLR     A
 00A6 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 38
+00A7         ?C0001:
 00A7 900000      R     MOV     DPTR,#i
-00AA E4                CLR     A
-00AB F0                MOVX    @DPTR,A
-00AC         ?C0001:
-00AC 900000      R     MOV     DPTR,#i
-00AF E0                MOVX    A,@DPTR
-00B0 FF                MOV     R7,A
-00B1 EF                MOV     A,R7
-00B2 C3                CLR     C
-00B3 9403              SUBB    A,#03H
-00B5 5031              JNC     ?C0004
+00AA E0                MOVX    A,@DPTR
+00AB FF                MOV     R7,A
+00AC EF                MOV     A,R7
+00AD C3                CLR     C
+00AE 9403              SUBB    A,#03H
+00B0 5031              JNC     ?C0004
+                                           ; SOURCE LINE # 37
+00B2 900000      R     MOV     DPTR,#i
+00B5 E0                MOVX    A,@DPTR
+00B6 FF                MOV     R7,A
+00B7 7E00              MOV     R6,#00H
+00B9 EF                MOV     A,R7
+00BA 2400              ADD     A,#00H
+00BC FF                MOV     R7,A
+00BD EE                MOV     A,R6
+00BE 3480              ADDC    A,#080H
+00C0 FE                MOV     R6,A
+00C1 8F82              MOV     DPL,R7
+00C3 8E83              MOV     DPH,R6
+00C5 E0                MOVX    A,@DPTR
+00C6 FF                MOV     R7,A
+00C7 900000      R     MOV     DPTR,#dst_ptr
+00CA 120000      E     LCALL   ?C?PLDXDATA
+00CD EF                MOV     A,R7
+00CE 120000      E     LCALL   ?C?CSTPTR
+                                           ; SOURCE LINE # 38
+C51 COMPILER V9.51   EEPROM_ACCESS                                                         05/10/2014 16:55:33 PAGE 5   
+
+00D1 900000      R     MOV     DPTR,#dst_ptr+01H
+00D4 E4                CLR     A
+00D5 75F001            MOV     B,#01H
+00D8 120000      E     LCALL   ?C?IILDX
                                            ; SOURCE LINE # 39
-00B7 900000      R     MOV     DPTR,#i
-00BA E0                MOVX    A,@DPTR
-00BB FF                MOV     R7,A
-00BC 7E00              MOV     R6,#00H
-00BE EF                MOV     A,R7
-00BF 2400              ADD     A,#00H
-00C1 FF                MOV     R7,A
-00C2 EE                MOV     A,R6
-00C3 3480              ADDC    A,#080H
-00C5 FE                MOV     R6,A
-00C6 8F82              MOV     DPL,R7
-00C8 8E83              MOV     DPH,R6
-00CA E0                MOVX    A,@DPTR
-00CB FF                MOV     R7,A
-00CC 900000      R     MOV     DPTR,#dst_ptr
-00CF 120000      E     LCALL   ?C?PLDXDATA
-C51 COMPILER V9.51   EEPROM_ACCESS                                                         05/07/2014 04:57:58 PAGE 5   
-
-00D2 EF                MOV     A,R7
-00D3 120000      E     LCALL   ?C?CSTPTR
-                                           ; SOURCE LINE # 40
-00D6 900000      R     MOV     DPTR,#dst_ptr+01H
-00D9 E4                CLR     A
-00DA 75F001            MOV     B,#01H
-00DD 120000      E     LCALL   ?C?IILDX
-                                           ; SOURCE LINE # 41
-00E0         ?C0003:
-00E0 900000      R     MOV     DPTR,#i
-00E3 E0                MOVX    A,@DPTR
-00E4 04                INC     A
-00E5 F0                MOVX    @DPTR,A
-00E6 80C4              SJMP    ?C0001
-00E8         ?C0002:
-00E8         ?C0004:
+00DB         ?C0003:
+00DB 900000      R     MOV     DPTR,#i
+00DE E0                MOVX    A,@DPTR
+00DF 04                INC     A
+00E0 F0                MOVX    @DPTR,A
+00E1 80C4              SJMP    ?C0001
+00E3         ?C0002:
+00E3         ?C0004:
+                                           ; SOURCE LINE # 42
+00E3 900000      R     MOV     DPTR,#i
+00E6 E0                MOVX    A,@DPTR
+00E7 FF                MOV     R7,A
+00E8 7E00              MOV     R6,#00H
+00EA 900000      R     MOV     DPTR,#remainder
+00ED E0                MOVX    A,@DPTR
+00EE FC                MOV     R4,A
+00EF A3                INC     DPTR
+00F0 E0                MOVX    A,@DPTR
+00F1 FD                MOV     R5,A
+00F2 C3                CLR     C
+00F3 EF                MOV     A,R7
+00F4 9D                SUBB    A,R5
+00F5 EE                MOV     A,R6
+00F6 9C                SUBB    A,R4
+00F7 5012              JNC     ?C0005
+                                           ; SOURCE LINE # 43
+00F9 900000      R     MOV     DPTR,#dst_ptr
+00FC 120000      E     LCALL   ?C?PLDXDATA
+00FF E4                CLR     A
+0100 120000      E     LCALL   ?C?CSTPTR
                                            ; SOURCE LINE # 44
-00E8 900000      R     MOV     DPTR,#i
-00EB E0                MOVX    A,@DPTR
-00EC FF                MOV     R7,A
-00ED 7E00              MOV     R6,#00H
-00EF 900000      R     MOV     DPTR,#remainder
-00F2 E0                MOVX    A,@DPTR
-00F3 FC                MOV     R4,A
-00F4 A3                INC     DPTR
-00F5 E0                MOVX    A,@DPTR
-00F6 FD                MOV     R5,A
-00F7 C3                CLR     C
-00F8 EF                MOV     A,R7
-00F9 9D                SUBB    A,R5
-00FA EE                MOV     A,R6
-00FB 9C                SUBB    A,R4
-00FC 5012              JNC     ?C0005
+0103 900000      R     MOV     DPTR,#i
+0106 E0                MOVX    A,@DPTR
+0107 04                INC     A
+0108 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 45
-00FE 900000      R     MOV     DPTR,#dst_ptr
-0101 120000      E     LCALL   ?C?PLDXDATA
-0104 E4                CLR     A
-0105 120000      E     LCALL   ?C?CSTPTR
-                                           ; SOURCE LINE # 46
-0108 900000      R     MOV     DPTR,#i
-010B E0                MOVX    A,@DPTR
-010C 04                INC     A
-010D F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 47
-010E 80D8              SJMP    ?C0004
-0110         ?C0005:
+0109 80D8              SJMP    ?C0004
+010B         ?C0005:
+                                           ; SOURCE LINE # 48
+010B 900000      R     MOV     DPTR,#new_settings
+010E E0                MOVX    A,@DPTR
+010F FF                MOV     R7,A
+0110 900000      R     MOV     DPTR,#buffer
+0113 120000      E     LCALL   ?C?PLDXDATA
+0116 EF                MOV     A,R7
+0117 120000      E     LCALL   ?C?CSTPTR
+                                           ; SOURCE LINE # 49
+011A 900000      R     MOV     DPTR,#new_settings+01H
+011D E0                MOVX    A,@DPTR
+011E FF                MOV     R7,A
+011F 900000      R     MOV     DPTR,#buffer
+0122 120000      E     LCALL   ?C?PLDXDATA
+0125 E9                MOV     A,R1
+0126 2401              ADD     A,#01H
+0128 F9                MOV     R1,A
+0129 EA                MOV     A,R2
+012A 3400              ADDC    A,#00H
+C51 COMPILER V9.51   EEPROM_ACCESS                                                         05/10/2014 16:55:33 PAGE 6   
+
+012C FA                MOV     R2,A
+012D EF                MOV     A,R7
+012E 120000      E     LCALL   ?C?CSTPTR
                                            ; SOURCE LINE # 50
-0110 900000      R     MOV     DPTR,#new_settings
-0113 E0                MOVX    A,@DPTR
-0114 FF                MOV     R7,A
-0115 900000      R     MOV     DPTR,#buffer
-0118 120000      E     LCALL   ?C?PLDXDATA
-011B EF                MOV     A,R7
-011C 120000      E     LCALL   ?C?CSTPTR
-                                           ; SOURCE LINE # 51
-011F 900000      R     MOV     DPTR,#new_settings+01H
-0122 E0                MOVX    A,@DPTR
-0123 FF                MOV     R7,A
-0124 900000      R     MOV     DPTR,#buffer
-0127 120000      E     LCALL   ?C?PLDXDATA
-012A E9                MOV     A,R1
-012B 2401              ADD     A,#01H
-C51 COMPILER V9.51   EEPROM_ACCESS                                                         05/07/2014 04:57:58 PAGE 6   
-
-012D F9                MOV     R1,A
-012E EA                MOV     A,R2
-012F 3400              ADDC    A,#00H
-0131 FA                MOV     R2,A
-0132 EF                MOV     A,R7
-0133 120000      E     LCALL   ?C?CSTPTR
-                                           ; SOURCE LINE # 52
-0136 900000      R     MOV     DPTR,#new_settings+02H
-0139 E0                MOVX    A,@DPTR
-013A FF                MOV     R7,A
-013B 900000      R     MOV     DPTR,#buffer
-013E 120000      E     LCALL   ?C?PLDXDATA
-0141 E9                MOV     A,R1
-0142 2402              ADD     A,#02H
-0144 F9                MOV     R1,A
-0145 EA                MOV     A,R2
-0146 3400              ADDC    A,#00H
-0148 FA                MOV     R2,A
-0149 EF                MOV     A,R7
-014A 120000      E     LCALL   ?C?CSTPTR
+0131 900000      R     MOV     DPTR,#new_settings+02H
+0134 E0                MOVX    A,@DPTR
+0135 FF                MOV     R7,A
+0136 900000      R     MOV     DPTR,#buffer
+0139 120000      E     LCALL   ?C?PLDXDATA
+013C E9                MOV     A,R1
+013D 2402              ADD     A,#02H
+013F F9                MOV     R1,A
+0140 EA                MOV     A,R2
+0141 3400              ADDC    A,#00H
+0143 FA                MOV     R2,A
+0144 EF                MOV     A,R7
+0145 120000      E     LCALL   ?C?CSTPTR
+                                           ; SOURCE LINE # 54
+0148 9044F4            MOV     DPTR,#044F4H
+014B E0                MOVX    A,@DPTR
+014C FF                MOV     R7,A
+014D EF                MOV     A,R7
+014E 4402              ORL     A,#02H
+0150 FF                MOV     R7,A
+0151 EF                MOV     A,R7
+0152 F0                MOVX    @DPTR,A
+0153 00                NOP     
+0154 C2AF              CLR     EA
                                            ; SOURCE LINE # 55
-014D 7F00              MOV     R7,#00H
-014F 120000      E     LCALL   _EEPROM_R_EraseSector
-0152 900000      R     MOV     DPTR,#status
-0155 EF                MOV     A,R7
-0156 F0                MOVX    @DPTR,A
+0156 7F00              MOV     R7,#00H
+0158 120000      E     LCALL   _EEPROM_R_EraseSector
+015B 900000      R     MOV     DPTR,#status
+015E EF                MOV     A,R7
+015F F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 56
-0157 900000      R     MOV     DPTR,#status
-015A E0                MOVX    A,@DPTR
-015B FF                MOV     R7,A
-015C EF                MOV     A,R7
-015D 6008              JZ      ?C0006
-                                           ; SOURCE LINE # 57
-015F 900000      R     MOV     DPTR,#result
-0162 7403              MOV     A,#03H
-0164 F0                MOVX    @DPTR,A
+0160 D2AF              SETB    EA
+0162 9044F4            MOV     DPTR,#044F4H
+0165 74FD              MOV     A,#0FDH
+0167 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 58
-0165 8079              SJMP    exit
+0168 900000      R     MOV     DPTR,#status
+016B E0                MOVX    A,@DPTR
+016C FF                MOV     R7,A
+016D EF                MOV     A,R7
+016E 6009              JZ      ?C0006
                                            ; SOURCE LINE # 59
-0167         ?C0006:
-                                           ; SOURCE LINE # 62
-0167 900000      R     MOV     DPTR,#i
-016A E4                CLR     A
-016B F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 63
-016C 900000      R     MOV     DPTR,#buffer
-016F 120000      E     LCALL   ?C?PLDXDATA
-0172 900000      R     MOV     DPTR,#src_ptr
-0175 120000      E     LCALL   ?C?PSTXDATA
-0178         ?C0008:
+0170 900000      R     MOV     DPTR,#result
+0173 7403              MOV     A,#03H
+0175 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 60
+0176 020000      R     LJMP    exit
+                                           ; SOURCE LINE # 61
+0179         ?C0006:
                                            ; SOURCE LINE # 64
-0178 900000      R     MOV     DPTR,#i
-017B E0                MOVX    A,@DPTR
-017C FC                MOV     R4,A
-017D E4                CLR     A
-017E 120000      E     LCALL   ?C?FCASTC
-0181 900000      R     MOV     DPTR,#rows_used
-0184 120000      E     LCALL   ?C?LLDXDATA0
-0187 120000      E     LCALL   ?C?FPCMP3
-018A 6042              JZ      ?C0009
-018C 4040              JC      ?C0009
-018E 900000      R     MOV     DPTR,#i
-C51 COMPILER V9.51   EEPROM_ACCESS                                                         05/07/2014 04:57:58 PAGE 7   
-
-0191 E0                MOVX    A,@DPTR
-0192 FF                MOV     R7,A
-0193 EF                MOV     A,R7
-0194 C3                CLR     C
-0195 9480              SUBB    A,#080H
-0197 5035              JNC     ?C0009
+0179 900000      R     MOV     DPTR,#i
+017C E4                CLR     A
+017D F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 65
-0199 900000      R     MOV     DPTR,#src_ptr
-019C 120000      E     LCALL   ?C?PLDXDATA
-019F 900000      R     MOV     DPTR,#i
-01A2 E0                MOVX    A,@DPTR
-01A3 FD                MOV     R5,A
-01A4 120000      E     LCALL   _EEPROM_R_Write
-01A7 900000      R     MOV     DPTR,#status
-01AA EF                MOV     A,R7
-01AB F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 66
-01AC 900000      R     MOV     DPTR,#status
-01AF E0                MOVX    A,@DPTR
-01B0 FF                MOV     R7,A
-01B1 EF                MOV     A,R7
-01B2 6008              JZ      ?C0010
-                                           ; SOURCE LINE # 67
-01B4 900000      R     MOV     DPTR,#result
-01B7 7403              MOV     A,#03H
-01B9 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 68
-01BA 8024              SJMP    exit
-                                           ; SOURCE LINE # 69
-01BC         ?C0010:
-                                           ; SOURCE LINE # 70
-01BC 900000      R     MOV     DPTR,#src_ptr+01H
-01BF E4                CLR     A
-01C0 75F010            MOV     B,#010H
-01C3 120000      E     LCALL   ?C?IILDX
-                                           ; SOURCE LINE # 71
-01C6 900000      R     MOV     DPTR,#i
-01C9 E0                MOVX    A,@DPTR
-01CA 04                INC     A
-01CB F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 72
-01CC 80AA              SJMP    ?C0008
-01CE         ?C0009:
-                                           ; SOURCE LINE # 75
-01CE 900000      R     MOV     DPTR,#buffer
-01D1 120000      E     LCALL   ?C?PLDXDATA
-01D4 AE02              MOV     R6,AR2
-01D6 AF01              MOV     R7,AR1
-01D8 120000      E     LCALL   _free
-                                           ; SOURCE LINE # 77
-01DB 7F02              MOV     R7,#02H
-01DD 120000      E     LCALL   _LED_off
-                                           ; SOURCE LINE # 79
-01E0         exit:
-                                           ; SOURCE LINE # 80
-01E0 900000      R     MOV     DPTR,#result
-01E3 E0                MOVX    A,@DPTR
-01E4 FF                MOV     R7,A
-                                           ; SOURCE LINE # 81
-01E5         ?C0011:
-01E5 22                RET     
-             ; FUNCTION update_settings (END)
-C51 COMPILER V9.51   EEPROM_ACCESS                                                         05/07/2014 04:57:58 PAGE 8   
+017E 900000      R     MOV     DPTR,#buffer
+0181 120000      E     LCALL   ?C?PLDXDATA
+0184 900000      R     MOV     DPTR,#src_ptr
+0187 120000      E     LCALL   ?C?PSTXDATA
+C51 COMPILER V9.51   EEPROM_ACCESS                                                         05/10/2014 16:55:33 PAGE 7   
 
+018A         ?C0008:
+                                           ; SOURCE LINE # 66
+018A 900000      R     MOV     DPTR,#i
+018D E0                MOVX    A,@DPTR
+018E FC                MOV     R4,A
+018F E4                CLR     A
+0190 120000      E     LCALL   ?C?FCASTC
+0193 900000      R     MOV     DPTR,#rows_used
+0196 120000      E     LCALL   ?C?LLDXDATA0
+0199 120000      E     LCALL   ?C?FPCMP3
+019C 6058              JZ      ?C0009
+019E 4056              JC      ?C0009
+01A0 900000      R     MOV     DPTR,#i
+01A3 E0                MOVX    A,@DPTR
+01A4 FF                MOV     R7,A
+01A5 EF                MOV     A,R7
+01A6 C3                CLR     C
+01A7 9480              SUBB    A,#080H
+01A9 504B              JNC     ?C0009
+                                           ; SOURCE LINE # 68
+01AB 9044F4            MOV     DPTR,#044F4H
+01AE E0                MOVX    A,@DPTR
+01AF FF                MOV     R7,A
+01B0 EF                MOV     A,R7
+01B1 4402              ORL     A,#02H
+01B3 FF                MOV     R7,A
+01B4 EF                MOV     A,R7
+01B5 F0                MOVX    @DPTR,A
+01B6 00                NOP     
+01B7 C2AF              CLR     EA
+                                           ; SOURCE LINE # 69
+01B9 900000      R     MOV     DPTR,#src_ptr
+01BC 120000      E     LCALL   ?C?PLDXDATA
+01BF 900000      R     MOV     DPTR,#i
+01C2 E0                MOVX    A,@DPTR
+01C3 FD                MOV     R5,A
+01C4 120000      E     LCALL   _EEPROM_R_Write
+01C7 900000      R     MOV     DPTR,#status
+01CA EF                MOV     A,R7
+01CB F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 70
+01CC D2AF              SETB    EA
+01CE 9044F4            MOV     DPTR,#044F4H
+01D1 74FD              MOV     A,#0FDH
+01D3 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 72
+01D4 900000      R     MOV     DPTR,#status
+01D7 E0                MOVX    A,@DPTR
+01D8 FF                MOV     R7,A
+01D9 EF                MOV     A,R7
+01DA 6008              JZ      ?C0010
+                                           ; SOURCE LINE # 73
+01DC 900000      R     MOV     DPTR,#result
+01DF 7403              MOV     A,#03H
+01E1 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 74
+01E2 801F              SJMP    exit
+                                           ; SOURCE LINE # 75
+01E4         ?C0010:
+                                           ; SOURCE LINE # 76
+01E4 900000      R     MOV     DPTR,#src_ptr+01H
+01E7 E4                CLR     A
+C51 COMPILER V9.51   EEPROM_ACCESS                                                         05/10/2014 16:55:33 PAGE 8   
+
+01E8 75F010            MOV     B,#010H
+01EB 120000      E     LCALL   ?C?IILDX
+                                           ; SOURCE LINE # 77
+01EE 900000      R     MOV     DPTR,#i
+01F1 E0                MOVX    A,@DPTR
+01F2 04                INC     A
+01F3 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 78
+01F4 8094              SJMP    ?C0008
+01F6         ?C0009:
+                                           ; SOURCE LINE # 81
+01F6 900000      R     MOV     DPTR,#buffer
+01F9 120000      E     LCALL   ?C?PLDXDATA
+01FC AE02              MOV     R6,AR2
+01FE AF01              MOV     R7,AR1
+0200 120000      E     LCALL   _free
+                                           ; SOURCE LINE # 83
+0203         exit:
+                                           ; SOURCE LINE # 84
+0203 900000      R     MOV     DPTR,#result
+0206 E0                MOVX    A,@DPTR
+0207 FF                MOV     R7,A
+                                           ; SOURCE LINE # 85
+0208         ?C0011:
+0208 22                RET     
+             ; FUNCTION update_settings (END)
 
              ; FUNCTION _get_variable (BEGIN)
-                                           ; SOURCE LINE # 83
+                                           ; SOURCE LINE # 87
 0000 900000      R     MOV     DPTR,#var_index
 0003 EE                MOV     A,R6
 0004 F0                MOVX    @DPTR,A
 0005 A3                INC     DPTR
 0006 EF                MOV     A,R7
 0007 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 84
+                                           ; SOURCE LINE # 88
 0008 900000      R     MOV     DPTR,#value
 000B 740A              MOV     A,#0AH
 000D F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 86
-000E 7F02              MOV     R7,#02H
-0010 120000      E     LCALL   _LED_on
-                                           ; SOURCE LINE # 88
-0013 900000      R     MOV     DPTR,#var_index
-0016 E0                MOVX    A,@DPTR
-0017 FE                MOV     R6,A
-0018 A3                INC     DPTR
-0019 E0                MOVX    A,@DPTR
-001A FF                MOV     R7,A
-001B EF                MOV     A,R7
-001C 2400              ADD     A,#00H
-001E FF                MOV     R7,A
-001F EE                MOV     A,R6
-0020 3480              ADDC    A,#080H
-0022 FE                MOV     R6,A
-0023 8F82              MOV     DPL,R7
-0025 8E83              MOV     DPH,R6
-0027 E0                MOVX    A,@DPTR
-0028 FF                MOV     R7,A
-0029 900000      R     MOV     DPTR,#value
-002C EF                MOV     A,R7
-002D F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 90
-002E 7F02              MOV     R7,#02H
-0030 120000      E     LCALL   _LED_off
+000E 900000      R     MOV     DPTR,#var_index
+0011 E0                MOVX    A,@DPTR
+0012 FE                MOV     R6,A
+0013 A3                INC     DPTR
+0014 E0                MOVX    A,@DPTR
+0015 FF                MOV     R7,A
+0016 EF                MOV     A,R7
+0017 2400              ADD     A,#00H
+0019 FF                MOV     R7,A
+001A EE                MOV     A,R6
+001B 3480              ADDC    A,#080H
+001D FE                MOV     R6,A
+001E 8F82              MOV     DPL,R7
+0020 8E83              MOV     DPH,R6
+0022 E0                MOVX    A,@DPTR
+0023 FF                MOV     R7,A
+0024 900000      R     MOV     DPTR,#value
+0027 EF                MOV     A,R7
+0028 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 92
-0033 900000      R     MOV     DPTR,#value
-0036 E0                MOVX    A,@DPTR
-0037 FF                MOV     R7,A
+0029 900000      R     MOV     DPTR,#value
+002C E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   EEPROM_ACCESS                                                         05/10/2014 16:55:33 PAGE 9   
+
+002D FF                MOV     R7,A
                                            ; SOURCE LINE # 93
-0038         ?C0012:
-0038 22                RET     
+002E         ?C0012:
+002E 22                RET     
              ; FUNCTION _get_variable (END)
 
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    543    ----
+   CODE SIZE        =    568    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =     28    ----
    PDATA SIZE       =   ----    ----
@@ -491,8 +513,6 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    HDATA SIZE       =   ----    ----
    XDATA CONST SIZE =   ----    ----
    FAR CONST SIZE   =   ----    ----
-C51 COMPILER V9.51   EEPROM_ACCESS                                                         05/07/2014 04:57:58 PAGE 9   
-
 END OF MODULE INFORMATION.
 
 

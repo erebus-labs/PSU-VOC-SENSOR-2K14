@@ -30,7 +30,7 @@ static void RTC_EveryYearHandler(void);
 *  Place your includes, defines and code here
 *******************************************************************************/
 /* `#START RTC_ISR_DEFINITION` */
-
+#include "Globals.h"
 /* `#END` */
 
 
@@ -52,7 +52,20 @@ static void RTC_EverySecondHandler(void)
 {
     /*  Place your every second handler code here. */
     /* `#START EVERY_SECOND_HANDLER_CODE` */
+    
+    if (sample_unit == SAMPLE_SEC){
+        ++sample_int_count;
 
+        if (sample_int_count == sample_interval)
+        {
+            sample_waiting = 1;
+            sample_int_count = 0;
+        }
+    }
+    
+    ++battery_check_count;
+    
+    
     /* `#END` */
 }
 
@@ -75,7 +88,7 @@ static void RTC_EveryMinuteHandler(void)
 {
     /*  Place your every minute handler code here. */
     /* `#START EVERY_MINUTE_HANDLER_CODE` */
-
+    Sample_waiting = 1;
     /* `#END` */
 }
 
@@ -98,7 +111,7 @@ static void RTC_EveryHourHandler(void)
 {
     /*  Place your every hour handler code here. */
     /* `#START EVERY_HOUR_HANDLER_CODE` */
-
+    Sample_waiting = 1;
     /* `#END` */
 }
 
@@ -121,7 +134,7 @@ static void RTC_EveryDayHandler(void)
 {
     /*  Place your everyday handler code here. */
     /* `#START EVERY_DAY_HANDLER_CODE` */
-
+    Sample_waiting = 1;
     /* `#END` */
 }
 
@@ -144,7 +157,6 @@ static void RTC_EveryWeekHandler(void)
 {
     /*  Place your every week handler code here. */
     /* `#START EVERY_WEEK_HANDLER_CODE` */
-
     /* `#END` */
 }
 
@@ -167,7 +179,6 @@ static void RTC_EveryMonthHandler(void)
 {
     /*  Place your every month handler code here. */
     /* `#START EVERY_MONTH_HANDLER_CODE` */
-
     /* `#END` */
 }
 
@@ -190,7 +201,6 @@ static void RTC_EveryYearHandler(void)
 {
     /*  Place your every year handler code here. */
     /* `#START EVERY_YEAR_HANDLER_CODE` */
-
     /* `#END` */
 }
 

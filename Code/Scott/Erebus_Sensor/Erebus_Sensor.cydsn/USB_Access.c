@@ -20,12 +20,8 @@ void Run_USB(){
 
     uint8 result = 0;
     uint8 command = 0;
-    StartCollection_IRQ_Stop();
-    StopCollection_IRQ_Stop();
-    Vbus_IRQ_Stop();
-    RTC_WriteIntervalMask(NONE_MASK);
+
     USBUART_Start(0u, USBUART_5V_OPERATION);
-    LED_on(USB);
     
     /* Wait for Device to enumerate */
     while(!USBUART_GetConfiguration() && Vbus_Read());
@@ -169,8 +165,6 @@ uint8 dump_data(){
     uint8 i = 0;
     uint8 result = SUCCESS;
     
-    LED_on(MEM);
-    
     if(TailPtr == ExportPtr){
         ExportBuffer[0] = NO_DATA;
         
@@ -223,8 +217,6 @@ uint8 dump_data(){
     ExportBuffer[3] = (uint8)0x00FF & DataCnt;
     
     write_out(ExportBuffer);
-    
-    LED_off(MEM);
 
 exit:
     return result;
@@ -328,9 +320,7 @@ void CMD_hard_reset(){
 
     uint8 reset_flag = 0xFF;
     
-    LED_on(MEM);
     Em_EEPROM_Write(&reset_flag, &hard_reset_flag, 1u);
-    LED_off(MEM);
     
     return;
 }
@@ -338,12 +328,8 @@ void CMD_hard_reset(){
 void USB_Close(){
     
     rtc_setup();   
-    EEPROM_R_Stop();
     USBUART_Stop();
-    StartCollection_IRQ_Start();
-    Vbus_IRQ_Start();
-    LED_off(USB);
-    
+
     return;
 }
 
