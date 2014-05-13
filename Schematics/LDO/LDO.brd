@@ -2260,7 +2260,7 @@ Please make sure your boards conform to these design rules.</description>
 <element name="U$6" library="Switches_SPST" package="SPST" value="SPST" x="54.356" y="3.302" smashed="yes" rot="R180"/>
 <element name="D6" library="RGB_LED" package="RGB_LED" value="RGB_LED" x="51.816" y="32.004" smashed="yes" rot="R270"/>
 <element name="R16" library="rcl" package="R0603" value="180" x="53.848" y="33.02" smashed="yes" rot="R90">
-<attribute name="NAME" x="54.415" y="35.613" size="1.016" layer="25" rot="R180"/>
+<attribute name="NAME" x="55.415" y="35.913" size="1.27" layer="25" rot="R180"/>
 <attribute name="VALUE" x="55.753" y="32.385" size="1.27" layer="27" rot="R90"/>
 </element>
 <element name="R17" library="rcl" package="R0603" value="100" x="49.784" y="34.29" smashed="yes">
