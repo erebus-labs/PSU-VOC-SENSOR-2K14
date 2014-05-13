@@ -14700,7 +14700,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 <part name="X1" library="usb_con-update" deviceset="MINI-USB-SHIELD-" device="UX60-MB-5ST"/>
 <part name="IC3" library="linear-technology-2" deviceset="SWITCHER" device=""/>
 <part name="SUPPLY4" library="supply2" deviceset="V+" device=""/>
-<part name="R16" library="resistor" deviceset="R-US_" device="R1206" value="499K"/>
+<part name="R16" library="resistor" deviceset="R-US_" device="R0805" value="499K"/>
 <part name="R17" library="rcl" deviceset="R-US_" device="R0805" value="10k"/>
 <part name="L1" library="Inductor" deviceset="SHEILDED_COIL" device="" value="4.7uH"/>
 <part name="D6" library="diode" deviceset="DIODE-" device="SOD323-R"/>
@@ -14717,7 +14717,7 @@ Samtec FTSH-105-01-L-DV-K</description>
 <part name="GND29" library="supply1" deviceset="GND" device=""/>
 <part name="IC4" library="linear-technology-2" deviceset="SWITCHER" device=""/>
 <part name="SUPPLY6" library="supply2" deviceset="V+" device=""/>
-<part name="R19" library="resistor" deviceset="R-US_" device="R1206" value="499k"/>
+<part name="R19" library="resistor" deviceset="R-US_" device="R0805" value="499k"/>
 <part name="R20" library="rcl" deviceset="R-US_" device="R0805" value="10k"/>
 <part name="L2" library="Inductor" deviceset="SHEILDED_COIL" device="" value="4.7uH"/>
 <part name="D5" library="diode" deviceset="DIODE-" device="SOD323-R"/>
