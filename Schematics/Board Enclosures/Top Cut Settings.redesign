@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XDrawProject>
+  <FileVersion>1.0</FileVersion>
+  <ProjectName>Design Documents</ProjectName>
+  <DefaultExportFormat>DrawingImage</DefaultExportFormat>
+  <XAMLFilePath>F:\design.xml</XAMLFilePath>
+  <Drawings>
+    <Drawing Name="Design 1">
+      <ExportFormat>DrawingImage</ExportFormat>
+      <DrawingSize>1152,1152</DrawingSize>
+      <SaveDrawingSize>False</SaveDrawingSize>
+    </Drawing>
+  </Drawings>
+</XDrawProject>

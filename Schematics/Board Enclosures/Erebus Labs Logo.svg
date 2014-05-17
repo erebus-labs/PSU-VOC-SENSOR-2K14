@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="495"
+   height="495"
+   id="svg4320"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="Erebus Labs Logo.svg">
+  <defs
+     id="defs4322">
+    <filter
+       color-interpolation-filters="sRGB"
+       inkscape:collect="always"
+       id="filter4177"
+       x="-0.48521739"
+       width="1.9704348"
+       y="-0.48521739"
+       height="1.9704348">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="40.83913"
+         id="feGaussianBlur4179" />
+    </filter>
+    <filter
+       color-interpolation-filters="sRGB"
+       inkscape:collect="always"
+       id="filter4222"
+       x="-0.30000001"
+       width="1.6"
+       y="-0.30000001"
+       height="1.6">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="25.25"
+         id="feGaussianBlur4224" />
+    </filter>
+    <filter
+       color-interpolation-filters="sRGB"
+       inkscape:collect="always"
+       id="filter4037">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.56480679"
+         id="feGaussianBlur4039" />
+    </filter>
+    <filter
+       color-interpolation-filters="sRGB"
+       inkscape:collect="always"
+       id="filter4033">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.56480679"
+         id="feGaussianBlur4035" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.5719315"
+     inkscape:cx="128.8197"
+     inkscape:cy="268.56809"
+     inkscape:document-units="in"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1680"
+     inkscape:window-height="988"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     units="in" />
+  <metadata
+     id="metadata4325">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-557.35975)">
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:none;filter:url(#filter4177)"
+       id="path3983-8"
+       sodipodi:cx="43"
+       sodipodi:cy="-851"
+       sodipodi:rx="101"
+       sodipodi:ry="101"
+       d="m 144,-851 a 101,101 0 1 1 -202,0 101,101 0 1 1 202,0 z"
+       transform="matrix(1.1493475,0,0,1.1493475,195.57814,1782.9566)" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       id="path3983-8-5"
+       sodipodi:cx="43"
+       sodipodi:cy="-851"
+       sodipodi:rx="101"
+       sodipodi:ry="101"
+       d="m 144,-851 a 101,101 0 1 1 -202,0 101,101 0 1 1 202,0 z"
+       transform="matrix(1.1493475,0,0,1.1493475,200.17552,1784.1059)" />
+    <path
+       sodipodi:type="arc"
+       style="fill:#000000;fill-opacity:1;stroke:none;filter:url(#filter4222)"
+       id="path3983-8-1"
+       sodipodi:cx="43"
+       sodipodi:cy="-851"
+       sodipodi:rx="101"
+       sodipodi:ry="101"
+       d="m 144,-851 a 101,101 0 1 1 -202,0 101,101 0 1 1 202,0 z"
+       transform="matrix(1.1493475,0,0,1.1493475,200.17552,1784.1059)" />
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:20px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.86434221000000000;stroke-opacity:1;font-family:Sans"
+       x="751.53448"
+       y="-207.94188"
+       id="text3013"
+       sodipodi:linespacing="125%"
+       transform="matrix(1.1493475,0,0,1.1493475,-706.62562,1079.5753)"><tspan
+         sodipodi:role="line"
+         id="tspan3015"
+         x="751.53448"
+         y="-207.94188"
+         rotate="0 0 0 0 0"
+         dy="0"
+         dx="0"
+         style="letter-spacing:20px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.86434221000000000;stroke-opacity:1">LABS</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.86434221000000000;stroke-opacity:1;font-family:Sans"
+       x="750.04535"
+       y="-242.86069"
+       id="text3009-1"
+       sodipodi:linespacing="125%"
+       transform="matrix(1.1493475,0,0,1.1493475,-706.62562,1079.5753)"><tspan
+         sodipodi:role="line"
+         id="tspan3011-7"
+         x="750.04535"
+         y="-242.86069"
+         style="stroke-width:1.86434221000000000;stroke:none">EREBUS</tspan></text>
+  </g>
+</svg>
