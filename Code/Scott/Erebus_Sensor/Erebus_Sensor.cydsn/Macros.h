@@ -91,9 +91,14 @@
 
     
     /*      EmEEPROM    */
-    #define EmEEPROMSize 1024 
-    
-    
+    #define SAMPLE_SIZE         2   // size of samples in bytes
+    #define PTR_ROWS            3
+    #define FLASH_ROW_LENGTH    CYDEV_FLS_ROW_SIZE + CYDEV_ECC_ROW_SIZE
+    #define SAMPLE_BLOCK_SIZE   1024 
+    #define HEAD_INDEX          0
+    #define TAIL_INDEX          1
+    #define MASTER_PTR_COUNT    2
+
     
     /*      LEDs        */
     

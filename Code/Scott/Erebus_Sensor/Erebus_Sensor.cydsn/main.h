@@ -25,6 +25,7 @@
     #include "Macros.h"
     #include "Sample_Handler.h"
     #include "Interrupt_Handler.h"
+    #include "Globals.h"
 
 #endif
 /* [] END OF FILE */

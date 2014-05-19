@@ -15,9 +15,15 @@
 /* Globals */
 
 // Flash
-const uint8 CYCODE MemoryLocation[EmEEPROMSize]; 
-const volatile uint8* TailPtr = (uint8*) MemoryLocation;
-const uint8 CYCODE hard_reset_flag;
+const uint8 CYCODE sample_block[SAMPLE_BLOCK_SIZE]; 
+const uint16 CYCODE current_sample_indices[PTR_ROWS * FLASH_ROW_LENGTH];
+const uint16 CYCODE master_sample_indices[MASTER_PTR_COUNT];
+const uint8 CYCODE mem_full_flash_flag;
+
+volatile uint16 pointer_head_index;
+volatile uint16 pointer_tail_index;
+volatile uint16 sample_head_index;
+volatile uint16 sample_tail_index;
 
 // Flags
 uint8 low_power_flag = 0;
@@ -27,12 +33,13 @@ uint8 DataStop_waiting = 0;
 uint8 Sample_waiting = 0;
 uint8 BatteryCheck_waiting = 0;
 uint8 LowPowerBlink_waiting = 0;
+uint8 mem_full_flag = 0;
 
 // RTC
 uint8 sample_interval = 0;
 uint8 sample_enable = 0;
 
-// Sampling
+// Analog
 uint8 sample_int_count = 0;
 uint8 sample_unit = 0;
 uint8 battery_check_count = 0;
@@ -41,13 +48,12 @@ uint8 low_batt_blink_count = 0;
 int main()
 {
 
-    
-    // Check for hard reset flag
-    if (hard_reset_flag){
-        hard_reset();   
-    }
     /* Initialization*/
-
+    pointer_head_index = master_sample_indices[HEAD_INDEX];
+    pointer_tail_index = master_sample_indices[TAIL_INDEX];
+    sample_head_index = current_sample_indices[pointer_head_index];
+    sample_tail_index = current_sample_indices[pointer_tail_index];
+    
     // Start Components
     EEPROM_R_Start();
     RTC_Start();
@@ -65,7 +71,12 @@ int main()
     // Enable individual interrupts as necessary   
     Vbus_IRQ_Start();
     StartCollection_IRQ_Start();
-        
+    
+    mem_full_flag = mem_full_flash_flag;
+    if (mem_full_flag){
+        memory_full();
+    }
+    
     for(;;){       
 
         if (Sample_waiting){

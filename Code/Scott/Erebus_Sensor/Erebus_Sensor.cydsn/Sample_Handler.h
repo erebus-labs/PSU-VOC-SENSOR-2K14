@@ -17,7 +17,6 @@
     #include "Interface.h"
     #include "Globals.h"
     
-    void check_battery();
     void take_sample();
     
 #endif

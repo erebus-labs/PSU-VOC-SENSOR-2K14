@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   INTERFACE                                                             05/10/2014 16:55:34 PAGE 1   
+C51 COMPILER V9.51   INTERFACE                                                             05/18/2014 17:33:00 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE INTERFACE
@@ -27,82 +27,118 @@ line level    source
   16   1          
   17   1          struct header_package header;
   18   1          uint8 header_size = sizeof(struct header_package);
-  19   1          RTC_TIME_DATE* datetime = RTC_ReadTime();
-  20   1          
-  21   1          /* Store Header */
-  22   1          header.start_block = STARTBLOCK;
-  23   1          header.sample_sensor = get_variable(EE_SENSOR);
-  24   1          header.sample_unit = get_variable(EE_SAMPLE_UNIT);
-  25   1          header.sample_interval = get_variable(EE_SAMPLE_INTERVAL);
-  26   1          header.second = datetime -> Sec;
-  27   1          header.minute = datetime -> Min;
-  28   1          header.hour = datetime -> Hour;
-  29   1          header.day = datetime -> DayOfMonth;
-  30   1          header.month = datetime -> Month;
-  31   1          header.year = datetime -> Year;
-  32   1      
-  33   1          Em_EEPROM_Write((uint8*) (&header), TailPtr, header_size);
-  34   1          TailPtr = TailPtr + header_size;
-  35   1          
-  36   1          StopCollection_IRQ_Start();
-  37   1          StartCollection_IRQ_Stop();
-  38   1          sample_enable = 1;
-  39   1          sample_int_count = 0;
-  40   1          
-  41   1          return;   
-  42   1      }
-  43          
-  44          void StopCollection(){
-  45   1          
-  46   1          StartCollection_IRQ_Start();
-  47   1          StopCollection_IRQ_Stop();
-  48   1          sample_enable = 0;
-  49   1          
-  50   1          return;   
-  51   1      }
-  52          
-  53          void LED_on(uint8 color){
-C51 COMPILER V9.51   INTERFACE                                                             05/10/2014 16:55:34 PAGE 2   
+  19   1          int byte_diff = 0;
+  20   1          int remaining_bytes = 0;
+  21   1          RTC_TIME_DATE* datetime = RTC_ReadTime();
+  22   1          
+  23   1          /* First, confirm that there is room to store the header */
+  24   1          /* Calculate number of bytes remaining in the sample block */ 
+  25   1          remaining_bytes = sample_head_index - sample_tail_index;
+  26   1          if (remaining_bytes < 0){
+  27   2              remaining_bytes = SAMPLE_BLOCK_SIZE + remaining_bytes;
+  28   2          }
+  29   1      
+  30   1          if (remaining_bytes < header_size && (sample_head_index != sample_tail_index)){
+  31   2              memory_full();
+  32   2              goto exit;
+  33   2          }               
+  34   1          
+  35   1          /* Construct Header */
+  36   1          header.start_block = STARTBLOCK;
+  37   1          header.sample_sensor = get_variable(EE_SENSOR);
+  38   1          header.sample_unit = get_variable(EE_SAMPLE_UNIT);
+  39   1          header.sample_interval = get_variable(EE_SAMPLE_INTERVAL);
+  40   1          header.second = datetime -> Sec;
+  41   1          header.minute = datetime -> Min;
+  42   1          header.hour = datetime -> Hour;
+  43   1          header.day = datetime -> DayOfMonth;
+  44   1          header.month = datetime -> Month;
+  45   1          header.year = datetime -> Year;
+  46   1              
+  47   1          /* Check to see if the whole header can fit within the sample block
+  48   1           * This will usually be the case */
+  49   1          if ((sample_tail_index + header_size) < SAMPLE_BLOCK_SIZE){
+  50   2              Em_EEPROM_Write((uint8*) (&header), (uint8*) &(sample_block[sample_tail_index]), header_size);
+  51   2              sample_tail_index = sample_tail_index + header_size;    
+  52   2          }
+  53   1          else{
+C51 COMPILER V9.51   INTERFACE                                                             05/18/2014 17:33:00 PAGE 2   
 
-  54   1          
-  55   1          switch (color){   
-  56   2          
-  57   2              case RED:
-  58   2              case GREEN:
-  59   2              case BLUE:
-  60   2                  SOLID_LED_CTRL_Write(color);
-  61   2                  break;
-  62   2                  
-  63   2              case MAGENTA:
-  64   2                  PWM0_CTRL_Write(PWM_BLUE);
-  65   2                  PWM1_CTRL_Write(PWM_RED);
-  66   2                  break;
-  67   2                      
-  68   2              case YELLOW:
-  69   2                  PWM0_CTRL_Write(PWM_GREEN);
-  70   2                  PWM1_CTRL_Write(PWM_RED);
-  71   2                  break;
-  72   2              
-  73   2              case CYAN:
-  74   2                  PWM0_CTRL_Write(PWM_GREEN);
-  75   2                  PWM1_CTRL_Write(PWM_BLUE);
-  76   2                  break;          
-  77   2                  
-  78   2          }
-  79   1          return;
-  80   1      }
-  81          
-  82          void LED_off(){
-  83   1          
-  84   1          SOLID_LED_CTRL_Write(OFF);
-  85   1          PWM0_CTRL_Write(OFF);
-  86   1          PWM1_CTRL_Write(OFF);   
-  87   1          
-  88   1          return;
-  89   1      }
-  90          
-  91          /* [] END OF FILE */
-C51 COMPILER V9.51   INTERFACE                                                             05/10/2014 16:55:34 PAGE 3   
+  54   2              /* It didn't fit, so now we have to do extra work to split the header */
+  55   2              remaining_bytes = SAMPLE_BLOCK_SIZE - sample_tail_index;        
+  56   2              /* Taking advantage of struct being contiguous in memory - write as many bytes
+  57   2               * as we can as if it were a buffer, up to the end of the sample array */
+  58   2              Em_EEPROM_Write((uint8*) &header, (uint8*) &(sample_block[sample_tail_index]), remaining_bytes);
+  59   2              /* Write remaining bytes at the top of the array */
+  60   2              Em_EEPROM_Write((uint8*) (&header + remaining_bytes), sample_block, header_size - remaining_bytes)
+             -;
+  61   2              sample_tail_index = header_size - remaining_bytes;
+  62   2          }
+  63   1          
+  64   1          /* Store new tail pointer in Flash */
+  65   1          Em_EEPROM_Write((uint8*) &sample_tail_index, (uint8*) &(current_sample_indices[pointer_tail_index]), s
+             -izeof(uint16));
+  66   1          
+  67   1          StopCollection_IRQ_Start();
+  68   1          StartCollection_IRQ_Stop();
+  69   1          sample_enable = 1;
+  70   1          sample_int_count = 0;
+  71   1      
+  72   1      exit:
+  73   1          return;   
+  74   1      }
+  75          
+  76          void StopCollection(){
+  77   1          
+  78   1          StartCollection_IRQ_Start();
+  79   1          StopCollection_IRQ_Stop();
+  80   1          sample_enable = 0;
+  81   1          
+  82   1          return;   
+  83   1      }
+  84          
+  85          void LED_on(uint8 color){
+  86   1          
+  87   1          switch (color){   
+  88   2          
+  89   2              case RED:
+  90   2              case GREEN:
+  91   2              case BLUE:
+  92   2                  SOLID_LED_CTRL_Write(color);
+  93   2                  break;
+  94   2                  
+  95   2              case MAGENTA:
+  96   2                  PWM0_CTRL_Write(PWM_BLUE);
+  97   2                  PWM1_CTRL_Write(PWM_RED);
+  98   2                  break;
+  99   2                      
+ 100   2              case YELLOW:
+ 101   2                  PWM0_CTRL_Write(PWM_GREEN);
+ 102   2                  PWM1_CTRL_Write(PWM_RED);
+ 103   2                  break;
+ 104   2              
+ 105   2              case CYAN:
+ 106   2                  PWM0_CTRL_Write(PWM_GREEN);
+ 107   2                  PWM1_CTRL_Write(PWM_BLUE);
+ 108   2                  break;          
+ 109   2                  
+ 110   2          }
+ 111   1          return;
+ 112   1      }
+ 113          
+C51 COMPILER V9.51   INTERFACE                                                             05/18/2014 17:33:00 PAGE 3   
+
+ 114          void LED_off(){
+ 115   1          
+ 116   1          SOLID_LED_CTRL_Write(OFF);
+ 117   1          PWM0_CTRL_Write(OFF);
+ 118   1          PWM1_CTRL_Write(OFF);   
+ 119   1          
+ 120   1          return;
+ 121   1      }
+ 122          
+ 123          /* [] END OF FILE */
+C51 COMPILER V9.51   INTERFACE                                                             05/18/2014 17:33:00 PAGE 4   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -114,291 +150,636 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0003 740C              MOV     A,#0CH
 0005 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 19
-0006 120000      E     LCALL   RTC_ReadTime
-0009 900000      R     MOV     DPTR,#datetime
-000C 120000      E     LCALL   ?C?PSTXDATA
-                                           ; SOURCE LINE # 22
-000F 900000      R     MOV     DPTR,#header
-0012 7420              MOV     A,#020H
-0014 F0                MOVX    @DPTR,A
-0015 A3                INC     DPTR
-0016 E4                CLR     A
-0017 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 23
-0018 7F00              MOV     R7,#00H
-001A 7E00              MOV     R6,#00H
-001C 120000      E     LCALL   _get_variable
-001F 900000      R     MOV     DPTR,#header+04H
-0022 EF                MOV     A,R7
-0023 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 24
-0024 7F01              MOV     R7,#01H
-0026 7E00              MOV     R6,#00H
-0028 120000      E     LCALL   _get_variable
-002B 900000      R     MOV     DPTR,#header+05H
-002E EF                MOV     A,R7
-002F F0                MOVX    @DPTR,A
+0006 900000      R     MOV     DPTR,#byte_diff
+0009 E4                CLR     A
+000A F0                MOVX    @DPTR,A
+000B A3                INC     DPTR
+000C E4                CLR     A
+000D F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 20
+000E 900000      R     MOV     DPTR,#remaining_bytes
+0011 E4                CLR     A
+0012 F0                MOVX    @DPTR,A
+0013 A3                INC     DPTR
+0014 E4                CLR     A
+0015 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 21
+0016 120000      E     LCALL   RTC_ReadTime
+0019 900000      R     MOV     DPTR,#datetime
+001C 120000      E     LCALL   ?C?PSTXDATA
                                            ; SOURCE LINE # 25
-0030 7F02              MOV     R7,#02H
-0032 7E00              MOV     R6,#00H
-0034 120000      E     LCALL   _get_variable
-0037 900000      R     MOV     DPTR,#header+06H
-003A EF                MOV     A,R7
-003B F0                MOVX    @DPTR,A
+001F 900000      E     MOV     DPTR,#sample_tail_index
+0022 E0                MOVX    A,@DPTR
+0023 FE                MOV     R6,A
+0024 A3                INC     DPTR
+0025 E0                MOVX    A,@DPTR
+0026 FF                MOV     R7,A
+0027 900000      E     MOV     DPTR,#sample_head_index
+002A E0                MOVX    A,@DPTR
+002B FC                MOV     R4,A
+002C A3                INC     DPTR
+002D E0                MOVX    A,@DPTR
+002E FD                MOV     R5,A
+002F C3                CLR     C
+0030 ED                MOV     A,R5
+0031 9F                SUBB    A,R7
+0032 FF                MOV     R7,A
+0033 EC                MOV     A,R4
+0034 9E                SUBB    A,R6
+0035 FE                MOV     R6,A
+0036 900000      R     MOV     DPTR,#remaining_bytes
+0039 EE                MOV     A,R6
+003A F0                MOVX    @DPTR,A
+003B A3                INC     DPTR
+003C EF                MOV     A,R7
+003D F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 26
-003C 900000      R     MOV     DPTR,#datetime
-003F 120000      E     LCALL   ?C?PLDXDATA
-0042 120000      E     LCALL   ?C?CLDPTR
+003E 900000      R     MOV     DPTR,#remaining_bytes
+0041 E0                MOVX    A,@DPTR
+0042 FE                MOV     R6,A
+0043 A3                INC     DPTR
+0044 E0                MOVX    A,@DPTR
 0045 FF                MOV     R7,A
-0046 900000      R     MOV     DPTR,#header+07H
-0049 EF                MOV     A,R7
-004A F0                MOVX    @DPTR,A
+0046 C3                CLR     C
+0047 EE                MOV     A,R6
+C51 COMPILER V9.51   INTERFACE                                                             05/18/2014 17:33:00 PAGE 5   
+
+0048 6480              XRL     A,#080H
+004A 9480              SUBB    A,#080H
+004C 5018              JNC     ?C0001
                                            ; SOURCE LINE # 27
-004B 900000      R     MOV     DPTR,#datetime
-004E 120000      E     LCALL   ?C?PLDXDATA
-0051 E9                MOV     A,R1
-0052 2401              ADD     A,#01H
-0054 F9                MOV     R1,A
-0055 EA                MOV     A,R2
-0056 3400              ADDC    A,#00H
-0058 FA                MOV     R2,A
-0059 120000      E     LCALL   ?C?CLDPTR
-005C FF                MOV     R7,A
-005D 900000      R     MOV     DPTR,#header+08H
-0060 EF                MOV     A,R7
-C51 COMPILER V9.51   INTERFACE                                                             05/10/2014 16:55:34 PAGE 4   
-
-0061 F0                MOVX    @DPTR,A
+004E 900000      R     MOV     DPTR,#remaining_bytes
+0051 E0                MOVX    A,@DPTR
+0052 FE                MOV     R6,A
+0053 A3                INC     DPTR
+0054 E0                MOVX    A,@DPTR
+0055 FF                MOV     R7,A
+0056 EF                MOV     A,R7
+0057 2400              ADD     A,#00H
+0059 FF                MOV     R7,A
+005A EE                MOV     A,R6
+005B 3404              ADDC    A,#04H
+005D FE                MOV     R6,A
+005E 900000      R     MOV     DPTR,#remaining_bytes
+0061 EE                MOV     A,R6
+0062 F0                MOVX    @DPTR,A
+0063 A3                INC     DPTR
+0064 EF                MOV     A,R7
+0065 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 28
-0062 900000      R     MOV     DPTR,#datetime
-0065 120000      E     LCALL   ?C?PLDXDATA
-0068 E9                MOV     A,R1
-0069 2402              ADD     A,#02H
-006B F9                MOV     R1,A
-006C EA                MOV     A,R2
-006D 3400              ADDC    A,#00H
-006F FA                MOV     R2,A
-0070 120000      E     LCALL   ?C?CLDPTR
-0073 FF                MOV     R7,A
-0074 900000      R     MOV     DPTR,#header+09H
-0077 EF                MOV     A,R7
-0078 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 29
-0079 900000      R     MOV     DPTR,#datetime
-007C 120000      E     LCALL   ?C?PLDXDATA
-007F E9                MOV     A,R1
-0080 2404              ADD     A,#04H
-0082 F9                MOV     R1,A
-0083 EA                MOV     A,R2
-0084 3400              ADDC    A,#00H
-0086 FA                MOV     R2,A
-0087 120000      E     LCALL   ?C?CLDPTR
-008A FF                MOV     R7,A
-008B 900000      R     MOV     DPTR,#header+0AH
-008E EF                MOV     A,R7
-008F F0                MOVX    @DPTR,A
+0066         ?C0001:
                                            ; SOURCE LINE # 30
-0090 900000      R     MOV     DPTR,#datetime
-0093 120000      E     LCALL   ?C?PLDXDATA
-0096 E9                MOV     A,R1
-0097 2407              ADD     A,#07H
-0099 F9                MOV     R1,A
-009A EA                MOV     A,R2
-009B 3400              ADDC    A,#00H
-009D FA                MOV     R2,A
-009E 120000      E     LCALL   ?C?CLDPTR
-00A1 FF                MOV     R7,A
-00A2 900000      R     MOV     DPTR,#header+0BH
-00A5 EF                MOV     A,R7
-00A6 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 31
-00A7 900000      R     MOV     DPTR,#datetime
-00AA 120000      E     LCALL   ?C?PLDXDATA
-00AD E9                MOV     A,R1
-00AE 2408              ADD     A,#08H
-00B0 F9                MOV     R1,A
-00B1 EA                MOV     A,R2
-00B2 3400              ADDC    A,#00H
-00B4 FA                MOV     R2,A
-00B5 120000      E     LCALL   ?C?ILDPTR
-00B8 FF                MOV     R7,A
-00B9 AEF0              MOV     R6,B
-00BB 900000      R     MOV     DPTR,#header+02H
-00BE EE                MOV     A,R6
-00BF F0                MOVX    @DPTR,A
-00C0 A3                INC     DPTR
-00C1 EF                MOV     A,R7
-00C2 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 33
-C51 COMPILER V9.51   INTERFACE                                                             05/10/2014 16:55:34 PAGE 5   
+0066 900000      R     MOV     DPTR,#header_size
+0069 E0                MOVX    A,@DPTR
+006A FF                MOV     R7,A
+006B 7E00              MOV     R6,#00H
+006D 900000      R     MOV     DPTR,#remaining_bytes
+0070 E0                MOVX    A,@DPTR
+0071 FC                MOV     R4,A
+0072 A3                INC     DPTR
+0073 E0                MOVX    A,@DPTR
+0074 FD                MOV     R5,A
+0075 C3                CLR     C
+0076 ED                MOV     A,R5
+0077 9F                SUBB    A,R7
+0078 EE                MOV     A,R6
+0079 6480              XRL     A,#080H
+007B F8                MOV     R0,A
+007C EC                MOV     A,R4
+007D 6480              XRL     A,#080H
+007F 98                SUBB    A,R0
+0080 501C              JNC     ?C0002
+0082 900000      E     MOV     DPTR,#sample_tail_index
+0085 E0                MOVX    A,@DPTR
+0086 FE                MOV     R6,A
+0087 A3                INC     DPTR
+0088 E0                MOVX    A,@DPTR
+0089 FF                MOV     R7,A
+008A 900000      E     MOV     DPTR,#sample_head_index
+008D E0                MOVX    A,@DPTR
+008E FC                MOV     R4,A
+008F A3                INC     DPTR
+0090 E0                MOVX    A,@DPTR
+0091 FD                MOV     R5,A
+0092 ED                MOV     A,R5
+0093 6F                XRL     A,R7
+0094 7002              JNZ     ?C0017
+0096 EC                MOV     A,R4
+0097 6E                XRL     A,R6
+C51 COMPILER V9.51   INTERFACE                                                             05/18/2014 17:33:00 PAGE 6   
 
-00C3 7B01              MOV     R3,#01H
-00C5 7A00        R     MOV     R2,#HIGH header
-00C7 7900        R     MOV     R1,#LOW header
-00C9 C003              PUSH    AR3
-00CB C002              PUSH    AR2
-00CD C001              PUSH    AR1
-00CF 900000      E     MOV     DPTR,#TailPtr
-00D2 120000      E     LCALL   ?C?PLDXDATA
-00D5 900000      E     MOV     DPTR,#?_Em_EEPROM_Write?BYTE+03H
-00D8 120000      E     LCALL   ?C?PSTXDATA
-00DB 900000      R     MOV     DPTR,#header_size
-00DE E0                MOVX    A,@DPTR
-00DF FF                MOV     R7,A
-00E0 7E00              MOV     R6,#00H
-00E2 900000      E     MOV     DPTR,#?_Em_EEPROM_Write?BYTE+06H
-00E5 EE                MOV     A,R6
-00E6 F0                MOVX    @DPTR,A
-00E7 A3                INC     DPTR
-00E8 EF                MOV     A,R7
-00E9 F0                MOVX    @DPTR,A
-00EA D001              POP     AR1
-00EC D002              POP     AR2
-00EE D003              POP     AR3
-00F0 120000      E     LCALL   _Em_EEPROM_Write
-                                           ; SOURCE LINE # 34
-00F3 900000      R     MOV     DPTR,#header_size
-00F6 E0                MOVX    A,@DPTR
-00F7 FF                MOV     R7,A
-00F8 7E00              MOV     R6,#00H
-00FA 900000      E     MOV     DPTR,#TailPtr+01H
-00FD EE                MOV     A,R6
-00FE 8FF0              MOV     B,R7
-0100 120000      E     LCALL   ?C?IILDX
+0098         ?C0017:
+0098 6004              JZ      ?C0002
+                                           ; SOURCE LINE # 31
+009A 120000      E     LCALL   memory_full
+                                           ; SOURCE LINE # 32
+009D 22                RET     
+                                           ; SOURCE LINE # 33
+009E         ?C0002:
                                            ; SOURCE LINE # 36
-0103 120000      E     LCALL   StopCollection_IRQ_Start
+009E 900000      R     MOV     DPTR,#header
+00A1 7420              MOV     A,#020H
+00A3 F0                MOVX    @DPTR,A
+00A4 A3                INC     DPTR
+00A5 E4                CLR     A
+00A6 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 37
-0106 120000      E     LCALL   StartCollection_IRQ_Stop
+00A7 7F00              MOV     R7,#00H
+00A9 7E00              MOV     R6,#00H
+00AB 120000      E     LCALL   _get_variable
+00AE 900000      R     MOV     DPTR,#header+04H
+00B1 EF                MOV     A,R7
+00B2 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 38
-0109 900000      E     MOV     DPTR,#sample_enable
-010C 7401              MOV     A,#01H
-010E F0                MOVX    @DPTR,A
+00B3 7F01              MOV     R7,#01H
+00B5 7E00              MOV     R6,#00H
+00B7 120000      E     LCALL   _get_variable
+00BA 900000      R     MOV     DPTR,#header+05H
+00BD EF                MOV     A,R7
+00BE F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 39
-010F 900000      E     MOV     DPTR,#sample_int_count
-0112 E4                CLR     A
-0113 F0                MOVX    @DPTR,A
+00BF 7F02              MOV     R7,#02H
+00C1 7E00              MOV     R6,#00H
+00C3 120000      E     LCALL   _get_variable
+00C6 900000      R     MOV     DPTR,#header+06H
+00C9 EF                MOV     A,R7
+00CA F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 40
+00CB 900000      R     MOV     DPTR,#datetime
+00CE 120000      E     LCALL   ?C?PLDXDATA
+00D1 120000      E     LCALL   ?C?CLDPTR
+00D4 FF                MOV     R7,A
+00D5 900000      R     MOV     DPTR,#header+07H
+00D8 EF                MOV     A,R7
+00D9 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 41
+00DA 900000      R     MOV     DPTR,#datetime
+00DD 120000      E     LCALL   ?C?PLDXDATA
+00E0 E9                MOV     A,R1
+00E1 2401              ADD     A,#01H
+00E3 F9                MOV     R1,A
+00E4 EA                MOV     A,R2
+00E5 3400              ADDC    A,#00H
+00E7 FA                MOV     R2,A
+00E8 120000      E     LCALL   ?C?CLDPTR
+00EB FF                MOV     R7,A
+00EC 900000      R     MOV     DPTR,#header+08H
+00EF EF                MOV     A,R7
+00F0 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 42
-0114         ?C0001:
-0114 22                RET     
+00F1 900000      R     MOV     DPTR,#datetime
+00F4 120000      E     LCALL   ?C?PLDXDATA
+00F7 E9                MOV     A,R1
+C51 COMPILER V9.51   INTERFACE                                                             05/18/2014 17:33:00 PAGE 7   
+
+00F8 2402              ADD     A,#02H
+00FA F9                MOV     R1,A
+00FB EA                MOV     A,R2
+00FC 3400              ADDC    A,#00H
+00FE FA                MOV     R2,A
+00FF 120000      E     LCALL   ?C?CLDPTR
+0102 FF                MOV     R7,A
+0103 900000      R     MOV     DPTR,#header+09H
+0106 EF                MOV     A,R7
+0107 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 43
+0108 900000      R     MOV     DPTR,#datetime
+010B 120000      E     LCALL   ?C?PLDXDATA
+010E E9                MOV     A,R1
+010F 2404              ADD     A,#04H
+0111 F9                MOV     R1,A
+0112 EA                MOV     A,R2
+0113 3400              ADDC    A,#00H
+0115 FA                MOV     R2,A
+0116 120000      E     LCALL   ?C?CLDPTR
+0119 FF                MOV     R7,A
+011A 900000      R     MOV     DPTR,#header+0AH
+011D EF                MOV     A,R7
+011E F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 44
+011F 900000      R     MOV     DPTR,#datetime
+0122 120000      E     LCALL   ?C?PLDXDATA
+0125 E9                MOV     A,R1
+0126 2407              ADD     A,#07H
+0128 F9                MOV     R1,A
+0129 EA                MOV     A,R2
+012A 3400              ADDC    A,#00H
+012C FA                MOV     R2,A
+012D 120000      E     LCALL   ?C?CLDPTR
+0130 FF                MOV     R7,A
+0131 900000      R     MOV     DPTR,#header+0BH
+0134 EF                MOV     A,R7
+0135 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 45
+0136 900000      R     MOV     DPTR,#datetime
+0139 120000      E     LCALL   ?C?PLDXDATA
+013C E9                MOV     A,R1
+013D 2408              ADD     A,#08H
+013F F9                MOV     R1,A
+0140 EA                MOV     A,R2
+0141 3400              ADDC    A,#00H
+0143 FA                MOV     R2,A
+0144 120000      E     LCALL   ?C?ILDPTR
+0147 FF                MOV     R7,A
+0148 AEF0              MOV     R6,B
+014A 900000      R     MOV     DPTR,#header+02H
+014D EE                MOV     A,R6
+014E F0                MOVX    @DPTR,A
+014F A3                INC     DPTR
+0150 EF                MOV     A,R7
+0151 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 49
+0152 900000      R     MOV     DPTR,#header_size
+0155 E0                MOVX    A,@DPTR
+0156 FF                MOV     R7,A
+0157 7E00              MOV     R6,#00H
+0159 900000      E     MOV     DPTR,#sample_tail_index
+C51 COMPILER V9.51   INTERFACE                                                             05/18/2014 17:33:00 PAGE 8   
+
+015C E0                MOVX    A,@DPTR
+015D FC                MOV     R4,A
+015E A3                INC     DPTR
+015F E0                MOVX    A,@DPTR
+0160 FD                MOV     R5,A
+0161 EF                MOV     A,R7
+0162 2D                ADD     A,R5
+0163 FF                MOV     R7,A
+0164 EE                MOV     A,R6
+0165 3C                ADDC    A,R4
+0166 FE                MOV     R6,A
+0167 C3                CLR     C
+0168 EE                MOV     A,R6
+0169 9404              SUBB    A,#04H
+016B 504F              JNC     ?C0004
+                                           ; SOURCE LINE # 50
+016D 7B01              MOV     R3,#01H
+016F 7A00        R     MOV     R2,#HIGH header
+0171 7900        R     MOV     R1,#LOW header
+0173 C003              PUSH    AR3
+0175 C002              PUSH    AR2
+0177 C001              PUSH    AR1
+0179 900000      E     MOV     DPTR,#sample_tail_index
+017C E0                MOVX    A,@DPTR
+017D FE                MOV     R6,A
+017E A3                INC     DPTR
+017F E0                MOVX    A,@DPTR
+0180 FF                MOV     R7,A
+0181 7400        E     MOV     A,#LOW sample_block
+0183 2F                ADD     A,R7
+0184 F9                MOV     R1,A
+0185 7400        E     MOV     A,#HIGH sample_block
+0187 3E                ADDC    A,R6
+0188 FA                MOV     R2,A
+0189 7BFF              MOV     R3,#0FFH
+018B 900000      E     MOV     DPTR,#?_Em_EEPROM_Write?BYTE+03H
+018E 120000      E     LCALL   ?C?PSTXDATA
+0191 900000      R     MOV     DPTR,#header_size
+0194 E0                MOVX    A,@DPTR
+0195 FF                MOV     R7,A
+0196 7E00              MOV     R6,#00H
+0198 900000      E     MOV     DPTR,#?_Em_EEPROM_Write?BYTE+06H
+019B EE                MOV     A,R6
+019C F0                MOVX    @DPTR,A
+019D A3                INC     DPTR
+019E EF                MOV     A,R7
+019F F0                MOVX    @DPTR,A
+01A0 D001              POP     AR1
+01A2 D002              POP     AR2
+01A4 D003              POP     AR3
+01A6 120000      E     LCALL   _Em_EEPROM_Write
+                                           ; SOURCE LINE # 51
+01A9 900000      R     MOV     DPTR,#header_size
+01AC E0                MOVX    A,@DPTR
+01AD FF                MOV     R7,A
+01AE 7E00              MOV     R6,#00H
+01B0 900000      E     MOV     DPTR,#sample_tail_index
+01B3 EE                MOV     A,R6
+01B4 8FF0              MOV     B,R7
+01B6 120000      E     LCALL   ?C?IILDX
+                                           ; SOURCE LINE # 52
+01B9 020000      R     LJMP    ?C0005
+C51 COMPILER V9.51   INTERFACE                                                             05/18/2014 17:33:00 PAGE 9   
+
+01BC         ?C0004:
+                                           ; SOURCE LINE # 53
+                                           ; SOURCE LINE # 55
+01BC 900000      E     MOV     DPTR,#sample_tail_index
+01BF E0                MOVX    A,@DPTR
+01C0 FE                MOV     R6,A
+01C1 A3                INC     DPTR
+01C2 E0                MOVX    A,@DPTR
+01C3 FF                MOV     R7,A
+01C4 C3                CLR     C
+01C5 E4                CLR     A
+01C6 9F                SUBB    A,R7
+01C7 FF                MOV     R7,A
+01C8 7404              MOV     A,#04H
+01CA 9E                SUBB    A,R6
+01CB FE                MOV     R6,A
+01CC 900000      R     MOV     DPTR,#remaining_bytes
+01CF EE                MOV     A,R6
+01D0 F0                MOVX    @DPTR,A
+01D1 A3                INC     DPTR
+01D2 EF                MOV     A,R7
+01D3 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 58
+01D4 7B01              MOV     R3,#01H
+01D6 7A00        R     MOV     R2,#HIGH header
+01D8 7900        R     MOV     R1,#LOW header
+01DA C003              PUSH    AR3
+01DC C002              PUSH    AR2
+01DE C001              PUSH    AR1
+01E0 900000      E     MOV     DPTR,#sample_tail_index
+01E3 E0                MOVX    A,@DPTR
+01E4 FE                MOV     R6,A
+01E5 A3                INC     DPTR
+01E6 E0                MOVX    A,@DPTR
+01E7 FF                MOV     R7,A
+01E8 7400        E     MOV     A,#LOW sample_block
+01EA 2F                ADD     A,R7
+01EB F9                MOV     R1,A
+01EC 7400        E     MOV     A,#HIGH sample_block
+01EE 3E                ADDC    A,R6
+01EF FA                MOV     R2,A
+01F0 7BFF              MOV     R3,#0FFH
+01F2 900000      E     MOV     DPTR,#?_Em_EEPROM_Write?BYTE+03H
+01F5 120000      E     LCALL   ?C?PSTXDATA
+01F8 900000      R     MOV     DPTR,#remaining_bytes
+01FB E0                MOVX    A,@DPTR
+01FC FE                MOV     R6,A
+01FD A3                INC     DPTR
+01FE E0                MOVX    A,@DPTR
+01FF FF                MOV     R7,A
+0200 900000      E     MOV     DPTR,#?_Em_EEPROM_Write?BYTE+06H
+0203 EE                MOV     A,R6
+0204 F0                MOVX    @DPTR,A
+0205 A3                INC     DPTR
+0206 EF                MOV     A,R7
+0207 F0                MOVX    @DPTR,A
+0208 D001              POP     AR1
+020A D002              POP     AR2
+020C D003              POP     AR3
+020E 120000      E     LCALL   _Em_EEPROM_Write
+                                           ; SOURCE LINE # 60
+0211 900000      R     MOV     DPTR,#remaining_bytes
+C51 COMPILER V9.51   INTERFACE                                                             05/18/2014 17:33:00 PAGE 10  
+
+0214 E0                MOVX    A,@DPTR
+0215 FE                MOV     R6,A
+0216 A3                INC     DPTR
+0217 E0                MOVX    A,@DPTR
+0218 FF                MOV     R7,A
+0219 7C00              MOV     R4,#00H
+021B 7D0C              MOV     R5,#0CH
+021D 120000      E     LCALL   ?C?IMUL
+0220 7B01              MOV     R3,#01H
+0222 7A00        R     MOV     R2,#HIGH header
+0224 7900        R     MOV     R1,#LOW header
+0226 E9                MOV     A,R1
+0227 2F                ADD     A,R7
+0228 F9                MOV     R1,A
+0229 EA                MOV     A,R2
+022A 3E                ADDC    A,R6
+022B FA                MOV     R2,A
+022C C003              PUSH    AR3
+022E C002              PUSH    AR2
+0230 C001              PUSH    AR1
+0232 7BFF              MOV     R3,#0FFH
+0234 7A00        E     MOV     R2,#HIGH sample_block
+0236 7900        E     MOV     R1,#LOW sample_block
+0238 900000      E     MOV     DPTR,#?_Em_EEPROM_Write?BYTE+03H
+023B 120000      E     LCALL   ?C?PSTXDATA
+023E 900000      R     MOV     DPTR,#header_size
+0241 E0                MOVX    A,@DPTR
+0242 FF                MOV     R7,A
+0243 7E00              MOV     R6,#00H
+0245 900000      R     MOV     DPTR,#remaining_bytes
+0248 E0                MOVX    A,@DPTR
+0249 FC                MOV     R4,A
+024A A3                INC     DPTR
+024B E0                MOVX    A,@DPTR
+024C FD                MOV     R5,A
+024D C3                CLR     C
+024E EF                MOV     A,R7
+024F 9D                SUBB    A,R5
+0250 FF                MOV     R7,A
+0251 EE                MOV     A,R6
+0252 9C                SUBB    A,R4
+0253 FE                MOV     R6,A
+0254 900000      E     MOV     DPTR,#?_Em_EEPROM_Write?BYTE+06H
+0257 EE                MOV     A,R6
+0258 F0                MOVX    @DPTR,A
+0259 A3                INC     DPTR
+025A EF                MOV     A,R7
+025B F0                MOVX    @DPTR,A
+025C D001              POP     AR1
+025E D002              POP     AR2
+0260 D003              POP     AR3
+0262 120000      E     LCALL   _Em_EEPROM_Write
+                                           ; SOURCE LINE # 61
+0265 900000      R     MOV     DPTR,#header_size
+0268 E0                MOVX    A,@DPTR
+0269 FF                MOV     R7,A
+026A 7E00              MOV     R6,#00H
+026C 900000      R     MOV     DPTR,#remaining_bytes
+026F E0                MOVX    A,@DPTR
+0270 FC                MOV     R4,A
+0271 A3                INC     DPTR
+0272 E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   INTERFACE                                                             05/18/2014 17:33:00 PAGE 11  
+
+0273 FD                MOV     R5,A
+0274 C3                CLR     C
+0275 EF                MOV     A,R7
+0276 9D                SUBB    A,R5
+0277 FF                MOV     R7,A
+0278 EE                MOV     A,R6
+0279 9C                SUBB    A,R4
+027A FE                MOV     R6,A
+027B 900000      E     MOV     DPTR,#sample_tail_index
+027E EE                MOV     A,R6
+027F F0                MOVX    @DPTR,A
+0280 A3                INC     DPTR
+0281 EF                MOV     A,R7
+0282 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 62
+0283         ?C0005:
+                                           ; SOURCE LINE # 65
+0283 7B01              MOV     R3,#01H
+0285 7A00        E     MOV     R2,#HIGH sample_tail_index
+0287 7900        E     MOV     R1,#LOW sample_tail_index
+0289 C003              PUSH    AR3
+028B C002              PUSH    AR2
+028D C001              PUSH    AR1
+028F 900000      E     MOV     DPTR,#pointer_tail_index
+0292 E0                MOVX    A,@DPTR
+0293 FE                MOV     R6,A
+0294 A3                INC     DPTR
+0295 E0                MOVX    A,@DPTR
+0296 FF                MOV     R7,A
+0297 EF                MOV     A,R7
+0298 25E0              ADD     A,ACC
+029A FF                MOV     R7,A
+029B EE                MOV     A,R6
+029C 33                RLC     A
+029D FE                MOV     R6,A
+029E 7400        E     MOV     A,#LOW current_sample_indices
+02A0 2F                ADD     A,R7
+02A1 F9                MOV     R1,A
+02A2 7400        E     MOV     A,#HIGH current_sample_indices
+02A4 3E                ADDC    A,R6
+02A5 FA                MOV     R2,A
+02A6 7BFF              MOV     R3,#0FFH
+02A8 900000      E     MOV     DPTR,#?_Em_EEPROM_Write?BYTE+03H
+02AB 120000      E     LCALL   ?C?PSTXDATA
+02AE 900000      E     MOV     DPTR,#?_Em_EEPROM_Write?BYTE+06H
+02B1 E4                CLR     A
+02B2 F0                MOVX    @DPTR,A
+02B3 A3                INC     DPTR
+02B4 7402              MOV     A,#02H
+02B6 F0                MOVX    @DPTR,A
+02B7 D001              POP     AR1
+02B9 D002              POP     AR2
+02BB D003              POP     AR3
+02BD 120000      E     LCALL   _Em_EEPROM_Write
+                                           ; SOURCE LINE # 67
+02C0 120000      E     LCALL   StopCollection_IRQ_Start
+                                           ; SOURCE LINE # 68
+02C3 120000      E     LCALL   StartCollection_IRQ_Stop
+                                           ; SOURCE LINE # 69
+02C6 900000      E     MOV     DPTR,#sample_enable
+02C9 7401              MOV     A,#01H
+02CB F0                MOVX    @DPTR,A
+C51 COMPILER V9.51   INTERFACE                                                             05/18/2014 17:33:00 PAGE 12  
+
+                                           ; SOURCE LINE # 70
+02CC 900000      E     MOV     DPTR,#sample_int_count
+02CF E4                CLR     A
+02D0 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 72
+02D1         exit:
+                                           ; SOURCE LINE # 74
+02D1         ?C0006:
+02D1 22                RET     
              ; FUNCTION StartCollection (END)
 
              ; FUNCTION StopCollection (BEGIN)
-                                           ; SOURCE LINE # 44
-                                           ; SOURCE LINE # 46
+                                           ; SOURCE LINE # 76
+                                           ; SOURCE LINE # 78
 0000 120000      E     LCALL   StartCollection_IRQ_Start
-                                           ; SOURCE LINE # 47
+                                           ; SOURCE LINE # 79
 0003 120000      E     LCALL   StopCollection_IRQ_Stop
-                                           ; SOURCE LINE # 48
+                                           ; SOURCE LINE # 80
 0006 900000      E     MOV     DPTR,#sample_enable
 0009 E4                CLR     A
 000A F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 51
-000B         ?C0002:
-C51 COMPILER V9.51   INTERFACE                                                             05/10/2014 16:55:34 PAGE 6   
-
+                                           ; SOURCE LINE # 83
+000B         ?C0007:
 000B 22                RET     
              ; FUNCTION StopCollection (END)
 
              ; FUNCTION _LED_on (BEGIN)
-                                           ; SOURCE LINE # 53
+                                           ; SOURCE LINE # 85
 0000 900000      R     MOV     DPTR,#color
 0003 EF                MOV     A,R7
 0004 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 55
+                                           ; SOURCE LINE # 87
 0005 900000      R     MOV     DPTR,#color
 0008 E0                MOVX    A,@DPTR
 0009 FF                MOV     R7,A
 000A EF                MOV     A,R7
 000B 120000      E     LCALL   ?C?CCASE
-000E 0000        R     DW      ?C0006
+000E 0000        R     DW      ?C0011
 0010 01                DB      01H
-0011 0000        R     DW      ?C0006
+0011 0000        R     DW      ?C0011
 0013 02                DB      02H
-0014 0000        R     DW      ?C0007
+0014 0000        R     DW      ?C0012
 0016 03                DB      03H
-0017 0000        R     DW      ?C0006
+0017 0000        R     DW      ?C0011
 0019 04                DB      04H
-001A 0000        R     DW      ?C0008
+001A 0000        R     DW      ?C0013
 001C 05                DB      05H
-001D 0000        R     DW      ?C0009
+001D 0000        R     DW      ?C0014
 001F 06                DB      06H
 0020 0000              DW      00H
-0022 0000        R     DW      ?C0010
-                                           ; SOURCE LINE # 57
-0024         ?C0004:
-                                           ; SOURCE LINE # 58
-0024         ?C0005:
-                                           ; SOURCE LINE # 59
-0024         ?C0006:
-                                           ; SOURCE LINE # 60
+0022 0000        R     DW      ?C0015
+                                           ; SOURCE LINE # 89
+0024         ?C0009:
+                                           ; SOURCE LINE # 90
+0024         ?C0010:
+                                           ; SOURCE LINE # 91
+0024         ?C0011:
+                                           ; SOURCE LINE # 92
 0024 900000      R     MOV     DPTR,#color
 0027 E0                MOVX    A,@DPTR
 0028 FF                MOV     R7,A
 0029 120000      E     LCALL   _SOLID_LED_CTRL_Write
-                                           ; SOURCE LINE # 61
+C51 COMPILER V9.51   INTERFACE                                                             05/18/2014 17:33:00 PAGE 13  
+
+                                           ; SOURCE LINE # 93
 002C 22                RET     
-                                           ; SOURCE LINE # 63
-002D         ?C0007:
-                                           ; SOURCE LINE # 64
+                                           ; SOURCE LINE # 95
+002D         ?C0012:
+                                           ; SOURCE LINE # 96
 002D 7F02              MOV     R7,#02H
 002F 120000      E     LCALL   _PWM0_CTRL_Write
-                                           ; SOURCE LINE # 65
+                                           ; SOURCE LINE # 97
 0032 7F01              MOV     R7,#01H
 0034 120000      E     LCALL   _PWM1_CTRL_Write
-                                           ; SOURCE LINE # 66
+                                           ; SOURCE LINE # 98
 0037 22                RET     
-                                           ; SOURCE LINE # 68
-0038         ?C0008:
-                                           ; SOURCE LINE # 69
+                                           ; SOURCE LINE # 100
+0038         ?C0013:
+                                           ; SOURCE LINE # 101
 0038 7F03              MOV     R7,#03H
 003A 120000      E     LCALL   _PWM0_CTRL_Write
-                                           ; SOURCE LINE # 70
+                                           ; SOURCE LINE # 102
 003D 7F01              MOV     R7,#01H
 003F 120000      E     LCALL   _PWM1_CTRL_Write
-                                           ; SOURCE LINE # 71
+                                           ; SOURCE LINE # 103
 0042 22                RET     
-                                           ; SOURCE LINE # 73
-C51 COMPILER V9.51   INTERFACE                                                             05/10/2014 16:55:34 PAGE 7   
-
-0043         ?C0009:
-                                           ; SOURCE LINE # 74
+                                           ; SOURCE LINE # 105
+0043         ?C0014:
+                                           ; SOURCE LINE # 106
 0043 7F03              MOV     R7,#03H
 0045 120000      E     LCALL   _PWM0_CTRL_Write
-                                           ; SOURCE LINE # 75
+                                           ; SOURCE LINE # 107
 0048 7F02              MOV     R7,#02H
 004A 120000      E     LCALL   _PWM1_CTRL_Write
-                                           ; SOURCE LINE # 76
-                                           ; SOURCE LINE # 78
-004D         ?C0003:
-                                           ; SOURCE LINE # 80
-004D         ?C0010:
+                                           ; SOURCE LINE # 108
+                                           ; SOURCE LINE # 110
+004D         ?C0008:
+                                           ; SOURCE LINE # 112
+004D         ?C0015:
 004D 22                RET     
              ; FUNCTION _LED_on (END)
 
              ; FUNCTION LED_off (BEGIN)
-                                           ; SOURCE LINE # 82
-                                           ; SOURCE LINE # 84
+                                           ; SOURCE LINE # 114
+                                           ; SOURCE LINE # 116
 0000 7F00              MOV     R7,#00H
 0002 120000      E     LCALL   _SOLID_LED_CTRL_Write
-                                           ; SOURCE LINE # 85
+                                           ; SOURCE LINE # 117
 0005 7F00              MOV     R7,#00H
 0007 120000      E     LCALL   _PWM0_CTRL_Write
-                                           ; SOURCE LINE # 86
+                                           ; SOURCE LINE # 118
 000A 7F00              MOV     R7,#00H
 000C 120000      E     LCALL   _PWM1_CTRL_Write
-                                           ; SOURCE LINE # 89
-000F         ?C0011:
+                                           ; SOURCE LINE # 121
+000F         ?C0016:
 000F 22                RET     
              ; FUNCTION LED_off (END)
 
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    383    ----
+   CODE SIZE        =    828    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =     17    ----
+   XDATA SIZE       =     21    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
+C51 COMPILER V9.51   INTERFACE                                                             05/18/2014 17:33:00 PAGE 14  
+
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
    EDATA SIZE       =   ----    ----

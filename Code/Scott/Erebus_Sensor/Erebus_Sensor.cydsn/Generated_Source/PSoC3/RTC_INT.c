@@ -65,7 +65,7 @@ static void RTC_EverySecondHandler(void)
     }
         
     ++low_batt_blink_count;
-    if ((low_batt_blink_count >= LOWBATT_BLINK_INTERVAL) && low_power_flag){
+    if ((low_batt_blink_count >= LOWBATT_BLINK_INTERVAL) && low_power_flag && !mem_full_flag){
         low_batt_blink_count = 0;
         LowPowerBlink_waiting = 1;
     }

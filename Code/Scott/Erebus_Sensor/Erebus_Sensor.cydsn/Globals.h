@@ -30,13 +30,20 @@
     extern uint8 BatteryCheck_waiting;
     extern uint8 low_batt_blink_count;
     extern uint8 sample_enable;
+    extern uint8 mem_full_flag;
     
-
+    extern volatile uint16 pointer_head_index;
+    extern volatile uint16 pointer_tail_index;
+    extern volatile uint16 sample_head_index;
+    extern volatile uint16 sample_tail_index;
     
     // FLASH Variables
-    extern const uint8 CYCODE hard_reset_flag; 
-    extern const uint8 CYCODE MemoryLocation[];
-    extern const volatile uint8* TailPtr;
+    extern const uint8 CYCODE sample_block[]; 
+    extern const uint16 CYCODE current_sample_indices[];
+    extern const uint16 CYCODE master_sample_indices[];
+    extern const uint8 CYCODE mem_full_flash_flag;
+    
+    
     
 #endif
 

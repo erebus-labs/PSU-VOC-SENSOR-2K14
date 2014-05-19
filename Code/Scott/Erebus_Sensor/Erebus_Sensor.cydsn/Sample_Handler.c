@@ -17,35 +17,35 @@ void take_sample()
     uint16 SampledData = 0;
     ADC_Wakeup();
     
-    /* ADC */
+    /* Get sample from ADC */
     SampledData = ADC_Read16(); /* Function Starts, Converts, Stops, and Returns from ADC */
     
-    /* EEP */
-    Em_EEPROM_Write((uint8*) (&SampledData),TailPtr,2u);
+    /* Write sample value to Emulated EEPROM */
+    Em_EEPROM_Write((uint8*) &SampledData, &(sample_block[sample_tail_index]), SAMPLE_SIZE);
+       
+    sample_tail_index = sample_tail_index + SAMPLE_SIZE;
+    /* Check to make sure we're not incrementing the tail pointer past
+     * the bounds of our sample array */
+    if(sample_tail_index >= SAMPLE_BLOCK_SIZE){
+        sample_tail_index = 0;
+    }
     
-    TailPtr = TailPtr + 2;
+    /* Check to make sure we aren't about to start overwriting existing data */
+    if (sample_tail_index == sample_head_index){
+        memory_full();
+        goto exit;
+    }
+      
+    /* Store incremented tail pointer back in Emulated EEPROM */
+    Em_EEPROM_Write((uint8*) &sample_tail_index, (uint8*) &(current_sample_indices[pointer_tail_index]), sizeof(uint16));
+
+exit:
+    
     ADC_Sleep();
     return;    
 }
 
-void check_battery(){
-    uint16 SampledData = 0;
-    ADC_Wakeup();
-    ADC_MUX_Select(BATT_PIN);
-    
-    SampledData = ADC_Read16(); /* Function Starts, Converts, Stops, and Returns from ADC */
-    
-    if (SampledData <= BATT_THRESHOLD){
-        low_power_flag = 1;
-    }
-    else{
-        low_power_flag = 0;
-    }
-    
-    ADC_Sleep();
-    ADC_MUX_FastSelect(SAMPLE_PIN);
-    
-    return;
-}
+
+
     
 /* [] END OF FILE */

@@ -159,76 +159,90 @@ void send_settings(){
 }
 
 uint8 dump_data(){
-    uint8  ExportBuffer[BUFFER_LEN]; // 64 Bytes per USB data packet.
-    uint8* ExportPtr =(uint8*) MemoryLocation; 
-    uint16 DataCnt = 0;
-    uint8 i = 0;
-    uint8 result = SUCCESS;
     
-    if(TailPtr == ExportPtr){
-        ExportBuffer[0] = NO_DATA;
+    uint8 result = SUCCESS;
+    uint8 export_buffer[BUFFER_LEN];
+    uint16 export_index = sample_head_index; 
+    uint16 byte_count = 0;
+    uint8 i = 0;
+    
+    if(export_index == sample_tail_index){
+        export_buffer[0] = NO_DATA;
         
         for (i=1; i< BUFFER_LEN; ++i){
-            ExportBuffer[i] = PADBYTE;
+            export_buffer[i] = PADBYTE;
         }
-        write_out(ExportBuffer);
+        write_out(export_buffer);
         
         if (wait_next() == FAIL){
             result = FAIL;
-        }     
+        }
+        
+        goto exit;
     }
             
-    while (ExportPtr < TailPtr)
+    /* Loop 1: Iterate over data samples until export pointer meets the tail */
+    while (export_index != sample_tail_index)
     {   
+        /* Loop 2: Iterate over the 64-byte USB buffer, copying bytes into it */
         while (i < BUFFER_LEN)
         {
-            if (ExportPtr < TailPtr)
+            if (export_index != sample_tail_index)
             {
-                ExportBuffer[i] = *ExportPtr; // Copy sampled data from flash at *ExportPtr to buffer for send over usb com 
+                export_buffer[i] = sample_block[export_index];
                 ++i;
-                ++ExportPtr;
-                ++DataCnt;
+                ++export_index;
+                ++byte_count;
+                
+                /* Check to make sure we're not incrementing export_ptr past
+                 * the bounds of our sample array - wrap around to first element if true */
+                if (export_index >= SAMPLE_BLOCK_SIZE){
+                    export_index = 0;
+                }
             }
             else
             {
-                ExportBuffer[i] = PADBYTE;
+                export_buffer[i] = PADBYTE;
                 ++i;
             }           
         }
         
-        write_out(ExportBuffer); // Send 64 byte packet of data from memory
+        /* Send 64-byte packet to host */
+        write_out(export_buffer);
         i = 0;
         
+        /* Wait for permission from host to send next packet */
         if (wait_next() == FAIL){
             result = FAIL;
             goto exit;
         }
     }
     
-    // Add the size trailer packet to get total transmission size
-    DataCnt = DataCnt + 4;
+    /* Add the size trailer packet to get total transmission size,
+     * excluding pad bytes */
+    byte_count = byte_count + 4;
     
-    /* Trailer Packet to Identify End of Sampled Data in Memory */
-    ExportBuffer[0] = 0x80;               // End of Data Identifier
-    ExportBuffer[1] = 0x00;
+    /* Trailer Packet to Identify End of Sampled Data in Memory */ 
+    export_buffer[0] = 0x80; // End of Data Identifier
+    export_buffer[1] = 0x00;
     
-    //2 byte Count split into two 1 byte packages to be arrayed.
-    ExportBuffer[2] = (uint8)(DataCnt >> 8);;          // Count of Total Bytes Sent
-    ExportBuffer[3] = (uint8)0x00FF & DataCnt;
+    /* Byte count may be up to 16-bits long - pack into two bytes
+     * and copy to buffer */
+    export_buffer[2] = (uint8)(byte_count >> 8);
+    export_buffer[3] = (uint8)0x00FF & byte_count;
     
-    write_out(ExportBuffer);
+    write_out(export_buffer);
 
 exit:
+    
     return result;
 }
 
-void write_out(uint8* ExportBuffer){
-    while(!USBUART_CDCIsReady() && Vbus_Read());
-    USBUART_PutData(ExportBuffer, BUFFER_LEN);
-
-    while(!USBUART_CDCIsReady() && Vbus_Read());
-    USBUART_PutData(ExportBuffer, 0);
+void write_out(uint8* export_buffer){
     
+    while(!USBUART_CDCIsReady() && Vbus_Read());
+    USBUART_PutData(export_buffer, BUFFER_LEN);
+  
     return;
 }
     
@@ -241,6 +255,7 @@ uint8 wait_next(){
             
         while(!USBUART_GetCount() && Vbus_Read()); 
         retrieve_status = retrieve(&reply, COMMAND_LENGTH);
+        
         if(retrieve_status == SUCCESS){
             if(reply == NEXT){
                 continue_status = SUCCESS;
@@ -278,7 +293,12 @@ void confirm_dump(){
         if(result == SUCCESS){
                     
             if (command == SUCCESS){
-                TailPtr = (uint8*) MemoryLocation;
+                /* Data was successfully dumped, so bring head pointer up to current tail 
+                 * to "erase" the old data */
+                sample_head_index = sample_tail_index;
+                Em_EEPROM_Write((uint8*) &sample_tail_index, (uint8*) &(current_sample_indices[pointer_head_index]), sizeof(uint16));
+                mem_full_flag = 0;
+                Em_EEPROM_Write(&mem_full_flag, &mem_full_flash_flag, sizeof(uint8));
                 break;
             }
             
@@ -318,9 +338,7 @@ uint8 update_RTC(){
 
 void CMD_hard_reset(){
 
-    uint8 reset_flag = 0xFF;
-    
-    Em_EEPROM_Write(&reset_flag, &hard_reset_flag, 1u);
+    reset_pointers();
     
     return;
 }

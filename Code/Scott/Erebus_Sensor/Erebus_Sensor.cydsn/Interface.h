@@ -17,6 +17,7 @@
     #include "EEPROM_Access.h"
     #include "RTC_Handler.h"
     #include "USB_Access.h"
+    #include "Utility.h"
     #include "Globals.h"
     #include "Macros.h"
     
@@ -29,6 +30,9 @@
     // padding - #pragma pack(n) is not a recognized directive
     // for the compiler
     
+    /* If this structure is modified, make sure it still contains
+     * an even number of bytes. Other flash storage routines rely
+     * on 2-byte aligned accesses. */
     struct header_package{
         uint16 start_block;
         uint16 year;
@@ -40,6 +44,13 @@
         uint8 hour;
         uint8 day;
         uint8 month;
+        
+        /* Add reserved pad bytes to force natural alignment
+        uint8 rsvd1;
+        uint8 rsvd2;
+        uint8 rsvd3;
+        uint8 rsvd4;
+        */
     };
     
 #endif

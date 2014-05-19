@@ -15,8 +15,12 @@
     
     #include "project.h"
     #include "Globals.h"
+    #include "Macros.h"
+    #include "Interface.h"
 
-    void hard_reset();
+    void reset_pointers();
+    void check_battery();
+    void memory_full();
     
 #endif    
 
