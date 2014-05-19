@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE eagle SYSTEM "eagle.dtd">
+<eagle version="6.4">
+<drawing>
+<settings>
+<setting alwaysvectorfont="no"/>
+<setting verticaltext="up"/>
+</settings>
+<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<layers>
+<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
+<layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
+<layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
+<layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
+<layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
+<layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
+<layer number="34" name="bFinish" color="6" fill="6" visible="no" active="yes"/>
+<layer number="35" name="tGlue" color="7" fill="4" visible="no" active="yes"/>
+<layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
+<layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
+<layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
+<layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
+<layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
+<layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
+<layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="92" name="Busses" color="1" fill="1" visible="yes" active="yes"/>
+<layer number="93" name="Pins" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="94" name="Symbols" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="95" name="Names" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="96" name="Values" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="97" name="Info" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="98" name="Guide" color="6" fill="1" visible="yes" active="yes"/>
+</layers>
+<library>
+<packages>
+<package name="PSOC_3_48PIN_SSOP">
+<wire x1="0" y1="0" x2="16.002" y2="0" width="0.127" layer="21"/>
+<wire x1="16.002" y1="0" x2="16.002" y2="7.5946" width="0.127" layer="21"/>
+<wire x1="16.002" y1="7.5946" x2="0" y2="7.5946" width="0.127" layer="21"/>
+<wire x1="0" y1="7.5946" x2="0" y2="0" width="0.127" layer="21"/>
+<smd name="P$1" x="0.67945" y="-0.82676875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$2" x="1.31445" y="-0.82676875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$3" x="1.94945" y="-0.82676875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$4" x="2.58445" y="-0.82676875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$5" x="3.21945" y="-0.82676875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$6" x="3.85445" y="-0.82676875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$7" x="4.48945" y="-0.82676875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$8" x="5.12445" y="-0.82676875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$9" x="5.75945" y="-0.82676875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$10" x="6.39445" y="-0.82676875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$11" x="7.02945" y="-0.82676875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$12" x="7.66445" y="-0.82676875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$13" x="8.29945" y="-0.82676875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$14" x="8.93445" y="-0.82676875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$15" x="9.56945" y="-0.82676875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$16" x="10.20445" y="-0.82676875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$17" x="10.83945" y="-0.82676875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$18" x="11.47445" y="-0.82676875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$19" x="12.10945" y="-0.82676875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$20" x="12.74445" y="-0.82676875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$21" x="13.37945" y="-0.82676875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$22" x="14.01445" y="-0.82676875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$23" x="14.64945" y="-0.82676875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$24" x="15.28445" y="-0.82676875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$25" x="0.67945" y="8.42136875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$26" x="1.31445" y="8.42136875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$27" x="1.94945" y="8.42136875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$28" x="2.58445" y="8.42136875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$29" x="3.21945" y="8.42136875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$30" x="3.85445" y="8.42136875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$31" x="4.48945" y="8.42136875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$32" x="5.12445" y="8.42136875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$33" x="5.75945" y="8.42136875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$34" x="6.39445" y="8.42136875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$35" x="7.02945" y="8.42136875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$36" x="7.66445" y="8.42136875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$37" x="8.29945" y="8.42136875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$38" x="8.93445" y="8.42136875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$39" x="10.20445" y="8.42136875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$40" x="9.56945" y="8.42136875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$41" x="10.83945" y="8.42136875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$42" x="11.47445" y="8.42136875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$43" x="12.10945" y="8.42136875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$44" x="12.74445" y="8.42136875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$45" x="13.37945" y="8.42136875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$46" x="14.01445" y="8.42136875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$47" x="14.64945" y="8.42136875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<smd name="P$48" x="15.28445" y="8.42136875" dx="1.524" dy="0.3429" layer="1" rot="R90"/>
+<circle x="15.33016875" y="6.91388125" radius="0.392890625" width="0.127" layer="21"/>
+</package>
+</packages>
+<symbols>
+<symbol name="PSOC_3_48PIN_SSOP">
+<pin name="1" x="-10.16" y="25.4" length="middle"/>
+<pin name="2" x="-10.16" y="22.86" length="middle"/>
+<pin name="3" x="-10.16" y="20.32" length="middle"/>
+<pin name="4" x="-10.16" y="17.78" length="middle"/>
+<pin name="5" x="-10.16" y="15.24" length="middle"/>
+<pin name="6" x="-10.16" y="12.7" length="middle"/>
+<pin name="7" x="-10.16" y="10.16" length="middle"/>
+<pin name="8" x="-10.16" y="7.62" length="middle"/>
+<pin name="9" x="-10.16" y="5.08" length="middle"/>
+<pin name="10" x="-10.16" y="2.54" length="middle"/>
+<pin name="11" x="-10.16" y="0" length="middle"/>
+<pin name="12" x="-10.16" y="-2.54" length="middle"/>
+<pin name="13" x="-10.16" y="-5.08" length="middle"/>
+<pin name="14" x="-10.16" y="-7.62" length="middle"/>
+<pin name="15" x="-10.16" y="-10.16" length="middle"/>
+<pin name="16" x="-10.16" y="-12.7" length="middle"/>
+<pin name="17" x="-10.16" y="-15.24" length="middle"/>
+<pin name="18" x="-10.16" y="-17.78" length="middle"/>
+<pin name="19" x="-10.16" y="-20.32" length="middle"/>
+<pin name="20" x="-10.16" y="-22.86" length="middle"/>
+<pin name="21" x="-10.16" y="-25.4" length="middle"/>
+<pin name="22" x="-10.16" y="-27.94" length="middle"/>
+<pin name="23" x="-10.16" y="-30.48" length="middle"/>
+<pin name="24" x="-10.16" y="-33.02" length="middle"/>
+<pin name="25" x="25.4" y="-33.02" length="middle" rot="R180"/>
+<pin name="26" x="25.4" y="-30.48" length="middle" rot="R180"/>
+<pin name="27" x="25.4" y="-27.94" length="middle" rot="R180"/>
+<pin name="28" x="25.4" y="-25.4" length="middle" rot="R180"/>
+<pin name="29" x="25.4" y="-22.86" length="middle" rot="R180"/>
+<pin name="30" x="25.4" y="-20.32" length="middle" rot="R180"/>
+<pin name="31" x="25.4" y="-17.78" length="middle" rot="R180"/>
+<pin name="32" x="25.4" y="-15.24" length="middle" rot="R180"/>
+<pin name="33" x="25.4" y="-12.7" length="middle" rot="R180"/>
+<pin name="34" x="25.4" y="-10.16" length="middle" rot="R180"/>
+<pin name="35" x="25.4" y="-7.62" length="middle" rot="R180"/>
+<pin name="36" x="25.4" y="-5.08" length="middle" rot="R180"/>
+<pin name="37" x="25.4" y="-2.54" length="middle" rot="R180"/>
+<pin name="38" x="25.4" y="0" length="middle" rot="R180"/>
+<pin name="39" x="25.4" y="2.54" length="middle" rot="R180"/>
+<pin name="40" x="25.4" y="5.08" length="middle" rot="R180"/>
+<pin name="41" x="25.4" y="7.62" length="middle" rot="R180"/>
+<pin name="42" x="25.4" y="10.16" length="middle" rot="R180"/>
+<pin name="43" x="25.4" y="12.7" length="middle" rot="R180"/>
+<pin name="44" x="25.4" y="15.24" length="middle" rot="R180"/>
+<pin name="45" x="25.4" y="17.78" length="middle" rot="R180"/>
+<pin name="46" x="25.4" y="20.32" length="middle" rot="R180"/>
+<pin name="47" x="25.4" y="22.86" length="middle" rot="R180"/>
+<pin name="48" x="25.4" y="25.4" length="middle" rot="R180"/>
+<wire x1="-5.08" y1="-35.56" x2="-5.08" y2="27.94" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="27.94" x2="20.32" y2="27.94" width="0.254" layer="94"/>
+<wire x1="20.32" y1="27.94" x2="20.32" y2="-35.56" width="0.254" layer="94"/>
+<wire x1="20.32" y1="-35.56" x2="-5.08" y2="-35.56" width="0.254" layer="94"/>
+</symbol>
+<symbol name="PSOC_3_1_48PIN_SSOP">
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="PSOC_3_48PIN_SSOP">
+<gates>
+<gate name="G$1" symbol="PSOC_3_48PIN_SSOP" x="-12.7" y="2.54"/>
+</gates>
+<devices>
+<device name="" package="PSOC_3_48PIN_SSOP">
+<connects>
+<connect gate="G$1" pin="1" pad="P$1"/>
+<connect gate="G$1" pin="10" pad="P$10"/>
+<connect gate="G$1" pin="11" pad="P$11"/>
+<connect gate="G$1" pin="12" pad="P$12"/>
+<connect gate="G$1" pin="13" pad="P$13"/>
+<connect gate="G$1" pin="14" pad="P$14"/>
+<connect gate="G$1" pin="15" pad="P$15"/>
+<connect gate="G$1" pin="16" pad="P$16"/>
+<connect gate="G$1" pin="17" pad="P$17"/>
+<connect gate="G$1" pin="18" pad="P$18"/>
+<connect gate="G$1" pin="19" pad="P$19"/>
+<connect gate="G$1" pin="2" pad="P$2"/>
+<connect gate="G$1" pin="20" pad="P$20"/>
+<connect gate="G$1" pin="21" pad="P$21"/>
+<connect gate="G$1" pin="22" pad="P$22"/>
+<connect gate="G$1" pin="23" pad="P$23"/>
+<connect gate="G$1" pin="24" pad="P$24"/>
+<connect gate="G$1" pin="25" pad="P$25"/>
+<connect gate="G$1" pin="26" pad="P$26"/>
+<connect gate="G$1" pin="27" pad="P$27"/>
+<connect gate="G$1" pin="28" pad="P$28"/>
+<connect gate="G$1" pin="29" pad="P$29"/>
+<connect gate="G$1" pin="3" pad="P$3"/>
+<connect gate="G$1" pin="30" pad="P$30"/>
+<connect gate="G$1" pin="31" pad="P$31"/>
+<connect gate="G$1" pin="32" pad="P$32"/>
+<connect gate="G$1" pin="33" pad="P$33"/>
+<connect gate="G$1" pin="34" pad="P$34"/>
+<connect gate="G$1" pin="35" pad="P$35"/>
+<connect gate="G$1" pin="36" pad="P$36"/>
+<connect gate="G$1" pin="37" pad="P$37"/>
+<connect gate="G$1" pin="38" pad="P$38"/>
+<connect gate="G$1" pin="39" pad="P$39"/>
+<connect gate="G$1" pin="4" pad="P$4"/>
+<connect gate="G$1" pin="40" pad="P$40"/>
+<connect gate="G$1" pin="41" pad="P$41"/>
+<connect gate="G$1" pin="42" pad="P$42"/>
+<connect gate="G$1" pin="43" pad="P$43"/>
+<connect gate="G$1" pin="44" pad="P$44"/>
+<connect gate="G$1" pin="45" pad="P$45"/>
+<connect gate="G$1" pin="46" pad="P$46"/>
+<connect gate="G$1" pin="47" pad="P$47"/>
+<connect gate="G$1" pin="48" pad="P$48"/>
+<connect gate="G$1" pin="5" pad="P$5"/>
+<connect gate="G$1" pin="6" pad="P$6"/>
+<connect gate="G$1" pin="7" pad="P$7"/>
+<connect gate="G$1" pin="8" pad="P$8"/>
+<connect gate="G$1" pin="9" pad="P$9"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="PSOC_48PIN" uservalue="yes">
+<gates>
+<gate name="G$1" symbol="PSOC_3_48PIN_SSOP" x="-22.86" y="-2.54"/>
+</gates>
+<devices>
+<device name="" package="PSOC_3_48PIN_SSOP">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
+</drawing>
+</eagle>
