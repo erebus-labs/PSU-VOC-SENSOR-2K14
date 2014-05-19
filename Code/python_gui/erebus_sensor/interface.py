@@ -388,4 +388,7 @@ class ErebusSensor:
 
         return 1
 
+    def hard_reset(self):
+        self._sendCommand('HARD_RESET')
+        return
                 

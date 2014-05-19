@@ -50,8 +50,6 @@ class ErebusGUI(tk.Frame):
         # Create File Menu Entry 
         self.subMenuFile = tk.Menu(self.menuBar, tearoff=0)
         self.menuBar.add_cascade(label='File', menu=self.subMenuFile)
-        self.subMenuFile.add_command(label="Load Sensor Configuration")
-        self.subMenuFile.add_command(label="Save Sensor Configuration")
         self.subMenuFile.add_command(label="Exit", command=self.quit)
 
         # Create Sensor Menu Entry 
@@ -62,8 +60,10 @@ class ErebusGUI(tk.Frame):
         self.subMenuSensor.add_command(label="Get Current Configuration",
                                        command=self.getSettings)
         self.subMenuSensor.add_command(label="Apply Current Configuration",
-                                        command=self.applySettings)
-        self.subMenuSensor.add_command(label="Reset Sensor")
+                                       command=self.applySettings)
+        self.subMenuSensor.add_command(label="Reset Sensor",
+                                       command=self.resetSensor)
+
 
         # Create Help Menu Entry
         self.subMenuHelp = tk.Menu(self.menuBar, tearoff=0)
@@ -285,5 +285,13 @@ class ErebusGUI(tk.Frame):
                              "Please try again.")
         return
             
-        
+    def resetSensor(self):
+        if self.sensorHandle == None:
+            self._showNotConnected()
+            return
 
+        self.sensorHandle.hard_reset()
+
+        return
+        
+        
