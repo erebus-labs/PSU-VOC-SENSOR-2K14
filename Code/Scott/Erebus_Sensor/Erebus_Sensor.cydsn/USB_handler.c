@@ -1,18 +1,16 @@
 /* ========================================
  *
- * Copyright YOUR COMPANY, THE YEAR
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
+ * (c) Erebus Labs Ltd. 2014
  *
- * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
+ * Project: Erebus Labs Sensor
+ * File:    USB_handler.c
+ *
+ * Handles USB communication and USB host-initiated tasks
  *
  * ========================================
 */
 
-#include "USB_Access.h"
-
-/* This file provides function definitions for USB interactions */
+#include "USB_handler.h"
 
 void Run_USB(){
     
@@ -20,6 +18,11 @@ void Run_USB(){
 
     uint8 result = 0;
     uint8 command = 0;
+    
+    RTC_WriteIntervalMask(NONE_MASK);
+    StartCollection_IRQ_Stop();
+    StopCollection_IRQ_Stop();
+    Vbus_IRQ_Stop();
 
     USBUART_Start(0u, USBUART_5V_OPERATION);
     
@@ -31,8 +34,8 @@ void Run_USB(){
     
     while(Vbus_Read())
     {  
-        if(USBUART_DataIsReady() != 0u){   /* Check for input data from PC */
-            result = retrieve(&command, COMMAND_LENGTH);
+        if (USBUART_DataIsReady() != 0u){   /* Check for input data from PC */
+            result = retrieve_from_buffer(&command, COMMAND_LENGTH);
             
             // Discard null bytes
             if (command == NULL_BYTE){
@@ -48,8 +51,8 @@ void Run_USB(){
                         break;
                     
                     case DUMP_DATA:
-                        if (dump_data()){
-                            confirm_dump();
+                        if (export_samples()){
+                            confirm_export();
                         }
                         else{
                             send_reply(FAIL);
@@ -80,8 +83,8 @@ void Run_USB(){
                         }
                         break;
                      
-                    case HARD_RESET:
-                        CMD_hard_reset();
+                    case RESET_PTRS:
+                        reset_sample_pointers();
                         send_reply(SUCCESS);
                         break;
                         
@@ -101,19 +104,19 @@ void Run_USB(){
     return;
 }
 
-uint8 retrieve(uint8* buffer, uint8 num_bytes){
+uint8 retrieve_from_buffer(uint8* buffer, uint8 num_bytes){
     uint16 count = 0;
     uint8 attempts = 0;
     uint8 result = FAIL;
     
     count = USBUART_GetCount(); 
     
-    // If data in buffer is the right amount retrieve it
-    if(count == num_bytes){
+    /* If data in buffer is the right amount retrieve_from_buffer it */
+    if (count == num_bytes){
         USBUART_GetData(buffer, num_bytes);
         result = SUCCESS;
     }
-    // Otherwise, flush the USB buffer and report fail
+    /* Otherwise, flush the USB buffer and report fail */
     else if (count > 0){
         USBUART_GetChar();
     }
@@ -121,15 +124,43 @@ uint8 retrieve(uint8* buffer, uint8 num_bytes){
     return result;
 }
 
+void send_reply(uint8 message){
+   
+    while(!USBUART_CDCIsReady() && Vbus_Read());
+    
+    if (Vbus_Read()){
+        USBUART_PutData(&message, REPLY_LEN);
+    }
+    
+    return;
+}
+
+void send_settings(){
+    
+    uint8 settings[NUM_SETTINGS];
+    
+    settings[0] = get_EEPROM_variable(EE_SENSOR);
+    settings[1] = get_EEPROM_variable(EE_SAMPLE_UNIT);
+    settings[2] = get_EEPROM_variable(EE_SAMPLE_INTERVAL);
+    
+    while(!USBUART_CDCIsReady() && Vbus_Read());
+    
+    if (Vbus_Read()){
+        USBUART_PutData((uint8*) &settings, sizeof(settings));
+    }
+    
+    return;   
+}
+
 uint8 apply_settings(){
     uint8 result = FAIL;
     uint8 settings_buffer[NUM_SETTINGS] = {0};
-    settings_group new_settings;
+    struct sampling_settings new_settings;
     
     while (!USBUART_DataIsReady() && Vbus_Read());
     
     if (Vbus_Read()){
-        if (retrieve(settings_buffer, NUM_SETTINGS) == SUCCESS){
+        if (retrieve_from_buffer(settings_buffer, NUM_SETTINGS) == SUCCESS){
             new_settings.sensor = settings_buffer[0];
             new_settings.sample_unit = settings_buffer[1];
             new_settings.sample_interval = settings_buffer[2];
@@ -141,24 +172,77 @@ uint8 apply_settings(){
     return result;
 }
 
-void send_settings(){
+uint8 update_settings(struct sampling_settings new_settings){
     
-    uint8 settings[NUM_SETTINGS];
+    uint8* buffer;
+    float rows_used = 0;
+    uint16 remainder = 0;
+    uint8* src_ptr;
+    uint8* dst_ptr;
+    uint8 i = 0; // loop var
+    float bytes_used = EEPROM_BYTES_USED;
+    uint8 result = SUCCESS;
+    cystatus status;
     
-    settings[0] = get_variable(EE_SENSOR);
-    settings[1] = get_variable(EE_SAMPLE_UNIT);
-    settings[2] = get_variable(EE_SAMPLE_INTERVAL);
+    /* Allocate array to hold EEPROM variables */
     
-    while(!USBUART_CDCIsReady() && Vbus_Read());
+    rows_used = ceil(bytes_used/CYDEV_EEPROM_ROW_SIZE);
+    buffer = malloc(((uint16) rows_used) * CYDEV_EEPROM_ROW_SIZE);
     
-    if(Vbus_Read()){
-        USBUART_PutData((uint8*) &settings, sizeof(settings));
+    dst_ptr = buffer;
+    remainder = (rows_used * 16) - EEPROM_BYTES_USED;
+    
+    /* Copy all variables into SRAM */
+    for (i=0; i<EEPROM_BYTES_USED; ++i){
+        *dst_ptr = CY_GET_REG8(CYDEV_EE_BASE + i);
+        ++dst_ptr;      
     }
     
-    return;   
+    /* Fill remainder of buffer with zeros */
+    while (i < remainder){
+        *dst_ptr = 0;
+        ++i;
+    }
+    
+    /* Modify variables in SRAM */
+    buffer[0] = new_settings.sensor;
+    buffer[1] = new_settings.sample_unit;
+    buffer[2] = new_settings.sample_interval;
+    
+    /* Disable interrupts and erase EEPROM */
+    CyGlobalIntDisable;
+    status = Re_EEPROM_EraseSector(SECTOR_NUMBER);
+    CyGlobalIntEnable;
+    
+    if (status != CYRET_SUCCESS){
+        result = FAIL;
+        goto exit;
+    }
+    
+    /* Write back modified EEPROM Variables */
+    i = 0;
+    src_ptr = buffer;
+    while ((i < rows_used) && (i < EEPROM_ROWS)){
+        /* Disable interrupts during EEPROM write operation */
+        CyGlobalIntDisable;
+        status = Re_EEPROM_Write(src_ptr, i);
+        CyGlobalIntEnable;
+        
+        if (status != CYRET_SUCCESS){
+           result = FAIL;
+        goto exit;
+    }
+        src_ptr = src_ptr + CYDEV_EEPROM_ROW_SIZE;
+        ++i;
+    }
+     
+    free(buffer);
+    
+exit:   
+    return result;   
 }
 
-uint8 dump_data(){
+uint8 export_samples(){
     
     uint8 result = SUCCESS;
     uint8 export_buffer[BUFFER_LEN];
@@ -166,15 +250,15 @@ uint8 dump_data(){
     uint16 byte_count = 0;
     uint8 i = 0;
     
-    if(export_index == sample_tail_index){
+    if (export_index == sample_tail_index){
         export_buffer[0] = NO_DATA;
         
         for (i=1; i< BUFFER_LEN; ++i){
             export_buffer[i] = PADBYTE;
         }
-        write_out(export_buffer);
+        load_buffer(export_buffer);
         
-        if (wait_next() == FAIL){
+        if (wait_for_continue() == FAIL){
             result = FAIL;
         }
         
@@ -208,11 +292,11 @@ uint8 dump_data(){
         }
         
         /* Send 64-byte packet to host */
-        write_out(export_buffer);
+        load_buffer(export_buffer);
         i = 0;
         
         /* Wait for permission from host to send next packet */
-        if (wait_next() == FAIL){
+        if (wait_for_continue() == FAIL){
             result = FAIL;
             goto exit;
         }
@@ -231,80 +315,70 @@ uint8 dump_data(){
     export_buffer[2] = (uint8)(byte_count >> 8);
     export_buffer[3] = (uint8)0x00FF & byte_count;
     
-    write_out(export_buffer);
+    load_buffer(export_buffer);
 
 exit:
     
     return result;
 }
 
-void write_out(uint8* export_buffer){
+void load_buffer(uint8* export_buffer){
     
     while(!USBUART_CDCIsReady() && Vbus_Read());
     USBUART_PutData(export_buffer, BUFFER_LEN);
-  
+   
+    /* Add zero-length packet so host completes transaction */
+    while(!USBUART_CDCIsReady() && Vbus_Read());
+    USBUART_PutData(export_buffer, 0);
+
     return;
 }
     
-uint8 wait_next(){
+uint8 wait_for_continue(){
     uint8 reply = 0;
-    uint8 retrieve_status = 0;
+    uint8 retrieve_from_buffer_status = 0;
     uint8 continue_status = FAIL;
 
     while(!reply && Vbus_Read()){
             
         while(!USBUART_GetCount() && Vbus_Read()); 
-        retrieve_status = retrieve(&reply, COMMAND_LENGTH);
+        retrieve_from_buffer_status = retrieve_from_buffer(&reply, COMMAND_LENGTH);
         
-        if(retrieve_status == SUCCESS){
-            if(reply == NEXT){
-                continue_status = SUCCESS;
-                break;
-            }
-            else if(reply == FAIL){
-                continue_status = FAIL;
-            }
+        if (retrieve_from_buffer_status == SUCCESS && reply == NEXT){
+
+            continue_status = SUCCESS;
+            break;
+        }
+        
+        else if (retrieve_from_buffer_status == SUCCESS){
+            continue_status = FAIL;            
         }
     }    
     
     return continue_status;
 }
 
-void send_reply(uint8 message){
-   
-    while(!USBUART_CDCIsReady() && Vbus_Read());
-    
-    if(Vbus_Read()){
-        USBUART_PutData(&message, REPLY_LEN);
-    }
-    
-    return;
-}
-
-void confirm_dump(){
-    uint8 result = 0;
+void confirm_export(){
     uint8 command = 0;
     
     while(Vbus_Read()){
         while(!USBUART_DataIsReady() && Vbus_Read());
-        
-        result = retrieve(&command, COMMAND_LENGTH);
-        
-        if(result == SUCCESS){
-                    
+                
+        if (retrieve_from_buffer(&command, COMMAND_LENGTH) == SUCCESS){
+            
             if (command == SUCCESS){
-                /* Data was successfully dumped, so bring head pointer up to current tail 
-                 * to "erase" the old data */
-                sample_head_index = sample_tail_index;
-                Em_EEPROM_Write((uint8*) &sample_tail_index, (uint8*) &(current_sample_indices[pointer_head_index]), sizeof(uint16));
-                mem_full_flag = 0;
-                Em_EEPROM_Write(&mem_full_flag, &mem_full_flash_flag, sizeof(uint8));
+                clear_samples();           
                 break;
+            }
+            
+            else if (command == NEXT){
+                send_reply(FAIL);
+                break;   
             }
             
             else if (command == FAIL){
                 break;
-            }
+            }            
         }
     }
     
@@ -319,7 +393,7 @@ uint8 update_RTC(){
     while (!USBUART_DataIsReady() && Vbus_Read());
     
     if (Vbus_Read()){
-        if (retrieve(time_buffer, TIME_LENGTH) == SUCCESS){
+        if (retrieve_from_buffer(time_buffer, TIME_LENGTH) == SUCCESS){
             new_time.Year = ((uint16) time_buffer[0]) << 0x8;
             new_time.Year = new_time.Year | ((uint16) time_buffer[1]);
             new_time.Sec = time_buffer[2];
@@ -328,7 +402,9 @@ uint8 update_RTC(){
             new_time.DayOfMonth = time_buffer[5];
             new_time.Month = time_buffer[6];
             
-            result = sync_RTC(&new_time);
+            RTC_WriteTime(&new_time);
+            
+            result = SUCCESS;
 
         }
     }
@@ -336,7 +412,7 @@ uint8 update_RTC(){
     return result;
 }
 
-void CMD_hard_reset(){
+void reset_sample_pointers(){
 
     reset_pointers();
     
@@ -345,8 +421,19 @@ void CMD_hard_reset(){
 
 void USB_Close(){
     
-    rtc_setup();   
+    /* Clear pending interrupts that occurred while plugged into host */
     USBUART_Stop();
+    Vbus_ClearInterrupt();
+    Vbus_IRQ_ClearPending();
+    clear_button_interrupts();
+    USB_waiting = 0;
+    
+    /* Reapply EEPROM variables to sample parameters in case they were changed */
+    sampling_setup(); 
+    
+    /* Re-enter normal operating mode */
+    StartCollection_IRQ_Start();
+    Vbus_IRQ_Start();   
 
     return;
 }

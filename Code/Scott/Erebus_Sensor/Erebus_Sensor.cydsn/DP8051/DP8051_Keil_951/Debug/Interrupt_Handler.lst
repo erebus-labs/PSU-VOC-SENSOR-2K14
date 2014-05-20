@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   INTERRUPT_HANDLER                                                     05/18/2014 17:33:01 PAGE 1   
+C51 COMPILER V9.51   INTERRUPT_HANDLER                                                     05/19/2014 09:42:12 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE INTERRUPT_HANDLER
@@ -36,39 +36,8 @@ line level    source
   25   1          return;
   26   1      }
   27          
-  28          void clear_vbus(){
-  29   1          
-  30   1          Vbus_ClearInterrupt();
-  31   1          Vbus_IRQ_ClearPending();
-  32   1          USB_waiting = 0; 
-  33   1          return;
-  34   1      }
-  35          
-  36          void usb_prep(){
-  37   1          
-  38   1          StartCollection_IRQ_Stop();
-  39   1          StopCollection_IRQ_Stop();
-  40   1          Vbus_IRQ_Stop();
-  41   1          RTC_WriteIntervalMask(NONE_MASK);
-  42   1          return;
-  43   1      }
-  44          
-  45          void usb_exit(){
-  46   1          
-  47   1          StartCollection_IRQ_Start();
-  48   1          Vbus_IRQ_Start();
-  49   1          
-  50   1          // We don't reset the RTC_WriteIntervalMask register on the
-  51   1          // way out - that will be done when a new sample collection
-  52   1          // block starts
-  53   1             
-C51 COMPILER V9.51   INTERRUPT_HANDLER                                                     05/18/2014 17:33:01 PAGE 2   
-
-  54   1          return;
-  55   1      }
-  56          
-  57          /* [] END OF FILE */
-C51 COMPILER V9.51   INTERRUPT_HANDLER                                                     05/18/2014 17:33:01 PAGE 3   
+  28          /* [] END OF FILE */
+C51 COMPILER V9.51   INTERRUPT_HANDLER                                                     05/19/2014 09:42:12 PAGE 2   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -96,54 +65,10 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0016 22                RET     
              ; FUNCTION clear_buttons (END)
 
-             ; FUNCTION clear_vbus (BEGIN)
-                                           ; SOURCE LINE # 28
-                                           ; SOURCE LINE # 30
-0000 120000      E     LCALL   Vbus_ClearInterrupt
-                                           ; SOURCE LINE # 31
-0003 120000      E     LCALL   Vbus_IRQ_ClearPending
-                                           ; SOURCE LINE # 32
-0006 900000      E     MOV     DPTR,#USB_waiting
-0009 E4                CLR     A
-000A F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 34
-000B         ?C0002:
-000B 22                RET     
-             ; FUNCTION clear_vbus (END)
-
-             ; FUNCTION usb_prep (BEGIN)
-                                           ; SOURCE LINE # 36
-                                           ; SOURCE LINE # 38
-0000 120000      E     LCALL   StartCollection_IRQ_Stop
-                                           ; SOURCE LINE # 39
-0003 120000      E     LCALL   StopCollection_IRQ_Stop
-                                           ; SOURCE LINE # 40
-0006 120000      E     LCALL   Vbus_IRQ_Stop
-                                           ; SOURCE LINE # 41
-0009 7F00              MOV     R7,#00H
-000B 120000      E     LCALL   _RTC_WriteIntervalMask
-                                           ; SOURCE LINE # 43
-000E         ?C0003:
-000E 22                RET     
-             ; FUNCTION usb_prep (END)
-
-             ; FUNCTION usb_exit (BEGIN)
-                                           ; SOURCE LINE # 45
-                                           ; SOURCE LINE # 47
-0000 120000      E     LCALL   StartCollection_IRQ_Start
-                                           ; SOURCE LINE # 48
-C51 COMPILER V9.51   INTERRUPT_HANDLER                                                     05/18/2014 17:33:01 PAGE 4   
-
-0003 120000      E     LCALL   Vbus_IRQ_Start
-                                           ; SOURCE LINE # 55
-0006         ?C0004:
-0006 22                RET     
-             ; FUNCTION usb_exit (END)
-
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =     57    ----
+   CODE SIZE        =     23    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

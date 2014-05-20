@@ -624,16 +624,6 @@
               <FilePath>.\Generated_Source\PSoC3\USBUART_Dp_aliases.h</FilePath>
             </File>
             <File>
-              <FileName>EEPROM_R.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\EEPROM_R.c</FilePath>
-            </File>
-            <File>
-              <FileName>EEPROM_R.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\EEPROM_R.h</FilePath>
-            </File>
-            <File>
               <FileName>Vbus_IRQ.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\Vbus_IRQ.c</FilePath>
@@ -877,6 +867,16 @@
               <FileName>ADC_MUX.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\ADC_MUX.h</FilePath>
+            </File>
+            <File>
+              <FileName>Re_EEPROM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Re_EEPROM.c</FilePath>
+            </File>
+            <File>
+              <FileName>Re_EEPROM.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Re_EEPROM.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1504,16 +1504,6 @@
               <FilePath>.\Generated_Source\PSoC3\USBUART_Dp_aliases.h</FilePath>
             </File>
             <File>
-              <FileName>EEPROM_R.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\EEPROM_R.c</FilePath>
-            </File>
-            <File>
-              <FileName>EEPROM_R.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\EEPROM_R.h</FilePath>
-            </File>
-            <File>
               <FileName>Vbus_IRQ.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\Vbus_IRQ.c</FilePath>
@@ -1757,6 +1747,16 @@
               <FileName>ADC_MUX.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\ADC_MUX.h</FilePath>
+            </File>
+            <File>
+              <FileName>Re_EEPROM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Re_EEPROM.c</FilePath>
+            </File>
+            <File>
+              <FileName>Re_EEPROM.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\Re_EEPROM.h</FilePath>
             </File>
           </Files>
         </Group>

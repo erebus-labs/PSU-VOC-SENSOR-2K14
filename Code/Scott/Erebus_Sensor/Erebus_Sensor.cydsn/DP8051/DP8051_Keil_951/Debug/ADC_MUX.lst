@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   ADC_MUX                                                               05/10/2014 13:47:39 PAGE 1   
+C51 COMPILER V9.51   ADC_MUX                                                               05/19/2014 15:47:26 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE ADC_MUX
@@ -62,7 +62,7 @@ line level    source
   51   1      }
   52          
   53          
-C51 COMPILER V9.51   ADC_MUX                                                               05/10/2014 13:47:39 PAGE 2   
+C51 COMPILER V9.51   ADC_MUX                                                               05/19/2014 15:47:26 PAGE 2   
 
   54          #if (!ADC_MUX_ATMOSTONE)
               /*******************************************************************************
@@ -126,7 +126,7 @@ line level    source
  113          
  114          
  115          #if (ADC_MUX_MUXTYPE == ADC_MUX_MUX_DIFF)
-C51 COMPILER V9.51   ADC_MUX                                                               05/10/2014 13:47:39 PAGE 3   
+C51 COMPILER V9.51   ADC_MUX                                                               05/19/2014 15:47:26 PAGE 3   
 
               #if (!ADC_MUX_ATMOSTONE)
               /*******************************************************************************
@@ -190,14 +190,14 @@ line level    source
  175   1          {
  176   2              ADC_MUX_Disconnect(ADC_MUX_lastChannel);
  177   2              ADC_MUX_lastChannel = ADC_MUX_NULL_CHANNEL;
-C51 COMPILER V9.51   ADC_MUX                                                               05/10/2014 13:47:39 PAGE 4   
+C51 COMPILER V9.51   ADC_MUX                                                               05/19/2014 15:47:26 PAGE 4   
 
  178   2          }
  179   1      }
  180          #endif
  181          
  182          /* [] END OF FILE */
-C51 COMPILER V9.51   ADC_MUX                                                               05/10/2014 13:47:39 PAGE 5   
+C51 COMPILER V9.51   ADC_MUX                                                               05/19/2014 15:47:26 PAGE 5   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -261,7 +261,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0014 120000      E     LCALL   _ADC_MUX_Unset
                                            ; SOURCE LINE # 100
 0017         ?C0005:
-C51 COMPILER V9.51   ADC_MUX                                                               05/10/2014 13:47:39 PAGE 6   
+C51 COMPILER V9.51   ADC_MUX                                                               05/19/2014 15:47:26 PAGE 6   
 
                                            ; SOURCE LINE # 104
 0017 900000      R     MOV     DPTR,#channel

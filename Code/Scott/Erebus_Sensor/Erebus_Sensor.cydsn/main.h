@@ -1,31 +1,46 @@
 /* ========================================
  *
- * Copyright YOUR COMPANY, THE YEAR
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
+ * (c) Erebus Labs Ltd. 2014
  *
- * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
+ * Project: Erebus Labs Sensor
+ * File:    main.h
+ *
+ * Contains macros and header file inclusions required by main()
  *
  * ========================================
 */
 
 #ifndef _MAIN_H_
     #define _MAIN_H_
-        
-    // File Inclusions
+    
+    /*
+     * ========================================
+     * Header Files
+     * ========================================
+    */
+    
+    /* C Library Headers */
     #include <stdlib.h>
+    
+    /* Cypress Headers */
     #include "project.h"
-        
-    #include "EEPROM_Access.h"
-    #include "Interface.h"
-    #include "USB_Access.h"
-    #include "Utility.h"
-    #include "RTC_Handler.h"
-    #include "Macros.h"
-    #include "Sample_Handler.h"
-    #include "Interrupt_Handler.h"
-    #include "Globals.h"
 
-#endif
+    /* Project Headers */
+    #include "LED_handler.h"
+    #include "USB_handler.h"
+    #include "utility.h"
+    #include "sample_handler.h"
+    #include "globals.h"
+    
+    /*
+     * ========================================
+     * Macros
+     * ========================================
+    */  
+
+    /* Comment this out to remove sleep-related code */
+    #define SLEEP_EN
+
+#endif /* ifndef _MAIN_H_ */
+
 /* [] END OF FILE */

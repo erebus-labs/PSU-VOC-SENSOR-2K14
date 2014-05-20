@@ -1,0 +1,179 @@
+C51 COMPILER V9.51   LED_HANDLER                                                           05/19/2014 16:33:03 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE LED_HANDLER
+OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Debug\LED_handler.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\LED_handler.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\LED_handler.lst) CD DB NOIP OT(0,SIZE) DF
+                    -(DEBUG) INCDIR(.,.\Generated_Source\PSoC3) OJ(.\DP8051\DP8051_Keil_951\Debug\LED_handler.obj)
+
+line level    source
+
+   1          /* ========================================
+   2           *
+   3           * (c) Erebus Labs Ltd. 2014
+   4           *
+   5           * Project: Erebus Labs Sensor
+   6           * File:    LED_handler.c
+   7           *
+   8           * Manages LED output
+   9           *
+  10           * ========================================
+  11          */
+  12          
+  13          #include "LED_handler.h"
+  14          
+  15          void LED_on(uint8 color){
+  16   1          
+  17   1          switch (color){   
+  18   2          
+  19   2              case RED:
+  20   2              case GREEN:
+  21   2              case BLUE:
+  22   2                  SOLID_LED_CTRL_Write(color);
+  23   2                  break;
+  24   2                  
+  25   2              case MAGENTA:
+  26   2                  PWM0_CTRL_Write(PWM_BLUE);
+  27   2                  PWM1_CTRL_Write(PWM_RED);
+  28   2                  break;
+  29   2                      
+  30   2              case YELLOW:
+  31   2                  PWM0_CTRL_Write(PWM_GREEN);
+  32   2                  PWM1_CTRL_Write(PWM_RED);
+  33   2                  break;
+  34   2              
+  35   2              case CYAN:
+  36   2                  PWM0_CTRL_Write(PWM_GREEN);
+  37   2                  PWM1_CTRL_Write(PWM_BLUE);
+  38   2                  break;          
+  39   2                  
+  40   2          }
+  41   1          return;
+  42   1      }
+  43          
+  44          void LED_off(){
+  45   1          
+  46   1          SOLID_LED_CTRL_Write(OFF);
+  47   1          PWM0_CTRL_Write(OFF);
+  48   1          PWM1_CTRL_Write(OFF);   
+  49   1          
+  50   1          return;
+  51   1      }
+  52          
+  53          /* [] END OF FILE */
+C51 COMPILER V9.51   LED_HANDLER                                                           05/19/2014 16:33:03 PAGE 2   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION _LED_on (BEGIN)
+                                           ; SOURCE LINE # 15
+0000 900000      R     MOV     DPTR,#color
+0003 EF                MOV     A,R7
+0004 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 17
+0005 900000      R     MOV     DPTR,#color
+0008 E0                MOVX    A,@DPTR
+0009 FF                MOV     R7,A
+000A EF                MOV     A,R7
+000B 120000      E     LCALL   ?C?CCASE
+000E 0000        R     DW      ?C0004
+0010 01                DB      01H
+0011 0000        R     DW      ?C0004
+0013 02                DB      02H
+0014 0000        R     DW      ?C0005
+0016 03                DB      03H
+0017 0000        R     DW      ?C0004
+0019 04                DB      04H
+001A 0000        R     DW      ?C0006
+001C 05                DB      05H
+001D 0000        R     DW      ?C0007
+001F 06                DB      06H
+0020 0000              DW      00H
+0022 0000        R     DW      ?C0008
+                                           ; SOURCE LINE # 19
+0024         ?C0002:
+                                           ; SOURCE LINE # 20
+0024         ?C0003:
+                                           ; SOURCE LINE # 21
+0024         ?C0004:
+                                           ; SOURCE LINE # 22
+0024 900000      R     MOV     DPTR,#color
+0027 E0                MOVX    A,@DPTR
+0028 FF                MOV     R7,A
+0029 120000      E     LCALL   _SOLID_LED_CTRL_Write
+                                           ; SOURCE LINE # 23
+002C 22                RET     
+                                           ; SOURCE LINE # 25
+002D         ?C0005:
+                                           ; SOURCE LINE # 26
+002D 7F02              MOV     R7,#02H
+002F 120000      E     LCALL   _PWM0_CTRL_Write
+                                           ; SOURCE LINE # 27
+0032 7F01              MOV     R7,#01H
+0034 120000      E     LCALL   _PWM1_CTRL_Write
+                                           ; SOURCE LINE # 28
+0037 22                RET     
+                                           ; SOURCE LINE # 30
+0038         ?C0006:
+                                           ; SOURCE LINE # 31
+0038 7F03              MOV     R7,#03H
+003A 120000      E     LCALL   _PWM0_CTRL_Write
+                                           ; SOURCE LINE # 32
+003D 7F01              MOV     R7,#01H
+003F 120000      E     LCALL   _PWM1_CTRL_Write
+                                           ; SOURCE LINE # 33
+0042 22                RET     
+                                           ; SOURCE LINE # 35
+C51 COMPILER V9.51   LED_HANDLER                                                           05/19/2014 16:33:03 PAGE 3   
+
+0043         ?C0007:
+                                           ; SOURCE LINE # 36
+0043 7F03              MOV     R7,#03H
+0045 120000      E     LCALL   _PWM0_CTRL_Write
+                                           ; SOURCE LINE # 37
+0048 7F02              MOV     R7,#02H
+004A 120000      E     LCALL   _PWM1_CTRL_Write
+                                           ; SOURCE LINE # 38
+                                           ; SOURCE LINE # 40
+004D         ?C0001:
+                                           ; SOURCE LINE # 42
+004D         ?C0008:
+004D 22                RET     
+             ; FUNCTION _LED_on (END)
+
+             ; FUNCTION LED_off (BEGIN)
+                                           ; SOURCE LINE # 44
+                                           ; SOURCE LINE # 46
+0000 7F00              MOV     R7,#00H
+0002 120000      E     LCALL   _SOLID_LED_CTRL_Write
+                                           ; SOURCE LINE # 47
+0005 7F00              MOV     R7,#00H
+0007 120000      E     LCALL   _PWM0_CTRL_Write
+                                           ; SOURCE LINE # 48
+000A 7F00              MOV     R7,#00H
+000C 120000      E     LCALL   _PWM1_CTRL_Write
+                                           ; SOURCE LINE # 51
+000F         ?C0009:
+000F 22                RET     
+             ; FUNCTION LED_off (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     94    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      1    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
