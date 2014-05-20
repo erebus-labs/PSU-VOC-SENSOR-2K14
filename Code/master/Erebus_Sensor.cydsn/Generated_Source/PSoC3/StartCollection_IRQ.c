@@ -25,9 +25,7 @@
 *  Place your includes, defines and code here 
 ********************************************************************************/
 /* `#START StartCollection_IRQ_intc` */
-    #include "Interface.h"
     #include "Globals.h"
-    #include "Macros.h"
 /* `#END` */
 
 
@@ -133,7 +131,7 @@ CY_ISR(StartCollection_IRQ_Interrupt)
     /*  Place your Interrupt code here. */
     /* `#START StartCollection_IRQ_Interrupt` */
 
-    DataStart_waiting = 1;
+    start_sampling_waiting = 1;
     
     /* `#END` */
 

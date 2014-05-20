@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: EEPROM_R.c
+* File Name: Re_EEPROM.c
 * Version 2.10
 *
 * Description:
@@ -12,13 +12,13 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#include "EEPROM_R.h"
+#include "Re_EEPROM.h"
 
 
 #if (CY_PSOC3 || CY_PSOC5LP)
 
     /*******************************************************************************
-    * Function Name: EEPROM_R_Enable
+    * Function Name: Re_EEPROM_Enable
     ********************************************************************************
     *
     * Summary:
@@ -31,14 +31,14 @@
     *  None
     *
     *******************************************************************************/
-    void EEPROM_R_Enable(void) 
+    void Re_EEPROM_Enable(void) 
     {
         CyEEPROM_Start();
     }
 
 
     /*******************************************************************************
-    * Function Name: EEPROM_R_Start
+    * Function Name: Re_EEPROM_Start
     ********************************************************************************
     *
     * Summary:
@@ -51,15 +51,15 @@
     *  None
     *
     *******************************************************************************/
-    void EEPROM_R_Start(void) 
+    void Re_EEPROM_Start(void) 
     {
         /* Enable the EEPROM */
-        EEPROM_R_Enable();
+        Re_EEPROM_Enable();
     }
 
 
     /*******************************************************************************
-    * Function Name: EEPROM_R_Stop
+    * Function Name: Re_EEPROM_Stop
     ********************************************************************************
     *
     * Summary:
@@ -72,7 +72,7 @@
     *  None
     *
     *******************************************************************************/
-    void EEPROM_R_Stop (void) 
+    void Re_EEPROM_Stop (void) 
     {
         /* Disable EEPROM */
         CyEEPROM_Stop();
@@ -82,7 +82,7 @@
 
 
 /*******************************************************************************
-* Function Name: EEPROM_R_EraseSector
+* Function Name: Re_EEPROM_EraseSector
 ********************************************************************************
 *
 * Summary:
@@ -99,7 +99,7 @@
 *  CYRET_UNKNOWN, if there was an SPC error.
 *
 *******************************************************************************/
-cystatus EEPROM_R_EraseSector(uint8 sectorNumber) 
+cystatus Re_EEPROM_EraseSector(uint8 sectorNumber) 
 {
     cystatus status;
 
@@ -186,7 +186,7 @@ cystatus EEPROM_R_EraseSector(uint8 sectorNumber)
 
 
 /*******************************************************************************
-* Function Name: EEPROM_R_Write
+* Function Name: Re_EEPROM_Write
 ********************************************************************************
 *
 * Summary:
@@ -204,7 +204,7 @@ cystatus EEPROM_R_EraseSector(uint8 sectorNumber)
 *  CYRET_UNKNOWN, if there was an SPC error.
 *
 *******************************************************************************/
-cystatus EEPROM_R_Write(const uint8 * rowData, uint8 rowNumber) 
+cystatus Re_EEPROM_Write(const uint8 * rowData, uint8 rowNumber) 
 {
     cystatus status;
 
@@ -282,14 +282,14 @@ cystatus EEPROM_R_Write(const uint8 * rowData, uint8 rowNumber)
 
 
 /*******************************************************************************
-* Function Name: EEPROM_R_StartWrite
+* Function Name: Re_EEPROM_StartWrite
 ********************************************************************************
 *
 * Summary:
 *  Starts the SPC write function. This function does not block, it returns
 *  once the command has begun the SPC write function. This function must be used
-*  in combination with EEPROM_R_QueryWrite(). Once this function has
-*  been called the SPC will be locked until EEPROM_R_QueryWrite()
+*  in combination with Re_EEPROM_QueryWrite(). Once this function has
+*  been called the SPC will be locked until Re_EEPROM_QueryWrite()
 *  returns CYRET_SUCCESS.
 *
 * Parameters:
@@ -303,7 +303,7 @@ cystatus EEPROM_R_Write(const uint8 * rowData, uint8 rowNumber)
 *  CYRET_UNKNOWN, if there was an SPC error.
 *
 *******************************************************************************/
-cystatus EEPROM_R_StartWrite(const uint8 * rowData, uint8 rowNumber) \
+cystatus Re_EEPROM_StartWrite(const uint8 * rowData, uint8 rowNumber) \
 
 {
     cystatus status;
@@ -364,7 +364,7 @@ cystatus EEPROM_R_StartWrite(const uint8 * rowData, uint8 rowNumber) \
 
 
 /*******************************************************************************
-* Function Name: EEPROM_R_QueryWrite
+* Function Name: Re_EEPROM_QueryWrite
 ********************************************************************************
 *
 * Summary:
@@ -380,7 +380,7 @@ cystatus EEPROM_R_StartWrite(const uint8 * rowData, uint8 rowNumber) \
 *  CYRET_UNKNOWN, if there was an SPC error.
 *
 *******************************************************************************/
-cystatus EEPROM_R_QueryWrite(void) 
+cystatus Re_EEPROM_QueryWrite(void) 
 {
     cystatus status;
 
@@ -410,7 +410,7 @@ cystatus EEPROM_R_QueryWrite(void)
 
 
 /*******************************************************************************
-* Function Name: EEPROM_R_ByteWrite
+* Function Name: Re_EEPROM_ByteWrite
 ********************************************************************************
 *
 * Summary:
@@ -429,7 +429,7 @@ cystatus EEPROM_R_QueryWrite(void)
 *  CYRET_UNKNOWN, if there was an SPC error.
 *
 *******************************************************************************/
-cystatus EEPROM_R_ByteWrite(uint8 dataByte, uint8 rowNumber, uint8 byteNumber) \
+cystatus Re_EEPROM_ByteWrite(uint8 dataByte, uint8 rowNumber, uint8 byteNumber) \
 
 {
     cystatus status;
@@ -447,7 +447,7 @@ cystatus EEPROM_R_ByteWrite(uint8 dataByte, uint8 rowNumber, uint8 byteNumber) \
 
             /* Command to load a byte of data */
             if(CySpcLoadMultiByte(CY_SPC_FIRST_EE_ARRAYID, (uint16)byteNumber, &dataByte,\
-                                                                EEPROM_R_SPC_BYTE_WRITE_SIZE) == CYRET_STARTED)
+                                                                Re_EEPROM_SPC_BYTE_WRITE_SIZE) == CYRET_STARTED)
             {
                 while(CY_SPC_BUSY)
                 {

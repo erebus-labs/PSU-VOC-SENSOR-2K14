@@ -996,5 +996,5 @@
   <block name="PWM0_CTRL" BASE="0x0" SIZE="0x0" desc="" visible="true">
     <register name="PWM0_CTRL_CONTROL_REG" address="0x6472" bitWidth="8" desc="" />
   </block>
-  <block name="EEPROM_R" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Re_EEPROM" BASE="0x0" SIZE="0x0" desc="" visible="true" />
 </blockRegMap>

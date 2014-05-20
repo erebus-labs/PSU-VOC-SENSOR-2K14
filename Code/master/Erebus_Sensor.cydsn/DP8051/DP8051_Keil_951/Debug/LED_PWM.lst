@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   LED_PWM                                                               05/10/2014 13:47:38 PAGE 1   
+C51 COMPILER V9.51   LED_PWM                                                               05/19/2014 15:47:26 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE LED_PWM
@@ -62,7 +62,7 @@ line level    source
   51          {
   52   1          /* If not Initialized then initialize all required hardware and software */
   53   1          if(LED_PWM_initVar == 0u)
-C51 COMPILER V9.51   LED_PWM                                                               05/10/2014 13:47:38 PAGE 2   
+C51 COMPILER V9.51   LED_PWM                                                               05/19/2014 15:47:26 PAGE 2   
 
   54   1          {
   55   2              LED_PWM_Init();
@@ -126,7 +126,7 @@ line level    source
              -MASK));
  113   1              LED_PWM_CONTROL = ctrl | LED_PWM_DEFAULT_COMPARE2_MODE | 
  114   1                                         LED_PWM_DEFAULT_COMPARE1_MODE;
-C51 COMPILER V9.51   LED_PWM                                                               05/10/2014 13:47:38 PAGE 3   
+C51 COMPILER V9.51   LED_PWM                                                               05/19/2014 15:47:26 PAGE 3   
 
  115   1          #endif /* (LED_PWM_UsingFixedFunction) */
  116   1              
@@ -190,7 +190,7 @@ line level    source
  174          
  175          
  176          /*******************************************************************************
-C51 COMPILER V9.51   LED_PWM                                                               05/10/2014 13:47:38 PAGE 4   
+C51 COMPILER V9.51   LED_PWM                                                               05/19/2014 15:47:26 PAGE 4   
 
  177          * Function Name: LED_PWM_Enable
  178          ********************************************************************************
@@ -254,7 +254,7 @@ line level    source
                       LED_PWM_GLOBAL_STBY_ENABLE &= ((uint8)(~LED_PWM_BLOCK_STBY_EN_MASK));
                   #endif /* (LED_PWM_UsingFixedFunction) */
  238   1      }
-C51 COMPILER V9.51   LED_PWM                                                               05/10/2014 13:47:38 PAGE 5   
+C51 COMPILER V9.51   LED_PWM                                                               05/19/2014 15:47:26 PAGE 5   
 
  239          
  240          
@@ -318,7 +318,7 @@ line level    source
                                   #endif /* (LED_PWM_UsingFixedFunction) */
                               }
                       #endif /* LED_PWM_CompareMode1SW */
-C51 COMPILER V9.51   LED_PWM                                                               05/10/2014 13:47:38 PAGE 6   
+C51 COMPILER V9.51   LED_PWM                                                               05/19/2014 15:47:26 PAGE 6   
 
               
               #else /* UseOneCompareMode */
@@ -382,7 +382,7 @@ line level    source
                           uint8 comparemodemasked = ((uint8)((uint8)comparemode << LED_PWM_CTRL_CMPMODE2_SHIFT)) & 
                                                                LED_PWM_CTRL_CMPMODE2_MASK;
                       #else
-C51 COMPILER V9.51   LED_PWM                                                               05/10/2014 13:47:38 PAGE 7   
+C51 COMPILER V9.51   LED_PWM                                                               05/19/2014 15:47:26 PAGE 7   
 
                           uint8 comparemodemasked = comparemode & LED_PWM_CTRL_CMPMODE2_MASK;            
                       #endif /* (0 != LED_PWM_CTRL_CMPMODE2_SHIFT) */
@@ -446,7 +446,7 @@ line level    source
  420              {
  421   1              /* Force capture by reading Accumulator */
  422   1              /* Must first do a software capture to be able to read the counter */
-C51 COMPILER V9.51   LED_PWM                                                               05/10/2014 13:47:38 PAGE 8   
+C51 COMPILER V9.51   LED_PWM                                                               05/19/2014 15:47:26 PAGE 8   
 
  423   1              /* It is up to the user code to make sure there isn't already captured data in the FIFO */
  424   1              (void)LED_PWM_COUNTERCAP_LSB;
@@ -510,7 +510,7 @@ line level    source
  482   1          #endif /* (LED_PWM_UsingFixedFunction) */
  483   1      }
  484          
-C51 COMPILER V9.51   LED_PWM                                                               05/10/2014 13:47:38 PAGE 9   
+C51 COMPILER V9.51   LED_PWM                                                               05/19/2014 15:47:26 PAGE 9   
 
  485          #if (LED_PWM_UseOneCompareMode)
               
@@ -574,7 +574,7 @@ line level    source
  544              *
  545              * Return: 
  546              *  None
-C51 COMPILER V9.51   LED_PWM                                                               05/10/2014 13:47:38 PAGE 10  
+C51 COMPILER V9.51   LED_PWM                                                               05/19/2014 15:47:26 PAGE 10  
 
  547              *
  548              *******************************************************************************/
@@ -638,7 +638,7 @@ line level    source
                   void LED_PWM_WriteDeadTime(uint8 deadtime) 
                   {
                       /* If using the Dead Band 1-255 mode then just write the register */
-C51 COMPILER V9.51   LED_PWM                                                               05/10/2014 13:47:38 PAGE 11  
+C51 COMPILER V9.51   LED_PWM                                                               05/19/2014 15:47:26 PAGE 11  
 
                       #if(!LED_PWM_DeadBand2_4)
                           CY_SET_REG8(LED_PWM_DEADBAND_COUNT_PTR, deadtime);
@@ -702,7 +702,7 @@ line level    source
                   *  This function configures the interrupts mask control of theinterrupt 
                   *  source status register.
                   *
-C51 COMPILER V9.51   LED_PWM                                                               05/10/2014 13:47:38 PAGE 12  
+C51 COMPILER V9.51   LED_PWM                                                               05/19/2014 15:47:26 PAGE 12  
 
                   * Parameters:  
                   *  uint8 interruptMode: Bit field containing the interrupt sources enabled 
@@ -766,7 +766,7 @@ line level    source
  730              * Return: 
  731              *  uint8 : Current control register value
  732              *
-C51 COMPILER V9.51   LED_PWM                                                               05/10/2014 13:47:38 PAGE 13  
+C51 COMPILER V9.51   LED_PWM                                                               05/19/2014 15:47:26 PAGE 13  
 
  733              *******************************************************************************/    
  734              uint8 LED_PWM_ReadControlRegister(void) 
@@ -830,7 +830,7 @@ line level    source
  792          #endif /* (!LED_PWM_UsingFixedFunction) */
  793          
  794          
-C51 COMPILER V9.51   LED_PWM                                                               05/10/2014 13:47:38 PAGE 14  
+C51 COMPILER V9.51   LED_PWM                                                               05/19/2014 15:47:26 PAGE 14  
 
  795          #if (LED_PWM_UseOneCompareMode)
               
@@ -894,7 +894,7 @@ line level    source
  854              *
  855              * Return: 
  856              *  uint8/uint16: Current compare value.
-C51 COMPILER V9.51   LED_PWM                                                               05/10/2014 13:47:38 PAGE 15  
+C51 COMPILER V9.51   LED_PWM                                                               05/19/2014 15:47:26 PAGE 15  
 
  857              *
  858              *******************************************************************************/  
@@ -958,7 +958,7 @@ line level    source
                   ********************************************************************************
                   * 
                   * Summary:
-C51 COMPILER V9.51   LED_PWM                                                               05/10/2014 13:47:38 PAGE 16  
+C51 COMPILER V9.51   LED_PWM                                                               05/19/2014 15:47:26 PAGE 16  
 
                   *  Reads the kill time value used by the hardware when the Kill Mode is set 
                   *  to Minimum Time.
@@ -978,7 +978,7 @@ line level    source
               #endif /* ( LED_PWM_KillModeMinTime) */
  935          
  936          /* [] END OF FILE */
-C51 COMPILER V9.51   LED_PWM                                                               05/10/2014 13:47:38 PAGE 17  
+C51 COMPILER V9.51   LED_PWM                                                               05/19/2014 15:47:26 PAGE 17  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -1042,7 +1042,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0026 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 127
 0027 7FFF              MOV     R7,#0FFH
-C51 COMPILER V9.51   LED_PWM                                                               05/10/2014 13:47:38 PAGE 18  
+C51 COMPILER V9.51   LED_PWM                                                               05/19/2014 15:47:26 PAGE 18  
 
 0029 120000      R     LCALL   _LED_PWM_WriteCounter
                                            ; SOURCE LINE # 130
@@ -1106,7 +1106,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000A 906403            MOV     DPTR,#06403H
 000D EF                MOV     A,R7
 000E F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   LED_PWM                                                               05/10/2014 13:47:38 PAGE 19  
+C51 COMPILER V9.51   LED_PWM                                                               05/19/2014 15:47:26 PAGE 19  
 
                                            ; SOURCE LINE # 401
 000F         ?C0006:
@@ -1170,7 +1170,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0000 900000      R     MOV     DPTR,#compare
 0003 EF                MOV     A,R7
 0004 F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   LED_PWM                                                               05/10/2014 13:47:38 PAGE 20  
+C51 COMPILER V9.51   LED_PWM                                                               05/19/2014 15:47:26 PAGE 20  
 
                                            ; SOURCE LINE # 580
                                            ; SOURCE LINE # 584
@@ -1234,7 +1234,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0005 22                RET     
              ; FUNCTION LED_PWM_ReadCapture (END)
 
-C51 COMPILER V9.51   LED_PWM                                                               05/10/2014 13:47:38 PAGE 21  
+C51 COMPILER V9.51   LED_PWM                                                               05/19/2014 15:47:26 PAGE 21  
 
              ; FUNCTION LED_PWM_ReadCompare1 (BEGIN)
                                            ; SOURCE LINE # 839

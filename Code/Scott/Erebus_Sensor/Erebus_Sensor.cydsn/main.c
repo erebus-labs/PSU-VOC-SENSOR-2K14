@@ -117,10 +117,17 @@ int main()
         CyPmRestoreClocks(); 
         RTC_EnableInt();
         #endif
+         
+        if (USB_waiting){
+            LED_PWM_Wakeup();
+            LED_on(CYAN);
+            Run_USB();
+            clear_button_interrupts();
+            LED_off();
+        }
         
         if (mem_full_flag){
             LED_on(RED);
-            CyDelay(LED_DELAY);
             continue;
         }
         
@@ -145,13 +152,6 @@ int main()
             clear_button_interrupts();            
             stop_collection();           
             CyDelay(LED_DELAY);
-            LED_off();
-        }
-        
-        if (USB_waiting){
-            LED_PWM_Wakeup();
-            LED_on(CYAN);
-            Run_USB();
             LED_off();
         }        
         

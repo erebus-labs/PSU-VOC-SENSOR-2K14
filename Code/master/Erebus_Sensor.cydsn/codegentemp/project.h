@@ -27,7 +27,7 @@
 #include <Vbus_IRQ.h>
 #include <Em_EEPROM.h>
 #include <PWM0_CTRL.h>
-#include <EEPROM_R.h>
+#include <Re_EEPROM.h>
 #include <Sensor_In.h>
 #include <Sensor_In_aliases.h>
 #include <ADC.h>

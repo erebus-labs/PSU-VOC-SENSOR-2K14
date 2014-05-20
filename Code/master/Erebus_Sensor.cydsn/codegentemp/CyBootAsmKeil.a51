@@ -195,7 +195,7 @@ _CyDelayUs_done:
 ;  None
 ;
 ; Return:
-;  PSoC 3 – Returns a value containing two bits:
+;  PSoC 3 â€“ Returns a value containing two bits:
 ;    bit 0: 1 if interrupts were enabled before CyEnterCriticalSection was
 ;           called.
 ;    bit 1: 1 if IRQ generation was disabled before CyEnterCriticalSection was

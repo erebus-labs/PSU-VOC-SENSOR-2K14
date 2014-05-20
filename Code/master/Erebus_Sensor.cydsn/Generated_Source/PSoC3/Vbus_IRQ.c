@@ -25,9 +25,7 @@
 *  Place your includes, defines and code here 
 ********************************************************************************/
 /* `#START Vbus_IRQ_intc` */
-    #include "Interface.h"
     #include "Globals.h"
-    #include "Macros.h"
 /* `#END` */
 
 
