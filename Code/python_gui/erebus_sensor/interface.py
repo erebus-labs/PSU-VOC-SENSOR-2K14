@@ -119,17 +119,13 @@ class ErebusSensor:
             'GET_SETTINGS'    :0x03.to_bytes(1,byteorder='big'),
             'APPLY_SETTINGS'  :0x04.to_bytes(1,byteorder='big'),
             'HARD_RESET'      :0x05.to_bytes(1,byteorder='big'),
-            'UPDATE_RTC'      :0x06.to_bytes(1,byteorder='big')}
-  
-        self.device_replies = {
-            'IDENTIFIER'      :0x01.to_bytes(1,byteorder='big'),
-            'SUCCESS'         :0x02.to_bytes(1,byteorder='big'),
-            'FAIL'            :0x03.to_bytes(1,byteorder='big')}
-
-        self.host_replies = {
-            'SUCCESS'         :0x02.to_bytes(1,byteorder='big'),
-            'FAIL'            :0x03.to_bytes(1,byteorder='big'),
+            'UPDATE_RTC'      :0x06.to_bytes(1,byteorder='big'),
             'NEXT'            :0x07.to_bytes(1,byteorder='big')}
+  
+        self.replies = { # these replies go in both directions
+            'IDENTIFIER'      :0x10.to_bytes(1,byteorder='big'),
+            'SUCCESS'         :0x20.to_bytes(1,byteorder='big'),
+            'FAIL'            :0x30.to_bytes(1,byteorder='big')}
   
         self.sample_codes = {
             'SAMPLE_SEC'      :0x01.to_bytes(1,byteorder='big'),
@@ -160,7 +156,7 @@ class ErebusSensor:
   
                 response = self.handle.read(self.reply_size)
   
-                if response == self.device_replies['IDENTIFIER']:
+                if response == self.replies['IDENTIFIER']:
                     acquired = 1
                     break
           
@@ -196,7 +192,7 @@ class ErebusSensor:
 
     def _sendReply(self, reply):
 
-        reply = self.host_replies[reply]
+        reply = self.replies[reply]
         print("Sending Reply: {}".format(reply))
         out = struct.pack('>c', reply)
         self.handle.write(out)
@@ -224,16 +220,18 @@ class ErebusSensor:
             # last ones are received
             while True:
                 package = self.handle.read(64)
-                self._sendReply('NEXT')
                 print("Package Received: {}\n".format(package))
                 if len(package) < 64:
+                    if package == self.replies['FAIL']:
+                        return 1
+                    
                     continue
 
                 packet = struct.unpack(packet_format_string, package)
 
                 # Check for no data before iterating over packet
                 if ((packet[0] & 0xF000) >> 12)  == self.data_codes['NO_DATA']:
-                    continue
+                    return []
 
                 for i, word in enumerate(packet):
                     message = (word & 0xF000) >> 12
@@ -249,6 +247,7 @@ class ErebusSensor:
                         word_list.append(word)
 
                 else:
+                    self._sendCommand('NEXT')
                     continue #executes if the for loop ends before breaking
 
                 break
@@ -297,6 +296,10 @@ class ErebusSensor:
                 temp = next(iter_word_list)
                 blocks[-1].day = (temp & 0xFF00) >> 8
                 blocks[-1].month = temp & 0x00FF
+
+                # Skip over pad bytes used in header for alignment
+                next(iter_word_list)
+                next(iter_word_list)
 
         for data_block in blocks:
             data_block.end()
@@ -356,13 +359,13 @@ class ErebusSensor:
         
         for x in range(8):
             reply = self.handle.read(self.reply_size)
-            if reply in self.host_replies.values():
+            if reply in self.replies.values():
                 break;
             time.sleep(0.25)
         else:
             return 1
 
-        if reply == self.host_replies['SUCCESS']:
+        if reply == self.replies['SUCCESS']:
             return 0
         else:
             return 1
@@ -390,5 +393,5 @@ class ErebusSensor:
 
     def hard_reset(self):
         self._sendCommand('HARD_RESET')
-        return
+        return self._await_result()
                 
