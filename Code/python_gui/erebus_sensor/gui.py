@@ -276,6 +276,8 @@ class ErebusGUI(tk.Frame):
 
                 for block in dataBlocks:
                     fo.write(str(block))
+
+            mb.showinfo("", "Data export successful.")
             
         elif dataBlocks == []:
             mb.showinfo("", "There were no data samples to retrieve from the device.")
@@ -290,7 +292,11 @@ class ErebusGUI(tk.Frame):
             self._showNotConnected()
             return
 
-        self.sensorHandle.hard_reset()
+        if self.sensorHandle.hard_reset():
+            mb.showerror("", "There was an erorr resetting the device. Please try "
+                             "again.")
+        else:
+            mb.showinfo("", "Reset successful.")
 
         return
         
