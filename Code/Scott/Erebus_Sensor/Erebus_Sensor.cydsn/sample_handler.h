@@ -40,6 +40,8 @@
     #define HEAD_INDEX          0
     #define TAIL_INDEX          1
     #define MASTER_PTR_COUNT    2
+    #define SAMPLE_SHIFT        4
+    #define SAMPLE_MASK         0x0FFF
     
     /* RTC Periodic Interrupt Masks */    
     #define NONE_MASK   0x00u

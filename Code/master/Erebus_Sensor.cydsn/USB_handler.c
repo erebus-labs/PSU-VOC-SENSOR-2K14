@@ -13,8 +13,12 @@
 #include "USB_handler.h"
 
 void Run_USB(){
+/*
+ * Handles all USB communication with the host. Calls functions based on received
+ * commands.
+*/
     
-    // Power has just been applied to the Vbus pin, so we enter USB communication mode
+    /* Power has just been applied to the Vbus pin, so we enter USB communication mode */
 
     uint8 result = 0;
     uint8 command = 0;
@@ -34,70 +38,77 @@ void Run_USB(){
     
     while(Vbus_Read())
     {  
-        if (USBUART_DataIsReady() != 0u){   /* Check for input data from PC */
-            result = retrieve_from_buffer(&command, COMMAND_LENGTH);
-            
-            // Discard null bytes
-            if (command == NULL_BYTE){
-                continue;
-            }
-        
-            if (result == SUCCESS){
-                
-                switch (command){
-                
-                    case IDENTIFY:
-                        send_reply(IDENTIFIER);
-                        break;
-                    
-                    case DUMP_DATA:
-                        if (export_samples()){
-                            confirm_export();
-                        }
-                        else{
-                            send_reply(FAIL);
-                        }
-                        break;
-                        
-                    case GET_SETTINGS:
-                        send_settings();
-                        break;
-                        
-                    case CHANGE_SETTING:
-                        send_reply(SUCCESS);
-                        if (apply_settings() == SUCCESS){
-                            send_reply(SUCCESS);
-                        }
-                        else{
-                            send_reply(FAIL);
-                        }                  
-                        break;
-                        
-                    case UPDATE_RTC:
-                        send_reply(SUCCESS);
-                        if (update_RTC() == SUCCESS){
-                            send_reply(SUCCESS);
-                        }
-                        else{
-                            send_reply(FAIL);
-                        }
-                        break;
-                     
-                    case RESET_PTRS:
-                        reset_sample_pointers();
-                        send_reply(SUCCESS);
-                        break;
-                        
-                    default:
-                        send_reply(FAIL);
-                        break;
-                }
-            }   
-            else{
-                send_reply(FAIL);
-            }
+        if (USBUART_DataIsReady() == 0u){   /* Check for input data from PC */
+            continue;
         }
-    }
+
+        result = retrieve_from_buffer(&command, COMMAND_LENGTH);
+        
+        /* Discard zero-length packets */
+        if (command == NULL_BYTE){
+            continue;
+        }
+    
+        /* Identify command and perform action */
+        if (result == SUCCESS){
+            
+            switch (command){
+            
+                case IDENTIFY:
+                    send_reply(IDENTIFIER);
+                    break;
+                
+                case DUMP_DATA:
+                    if (export_samples()){
+                        confirm_export();
+                    }
+                    else{
+                        send_reply(FAIL);
+                    }
+                    break;
+                    
+                case GET_SETTINGS:
+                    send_settings();
+                    break;
+                    
+                case CHANGE_SETTING:
+                    send_reply(SUCCESS);
+                    if (apply_settings() == SUCCESS){
+                        send_reply(SUCCESS);
+                    }
+                    else{
+                        send_reply(FAIL);
+                    }                  
+                    break;
+                    
+                case UPDATE_RTC:
+                    send_reply(SUCCESS);
+                    if (update_RTC() == SUCCESS){
+                        send_reply(SUCCESS);
+                    }
+                    else{
+                        send_reply(FAIL);
+                    }
+                    break;
+                 
+                case RESET_PTRS:
+                    reset_pointers();
+                    send_reply(SUCCESS);
+                    break;
+                    
+                default:
+                    send_reply(FAIL);
+                    break;
+
+            } /* switch (command) */
+
+        } /* if (result == SUCCESS) */
+
+        else{
+            send_reply(FAIL);
+        }
+
+    } /* while (Vbus_Read()) */
     
     USB_Close();
     
@@ -105,6 +116,12 @@ void Run_USB(){
 }
 
 uint8 retrieve_from_buffer(uint8* buffer, uint8 num_bytes){
+/* 
+ * Retrieves the specified number of bytes from the USBUART buffer, if possible - if a
+ * different number of bytes is pulled from the buffer, a failure is reported to the
+ * calling routine.
+*/
+
     uint16 count = 0;
     uint8 attempts = 0;
     uint8 result = FAIL;
@@ -125,6 +142,9 @@ uint8 retrieve_from_buffer(uint8* buffer, uint8 num_bytes){
 }
 
 void send_reply(uint8 message){
+/* 
+ * Once the host is ready, sends the reply specified by message.
+*/
    
     while(!USBUART_CDCIsReady() && Vbus_Read());
     
@@ -136,6 +156,9 @@ void send_reply(uint8 message){
 }
 
 void send_settings(){
+/*
+ * Retrieves current sample settings stored in EEPROM and sends them to the host.
+*/
     
     uint8 settings[NUM_SETTINGS];
     
@@ -153,6 +176,10 @@ void send_settings(){
 }
 
 uint8 apply_settings(){
+/* 
+ * Retrieves new settings from the USBUART buffer that were sent by the host and stores
+ * them in EEPROM.
+*/
     uint8 result = FAIL;
     uint8 settings_buffer[NUM_SETTINGS] = {0};
     struct sampling_settings new_settings;
@@ -161,6 +188,7 @@ uint8 apply_settings(){
     
     if (Vbus_Read()){
         if (retrieve_from_buffer(settings_buffer, NUM_SETTINGS) == SUCCESS){
+
             new_settings.sensor = settings_buffer[0];
             new_settings.sample_unit = settings_buffer[1];
             new_settings.sample_interval = settings_buffer[2];
@@ -173,13 +201,17 @@ uint8 apply_settings(){
 }
 
 uint8 update_settings(struct sampling_settings new_settings){
+/*
+ * Handles updating EEPROM with new settings. Updating the settings in EEPROM requires
+ * a Read-Modify-Write cycle of the whole EEPROM sector.
+*/
     
     uint8* buffer;
     float rows_used = 0;
     uint16 remainder = 0;
     uint8* src_ptr;
     uint8* dst_ptr;
-    uint8 i = 0; // loop var
+    uint8 i = 0; 
     float bytes_used = EEPROM_BYTES_USED;
     uint8 result = SUCCESS;
     cystatus status;
@@ -243,6 +275,16 @@ exit:
 }
 
 uint8 export_samples(){
+/*
+ * Dumps the contents of the Flash sample block to the host. This routine makes no
+ * distinction between different types of data stored in Flash. It iterates through
+ * the sample block array copying one byte at a time into the export buffer and does
+ * no analysis of the bytes it is sending.
+ *
+ * Optimization suggestion: The export buffer could be eliminated in favor of passing
+ * flash pointers to the load_buffer function and incrementing the pointers
+ * 64-bytes at a time.
+*/
     
     uint8 result = SUCCESS;
     uint8 export_buffer[BUFFER_LEN];
@@ -250,6 +292,7 @@ uint8 export_samples(){
     uint16 byte_count = 0;
     uint8 i = 0;
     
+    /* Before doing a bunch of work, make sure we have samples to send */
     if ((export_index == sample_tail_index) && !mem_full_flag){
         export_buffer[0] = NO_DATA;
         
@@ -302,10 +345,10 @@ uint8 export_samples(){
     byte_count = byte_count + 4;
     
     /* Trailer Packet to Identify End of Sampled Data in Memory */ 
-    export_buffer[0] = 0x80; // End of Data Identifier
+    export_buffer[0] = 0x80; /* End of Data Identifier */
     export_buffer[1] = 0x00;
     
-    /* Byte count may be up to 16-bits long - pack into two bytes
+    /* Byte count may be up to 16-bits long - split into two bytes
      * and copy to buffer */
     export_buffer[2] = (uint8)(byte_count >> 8);
     export_buffer[3] = (uint8)0x00FF & byte_count;
@@ -318,6 +361,12 @@ exit:
 }
 
 void load_buffer(uint8* export_buffer){
+/*
+ * Loads a 64-byte export buffer into the USBUART buffer to be sent to the host.
+ * USB Specification says that when a maximum payload size packet (64-bytes) is sent
+ * to the host, the host does not consider the transaction complete unless it is
+ * followed by a zero-length packet, so we send one after loading the export_buffer.
+*/
     
     while(!USBUART_CDCIsReady() && Vbus_Read());
     USBUART_PutData(export_buffer, BUFFER_LEN);
@@ -330,6 +379,11 @@ void load_buffer(uint8* export_buffer){
 }
     
 uint8 wait_for_continue(){
+/* 
+ * Stalls until a reply is received from the host. The result of that reply is returned.
+ * Data dumping with the Python GUI is very heavily interlocked, with replies from the
+ * host expected between every 64-byte packet.
+*/
     uint8 reply = 0;
     uint8 retrieve_from_buffer_status = 0;
     uint8 continue_status = FAIL;
@@ -354,6 +408,13 @@ uint8 wait_for_continue(){
 }
 
 void confirm_export(){
+/*
+ * Awaits a SUCCESS or FAIL reply from the host when dumping samples is complete. If
+ * the host replies with SUCCESS (indicating that they received the expected number of
+ * bytes) then we clear the sample array. If not, simply return and wait for the host
+ * to send the dump data command again.
+*/
+
     uint8 command = 0;
     
     while(Vbus_Read()){
@@ -381,6 +442,11 @@ void confirm_export(){
 }
 
 uint8 update_RTC(){
+/*
+ * Invoked by the host every time a connection with the host application is made. Updates
+ * the current time in the RTC with the time sent by the host.
+*/
+
     uint8 result = FAIL;
     uint8 time_buffer[TIME_LENGTH] = {0};
     RTC_TIME_DATE new_time;
@@ -407,14 +473,10 @@ uint8 update_RTC(){
     return result;
 }
 
-void reset_sample_pointers(){
-
-    reset_pointers();
-    
-    return;
-}
-
 void USB_Close(){
+/*
+ * Cleans up when the USB cable is disconnected.
+*/
     
     /* Clear pending interrupts that occurred while plugged into host */
     USBUART_Stop();

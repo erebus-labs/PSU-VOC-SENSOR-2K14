@@ -13,6 +13,10 @@
 #include "LED_handler.h"
 
 void LED_on(uint8 color){
+/* 
+ * Activates the RGB Led in the designated color. If one of the PWM colors is desired,
+ * the PWM controller must be woken up prior to calling this function.
+*/
     
     SOLID_LED_CTRL_Write(OFF);
     
@@ -44,6 +48,9 @@ void LED_on(uint8 color){
 }
 
 void LED_off(){
+/* 
+ * Turns off the RGB LED. This funciton does not put the PWM controller back to sleep.
+*/
     
     SOLID_LED_CTRL_Write(OFF);
     PWM0_CTRL_Write(OFF);

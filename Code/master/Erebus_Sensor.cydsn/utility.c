@@ -13,6 +13,10 @@
 #include "utility.h"
 
 uint8 get_EEPROM_variable(uint16 var_index){
+/*
+ * Retrieves and returns the EEPROM variable at the given index.
+*/
+
     uint8 value = 10;
     
     value = CY_GET_REG8(CYDEV_EE_BASE + var_index);
@@ -21,6 +25,10 @@ uint8 get_EEPROM_variable(uint16 var_index){
 }
 
 void memory_full(){
+/*
+ * Called when a method attempting to store data in the Flash sample array determines
+ * that there is no room for more samples or the header to begin a new sample block.
+*/
     
     mem_full_flag = 1;
     Em_EEPROM_Write(&mem_full_flag, &mem_full_flash_flag, sizeof(uint8));
@@ -29,6 +37,10 @@ void memory_full(){
 }
 
 void check_battery(){
+/*
+ * Checks the voltage level on the battery, sets or clears low-power flags as necessary.
+*/
+
     uint16 SampledData = 0;
     ADC_Wakeup();
     ADC_MUX_FastSelect(BATTERY_PIN);
@@ -49,8 +61,10 @@ void check_battery(){
 }
 
 void clear_button_interrupts(){
+/* 
+ * Clears any pending interrupts or flags from button presses.
+*/
                 
-    // Clear any pending stop or start interrupts
     StopCollection_B_ClearInterrupt();
     StopCollection_IRQ_ClearPending();
     stop_sampling_waiting = 0;

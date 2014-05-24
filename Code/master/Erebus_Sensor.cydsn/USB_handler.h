@@ -107,7 +107,6 @@
     uint8 wait_for_continue();
     void confirm_export();
     uint8 update_RTC();
-    void reset_sample_pointers();
     void USB_Close();
     
 #endif /* ifndef _USB_HANDLER_H */

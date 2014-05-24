@@ -117,7 +117,8 @@ int main()
         CyPmRestoreClocks(); 
         RTC_EnableInt();
         #endif
-         
+
+        /* Cycle through and check each flag that may have been set while asleep */
         if (USB_waiting){
             LED_PWM_Wakeup();
             LED_on(CYAN);
@@ -173,3 +174,4 @@ int main()
 }
 
 /* [] END OF FILE */
+
