@@ -42,41 +42,41 @@ months = {
     
 
 class Settings:
-"""
-Contains settings for the Erebus Sensor and packs them into a bytes object for 
-transmission over USB.
+    """
+    Contains settings for the Erebus Sensor and packs them into a bytes object for 
+    transmission over USB.
 
-Members:
-    SENSOR          contains the bitfield designating the sensor in use
-    SAMPLE_UNIT     contains the bitfield designating the time unit for samples
-    SAMPLE_INTERVAL contains the bitfield designating number of SAMPLE_UNITS that should
-                        pass between samples
+    Members:
+        SENSOR          contains the bitfield designating the sensor in use
+        SAMPLE_UNIT     contains the bitfield designating the time unit for samples
+        SAMPLE_INTERVAL contains the bitfield designating number of SAMPLE_UNITS that should
+                            pass between samples
 
-Methods:
-    __init__        initializes Settings object 
-    pack            packs settings into 24-bit bytes object for transmission over USB
-"""
+    Methods:
+        __init__        initializes Settings object 
+        pack            packs settings into 24-bit bytes object for transmission over USB
+    """
     def __init__(self, sensor=sensorOptions[0], unit=unitOptions[0], interval=1):
-    """
-    Initializes Settings object.
+        """
+        Initializes Settings object.
 
-    Arguments:
-        sensor      integer bitfield designating the sensor in use
-        unit        integer bitfield designating the sample unit
-        interval    integer bitfield designating the sample interval
-    """
+        Arguments:
+            sensor      integer bitfield designating the sensor in use
+            unit        integer bitfield designating the sample unit
+            interval    integer bitfield designating the sample interval
+        """
         self.SENSOR = sensor
         self.SAMPLE_UNIT = unit
         self.SAMPLE_INTERVAL = interval
         return
 
     def pack(self):
-    """
-    Packs settings into 24-bit bytes object for transmission over USB.
+        """
+        Packs settings into 24-bit bytes object for transmission over USB.
 
-    Arguments:
-        <None>
-    """
+        Arguments:
+            <None>
+        """
 
         sensor_index = (sensorOptions.index(self.SENSOR)).to_bytes(1, byteorder='big')
         unit_index  = unitOptions.index(self.SAMPLE_UNIT).to_bytes(1, byteorder='big')
@@ -86,34 +86,34 @@ Methods:
         return packed
 
 class DataBlock:
-"""
-Contains a block of data samples and their header.
+    """
+    Contains a block of data samples and their header.
 
-Members:
-    sensor          indicates the sensor used for this block of samples
-    sample_unit     indicates the sampling unit for this block of data samples
-    sample_interval indicates the sample interval for this block of samples
-    second          second field of data sample start time
-    minute          minute field of data sample start time
-    hour            hour field of data sample start time
-    day             day of month field of data sample start time
-    year            year field of data sample start time
-    data            list of data samples
-    data_points     count of how many samples are present in this block
+    Members:
+        sensor          indicates the sensor used for this block of samples
+        sample_unit     indicates the sampling unit for this block of data samples
+        sample_interval indicates the sample interval for this block of samples
+        second          second field of data sample start time
+        minute          minute field of data sample start time
+        hour            hour field of data sample start time
+        day             day of month field of data sample start time
+        year            year field of data sample start time
+        data            list of data samples
+        data_points     count of how many samples are present in this block
 
-Methods:
-    __init__        initializes the DataBlock object
-    add_sample      adds a 16-bit sample to the list of samples
-    end             called when no more samples will be added to the block. Stores the 
-                        number of samples in data_points
-"""
+    Methods:
+        __init__        initializes the DataBlock object
+        add_sample      adds a 16-bit sample to the list of samples
+        end             called when no more samples will be added to the block. Stores the 
+                            number of samples in data_points
+    """
     def __init__(self):
-    """
-    Initializes DataBlock object.
+        """
+        Initializes DataBlock object.
 
-    Arguments: 
-        <None>
-    """
+        Arguments: 
+            <None>
+        """
         self.sensor = -1
         self.sample_unit = -1
         self.sample_interval = -1
@@ -128,33 +128,33 @@ Methods:
         return
 
     def add_sample(self, word):
-    """
-    Adds a 16-bit sample to the list of samples.
+        """
+        Adds a 16-bit sample to the list of samples.
 
-    Arguments:
-        word    16-bit sample to add to this block
-    """
+        Arguments:
+            word    16-bit sample to add to this block
+        """
         self.data.append(word)
         return
 
     def end(self):
-    """
-    Called when no more samples will be added to the block. Stores the number of samples
-    in data_points.
+        """
+        Called when no more samples will be added to the block. Stores the number of samples
+        in data_points.
 
-    Arguments: 
-        <None>
-    """
+        Arguments: 
+            <None>
+        """
         self.data_points = len(self.data)
         return
 
     def __str__(self):
-    """
-    Returns formatted string of the data block for printing.
+        """
+        Returns formatted string of the data block for printing.
 
-    Arguments:
-        <None>
-    """
+        Arguments:
+            <None>
+        """
         s = []
         s.append("\n\n\nTotal Samples in this Block: {}".format(self.data_points))
         s.append("Sensor:\t{}".format(self.sensor))
@@ -169,26 +169,26 @@ Methods:
         return "\n".join(s)
 
 class ErebusSensor:
-"""
-Provides an interface for sending commands to and receiving information from the Erebus
-Labs sensor.
+    """
+    Provides an interface for sending commands to and receiving information from the Erebus
+    Labs sensor.
 
-Members:
-    command_size    Number of bytes in each command that may be sent to the sensor
-    reply_size      Expected size of replies from the sensor
-    commands        dictionary mapping command bit patterns to bytes objects
-    replies         dictionary mapping replies (both host and device) to bytes objects
-    sample_codes    maps valid sample units to bytes objects
-    data_codes      maps markers found in dumped data to their bit patterns
-    handle          serial.Serial object that communicates with the sensor
+    Members:
+        command_size    Number of bytes in each command that may be sent to the sensor
+        reply_size      Expected size of replies from the sensor
+        commands        dictionary mapping command bit patterns to bytes objects
+        replies         dictionary mapping replies (both host and device) to bytes objects
+        sample_codes    maps valid sample units to bytes objects
+        data_codes      maps markers found in dumped data to their bit patterns
+        handle          serial.Serial object that communicates with the sensor
 
-Methods:
-    __init__        Attempts to establish communication with sensor and initializes the
-                        ErebusSensor object
-    _scanPorts      Pings available serial ports with requests for the Erebus Sensor
-                        "Identify" command, looking for the sensor's reply
+    Methods:
+        __init__        Attempts to establish communication with sensor and initializes the
+                            ErebusSensor object
+        _scanPorts      Pings available serial ports with requests for the Erebus Sensor
+                            "Identify" command, looking for the sensor's reply
 
-"""
+    """
 
     def __init__(self):
         """
@@ -261,17 +261,17 @@ Methods:
         return
   
     def _scanPorts(self):
-    """
-    Pings available serial ports with requests for the Erebus Sensor "Identify" command,
-    looking for the sensor's reply.
+        """
+        Pings available serial ports with requests for the Erebus Sensor "Identify" command,
+        looking for the sensor's reply.
 
-    Only compatibile with Linux at this time. Once the Cypress USBUART driver issue is
-    resolved, a method for establishing communication with the sensor on a Windows
-    system should be added.
+        Only compatibile with Linux at this time. Once the Cypress USBUART driver issue is
+        resolved, a method for establishing communication with the sensor on a Windows
+        system should be added.
 
-    Arguments:
-        <None>
-    """
+        Arguments:
+            <None>
+        """
   
         ports = []
     
@@ -285,14 +285,14 @@ Methods:
         return ports
   
     def _sendCommand(self, command):
-    """
-    Retrieves the required bytes object for a command, packs it, and writes it out to
-    the sensor handle.
+        """
+        Retrieves the required bytes object for a command, packs it, and writes it out to
+        the sensor handle.
 
-    Arguments:
-        command     string representation of command to send (must be a key in this
-                        object's commands dictionary)
-    """
+        Arguments:
+            command     string representation of command to send (must be a key in this
+                            object's commands dictionary)
+        """
         command = self.commands[command]
         print("Sending Command: {}".format(command))
         out = struct.pack('>c', command)
@@ -301,14 +301,14 @@ Methods:
         return 
 
     def _sendReply(self, reply):
-    """
-    Retrieves the required bytes object for a reply, packs it, and writes it out to
-    the sensor handle.
+        """
+        Retrieves the required bytes object for a reply, packs it, and writes it out to
+        the sensor handle.
 
-    Arguments:
-        reply   string representation of reply to send (must be a key in this
-                        object's replies dictionary)
-    """
+        Arguments:
+            reply   string representation of reply to send (must be a key in this
+                            object's replies dictionary)
+        """
 
         reply = self.replies[reply]
         print("Sending Reply: {}".format(reply))
@@ -320,13 +320,13 @@ Methods:
 
   
     def getData(self):
-    """
-    Sends the DUMP_DATA command to the sensor and parses incoming packets sent in
-    response.
+        """
+        Sends the DUMP_DATA command to the sensor and parses incoming packets sent in
+        response.
 
-    Arguments:
-        <None>
-    """
+        Arguments:
+            <None>
+        """
 
         bytes_received = -1
         bytes_sent = 0
@@ -450,35 +450,35 @@ Methods:
             return 1
 
     def close(self):
-    """
-    Closes the serial.Serial handle to the sensor.
+        """
+        Closes the serial.Serial handle to the sensor.
 
-    Arguments:  
-        <None>
-    """
+        Arguments:  
+            <None>
+        """
         self.handle.close()
         return
 
     def isConnected(self):
-    """
-    Reports whether or not the device is connected
+        """
+        Reports whether or not the device is connected
 
-    Arguments:  
-        <None>
-    """
+        Arguments:  
+            <None>
+        """
         if self.handle != None:
             return self.handle.isOpen()
         else:
             return False
 
     def getSettings(self):
-    """
-    Retrieves the current settings in the sensor and returns a Settings object
-    containing them.
+        """
+        Retrieves the current settings in the sensor and returns a Settings object
+        containing them.
 
-    Arguments:
-        <None>
-    """
+        Arguments:
+            <None>
+        """
         retStructure = None
         settings_count = len(settings)
         try:
@@ -500,14 +500,14 @@ Methods:
         return retStructure
 
     def applySettings(self, sensor_string, unit_string, interval):
-    """
-    Sends the APPLY_SETTINGS command to the sensor followed by the new settings.
+        """
+        Sends the APPLY_SETTINGS command to the sensor followed by the new settings.
 
-    Arguments:
-        sensor_string   string representation of the sensor selection
-        unit_string     string representation of the sample unit
-        interval        integer interval
-    """
+        Arguments:
+            sensor_string   string representation of the sensor selection
+            unit_string     string representation of the sample unit
+            interval        integer interval
+        """
         status = 1
 
         newSettings = Settings(sensor=sensor_string,
@@ -523,13 +523,12 @@ Methods:
         return 1
 
     def _await_result(self):
-    """
-    Waits for a SUCCESS or FAIL reply from the sensor. Eight attempts are made before
-    reporting fail.
-
-    Arguments:
-        <None>
-    """
+        """
+        Waits for a SUCCESS or FAIL reply from the sensor. Eight attempts are made before
+        reporting fail.  
+        Arguments:
+            <None>
+        """
         
         for x in range(8):
             reply = self.handle.read(self.reply_size)
@@ -548,12 +547,12 @@ Methods:
             return 1
 
     def update_RTC(self):
-    """
-    Sends the current local time to the sensor so it can update its real-time clock.
+        """
+        Sends the current local time to the sensor so it can update its real-time clock.
 
-    Arguments:
-        <None>
-    """
+        Arguments:
+            <None>
+        """
         status = 1
         now = time.localtime(time.time())
 
@@ -575,13 +574,13 @@ Methods:
         return 1
 
     def ptr_reset(self):
-    """
-    Sends the HARD_RESET command to the sensor to force it to reset the sample block
-    pointers to default values.
+        """
+        Sends the HARD_RESET command to the sensor to force it to reset the sample block
+        pointers to default values.
 
-    Arguments:
-        <None>
-    """
+        Arguments:
+            <None>
+        """
         self._sendCommand('HARD_RESET')
         return self._await_result()
                 

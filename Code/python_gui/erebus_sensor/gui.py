@@ -18,26 +18,26 @@ from datetime import datetime
 import erebus_sensor.interface as interface
 
 class ErebusGUI(tk.Frame):
-"""
-Provides the user interface for the Erebus Labs sensor.
+    """
+    Provides the user interface for the Erebus Labs sensor.
 
-Members:
-    <Too Many To List>  all GUI attributes
-    sensorHandle        serial.Serial object that communicates with the sensor
-    displayedSettings   the collection of sensor settings displayed in the user
-                            interface
-Methods:
-    configureWindow     initializes the tkinter window
+    Members:
+        <Too Many To List>  all GUI attributes
+        sensorHandle        serial.Serial object that communicates with the sensor
+        displayedSettings   the collection of sensor settings displayed in the user
+                                interface
+    Methods:
+        configureWindow     initializes the tkinter window
 
-"""
+    """
 
     def __init__(self, master=None):
-    """
-    Initializes the ErebusGUI object and displays the user interface.
+        """
+        Initializes the ErebusGUI object and displays the user interface.
 
-    Arguments:
-        master  tkinter.Tk root object
-    """
+        Arguments:
+            master  tkinter.Tk root object
+        """
 
         # Configure GUI-wide variables
         self.sensorHandle = None
@@ -50,12 +50,12 @@ Methods:
 
 
     def configureWindow(self):
-    """
-    Configures and applies attributes of the GUI window.
+        """
+        Configures and applies attributes of the GUI window.
 
-    Arguments:
-        <None>
-    """
+        Arguments:
+            <None>
+        """
         # *** Configure Top-Level Window ***
         self.grid(sticky=tk.N+tk.S+tk.E+tk.W)
         self.pack()
@@ -182,16 +182,16 @@ Methods:
         return
 
     def toggleSensor(self):
-    """
-    Toggles the sensor status box based on sensor connectivity state.
-        Status window possible states:
-            Red     Not Connected
-            Yellow  Connecting
-            Green   Connected
+        """
+        Toggles the sensor status box based on sensor connectivity state.
+            Status window possible states:
+                Red     Not Connected
+                Yellow  Connecting
+                Green   Connected
 
-    Arguments:
-        <None>
-    """
+        Arguments:
+            <None>
+        """
 
         if self.sensorHandle != None:
             self.disconnectSensor()
@@ -223,25 +223,25 @@ Methods:
         return
 
     def _connectedMessage(self):
-    """
-    Sets the status and connection buttons to the connected state.
+        """
+        Sets the status and connection buttons to the connected state.
 
-    Arguments:
-        <None>
-    """
+        Arguments:
+            <None>
+        """
         self.lStatus['background'] = 'green'
         self.lStatus['text'] = "Sensor Connected"
         self.bConnectSensor["text"] = "Disconnect Sensor"
         return
 
     def _disconnectedMessage(self, warning=None):
-    """
-    Sets the status and connection buttons to the disconnected state and displays a
-    warning dialog box if necessary.
+        """
+        Sets the status and connection buttons to the disconnected state and displays a
+        warning dialog box if necessary.
 
-    Arguments:
-        warning     string to display as a warning message to the user 
-    """
+        Arguments:
+            warning     string to display as a warning message to the user 
+        """
         self.lStatus['background'] = 'red'
         self.lStatus['text'] = "Sensor Not Connected"
         self.bConnectSensor["text"] = "Connect to Erebus Sensor"
@@ -252,26 +252,26 @@ Methods:
         return
 
     def _showNotConnected(self):
-    """
-    Displays an error message to the user indicating that their command failed because
-    the sensor is not currently connected.
+        """
+        Displays an error message to the user indicating that their command failed
+        because the sensor is not currently connected.
 
-    Arguments:
-        <None>
-    """
+        Arguments:
+            <None>
+        """
         mb.showerror("", "Erebus sensor is not currently connected. Please connect "
                          "the sensor and try again.")
 
         return
 
     def connectSensor(self):
-    """
-    Creates the ErebusSensor object, attempts to connect to the sensor, and reports the
-    result.
+        """
+        Creates the ErebusSensor object, attempts to connect to the sensor, and reports the
+        result.
 
-    Arguments:
-        <None>
-    """
+        Arguments:
+            <None>
+        """
         connectLimit = 12
         status = 1
 
@@ -286,27 +286,27 @@ Methods:
         return status
 
     def disconnectSensor(self):
-    """
-    Severs the USBUART connection with the sensor.
-    Note: This does not send any commands to the device. The sensor does not know the
-          connection has been severed. It only considers itself disconnected when the
-          USB cable is unplugged.
+        """
+        Severs the USBUART connection with the sensor.
+        Note: This does not send any commands to the device. The sensor does not know the
+              connection has been severed. It only considers itself disconnected when the
+              USB cable is unplugged.
 
-    Arguments:
-        <None>
-    """
+        Arguments:
+            <None>
+        """
         if self.sensorHandle != None:
             self.sensorHandle.close()
             self.sensorHandle = None
         return
 
     def getSettings(self):
-    """
-    Retrives the current sample settings from the device and displays them for the user.
+        """
+        Retrives the current sample settings from the device and displays them for the user.
 
-    Arguments:
-        <None>
-    """
+        Arguments:
+            <None>
+        """
 
         if self.sensorHandle == None:
             self._showNotConnected()
@@ -325,13 +325,13 @@ Methods:
         return
 
     def applySettings(self):
-    """
-    Retrieves the current settings from the GUI window that the user has selected and
-    sends them to the sensor.
+        """
+        Retrieves the current settings from the GUI window that the user has selected and
+        sends them to the sensor.
 
-    Arguments:
-        <None>
-    """
+        Arguments:
+            <None>
+        """
         if self.sensorHandle == None:
             self._showNotConnected()
             return
@@ -344,13 +344,13 @@ Methods:
         return
 
     def getData(self):
-    """
-    Initiates a dump of stored samples from the sensor and outputs the result in a test
-    file called "datadump.txt".
+        """
+        Initiates a dump of stored samples from the sensor and outputs the result in a test
+        file called "datadump.txt".
 
-    Arguments:
-        <None>
-    """
+        Arguments:
+            <None>
+        """
         if self.sensorHandle == None:
             self._showNotConnected()
             return
@@ -379,13 +379,13 @@ Methods:
         return
             
     def resetSensor(self):
-    """
-    Initiates a reset of the sample block pointers on the device. This function MUST
-    be called after the device is reprogrammed, before any samples are collected.
+        """
+        Initiates a reset of the sample block pointers on the device. This function MUST
+        be called after the device is reprogrammed, before any samples are collected.
 
-    Arguments:
-        <None>
-    """
+        Arguments:
+            <None>
+        """
         if self.sensorHandle == None:
             self._showNotConnected()
             return
