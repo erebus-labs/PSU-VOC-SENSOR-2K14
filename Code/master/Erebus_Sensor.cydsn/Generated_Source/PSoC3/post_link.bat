@@ -7,15 +7,15 @@
 @REM    arg3: Name of the project.
 @REM NOTE: This script is auto generated. Do not modify.
 
-"C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\bin\cyvalidateide.exe" -dev CY8C3866AXI-040 -ide "%~1\%~3" -flsAddr 0x0 -flsSize 0x10000 -sramAddr 0x0 -sramSize 0x2000
+"C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\bin\cyvalidateide.exe" -dev CY8C3246PVI-147 -ide "%~1\%~3" -flsAddr 0x0 -flsSize 0x10000 -sramAddr 0x0 -sramSize 0x2000
 @IF %errorlevel% NEQ 0 EXIT /b %errorlevel% 
 move "%~1\%~2\%~n3.hex" "%~1\%~2\%~n3.ihx"
 @IF %errorlevel% NEQ 0 EXIT /b %errorlevel% 
 "C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\import\gnu_cs\c8051\1.0\bin\c8051-elf-omf2elf.exe" "%~1\%~2\%~n3" "%~1\%~2\%~n3.elf"
 @IF %errorlevel% NEQ 0 EXIT /b %errorlevel% 
-"C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\bin\cyhextool" -o "%~1\%~2\%~n3.hex" -f "%~1\%~2\%~n3.ihx" -prot "%~dp0protect.hex" -id 1E028069 -a EEPROM=90200000:800,PROGRAM=00000000:10000,CONFIG=80000000:2000,PROTECT=90400000:40 -meta 0301 -cunv 00004005 -wonv BC90ACAF -ecc "%~dp0config.hex" 
+"C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\bin\cyhextool" -o "%~1\%~2\%~n3.hex" -f "%~1\%~2\%~n3.ihx" -prot "%~dp0protect.hex" -id 1E093069 -a EEPROM=90200000:800,PROGRAM=00000000:10000,CONFIG=80000000:2000,PROTECT=90400000:40 -meta 0301 -cunv 0800C001 -wonv BC90ACAF -ecc "%~dp0config.hex" 
 @IF %errorlevel% NEQ 0 EXIT /b %errorlevel% 
 CD /D "C:\Keil\UV4"
 @IF %errorlevel% NEQ 0 EXIT /b %errorlevel% 
-IF NOT EXIST "C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\Erebus_Sensor.svd" rem "C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\Erebus_Sensor.sfr"
+IF NOT EXIST "C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\Erebus_Sensor.svd" rem "C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\Erebus_Sensor.sfr"
 @IF %errorlevel% NEQ 0 EXIT /b %errorlevel% 

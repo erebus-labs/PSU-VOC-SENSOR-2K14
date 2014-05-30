@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <device schemaVersion="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_0.xsd">
-  <name>CY8C3866AXI_040</name>
+  <name>CY8C3246PVI_147</name>
   <version>0.1</version>
-  <description>CY8C38</description>
+  <description>CY8C32</description>
   <addressUnitBits>8</addressUnitBits>
   <width>32</width>
   <peripherals>
@@ -493,7 +493,7 @@
     <peripheral>
       <name>PWM1_CTRL</name>
       <description>No description available</description>
-      <baseAddress>0x6474</baseAddress>
+      <baseAddress>0x6579</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x1</size>
@@ -514,7 +514,7 @@
     <peripheral>
       <name>SOLID_LED_CTRL</name>
       <description>No description available</description>
-      <baseAddress>0x6473</baseAddress>
+      <baseAddress>0x657A</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x1</size>
@@ -535,7 +535,7 @@
     <peripheral>
       <name>LED_PWM</name>
       <description>No description available</description>
-      <baseAddress>0x6423</baseAddress>
+      <baseAddress>0x652A</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x71</size>
@@ -563,7 +563,7 @@
         <register>
           <name>LED_PWM_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x52</addressOffset>
+          <addressOffset>0x4E</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4880,7 +4880,7 @@
     <peripheral>
       <name>PWM0_CTRL</name>
       <description>No description available</description>
-      <baseAddress>0x6472</baseAddress>
+      <baseAddress>0x657B</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x1</size>

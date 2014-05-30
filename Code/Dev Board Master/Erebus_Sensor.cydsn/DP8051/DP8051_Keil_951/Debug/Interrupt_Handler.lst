@@ -1,0 +1,85 @@
+C51 COMPILER V9.51   INTERRUPT_HANDLER                                                     05/19/2014 09:42:12 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE INTERRUPT_HANDLER
+OBJECT MODULE PLACED IN .\DP8051\DP8051_Keil_951\Debug\Interrupt_Handler.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -.\Interrupt_Handler.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\Interrupt_Handler.lst) CD DB NOIP O
+                    -T(0,SIZE) DF(DEBUG) INCDIR(.,.\Generated_Source\PSoC3) OJ(.\DP8051\DP8051_Keil_951\Debug\Interrupt_Handler.obj)
+
+line level    source
+
+   1          /* ========================================
+   2           *
+   3           * Copyright YOUR COMPANY, THE YEAR
+   4           * All Rights Reserved
+   5           * UNPUBLISHED, LICENSED SOFTWARE.
+   6           *
+   7           * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8           * WHICH IS THE PROPERTY OF your company.
+   9           *
+  10           * ========================================
+  11          */
+  12          
+  13          #include "Interrupt_Handler.h"
+  14          
+  15          void clear_buttons(){
+  16   1                      
+  17   1          // Clear any pending stop or start interrupts
+  18   1          StopCollection_B_ClearInterrupt();
+  19   1          StopCollection_IRQ_ClearPending();
+  20   1          DataStop_waiting = 0;
+  21   1          StartCollection_B_ClearInterrupt();
+  22   1          StartCollection_IRQ_ClearPending();  
+  23   1          DataStart_waiting = 0;  
+  24   1          
+  25   1          return;
+  26   1      }
+  27          
+  28          /* [] END OF FILE */
+C51 COMPILER V9.51   INTERRUPT_HANDLER                                                     05/19/2014 09:42:12 PAGE 2   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION clear_buttons (BEGIN)
+                                           ; SOURCE LINE # 15
+                                           ; SOURCE LINE # 18
+0000 120000      E     LCALL   StopCollection_B_ClearInterrupt
+                                           ; SOURCE LINE # 19
+0003 120000      E     LCALL   StopCollection_IRQ_ClearPending
+                                           ; SOURCE LINE # 20
+0006 900000      E     MOV     DPTR,#DataStop_waiting
+0009 E4                CLR     A
+000A F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 21
+000B 120000      E     LCALL   StartCollection_B_ClearInterrupt
+                                           ; SOURCE LINE # 22
+000E 120000      E     LCALL   StartCollection_IRQ_ClearPending
+                                           ; SOURCE LINE # 23
+0011 900000      E     MOV     DPTR,#DataStart_waiting
+0014 E4                CLR     A
+0015 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 26
+0016         ?C0001:
+0016 22                RET     
+             ; FUNCTION clear_buttons (END)
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     23    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

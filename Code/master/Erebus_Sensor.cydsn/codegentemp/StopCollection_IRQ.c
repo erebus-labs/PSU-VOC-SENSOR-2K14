@@ -131,7 +131,7 @@ CY_ISR(StopCollection_IRQ_Interrupt)
     /*  Place your Interrupt code here. */
     /* `#START StopCollection_IRQ_Interrupt` */
     
-    DataStop_waiting = 1;
+    stop_sampling_waiting = 1;
         
     /* `#END` */
 

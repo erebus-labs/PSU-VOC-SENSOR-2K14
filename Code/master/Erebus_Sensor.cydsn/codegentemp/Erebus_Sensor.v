@@ -1,6 +1,6 @@
 // ======================================================================
 // Erebus_Sensor.v generated from TopDesign.cysch
-// 05/19/2014 at 16:29
+// 05/30/2014 at 15:03
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -812,12 +812,12 @@ module top ;
           wire  Net_1490;
           wire  Net_1405;
           wire  Net_1478;
+          wire  Net_1619;
     electrical  Net_1602;
     electrical  Net_1603;
     electrical  Net_1593;
           wire  Net_1541;
-          wire  Net_1532;
-          wire  Net_1531;
+          wire  Net_1606;
           wire  Net_1566;
           wire  Net_1461;
           wire  Net_1462;
@@ -941,7 +941,7 @@ module top ;
 		  .width(3))
 		RGB_LED
 		 (.oe(tmpOE__RGB_LED_net),
-		  .y({Net_1541, Net_1531, Net_1532}),
+		  .y({Net_1541, Net_1619, Net_1606}),
 		  .fb({tmpFB_2__RGB_LED_net[2:0]}),
 		  .io({tmpIO_2__RGB_LED_net[2:0]}),
 		  .siovref(tmpSIOVREF__RGB_LED_net),
@@ -1339,7 +1339,7 @@ module top ;
         .vbusdet(1'b0));
 
 
-    assign Net_1531 = Net_1565 | Net_1479 | Net_1464;
+    assign Net_1619 = Net_1565 | Net_1479 | Net_1464;
 
     CyControlReg_v1_70 PWM1_CTRL (
         .control_1(Net_1500),
@@ -1386,7 +1386,7 @@ module top ;
     defparam LED_PWM.Resolution = 8;
 
 
-    assign Net_1532 = Net_1568 | Net_1462 | Net_1461;
+    assign Net_1606 = Net_1568 | Net_1462 | Net_1461;
 
 
 	cy_clock_v1_0

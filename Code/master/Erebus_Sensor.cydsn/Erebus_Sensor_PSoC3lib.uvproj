@@ -8,9 +8,9 @@
       <ToolsetName>MCS-51</ToolsetName>
       <TargetOption>
         <TargetCommonOption>
-          <Device>CY8C3866AXI-040</Device>
+          <Device>CY8C3246PVI-147</Device>
           <Vendor>Cypress</Vendor>
-          <Cpu>"IRAM(0x00-0xFF) IROM(0x0-0xFFFF) CLOCK(67000000) MODDP2"</Cpu>
+          <Cpu>"IRAM(0x00-0xFF) IROM(0x0-0xFFFF) CLOCK(50000000) MODDP2"</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
           <FlashDriverDll>"C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\export\ide\uVision\4.x\driver\cyuvdriver_8051.dll"("Cypress MiniProg3/FX2LP v3.0")</FlashDriverDll>
@@ -888,9 +888,9 @@
       <ToolsetName>MCS-51</ToolsetName>
       <TargetOption>
         <TargetCommonOption>
-          <Device>CY8C3866AXI-040</Device>
+          <Device>CY8C3246PVI-147</Device>
           <Vendor>Cypress</Vendor>
-          <Cpu>"IRAM(0x00-0xFF) IROM(0x0-0xFFFF) CLOCK(67000000) MODDP2"</Cpu>
+          <Cpu>"IRAM(0x00-0xFF) IROM(0x0-0xFFFF) CLOCK(50000000) MODDP2"</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
           <FlashDriverDll>"C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\export\ide\uVision\4.x\driver\cyuvdriver_8051.dll"("Cypress MiniProg3/FX2LP v3.0")</FlashDriverDll>

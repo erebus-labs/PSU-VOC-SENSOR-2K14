@@ -2,7 +2,7 @@
 --	Conversion of Erebus_Sensor.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Mon May 19 16:29:09 2014
+--	Fri May 30 15:03:25 2014
 --
 
 USE cypress.cypress.all;
@@ -28,8 +28,8 @@ SIGNAL tmpOE__RGB_LED_net_2 : bit;
 SIGNAL tmpOE__RGB_LED_net_1 : bit;
 SIGNAL tmpOE__RGB_LED_net_0 : bit;
 SIGNAL Net_1541 : bit;
-SIGNAL Net_1531 : bit;
-SIGNAL Net_1532 : bit;
+SIGNAL Net_1619 : bit;
+SIGNAL Net_1606 : bit;
 SIGNAL tmpFB_2__RGB_LED_net_2 : bit;
 SIGNAL tmpFB_2__RGB_LED_net_1 : bit;
 SIGNAL tmpFB_2__RGB_LED_net_0 : bit;
@@ -591,7 +591,7 @@ Net_1541 <= ((Net_1410_1 and Net_1410_0 and Net_1409)
 	OR (Net_1460_1 and Net_1460_0 and Net_1415)
 	OR Net_1566);
 
-Net_1531 <= ((not Net_1410_0 and Net_1410_1 and Net_1409)
+Net_1619 <= ((not Net_1410_0 and Net_1410_1 and Net_1409)
 	OR (not Net_1460_0 and Net_1460_1 and Net_1415)
 	OR Net_1565);
 
@@ -610,7 +610,7 @@ Net_1531 <= ((not Net_1410_0 and Net_1410_1 and Net_1409)
 
 \LED_PWM:PWMUDB:pwm2_i\ <= ((not \LED_PWM:PWMUDB:cmp2_eq\ and not \LED_PWM:PWMUDB:cmp2_less\ and \LED_PWM:PWMUDB:control_7\));
 
-Net_1532 <= ((not Net_1410_1 and Net_1410_0 and Net_1409)
+Net_1606 <= ((not Net_1410_1 and Net_1410_0 and Net_1409)
 	OR (not Net_1460_1 and Net_1460_0 and Net_1415)
 	OR Net_1568);
 
@@ -672,7 +672,7 @@ RGB_LED:cy_psoc3_pins_v1_10
 		pa_out_clock_en=>-1,
 		pa_out_reset=>-1)
 	PORT MAP(oe=>(tmpOE__RGB_LED_net_2, tmpOE__RGB_LED_net_2, tmpOE__RGB_LED_net_2),
-		y=>(Net_1541, Net_1531, Net_1532),
+		y=>(Net_1541, Net_1619, Net_1606),
 		fb=>(tmpFB_2__RGB_LED_net_2, tmpFB_2__RGB_LED_net_1, tmpFB_2__RGB_LED_net_0),
 		analog=>(open, open, open),
 		io=>(tmpIO_2__RGB_LED_net_2, tmpIO_2__RGB_LED_net_1, tmpIO_2__RGB_LED_net_0),
