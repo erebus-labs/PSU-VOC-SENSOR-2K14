@@ -573,7 +573,7 @@ class ErebusSensor:
 
         return 1
 
-    def ptr_reset(self):
+    def hard_reset(self):
         """
         Sends the HARD_RESET command to the sensor to force it to reset the sample block
         pointers to default values.
