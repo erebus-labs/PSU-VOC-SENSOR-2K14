@@ -286,10 +286,15 @@
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
 <OpenDocs>
+<name v=".\TopDesign\TopDesign.cysch" />
 <name v=".\Erebus_Sensor.cydwr" />
 <name v=".\main.c" />
-<name v=".\TopDesign\TopDesign.cysch" />
-<name v=".\Generated_Source\PSoC3\Vbus_IRQ.c" />
+<name v=".\USB_handler.c" />
+<name v=".\utility.c" />
+<name v=".\sample_handler.c" />
+<name v=".\globals.h" />
+<name v=".\utility.h" />
+<name v=".\Generated_Source\PSoC3\RTC_INT.c" />
 </OpenDocs>
 <config v="" />
 <AutoUpdate v="true" />
