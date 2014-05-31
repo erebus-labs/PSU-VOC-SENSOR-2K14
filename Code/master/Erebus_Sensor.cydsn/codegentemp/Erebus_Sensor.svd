@@ -7,6 +7,27 @@
   <width>32</width>
   <peripherals>
     <peripheral>
+      <name>PWM1_CTRL</name>
+      <description>No description available</description>
+      <baseAddress>0x647D</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x1</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>PWM1_CTRL_CONTROL_REG</name>
+          <description>No description available</description>
+          <addressOffset>0x0</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
       <name>USBUART</name>
       <description>USBFS</description>
       <baseAddress>0x4394</baseAddress>
@@ -491,30 +512,9 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>PWM1_CTRL</name>
-      <description>No description available</description>
-      <baseAddress>0x6579</baseAddress>
-      <addressBlock>
-        <offset>0</offset>
-        <size>0x1</size>
-        <usage>registers</usage>
-      </addressBlock>
-      <registers>
-        <register>
-          <name>PWM1_CTRL_CONTROL_REG</name>
-          <description>No description available</description>
-          <addressOffset>0x0</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-      </registers>
-    </peripheral>
-    <peripheral>
       <name>SOLID_LED_CTRL</name>
       <description>No description available</description>
-      <baseAddress>0x657A</baseAddress>
+      <baseAddress>0x647F</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x1</size>
@@ -535,7 +535,7 @@
     <peripheral>
       <name>LED_PWM</name>
       <description>No description available</description>
-      <baseAddress>0x652A</baseAddress>
+      <baseAddress>0x642F</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x71</size>
@@ -563,7 +563,7 @@
         <register>
           <name>LED_PWM_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x4E</addressOffset>
+          <addressOffset>0x4F</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4880,7 +4880,7 @@
     <peripheral>
       <name>PWM0_CTRL</name>
       <description>No description available</description>
-      <baseAddress>0x657B</baseAddress>
+      <baseAddress>0x647C</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x1</size>

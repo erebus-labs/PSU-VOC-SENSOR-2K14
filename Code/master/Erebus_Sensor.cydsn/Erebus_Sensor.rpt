@@ -1,13 +1,13 @@
-Loading plugins phase: Elapsed time ==> 0s.267ms
-Initializing data phase: Elapsed time ==> 1s.775ms
+Loading plugins phase: Elapsed time ==> 0s.266ms
+Initializing data phase: Elapsed time ==> 1s.845ms
 <CYPRESSTAG name="CyDsfit arguments...">
 cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\Erebus_Sensor.cyprj -d CY8C3246PVI-147 -s C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\Generated_Source\PSoC3 -- -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE</CYPRESSTAG>
 <CYPRESSTAG name="Design elaboration results...">
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 5s.138ms
+Elaboration phase: Elapsed time ==> 5s.274ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.170ms
+HDL generation phase: Elapsed time ==> 0s.137ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -41,7 +41,7 @@ Options  :    -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\maxwe
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Fri May 30 15:03:22 2014
+Fri May 30 21:10:04 2014
 
 
 ======================================================================
@@ -51,10 +51,10 @@ Options  :    -yv2 -q10 Erebus_Sensor.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Fri May 30 15:03:22 2014
+Fri May 30 21:10:04 2014
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\..\psoc\content\cyprimitives\CyPrimitives.cylib\demux_v1_10\demux_v1_10.v'
-Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\..\psoc\content\cyprimitives\CyPrimitives.cylib\or_v1_0\or_v1_0.v'
+Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\..\psoc\content\cyprimitives\CyPrimitives.cylib\nor_v1_0\nor_v1_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\..\psoc\content\cyprimitives\CyPrimitives.cylib\CyControlReg_v1_70\CyControlReg_v1_70.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\cypress.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\cy_psoc3_inc.v'
@@ -64,6 +64,7 @@ Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\wa
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\cypress.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\..\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\..\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v'
+Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\..\psoc\content\cyprimitives\CyPrimitives.cylib\or_v1_0\or_v1_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\..\psoc\content\cyprimitives\CyPrimitives.cylib\cy_constant_v1_0\cy_constant_v1_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\..\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_PWM_v3_0\B_PWM_v3_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\cypress.v'
@@ -99,7 +100,7 @@ Options  :    -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\maxwe
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Fri May 30 15:03:23 2014
+Fri May 30 21:10:04 2014
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -113,7 +114,7 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\c
 Linking 'C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\codegentemp\Erebus_Sensor.ctl'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\demux_v1_10\demux_v1_10.v'.
 Linking 'C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\codegentemp\Erebus_Sensor.v'.
-Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\or_v1_0\or_v1_0.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\nor_v1_0\nor_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyControlReg_v1_70\CyControlReg_v1_70.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\cypress.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\cy_psoc3_inc.v'.
@@ -122,6 +123,7 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\conte
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\AMux_v1_80\AMux_v1_80.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\or_v1_0\or_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_constant_v1_0\cy_constant_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_PWM_v3_0\B_PWM_v3_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\OneTerminal\OneTerminal.v'.
@@ -139,7 +141,7 @@ Options  :    -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\maxwe
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Fri May 30 15:03:24 2014
+Fri May 30 21:10:06 2014
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -153,7 +155,7 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\c
 Linking 'C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\codegentemp\Erebus_Sensor.ctl'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\demux_v1_10\demux_v1_10.v'.
 Linking 'C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\codegentemp\Erebus_Sensor.v'.
-Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\or_v1_0\or_v1_0.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\nor_v1_0\nor_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyControlReg_v1_70\CyControlReg_v1_70.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\cypress.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\cy_psoc3_inc.v'.
@@ -162,6 +164,7 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\conte
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\AMux_v1_80\AMux_v1_80.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v'.
+Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\or_v1_0\or_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_constant_v1_0\cy_constant_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_PWM_v3_0\B_PWM_v3_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\OneTerminal\OneTerminal.v'.
@@ -379,8 +382,8 @@ Aliasing tmpOE__Sensor_In_net_0 to tmpOE__RGB_LED_net_2
 Aliasing \ADC:Net_482\ to zero
 Aliasing \ADC:Net_252\ to zero
 Aliasing \ADC:soc\ to tmpOE__RGB_LED_net_2
-Aliasing tmpOE__StartCollection_B_net_0 to tmpOE__RGB_LED_net_2
-Aliasing tmpOE__StopCollection_B_net_0 to tmpOE__RGB_LED_net_2
+Aliasing tmpOE__ModifyCollection_B_net_1 to tmpOE__RGB_LED_net_2
+Aliasing tmpOE__ModifyCollection_B_net_0 to tmpOE__RGB_LED_net_2
 Aliasing \USBUART:tmpOE__Dm_net_0\ to tmpOE__RGB_LED_net_2
 Aliasing \USBUART:tmpOE__Dp_net_0\ to tmpOE__RGB_LED_net_2
 Aliasing \PWM1_CTRL:clk\ to zero
@@ -430,27 +433,27 @@ Aliasing \LED_PWM:PWMUDB:min_kill_reg\\D\ to tmpOE__RGB_LED_net_2
 Aliasing \LED_PWM:PWMUDB:prevCapture\\D\ to zero
 Aliasing \LED_PWM:PWMUDB:trig_last\\D\ to zero
 Aliasing \LED_PWM:PWMUDB:ltch_kill_reg\\D\ to tmpOE__RGB_LED_net_2
-Removing Rhs of wire Net_1460_1[4] = \PWM1_CTRL:control_out_1\[213]
-Removing Rhs of wire Net_1460_1[4] = \PWM1_CTRL:control_1\[222]
-Removing Rhs of wire Net_1460_0[5] = \PWM1_CTRL:control_out_0\[214]
-Removing Rhs of wire Net_1460_0[5] = \PWM1_CTRL:control_0\[223]
-Removing Rhs of wire Net_1415[6] = \LED_PWM:PWMUDB:pwm2_reg_i\[324]
+Removing Rhs of wire Net_1460_1[4] = \PWM1_CTRL:control_out_1\[209]
+Removing Rhs of wire Net_1460_1[4] = \PWM1_CTRL:control_1\[218]
+Removing Rhs of wire Net_1460_0[5] = \PWM1_CTRL:control_out_0\[210]
+Removing Rhs of wire Net_1460_0[5] = \PWM1_CTRL:control_0\[219]
+Removing Rhs of wire Net_1415[6] = \LED_PWM:PWMUDB:pwm2_reg_i\[320]
 Removing Rhs of wire Net_1462[11] = \demux_2:tmp__demux_2_1_reg\[7]
 Removing Rhs of wire Net_1479[12] = \demux_2:tmp__demux_2_2_reg\[8]
 Removing Rhs of wire Net_1468[13] = \demux_2:tmp__demux_2_3_reg\[9]
 Removing Lhs of wire tmpOE__RGB_LED_net_1[16] = tmpOE__RGB_LED_net_2[15]
 Removing Lhs of wire tmpOE__RGB_LED_net_0[17] = tmpOE__RGB_LED_net_2[15]
 Removing Lhs of wire one[29] = tmpOE__RGB_LED_net_2[15]
-Removing Rhs of wire Net_1566[31] = \SOLID_LED_CTRL:control_out_2\[551]
-Removing Rhs of wire Net_1566[31] = \SOLID_LED_CTRL:control_2\[568]
-Removing Rhs of wire Net_1467[32] = \demux_1:tmp__demux_1_3_reg\[39]
+Removing Rhs of wire Net_1568[31] = \SOLID_LED_CTRL:control_out_0\[545]
+Removing Rhs of wire Net_1568[31] = \SOLID_LED_CTRL:control_0\[566]
+Removing Rhs of wire Net_1461[32] = \demux_1:tmp__demux_1_1_reg\[37]
 Removing Rhs of wire Net_1410_1[34] = \PWM0_CTRL:control_out_1\[64]
 Removing Rhs of wire Net_1410_1[34] = \PWM0_CTRL:control_1\[73]
 Removing Rhs of wire Net_1410_0[35] = \PWM0_CTRL:control_out_0\[65]
 Removing Rhs of wire Net_1410_0[35] = \PWM0_CTRL:control_0\[74]
-Removing Rhs of wire Net_1409[36] = \LED_PWM:PWMUDB:pwm1_reg_i\[322]
-Removing Rhs of wire Net_1461[41] = \demux_1:tmp__demux_1_1_reg\[37]
-Removing Rhs of wire Net_1464[42] = \demux_1:tmp__demux_1_2_reg\[38]
+Removing Rhs of wire Net_1409[36] = \LED_PWM:PWMUDB:pwm1_reg_i\[318]
+Removing Rhs of wire Net_1464[41] = \demux_1:tmp__demux_1_2_reg\[38]
+Removing Rhs of wire Net_1467[42] = \demux_1:tmp__demux_1_3_reg\[39]
 Removing Lhs of wire tmpOE__Vbus_net_0[44] = tmpOE__RGB_LED_net_2[15]
 Removing Lhs of wire \PWM0_CTRL:clk\[50] = zero[28]
 Removing Lhs of wire \PWM0_CTRL:rst\[51] = zero[28]
@@ -460,78 +463,78 @@ Removing Lhs of wire \ADC:Net_481\[97] = zero[28]
 Removing Lhs of wire \ADC:Net_482\[98] = zero[28]
 Removing Lhs of wire \ADC:Net_252\[132] = zero[28]
 Removing Lhs of wire \ADC:soc\[134] = tmpOE__RGB_LED_net_2[15]
-Removing Lhs of wire tmpOE__StartCollection_B_net_0[138] = tmpOE__RGB_LED_net_2[15]
-Removing Lhs of wire tmpOE__StopCollection_B_net_0[144] = tmpOE__RGB_LED_net_2[15]
-Removing Lhs of wire \USBUART:tmpOE__Dm_net_0\[184] = tmpOE__RGB_LED_net_2[15]
-Removing Lhs of wire \USBUART:tmpOE__Dp_net_0\[190] = tmpOE__RGB_LED_net_2[15]
-Removing Rhs of wire Net_1565[198] = \SOLID_LED_CTRL:control_out_1\[550]
-Removing Rhs of wire Net_1565[198] = \SOLID_LED_CTRL:control_1\[569]
-Removing Lhs of wire \PWM1_CTRL:clk\[199] = zero[28]
-Removing Lhs of wire \PWM1_CTRL:rst\[200] = zero[28]
-Removing Lhs of wire Net_1308[224] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:ctrl_enable\[241] = \LED_PWM:PWMUDB:control_7\[233]
-Removing Lhs of wire \LED_PWM:PWMUDB:hwCapture\[251] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:hwEnable\[252] = \LED_PWM:PWMUDB:control_7\[233]
-Removing Lhs of wire \LED_PWM:PWMUDB:trig_out\[256] = tmpOE__RGB_LED_net_2[15]
-Removing Lhs of wire \LED_PWM:PWMUDB:runmode_enable\\R\[258] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:runmode_enable\\S\[259] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:final_enable\[260] = \LED_PWM:PWMUDB:runmode_enable\[257]
-Removing Lhs of wire \LED_PWM:PWMUDB:ltch_kill_reg\\R\[264] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:ltch_kill_reg\\S\[265] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:min_kill_reg\\R\[266] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:min_kill_reg\\S\[267] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:final_kill\[270] = tmpOE__RGB_LED_net_2[15]
-Removing Lhs of wire \LED_PWM:PWMUDB:add_vi_vv_MODGEN_1_1\[274] = \LED_PWM:PWMUDB:MODULE_1:g2:a0:s_1\[490]
-Removing Lhs of wire \LED_PWM:PWMUDB:add_vi_vv_MODGEN_1_0\[276] = \LED_PWM:PWMUDB:MODULE_1:g2:a0:s_0\[491]
-Removing Lhs of wire \LED_PWM:PWMUDB:dith_count_1\\R\[277] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:dith_count_1\\S\[278] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:dith_count_0\\R\[279] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:dith_count_0\\S\[280] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:cs_addr_2\[282] = \LED_PWM:PWMUDB:tc_i\[262]
-Removing Lhs of wire \LED_PWM:PWMUDB:cs_addr_1\[283] = \LED_PWM:PWMUDB:runmode_enable\[257]
-Removing Lhs of wire \LED_PWM:PWMUDB:cs_addr_0\[284] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:compare1\[318] = \LED_PWM:PWMUDB:cmp1_less\[288]
-Removing Lhs of wire \LED_PWM:PWMUDB:pwm_temp\[329] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_23\[372] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_22\[373] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_21\[374] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_20\[375] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_19\[376] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_18\[377] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_17\[378] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_16\[379] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_15\[380] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_14\[381] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_13\[382] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_12\[383] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_11\[384] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_10\[385] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_9\[386] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_8\[387] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_7\[388] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_6\[389] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_5\[390] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_4\[391] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_3\[392] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_2\[393] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_1\[394] = \LED_PWM:PWMUDB:MODIN1_1\[395]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODIN1_1\[395] = \LED_PWM:PWMUDB:dith_count_1\[273]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_0\[396] = \LED_PWM:PWMUDB:MODIN1_0\[397]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODIN1_0\[397] = \LED_PWM:PWMUDB:dith_count_0\[275]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_0\[529] = tmpOE__RGB_LED_net_2[15]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\[530] = tmpOE__RGB_LED_net_2[15]
-Removing Rhs of wire Net_1568[538] = \SOLID_LED_CTRL:control_out_0\[549]
-Removing Rhs of wire Net_1568[538] = \SOLID_LED_CTRL:control_0\[570]
-Removing Lhs of wire tmpOE__Batt_Monitor_net_0[541] = tmpOE__RGB_LED_net_2[15]
-Removing Lhs of wire \SOLID_LED_CTRL:clk\[547] = zero[28]
-Removing Lhs of wire \SOLID_LED_CTRL:rst\[548] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:min_kill_reg\\D\[572] = tmpOE__RGB_LED_net_2[15]
-Removing Lhs of wire \LED_PWM:PWMUDB:prevCapture\\D\[573] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:trig_last\\D\[574] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:ltch_kill_reg\\D\[577] = tmpOE__RGB_LED_net_2[15]
-Removing Lhs of wire \LED_PWM:PWMUDB:pwm_reg_i\\D\[580] = \LED_PWM:PWMUDB:pwm_i\[321]
-Removing Lhs of wire \LED_PWM:PWMUDB:pwm1_reg_i\\D\[581] = \LED_PWM:PWMUDB:pwm1_i\[323]
-Removing Lhs of wire \LED_PWM:PWMUDB:pwm2_reg_i\\D\[582] = \LED_PWM:PWMUDB:pwm2_i\[325]
+Removing Lhs of wire tmpOE__ModifyCollection_B_net_1[138] = tmpOE__RGB_LED_net_2[15]
+Removing Lhs of wire tmpOE__ModifyCollection_B_net_0[139] = tmpOE__RGB_LED_net_2[15]
+Removing Lhs of wire \USBUART:tmpOE__Dm_net_0\[180] = tmpOE__RGB_LED_net_2[15]
+Removing Lhs of wire \USBUART:tmpOE__Dp_net_0\[186] = tmpOE__RGB_LED_net_2[15]
+Removing Rhs of wire Net_1565[194] = \SOLID_LED_CTRL:control_out_1\[546]
+Removing Rhs of wire Net_1565[194] = \SOLID_LED_CTRL:control_1\[565]
+Removing Lhs of wire \PWM1_CTRL:clk\[195] = zero[28]
+Removing Lhs of wire \PWM1_CTRL:rst\[196] = zero[28]
+Removing Lhs of wire Net_1308[220] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:ctrl_enable\[237] = \LED_PWM:PWMUDB:control_7\[229]
+Removing Lhs of wire \LED_PWM:PWMUDB:hwCapture\[247] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:hwEnable\[248] = \LED_PWM:PWMUDB:control_7\[229]
+Removing Lhs of wire \LED_PWM:PWMUDB:trig_out\[252] = tmpOE__RGB_LED_net_2[15]
+Removing Lhs of wire \LED_PWM:PWMUDB:runmode_enable\\R\[254] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:runmode_enable\\S\[255] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:final_enable\[256] = \LED_PWM:PWMUDB:runmode_enable\[253]
+Removing Lhs of wire \LED_PWM:PWMUDB:ltch_kill_reg\\R\[260] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:ltch_kill_reg\\S\[261] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:min_kill_reg\\R\[262] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:min_kill_reg\\S\[263] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:final_kill\[266] = tmpOE__RGB_LED_net_2[15]
+Removing Lhs of wire \LED_PWM:PWMUDB:add_vi_vv_MODGEN_1_1\[270] = \LED_PWM:PWMUDB:MODULE_1:g2:a0:s_1\[486]
+Removing Lhs of wire \LED_PWM:PWMUDB:add_vi_vv_MODGEN_1_0\[272] = \LED_PWM:PWMUDB:MODULE_1:g2:a0:s_0\[487]
+Removing Lhs of wire \LED_PWM:PWMUDB:dith_count_1\\R\[273] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:dith_count_1\\S\[274] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:dith_count_0\\R\[275] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:dith_count_0\\S\[276] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:cs_addr_2\[278] = \LED_PWM:PWMUDB:tc_i\[258]
+Removing Lhs of wire \LED_PWM:PWMUDB:cs_addr_1\[279] = \LED_PWM:PWMUDB:runmode_enable\[253]
+Removing Lhs of wire \LED_PWM:PWMUDB:cs_addr_0\[280] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:compare1\[314] = \LED_PWM:PWMUDB:cmp1_less\[284]
+Removing Lhs of wire \LED_PWM:PWMUDB:pwm_temp\[325] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_23\[368] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_22\[369] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_21\[370] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_20\[371] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_19\[372] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_18\[373] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_17\[374] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_16\[375] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_15\[376] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_14\[377] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_13\[378] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_12\[379] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_11\[380] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_10\[381] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_9\[382] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_8\[383] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_7\[384] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_6\[385] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_5\[386] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_4\[387] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_3\[388] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_2\[389] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_1\[390] = \LED_PWM:PWMUDB:MODIN1_1\[391]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODIN1_1\[391] = \LED_PWM:PWMUDB:dith_count_1\[269]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:a_0\[392] = \LED_PWM:PWMUDB:MODIN1_0\[393]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODIN1_0\[393] = \LED_PWM:PWMUDB:dith_count_0\[271]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_0\[525] = tmpOE__RGB_LED_net_2[15]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\[526] = tmpOE__RGB_LED_net_2[15]
+Removing Rhs of wire Net_1566[534] = \SOLID_LED_CTRL:control_out_2\[547]
+Removing Rhs of wire Net_1566[534] = \SOLID_LED_CTRL:control_2\[564]
+Removing Lhs of wire tmpOE__Batt_Monitor_net_0[537] = tmpOE__RGB_LED_net_2[15]
+Removing Lhs of wire \SOLID_LED_CTRL:clk\[543] = zero[28]
+Removing Lhs of wire \SOLID_LED_CTRL:rst\[544] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:min_kill_reg\\D\[568] = tmpOE__RGB_LED_net_2[15]
+Removing Lhs of wire \LED_PWM:PWMUDB:prevCapture\\D\[569] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:trig_last\\D\[570] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:ltch_kill_reg\\D\[573] = tmpOE__RGB_LED_net_2[15]
+Removing Lhs of wire \LED_PWM:PWMUDB:pwm_reg_i\\D\[576] = \LED_PWM:PWMUDB:pwm_i\[317]
+Removing Lhs of wire \LED_PWM:PWMUDB:pwm1_reg_i\\D\[577] = \LED_PWM:PWMUDB:pwm1_i\[319]
+Removing Lhs of wire \LED_PWM:PWMUDB:pwm2_reg_i\\D\[578] = \LED_PWM:PWMUDB:pwm2_i\[321]
 
 ------------------------------------------------------
 Aliased 0 equations, 102 wires.
@@ -543,13 +546,13 @@ Circuit simplification
 
 Substituting virtuals - pass 1:
 
-Note:  Expanding virtual equation for 'Net_1462' (cost = 1):
+Note:  Expanding virtual equation for 'Net_1462' (cost = 3):
 Net_1462 <= ((not Net_1460_1 and Net_1460_0 and Net_1415));
 
-Note:  Expanding virtual equation for 'Net_1479' (cost = 1):
+Note:  Expanding virtual equation for 'Net_1479' (cost = 3):
 Net_1479 <= ((not Net_1460_0 and Net_1460_1 and Net_1415));
 
-Note:  Expanding virtual equation for 'Net_1468' (cost = 1):
+Note:  Expanding virtual equation for 'Net_1468' (cost = 3):
 Net_1468 <= ((Net_1460_1 and Net_1460_0 and Net_1415));
 
 Note:  Expanding virtual equation for 'tmpOE__RGB_LED_net_2' (cost = 0):
@@ -558,13 +561,13 @@ tmpOE__RGB_LED_net_2 <=  ('1') ;
 Note:  Expanding virtual equation for 'zero' (cost = 0):
 zero <=  ('0') ;
 
-Note:  Expanding virtual equation for 'Net_1467' (cost = 1):
+Note:  Expanding virtual equation for 'Net_1467' (cost = 9):
 Net_1467 <= ((Net_1410_1 and Net_1410_0 and Net_1409));
 
-Note:  Expanding virtual equation for 'Net_1464' (cost = 1):
+Note:  Expanding virtual equation for 'Net_1464' (cost = 9):
 Net_1464 <= ((not Net_1410_0 and Net_1410_1 and Net_1409));
 
-Note:  Expanding virtual equation for 'Net_1461' (cost = 1):
+Note:  Expanding virtual equation for 'Net_1461' (cost = 9):
 Net_1461 <= ((not Net_1410_1 and Net_1410_0 and Net_1409));
 
 Note:  Expanding virtual equation for '\LED_PWM:PWMUDB:compare2\' (cost = 1):
@@ -684,12 +687,12 @@ Aliasing \LED_PWM:PWMUDB:pwm_i\ to zero
 Aliasing \LED_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_24\ to zero
 Aliasing \LED_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_16\ to zero
 Aliasing \LED_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\ to zero
-Removing Lhs of wire \LED_PWM:PWMUDB:final_capture\[286] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:pwm_i\[321] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_24\[500] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_16\[510] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\[520] = zero[28]
-Removing Lhs of wire \LED_PWM:PWMUDB:runmode_enable\\D\[575] = \LED_PWM:PWMUDB:control_7\[233]
+Removing Lhs of wire \LED_PWM:PWMUDB:final_capture\[282] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:pwm_i\[317] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_24\[496] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_16\[506] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\[516] = zero[28]
+Removing Lhs of wire \LED_PWM:PWMUDB:runmode_enable\\D\[571] = \LED_PWM:PWMUDB:control_7\[229]
 
 ------------------------------------------------------
 Aliased 0 equations, 6 wires.
@@ -722,14 +725,14 @@ CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\wa
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\bin/warp.exe
 Warp Arguments : -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\Erebus_Sensor.cyprj -dcpsoc3 Erebus_Sensor.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 2s.518ms
+Warp synthesis phase: Elapsed time ==> 2s.437ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V3.0.0.1539, Family: PSoC3, Started at: Friday, 30 May 2014 15:03:25
+cyp3fit: V3.0.0.1539, Family: PSoC3, Started at: Friday, 30 May 2014 21:10:06
 Options: -yv2 -v3 -ygs -q10 -o2 -.fftcfgtype=BE -ya -.fftprj=C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\Erebus_Sensor.cyprj -d CY8C3246PVI-147 Erebus_Sensor.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.017ms
+Design parsing phase: Elapsed time ==> 0s.019ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
@@ -767,7 +770,7 @@ Done removing unused cells.
         EnableIn: Constant 1 was determined to be synchronous to ClockIn
         ClockOut: BUS_CLK, EnableOut: ClockBlock_100k__SYNC_1:synccell.out
 </CYPRESSTAG>
-ADD: pft.M0040: information: The following 1 pin(s) will be assigned a location by the fitter: StopCollection_B(0)
+ADD: pft.M0040: information: The following 1 pin(s) will be assigned a location by the fitter: Batt_Monitor(0)
 
 
 Removing unused cells resulting from optimization
@@ -833,6 +836,79 @@ Design Equations
             pa_out => Batt_Monitor(0)__PA ,
             analog_term => Net_1603 ,
             pad => Batt_Monitor(0)_PAD );
+
+    Pin : Name = ModifyCollection_B(0)
+        Attributes:
+            In Group/Port: True
+            In Sync Option: SYNC
+            Out Sync Option: AUTO
+            Interrupt generated: True
+            Interrupt mode: RISING
+            Drive mode: RES_PULL_DOWN
+            VTrip: CMOS
+            Slew: FAST
+            Input Sync needed: True
+            Output Sync needed: False
+            SC shield enabled: False
+            POR State: ANY
+            LCD Mode: COMMON
+            Register Mode: RegComb
+            CaSense Mode: NEITHER
+            Treat as pin: False
+            Is OE Registered: False
+            Uses Analog: False
+            Can contain Digital: True
+            Is SIO: False
+            SIO Output Buf: NONREGULATED
+            SIO Input Buf: SINGLE_ENDED
+            SIO HiFreq: LOW
+            SIO Hyst: DISABLED
+            SIO Vtrip: MULTIPLIER_0_5
+            SIO RefSel: VCC_IO
+            Required Capabilitites: DIGITAL
+            Initial Value: 0
+            IO Voltage: 0
+        PORT MAP (
+            pa_out => ModifyCollection_B(0)__PA ,
+            pad => ModifyCollection_B(0)_PAD );
+        Properties:
+        {
+        }
+
+    Pin : Name = ModifyCollection_B(1)
+        Attributes:
+            In Group/Port: True
+            In Sync Option: SYNC
+            Out Sync Option: AUTO
+            Interrupt generated: True
+            Interrupt mode: RISING
+            Drive mode: RES_PULL_DOWN
+            VTrip: CMOS
+            Slew: FAST
+            Input Sync needed: True
+            Output Sync needed: False
+            SC shield enabled: False
+            POR State: ANY
+            LCD Mode: COMMON
+            Register Mode: RegComb
+            CaSense Mode: NEITHER
+            Treat as pin: False
+            Is OE Registered: False
+            Uses Analog: False
+            Can contain Digital: True
+            Is SIO: False
+            SIO Output Buf: NONREGULATED
+            SIO Input Buf: SINGLE_ENDED
+            SIO HiFreq: LOW
+            SIO Hyst: DISABLED
+            SIO Vtrip: MULTIPLIER_0_5
+            SIO RefSel: VCC_IO
+            Required Capabilitites: DIGITAL
+            Initial Value: 0
+            IO Voltage: 0
+        PORT MAP (
+            pa_out => ModifyCollection_B(1)__PA ,
+            pad => ModifyCollection_B(1)_PAD );
         Properties:
         {
         }
@@ -866,11 +942,11 @@ Design Equations
             SIO Vtrip: MULTIPLIER_0_5
             SIO RefSel: VCC_IO
             Required Capabilitites: DIGITAL, ROUTABLE
-            Initial Value: 0
+            Initial Value: 1
             IO Voltage: 0
         PORT MAP (
             pa_out => RGB_LED(0)__PA ,
-            input => Net_1606 ,
+            input => Net_1632 ,
             pad => RGB_LED(0)_PAD );
         Properties:
         {
@@ -905,11 +981,11 @@ Design Equations
             SIO Vtrip: MULTIPLIER_0_5
             SIO RefSel: VCC_IO
             Required Capabilitites: DIGITAL, ROUTABLE
-            Initial Value: 0
+            Initial Value: 1
             IO Voltage: 0
         PORT MAP (
             pa_out => RGB_LED(1)__PA ,
-            input => Net_1619 ,
+            input => Net_1664 ,
             pad => RGB_LED(1)_PAD );
         Properties:
         {
@@ -944,11 +1020,11 @@ Design Equations
             SIO Vtrip: MULTIPLIER_0_5
             SIO RefSel: VCC_IO
             Required Capabilitites: DIGITAL, ROUTABLE
-            Initial Value: 0
+            Initial Value: 1
             IO Voltage: 0
         PORT MAP (
             pa_out => RGB_LED(2)__PA ,
-            input => Net_1541 ,
+            input => Net_1634 ,
             pad => RGB_LED(2)_PAD );
         Properties:
         {
@@ -992,79 +1068,6 @@ Design Equations
         Properties:
         {
         }
-
-    Pin : Name = StartCollection_B(0)
-        Attributes:
-            In Group/Port: True
-            In Sync Option: SYNC
-            Out Sync Option: AUTO
-            Interrupt generated: True
-            Interrupt mode: FALLING
-            Drive mode: RES_PULL_UP
-            VTrip: CMOS
-            Slew: FAST
-            Input Sync needed: True
-            Output Sync needed: False
-            SC shield enabled: False
-            POR State: ANY
-            LCD Mode: COMMON
-            Register Mode: RegComb
-            CaSense Mode: NEITHER
-            Treat as pin: False
-            Is OE Registered: False
-            Uses Analog: False
-            Can contain Digital: True
-            Is SIO: False
-            SIO Output Buf: NONREGULATED
-            SIO Input Buf: SINGLE_ENDED
-            SIO HiFreq: LOW
-            SIO Hyst: DISABLED
-            SIO Vtrip: MULTIPLIER_0_5
-            SIO RefSel: VCC_IO
-            Required Capabilitites: DIGITAL
-            Initial Value: 1
-            IO Voltage: 0
-        PORT MAP (
-            pa_out => StartCollection_B(0)__PA ,
-            pad => StartCollection_B(0)_PAD );
-        Properties:
-        {
-        }
-
-    Pin : Name = StopCollection_B(0)
-        Attributes:
-            In Group/Port: True
-            In Sync Option: SYNC
-            Out Sync Option: AUTO
-            Interrupt generated: True
-            Interrupt mode: FALLING
-            Drive mode: RES_PULL_UP
-            VTrip: CMOS
-            Slew: FAST
-            Input Sync needed: True
-            Output Sync needed: False
-            SC shield enabled: False
-            POR State: ANY
-            LCD Mode: COMMON
-            Register Mode: RegComb
-            CaSense Mode: NEITHER
-            Treat as pin: False
-            Is OE Registered: False
-            Uses Analog: False
-            Can contain Digital: True
-            Is SIO: False
-            SIO Output Buf: NONREGULATED
-            SIO Input Buf: SINGLE_ENDED
-            SIO HiFreq: LOW
-            SIO Hyst: DISABLED
-            SIO Vtrip: MULTIPLIER_0_5
-            SIO RefSel: VCC_IO
-            Required Capabilitites: DIGITAL
-            Initial Value: 1
-            IO Voltage: 0
-        PORT MAP (
-            pa_out => StopCollection_B(0)__PA ,
-            pad => StopCollection_B(0)_PAD );
 
     Pin : Name = Vbus(0)
         Attributes:
@@ -1213,41 +1216,41 @@ Design Equations
         );
         Output = Net_1415 (fanout=3)
 
-    MacroCell: Name=Net_1541, Mode=(Combinatorial)
+    MacroCell: Name=Net_1632, Mode=(Combinatorial)
         Total # of inputs        : 7
         Total # of product terms : 3
             Clock Enable: True
         Main Equation            : 3 pterms
-        (
-              Net_1460_1 * Net_1460_0 * Net_1415
-            + Net_1566
-            + Net_1410_1 * Net_1410_0 * Net_1409
-        );
-        Output = Net_1541 (fanout=1)
-
-    MacroCell: Name=Net_1606, Mode=(Combinatorial)
-        Total # of inputs        : 7
-        Total # of product terms : 3
-            Clock Enable: True
-        Main Equation            : 3 pterms
-        (
+        !(
               !Net_1460_1 * Net_1460_0 * Net_1415
-            + !Net_1410_1 * Net_1410_0 * Net_1409
             + Net_1568
+            + !Net_1410_1 * Net_1410_0 * Net_1409
         );
-        Output = Net_1606 (fanout=1)
+        Output = Net_1632 (fanout=1)
 
-    MacroCell: Name=Net_1619, Mode=(Combinatorial)
+    MacroCell: Name=Net_1634, Mode=(Combinatorial)
         Total # of inputs        : 7
         Total # of product terms : 3
             Clock Enable: True
         Main Equation            : 3 pterms
-        (
+        !(
+              Net_1460_1 * Net_1460_0 * Net_1415
+            + Net_1410_1 * Net_1410_0 * Net_1409
+            + Net_1566
+        );
+        Output = Net_1634 (fanout=1)
+
+    MacroCell: Name=Net_1664, Mode=(Combinatorial)
+        Total # of inputs        : 7
+        Total # of product terms : 3
+            Clock Enable: True
+        Main Equation            : 3 pterms
+        !(
               Net_1460_1 * !Net_1460_0 * Net_1415
             + Net_1410_1 * !Net_1410_0 * Net_1409
             + Net_1565
         );
-        Output = Net_1619 (fanout=1)
+        Output = Net_1664 (fanout=1)
 
     MacroCell: Name=\LED_PWM:PWMUDB:runmode_enable\, Mode=(D-Register)
         Total # of inputs        : 1
@@ -1439,15 +1442,7 @@ Design Equations
     Interrupt listing
     ------------------------------------------------------------
 
-    interrupt: Name =StartCollection_IRQ
-        PORT MAP (
-            interrupt => Net_849 );
-        Properties:
-        {
-            int_type = "10"
-        }
-
-    interrupt: Name =StopCollection_IRQ
+    interrupt: Name =ModifyCollection_IRQ
         PORT MAP (
             interrupt => Net_1524 );
         Properties:
@@ -1564,7 +1559,7 @@ UDB Status Cells              :    1 :   23 :   24 :   4.17%
 UDB Control Cells             :    4 :   20 :   24 :  16.67%
             Control Registers :    4 
 DMA Channels                  :    0 :   24 :   24 :   0.00%
-Interrupts                    :   13 :   19 :   32 :  40.63%
+Interrupts                    :   12 :   20 :   32 :  37.50%
 DSM Fixed Blocks              :    1 :    0 :    1 : 100.00%
 VIDAC Fixed Blocks            :    0 :    1 :    1 :   0.00%
 Comparator Fixed Blocks       :    0 :    2 :    2 :   0.00%
@@ -1579,41 +1574,44 @@ LPF Fixed Blocks              :    0 :    2 :    2 :   0.00%
 </CYPRESSTAG>
 Technology Mapping: Elapsed time ==> 0s.049ms
 Info: mpr.M0037: Unused pieces of the design have been optimized out. See the Tech mapping section of the report file for details. (App=cydsfit)
-Tech mapping phase: Elapsed time ==> 0s.172ms
+Tech mapping phase: Elapsed time ==> 0s.161ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 Info: apr.M0002: Analog signal "\ADC:Net_690\" is connected to one terminal only. (App=cydsfit)
 Initial Analog Placement Results:
-IO_2@[IOP=(0)][IoId=(2)] : Batt_Monitor(0) (fixed)
+IO_3@[IOP=(2)][IoId=(3)] : ModifyCollection_B(0) (fixed)
+IO_4@[IOP=(2)][IoId=(4)] : ModifyCollection_B(1) (fixed)
 IO_5@[IOP=(2)][IoId=(5)] : RGB_LED(0) (fixed)
 IO_6@[IOP=(2)][IoId=(6)] : RGB_LED(1) (fixed)
 IO_7@[IOP=(2)][IoId=(7)] : RGB_LED(2) (fixed)
 IO_0@[IOP=(0)][IoId=(0)] : Sensor_In(0) (fixed)
-IO_4@[IOP=(2)][IoId=(4)] : StartCollection_B(0) (fixed)
 IO_7@[IOP=(1)][IoId=(7)] : Vbus(0) (fixed)
 IO_7@[IOP=(15)][IoId=(7)] : \USBUART:Dm(0)\ (fixed)
 IO_6@[IOP=(15)][IoId=(6)] : \USBUART:Dp(0)\ (fixed)
+IO_5@[IOP=(1)][IoId=(5)] : Batt_Monitor(0)
 DSM[0]@[FFB(DSM,0)] : \ADC:DSM\
 Vref[6]@[FFB(Vref,6)] : \ADC:vRef_2\
 USB[0]@[FFB(USB,0)] : \USBUART:USB\
+Log: apr.M0058: The analog placement iterative improvement is 56% done. (App=cydsfit)
 Analog Placement Results:
-IO_2@[IOP=(0)][IoId=(2)] : Batt_Monitor(0) (fixed)
+IO_3@[IOP=(2)][IoId=(3)] : ModifyCollection_B(0) (fixed)
+IO_4@[IOP=(2)][IoId=(4)] : ModifyCollection_B(1) (fixed)
 IO_5@[IOP=(2)][IoId=(5)] : RGB_LED(0) (fixed)
 IO_6@[IOP=(2)][IoId=(6)] : RGB_LED(1) (fixed)
 IO_7@[IOP=(2)][IoId=(7)] : RGB_LED(2) (fixed)
 IO_0@[IOP=(0)][IoId=(0)] : Sensor_In(0) (fixed)
-IO_4@[IOP=(2)][IoId=(4)] : StartCollection_B(0) (fixed)
 IO_7@[IOP=(1)][IoId=(7)] : Vbus(0) (fixed)
 IO_7@[IOP=(15)][IoId=(7)] : \USBUART:Dm(0)\ (fixed)
 IO_6@[IOP=(15)][IoId=(6)] : \USBUART:Dp(0)\ (fixed)
+IO_4@[IOP=(0)][IoId=(4)] : Batt_Monitor(0)
 DSM[0]@[FFB(DSM,0)] : \ADC:DSM\
 Vref[6]@[FFB(Vref,6)] : \ADC:vRef_2\
 USB[0]@[FFB(USB,0)] : \USBUART:USB\
 
-Analog Placement phase: Elapsed time ==> 0s.062ms
+Analog Placement phase: Elapsed time ==> 2s.150ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
-Analog Routing phase: Elapsed time ==> 0s.005ms
+Analog Routing phase: Elapsed time ==> 0s.007ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Code Generation">
 ============ Analog Final Answer Routes ============
@@ -1626,7 +1624,7 @@ Map of net to items {
     p0_0
   }
   Net: Net_1603 {
-    p0_2
+    p0_4
   }
   Net: \ADC:Net_520\ {
     dsm_0_vminus
@@ -1646,14 +1644,12 @@ Map of net to items {
   }
   Net: AmuxNet::ADC_MUX {
     dsm_0_vplus
-    agl6_x_dsm_0_vplus
-    agl6
-    agl6_x_p0_2
     agl4_x_dsm_0_vplus
     agl4
     agl4_x_p0_0
-    p0_2
+    agl4_x_p0_4
     p0_0
+    p0_4
   }
   Net: AmuxNet::\ADC:AMux\ {
     dsm_0_vminus
@@ -1665,15 +1661,13 @@ Map of net to items {
 Map of item to net {
   dsm_0_vplus                                      -> Net_1593
   p0_0                                             -> Net_1602
-  p0_2                                             -> Net_1603
+  p0_4                                             -> Net_1603
   dsm_0_vminus                                     -> \ADC:Net_520\
   common_vssa                                      -> \ADC:Net_244\
-  agl6_x_dsm_0_vplus                               -> AmuxNet::ADC_MUX
-  agl6                                             -> AmuxNet::ADC_MUX
-  agl6_x_p0_2                                      -> AmuxNet::ADC_MUX
   agl4_x_dsm_0_vplus                               -> AmuxNet::ADC_MUX
   agl4                                             -> AmuxNet::ADC_MUX
   agl4_x_p0_0                                      -> AmuxNet::ADC_MUX
+  agl4_x_p0_4                                      -> AmuxNet::ADC_MUX
   dsm_0_vminus_x_dsm_0_vminus_vssa                 -> AmuxNet::\ADC:AMux\
   dsm_0_vminus_vssa                                -> AmuxNet::\ADC:AMux\
 }
@@ -1687,7 +1681,7 @@ Mux Info {
     Arm: 0 {
       Net:   Net_1602
       Outer: agl4_x_p0_0
-      Inner: agl4_x_dsm_0_vplus
+      Inner: __open__
       Path {
         p0_0
         agl4_x_p0_0
@@ -1698,13 +1692,13 @@ Mux Info {
     }
     Arm: 1 {
       Net:   Net_1603
-      Outer: agl6_x_p0_2
-      Inner: agl6_x_dsm_0_vplus
+      Outer: agl4_x_p0_4
+      Inner: __open__
       Path {
-        p0_2
-        agl6_x_p0_2
-        agl6
-        agl6_x_dsm_0_vplus
+        p0_4
+        agl4_x_p0_4
+        agl4
+        agl4_x_dsm_0_vplus
         dsm_0_vplus
       }
     }
@@ -1739,7 +1733,7 @@ Dump of CyP35AnalogRoutingResultsDB
 IsVddaHalfUsedForComp = False
 IsVddaHalfUsedForSar0 = False
 IsVddaHalfUsedForSar1 = False
-Analog Code Generation phase: Elapsed time ==> 0s.485ms
+Analog Code Generation phase: Elapsed time ==> 0s.447ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="PLD Packing">
@@ -1750,15 +1744,15 @@ PLD Packing Summary
 ------------------------------------------------------------
             Resource Type : Used : Free :  Max :  % Used
     ====================================================
-                     PLDs :    3 :   45 :   48 :   6.25%
+                     PLDs :    2 :   46 :   48 :   4.17%
 
 <CYPRESSTAG name="PLD Statistics">
 
         PLD Resource Type :     Average/LAB
     =======================================
-                   Inputs :            6.67
-                   Pterms :            4.00
-               Macrocells :            2.33
+                   Inputs :           10.00
+                   Pterms :            6.00
+               Macrocells :            3.50
 </CYPRESSTAG>
 <CYPRESSTAG name="Packed PLD Contents">
 Packed PLD Contents not displayed at this verbose level.</CYPRESSTAG>
@@ -1770,13 +1764,13 @@ PLD Packing: Elapsed time ==> 0s.001ms
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.042ms
+Partitioning: Elapsed time ==> 0s.039ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Simulated Annealing">
-Annealing: Elapsed time ==> 0s.002ms
+Annealing: Elapsed time ==> 0s.001ms
 <CYPRESSTAG name="Simulated Annealing Results">
 The seed used for moves was 114161200.
-Inital cost was 300, final cost is 300 (0.00% improvement).</CYPRESSTAG>
+Inital cost was 292, final cost is 292 (0.00% improvement).</CYPRESSTAG>
 </CYPRESSTAG>
 <CYPRESSTAG name="Final Placement Summary">
 
@@ -1793,40 +1787,114 @@ Final Placement Summary
 ------------------------------------------------------------
 Component Placement Details
 ------------------------------------------------------------
-UDB [UDB=(0,0)] contents:
-LAB@[UDB=(0,0)][LB=0] #macrocells=4, #inputs=12, #pterms=8
+UDB [UDB=(0,0)] is empty.
+UDB [UDB=(0,1)] is empty.
+UDB [UDB=(0,2)] is empty.
+UDB [UDB=(0,3)] is empty.
+UDB [UDB=(0,4)] contents:
+controlcell: Name =\PWM1_CTRL:Sync:ctrl_reg\
+    PORT MAP (
+        control_7 => \PWM1_CTRL:control_7\ ,
+        control_6 => \PWM1_CTRL:control_6\ ,
+        control_5 => \PWM1_CTRL:control_5\ ,
+        control_4 => \PWM1_CTRL:control_4\ ,
+        control_3 => \PWM1_CTRL:control_3\ ,
+        control_2 => \PWM1_CTRL:control_2\ ,
+        control_1 => Net_1460_1 ,
+        control_0 => Net_1460_0 );
+    Properties:
+    {
+        cy_ctrl_mode_0 = "00000000"
+        cy_ctrl_mode_1 = "00000000"
+        cy_ext_reset = 0
+        cy_force_order = 1
+        cy_init_value = "00000000"
+    }
+    Clock Enable: True
+
+UDB [UDB=(0,5)] contents:
+controlcell: Name =\LED_PWM:PWMUDB:genblk1:ctrlreg\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        control_7 => \LED_PWM:PWMUDB:control_7\ ,
+        control_6 => \LED_PWM:PWMUDB:control_6\ ,
+        control_5 => \LED_PWM:PWMUDB:control_5\ ,
+        control_4 => \LED_PWM:PWMUDB:control_4\ ,
+        control_3 => \LED_PWM:PWMUDB:control_3\ ,
+        control_2 => \LED_PWM:PWMUDB:control_2\ ,
+        control_1 => \LED_PWM:PWMUDB:control_1\ ,
+        control_0 => \LED_PWM:PWMUDB:control_0\ ,
+        clk_en => ClockBlock_100k__SYNC_OUT_1 );
+    Properties:
+    {
+        cy_ctrl_mode_0 = "11111111"
+        cy_ctrl_mode_1 = "00000000"
+        cy_ext_reset = 0
+        cy_force_order = 1
+        cy_init_value = "00000000"
+    }
+    Clock Polarity: Active High
+    Clock Enable: PosEdge(ClockBlock_100k__SYNC_OUT_1)
+
+UDB [UDB=(1,0)] is empty.
+UDB [UDB=(1,1)] is empty.
+UDB [UDB=(1,2)] is empty.
+UDB [UDB=(1,3)] is empty.
+UDB [UDB=(1,4)] contents:
+controlcell: Name =\PWM0_CTRL:Sync:ctrl_reg\
+    PORT MAP (
+        control_7 => \PWM0_CTRL:control_7\ ,
+        control_6 => \PWM0_CTRL:control_6\ ,
+        control_5 => \PWM0_CTRL:control_5\ ,
+        control_4 => \PWM0_CTRL:control_4\ ,
+        control_3 => \PWM0_CTRL:control_3\ ,
+        control_2 => \PWM0_CTRL:control_2\ ,
+        control_1 => Net_1410_1 ,
+        control_0 => Net_1410_0 );
+    Properties:
+    {
+        cy_ctrl_mode_0 = "00000000"
+        cy_ctrl_mode_1 = "00000000"
+        cy_ext_reset = 0
+        cy_force_order = 1
+        cy_init_value = "00000000"
+    }
+    Clock Enable: True
+
+UDB [UDB=(1,5)] contents:
+LAB@[UDB=(1,5)][LB=0] #macrocells=4, #inputs=12, #pterms=8
 {
-    [McSlotId=0]:     MacroCell: Name=Net_1541, Mode=(Combinatorial) @ [UDB=(0,0)][LB=0][MC=0]
+    [McSlotId=0]:     MacroCell: Name=Net_1632, Mode=(Combinatorial) @ [UDB=(1,5)][LB=0][MC=0]
         Total # of inputs        : 7
         Total # of product terms : 3
             Clock Enable: True
         Main Equation            : 3 pterms
-        (
-              Net_1460_1 * Net_1460_0 * Net_1415
-            + Net_1566
-            + Net_1410_1 * Net_1410_0 * Net_1409
-        );
-        Output = Net_1541 (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=Net_1606, Mode=(Combinatorial) @ [UDB=(0,0)][LB=0][MC=1]
-        Total # of inputs        : 7
-        Total # of product terms : 3
-            Clock Enable: True
-        Main Equation            : 3 pterms
-        (
+        !(
               !Net_1460_1 * Net_1460_0 * Net_1415
-            + !Net_1410_1 * Net_1410_0 * Net_1409
             + Net_1568
+            + !Net_1410_1 * Net_1410_0 * Net_1409
         );
-        Output = Net_1606 (fanout=1)
+        Output = Net_1632 (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=2]:     MacroCell: Name=Net_1409, Mode=(D-Register) @ [UDB=(0,0)][LB=0][MC=2]
+    [McSlotId=1]:     MacroCell: Name=Net_1634, Mode=(Combinatorial) @ [UDB=(1,5)][LB=0][MC=1]
+        Total # of inputs        : 7
+        Total # of product terms : 3
+            Clock Enable: True
+        Main Equation            : 3 pterms
+        !(
+              Net_1460_1 * Net_1460_0 * Net_1415
+            + Net_1410_1 * Net_1410_0 * Net_1409
+            + Net_1566
+        );
+        Output = Net_1634 (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=Net_1409, Mode=(D-Register) @ [UDB=(1,5)][LB=0][MC=2]
         Total # of inputs        : 2
         Total # of product terms : 1
         List of special equations: 
@@ -1841,7 +1909,7 @@ LAB@[UDB=(0,0)][LB=0] #macrocells=4, #inputs=12, #pterms=8
         {
         }
 
-    [McSlotId=3]:     MacroCell: Name=Net_1415, Mode=(D-Register) @ [UDB=(0,0)][LB=0][MC=3]
+    [McSlotId=3]:     MacroCell: Name=Net_1415, Mode=(D-Register) @ [UDB=(1,5)][LB=0][MC=3]
         Total # of inputs        : 3
         Total # of product terms : 1
         List of special equations: 
@@ -1858,24 +1926,24 @@ LAB@[UDB=(0,0)][LB=0] #macrocells=4, #inputs=12, #pterms=8
         }
 }
 
-LAB@[UDB=(0,0)][LB=1] #macrocells=2, #inputs=8, #pterms=4
+LAB@[UDB=(1,5)][LB=1] #macrocells=3, #inputs=8, #pterms=4
 {
-    [McSlotId=0]:     MacroCell: Name=Net_1619, Mode=(Combinatorial) @ [UDB=(0,0)][LB=1][MC=0]
+    [McSlotId=0]:     MacroCell: Name=Net_1664, Mode=(Combinatorial) @ [UDB=(1,5)][LB=1][MC=0]
         Total # of inputs        : 7
         Total # of product terms : 3
             Clock Enable: True
         Main Equation            : 3 pterms
-        (
+        !(
               Net_1460_1 * !Net_1460_0 * Net_1415
             + Net_1410_1 * !Net_1410_0 * Net_1409
             + Net_1565
         );
-        Output = Net_1619 (fanout=1)
+        Output = Net_1664 (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\LED_PWM:PWMUDB:runmode_enable\, Mode=(D-Register) @ [UDB=(0,0)][LB=1][MC=1]
+    [McSlotId=1]:     MacroCell: Name=\LED_PWM:PWMUDB:runmode_enable\, Mode=(D-Register) @ [UDB=(1,5)][LB=1][MC=1]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -1890,7 +1958,19 @@ LAB@[UDB=(0,0)][LB=1] #macrocells=2, #inputs=8, #pterms=4
         {
         }
 
-    [McSlotId=2]: (empty)
+    [McSlotId=2]:     MacroCell: Name=__ONE__, Mode=(Combinatorial) @ [UDB=(1,5)][LB=1][MC=2]
+        Total # of inputs        : 0
+        Total # of product terms : 0
+            Clock Enable: True
+        Main Equation            : 0 pterms
+        !(
+            0
+        );
+        Output = __ONE__ (fanout=1)
+        Properties               : 
+        {
+        }
+
     [McSlotId=3]: (empty)
 }
 
@@ -1951,58 +2031,6 @@ controlcell: Name =\SOLID_LED_CTRL:Sync:ctrl_reg\
     }
     Clock Enable: True
 
-synccell: Name =ClockBlock_100k__SYNC
-    PORT MAP (
-        in => ClockBlock_100k ,
-        out => ClockBlock_100k__SYNC_OUT ,
-        clock => ClockBlock_BUS_CLK );
-    Properties:
-    {
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(0,1)] contents:
-LAB@[UDB=(0,1)][LB=0] #macrocells=1, #inputs=0, #pterms=0
-{
-    [McSlotId=0]:     MacroCell: Name=__ONE__, Mode=(Combinatorial) @ [UDB=(0,1)][LB=0][MC=0]
-        Total # of inputs        : 0
-        Total # of product terms : 0
-            Clock Enable: True
-        Main Equation            : 0 pterms
-        !(
-            0
-        );
-        Output = __ONE__ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-controlcell: Name =\PWM1_CTRL:Sync:ctrl_reg\
-    PORT MAP (
-        control_7 => \PWM1_CTRL:control_7\ ,
-        control_6 => \PWM1_CTRL:control_6\ ,
-        control_5 => \PWM1_CTRL:control_5\ ,
-        control_4 => \PWM1_CTRL:control_4\ ,
-        control_3 => \PWM1_CTRL:control_3\ ,
-        control_2 => \PWM1_CTRL:control_2\ ,
-        control_1 => Net_1460_1 ,
-        control_0 => Net_1460_0 );
-    Properties:
-    {
-        cy_ctrl_mode_0 = "00000000"
-        cy_ctrl_mode_1 = "00000000"
-        cy_ext_reset = 0
-        cy_force_order = 1
-        cy_init_value = "00000000"
-    }
-    Clock Enable: True
-
 synccell: Name =ClockBlock_100k__SYNC_1
     PORT MAP (
         in => ClockBlock_100k ,
@@ -2014,59 +2042,17 @@ synccell: Name =ClockBlock_100k__SYNC_1
     Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(0,2)] is empty.
-UDB [UDB=(0,3)] is empty.
-UDB [UDB=(0,4)] is empty.
-UDB [UDB=(0,5)] is empty.
-UDB [UDB=(1,0)] contents:
-controlcell: Name =\PWM0_CTRL:Sync:ctrl_reg\
+synccell: Name =ClockBlock_100k__SYNC
     PORT MAP (
-        control_7 => \PWM0_CTRL:control_7\ ,
-        control_6 => \PWM0_CTRL:control_6\ ,
-        control_5 => \PWM0_CTRL:control_5\ ,
-        control_4 => \PWM0_CTRL:control_4\ ,
-        control_3 => \PWM0_CTRL:control_3\ ,
-        control_2 => \PWM0_CTRL:control_2\ ,
-        control_1 => Net_1410_1 ,
-        control_0 => Net_1410_0 );
+        in => ClockBlock_100k ,
+        out => ClockBlock_100k__SYNC_OUT ,
+        clock => ClockBlock_BUS_CLK );
     Properties:
     {
-        cy_ctrl_mode_0 = "00000000"
-        cy_ctrl_mode_1 = "00000000"
-        cy_ext_reset = 0
-        cy_force_order = 1
-        cy_init_value = "00000000"
-    }
-    Clock Enable: True
-
-UDB [UDB=(1,1)] contents:
-controlcell: Name =\LED_PWM:PWMUDB:genblk1:ctrlreg\
-    PORT MAP (
-        clock => ClockBlock_BUS_CLK ,
-        control_7 => \LED_PWM:PWMUDB:control_7\ ,
-        control_6 => \LED_PWM:PWMUDB:control_6\ ,
-        control_5 => \LED_PWM:PWMUDB:control_5\ ,
-        control_4 => \LED_PWM:PWMUDB:control_4\ ,
-        control_3 => \LED_PWM:PWMUDB:control_3\ ,
-        control_2 => \LED_PWM:PWMUDB:control_2\ ,
-        control_1 => \LED_PWM:PWMUDB:control_1\ ,
-        control_0 => \LED_PWM:PWMUDB:control_0\ ,
-        clk_en => ClockBlock_100k__SYNC_OUT_1 );
-    Properties:
-    {
-        cy_ctrl_mode_0 = "11111111"
-        cy_ctrl_mode_1 = "00000000"
-        cy_ext_reset = 0
-        cy_force_order = 1
-        cy_init_value = "00000000"
     }
     Clock Polarity: Active High
-    Clock Enable: PosEdge(ClockBlock_100k__SYNC_OUT_1)
+    Clock Enable: True
 
-UDB [UDB=(1,2)] is empty.
-UDB [UDB=(1,3)] is empty.
-UDB [UDB=(1,4)] is empty.
-UDB [UDB=(1,5)] is empty.
 UDB [UDB=(2,0)] is empty.
 UDB [UDB=(2,1)] is empty.
 UDB [UDB=(2,2)] is empty.
@@ -2112,14 +2098,6 @@ Intr hod @ [IntrHod=(0)]:
         {
             int_type = "10"
         }
-  Intr@ [IntrHod=(0)][IntrId=(4)] 
-    interrupt: Name =StopCollection_IRQ
-        PORT MAP (
-            interrupt => Net_1524 );
-        Properties:
-        {
-            int_type = "10"
-        }
   Intr@ [IntrHod=(0)][IntrId=(5)] 
     interrupt: Name =Vbus_IRQ
         PORT MAP (
@@ -2129,9 +2107,9 @@ Intr hod @ [IntrHod=(0)]:
             int_type = "10"
         }
   Intr@ [IntrHod=(0)][IntrId=(6)] 
-    interrupt: Name =StartCollection_IRQ
+    interrupt: Name =ModifyCollection_IRQ
         PORT MAP (
-            interrupt => Net_849 );
+            interrupt => Net_1524 );
         Properties:
         {
             int_type = "10"
@@ -2185,69 +2163,7 @@ Intr hod @ [IntrHod=(0)]:
             int_type = "10"
         }
 Drq hod @ [DrqHod=(0)]: empty
-Port 0 generates interrupt for logical port:
-    logicalport: Name =StopCollection_B
-        PORT MAP (
-            in_clock_en => tmpOE__RGB_LED_net_2 ,
-            in_reset => zero ,
-            out_clock_en => tmpOE__RGB_LED_net_2 ,
-            out_reset => zero ,
-            interrupt => Net_1524 ,
-            in_clock => ClockBlock_BUS_CLK );
-        Properties:
-        {
-            drive_mode = "010"
-            ibuf_enabled = "1"
-            id = "59f65110-8c59-4596-b9cb-7482b9b42450"
-            init_dr_st = "1"
-            input_clk_en = 0
-            input_sync = "1"
-            input_sync_mode = "0"
-            intr_mode = "10"
-            invert_in_clock = 0
-            invert_in_clock_en = 0
-            invert_in_reset = 0
-            invert_out_clock = 0
-            invert_out_clock_en = 0
-            invert_out_reset = 0
-            io_voltage = ""
-            layout_mode = "CONTIGUOUS"
-            oe_conn = "0"
-            oe_reset = 0
-            oe_sync = "0"
-            output_clk_en = 0
-            output_clock_mode = "0"
-            output_conn = "0"
-            output_mode = "0"
-            output_reset = 0
-            output_sync = "0"
-            pa_in_clock = -1
-            pa_in_clock_en = -1
-            pa_in_reset = -1
-            pa_out_clock = -1
-            pa_out_clock_en = -1
-            pa_out_reset = -1
-            pin_aliases = ""
-            pin_mode = "I"
-            por_state = 4
-            port_alias_group = ""
-            port_alias_required = 0
-            sio_group_cnt = 0
-            sio_hifreq = ""
-            sio_hyst = "0"
-            sio_ibuf = "00000000"
-            sio_info = "00"
-            sio_obuf = "00000000"
-            sio_refsel = "00000000"
-            sio_vtrip = "00000000"
-            slew_rate = "0"
-            spanning = 0
-            sw_only = 0
-            use_annotation = "0"
-            vtrip = "00"
-            width = 1
-        }
-    and contains the following IO cells:
+Port 0 contains the following IO cells:
 [IoId=0]: 
 Pin : Name = Sensor_In(0)
     Attributes:
@@ -2288,46 +2204,7 @@ Pin : Name = Sensor_In(0)
     {
     }
 
-[IoId=1]: 
-Pin : Name = StopCollection_B(0)
-    Attributes:
-        In Group/Port: True
-        In Sync Option: SYNC
-        Out Sync Option: AUTO
-        Interrupt generated: True
-        Interrupt mode: FALLING
-        Drive mode: RES_PULL_UP
-        VTrip: CMOS
-        Slew: FAST
-        Input Sync needed: True
-        Output Sync needed: False
-        SC shield enabled: False
-        POR State: ANY
-        LCD Mode: COMMON
-        Register Mode: RegComb
-        CaSense Mode: NEITHER
-        Treat as pin: False
-        Is OE Registered: False
-        Uses Analog: False
-        Can contain Digital: True
-        Is SIO: False
-        SIO Output Buf: NONREGULATED
-        SIO Input Buf: SINGLE_ENDED
-        SIO HiFreq: LOW
-        SIO Hyst: DISABLED
-        SIO Vtrip: MULTIPLIER_0_5
-        SIO RefSel: VCC_IO
-        Required Capabilitites: DIGITAL
-        Initial Value: 1
-        IO Voltage: 0
-    PORT MAP (
-        pa_out => StopCollection_B(0)__PA ,
-        pad => StopCollection_B(0)_PAD );
-    Properties:
-    {
-    }
-
-[IoId=2]: 
+[IoId=4]: 
 Pin : Name = Batt_Monitor(0)
     Attributes:
         In Group/Port: True
@@ -2470,77 +2347,77 @@ Pin : Name = Vbus(0)
     }
 
 Port 2 generates interrupt for logical port:
-    logicalport: Name =StartCollection_B
+    logicalport: Name =ModifyCollection_B
         PORT MAP (
             in_clock_en => tmpOE__RGB_LED_net_2 ,
             in_reset => zero ,
             out_clock_en => tmpOE__RGB_LED_net_2 ,
             out_reset => zero ,
-            interrupt => Net_849 ,
+            interrupt => Net_1524 ,
             in_clock => ClockBlock_BUS_CLK );
         Properties:
         {
-            drive_mode = "010"
-            ibuf_enabled = "1"
+            drive_mode = "011011"
+            ibuf_enabled = "11"
             id = "7bd73714-fc02-4433-9733-e47f5d6532cc"
-            init_dr_st = "1"
+            init_dr_st = "00"
             input_clk_en = 0
-            input_sync = "1"
-            input_sync_mode = "0"
-            intr_mode = "10"
+            input_sync = "11"
+            input_sync_mode = "00"
+            intr_mode = "0101"
             invert_in_clock = 0
             invert_in_clock_en = 0
             invert_in_reset = 0
             invert_out_clock = 0
             invert_out_clock_en = 0
             invert_out_reset = 0
-            io_voltage = ""
+            io_voltage = ", "
             layout_mode = "CONTIGUOUS"
-            oe_conn = "0"
+            oe_conn = "00"
             oe_reset = 0
-            oe_sync = "0"
+            oe_sync = "00"
             output_clk_en = 0
-            output_clock_mode = "0"
-            output_conn = "0"
-            output_mode = "0"
+            output_clock_mode = "00"
+            output_conn = "00"
+            output_mode = "00"
             output_reset = 0
-            output_sync = "0"
+            output_sync = "00"
             pa_in_clock = -1
             pa_in_clock_en = -1
             pa_in_reset = -1
             pa_out_clock = -1
             pa_out_clock_en = -1
             pa_out_reset = -1
-            pin_aliases = ""
-            pin_mode = "I"
+            pin_aliases = ","
+            pin_mode = "II"
             por_state = 4
             port_alias_group = ""
             port_alias_required = 0
             sio_group_cnt = 0
             sio_hifreq = ""
-            sio_hyst = "0"
+            sio_hyst = "00"
             sio_ibuf = "00000000"
-            sio_info = "00"
+            sio_info = "0000"
             sio_obuf = "00000000"
             sio_refsel = "00000000"
             sio_vtrip = "00000000"
-            slew_rate = "0"
+            slew_rate = "00"
             spanning = 0
             sw_only = 0
-            use_annotation = "0"
-            vtrip = "00"
-            width = 1
+            use_annotation = "00"
+            vtrip = "0000"
+            width = 2
         }
     and contains the following IO cells:
-[IoId=4]: 
-Pin : Name = StartCollection_B(0)
+[IoId=3]: 
+Pin : Name = ModifyCollection_B(0)
     Attributes:
         In Group/Port: True
         In Sync Option: SYNC
         Out Sync Option: AUTO
         Interrupt generated: True
-        Interrupt mode: FALLING
-        Drive mode: RES_PULL_UP
+        Interrupt mode: RISING
+        Drive mode: RES_PULL_DOWN
         VTrip: CMOS
         Slew: FAST
         Input Sync needed: True
@@ -2562,11 +2439,50 @@ Pin : Name = StartCollection_B(0)
         SIO Vtrip: MULTIPLIER_0_5
         SIO RefSel: VCC_IO
         Required Capabilitites: DIGITAL
-        Initial Value: 1
+        Initial Value: 0
         IO Voltage: 0
     PORT MAP (
-        pa_out => StartCollection_B(0)__PA ,
-        pad => StartCollection_B(0)_PAD );
+        pa_out => ModifyCollection_B(0)__PA ,
+        pad => ModifyCollection_B(0)_PAD );
+    Properties:
+    {
+    }
+
+[IoId=4]: 
+Pin : Name = ModifyCollection_B(1)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: SYNC
+        Out Sync Option: AUTO
+        Interrupt generated: True
+        Interrupt mode: RISING
+        Drive mode: RES_PULL_DOWN
+        VTrip: CMOS
+        Slew: FAST
+        Input Sync needed: True
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: False
+        Is OE Registered: False
+        Uses Analog: False
+        Can contain Digital: True
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO RefSel: VCC_IO
+        Required Capabilitites: DIGITAL
+        Initial Value: 0
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => ModifyCollection_B(1)__PA ,
+        pad => ModifyCollection_B(1)_PAD );
     Properties:
     {
     }
@@ -2601,11 +2517,11 @@ Pin : Name = RGB_LED(0)
         SIO Vtrip: MULTIPLIER_0_5
         SIO RefSel: VCC_IO
         Required Capabilitites: DIGITAL, ROUTABLE
-        Initial Value: 0
+        Initial Value: 1
         IO Voltage: 0
     PORT MAP (
         pa_out => RGB_LED(0)__PA ,
-        input => Net_1606 ,
+        input => Net_1632 ,
         pad => RGB_LED(0)_PAD );
     Properties:
     {
@@ -2641,11 +2557,11 @@ Pin : Name = RGB_LED(1)
         SIO Vtrip: MULTIPLIER_0_5
         SIO RefSel: VCC_IO
         Required Capabilitites: DIGITAL, ROUTABLE
-        Initial Value: 0
+        Initial Value: 1
         IO Voltage: 0
     PORT MAP (
         pa_out => RGB_LED(1)__PA ,
-        input => Net_1619 ,
+        input => Net_1664 ,
         pad => RGB_LED(1)_PAD );
     Properties:
     {
@@ -2681,11 +2597,11 @@ Pin : Name = RGB_LED(2)
         SIO Vtrip: MULTIPLIER_0_5
         SIO RefSel: VCC_IO
         Required Capabilitites: DIGITAL, ROUTABLE
-        Initial Value: 0
+        Initial Value: 1
         IO Voltage: 0
     PORT MAP (
         pa_out => RGB_LED(2)__PA ,
-        input => Net_1541 ,
+        input => Net_1634 ,
         pad => RGB_LED(2)_PAD );
     Properties:
     {
@@ -3013,52 +2929,52 @@ Blocks not positioned by the digital component placer:
 ------------------------------------------------------------
 Port Configuration report
 ------------------------------------------------------------
-     |     |       | Interrupt |                  |                      | 
-Port | Pin | Fixed |      Type |       Drive Mode |                 Name | Connections
------+-----+-------+-----------+------------------+----------------------+---------------------------
-   0 |   0 |     * |      NONE |      HI_Z_ANALOG |         Sensor_In(0) | Analog(Net_1602)
-     |   1 |       |   FALLING |      RES_PULL_UP |  StopCollection_B(0) | 
-     |   2 |     * |      NONE |      HI_Z_ANALOG |      Batt_Monitor(0) | Analog(Net_1603)
------+-----+-------+-----------+------------------+----------------------+---------------------------
-   1 |   7 |     * |    RISING |    RES_PULL_DOWN |              Vbus(0) | 
------+-----+-------+-----------+------------------+----------------------+---------------------------
-   2 |   4 |     * |   FALLING |      RES_PULL_UP | StartCollection_B(0) | 
-     |   5 |     * |      NONE |         CMOS_OUT |           RGB_LED(0) | In(Net_1606)
-     |   6 |     * |      NONE |         CMOS_OUT |           RGB_LED(1) | In(Net_1619)
-     |   7 |     * |      NONE |         CMOS_OUT |           RGB_LED(2) | In(Net_1541)
------+-----+-------+-----------+------------------+----------------------+---------------------------
-  15 |   6 |     * |   FALLING |      HI_Z_ANALOG |      \USBUART:Dp(0)\ | Analog(\USBUART:Net_1000\)
-     |   7 |     * |      NONE |      HI_Z_ANALOG |      \USBUART:Dm(0)\ | Analog(\USBUART:Net_597\)
------------------------------------------------------------------------------------------------------
+     |     |       | Interrupt |                  |                       | 
+Port | Pin | Fixed |      Type |       Drive Mode |                  Name | Connections
+-----+-----+-------+-----------+------------------+-----------------------+---------------------------
+   0 |   0 |     * |      NONE |      HI_Z_ANALOG |          Sensor_In(0) | Analog(Net_1602)
+     |   4 |       |      NONE |      HI_Z_ANALOG |       Batt_Monitor(0) | Analog(Net_1603)
+-----+-----+-------+-----------+------------------+-----------------------+---------------------------
+   1 |   7 |     * |    RISING |    RES_PULL_DOWN |               Vbus(0) | 
+-----+-----+-------+-----------+------------------+-----------------------+---------------------------
+   2 |   3 |     * |    RISING |    RES_PULL_DOWN | ModifyCollection_B(0) | 
+     |   4 |     * |    RISING |    RES_PULL_DOWN | ModifyCollection_B(1) | 
+     |   5 |     * |      NONE |         CMOS_OUT |            RGB_LED(0) | In(Net_1632)
+     |   6 |     * |      NONE |         CMOS_OUT |            RGB_LED(1) | In(Net_1664)
+     |   7 |     * |      NONE |         CMOS_OUT |            RGB_LED(2) | In(Net_1634)
+-----+-----+-------+-----------+------------------+-----------------------+---------------------------
+  15 |   6 |     * |   FALLING |      HI_Z_ANALOG |       \USBUART:Dp(0)\ | Analog(\USBUART:Net_1000\)
+     |   7 |     * |      NONE |      HI_Z_ANALOG |       \USBUART:Dm(0)\ | Analog(\USBUART:Net_597\)
+------------------------------------------------------------------------------------------------------
 </CYPRESSTAG>
 </CYPRESSTAG>
 </CYPRESSTAG>
-Digital component placer commit/Report: Elapsed time ==> 0s.005ms
-Digital Placement phase: Elapsed time ==> 1s.304ms
+Digital component placer commit/Report: Elapsed time ==> 0s.003ms
+Digital Placement phase: Elapsed time ==> 1s.222ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 Routing successful.
-Digital Routing phase: Elapsed time ==> 1s.780ms
+Digital Routing phase: Elapsed time ==> 1s.654ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream and API generation">
-Bitstream and API generation phase: Elapsed time ==> 0s.203ms
+Bitstream and API generation phase: Elapsed time ==> 0s.214ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream verification">
-Bitstream verification phase: Elapsed time ==> 0s.083ms
+Bitstream verification phase: Elapsed time ==> 0s.077ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Timing report is in Erebus_Sensor_timing.html.
-Static timing analysis phase: Elapsed time ==> 0s.393ms
+Static timing analysis phase: Elapsed time ==> 0s.434ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
-Data reporting phase: Elapsed time ==> 0s.785ms
+Data reporting phase: Elapsed time ==> 0s.789ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.240ms
+Design database save phase: Elapsed time ==> 0s.230ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 5s.557ms
+cydsfit: Elapsed time ==> 7s.437ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 5s.595ms
-API generation phase: Elapsed time ==> 2s.014ms
-Dependency generation phase: Elapsed time ==> 0s.030ms
-Cleanup phase: Elapsed time ==> 0s.001ms
+Fitter phase: Elapsed time ==> 7s.478ms
+API generation phase: Elapsed time ==> 1s.732ms
+Dependency generation phase: Elapsed time ==> 0s.016ms
+Cleanup phase: Elapsed time ==> 0s.002ms

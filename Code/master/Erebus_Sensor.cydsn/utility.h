@@ -40,7 +40,7 @@
     /* BATT_CHECK_INTERVAL: Number of minutes between battery checks
      * BATT_THRESHOLD:      Trigger level of low-battery warning - reading from ADC */
     #define BATT_CHECK_INTERVAL     1
-    #define BATT_THRESHOLD          1393
+    #define BATT_THRESHOLD          1975
     #define LOWBATT_BLINK_INTERVAL  3
     #define LOWBATT_BLINK_DELAY     100
     

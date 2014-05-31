@@ -31,6 +31,9 @@ uint8 sample_enable_flag = 0;
 uint8 low_power_flag = 0;
 uint8 mem_full_flag = 0;
 
+uint8 stop_collection_enabled = 0;
+uint8 start_collection_enabled = 0;
+
 /* Counters for Events */
 uint8 sample_interrupt_count = 0;
 uint8 battery_check_count = 0;
@@ -85,7 +88,9 @@ int main()
     
     /* Enable Individual Component Interrupts */  
     Vbus_IRQ_Start();
-    StartCollection_IRQ_Start();
+    ModifyCollection_IRQ_Start();
+    start_collection_enabled = 1;
+    
     
     /* Retrieve Full Memory Flag from Flash */
     mem_full_flag = mem_full_flash_flag;
@@ -104,7 +109,6 @@ int main()
     
     for(;;){       
 
-        
         #ifdef SLEEP_EN 
         /* Prepare for sleep */
         RTC_DisableInt();
@@ -117,7 +121,7 @@ int main()
         CyPmRestoreClocks(); 
         RTC_EnableInt();
         #endif
-
+        
         /* Cycle through and check each flag that may have been set while asleep */
         if (USB_waiting){
             LED_PWM_Wakeup();

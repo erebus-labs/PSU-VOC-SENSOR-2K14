@@ -37,16 +37,11 @@
   <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\codegentemp\ADC.h" value="NONE;ADC" />
   <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\codegentemp\ADC_PM.c" value="DP8051_C_FILE;ADC" />
   <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\codegentemp\ADC_INT.c" value="DP8051_C_FILE;ADC" />
-  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\codegentemp\StartCollection_B.c" value="DP8051_C_FILE;StartCollection_B" />
-  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\codegentemp\StartCollection_B.h" value="NONE;StartCollection_B" />
-  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\codegentemp\StartCollection_B_aliases.h" value="NONE;StartCollection_B" />
-  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\codegentemp\StopCollection_B.c" value="DP8051_C_FILE;StopCollection_B" />
-  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\codegentemp\StopCollection_B.h" value="NONE;StopCollection_B" />
-  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\codegentemp\StopCollection_B_aliases.h" value="NONE;StopCollection_B" />
-  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\codegentemp\StopCollection_IRQ.c" value="DP8051_C_FILE;StopCollection_IRQ" />
-  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\codegentemp\StopCollection_IRQ.h" value="NONE;StopCollection_IRQ" />
-  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\codegentemp\StartCollection_IRQ.c" value="DP8051_C_FILE;StartCollection_IRQ" />
-  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\codegentemp\StartCollection_IRQ.h" value="NONE;StartCollection_IRQ" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\codegentemp\ModifyCollection_B.c" value="DP8051_C_FILE;ModifyCollection_B" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\codegentemp\ModifyCollection_B.h" value="NONE;ModifyCollection_B" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\codegentemp\ModifyCollection_B_aliases.h" value="NONE;ModifyCollection_B" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\codegentemp\ModifyCollection_IRQ.c" value="DP8051_C_FILE;ModifyCollection_IRQ" />
+  <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\codegentemp\ModifyCollection_IRQ.h" value="NONE;ModifyCollection_IRQ" />
   <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\codegentemp\USBUART.c" value="DP8051_C_FILE;USBUART" />
   <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\codegentemp\USBUART.h" value="NONE;USBUART" />
   <file name="C:\Users\maxwell18\Documents\GitHub\frack-n-sensor\Code\Master\Erebus_Sensor.cydsn\codegentemp\USBUART_audio.c" value="DP8051_C_FILE;USBUART" />

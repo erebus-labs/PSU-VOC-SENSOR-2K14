@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 15:03:35 PAGE 1   
+C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 21:10:18 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE CYFITTER_CFG
@@ -62,7 +62,7 @@ line level    source
               /*******************************************************************************
               * Function Name: CyClockStartupError
               ********************************************************************************
-C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 15:03:35 PAGE 2   
+C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 21:10:18 PAGE 2   
 
               * Summary:
               *  If an error is encountered during clock configuration (crystal startup error,
@@ -99,20 +99,20 @@ line level    source
               #endif
   87          
   88          #define cfg_byte_table ((const void CYFAR *)0x080000u)
-  89          /* IOPINS0_0 Address: CYREG_PRT0_DR Size (bytes): 10 */
-  90          #define BS_IOPINS0_0_VAL ((const uint8 CYFAR *)0x00080218u)
+  89          /* IOPINS0_0 Address: CYREG_PRT0_DM0 Size (bytes): 8 */
+  90          #define BS_IOPINS0_0_VAL ((const uint8 CYFAR *)0x000801FCu)
   91          
   92          /* IOPINS0_8 Address: CYREG_PRT15_DR Size (bytes): 10 */
-  93          #define BS_IOPINS0_8_VAL ((const uint8 CYFAR *)0x00080224u)
+  93          #define BS_IOPINS0_8_VAL ((const uint8 CYFAR *)0x00080204u)
   94          
   95          /* IOPINS0_1 Address: CYREG_PRT1_DR Size (bytes): 10 */
-  96          #define BS_IOPINS0_1_VAL ((const uint8 CYFAR *)0x00080230u)
+  96          #define BS_IOPINS0_1_VAL ((const uint8 CYFAR *)0x00080210u)
   97          
   98          /* IOPINS0_2 Address: CYREG_PRT2_DR Size (bytes): 10 */
-  99          #define BS_IOPINS0_2_VAL ((const uint8 CYFAR *)0x0008023Cu)
+  99          #define BS_IOPINS0_2_VAL ((const uint8 CYFAR *)0x0008021Cu)
  100          
  101          /* CYDEV_CLKDIST_ACFG0_CFG0 Address: CYREG_CLKDIST_ACFG0_CFG0 Size (bytes): 4 */
- 102          #define BS_CYDEV_CLKDIST_ACFG0_CFG0_VAL ((const uint8 CYFAR *)0x00080248u)
+ 102          #define BS_CYDEV_CLKDIST_ACFG0_CFG0_VAL ((const uint8 CYFAR *)0x00080228u)
  103          
  104          
  105          /*******************************************************************************
@@ -126,7 +126,7 @@ line level    source
  113          *
  114          * Parameters:
  115          *  void
-C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 15:03:35 PAGE 3   
+C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 21:10:18 PAGE 3   
 
  116          *
  117          * Return:
@@ -190,7 +190,7 @@ line level    source
  170   1              CY_SET_REG8((void CYXDATA *)(CYREG_PM_ACT_CFG0), ((CY_GET_REG8((void CYXDATA *)CYREG_PM_ACT_CFG0) | 0x80u
              -)));
  171   1      }
-C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 15:03:35 PAGE 4   
+C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 21:10:18 PAGE 4   
 
  172          
  173          
@@ -218,7 +218,7 @@ line level    source
  195   1              uint8 bg_xover_inl_trim = CY_GET_XTND_REG8((void CYFAR *)(CYREG_FLSHID_MFG_CFG_BG_XOVER_INL_TRIM + 1u));
  196   1              CY_SET_REG8((void CYXDATA *)(CYREG_BG_DFT0), (bg_xover_inl_trim & 0x07u));
  197   1              CY_SET_REG8((void CYXDATA *)(CYREG_BG_DFT1), ((bg_xover_inl_trim >> 4) & 0x0Fu));
- 198   1              CY_SET_REG8((void CYXDATA *)CYREG_DSM0_SW0, 0x50u);
+ 198   1              CY_SET_REG8((void CYXDATA *)CYREG_DSM0_SW0, 0x10u);
  199   1              CY_SET_REG8((void CYXDATA *)CYREG_PUMP_CR0, 0x44u);
  200   1      }
  201          
@@ -254,7 +254,7 @@ line level    source
  231   1              CY_SET_REG8((void CYXDATA *)CYREG_PUMP_CR0, regValue);
  232   1      }
  233          
-C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 15:03:35 PAGE 5   
+C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 21:10:18 PAGE 5   
 
  234          #define CY_AMUX_UNUSED CYREG_BOOST_SR
  235          /* This is an implementation detail of the AMux. Code that depends on it may be
@@ -268,7 +268,7 @@ line level    source
  243             incompatible with other versions of PSoC Creator. */
  244          const uint8 CYCODE ADC_MUX__maskTable[2] = {
  245                  0x01u, 
- 246                  0x04u, 
+ 246                  0x10u, 
  247          };
  248          
  249          /*******************************************************************************
@@ -318,7 +318,7 @@ line level    source
  293             incompatible with other versions of PSoC Creator. */
  294          uint8 CYXDATA * const CYCODE ADC_AMux__addrTable[2] = {
  295                  (uint8 CYXDATA *)CYREG_DSM0_SW3, 
-C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 15:03:35 PAGE 6   
+C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 21:10:18 PAGE 6   
 
  296                  (uint8 CYXDATA *)CY_AMUX_UNUSED, 
  297          };
@@ -382,7 +382,7 @@ line level    source
  355          *  This function is called by the start-up code for the selected device. It
  356          *  performs all of the necessary device configuration based on the design
  357          *  settings.  This includes settings from the Design Wide Resources (DWR) such
-C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 15:03:35 PAGE 7   
+C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 21:10:18 PAGE 7   
 
  358          *  as Clocks and Pins as well as any component configuration that is necessary.
  359          *
@@ -446,9 +446,9 @@ line level    source
  413   1      
  414   1              /* Perform second pass device configuration. These items must be configured in specific order after the r
              -egular configuration is done. */
-C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 15:03:35 PAGE 8   
+C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 21:10:18 PAGE 8   
 
- 415   1              CYCONFIGCPY((void CYFAR *)(CYREG_PRT0_DR), (const void CYFAR *)(BS_IOPINS0_0_VAL), 10u);
+ 415   1              CYCONFIGCPY((void CYFAR *)(CYREG_PRT0_DM0), (const void CYFAR *)(BS_IOPINS0_0_VAL), 8u);
  416   1              CYCONFIGCPY((void CYFAR *)(CYREG_PRT15_DR), (const void CYFAR *)(BS_IOPINS0_8_VAL), 10u);
  417   1              CYCONFIGCPY((void CYFAR *)(CYREG_PRT1_DR), (const void CYFAR *)(BS_IOPINS0_1_VAL), 10u);
  418   1              CYCONFIGCPY((void CYFAR *)(CYREG_PRT2_DR), (const void CYFAR *)(BS_IOPINS0_2_VAL), 10u);
@@ -477,7 +477,7 @@ line level    source
  441   1              CY_SET_REG8((void CYXDATA *)CYREG_PM_STBY_CFG0, CY_GET_REG8((void CYXDATA *)CYREG_PM_STBY_CFG0) & (uint8)
              -~0x02u);        /* Disable CPU */
  442   1      }
-C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 15:03:35 PAGE 9   
+C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 21:10:18 PAGE 9   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -506,7 +506,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 134
 001D 7B08              MOV     R3,#08H
 001F 7A02              MOV     R2,#02H
-0021 7948              MOV     R1,#048H
+0021 7928              MOV     R1,#028H
 0023 C003              PUSH    AR3
 0025 C002              PUSH    AR2
 0027 C001              PUSH    AR1
@@ -541,7 +541,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 005A 904308            MOV     DPTR,#04308H
 005D 7405              MOV     A,#05H
 005F F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 15:03:35 PAGE 10  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 21:10:18 PAGE 10  
 
                                            ; SOURCE LINE # 145
 0060 7FA0              MOV     R7,#0A0H
@@ -605,7 +605,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00C2 7A01              MOV     R2,#01H
 00C4 790F              MOV     R1,#0FH
 00C6 120000      E     LCALL   _cyread8
-C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 15:03:35 PAGE 11  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 21:10:18 PAGE 11  
 
 00C9 9046A1            MOV     DPTR,#046A1H
 00CC EF                MOV     A,R7
@@ -669,7 +669,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 011E 9043A0            MOV     DPTR,#043A0H
 0121 E0                MOVX    A,@DPTR
 0122 FF                MOV     R7,A
-C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 15:03:35 PAGE 12  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 21:10:18 PAGE 12  
 
 0123 EF                MOV     A,R7
 0124 4480              ORL     A,#080H
@@ -719,7 +719,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 002E F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 198
 002F 905B00            MOV     DPTR,#05B00H
-0032 7450              MOV     A,#050H
+0032 7410              MOV     A,#010H
 0034 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 199
 0035 905876            MOV     DPTR,#05876H
@@ -733,7 +733,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION _SetAnalogRoutingPumps (BEGIN)
                                            ; SOURCE LINE # 220
 0000 900000      R     MOV     DPTR,#enabled
-C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 15:03:35 PAGE 13  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 21:10:18 PAGE 13  
 
 0003 EF                MOV     A,R7
 0004 F0                MOVX    @DPTR,A
@@ -797,7 +797,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0004 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 263
                                            ; SOURCE LINE # 264
-C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 15:03:35 PAGE 14  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 21:10:18 PAGE 14  
 
 0005 900000      R     MOV     DPTR,#channel
 0008 E0                MOVX    A,@DPTR
@@ -861,7 +861,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0005 900000      R     MOV     DPTR,#channel
 0008 E0                MOVX    A,@DPTR
 0009 FF                MOV     R7,A
-C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 15:03:35 PAGE 15  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 21:10:18 PAGE 15  
 
 000A EF                MOV     A,R7
 000B C3                CLR     C
@@ -925,7 +925,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0005 900000      R     MOV     DPTR,#channel
 0008 E0                MOVX    A,@DPTR
 0009 FF                MOV     R7,A
-C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 15:03:35 PAGE 16  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 21:10:18 PAGE 16  
 
 000A EF                MOV     A,R7
 000B C3                CLR     C
@@ -989,7 +989,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000A EF                MOV     A,R7
 000B C3                CLR     C
 000C 9402              SUBB    A,#02H
-C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 15:03:35 PAGE 17  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 21:10:18 PAGE 17  
 
 000E 5039              JNC     ?C0016
                                            ; SOURCE LINE # 344
@@ -1053,7 +1053,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000C FD                MOV     R5,A
 000D 7B00              MOV     R3,#00H
 000F 7A46              MOV     R2,#046H
-C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 15:03:35 PAGE 18  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 21:10:18 PAGE 18  
 
 0011 79E8              MOV     R1,#0E8H
 0013 120000      E     LCALL   _cywrite8
@@ -1117,7 +1117,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 006D 7903              MOV     R1,#03H
 006F 120000      E     LCALL   _cyread8
 0072 EF                MOV     A,R7
-C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 15:03:35 PAGE 19  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 21:10:18 PAGE 19  
 
 0073 4402              ORL     A,#02H
 0075 FD                MOV     R5,A
@@ -1160,28 +1160,28 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 412
                                            ; SOURCE LINE # 415
 00B1 7B08              MOV     R3,#08H
-00B3 7A02              MOV     R2,#02H
-00B5 7918              MOV     R1,#018H
+00B3 7A01              MOV     R2,#01H
+00B5 79FC              MOV     R1,#0FCH
 00B7 C003              PUSH    AR3
 00B9 C002              PUSH    AR2
 00BB C001              PUSH    AR1
 00BD 7B00              MOV     R3,#00H
 00BF 7A51              MOV     R2,#051H
-00C1 7900              MOV     R1,#00H
+00C1 7902              MOV     R1,#02H
 00C3 900000      E     MOV     DPTR,#?_cyconfigcpy?BYTE+05H
 00C6 120000      E     LCALL   ?C?PSTXDATA
 00C9 D001              POP     AR1
 00CB D002              POP     AR2
 00CD D003              POP     AR3
-00CF 7F0A              MOV     R7,#0AH
+00CF 7F08              MOV     R7,#08H
 00D1 7E00              MOV     R6,#00H
 00D3 120000      E     LCALL   _cyconfigcpy
                                            ; SOURCE LINE # 416
 00D6 7B08              MOV     R3,#08H
 00D8 7A02              MOV     R2,#02H
-00DA 7924              MOV     R1,#024H
+00DA 7904              MOV     R1,#04H
 00DC C003              PUSH    AR3
-C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 15:03:35 PAGE 20  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 21:10:18 PAGE 20  
 
 00DE C002              PUSH    AR2
 00E0 C001              PUSH    AR1
@@ -1199,7 +1199,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 417
 00FB 7B08              MOV     R3,#08H
 00FD 7A02              MOV     R2,#02H
-00FF 7930              MOV     R1,#030H
+00FF 7910              MOV     R1,#010H
 0101 C003              PUSH    AR3
 0103 C002              PUSH    AR2
 0105 C001              PUSH    AR1
@@ -1217,7 +1217,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 418
 0120 7B08              MOV     R3,#08H
 0122 7A02              MOV     R2,#02H
-0124 793C              MOV     R1,#03CH
+0124 791C              MOV     R1,#01CH
 0126 C003              PUSH    AR3
 0128 C002              PUSH    AR2
 012A C001              PUSH    AR1
@@ -1245,7 +1245,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0153 FF                MOV     R7,A
 0154 904322            MOV     DPTR,#04322H
 0157 EF                MOV     A,R7
-C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 15:03:35 PAGE 21  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 21:10:18 PAGE 21  
 
 0158 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 423
@@ -1309,7 +1309,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
 
 
-C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 15:03:35 PAGE 22  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          05/30/2014 21:10:18 PAGE 22  
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
    CODE SIZE        =   1144    ----

@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 15:03:39 PAGE 1   
+C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 21:10:22 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE USBUART_MIDI
@@ -62,7 +62,7 @@ line level    source
               
               
               
-C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 15:03:39 PAGE 2   
+C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 21:10:22 PAGE 2   
 
               /***************************************
               *  Global variables
@@ -126,7 +126,7 @@ line level    source
               * Parameters:
               *  None
               *
-C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 15:03:39 PAGE 3   
+C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 21:10:22 PAGE 3   
 
               * Return:
               *  None
@@ -190,7 +190,7 @@ line level    source
                   *
                   * Summary:
                   *  Services the USB MIDI OUT endpoints.
-C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 15:03:39 PAGE 4   
+C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 21:10:22 PAGE 4   
 
                   *  This function is called from OUT EP ISR. It transfers the received from PC
                   *  data to the external MIDI port(UART TX buffer) and calls the
@@ -254,7 +254,7 @@ line level    source
                           {
                               /* Suppress compiler warning */
                           }
-C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 15:03:39 PAGE 5   
+C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 21:10:22 PAGE 5   
 
                           if (outLength >= USBUART_EVENT_LENGTH)
                           {
@@ -318,7 +318,7 @@ line level    source
                   *  USBUART_MIDI_IN_Service() and from the
                   *  USBUART_PutUsbMidiIn() function.
                   *
-C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 15:03:39 PAGE 6   
+C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 21:10:22 PAGE 6   
 
                   * Parameters:
                   *  None
@@ -382,7 +382,7 @@ line level    source
                   *
                   * Return:
                   *  None
-C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 15:03:39 PAGE 7   
+C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 21:10:22 PAGE 7   
 
                   *
                   * Global variables:
@@ -446,7 +446,7 @@ line level    source
                   *  should additionally be called to send the message from local buffer to
                   *  IN endpoint.
                   *
-C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 15:03:39 PAGE 8   
+C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 21:10:22 PAGE 8   
 
                   * Parameters:
                   *  ic:   0 = No message (should never happen)
@@ -510,7 +510,7 @@ line level    source
                                   USBUART_PrepareInBuffer(USBUART_MIDI_SYSEX, &midiMsg[msgIndex],
                                                                    USBUART_EVENT_BYTE3, cable);
                                   ic -= USBUART_EVENT_BYTE3;
-C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 15:03:39 PAGE 9   
+C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 21:10:22 PAGE 9   
 
                                   msgIndex += USBUART_EVENT_BYTE3;
                                   if (USBUART_midiInPointer >
@@ -574,7 +574,7 @@ line level    source
                   *  cable: MIDI source port number
                   *
                   * Return:
-C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 15:03:39 PAGE 10  
+C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 21:10:22 PAGE 10  
 
                   *  None
                   *
@@ -638,7 +638,7 @@ line level    source
                           }
                           else
                           {
-C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 15:03:39 PAGE 11  
+C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 21:10:22 PAGE 11  
 
                           }
               
@@ -702,7 +702,7 @@ line level    source
               *  to route USB MIDI data to and from those connections.
               */
               #if (USBUART_MIDI_EXT_MODE >= USBUART_ONE_EXT_INTRF)
-C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 15:03:39 PAGE 12  
+C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 21:10:22 PAGE 12  
 
               
               
@@ -766,7 +766,7 @@ line level    source
                   /*******************************************************************************
                   * Function Name: USBUART_ProcessMidiIn
                   ********************************************************************************
-C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 15:03:39 PAGE 13  
+C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 21:10:22 PAGE 13  
 
                   *
                   * Summary:
@@ -830,7 +830,7 @@ line level    source
                                           rxStat->length = 2u;
                                           break;
                                       case USBUART_MIDI_QFM:
-C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 15:03:39 PAGE 14  
+C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 21:10:22 PAGE 14  
 
                                           rxStat->msgBuff[0u] = USBUART_MIDI_QFM;
                                           rxStat->runstat = 0u;
@@ -894,7 +894,7 @@ line level    source
                               rxStat->msgBuff[rxStat->count] = mData;
                               rxStat->count++;
                               if (rxStat->count >= rxStat->length)
-C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 15:03:39 PAGE 15  
+C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 21:10:22 PAGE 15  
 
                               {
                                   rxStat->size = rxStat->count;
@@ -958,7 +958,7 @@ line level    source
                   *    data.
                   *
                   *******************************************************************************/
-C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 15:03:39 PAGE 16  
+C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 21:10:22 PAGE 16  
 
                   uint8 USBUART_MIDI1_GetEvent(void) 
                   {
@@ -1022,7 +1022,7 @@ line level    source
                                       MIDI1_UART_rxBufferRead = rxBufferRead;
                                       #if ((MIDI1_UART_RXBUFFERSIZE >= 256u) && (CY_PSOC3))
                                           CyIntEnable(MIDI1_UART_RX_VECT_NUM);
-C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 15:03:39 PAGE 17  
+C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 21:10:22 PAGE 17  
 
                                       #endif /* End MIDI1_UART_RXBUFFERSIZE >= 256 */
                                   }
@@ -1086,7 +1086,7 @@ line level    source
               
                       /* `#END` */
               
-C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 15:03:39 PAGE 18  
+C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 21:10:22 PAGE 18  
 
                       cmd = epBuf[USBUART_EVENT_BYTE0] & USBUART_CIN_MASK;
                       if((cmd != USBUART_RESERVED0) && (cmd != USBUART_RESERVED1))
@@ -1150,7 +1150,7 @@ line level    source
                           }
                           /* Puts data into the MIDI TX output buffer.*/
                           do
-C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 15:03:39 PAGE 19  
+C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 21:10:22 PAGE 19  
 
                           {
                               MIDI1_UART_PutChar(epBuf[i]);
@@ -1214,7 +1214,7 @@ line level    source
                           #endif /* End MIDI2_UART_RXBUFFERSIZE >= 256 */
                           rxBufferRead = MIDI2_UART_rxBufferRead;
                           #if ((MIDI2_UART_RXBUFFERSIZE >= 256u) && (CY_PSOC3))
-C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 15:03:39 PAGE 20  
+C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 21:10:22 PAGE 20  
 
                               rxBufferWrite = MIDI2_UART_rxBufferWrite;
                               CyIntEnable(MIDI2_UART_RX_VECT_NUM);
@@ -1278,7 +1278,7 @@ line level    source
                       return (msgRtn);
                   }
               
-C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 15:03:39 PAGE 21  
+C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 21:10:22 PAGE 21  
 
               
                   /*******************************************************************************
@@ -1342,7 +1342,7 @@ line level    source
                           else if(cmd == USBUART_SYSEX_ENDS_WITH2)
                           {
                               USBUART_MIDI2_InqFlags &= (uint8)~USBUART_INQ_SYSEX_FLAG;
-C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 15:03:39 PAGE 22  
+C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 21:10:22 PAGE 22  
 
                           }
                           else if(cmd == USBUART_SYSEX_ENDS_WITH3)
@@ -1406,7 +1406,7 @@ line level    source
 1339          
 1340          
 1341          /* [] END OF FILE */
-C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 15:03:39 PAGE 23  
+C51 COMPILER V9.51   USBUART_MIDI                                                          05/30/2014 21:10:22 PAGE 23  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 

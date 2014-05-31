@@ -67,9 +67,8 @@ void start_collection(){
         goto exit;
     }
     
-    StopCollection_IRQ_Start();
-    StartCollection_IRQ_Stop();
-
+    stop_collection_enabled = 1;
+    start_collection_enabled = 0;
     sample_enable_flag = 1;
     sample_interrupt_count = 0;
 
@@ -106,8 +105,8 @@ void stop_collection(){
  * the interval unit in Flash as a header to the samples.
 */
     
-    StartCollection_IRQ_Start();
-    StopCollection_IRQ_Stop();
+    start_collection_enabled = 1;
+    stop_collection_enabled = 0;
     sample_enable_flag = 0;
     
     return;   

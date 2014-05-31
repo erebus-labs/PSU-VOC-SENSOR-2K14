@@ -24,8 +24,7 @@ void Run_USB(){
     uint8 command = 0;
     
     RTC_WriteIntervalMask(NONE_MASK);
-    StartCollection_IRQ_Stop();
-    StopCollection_IRQ_Stop();
+    ModifyCollection_IRQ_Stop();
     Vbus_IRQ_Stop();
 
     USBUART_Start(0u, USBUART_5V_OPERATION);
@@ -489,7 +488,7 @@ void USB_Close(){
     sampling_setup(); 
     
     /* Re-enter normal operating mode */
-    StartCollection_IRQ_Start();
+    ModifyCollection_IRQ_Start();
     Vbus_IRQ_Start();   
 
     return;
