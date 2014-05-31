@@ -341,6 +341,9 @@ class ErebusGUI(tk.Frame):
                                            int(self.eSettingInterval.get().strip(' ,.'))):
             mb.showerror("", "Settings update failed. Please try again.")
 
+        else:
+            mb.showinfo("", "Settings update successful.")
+
         return
 
     def getData(self):
