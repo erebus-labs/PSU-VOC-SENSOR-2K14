@@ -1,5 +1,5 @@
 -- Project:   Erebus_Sensor
--- Generated: 05/30/2014 21:10:09
+-- Generated: 05/31/2014 14:19:05
 -- 
 
 ENTITY Erebus_Sensor IS
@@ -145,7 +145,7 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     ATTRIBUTE GROUND OF zero : SIGNAL IS true;
     SIGNAL \ClockBlock.aclk_glb_ff_0__sig\ : bit;
     ATTRIBUTE lib_model OF Batt_Monitor(0) : LABEL IS "iocell1";
-    ATTRIBUTE Location OF Batt_Monitor(0) : LABEL IS "P0[4]";
+    ATTRIBUTE Location OF Batt_Monitor(0) : LABEL IS "P0[2]";
     ATTRIBUTE lib_model OF ModifyCollection_B(0) : LABEL IS "iocell2";
     ATTRIBUTE Location OF ModifyCollection_B(0) : LABEL IS "P2[3]";
     ATTRIBUTE lib_model OF ModifyCollection_B(1) : LABEL IS "iocell3";
@@ -162,7 +162,7 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     ATTRIBUTE lib_model OF RGB_LED(2) : LABEL IS "iocell6";
     ATTRIBUTE Location OF RGB_LED(2) : LABEL IS "P2[7]";
     ATTRIBUTE lib_model OF Sensor_In(0) : LABEL IS "iocell7";
-    ATTRIBUTE Location OF Sensor_In(0) : LABEL IS "P0[0]";
+    ATTRIBUTE Location OF Sensor_In(0) : LABEL IS "P0[1]";
     ATTRIBUTE lib_model OF Vbus(0) : LABEL IS "iocell8";
     ATTRIBUTE Location OF Vbus(0) : LABEL IS "P1[7]";
     ATTRIBUTE Location OF \ADC:DSM\ : LABEL IS "F(DSM,0)";

@@ -1,4 +1,4 @@
---------------- Build Started: 05/30/2014 22:29:09 Project: Erebus_Sensor, Configuration: DP8051 Keil 9.51 Debug ---------------
+--------------- Build Started: 05/31/2014 14:21:57 Project: Erebus_Sensor, Configuration: DP8051 Keil 9.51 Debug ---------------
 The code generation step is up to date.
 c51.exe .\main.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\main.lst) CD DB NOIP "OT(0, Size)" "DF (DEBUG)" "INCDIR(., .\Generated_Source\PSoC3)" OJ(.\DP8051\DP8051_Keil_951\Debug\main.obj)
 c51.exe .\USB_handler.c NOIV LARGE MODDP2 OMF2 VB(1) PR(.\DP8051\DP8051_Keil_951\Debug\USB_handler.lst) CD DB NOIP "OT(0, Size)" "DF (DEBUG)" "INCDIR(., .\Generated_Source\PSoC3)" OJ(.\DP8051\DP8051_Keil_951\Debug\USB_handler.obj)
@@ -13,4 +13,4 @@ c8051-elf-omf2elf.exe Erebus_Sensor.omf Erebus_Sensor.elf
 cyhextool -o .\DP8051\DP8051_Keil_951\Debug\Erebus_Sensor.hex -f .\DP8051\DP8051_Keil_951\Debug\Erebus_Sensor.ihx -prot .\Generated_Source\PSoC3\protect.hex -id 1E093069 -a EEPROM=90200000:800,PROGRAM=00000000:10000,CONFIG=80000000:2000,PROTECT=90400000:40 -meta 0301 -cunv 0800C001 -wonv BC90ACAF -ecc .\Generated_Source\PSoC3\config.hex
 Flash used: 61063 of 65536 bytes (93.2 %).
 SRAM used: 1670 of 8192 bytes (20.4 %).
---------------- Build Succeeded: 05/30/2014 22:29:14 ---------------
+--------------- Build Succeeded: 05/31/2014 14:22:28 ---------------

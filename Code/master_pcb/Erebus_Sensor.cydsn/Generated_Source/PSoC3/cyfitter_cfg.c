@@ -195,7 +195,7 @@ static void AnalogSetDefault(void)
 	uint8 bg_xover_inl_trim = CY_GET_XTND_REG8((void CYFAR *)(CYREG_FLSHID_MFG_CFG_BG_XOVER_INL_TRIM + 1u));
 	CY_SET_REG8((void CYXDATA *)(CYREG_BG_DFT0), (bg_xover_inl_trim & 0x07u));
 	CY_SET_REG8((void CYXDATA *)(CYREG_BG_DFT1), ((bg_xover_inl_trim >> 4) & 0x0Fu));
-	CY_SET_REG8((void CYXDATA *)CYREG_DSM0_SW0, 0x10u);
+	CY_SET_REG8((void CYXDATA *)CYREG_DSM0_SW0, 0x60u);
 	CY_SET_REG8((void CYXDATA *)CYREG_PUMP_CR0, 0x44u);
 }
 
@@ -242,8 +242,8 @@ uint8 CYXDATA * const CYCODE ADC_MUX__addrTable[2] = {
 /* This is an implementation detail of the AMux. Code that depends on it may be
    incompatible with other versions of PSoC Creator. */
 const uint8 CYCODE ADC_MUX__maskTable[2] = {
-	0x01u, 
-	0x10u, 
+	0x02u, 
+	0x04u, 
 };
 
 /*******************************************************************************

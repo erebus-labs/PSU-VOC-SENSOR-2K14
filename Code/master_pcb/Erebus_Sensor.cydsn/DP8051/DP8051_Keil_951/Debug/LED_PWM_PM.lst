@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   LED_PWM_PM                                                            05/30/2014 21:10:24 PAGE 1   
+C51 COMPILER V9.51   LED_PWM_PM                                                            05/31/2014 14:02:28 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE LED_PWM_PM
@@ -62,7 +62,7 @@ line level    source
                           LED_PWM_backup.InterruptMaskValue = LED_PWM_STATUS_MASK;
                       #endif /* (LED_PWM_UseStatus) */
   53   1              
-C51 COMPILER V9.51   LED_PWM_PM                                                            05/30/2014 21:10:24 PAGE 2   
+C51 COMPILER V9.51   LED_PWM_PM                                                            05/31/2014 14:02:28 PAGE 2   
 
   54   1              #if(LED_PWM_DeadBandMode == LED_PWM__B_PWM__DBM_256_CLOCKS || \
   55   1                  LED_PWM_DeadBandMode == LED_PWM__B_PWM__DBM_2_4_CLOCKS)
@@ -126,7 +126,7 @@ line level    source
  113          
  114          
  115          /*******************************************************************************
-C51 COMPILER V9.51   LED_PWM_PM                                                            05/30/2014 21:10:24 PAGE 3   
+C51 COMPILER V9.51   LED_PWM_PM                                                            05/31/2014 14:02:28 PAGE 3   
 
  116          * Function Name: LED_PWM_Sleep
  117          ********************************************************************************
@@ -190,7 +190,7 @@ line level    source
  175          *******************************************************************************/
  176          void LED_PWM_Wakeup(void) 
  177          {
-C51 COMPILER V9.51   LED_PWM_PM                                                            05/30/2014 21:10:24 PAGE 4   
+C51 COMPILER V9.51   LED_PWM_PM                                                            05/31/2014 14:02:28 PAGE 4   
 
  178   1           /* Restore registers values */
  179   1          LED_PWM_RestoreConfig();
@@ -205,7 +205,7 @@ line level    source
  188          
  189          
  190          /* [] END OF FILE */
-C51 COMPILER V9.51   LED_PWM_PM                                                            05/30/2014 21:10:24 PAGE 5   
+C51 COMPILER V9.51   LED_PWM_PM                                                            05/31/2014 14:02:28 PAGE 5   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -269,7 +269,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 140
 0009 900000      R     MOV     DPTR,#LED_PWM_backup
 000C 7401              MOV     A,#01H
-C51 COMPILER V9.51   LED_PWM_PM                                                            05/30/2014 21:10:24 PAGE 6   
+C51 COMPILER V9.51   LED_PWM_PM                                                            05/31/2014 14:02:28 PAGE 6   
 
 000E F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 141

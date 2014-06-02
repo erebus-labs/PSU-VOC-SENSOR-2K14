@@ -164,10 +164,10 @@
 #define USBUART_dp_int__INTC_VECT (CYREG_INTC_VECT_MBASE+0x18u)
 
 /* Batt_Monitor */
-#define Batt_Monitor__0__MASK 0x10u
-#define Batt_Monitor__0__PC CYREG_PRT0_PC4
+#define Batt_Monitor__0__MASK 0x04u
+#define Batt_Monitor__0__PC CYREG_PRT0_PC2
 #define Batt_Monitor__0__PORT 0u
-#define Batt_Monitor__0__SHIFT 4
+#define Batt_Monitor__0__SHIFT 2
 #define Batt_Monitor__AG CYREG_PRT0_AG
 #define Batt_Monitor__AMUX CYREG_PRT0_AMUX
 #define Batt_Monitor__BIE CYREG_PRT0_BIE
@@ -181,7 +181,7 @@
 #define Batt_Monitor__INP_DIS CYREG_PRT0_INP_DIS
 #define Batt_Monitor__LCD_COM_SEG CYREG_PRT0_LCD_COM_SEG
 #define Batt_Monitor__LCD_EN CYREG_PRT0_LCD_EN
-#define Batt_Monitor__MASK 0x10u
+#define Batt_Monitor__MASK 0x04u
 #define Batt_Monitor__PORT 0u
 #define Batt_Monitor__PRT CYREG_PRT0_PRT
 #define Batt_Monitor__PRTDSI__CAPS_SEL CYREG_PRT0_CAPS_SEL
@@ -192,7 +192,7 @@
 #define Batt_Monitor__PRTDSI__OUT_SEL1 CYREG_PRT0_OUT_SEL1
 #define Batt_Monitor__PRTDSI__SYNC_OUT CYREG_PRT0_SYNC_OUT
 #define Batt_Monitor__PS CYREG_PRT0_PS
-#define Batt_Monitor__SHIFT 4
+#define Batt_Monitor__SHIFT 2
 #define Batt_Monitor__SLW CYREG_PRT0_SLW
 
 /* USBUART_ep_0 */
@@ -500,10 +500,10 @@
 #define PWM1_CTRL_Sync_ctrl_reg__PER_CTL_AUX_CTL_REG CYREG_B0_UDB13_MSK_ACTL
 
 /* Sensor_In */
-#define Sensor_In__0__MASK 0x01u
-#define Sensor_In__0__PC CYREG_PRT0_PC0
+#define Sensor_In__0__MASK 0x02u
+#define Sensor_In__0__PC CYREG_PRT0_PC1
 #define Sensor_In__0__PORT 0u
-#define Sensor_In__0__SHIFT 0
+#define Sensor_In__0__SHIFT 1
 #define Sensor_In__AG CYREG_PRT0_AG
 #define Sensor_In__AMUX CYREG_PRT0_AMUX
 #define Sensor_In__BIE CYREG_PRT0_BIE
@@ -517,7 +517,7 @@
 #define Sensor_In__INP_DIS CYREG_PRT0_INP_DIS
 #define Sensor_In__LCD_COM_SEG CYREG_PRT0_LCD_COM_SEG
 #define Sensor_In__LCD_EN CYREG_PRT0_LCD_EN
-#define Sensor_In__MASK 0x01u
+#define Sensor_In__MASK 0x02u
 #define Sensor_In__PORT 0u
 #define Sensor_In__PRT CYREG_PRT0_PRT
 #define Sensor_In__PRTDSI__CAPS_SEL CYREG_PRT0_CAPS_SEL
@@ -528,7 +528,7 @@
 #define Sensor_In__PRTDSI__OUT_SEL1 CYREG_PRT0_OUT_SEL1
 #define Sensor_In__PRTDSI__SYNC_OUT CYREG_PRT0_SYNC_OUT
 #define Sensor_In__PS CYREG_PRT0_PS
-#define Sensor_In__SHIFT 0
+#define Sensor_In__SHIFT 1
 #define Sensor_In__SLW CYREG_PRT0_SLW
 
 /* Vbus_IRQ */
