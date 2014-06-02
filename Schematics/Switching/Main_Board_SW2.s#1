@@ -14841,17 +14841,14 @@ Samtec FTSH-105-01-L-DV-K</description>
 <text x="134.62" y="-91.44" size="2.54" layer="94">4/28/2014</text>
 <text x="53.34" y="-43.18" size="1.778" layer="95">D10</text>
 <text x="53.34" y="-45.72" size="1.778" layer="95">RGB</text>
-<text x="26.924" y="-10.16" size="1.778" layer="95">B1</text>
-<text x="26.416" y="0.254" size="1.778" layer="95">B2</text>
+<text x="27.94" y="-10.16" size="1.778" layer="95">B1</text>
+<text x="27.94" y="0" size="1.778" layer="95">B2</text>
 </plain>
 <instances>
 <instance part="U$1" gate="G$1" x="63.5" y="48.26"/>
 <instance part="X2" gate="G$1" x="63.5" y="114.3" rot="R90"/>
 <instance part="ISP" gate="G$1" x="96.52" y="-5.08"/>
-<instance part="R1" gate="G$1" x="116.84" y="25.4" smashed="yes" rot="R90">
-<attribute name="NAME" x="115.5954" y="26.416" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="120.142" y="21.59" size="1.778" layer="96" rot="R90"/>
-</instance>
+<instance part="R1" gate="G$1" x="116.84" y="25.4" rot="R90"/>
 <instance part="C1" gate="G$1" x="78.74" y="-2.54"/>
 <instance part="GND1" gate="1" x="78.74" y="-12.7"/>
 <instance part="GND2" gate="1" x="160.02" y="-25.4"/>
@@ -14869,8 +14866,8 @@ Samtec FTSH-105-01-L-DV-K</description>
 <instance part="GND9" gate="1" x="86.36" y="-12.7"/>
 <instance part="C6" gate="G$1" x="106.68" y="78.74" rot="R180"/>
 <instance part="R4" gate="G$1" x="134.62" y="15.24" smashed="yes" rot="R90">
-<attribute name="NAME" x="134.1374" y="9.144" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="134.112" y="18.034" size="1.778" layer="96" rot="R90"/>
+<attribute name="NAME" x="133.1214" y="11.43" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="130.302" y="11.43" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="Z2" gate="G$1" x="147.32" y="2.54" smashed="yes">
 <attribute name="NAME" x="149.86" y="0" size="1.778" layer="95" rot="R90"/>
@@ -14885,8 +14882,8 @@ Samtec FTSH-105-01-L-DV-K</description>
 <attribute name="VALUE" x="152.4" y="-2.54" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="R6" gate="G$1" x="137.16" y="27.94" smashed="yes" rot="R90">
-<attribute name="NAME" x="136.6774" y="21.336" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="136.652" y="29.972" size="1.778" layer="96" rot="R90"/>
+<attribute name="NAME" x="135.6614" y="24.13" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="140.462" y="24.13" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="R10" gate="G$1" x="165.1" y="-10.16" smashed="yes" rot="R180">
 <attribute name="NAME" x="168.91" y="-11.6586" size="1.778" layer="95" rot="R180"/>
@@ -14927,15 +14924,9 @@ Samtec FTSH-105-01-L-DV-K</description>
 <attribute name="VALUE" x="31.496" y="32.639" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="GND24" gate="1" x="25.4" y="22.86"/>
-<instance part="C17" gate="G$1" x="124.46" y="55.88" smashed="yes" rot="R180">
-<attribute name="NAME" x="122.936" y="55.499" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="118.364" y="58.293" size="1.778" layer="96"/>
-</instance>
+<instance part="C17" gate="G$1" x="124.46" y="55.88" rot="R180"/>
 <instance part="GND25" gate="1" x="124.46" y="50.8"/>
-<instance part="C18" gate="G$1" x="132.08" y="55.88" smashed="yes" rot="R180">
-<attribute name="NAME" x="137.922" y="55.753" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="139.192" y="60.071" size="1.778" layer="96" rot="R180"/>
-</instance>
+<instance part="C18" gate="G$1" x="132.08" y="55.88" rot="R180"/>
 <instance part="GND26" gate="1" x="132.08" y="50.8"/>
 <instance part="Q1" gate="G$1" x="134.62" y="78.74" rot="R90"/>
 <instance part="C19" gate="G$1" x="144.78" y="76.2" rot="R270"/>
@@ -14945,8 +14936,8 @@ Samtec FTSH-105-01-L-DV-K</description>
 </instance>
 <instance part="GND27" gate="1" x="152.4" y="76.2"/>
 <instance part="R5" gate="G$1" x="132.08" y="27.94" smashed="yes" rot="R90">
-<attribute name="NAME" x="131.3434" y="21.082" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="131.572" y="30.48" size="1.778" layer="96" rot="R90"/>
+<attribute name="NAME" x="130.5814" y="24.13" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="127.762" y="24.13" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="X1" gate="G$1" x="165.1" y="7.62"/>
 <instance part="IC3" gate="G$1" x="-33.02" y="33.02"/>
@@ -15079,11 +15070,9 @@ Samtec FTSH-105-01-L-DV-K</description>
 <attribute name="VALUE" x="50.8" y="132.08" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="P+6" gate="1" x="25.4" y="76.2" smashed="yes">
-<attribute name="VALUE" x="27.178" y="78.74" size="1.778" layer="96" rot="R180"/>
+<attribute name="VALUE" x="22.86" y="76.2" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="P+8" gate="1" x="106.68" y="88.9" smashed="yes">
-<attribute name="VALUE" x="108.458" y="91.186" size="1.778" layer="96" rot="R180"/>
-</instance>
+<instance part="P+8" gate="1" x="106.68" y="88.9"/>
 <instance part="+3V1" gate="G$1" x="33.02" y="-38.1"/>
 <instance part="+3V3" gate="G$1" x="25.4" y="38.1" smashed="yes">
 <attribute name="VALUE" x="25.4" y="33.02" size="1.778" layer="96"/>
@@ -15101,25 +15090,19 @@ Samtec FTSH-105-01-L-DV-K</description>
 <instance part="+3V5" gate="G$1" x="96.52" y="129.54" smashed="yes">
 <attribute name="VALUE" x="99.06" y="132.08" size="1.778" layer="96" rot="R180"/>
 </instance>
-<instance part="+3V6" gate="G$1" x="132.08" y="66.04" smashed="yes">
-<attribute name="VALUE" x="134.874" y="68.58" size="1.778" layer="96" rot="R180"/>
-</instance>
-<instance part="+3V7" gate="G$1" x="124.46" y="66.04" smashed="yes">
-<attribute name="VALUE" x="126.492" y="68.072" size="1.778" layer="96" rot="R180"/>
-</instance>
+<instance part="+3V6" gate="G$1" x="132.08" y="66.04"/>
+<instance part="+3V7" gate="G$1" x="124.46" y="66.04"/>
 <instance part="+3V8" gate="G$1" x="109.22" y="58.42"/>
-<instance part="+3V9" gate="G$1" x="116.84" y="33.02" smashed="yes">
-<attribute name="VALUE" x="119.634" y="35.052" size="1.778" layer="96" rot="R180"/>
-</instance>
+<instance part="+3V9" gate="G$1" x="116.84" y="33.02"/>
 <instance part="PE2" gate="M" x="170.18" y="-22.86" smashed="yes">
 <attribute name="VALUE" x="172.72" y="-25.4" size="1.778" layer="96" rot="R180"/>
 </instance>
 <instance part="GND4" gate="1" x="-58.42" y="27.94"/>
 <instance part="+3V12" gate="G$1" x="12.7" y="10.16" smashed="yes">
-<attribute name="VALUE" x="14.986" y="12.192" size="1.778" layer="96" rot="R180"/>
+<attribute name="VALUE" x="10.16" y="5.08" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="+3V13" gate="G$1" x="10.16" y="-7.62" smashed="yes">
-<attribute name="VALUE" x="12.446" y="-5.334" size="1.778" layer="96" rot="R180"/>
+<attribute name="VALUE" x="12.7" y="-10.16" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="GND6" gate="1" x="20.32" y="50.8"/>
 <instance part="GND10" gate="1" x="25.4" y="63.5"/>
