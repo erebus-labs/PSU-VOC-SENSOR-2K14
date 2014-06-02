@@ -1,6 +1,6 @@
 -- ======================================================================
 -- Erebus_Sensor.ctl generated from Erebus_Sensor
--- 05/19/2014 at 16:29
+-- 06/01/2014 at 20:44
 -- This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 -- ======================================================================
 

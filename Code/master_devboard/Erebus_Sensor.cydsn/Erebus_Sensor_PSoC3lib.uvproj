@@ -704,56 +704,6 @@
               <FilePath>.\Generated_Source\PSoC3\ADC_theACLK.h</FilePath>
             </File>
             <File>
-              <FileName>StartCollection_B.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\StartCollection_B.c</FilePath>
-            </File>
-            <File>
-              <FileName>StartCollection_B.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\StartCollection_B.h</FilePath>
-            </File>
-            <File>
-              <FileName>StartCollection_B_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\StartCollection_B_aliases.h</FilePath>
-            </File>
-            <File>
-              <FileName>StopCollection_B.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\StopCollection_B.c</FilePath>
-            </File>
-            <File>
-              <FileName>StopCollection_B.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\StopCollection_B.h</FilePath>
-            </File>
-            <File>
-              <FileName>StopCollection_B_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\StopCollection_B_aliases.h</FilePath>
-            </File>
-            <File>
-              <FileName>StopCollection_IRQ.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\StopCollection_IRQ.c</FilePath>
-            </File>
-            <File>
-              <FileName>StopCollection_IRQ.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\StopCollection_IRQ.h</FilePath>
-            </File>
-            <File>
-              <FileName>StartCollection_IRQ.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\StartCollection_IRQ.c</FilePath>
-            </File>
-            <File>
-              <FileName>StartCollection_IRQ.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\StartCollection_IRQ.h</FilePath>
-            </File>
-            <File>
               <FileName>RTC.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\RTC.c</FilePath>
@@ -877,6 +827,31 @@
               <FileName>Re_EEPROM.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\Re_EEPROM.h</FilePath>
+            </File>
+            <File>
+              <FileName>ModifyCollection_B.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\ModifyCollection_B.c</FilePath>
+            </File>
+            <File>
+              <FileName>ModifyCollection_B.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\ModifyCollection_B.h</FilePath>
+            </File>
+            <File>
+              <FileName>ModifyCollection_B_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\ModifyCollection_B_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>ModifyCollection_IRQ.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\ModifyCollection_IRQ.c</FilePath>
+            </File>
+            <File>
+              <FileName>ModifyCollection_IRQ.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\ModifyCollection_IRQ.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1584,56 +1559,6 @@
               <FilePath>.\Generated_Source\PSoC3\ADC_theACLK.h</FilePath>
             </File>
             <File>
-              <FileName>StartCollection_B.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\StartCollection_B.c</FilePath>
-            </File>
-            <File>
-              <FileName>StartCollection_B.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\StartCollection_B.h</FilePath>
-            </File>
-            <File>
-              <FileName>StartCollection_B_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\StartCollection_B_aliases.h</FilePath>
-            </File>
-            <File>
-              <FileName>StopCollection_B.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\StopCollection_B.c</FilePath>
-            </File>
-            <File>
-              <FileName>StopCollection_B.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\StopCollection_B.h</FilePath>
-            </File>
-            <File>
-              <FileName>StopCollection_B_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\StopCollection_B_aliases.h</FilePath>
-            </File>
-            <File>
-              <FileName>StopCollection_IRQ.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\StopCollection_IRQ.c</FilePath>
-            </File>
-            <File>
-              <FileName>StopCollection_IRQ.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\StopCollection_IRQ.h</FilePath>
-            </File>
-            <File>
-              <FileName>StartCollection_IRQ.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\StartCollection_IRQ.c</FilePath>
-            </File>
-            <File>
-              <FileName>StartCollection_IRQ.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\StartCollection_IRQ.h</FilePath>
-            </File>
-            <File>
               <FileName>RTC.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\RTC.c</FilePath>
@@ -1757,6 +1682,31 @@
               <FileName>Re_EEPROM.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\Re_EEPROM.h</FilePath>
+            </File>
+            <File>
+              <FileName>ModifyCollection_B.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\ModifyCollection_B.c</FilePath>
+            </File>
+            <File>
+              <FileName>ModifyCollection_B.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\ModifyCollection_B.h</FilePath>
+            </File>
+            <File>
+              <FileName>ModifyCollection_B_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\ModifyCollection_B_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>ModifyCollection_IRQ.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\ModifyCollection_IRQ.c</FilePath>
+            </File>
+            <File>
+              <FileName>ModifyCollection_IRQ.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\ModifyCollection_IRQ.h</FilePath>
             </File>
           </Files>
         </Group>

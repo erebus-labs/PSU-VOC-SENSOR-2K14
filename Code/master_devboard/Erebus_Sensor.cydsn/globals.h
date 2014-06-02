@@ -41,6 +41,9 @@
     extern uint8 low_power_flag;
     extern uint8 mem_full_flag;
     
+    extern uint8 stop_collection_enabled;
+    extern uint8 start_collection_enabled;
+    
     /* Counters for Events */
     extern uint8 sample_interrupt_count;
     extern uint8 battery_check_count;

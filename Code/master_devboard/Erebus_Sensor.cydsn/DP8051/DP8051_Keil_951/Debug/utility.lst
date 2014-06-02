@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   UTILITY                                                               05/19/2014 16:33:03 PAGE 1   
+C51 COMPILER V9.51   UTILITY                                                               06/01/2014 20:47:12 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE UTILITY
@@ -24,58 +24,70 @@ line level    source
   13          #include "utility.h"
   14          
   15          uint8 get_EEPROM_variable(uint16 var_index){
-  16   1          uint8 value = 10;
-  17   1          
-  18   1          value = CY_GET_REG8(CYDEV_EE_BASE + var_index);
-  19   1          
-  20   1          return value;
-  21   1      }
-  22          
-  23          void memory_full(){
-  24   1          
-  25   1          mem_full_flag = 1;
-  26   1          Em_EEPROM_Write(&mem_full_flag, &mem_full_flash_flag, sizeof(uint8));
-  27   1      
-  28   1          return;
-  29   1      }
-  30          
-  31          void check_battery(){
-  32   1          uint16 SampledData = 0;
-  33   1          ADC_Wakeup();
-  34   1          ADC_MUX_FastSelect(BATTERY_PIN);
-  35   1          
-  36   1          SampledData = ADC_Read16();
-  37   1          
-  38   1          if (SampledData <= BATT_THRESHOLD){
-  39   2              low_power_flag = 1;
-  40   2          }
-  41   1          else{
-  42   2              low_power_flag = 0;
-  43   2          }
-  44   1          
-  45   1          ADC_Sleep();
-  46   1          ADC_MUX_FastSelect(SAMPLE_PIN);
+  16   1      /*
+  17   1       * Retrieves and returns the EEPROM variable at the given index.
+  18   1      */
+  19   1      
+  20   1          uint8 value = 10;
+  21   1          
+  22   1          value = CY_GET_REG8(CYDEV_EE_BASE + var_index);
+  23   1          
+  24   1          return value;
+  25   1      }
+  26          
+  27          void memory_full(){
+  28   1      /*
+  29   1       * Called when a method attempting to store data in the Flash sample array determines
+  30   1       * that there is no room for more samples or the header to begin a new sample block.
+  31   1      */
+  32   1          
+  33   1          mem_full_flag = 1;
+  34   1          Em_EEPROM_Write(&mem_full_flag, &mem_full_flash_flag, sizeof(uint8));
+  35   1      
+  36   1          return;
+  37   1      }
+  38          
+  39          void check_battery(){
+  40   1      /*
+  41   1       * Checks the voltage level on the battery, sets or clears low-power flags as necessary.
+  42   1      */
+  43   1      
+  44   1          uint16 SampledData = 0;
+  45   1          ADC_Wakeup();
+  46   1          ADC_MUX_FastSelect(BATTERY_PIN);
   47   1          
-  48   1          return;
-  49   1      }
-  50          
-  51          void clear_button_interrupts(){
-  52   1                      
-  53   1          // Clear any pending stop or start interrupts
-C51 COMPILER V9.51   UTILITY                                                               05/19/2014 16:33:03 PAGE 2   
+  48   1          SampledData = ADC_Read16();
+  49   1          
+  50   1          if (SampledData <= BATT_THRESHOLD){
+  51   2              low_power_flag = 1;
+  52   2          }
+  53   1          else{
+C51 COMPILER V9.51   UTILITY                                                               06/01/2014 20:47:12 PAGE 2   
 
-  54   1          StopCollection_B_ClearInterrupt();
-  55   1          StopCollection_IRQ_ClearPending();
-  56   1          stop_sampling_waiting = 0;
-  57   1          StartCollection_B_ClearInterrupt();
-  58   1          StartCollection_IRQ_ClearPending();  
-  59   1          start_sampling_waiting = 0;  
-  60   1          
-  61   1          return;
-  62   1      }
-  63          
-  64          /* [] END OF FILE */
-C51 COMPILER V9.51   UTILITY                                                               05/19/2014 16:33:03 PAGE 3   
+  54   2              low_power_flag = 0;
+  55   2          }
+  56   1          
+  57   1          ADC_Sleep();
+  58   1          ADC_MUX_FastSelect(SAMPLE_PIN);
+  59   1          
+  60   1          return;
+  61   1      }
+  62          
+  63          void clear_button_interrupts(){
+  64   1      /* 
+  65   1       * Clears any pending interrupts or flags from button presses.
+  66   1      */
+  67   1                      
+  68   1          ModifyCollection_B_ClearInterrupt();
+  69   1          ModifyCollection_IRQ_ClearPending();
+  70   1          stop_sampling_waiting = 0; 
+  71   1          start_sampling_waiting = 0;  
+  72   1          
+  73   1          return;
+  74   1      }
+  75          
+  76          /* [] END OF FILE */
+C51 COMPILER V9.51   UTILITY                                                               06/01/2014 20:47:12 PAGE 3   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -88,11 +100,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0005 A3                INC     DPTR
 0006 EF                MOV     A,R7
 0007 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 16
+                                           ; SOURCE LINE # 20
 0008 900000      R     MOV     DPTR,#value
 000B 740A              MOV     A,#0AH
 000D F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 18
+                                           ; SOURCE LINE # 22
 000E 900000      R     MOV     DPTR,#var_index
 0011 E0                MOVX    A,@DPTR
 0012 FE                MOV     R6,A
@@ -112,22 +124,22 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0024 900000      R     MOV     DPTR,#value
 0027 EF                MOV     A,R7
 0028 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 20
+                                           ; SOURCE LINE # 24
 0029 900000      R     MOV     DPTR,#value
 002C E0                MOVX    A,@DPTR
 002D FF                MOV     R7,A
-                                           ; SOURCE LINE # 21
+                                           ; SOURCE LINE # 25
 002E         ?C0001:
 002E 22                RET     
              ; FUNCTION _get_EEPROM_variable (END)
 
              ; FUNCTION memory_full (BEGIN)
-                                           ; SOURCE LINE # 23
-                                           ; SOURCE LINE # 25
+                                           ; SOURCE LINE # 27
+                                           ; SOURCE LINE # 33
 0000 900000      E     MOV     DPTR,#mem_full_flag
 0003 7401              MOV     A,#01H
 0005 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 26
+                                           ; SOURCE LINE # 34
 0006 7B01              MOV     R3,#01H
 0008 7A00        E     MOV     R2,#HIGH mem_full_flag
 000A 7900        E     MOV     R1,#LOW mem_full_flag
@@ -139,7 +151,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0016 7900        E     MOV     R1,#LOW mem_full_flash_flag
 0018 900000      E     MOV     DPTR,#?_Em_EEPROM_Write?BYTE+03H
 001B 120000      E     LCALL   ?C?PSTXDATA
-C51 COMPILER V9.51   UTILITY                                                               05/19/2014 16:33:03 PAGE 4   
+C51 COMPILER V9.51   UTILITY                                                               06/01/2014 20:47:12 PAGE 4   
 
 001E 900000      E     MOV     DPTR,#?_Em_EEPROM_Write?BYTE+06H
 0021 E4                CLR     A
@@ -151,26 +163,26 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0029 D002              POP     AR2
 002B D003              POP     AR3
 002D 120000      E     LCALL   _Em_EEPROM_Write
-                                           ; SOURCE LINE # 29
+                                           ; SOURCE LINE # 37
 0030         ?C0002:
 0030 22                RET     
              ; FUNCTION memory_full (END)
 
              ; FUNCTION check_battery (BEGIN)
-                                           ; SOURCE LINE # 31
-                                           ; SOURCE LINE # 32
+                                           ; SOURCE LINE # 39
+                                           ; SOURCE LINE # 44
 0000 900000      R     MOV     DPTR,#SampledData
 0003 E4                CLR     A
 0004 F0                MOVX    @DPTR,A
 0005 A3                INC     DPTR
 0006 E4                CLR     A
 0007 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 33
+                                           ; SOURCE LINE # 45
 0008 120000      E     LCALL   ADC_Wakeup
-                                           ; SOURCE LINE # 34
+                                           ; SOURCE LINE # 46
 000B 7F01              MOV     R7,#01H
 000D 120000      E     LCALL   _ADC_MUX_FastSelect
-                                           ; SOURCE LINE # 36
+                                           ; SOURCE LINE # 48
 0010 120000      E     LCALL   ADC_Read16
 0013 900000      R     MOV     DPTR,#SampledData
 0016 EE                MOV     A,R6
@@ -178,7 +190,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0018 A3                INC     DPTR
 0019 EF                MOV     A,R7
 001A F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 38
+                                           ; SOURCE LINE # 50
 001B 900000      R     MOV     DPTR,#SampledData
 001E E0                MOVX    A,@DPTR
 001F FE                MOV     R6,A
@@ -187,63 +199,59 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0022 FF                MOV     R7,A
 0023 D3                SETB    C
 0024 EF                MOV     A,R7
-0025 9471              SUBB    A,#071H
+0025 9470              SUBB    A,#070H
 0027 EE                MOV     A,R6
 0028 9405              SUBB    A,#05H
 002A 5008              JNC     ?C0003
-                                           ; SOURCE LINE # 39
+                                           ; SOURCE LINE # 51
 002C 900000      E     MOV     DPTR,#low_power_flag
 002F 7401              MOV     A,#01H
 0031 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 40
+                                           ; SOURCE LINE # 52
 0032 8005              SJMP    ?C0004
 0034         ?C0003:
-                                           ; SOURCE LINE # 41
-                                           ; SOURCE LINE # 42
+                                           ; SOURCE LINE # 53
+                                           ; SOURCE LINE # 54
 0034 900000      E     MOV     DPTR,#low_power_flag
 0037 E4                CLR     A
 0038 F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   UTILITY                                                               05/19/2014 16:33:03 PAGE 5   
+C51 COMPILER V9.51   UTILITY                                                               06/01/2014 20:47:12 PAGE 5   
 
-                                           ; SOURCE LINE # 43
+                                           ; SOURCE LINE # 55
 0039         ?C0004:
-                                           ; SOURCE LINE # 45
+                                           ; SOURCE LINE # 57
 0039 120000      E     LCALL   ADC_Sleep
-                                           ; SOURCE LINE # 46
+                                           ; SOURCE LINE # 58
 003C 7F00              MOV     R7,#00H
 003E 120000      E     LCALL   _ADC_MUX_FastSelect
-                                           ; SOURCE LINE # 49
+                                           ; SOURCE LINE # 61
 0041         ?C0005:
 0041 22                RET     
              ; FUNCTION check_battery (END)
 
              ; FUNCTION clear_button_interrupts (BEGIN)
-                                           ; SOURCE LINE # 51
-                                           ; SOURCE LINE # 54
-0000 120000      E     LCALL   StopCollection_B_ClearInterrupt
-                                           ; SOURCE LINE # 55
-0003 120000      E     LCALL   StopCollection_IRQ_ClearPending
-                                           ; SOURCE LINE # 56
+                                           ; SOURCE LINE # 63
+                                           ; SOURCE LINE # 68
+0000 120000      E     LCALL   ModifyCollection_B_ClearInterrupt
+                                           ; SOURCE LINE # 69
+0003 120000      E     LCALL   ModifyCollection_IRQ_ClearPending
+                                           ; SOURCE LINE # 70
 0006 900000      E     MOV     DPTR,#stop_sampling_waiting
 0009 E4                CLR     A
 000A F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 57
-000B 120000      E     LCALL   StartCollection_B_ClearInterrupt
-                                           ; SOURCE LINE # 58
-000E 120000      E     LCALL   StartCollection_IRQ_ClearPending
-                                           ; SOURCE LINE # 59
-0011 900000      E     MOV     DPTR,#start_sampling_waiting
-0014 E4                CLR     A
-0015 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 62
-0016         ?C0006:
-0016 22                RET     
+                                           ; SOURCE LINE # 71
+000B 900000      E     MOV     DPTR,#start_sampling_waiting
+000E E4                CLR     A
+000F F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 74
+0010         ?C0006:
+0010 22                RET     
              ; FUNCTION clear_button_interrupts (END)
 
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    185    ----
+   CODE SIZE        =    179    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =      5    ----
    PDATA SIZE       =   ----    ----

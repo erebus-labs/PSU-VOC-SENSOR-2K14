@@ -1,6 +1,6 @@
 // ======================================================================
 // Erebus_Sensor.v generated from TopDesign.cysch
-// 05/19/2014 at 16:29
+// 06/01/2014 at 20:44
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -812,12 +812,14 @@ module top ;
           wire  Net_1490;
           wire  Net_1405;
           wire  Net_1478;
+          wire  Net_1525;
+          wire  Net_1524;
+          wire  Net_1664;
+          wire  Net_1634;
+          wire  Net_1632;
     electrical  Net_1602;
     electrical  Net_1603;
     electrical  Net_1593;
-          wire  Net_1541;
-          wire  Net_1532;
-          wire  Net_1531;
           wire  Net_1566;
           wire  Net_1461;
           wire  Net_1462;
@@ -829,9 +831,6 @@ module top ;
           wire  Net_1468;
           wire [1:0] Net_1460;
           wire [1:0] Net_1410;
-          wire  Net_1525;
-          wire  Net_1524;
-          wire  Net_849;
           wire  Net_1415;
           wire  Net_1409;
           wire  Net_1309;
@@ -941,7 +940,7 @@ module top ;
 		  .width(3))
 		RGB_LED
 		 (.oe(tmpOE__RGB_LED_net),
-		  .y({Net_1541, Net_1531, Net_1532}),
+		  .y({Net_1634, Net_1664, Net_1632}),
 		  .fb({tmpFB_2__RGB_LED_net[2:0]}),
 		  .io({tmpIO_2__RGB_LED_net[2:0]}),
 		  .siovref(tmpSIOVREF__RGB_LED_net),
@@ -956,7 +955,7 @@ module top ;
 	assign tmpOE__RGB_LED_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{3'b111} : {3'b111};
 
 
-    assign Net_1541 = Net_1566 | Net_1468 | Net_1467;
+    assign Net_1634 = Net_1566 | Net_1468 | Net_1467;
 
     // -- De Mux start --
     if (1)
@@ -1184,132 +1183,64 @@ module top ;
         .nVref(Net_562),
         .mi(1'b0));
 
-	wire [0:0] tmpOE__StartCollection_B_net;
-	wire [0:0] tmpFB_0__StartCollection_B_net;
-	wire [0:0] tmpIO_0__StartCollection_B_net;
-	electrical [0:0] tmpSIOVREF__StartCollection_B_net;
+	wire [1:0] tmpOE__ModifyCollection_B_net;
+	wire [1:0] tmpFB_1__ModifyCollection_B_net;
+	wire [1:0] tmpIO_1__ModifyCollection_B_net;
+	electrical [0:0] tmpSIOVREF__ModifyCollection_B_net;
 
 	cy_psoc3_pins_v1_10
 		#(.id("7bd73714-fc02-4433-9733-e47f5d6532cc"),
-		  .drive_mode(3'b010),
-		  .ibuf_enabled(1'b1),
-		  .init_dr_st(1'b1),
+		  .drive_mode(6'b011_011),
+		  .ibuf_enabled(2'b1_1),
+		  .init_dr_st(2'b0_0),
 		  .input_clk_en(0),
-		  .input_sync(1'b1),
-		  .input_sync_mode(1'b0),
-		  .intr_mode(2'b10),
+		  .input_sync(2'b1_1),
+		  .input_sync_mode(2'b0_0),
+		  .intr_mode(4'b01_01),
 		  .invert_in_clock(0),
 		  .invert_in_clock_en(0),
 		  .invert_in_reset(0),
 		  .invert_out_clock(0),
 		  .invert_out_clock_en(0),
 		  .invert_out_reset(0),
-		  .io_voltage(""),
+		  .io_voltage(", "),
 		  .layout_mode("CONTIGUOUS"),
-		  .oe_conn(1'b0),
+		  .oe_conn(2'b0_0),
 		  .oe_reset(0),
-		  .oe_sync(1'b0),
+		  .oe_sync(2'b0_0),
 		  .output_clk_en(0),
-		  .output_clock_mode(1'b0),
-		  .output_conn(1'b0),
-		  .output_mode(1'b0),
+		  .output_clock_mode(2'b0_0),
+		  .output_conn(2'b0_0),
+		  .output_mode(2'b0_0),
 		  .output_reset(0),
-		  .output_sync(1'b0),
+		  .output_sync(2'b0_0),
 		  .pa_in_clock(-1),
 		  .pa_in_clock_en(-1),
 		  .pa_in_reset(-1),
 		  .pa_out_clock(-1),
 		  .pa_out_clock_en(-1),
 		  .pa_out_reset(-1),
-		  .pin_aliases(""),
-		  .pin_mode("I"),
+		  .pin_aliases(","),
+		  .pin_mode("II"),
 		  .por_state(4),
-		  .use_annotation(1'b0),
+		  .use_annotation(2'b0_0),
 		  .sio_group_cnt(0),
-		  .sio_hyst(1'b0),
+		  .sio_hyst(2'b0_0),
 		  .sio_ibuf(""),
-		  .sio_info(2'b00),
+		  .sio_info(4'b00_00),
 		  .sio_obuf(""),
 		  .sio_refsel(""),
 		  .sio_vtrip(""),
-		  .slew_rate(1'b0),
+		  .slew_rate(2'b0_0),
 		  .spanning(0),
-		  .vtrip(2'b00),
-		  .width(1))
-		StartCollection_B
-		 (.oe(tmpOE__StartCollection_B_net),
-		  .y({1'b0}),
-		  .fb({tmpFB_0__StartCollection_B_net[0:0]}),
-		  .io({tmpIO_0__StartCollection_B_net[0:0]}),
-		  .siovref(tmpSIOVREF__StartCollection_B_net),
-		  .interrupt({Net_849}),
-		  .in_clock({1'b0}),
-		  .in_clock_en({1'b1}),
-		  .in_reset({1'b0}),
-		  .out_clock({1'b0}),
-		  .out_clock_en({1'b1}),
-		  .out_reset({1'b0}));
-
-	assign tmpOE__StartCollection_B_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
-
-	wire [0:0] tmpOE__StopCollection_B_net;
-	wire [0:0] tmpFB_0__StopCollection_B_net;
-	wire [0:0] tmpIO_0__StopCollection_B_net;
-	electrical [0:0] tmpSIOVREF__StopCollection_B_net;
-
-	cy_psoc3_pins_v1_10
-		#(.id("59f65110-8c59-4596-b9cb-7482b9b42450"),
-		  .drive_mode(3'b010),
-		  .ibuf_enabled(1'b1),
-		  .init_dr_st(1'b1),
-		  .input_clk_en(0),
-		  .input_sync(1'b1),
-		  .input_sync_mode(1'b0),
-		  .intr_mode(2'b10),
-		  .invert_in_clock(0),
-		  .invert_in_clock_en(0),
-		  .invert_in_reset(0),
-		  .invert_out_clock(0),
-		  .invert_out_clock_en(0),
-		  .invert_out_reset(0),
-		  .io_voltage(""),
-		  .layout_mode("CONTIGUOUS"),
-		  .oe_conn(1'b0),
-		  .oe_reset(0),
-		  .oe_sync(1'b0),
-		  .output_clk_en(0),
-		  .output_clock_mode(1'b0),
-		  .output_conn(1'b0),
-		  .output_mode(1'b0),
-		  .output_reset(0),
-		  .output_sync(1'b0),
-		  .pa_in_clock(-1),
-		  .pa_in_clock_en(-1),
-		  .pa_in_reset(-1),
-		  .pa_out_clock(-1),
-		  .pa_out_clock_en(-1),
-		  .pa_out_reset(-1),
-		  .pin_aliases(""),
-		  .pin_mode("I"),
-		  .por_state(4),
-		  .use_annotation(1'b0),
-		  .sio_group_cnt(0),
-		  .sio_hyst(1'b0),
-		  .sio_ibuf(""),
-		  .sio_info(2'b00),
-		  .sio_obuf(""),
-		  .sio_refsel(""),
-		  .sio_vtrip(""),
-		  .slew_rate(1'b0),
-		  .spanning(0),
-		  .vtrip(2'b00),
-		  .width(1))
-		StopCollection_B
-		 (.oe(tmpOE__StopCollection_B_net),
-		  .y({1'b0}),
-		  .fb({tmpFB_0__StopCollection_B_net[0:0]}),
-		  .io({tmpIO_0__StopCollection_B_net[0:0]}),
-		  .siovref(tmpSIOVREF__StopCollection_B_net),
+		  .vtrip(4'b00_00),
+		  .width(2))
+		ModifyCollection_B
+		 (.oe(tmpOE__ModifyCollection_B_net),
+		  .y({2'b0}),
+		  .fb({tmpFB_1__ModifyCollection_B_net[1:0]}),
+		  .io({tmpIO_1__ModifyCollection_B_net[1:0]}),
+		  .siovref(tmpSIOVREF__ModifyCollection_B_net),
 		  .interrupt({Net_1524}),
 		  .in_clock({1'b0}),
 		  .in_clock_en({1'b1}),
@@ -1318,20 +1249,13 @@ module top ;
 		  .out_clock_en({1'b1}),
 		  .out_reset({1'b0}));
 
-	assign tmpOE__StopCollection_B_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+	assign tmpOE__ModifyCollection_B_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{2'b11} : {2'b11};
 
 
 	cy_isr_v1_0
 		#(.int_type(2'b10))
-		StopCollection_IRQ
+		ModifyCollection_IRQ
 		 (.int_signal(Net_1524));
-
-
-
-	cy_isr_v1_0
-		#(.int_type(2'b10))
-		StartCollection_IRQ
-		 (.int_signal(Net_849));
 
 
     USBFS_v2_60_2 USBUART (
@@ -1339,7 +1263,7 @@ module top ;
         .vbusdet(1'b0));
 
 
-    assign Net_1531 = Net_1565 | Net_1479 | Net_1464;
+    assign Net_1664 = Net_1565 | Net_1479 | Net_1464;
 
     CyControlReg_v1_70 PWM1_CTRL (
         .control_1(Net_1500),
@@ -1386,7 +1310,7 @@ module top ;
     defparam LED_PWM.Resolution = 8;
 
 
-    assign Net_1532 = Net_1568 | Net_1462 | Net_1461;
+    assign Net_1632 = Net_1568 | Net_1462 | Net_1461;
 
 
 	cy_clock_v1_0

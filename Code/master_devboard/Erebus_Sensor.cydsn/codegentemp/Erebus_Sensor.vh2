@@ -2,7 +2,7 @@
 --	Conversion of Erebus_Sensor.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Mon May 19 16:29:09 2014
+--	Sun Jun 01 20:45:02 2014
 --
 
 USE cypress.cypress.all;
@@ -27,9 +27,9 @@ SIGNAL Net_1468 : bit;
 SIGNAL tmpOE__RGB_LED_net_2 : bit;
 SIGNAL tmpOE__RGB_LED_net_1 : bit;
 SIGNAL tmpOE__RGB_LED_net_0 : bit;
-SIGNAL Net_1541 : bit;
-SIGNAL Net_1531 : bit;
-SIGNAL Net_1532 : bit;
+SIGNAL Net_1634 : bit;
+SIGNAL Net_1664 : bit;
+SIGNAL Net_1632 : bit;
 SIGNAL tmpFB_2__RGB_LED_net_2 : bit;
 SIGNAL tmpFB_2__RGB_LED_net_1 : bit;
 SIGNAL tmpFB_2__RGB_LED_net_0 : bit;
@@ -131,15 +131,13 @@ SIGNAL \ADC:Net_252\ : bit;
 SIGNAL \ADC:soc\ : bit;
 SIGNAL \ADC:Net_268\ : bit;
 SIGNAL \ADC:Net_270\ : bit;
-SIGNAL tmpOE__StartCollection_B_net_0 : bit;
-SIGNAL tmpFB_0__StartCollection_B_net_0 : bit;
-SIGNAL tmpIO_0__StartCollection_B_net_0 : bit;
-TERMINAL tmpSIOVREF__StartCollection_B_net_0 : bit;
-SIGNAL Net_849 : bit;
-SIGNAL tmpOE__StopCollection_B_net_0 : bit;
-SIGNAL tmpFB_0__StopCollection_B_net_0 : bit;
-SIGNAL tmpIO_0__StopCollection_B_net_0 : bit;
-TERMINAL tmpSIOVREF__StopCollection_B_net_0 : bit;
+SIGNAL tmpOE__ModifyCollection_B_net_1 : bit;
+SIGNAL tmpOE__ModifyCollection_B_net_0 : bit;
+SIGNAL tmpFB_1__ModifyCollection_B_net_1 : bit;
+SIGNAL tmpFB_1__ModifyCollection_B_net_0 : bit;
+SIGNAL tmpIO_1__ModifyCollection_B_net_1 : bit;
+SIGNAL tmpIO_1__ModifyCollection_B_net_0 : bit;
+TERMINAL tmpSIOVREF__ModifyCollection_B_net_0 : bit;
 SIGNAL Net_1524 : bit;
 TERMINAL \USBUART:Net_1000\ : bit;
 TERMINAL \USBUART:Net_597\ : bit;
@@ -587,11 +585,11 @@ zero <=  ('0') ;
 
 tmpOE__RGB_LED_net_2 <=  ('1') ;
 
-Net_1541 <= ((Net_1410_1 and Net_1410_0 and Net_1409)
+Net_1634 <= ((Net_1410_1 and Net_1410_0 and Net_1409)
 	OR (Net_1460_1 and Net_1460_0 and Net_1415)
 	OR Net_1566);
 
-Net_1531 <= ((not Net_1410_0 and Net_1410_1 and Net_1409)
+Net_1664 <= ((not Net_1410_0 and Net_1410_1 and Net_1409)
 	OR (not Net_1460_0 and Net_1460_1 and Net_1415)
 	OR Net_1565);
 
@@ -610,7 +608,7 @@ Net_1531 <= ((not Net_1410_0 and Net_1410_1 and Net_1409)
 
 \LED_PWM:PWMUDB:pwm2_i\ <= ((not \LED_PWM:PWMUDB:cmp2_eq\ and not \LED_PWM:PWMUDB:cmp2_less\ and \LED_PWM:PWMUDB:control_7\));
 
-Net_1532 <= ((not Net_1410_1 and Net_1410_0 and Net_1409)
+Net_1632 <= ((not Net_1410_1 and Net_1410_0 and Net_1409)
 	OR (not Net_1460_1 and Net_1460_0 and Net_1415)
 	OR Net_1568);
 
@@ -672,7 +670,7 @@ RGB_LED:cy_psoc3_pins_v1_10
 		pa_out_clock_en=>-1,
 		pa_out_reset=>-1)
 	PORT MAP(oe=>(tmpOE__RGB_LED_net_2, tmpOE__RGB_LED_net_2, tmpOE__RGB_LED_net_2),
-		y=>(Net_1541, Net_1531, Net_1532),
+		y=>(Net_1634, Net_1664, Net_1632),
 		fb=>(tmpFB_2__RGB_LED_net_2, tmpFB_2__RGB_LED_net_1, tmpFB_2__RGB_LED_net_0),
 		analog=>(open, open, open),
 		io=>(tmpIO_2__RGB_LED_net_2, tmpIO_2__RGB_LED_net_1, tmpIO_2__RGB_LED_net_0),
@@ -932,129 +930,64 @@ Sensor_In:cy_psoc3_pins_v1_10
 		ext_start=>tmpOE__RGB_LED_net_2,
 		mod_reset=>\ADC:mod_reset\,
 		interrupt=>Net_566);
-StartCollection_B:cy_psoc3_pins_v1_10
+ModifyCollection_B:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"7bd73714-fc02-4433-9733-e47f5d6532cc",
-		drive_mode=>"010",
-		ibuf_enabled=>"1",
-		init_dr_st=>"1",
-		input_sync=>"1",
+		drive_mode=>"011011",
+		ibuf_enabled=>"11",
+		init_dr_st=>"00",
+		input_sync=>"11",
 		input_clk_en=>'0',
-		input_sync_mode=>"0",
-		intr_mode=>"10",
+		input_sync_mode=>"00",
+		intr_mode=>"0101",
 		invert_in_clock=>'0',
 		invert_in_clock_en=>'0',
 		invert_in_reset=>'0',
 		invert_out_clock=>'0',
 		invert_out_clock_en=>'0',
 		invert_out_reset=>'0',
-		io_voltage=>"",
+		io_voltage=>", ",
 		layout_mode=>"CONTIGUOUS",
-		output_conn=>"0",
-		output_sync=>"0",
+		output_conn=>"00",
+		output_sync=>"00",
 		output_clk_en=>'0',
-		output_mode=>"0",
+		output_mode=>"00",
 		output_reset=>'0',
-		output_clock_mode=>"0",
-		oe_sync=>"0",
-		oe_conn=>"0",
+		output_clock_mode=>"00",
+		oe_sync=>"00",
+		oe_conn=>"00",
 		oe_reset=>'0',
-		pin_aliases=>"",
-		pin_mode=>"I",
+		pin_aliases=>",",
+		pin_mode=>"II",
 		por_state=>4,
 		sio_group_cnt=>0,
 		sio_hifreq=>"",
-		sio_hyst=>"0",
+		sio_hyst=>"00",
 		sio_ibuf=>"00000000",
-		sio_info=>"00",
+		sio_info=>"0000",
 		sio_obuf=>"00000000",
 		sio_refsel=>"00000000",
 		sio_vtrip=>"00000000",
-		slew_rate=>"0",
+		slew_rate=>"00",
 		spanning=>'0',
 		sw_only=>'0',
-		vtrip=>"00",
-		width=>1,
+		vtrip=>"0000",
+		width=>2,
 		port_alias_required=>'0',
 		port_alias_group=>"",
-		use_annotation=>"0",
+		use_annotation=>"00",
 		pa_in_clock=>-1,
 		pa_in_clock_en=>-1,
 		pa_in_reset=>-1,
 		pa_out_clock=>-1,
 		pa_out_clock_en=>-1,
 		pa_out_reset=>-1)
-	PORT MAP(oe=>(tmpOE__RGB_LED_net_2),
-		y=>(zero),
-		fb=>(tmpFB_0__StartCollection_B_net_0),
-		analog=>(open),
-		io=>(tmpIO_0__StartCollection_B_net_0),
-		siovref=>(tmpSIOVREF__StartCollection_B_net_0),
-		annotation=>(open),
-		in_clock=>zero,
-		in_clock_en=>tmpOE__RGB_LED_net_2,
-		in_reset=>zero,
-		out_clock=>zero,
-		out_clock_en=>tmpOE__RGB_LED_net_2,
-		out_reset=>zero,
-		interrupt=>Net_849);
-StopCollection_B:cy_psoc3_pins_v1_10
-	GENERIC MAP(id=>"59f65110-8c59-4596-b9cb-7482b9b42450",
-		drive_mode=>"010",
-		ibuf_enabled=>"1",
-		init_dr_st=>"1",
-		input_sync=>"1",
-		input_clk_en=>'0',
-		input_sync_mode=>"0",
-		intr_mode=>"10",
-		invert_in_clock=>'0',
-		invert_in_clock_en=>'0',
-		invert_in_reset=>'0',
-		invert_out_clock=>'0',
-		invert_out_clock_en=>'0',
-		invert_out_reset=>'0',
-		io_voltage=>"",
-		layout_mode=>"CONTIGUOUS",
-		output_conn=>"0",
-		output_sync=>"0",
-		output_clk_en=>'0',
-		output_mode=>"0",
-		output_reset=>'0',
-		output_clock_mode=>"0",
-		oe_sync=>"0",
-		oe_conn=>"0",
-		oe_reset=>'0',
-		pin_aliases=>"",
-		pin_mode=>"I",
-		por_state=>4,
-		sio_group_cnt=>0,
-		sio_hifreq=>"",
-		sio_hyst=>"0",
-		sio_ibuf=>"00000000",
-		sio_info=>"00",
-		sio_obuf=>"00000000",
-		sio_refsel=>"00000000",
-		sio_vtrip=>"00000000",
-		slew_rate=>"0",
-		spanning=>'0',
-		sw_only=>'0',
-		vtrip=>"00",
-		width=>1,
-		port_alias_required=>'0',
-		port_alias_group=>"",
-		use_annotation=>"0",
-		pa_in_clock=>-1,
-		pa_in_clock_en=>-1,
-		pa_in_reset=>-1,
-		pa_out_clock=>-1,
-		pa_out_clock_en=>-1,
-		pa_out_reset=>-1)
-	PORT MAP(oe=>(tmpOE__RGB_LED_net_2),
-		y=>(zero),
-		fb=>(tmpFB_0__StopCollection_B_net_0),
-		analog=>(open),
-		io=>(tmpIO_0__StopCollection_B_net_0),
-		siovref=>(tmpSIOVREF__StopCollection_B_net_0),
-		annotation=>(open),
+	PORT MAP(oe=>(tmpOE__RGB_LED_net_2, tmpOE__RGB_LED_net_2),
+		y=>(zero, zero),
+		fb=>(tmpFB_1__ModifyCollection_B_net_1, tmpFB_1__ModifyCollection_B_net_0),
+		analog=>(open, open),
+		io=>(tmpIO_1__ModifyCollection_B_net_1, tmpIO_1__ModifyCollection_B_net_0),
+		siovref=>(tmpSIOVREF__ModifyCollection_B_net_0),
+		annotation=>(open, open),
 		in_clock=>zero,
 		in_clock_en=>tmpOE__RGB_LED_net_2,
 		in_reset=>zero,
@@ -1062,12 +995,9 @@ StopCollection_B:cy_psoc3_pins_v1_10
 		out_clock_en=>tmpOE__RGB_LED_net_2,
 		out_reset=>zero,
 		interrupt=>Net_1524);
-StopCollection_IRQ:cy_isr_v1_0
+ModifyCollection_IRQ:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10")
 	PORT MAP(int_signal=>Net_1524);
-StartCollection_IRQ:cy_isr_v1_0
-	GENERIC MAP(int_type=>"10")
-	PORT MAP(int_signal=>Net_849);
 \USBUART:USB\:cy_psoc3_usb_v1_0
 	GENERIC MAP(cy_registers=>"")
 	PORT MAP(dp=>\USBUART:Net_1000\,

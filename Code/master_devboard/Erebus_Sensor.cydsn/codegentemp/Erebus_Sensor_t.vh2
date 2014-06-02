@@ -1,22 +1,22 @@
--- Project:   C:\Users\Win7_VM\Documents\PSoC Creator\Erebus_Sensor\Erebus_Sensor.cydsn\Erebus_Sensor.cyprj
--- Generated: 05/19/2014 16:29:14
+-- Project:   E:\Capstone\Workspaces\master_devboard\Erebus_Sensor.cydsn\Erebus_Sensor.cyprj
+-- Generated: 06/01/2014 20:45:08
 -- 
 
 ENTITY Erebus_Sensor IS
     PORT(
+        ModifyCollection_B(0)_PAD : IN std_ulogic;
+        ModifyCollection_B(1)_PAD : IN std_ulogic;
         RGB_LED(0)_PAD : OUT std_ulogic;
         RGB_LED(1)_PAD : OUT std_ulogic;
         RGB_LED(2)_PAD : OUT std_ulogic;
-        StartCollection_B(0)_PAD : IN std_ulogic;
-        StopCollection_B(0)_PAD : IN std_ulogic;
         Vbus(0)_PAD : IN std_ulogic);
-    ATTRIBUTE voltage_Vio1 OF __DEFAULT__ : ENTITY IS 5e0;
-    ATTRIBUTE voltage_Vusb OF __DEFAULT__ : ENTITY IS 5e0;
-    ATTRIBUTE voltage_Vddd OF __DEFAULT__ : ENTITY IS 5e0;
-    ATTRIBUTE voltage_Vio3 OF __DEFAULT__ : ENTITY IS 5e0;
+    ATTRIBUTE voltage_Vio1 OF __DEFAULT__ : ENTITY IS 3.3e0;
+    ATTRIBUTE voltage_Vusb OF __DEFAULT__ : ENTITY IS 3.3e0;
+    ATTRIBUTE voltage_Vddd OF __DEFAULT__ : ENTITY IS 3.3e0;
+    ATTRIBUTE voltage_Vio3 OF __DEFAULT__ : ENTITY IS 3.3e0;
     ATTRIBUTE voltage_Vdda OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_Vio0 OF __DEFAULT__ : ENTITY IS 5e0;
-    ATTRIBUTE voltage_Vio2 OF __DEFAULT__ : ENTITY IS 5e0;
+    ATTRIBUTE voltage_Vio2 OF __DEFAULT__ : ENTITY IS 3.3e0;
 END Erebus_Sensor;
 
 ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
@@ -35,35 +35,34 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     SIGNAL ClockBlock_PLL_OUT : bit;
     SIGNAL ClockBlock_XTAL : bit;
     SIGNAL ClockBlock_XTAL_32KHZ : bit;
+    SIGNAL ModifyCollection_B(0)__PA : bit;
+    SIGNAL ModifyCollection_B(1)__PA : bit;
     SIGNAL Net_1347 : bit;
     SIGNAL Net_1409 : bit;
-    ATTRIBUTE placement_force OF Net_1409 : SIGNAL IS "U(2,4,A)2";
+    ATTRIBUTE placement_force OF Net_1409 : SIGNAL IS "U(3,0,A)2";
     SIGNAL Net_1410_0 : bit;
     SIGNAL Net_1410_1 : bit;
     SIGNAL Net_1415 : bit;
-    ATTRIBUTE placement_force OF Net_1415 : SIGNAL IS "U(2,4,A)3";
+    ATTRIBUTE placement_force OF Net_1415 : SIGNAL IS "U(3,0,A)3";
     SIGNAL Net_1460_0 : bit;
     SIGNAL Net_1460_1 : bit;
     SIGNAL Net_1524 : bit;
     SIGNAL Net_1525 : bit;
-    SIGNAL Net_1531 : bit;
-    ATTRIBUTE placement_force OF Net_1531 : SIGNAL IS "U(2,4,A)1";
-    SIGNAL Net_1532 : bit;
-    ATTRIBUTE placement_force OF Net_1532 : SIGNAL IS "U(2,4,B)0";
-    SIGNAL Net_1541 : bit;
-    ATTRIBUTE placement_force OF Net_1541 : SIGNAL IS "U(2,4,A)0";
     SIGNAL Net_1565 : bit;
     SIGNAL Net_1566 : bit;
     SIGNAL Net_1568 : bit;
+    SIGNAL Net_1632 : bit;
+    ATTRIBUTE placement_force OF Net_1632 : SIGNAL IS "U(3,0,A)1";
+    SIGNAL Net_1634 : bit;
+    ATTRIBUTE placement_force OF Net_1634 : SIGNAL IS "U(3,0,A)0";
+    SIGNAL Net_1664 : bit;
+    ATTRIBUTE placement_force OF Net_1664 : SIGNAL IS "U(3,0,B)0";
     SIGNAL Net_566 : bit;
-    SIGNAL Net_849 : bit;
     SIGNAL OPPS_OUT : bit;
     SIGNAL RGB_LED(0)__PA : bit;
     SIGNAL RGB_LED(1)__PA : bit;
     SIGNAL RGB_LED(2)__PA : bit;
     SIGNAL Sensor_In(0)__PA : bit;
-    SIGNAL StartCollection_B(0)__PA : bit;
-    SIGNAL StopCollection_B(0)__PA : bit;
     SIGNAL Vbus(0)__PA : bit;
     SIGNAL \ADC:Net_245_0\ : bit;
     SIGNAL \ADC:Net_245_1\ : bit;
@@ -99,7 +98,7 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     SIGNAL \LED_PWM:PWMUDB:control_6\ : bit;
     SIGNAL \LED_PWM:PWMUDB:control_7\ : bit;
     SIGNAL \LED_PWM:PWMUDB:runmode_enable\ : bit;
-    ATTRIBUTE placement_force OF \LED_PWM:PWMUDB:runmode_enable\ : SIGNAL IS "U(2,4,B)1";
+    ATTRIBUTE placement_force OF \LED_PWM:PWMUDB:runmode_enable\ : SIGNAL IS "U(3,0,B)1";
     SIGNAL \LED_PWM:PWMUDB:tc_i\ : bit;
     SIGNAL \PWM0_CTRL:control_2\ : bit;
     SIGNAL \PWM0_CTRL:control_3\ : bit;
@@ -143,7 +142,7 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     SIGNAL \USBUART:ept_int_7\ : bit;
     SIGNAL \USBUART:ept_int_8\ : bit;
     SIGNAL __ONE__ : bit;
-    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(2,1,B)0";
+    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(3,1,A)0";
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
     SIGNAL __ZERO__ : bit;
     ATTRIBUTE GROUND OF __ZERO__ : SIGNAL IS true;
@@ -153,37 +152,35 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     ATTRIBUTE GROUND OF zero : SIGNAL IS true;
     SIGNAL \ClockBlock.aclk_glb_ff_0__sig\ : bit;
     ATTRIBUTE lib_model OF Batt_Monitor(0) : LABEL IS "iocell1";
-    ATTRIBUTE Location OF Batt_Monitor(0) : LABEL IS "P0[5]";
+    ATTRIBUTE Location OF Batt_Monitor(0) : LABEL IS "P6[6]";
     ATTRIBUTE Location OF ClockBlock : LABEL IS "F(Clock,0)";
-    ATTRIBUTE Location OF ClockBlock_100k__SYNC : LABEL IS "U(2,4)";
-    ATTRIBUTE Location OF ClockBlock_100k__SYNC_1 : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF ClockBlock_100k__SYNC : LABEL IS "U(3,0)";
+    ATTRIBUTE Location OF ClockBlock_100k__SYNC_1 : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF ModifyCollection_B : LABEL IS "F(PICU,7)";
+    ATTRIBUTE lib_model OF ModifyCollection_B(0) : LABEL IS "iocell2";
+    ATTRIBUTE Location OF ModifyCollection_B(0) : LABEL IS "P12[5]";
+    ATTRIBUTE lib_model OF ModifyCollection_B(1) : LABEL IS "iocell3";
+    ATTRIBUTE Location OF ModifyCollection_B(1) : LABEL IS "P12[6]";
+    ATTRIBUTE Location OF ModifyCollection_IRQ : LABEL IS "[IntrHod=(0)][IntrId=(11)]";
     ATTRIBUTE lib_model OF Net_1409 : LABEL IS "macrocell1";
-    ATTRIBUTE Location OF Net_1409 : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF Net_1409 : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF Net_1415 : LABEL IS "macrocell2";
-    ATTRIBUTE Location OF Net_1415 : LABEL IS "U(2,4)";
-    ATTRIBUTE lib_model OF Net_1531 : LABEL IS "macrocell3";
-    ATTRIBUTE Location OF Net_1531 : LABEL IS "U(2,4)";
-    ATTRIBUTE lib_model OF Net_1532 : LABEL IS "macrocell4";
-    ATTRIBUTE Location OF Net_1532 : LABEL IS "U(2,4)";
-    ATTRIBUTE lib_model OF Net_1541 : LABEL IS "macrocell5";
-    ATTRIBUTE Location OF Net_1541 : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF Net_1415 : LABEL IS "U(3,0)";
+    ATTRIBUTE lib_model OF Net_1632 : LABEL IS "macrocell3";
+    ATTRIBUTE Location OF Net_1632 : LABEL IS "U(3,0)";
+    ATTRIBUTE lib_model OF Net_1634 : LABEL IS "macrocell4";
+    ATTRIBUTE Location OF Net_1634 : LABEL IS "U(3,0)";
+    ATTRIBUTE lib_model OF Net_1664 : LABEL IS "macrocell5";
+    ATTRIBUTE Location OF Net_1664 : LABEL IS "U(3,0)";
     ATTRIBUTE Location OF PM : LABEL IS "F(PM,0)";
-    ATTRIBUTE lib_model OF RGB_LED(0) : LABEL IS "iocell2";
-    ATTRIBUTE Location OF RGB_LED(0) : LABEL IS "P0[0]";
-    ATTRIBUTE lib_model OF RGB_LED(1) : LABEL IS "iocell3";
-    ATTRIBUTE Location OF RGB_LED(1) : LABEL IS "P0[1]";
-    ATTRIBUTE lib_model OF RGB_LED(2) : LABEL IS "iocell4";
-    ATTRIBUTE Location OF RGB_LED(2) : LABEL IS "P0[2]";
-    ATTRIBUTE lib_model OF Sensor_In(0) : LABEL IS "iocell5";
-    ATTRIBUTE Location OF Sensor_In(0) : LABEL IS "P0[7]";
-    ATTRIBUTE Location OF StartCollection_B : LABEL IS "F(PICU,3)";
-    ATTRIBUTE lib_model OF StartCollection_B(0) : LABEL IS "iocell6";
-    ATTRIBUTE Location OF StartCollection_B(0) : LABEL IS "P3[0]";
-    ATTRIBUTE Location OF StartCollection_IRQ : LABEL IS "[IntrHod=(0)][IntrId=(7)]";
-    ATTRIBUTE Location OF StopCollection_B : LABEL IS "F(PICU,7)";
-    ATTRIBUTE lib_model OF StopCollection_B(0) : LABEL IS "iocell7";
-    ATTRIBUTE Location OF StopCollection_B(0) : LABEL IS "P12[6]";
-    ATTRIBUTE Location OF StopCollection_IRQ : LABEL IS "[IntrHod=(0)][IntrId=(11)]";
+    ATTRIBUTE lib_model OF RGB_LED(0) : LABEL IS "iocell4";
+    ATTRIBUTE Location OF RGB_LED(0) : LABEL IS "P3[5]";
+    ATTRIBUTE lib_model OF RGB_LED(1) : LABEL IS "iocell5";
+    ATTRIBUTE Location OF RGB_LED(1) : LABEL IS "P3[6]";
+    ATTRIBUTE lib_model OF RGB_LED(2) : LABEL IS "iocell6";
+    ATTRIBUTE Location OF RGB_LED(2) : LABEL IS "P3[7]";
+    ATTRIBUTE lib_model OF Sensor_In(0) : LABEL IS "iocell7";
+    ATTRIBUTE Location OF Sensor_In(0) : LABEL IS "P0[1]";
     ATTRIBUTE Location OF Vbus : LABEL IS "F(PICU,6)";
     ATTRIBUTE lib_model OF Vbus(0) : LABEL IS "iocell8";
     ATTRIBUTE Location OF Vbus(0) : LABEL IS "P6[0]";
@@ -192,18 +189,18 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     ATTRIBUTE Location OF \ADC:DSM\ : LABEL IS "F(DSM,0)";
     ATTRIBUTE Location OF \ADC:IRQ\ : LABEL IS "[IntrHod=(0)][IntrId=(29)]";
     ATTRIBUTE lib_model OF \LED_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell1";
-    ATTRIBUTE Location OF \LED_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \LED_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \LED_PWM:PWMUDB:runmode_enable\ : LABEL IS "macrocell6";
-    ATTRIBUTE Location OF \LED_PWM:PWMUDB:runmode_enable\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \LED_PWM:PWMUDB:runmode_enable\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \LED_PWM:PWMUDB:sP8:pwmdp:u0\ : LABEL IS "datapathcell1";
-    ATTRIBUTE Location OF \LED_PWM:PWMUDB:sP8:pwmdp:u0\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \LED_PWM:PWMUDB:sP8:pwmdp:u0\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \PWM0_CTRL:Sync:ctrl_reg\ : LABEL IS "controlcell2";
-    ATTRIBUTE Location OF \PWM0_CTRL:Sync:ctrl_reg\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \PWM0_CTRL:Sync:ctrl_reg\ : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF \PWM1_CTRL:Sync:ctrl_reg\ : LABEL IS "controlcell3";
-    ATTRIBUTE Location OF \PWM1_CTRL:Sync:ctrl_reg\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \PWM1_CTRL:Sync:ctrl_reg\ : LABEL IS "U(3,1)";
     ATTRIBUTE Location OF \RTC:isr\ : LABEL IS "[IntrHod=(0)][IntrId=(0)]";
     ATTRIBUTE lib_model OF \SOLID_LED_CTRL:Sync:ctrl_reg\ : LABEL IS "controlcell4";
-    ATTRIBUTE Location OF \SOLID_LED_CTRL:Sync:ctrl_reg\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \SOLID_LED_CTRL:Sync:ctrl_reg\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \USBUART:Dm(0)\ : LABEL IS "iocell9";
     ATTRIBUTE Location OF \USBUART:Dm(0)\ : LABEL IS "P15[7]";
     ATTRIBUTE lib_model OF \USBUART:Dp(0)\ : LABEL IS "iocell10";
@@ -219,7 +216,7 @@ ARCHITECTURE __DEFAULT__ OF Erebus_Sensor IS
     ATTRIBUTE Location OF \USBUART:ep_3\ : LABEL IS "[IntrHod=(0)][IntrId=(3)]";
     ATTRIBUTE Location OF \USBUART:sof_int\ : LABEL IS "[IntrHod=(0)][IntrId=(21)]";
     ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell7";
-    ATTRIBUTE Location OF __ONE__ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF __ONE__ : LABEL IS "U(3,1)";
     COMPONENT abufcell
     END COMPONENT;
     COMPONENT boostcell
@@ -1247,6 +1244,119 @@ BEGIN
             clock => ClockBlock_BUS_CLK,
             clk_en => open);
 
+    ModifyCollection_B:logicalport
+        GENERIC MAP(
+            drive_mode => "011011",
+            ibuf_enabled => "11",
+            id => "7bd73714-fc02-4433-9733-e47f5d6532cc",
+            init_dr_st => "00",
+            input_clk_en => 0,
+            input_sync => "11",
+            input_sync_mode => "00",
+            intr_mode => "0101",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => ", ",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "00",
+            oe_reset => 0,
+            oe_sync => "00",
+            output_clk_en => 0,
+            output_clock_mode => "00",
+            output_conn => "00",
+            output_mode => "00",
+            output_reset => 0,
+            output_sync => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => ",",
+            pin_mode => "II",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "",
+            sio_hyst => "00",
+            sio_ibuf => "00000000",
+            sio_info => "0000",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "00",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "00",
+            vtrip => "0000",
+            width => 2,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open,
+            interrupt => Net_1524,
+            in_clock => open);
+
+    ModifyCollection_B(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 2,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "ModifyCollection_B",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+        PORT MAP(
+            pa_out => ModifyCollection_B(0)__PA,
+            oe => open,
+            pad_in => ModifyCollection_B(0)_PAD,
+            in_clock => ClockBlock_BUS_CLK,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    ModifyCollection_B(1):iocell
+        GENERIC MAP(
+            in_sync_mode => 2,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "ModifyCollection_B",
+            logicalport_pin_id => 1,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+        PORT MAP(
+            pa_out => ModifyCollection_B(1)__PA,
+            oe => open,
+            pad_in => ModifyCollection_B(1)_PAD,
+            in_clock => ClockBlock_BUS_CLK,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    ModifyCollection_IRQ:interrupt
+        GENERIC MAP(
+            int_type => "10")
+        PORT MAP(
+            interrupt => Net_1524,
+            clock => ClockBlock_BUS_CLK);
+
     Net_1409:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1)")
@@ -1268,24 +1378,11 @@ BEGIN
             main_1 => \LED_PWM:PWMUDB:cmp2_eq\,
             main_2 => \LED_PWM:PWMUDB:cmp2_less\);
 
-    Net_1531:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0 * !main_1 * main_2) + (main_3 * !main_4 * main_5) + (main_6)")
-        PORT MAP(
-            q => Net_1531,
-            main_0 => Net_1460_1,
-            main_1 => Net_1460_0,
-            main_2 => Net_1415,
-            main_3 => Net_1410_1,
-            main_4 => Net_1410_0,
-            main_5 => Net_1409,
-            main_6 => Net_1565);
-
-    Net_1532:macrocell
+    Net_1632:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * main_1 * main_2) + (!main_3 * main_4 * main_5) + (main_6)")
         PORT MAP(
-            q => Net_1532,
+            q => Net_1632,
             main_0 => Net_1460_1,
             main_1 => Net_1460_0,
             main_2 => Net_1415,
@@ -1294,11 +1391,11 @@ BEGIN
             main_5 => Net_1409,
             main_6 => Net_1568);
 
-    Net_1541:macrocell
+    Net_1634:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * main_2) + (main_3) + (main_4 * main_5 * main_6)")
         PORT MAP(
-            q => Net_1541,
+            q => Net_1634,
             main_0 => Net_1460_1,
             main_1 => Net_1460_0,
             main_2 => Net_1415,
@@ -1306,6 +1403,19 @@ BEGIN
             main_4 => Net_1410_1,
             main_5 => Net_1410_0,
             main_6 => Net_1409);
+
+    Net_1664:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * !main_1 * main_2) + (main_3 * !main_4 * main_5) + (main_6)")
+        PORT MAP(
+            q => Net_1664,
+            main_0 => Net_1460_1,
+            main_1 => Net_1460_0,
+            main_2 => Net_1415,
+            main_3 => Net_1410_1,
+            main_4 => Net_1410_0,
+            main_5 => Net_1409,
+            main_6 => Net_1565);
 
     PM:pmcell
         PORT MAP(
@@ -1388,7 +1498,7 @@ BEGIN
         PORT MAP(
             pa_out => RGB_LED(0)__PA,
             oe => open,
-            pin_input => Net_1532,
+            pin_input => Net_1632,
             pad_out => RGB_LED(0)_PAD,
             pad_in => RGB_LED(0)_PAD,
             in_clock => open,
@@ -1409,7 +1519,7 @@ BEGIN
         PORT MAP(
             pa_out => RGB_LED(1)__PA,
             oe => open,
-            pin_input => Net_1531,
+            pin_input => Net_1664,
             pad_out => RGB_LED(1)_PAD,
             pad_in => RGB_LED(1)_PAD,
             in_clock => open,
@@ -1430,7 +1540,7 @@ BEGIN
         PORT MAP(
             pa_out => RGB_LED(2)__PA,
             oe => open,
-            pin_input => Net_1541,
+            pin_input => Net_1634,
             pad_out => RGB_LED(2)_PAD,
             pad_in => RGB_LED(2)_PAD,
             in_clock => open,
@@ -1523,194 +1633,6 @@ BEGIN
             out_clock => open,
             out_clock_en => '1',
             out_reset => '0');
-
-    StartCollection_B:logicalport
-        GENERIC MAP(
-            drive_mode => "010",
-            ibuf_enabled => "1",
-            id => "7bd73714-fc02-4433-9733-e47f5d6532cc",
-            init_dr_st => "1",
-            input_clk_en => 0,
-            input_sync => "1",
-            input_sync_mode => "0",
-            intr_mode => "10",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "CONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "0",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "I",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "",
-            sio_hyst => "0",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 0,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "00",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open,
-            interrupt => Net_849,
-            in_clock => open);
-
-    StartCollection_B(0):iocell
-        GENERIC MAP(
-            in_sync_mode => 2,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "StartCollection_B",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
-        PORT MAP(
-            pa_out => StartCollection_B(0)__PA,
-            oe => open,
-            pad_in => StartCollection_B(0)_PAD,
-            in_clock => ClockBlock_BUS_CLK,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
-
-    StartCollection_IRQ:interrupt
-        GENERIC MAP(
-            int_type => "10")
-        PORT MAP(
-            interrupt => Net_849,
-            clock => ClockBlock_BUS_CLK);
-
-    StopCollection_B:logicalport
-        GENERIC MAP(
-            drive_mode => "010",
-            ibuf_enabled => "1",
-            id => "59f65110-8c59-4596-b9cb-7482b9b42450",
-            init_dr_st => "1",
-            input_clk_en => 0,
-            input_sync => "1",
-            input_sync_mode => "0",
-            intr_mode => "10",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "CONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "0",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "I",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "",
-            sio_hyst => "0",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 0,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "00",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open,
-            interrupt => Net_1524,
-            in_clock => open);
-
-    StopCollection_B(0):iocell
-        GENERIC MAP(
-            in_sync_mode => 2,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "StopCollection_B",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
-        PORT MAP(
-            pa_out => StopCollection_B(0)__PA,
-            oe => open,
-            pad_in => StopCollection_B(0)_PAD,
-            in_clock => ClockBlock_BUS_CLK,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
-
-    StopCollection_IRQ:interrupt
-        GENERIC MAP(
-            int_type => "10")
-        PORT MAP(
-            interrupt => Net_1524,
-            clock => ClockBlock_BUS_CLK);
 
     Vbus:logicalport
         GENERIC MAP(

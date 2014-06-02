@@ -31,12 +31,9 @@
 #include <Sensor_In.h>
 #include <Sensor_In_aliases.h>
 #include <ADC.h>
-#include <StartCollection_B.h>
-#include <StartCollection_B_aliases.h>
-#include <StopCollection_B.h>
-#include <StopCollection_B_aliases.h>
-#include <StopCollection_IRQ.h>
-#include <StartCollection_IRQ.h>
+#include <ModifyCollection_B.h>
+#include <ModifyCollection_B_aliases.h>
+#include <ModifyCollection_IRQ.h>
 #include <USBUART.h>
 #include <USBUART_audio.h>
 #include <USBUART_cdc.h>

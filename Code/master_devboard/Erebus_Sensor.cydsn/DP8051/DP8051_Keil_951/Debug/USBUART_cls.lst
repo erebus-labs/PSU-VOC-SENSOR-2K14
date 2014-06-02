@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   USBUART_CLS                                                           05/19/2014 15:47:21 PAGE 1   
+C51 COMPILER V9.51   USBUART_CLS                                                           06/01/2014 20:47:31 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE USBUART_CLS
@@ -62,7 +62,7 @@ line level    source
   51   1          uint8 interfaceNumber = 0u;
   52   1      
   53   1          switch(CY_GET_REG8(USBUART_bmRequestType) & USBUART_RQST_RCPT_MASK)
-C51 COMPILER V9.51   USBUART_CLS                                                           05/19/2014 15:47:21 PAGE 2   
+C51 COMPILER V9.51   USBUART_CLS                                                           06/01/2014 20:47:31 PAGE 2   
 
   54   1          {
   55   2              case USBUART_RQST_RCPT_IFC:        /* Class-specific request directed to an interface */
@@ -118,7 +118,7 @@ line level    source
  105          
  106          
  107          /* [] END OF FILE */
-C51 COMPILER V9.51   USBUART_CLS                                                           05/19/2014 15:47:21 PAGE 3   
+C51 COMPILER V9.51   USBUART_CLS                                                           06/01/2014 20:47:31 PAGE 3   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -182,7 +182,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0045 FF                MOV     R7,A
 0046 900000      R     MOV     DPTR,#interfaceNumber
 0049 EF                MOV     A,R7
-C51 COMPILER V9.51   USBUART_CLS                                                           05/19/2014 15:47:21 PAGE 4   
+C51 COMPILER V9.51   USBUART_CLS                                                           06/01/2014 20:47:31 PAGE 4   
 
 004A F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 62
@@ -246,7 +246,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0086         ?C0005:
                                            ; SOURCE LINE # 92
 0086 900000      R     MOV     DPTR,#requestHandled
-C51 COMPILER V9.51   USBUART_CLS                                                           05/19/2014 15:47:21 PAGE 5   
+C51 COMPILER V9.51   USBUART_CLS                                                           06/01/2014 20:47:31 PAGE 5   
 
 0089 E0                MOVX    A,@DPTR
 008A FF                MOV     R7,A

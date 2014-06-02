@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   STOPCOLLECTION_B                                                      05/19/2014 15:47:24 PAGE 1   
+C51 COMPILER V9.51   STOPCOLLECTION_B                                                      05/30/2014 20:29:49 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE STOPCOLLECTION_B
@@ -62,7 +62,7 @@ line level    source
   50          *  mode:  Change the pins to this drive mode.
   51          *
   52          * Return: 
-C51 COMPILER V9.51   STOPCOLLECTION_B                                                      05/19/2014 15:47:24 PAGE 2   
+C51 COMPILER V9.51   STOPCOLLECTION_B                                                      05/30/2014 20:29:49 PAGE 2   
 
   53          *  None
   54          *
@@ -126,7 +126,7 @@ line level    source
  112              *
  113              * Summary:
  114              *  Clears any active interrupts attached to port and returns the value of the 
-C51 COMPILER V9.51   STOPCOLLECTION_B                                                      05/19/2014 15:47:24 PAGE 3   
+C51 COMPILER V9.51   STOPCOLLECTION_B                                                      05/30/2014 20:29:49 PAGE 3   
 
  115              *  interrupt status register.
  116              *
@@ -146,7 +146,7 @@ line level    source
  130          
  131          
  132          /* [] END OF FILE */
-C51 COMPILER V9.51   STOPCOLLECTION_B                                                      05/19/2014 15:47:24 PAGE 4   
+C51 COMPILER V9.51   STOPCOLLECTION_B                                                      05/30/2014 20:29:49 PAGE 4   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -158,11 +158,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0004 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 36
                                            ; SOURCE LINE # 37
-0005 9051C0            MOV     DPTR,#051C0H
+0005 905100            MOV     DPTR,#05100H
 0008 E0                MOVX    A,@DPTR
 0009 FF                MOV     R7,A
 000A EF                MOV     A,R7
-000B 54BF              ANL     A,#0BFH
+000B 54FD              ANL     A,#0FDH
 000D FF                MOV     R7,A
 000E 900000      R     MOV     DPTR,#staticBits
 0011 EF                MOV     A,R7
@@ -172,26 +172,23 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0016 E0                MOVX    A,@DPTR
 0017 FF                MOV     R7,A
 0018 EF                MOV     A,R7
-0019 C4                SWAP    A
-001A 33                RLC     A
-001B 33                RLC     A
-001C 54C0              ANL     A,#0C0H
-001E FF                MOV     R7,A
-001F EF                MOV     A,R7
-0020 5440              ANL     A,#040H
-0022 FF                MOV     R7,A
-0023 900000      R     MOV     DPTR,#staticBits
-0026 E0                MOVX    A,@DPTR
-0027 FE                MOV     R6,A
-0028 EF                MOV     A,R7
-0029 4E                ORL     A,R6
-002A FF                MOV     R7,A
-002B 9051C0            MOV     DPTR,#051C0H
-002E EF                MOV     A,R7
-002F F0                MOVX    @DPTR,A
+0019 25E0              ADD     A,ACC
+001B FF                MOV     R7,A
+001C EF                MOV     A,R7
+001D 5402              ANL     A,#02H
+001F FF                MOV     R7,A
+0020 900000      R     MOV     DPTR,#staticBits
+0023 E0                MOVX    A,@DPTR
+0024 FE                MOV     R6,A
+0025 EF                MOV     A,R7
+0026 4E                ORL     A,R6
+0027 FF                MOV     R7,A
+0028 905100            MOV     DPTR,#05100H
+002B EF                MOV     A,R7
+002C F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 39
-0030         ?C0001:
-0030 22                RET     
+002D         ?C0001:
+002D 22                RET     
              ; FUNCTION _StopCollection_B_Write (END)
 
              ; FUNCTION _StopCollection_B_SetDriveMode (BEGIN)
@@ -207,18 +204,18 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000A EF                MOV     A,R7
 000B 540E              ANL     A,#0EH
 000D FF                MOV     R7,A
-000E 905066            MOV     DPTR,#05066H
+000E 905001            MOV     DPTR,#05001H
 0011 E0                MOVX    A,@DPTR
 0012 FE                MOV     R6,A
-C51 COMPILER V9.51   STOPCOLLECTION_B                                                      05/19/2014 15:47:24 PAGE 5   
-
 0013 EE                MOV     A,R6
 0014 54F1              ANL     A,#0F1H
 0016 FE                MOV     R6,A
+C51 COMPILER V9.51   STOPCOLLECTION_B                                                      05/30/2014 20:29:49 PAGE 5   
+
 0017 EE                MOV     A,R6
 0018 4F                ORL     A,R7
 0019 FF                MOV     R7,A
-001A 905066            MOV     DPTR,#05066H
+001A 905001            MOV     DPTR,#05001H
 001D EF                MOV     A,R7
 001E F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 59
@@ -230,86 +227,77 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 80
                                            ; SOURCE LINE # 81
                                            ; SOURCE LINE # 82
-0000 9051C1            MOV     DPTR,#051C1H
+0000 905101            MOV     DPTR,#05101H
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
 0005 EF                MOV     A,R7
-0006 5440              ANL     A,#040H
+0006 5402              ANL     A,#02H
 0008 FF                MOV     R7,A
 0009 7E00              MOV     R6,#00H
-000B EF                MOV     A,R7
-000C 7806              MOV     R0,#06H
-000E         ?C0006:
-000E CE                XCH     A,R6
-000F C3                CLR     C
+000B EE                MOV     A,R6
+000C C3                CLR     C
+000D 13                RRC     A
+000E FE                MOV     R6,A
+000F EF                MOV     A,R7
 0010 13                RRC     A
-0011 CE                XCH     A,R6
-0012 13                RRC     A
-0013 D8F9              DJNZ    R0,?C0006
-0015 FF                MOV     R7,A
+0011 FF                MOV     R7,A
                                            ; SOURCE LINE # 83
-0016         ?C0003:
-0016 22                RET     
+0012         ?C0003:
+0012 22                RET     
              ; FUNCTION StopCollection_B_Read (END)
 
              ; FUNCTION StopCollection_B_ReadDataReg (BEGIN)
                                            ; SOURCE LINE # 100
                                            ; SOURCE LINE # 101
                                            ; SOURCE LINE # 102
-0000 9051C0            MOV     DPTR,#051C0H
+0000 905100            MOV     DPTR,#05100H
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
 0005 EF                MOV     A,R7
-0006 5440              ANL     A,#040H
+0006 5402              ANL     A,#02H
 0008 FF                MOV     R7,A
 0009 7E00              MOV     R6,#00H
-000B EF                MOV     A,R7
-000C 7806              MOV     R0,#06H
-000E         ?C0007:
-000E CE                XCH     A,R6
-000F C3                CLR     C
+000B EE                MOV     A,R6
+000C C3                CLR     C
+000D 13                RRC     A
+000E FE                MOV     R6,A
+000F EF                MOV     A,R7
 0010 13                RRC     A
-0011 CE                XCH     A,R6
-0012 13                RRC     A
-0013 D8F9              DJNZ    R0,?C0007
-0015 FF                MOV     R7,A
+0011 FF                MOV     R7,A
                                            ; SOURCE LINE # 103
-C51 COMPILER V9.51   STOPCOLLECTION_B                                                      05/19/2014 15:47:24 PAGE 6   
-
-0016         ?C0004:
-0016 22                RET     
+0012         ?C0004:
+0012 22                RET     
              ; FUNCTION StopCollection_B_ReadDataReg (END)
 
              ; FUNCTION StopCollection_B_ClearInterrupt (BEGIN)
                                            ; SOURCE LINE # 124
                                            ; SOURCE LINE # 125
                                            ; SOURCE LINE # 126
-0000 90458C            MOV     DPTR,#0458CH
+0000 904580            MOV     DPTR,#04580H
+C51 COMPILER V9.51   STOPCOLLECTION_B                                                      05/30/2014 20:29:49 PAGE 6   
+
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
 0005 EF                MOV     A,R7
-0006 5440              ANL     A,#040H
+0006 5402              ANL     A,#02H
 0008 FF                MOV     R7,A
 0009 7E00              MOV     R6,#00H
-000B EF                MOV     A,R7
-000C 7806              MOV     R0,#06H
-000E         ?C0008:
-000E CE                XCH     A,R6
-000F C3                CLR     C
+000B EE                MOV     A,R6
+000C C3                CLR     C
+000D 13                RRC     A
+000E FE                MOV     R6,A
+000F EF                MOV     A,R7
 0010 13                RRC     A
-0011 CE                XCH     A,R6
-0012 13                RRC     A
-0013 D8F9              DJNZ    R0,?C0008
-0015 FF                MOV     R7,A
+0011 FF                MOV     R7,A
                                            ; SOURCE LINE # 127
-0016         ?C0005:
-0016 22                RET     
+0012         ?C0005:
+0012 22                RET     
              ; FUNCTION StopCollection_B_ClearInterrupt (END)
 
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    150    ----
+   CODE SIZE        =    135    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =      3    ----
    PDATA SIZE       =   ----    ----

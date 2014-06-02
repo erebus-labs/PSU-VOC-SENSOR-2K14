@@ -65,11 +65,9 @@ void clear_button_interrupts(){
  * Clears any pending interrupts or flags from button presses.
 */
                 
-    StopCollection_B_ClearInterrupt();
-    StopCollection_IRQ_ClearPending();
-    stop_sampling_waiting = 0;
-    StartCollection_B_ClearInterrupt();
-    StartCollection_IRQ_ClearPending();  
+    ModifyCollection_B_ClearInterrupt();
+    ModifyCollection_IRQ_ClearPending();
+    stop_sampling_waiting = 0; 
     start_sampling_waiting = 0;  
     
     return;
