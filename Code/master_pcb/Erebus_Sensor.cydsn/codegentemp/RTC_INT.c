@@ -54,13 +54,7 @@ static void RTC_EverySecondHandler(void)
 {
     /*  Place your every second handler code here. */
     /* `#START EVERY_SECOND_HANDLER_CODE` */
-    
-    ++battery_check_count;
-    if (battery_check_count == BATT_CHECK_INTERVAL){
-        battery_check_count = 0;
-        battery_check_waiting = 1;
-    }
-    
+       
     if (mem_full_flag){
         return;
     }

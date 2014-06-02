@@ -25,10 +25,9 @@
 *  Place your includes, defines and code here 
 ********************************************************************************/
 /* `#START ModifyCollection_IRQ_intc` */
+
     #include "globals.h"
-    
-    #define START_COLLECTION    0x10
-    #define STOP_COLLECTION     0x08
+    #include "sample_handler.h"
 
 /* `#END` */
 
@@ -137,7 +136,7 @@ CY_ISR(ModifyCollection_IRQ_Interrupt)
     
     uint8 reg_value = 0;
     
-    reg_value = CY_GET_REG8(CYREG_PICU2_INTSTAT);
+    reg_value = CY_GET_REG8(BUTTON_PICU_REG);
     
     if (start_collection_enabled && (reg_value & START_COLLECTION)){
         start_sampling_waiting = 1;

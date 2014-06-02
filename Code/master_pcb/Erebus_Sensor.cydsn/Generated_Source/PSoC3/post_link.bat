@@ -17,5 +17,5 @@ move "%~1\%~2\%~n3.hex" "%~1\%~2\%~n3.ihx"
 @IF %errorlevel% NEQ 0 EXIT /b %errorlevel% 
 CD /D "C:\Keil\UV4"
 @IF %errorlevel% NEQ 0 EXIT /b %errorlevel% 
-IF NOT EXIST "E:\Capstone\Workspaces\temp\Erebus_Sensor.cydsn\Erebus_Sensor.svd" rem "E:\Capstone\Workspaces\temp\Erebus_Sensor.cydsn\Erebus_Sensor.sfr"
+IF NOT EXIST "E:\Capstone\Workspaces\master_pcb\Erebus_Sensor.cydsn\Erebus_Sensor.svd" rem "E:\Capstone\Workspaces\master_pcb\Erebus_Sensor.cydsn\Erebus_Sensor.sfr"
 @IF %errorlevel% NEQ 0 EXIT /b %errorlevel% 
