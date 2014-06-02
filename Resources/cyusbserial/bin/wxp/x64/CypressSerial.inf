@@ -1,0 +1,83 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Installation INF for the Cypress VIRTUAL COM Driver  			;;
+;;									     	;;
+;; (c) Copyright 2012 Cypress Semiconductor Corporation			     	;;
+;;										;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+[version]
+signature="$Windows NT$"
+Class=Ports
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
+Provider=%Cypress%
+catalogfile=CypressSerial.cat
+DriverVer=09/04/2013,3.13.0.21
+
+[SourceDisksNames]
+1=%Cypress.Disk%,,,
+
+[ControlFlags]
+
+[SourceDisksFiles]
+CypressUsbConsoleWindowsDriver64.sys=1
+CyAdvSettings.dll=1
+
+[DestinationDirs]
+DefaultDestDir=12
+CopyAdvSettingsFiles=10,System32
+
+[Manufacturer]
+%Cypress%=Cypress,NTamd64
+
+[Cypress.NTamd64]
+%CypressSerial% = CypressSerial.NTamd64, {FFEC7336-10CD-41CF-BF82-5EEF9AAA1B64}\VirtualCOM
+
+;****************** Class Sections *********************************
+[CypressSerial.NTamd64]
+CopyFiles = CopyFileSection,CopyAdvSettingsFiles
+AddReg = CypressSerialAddReg
+
+[CypressSerial.NTamd64.HW]
+AddReg = CypressSerial.NTamd64.HW.AddReg
+
+[CypressSerial.NTamd64.HW.AddReg]
+HKR,,"UpperFilters",0x00010000,"serenum"
+
+[CypressSerialAddReg]
+HKR,,PortSubClass,1,01
+HKR,,EnumPropPages32,,"CyAdvSettings.dll,SerialPortPropPageProvider"
+
+[CypressSerial.NTamd64.Services]
+AddService = CypressSerial, 0x00000002, CypressSerial_Service_Inst_64
+AddService = Serenum,,SerEnum_AddService64
+
+[CypressSerial_Service_Inst_64]
+DisplayName = %CypressSerial%
+ServiceType = 1
+StartType = 3
+ErrorControl = 0
+ServiceBinary = %12%\CypressUsbConsoleWindowsDriver64.sys
+
+[CopyAdvSettingsFiles]
+CyAdvSettings.dll
+
+[CopyFileSection]
+CypressUsbConsoleWindowsDriver64.sys
+
+; -------------- Serenum Driver install section
+[SerEnum_AddService64]
+DisplayName    = %SerEnumServices%
+ServiceType    = 1 ; SERVICE_KERNEL_DRIVER
+StartType      = 3 ; SERVICE_DEMAND_START
+ErrorControl   = 1 ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\serenum.sys
+LoadOrderGroup = PNP Filter
+
+[Strings]
+Cypress = "Cypress"
+Cypress.Disk="Cypress Disk"
+DeviceDesc = "Virtual COM Port"
+CypressSerial = "USB Serial Port"
+SerEnumServices = "Microsoft SerEnum Services"
+
