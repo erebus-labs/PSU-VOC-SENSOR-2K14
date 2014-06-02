@@ -43,6 +43,11 @@
     #define SAMPLE_SHIFT        4
     #define SAMPLE_MASK         0x0FFF
     
+    /* Button Masks */
+    #define START_COLLECTION    0x10
+    #define STOP_COLLECTION     0x08
+    #define BUTTON_PICU_REG     CYREG_PICU2_INTSTAT
+    
     /* RTC Periodic Interrupt Masks */    
     #define NONE_MASK   0x00u
     #define SECOND_MASK 0x01u
