@@ -13,6 +13,7 @@ import tkinter.messagebox as mb
 import time
 import copy
 from datetime import datetime
+import subprocess
 
 # Project Imports
 import erebus_sensor.interface as interface
@@ -92,9 +93,12 @@ class ErebusGUI(tk.Frame):
         # Create Help Menu Entry
         self.subMenuHelp = tk.Menu(self.menuBar, tearoff=0)
         self.menuBar.add_cascade(label="Help", menu=self.subMenuHelp)
-        self.subMenuHelp.add_command(label="User Guide")
-        self.subMenuHelp.add_command(label="Technical Manual")
-        self.subMenuHelp.add_command(label="About")
+        self.subMenuHelp.add_command(label="User Manual",
+                                     command=self.openManual)
+        self.subMenuHelp.add_command(label="Technical Manual",
+                                     command=self.openTRM)
+        self.subMenuHelp.add_command(label="About",
+                                     command=self.showAbout)
 
         # *** Create Sensor Button and Status Box ***
 
@@ -400,5 +404,48 @@ class ErebusGUI(tk.Frame):
             mb.showinfo("", "Reset successful.")
 
         return
+
+    def showAbout(self):
+        """
+        Displays an information box with the GUI version
+
+        Arguments:
+            <None>
+        """
         
+        mb.showinfo("About", "Erebus Labs Stem Sensor\n"
+                             "User Application Version 1.0\n"
+                             "(C) 2014 Erebus Labs")
         
+        return
+
+    def openTRM(self):
+        """
+        Opens the Erebus Labs Sensor Technical Reference Manual
+        This routine is not cross-platform. It must be modified to enable Windows
+        support.
+
+        Arguments:
+            <None>
+        """
+
+        subprocess.call(['xdg-open', './documents/Technical_Reference_Manual.pdf'],
+                         stderr=None,
+                         stdout=None)
+        return
+
+    def openManual(self):
+        """
+        Opens the Erebus Labs Sensor User Manual
+        This routine is not cross-platform. It must be modified to enable Windows
+        support.
+
+        Arguments:
+            <None>
+        """
+
+        subprocess.call(['xdg-open', './documents/User_Manual.pdf'],
+                         stderr=None,
+                         stdout=None)
+        return
+

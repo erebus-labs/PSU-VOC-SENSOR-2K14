@@ -196,6 +196,9 @@ class ErebusSensor:
         """
         Attempts to establish communication with sensor and initializes the ErebusSensor 
         object.
+        This routine is not cross-platform. It must be modified to enable Windows 
+        support. The existing method of enumerating serial devices will only work on
+        Linux.
   
         Arguments:
             <None>
