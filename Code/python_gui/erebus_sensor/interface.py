@@ -17,7 +17,9 @@ from datetime import datetime
 
 # Do not change the order of the variables in these tuples
 # Their indexes are used by the device firmware
-sensorOptions = ('Light Sensor', 'Temperature Sensor')
+sensorOptions = ('Light Sensor',
+                 'Low Oxygen Sensor',
+                 'Custom Sensor')
 unitOptions = ('Seconds', 'Minutes', 'Hours', 'Days')
 maxInterval = pow(2, 8) - 1 
 
@@ -157,9 +159,9 @@ class DataBlock:
         """
         s = []
         s.append("\n\n\nTotal Samples in this Block: {}".format(self.data_points))
-        s.append("Sensor:\t{}".format(self.sensor))
-        s.append("Sample Unit:\t{}".format(self.sample_unit))
-        s.append("Sample Interval:\t{}".format(self.sample_interval))
+        s.append("Sensor:          {}".format(self.sensor))
+        s.append("Sample Unit:     {}".format(self.sample_unit))
+        s.append("Sample Interval: {}".format(self.sample_interval))
         s.append("\nData Collection Start Time Stamp:")
         s.append("{}:{}:{}".format(self.hour, self.minute, self.second))
         s.append("{} {} {}".format(months[self.month], self.day, self.year))
