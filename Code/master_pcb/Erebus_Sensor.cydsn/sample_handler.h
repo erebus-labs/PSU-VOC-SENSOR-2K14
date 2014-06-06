@@ -13,20 +13,7 @@
 
 #ifndef _SAMPLE_HANDLER_H_
     #define _SAMPLE_HANDLER_H_
-    
-    /*
-     * ========================================
-     * Header Files
-     * ========================================
-    */
-    
-    /* Cypress Headers */
-    #include "project.h"
-    
-    /* Project Headers */
-    #include "globals.h"
-    #include "utility.h"
-    
+   
     /*
      * ========================================
      * Macros
@@ -103,7 +90,6 @@
     void start_collection();
     void take_sample(); 
     void stop_collection();
-    uint8 store_in_flash(uint8* buffer, uint8 num_bytes);
     void clear_samples();
     void reset_pointers();
     

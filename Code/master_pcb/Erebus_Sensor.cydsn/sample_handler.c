@@ -9,8 +9,26 @@
  *
  * ========================================
 */
+    
+/*
+ * ========================================
+ * Header Files
+ * ========================================
+*/
 
+/* Cypress Headers */
+#include "project.h"
+
+/* Project Headers */
+#include "globals.h"
+#include "utility.h"
 #include "sample_handler.h"
+
+/*
+ * ========================================
+ * Function Definitions
+ * ========================================
+*/
 
 void sampling_setup(){
 /*
@@ -19,18 +37,19 @@ void sampling_setup(){
  * low battery blinking and battery level checking, respectively. 
 */
 
-    uint8 RTC_int_mask = MINUTE_MASK | SECOND_MASK;  
+    uint8 RTC_int_mask = MINUTE_MASK | SECOND_MASK; 
+    
     sample_unit = get_EEPROM_variable(EE_SAMPLE_UNIT);
     sample_interval = get_EEPROM_variable(EE_SAMPLE_INTERVAL);
     
-    switch (sample_unit)
-    {
-        case SAMPLE_HOUR: 
-            RTC_int_mask = RTC_int_mask | HOUR_MASK;
-            break;
-        case SAMPLE_DAY: 
-            RTC_int_mask = RTC_int_mask | DAY_MASK;
-            break;
+    switch (sample_unit){
+        
+    case SAMPLE_HOUR: 
+        RTC_int_mask = RTC_int_mask | HOUR_MASK;
+        break;
+    case SAMPLE_DAY: 
+        RTC_int_mask = RTC_int_mask | DAY_MASK;
+        break;
     }
     
     RTC_WriteIntervalMask(RTC_int_mask);
@@ -39,80 +58,7 @@ void sampling_setup(){
     return;
  }
 
-void start_collection(){
-/*
- * Triggered when sampling is not currently active and the user pushes the Start 
- * Sampling button. Stores a timestamp, the sensor being used, the sample interval, and
- * the interval unit in Flash as a header to the samples.
-*/
-    
-    struct header_package header;
-    RTC_TIME_DATE* datetime = RTC_ReadTime();
-    
-     /* Construct Header */
-    header.start_block = STARTBLOCK;
-    header.sample_sensor = get_EEPROM_variable(EE_SENSOR);
-    header.sample_unit = get_EEPROM_variable(EE_SAMPLE_UNIT);
-    header.sample_interval = get_EEPROM_variable(EE_SAMPLE_INTERVAL);
-    header.second = datetime -> Sec;
-    header.minute = datetime -> Min;
-    header.hour = datetime -> Hour;
-    header.day = datetime -> DayOfMonth;
-    header.month = datetime -> Month;
-    header.year = datetime -> Year;
-    
-    if (store_in_flash((uint8*) &header, sizeof(struct header_package))){
-        memory_full();
-        stop_collection();
-        goto exit;
-    }
-    
-    stop_collection_enabled = 1;
-    start_collection_enabled = 0;
-    sample_enable_flag = 1;
-    sample_interrupt_count = 0;
-
-exit:
-    return;   
-}
-
-void take_sample() {
-/*
- * Triggered when the sample interrupt counter reaches the sample interval. Wakes up 
- * the ADC, takes a 16-bit sample, scales it to 12 bits, and stores the result in 
- * Flash. 
-*/
-
-    uint16 sample = 0;
-    ADC_Wakeup();
-    
-    sample = ADC_Read16(); 
-    sample = (sample >> SAMPLE_SHIFT) & SAMPLE_MASK;
-    
-    if (store_in_flash((uint8*) &sample, sizeof(uint16))){
-        memory_full();
-        stop_collection();
-    }
-    
-    ADC_Sleep();
-    return;    
-}
-
-void stop_collection(){
-/*
- * Triggered when sampling is currently active and the user pushes the Stop
- * Sampling button. Stores a timestamp, the sensor being used, the sample interval, and
- * the interval unit in Flash as a header to the samples.
-*/
-    
-    start_collection_enabled = 1;
-    stop_collection_enabled = 0;
-    sample_enable_flag = 0;
-    
-    return;   
-}
-
-uint8 store_in_flash(uint8* buffer, uint8 num_bytes){  
+static uint8 store_in_flash(uint8* buffer, uint8 num_bytes){  
 /* 
  * Is a helper function to store data in the sample array. Before storing the buffer
  * in Flash, it first confirms that there is enough from for it. It also tracks the 
@@ -168,7 +114,7 @@ uint8 store_in_flash(uint8* buffer, uint8 num_bytes){
     /* Store new tail pointer in Flash */
     Em_EEPROM_Write((uint8*) &sample_tail_index, 
                     (uint8*) &(current_sample_indices[pointer_tail_index]), 
-                    sizeof(uint16));
+                    sizeof(sample_tail_index));
     
     /* If we head is now equal to tail, we have filled our buffer */
     if (sample_tail_index == sample_head_index){
@@ -178,6 +124,88 @@ uint8 store_in_flash(uint8* buffer, uint8 num_bytes){
 exit:
     return (result);
 }
+
+void start_collection(){
+/*
+ * Triggered when sampling is not currently active and the user pushes the Start 
+ * Sampling button. Stores a timestamp, the sensor being used, the sample interval, and
+ * the interval unit in Flash as a header to the samples.
+*/
+    
+    struct header_package header;
+    RTC_TIME_DATE* datetime = RTC_ReadTime();
+    
+     /* Construct Header */
+    header.start_block = STARTBLOCK;
+    header.sample_sensor = get_EEPROM_variable(EE_SENSOR);
+    header.sample_unit = get_EEPROM_variable(EE_SAMPLE_UNIT);
+    header.sample_interval = get_EEPROM_variable(EE_SAMPLE_INTERVAL);
+    header.second = datetime -> Sec;
+    header.minute = datetime -> Min;
+    header.hour = datetime -> Hour;
+    header.day = datetime -> DayOfMonth;
+    header.month = datetime -> Month;
+    header.year = datetime -> Year;
+    
+    if (store_in_flash((uint8*) &header, sizeof(header))){
+        memory_full();
+        stop_collection();
+        goto exit;
+    }
+    
+    stop_collection_enabled = 1;
+    start_collection_enabled = 0;
+    sample_enable_flag = 1;
+    sample_interrupt_count = 0;
+    
+    /* Note:
+     * Having the sensor take the first sample whenever sampling is started was considered,
+     * but rejected because the sampling can begin asynchronously with the real-time clock.
+     * If the user is choosing to sample every three minutes but starts sampling at the two
+     * minute mark, the second sample will be taken 3.5 minutes after the first one, skewing
+     * the time stamps for all remaining samples.
+    */
+
+exit:
+    return;   
+}
+
+void take_sample() {
+/*
+ * Triggered when the sample interrupt counter reaches the sample interval. Wakes up 
+ * the ADC, takes a 16-bit sample, scales it to 12 bits, and stores the result in 
+ * Flash. 
+*/
+
+    uint16 sample = 0;
+    ADC_Wakeup();
+    
+    sample = ADC_Read16(); 
+    sample = (sample >> SAMPLE_SHIFT) & SAMPLE_MASK;
+    
+    if (store_in_flash((uint8*) &sample, sizeof(sample))){
+        memory_full();
+        stop_collection();
+    }
+    
+    ADC_Sleep();
+    return;    
+}
+
+void stop_collection(){
+/*
+ * Triggered when sampling is currently active and the user pushes the Stop
+ * Sampling button. Stores a timestamp, the sensor being used, the sample interval, and
+ * the interval unit in Flash as a header to the samples.
+*/
+    
+    start_collection_enabled = 1;
+    stop_collection_enabled = 0;
+    sample_enable_flag = 0;
+    
+    return;   
+}
+
 
 void clear_samples(){
 /* 
@@ -202,28 +230,28 @@ void clear_samples(){
         /* Save the new indexes of the head and tail pointers */
         Em_EEPROM_Write((uint8*) &pointer_head_index, 
                         (uint8*) &(master_sample_indices[HEAD_INDEX]), 
-                        sizeof(uint16));
+                        sizeof(pointer_head_index));
 
         Em_EEPROM_Write((uint8*) &pointer_tail_index, 
                         (uint8*) &(master_sample_indices[TAIL_INDEX]), 
-                        sizeof(uint16));
+                        sizeof(pointer_tail_index));
         
         /* Copy current tail to its new location */
         Em_EEPROM_Write((uint8*) &sample_tail_index, 
                         (uint8*) &(current_sample_indices[pointer_tail_index]), 
-                        sizeof(uint16));
+                        sizeof(sample_tail_index));
     }
     
     /* Update bring head up to current tail position */
     sample_head_index = sample_tail_index; 
     Em_EEPROM_Write((uint8*) &sample_tail_index, 
                     (uint8*) &(current_sample_indices[pointer_head_index]), 
-                    sizeof(uint16));
+                    sizeof(sample_tail_index));
     
     /* If memory full flag was set, clear it */
     if (mem_full_flag){
         mem_full_flag = 0;
-        Em_EEPROM_Write(&mem_full_flag, &mem_full_flash_flag, sizeof(uint8));
+        Em_EEPROM_Write(&mem_full_flag, &mem_full_flash_flag, sizeof(mem_full_flag));
     }
             
     return;
@@ -244,20 +272,20 @@ void reset_pointers(){
     /* reset master pointers */
     Em_EEPROM_Write((uint8*) &pointer_head_index, 
                     (uint8*) &(master_sample_indices[HEAD_INDEX]), 
-                    sizeof(uint16));
+                    sizeof(pointer_head_index));
 
     Em_EEPROM_Write((uint8*) &pointer_tail_index, 
                     (uint8*) &(master_sample_indices[TAIL_INDEX]), 
-                    sizeof(uint16));
+                    sizeof(pointer_tail_index));
     
     /* reset sample pointers to the top of the sample block */
     Em_EEPROM_Write((uint8*) &sample_head_index, 
                     (uint8*) &(current_sample_indices[HEAD_INDEX]), 
-                    sizeof(uint16));
+                    sizeof(sample_head_index));
 
     Em_EEPROM_Write((uint8*) &sample_tail_index, 
                     (uint8*) &(current_sample_indices[TAIL_INDEX]), 
-                    sizeof(uint16));
+                    sizeof(sample_tail_index));
     
     return;
 }

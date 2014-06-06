@@ -1,4 +1,4 @@
---------------- Clean Started: 06/01/2014 21:13:30 Project: Erebus_Sensor, Configuration: DP8051 Keil 9.51 Debug ---------------
+--------------- Clean Started: 06/06/2014 10:42:12 Project: Erebus_Sensor, Configuration: DP8051 Keil 9.51 Debug ---------------
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\main.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\USB_handler.obj"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\utility.obj"
@@ -63,4 +63,4 @@ Deleting file ".\Erebus_Sensor_timing.html"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\.deps\C_FILE.P"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\.deps\DP8051_C_FILE.P"
 Deleting file ".\DP8051\DP8051_Keil_951\Debug\.deps\KEIL_8051_ASM_FILE.P"
---------------- Clean Succeeded: 06/01/2014 21:13:38 ---------------
+--------------- Clean Succeeded: 06/06/2014 10:42:21 ---------------

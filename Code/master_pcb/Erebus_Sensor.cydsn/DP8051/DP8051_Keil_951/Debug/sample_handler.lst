@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/01/2014 21:12:53 PAGE 1   
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/06/2014 10:37:36 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE SAMPLE_HANDLER
@@ -20,294 +20,322 @@ line level    source
    9           *
   10           * ========================================
   11          */
-  12          
-  13          #include "sample_handler.h"
-  14          
-  15          void sampling_setup(){
-  16   1      /*
-  17   1       * Retrieves sample unit and interval settings from EEPROM and sets RTC interrupt masks
-  18   1       * accordingly. The Second and Minute interrupts from the RTC are always enabled 
-  19   1       * low battery blinking and battery level checking, respectively. 
-  20   1      */
-  21   1      
-  22   1          uint8 RTC_int_mask = MINUTE_MASK | SECOND_MASK;  
-  23   1          sample_unit = get_EEPROM_variable(EE_SAMPLE_UNIT);
-  24   1          sample_interval = get_EEPROM_variable(EE_SAMPLE_INTERVAL);
-  25   1          
-  26   1          switch (sample_unit)
-  27   1          {
-  28   2              case SAMPLE_HOUR: 
-  29   2                  RTC_int_mask = RTC_int_mask | HOUR_MASK;
-  30   2                  break;
-  31   2              case SAMPLE_DAY: 
-  32   2                  RTC_int_mask = RTC_int_mask | DAY_MASK;
-  33   2                  break;
-  34   2          }
-  35   1          
-  36   1          RTC_WriteIntervalMask(RTC_int_mask);
-  37   1          RTC_EnableInt();
-  38   1          
-  39   1          return;
-  40   1       }
-  41          
-  42          void start_collection(){
-  43   1      /*
-  44   1       * Triggered when sampling is not currently active and the user pushes the Start 
-  45   1       * Sampling button. Stores a timestamp, the sensor being used, the sample interval, and
-  46   1       * the interval unit in Flash as a header to the samples.
-  47   1      */
-  48   1          
-  49   1          struct header_package header;
-  50   1          RTC_TIME_DATE* datetime = RTC_ReadTime();
-  51   1          
-  52   1           /* Construct Header */
-  53   1          header.start_block = STARTBLOCK;
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/01/2014 21:12:53 PAGE 2   
+  12              
+  13          /*
+  14           * ========================================
+  15           * Header Files
+  16           * ========================================
+  17          */
+  18          
+  19          /* Cypress Headers */
+  20          #include "project.h"
+  21          
+  22          /* Project Headers */
+  23          #include "globals.h"
+  24          #include "utility.h"
+  25          #include "sample_handler.h"
+  26          
+  27          /*
+  28           * ========================================
+  29           * Function Definitions
+  30           * ========================================
+  31          */
+  32          
+  33          void sampling_setup(){
+  34   1      /*
+  35   1       * Retrieves sample unit and interval settings from EEPROM and sets RTC interrupt masks
+  36   1       * accordingly. The Second and Minute interrupts from the RTC are always enabled 
+  37   1       * low battery blinking and battery level checking, respectively. 
+  38   1      */
+  39   1      
+  40   1          uint8 RTC_int_mask = MINUTE_MASK | SECOND_MASK; 
+  41   1          
+  42   1          sample_unit = get_EEPROM_variable(EE_SAMPLE_UNIT);
+  43   1          sample_interval = get_EEPROM_variable(EE_SAMPLE_INTERVAL);
+  44   1          
+  45   1          switch (sample_unit){
+  46   2              
+  47   2          case SAMPLE_HOUR: 
+  48   2              RTC_int_mask = RTC_int_mask | HOUR_MASK;
+  49   2              break;
+  50   2          case SAMPLE_DAY: 
+  51   2              RTC_int_mask = RTC_int_mask | DAY_MASK;
+  52   2              break;
+  53   2          }
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/06/2014 10:37:36 PAGE 2   
 
-  54   1          header.sample_sensor = get_EEPROM_variable(EE_SENSOR);
-  55   1          header.sample_unit = get_EEPROM_variable(EE_SAMPLE_UNIT);
-  56   1          header.sample_interval = get_EEPROM_variable(EE_SAMPLE_INTERVAL);
-  57   1          header.second = datetime -> Sec;
-  58   1          header.minute = datetime -> Min;
-  59   1          header.hour = datetime -> Hour;
-  60   1          header.day = datetime -> DayOfMonth;
-  61   1          header.month = datetime -> Month;
-  62   1          header.year = datetime -> Year;
-  63   1          
-  64   1          if (store_in_flash((uint8*) &header, sizeof(struct header_package))){
-  65   2              memory_full();
-  66   2              stop_collection();
-  67   2              goto exit;
-  68   2          }
-  69   1          
-  70   1          stop_collection_enabled = 1;
-  71   1          start_collection_enabled = 0;
-  72   1          sample_enable_flag = 1;
-  73   1          sample_interrupt_count = 0;
-  74   1      
-  75   1      exit:
-  76   1          return;   
-  77   1      }
-  78          
-  79          void take_sample() {
-  80   1      /*
-  81   1       * Triggered when the sample interrupt counter reaches the sample interval. Wakes up 
-  82   1       * the ADC, takes a 16-bit sample, scales it to 12 bits, and stores the result in 
-  83   1       * Flash. 
-  84   1      */
-  85   1      
-  86   1          uint16 sample = 0;
-  87   1          ADC_Wakeup();
-  88   1          
-  89   1          sample = ADC_Read16(); 
-  90   1          sample = (sample >> SAMPLE_SHIFT) & SAMPLE_MASK;
-  91   1          
-  92   1          if (store_in_flash((uint8*) &sample, sizeof(uint16))){
-  93   2              memory_full();
-  94   2              stop_collection();
-  95   2          }
-  96   1          
-  97   1          ADC_Sleep();
-  98   1          return;    
-  99   1      }
- 100          
- 101          void stop_collection(){
- 102   1      /*
- 103   1       * Triggered when sampling is currently active and the user pushes the Stop
- 104   1       * Sampling button. Stores a timestamp, the sensor being used, the sample interval, and
- 105   1       * the interval unit in Flash as a header to the samples.
- 106   1      */
- 107   1          
- 108   1          start_collection_enabled = 1;
- 109   1          stop_collection_enabled = 0;
- 110   1          sample_enable_flag = 0;
- 111   1          
- 112   1          return;   
- 113   1      }
- 114          
- 115          uint8 store_in_flash(uint8* buffer, uint8 num_bytes){  
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/01/2014 21:12:53 PAGE 3   
+  54   1          
+  55   1          RTC_WriteIntervalMask(RTC_int_mask);
+  56   1          RTC_EnableInt();
+  57   1          
+  58   1          return;
+  59   1       }
+  60          
+  61          static uint8 store_in_flash(uint8* buffer, uint8 num_bytes){  
+  62   1      /* 
+  63   1       * Is a helper function to store data in the sample array. Before storing the buffer
+  64   1       * in Flash, it first confirms that there is enough from for it. It also tracks the 
+  65   1       * sample tail index's position in the array so it can be moved to element 0 if the
+  66   1       * end of the array is reached.
+  67   1      */
+  68   1      
+  69   1          int byte_diff = 0;
+  70   1          int remaining_bytes = 0;
+  71   1          uint8 result = 0;
+  72   1            
+  73   1          /* Calculate number of bytes remaining in the sample block */ 
+  74   1          remaining_bytes = sample_head_index - sample_tail_index;
+  75   1          if (remaining_bytes < 0){
+  76   2              remaining_bytes = SAMPLE_BLOCK_SIZE + remaining_bytes;
+  77   2          }
+  78   1      
+  79   1          /* Confirm there is enough space left */
+  80   1          /* Ignore case where head and tail are the same location - that is allowed
+  81   1           * when there are currently no samples or headers stored */
+  82   1          if (remaining_bytes < num_bytes && (sample_head_index != sample_tail_index)){
+  83   2              result = 1;
+  84   2              goto exit;
+  85   2          }
+  86   1          
+  87   1          /* Check to see if the whole buffer can fit before the end of the array
+  88   1           * This will usually be the case */
+  89   1          if ((sample_tail_index + num_bytes) <= SAMPLE_BLOCK_SIZE){
+  90   2      
+  91   2              Em_EEPROM_Write(buffer, (uint8*) &(sample_block[sample_tail_index]), num_bytes);
+  92   2              sample_tail_index = sample_tail_index + num_bytes;
+  93   2              
+  94   2              if (sample_tail_index == SAMPLE_BLOCK_SIZE){
+  95   3                  sample_tail_index = 0;
+  96   3              }
+  97   2          }
+  98   1          else{
+  99   2              /* It didn't fit, so now we have to do extra work to split the buffer 
+ 100   2               * Start by writing whatever will fit before the end of the array */
+ 101   2              remaining_bytes = SAMPLE_BLOCK_SIZE - sample_tail_index;
+ 102   2              Em_EEPROM_Write(buffer, 
+ 103   2                              (uint8*) &(sample_block[sample_tail_index]), 
+ 104   2                              remaining_bytes);
+ 105   2              
+ 106   2              /* Write remaining bytes at the top of the array */
+ 107   2              Em_EEPROM_Write((buffer + remaining_bytes), 
+ 108   2                              sample_block, 
+ 109   2                              num_bytes - remaining_bytes);
+ 110   2      
+ 111   2              sample_tail_index = num_bytes - remaining_bytes;
+ 112   2          }
+ 113   1          
+ 114   1          /* Store new tail pointer in Flash */
+ 115   1          Em_EEPROM_Write((uint8*) &sample_tail_index, 
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/06/2014 10:37:36 PAGE 3   
 
- 116   1      /* 
- 117   1       * Is a helper function to store data in the sample array. Before storing the buffer
- 118   1       * in Flash, it first confirms that there is enough from for it. It also tracks the 
- 119   1       * sample tail index's position in the array so it can be moved to element 0 if the
- 120   1       * end of the array is reached.
- 121   1      */
- 122   1      
- 123   1          int byte_diff = 0;
- 124   1          int remaining_bytes = 0;
- 125   1          uint8 result = 0;
- 126   1            
- 127   1          /* Calculate number of bytes remaining in the sample block */ 
- 128   1          remaining_bytes = sample_head_index - sample_tail_index;
- 129   1          if (remaining_bytes < 0){
- 130   2              remaining_bytes = SAMPLE_BLOCK_SIZE + remaining_bytes;
- 131   2          }
- 132   1      
- 133   1          /* Confirm there is enough space left */
- 134   1          /* Ignore case where head and tail are the same location - that is allowed
- 135   1           * when there are currently no samples or headers stored */
- 136   1          if (remaining_bytes < num_bytes && (sample_head_index != sample_tail_index)){
- 137   2              result = 1;
- 138   2              goto exit;
- 139   2          }
- 140   1          
- 141   1          /* Check to see if the whole buffer can fit before the end of the array
- 142   1           * This will usually be the case */
- 143   1          if ((sample_tail_index + num_bytes) <= SAMPLE_BLOCK_SIZE){
- 144   2      
- 145   2              Em_EEPROM_Write(buffer, (uint8*) &(sample_block[sample_tail_index]), num_bytes);
- 146   2              sample_tail_index = sample_tail_index + num_bytes;
- 147   2              
- 148   2              if (sample_tail_index == SAMPLE_BLOCK_SIZE){
- 149   3                  sample_tail_index = 0;
- 150   3              }
- 151   2          }
- 152   1          else{
- 153   2              /* It didn't fit, so now we have to do extra work to split the buffer 
- 154   2               * Start by writing whatever will fit before the end of the array */
- 155   2              remaining_bytes = SAMPLE_BLOCK_SIZE - sample_tail_index;
- 156   2              Em_EEPROM_Write(buffer, 
- 157   2                              (uint8*) &(sample_block[sample_tail_index]), 
- 158   2                              remaining_bytes);
- 159   2              
- 160   2              /* Write remaining bytes at the top of the array */
- 161   2              Em_EEPROM_Write((buffer + remaining_bytes), 
- 162   2                              sample_block, 
- 163   2                              num_bytes - remaining_bytes);
- 164   2      
- 165   2              sample_tail_index = num_bytes - remaining_bytes;
- 166   2          }
- 167   1          
- 168   1          /* Store new tail pointer in Flash */
- 169   1          Em_EEPROM_Write((uint8*) &sample_tail_index, 
- 170   1                          (uint8*) &(current_sample_indices[pointer_tail_index]), 
- 171   1                          sizeof(uint16));
- 172   1          
- 173   1          /* If we head is now equal to tail, we have filled our buffer */
- 174   1          if (sample_tail_index == sample_head_index){
- 175   2              result = 1;
- 176   2          }
- 177   1              
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/01/2014 21:12:53 PAGE 4   
+ 116   1                          (uint8*) &(current_sample_indices[pointer_tail_index]), 
+ 117   1                          sizeof(sample_tail_index));
+ 118   1          
+ 119   1          /* If we head is now equal to tail, we have filled our buffer */
+ 120   1          if (sample_tail_index == sample_head_index){
+ 121   2              result = 1;
+ 122   2          }
+ 123   1              
+ 124   1      exit:
+ 125   1          return (result);
+ 126   1      }
+ 127          
+ 128          void start_collection(){
+ 129   1      /*
+ 130   1       * Triggered when sampling is not currently active and the user pushes the Start 
+ 131   1       * Sampling button. Stores a timestamp, the sensor being used, the sample interval, and
+ 132   1       * the interval unit in Flash as a header to the samples.
+ 133   1      */
+ 134   1          
+ 135   1          struct header_package header;
+ 136   1          RTC_TIME_DATE* datetime = RTC_ReadTime();
+ 137   1          
+ 138   1           /* Construct Header */
+ 139   1          header.start_block = STARTBLOCK;
+ 140   1          header.sample_sensor = get_EEPROM_variable(EE_SENSOR);
+ 141   1          header.sample_unit = get_EEPROM_variable(EE_SAMPLE_UNIT);
+ 142   1          header.sample_interval = get_EEPROM_variable(EE_SAMPLE_INTERVAL);
+ 143   1          header.second = datetime -> Sec;
+ 144   1          header.minute = datetime -> Min;
+ 145   1          header.hour = datetime -> Hour;
+ 146   1          header.day = datetime -> DayOfMonth;
+ 147   1          header.month = datetime -> Month;
+ 148   1          header.year = datetime -> Year;
+ 149   1          
+ 150   1          if (store_in_flash((uint8*) &header, sizeof(header))){
+ 151   2              memory_full();
+ 152   2              stop_collection();
+ 153   2              goto exit;
+ 154   2          }
+ 155   1          
+ 156   1          stop_collection_enabled = 1;
+ 157   1          start_collection_enabled = 0;
+ 158   1          sample_enable_flag = 1;
+ 159   1          sample_interrupt_count = 0;
+ 160   1          
+ 161   1          /* Note:
+ 162   1           * Having the sensor take the first sample whenever sampling is started was considered,
+ 163   1           * but rejected because the sampling can begin asynchronously with the real-time clock.
+ 164   1           * If the user is choosing to sample every three minutes but starts sampling at the two
+ 165   1           * minute mark, the second sample will be taken 3.5 minutes after the first one, skewing
+ 166   1           * the time stamps for all remaining samples.
+ 167   1          */
+ 168   1      
+ 169   1      exit:
+ 170   1          return;   
+ 171   1      }
+ 172          
+ 173          void take_sample() {
+ 174   1      /*
+ 175   1       * Triggered when the sample interrupt counter reaches the sample interval. Wakes up 
+ 176   1       * the ADC, takes a 16-bit sample, scales it to 12 bits, and stores the result in 
+ 177   1       * Flash. 
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/06/2014 10:37:36 PAGE 4   
 
- 178   1      exit:
- 179   1          return (result);
- 180   1      }
- 181          
- 182          void clear_samples(){
- 183   1      /* 
- 184   1       * Called after data has been dumped through the GUI. Moves the current head index
- 185   1       * up to the same location as the current tail. If this means the head pointer is
- 186   1       * advanced past the end of the array and wrapped around, then it is time to increment
- 187   1       * the master sample indices and store the sample head/tail indices in a new location in
- 188   1       * their array for wear levelling.
- 189   1      */
- 190   1      
- 191   1          /* If we just wrapped our sampling around the end of the array, it's time to 
- 192   1           * bump the sample pointers to the next Flash row for wear-levelling */
- 193   1          if (sample_head_index > sample_tail_index){
- 194   2              pointer_head_index += FLASH_ROW_LENGTH;
- 195   2              
- 196   2              if (pointer_head_index >= FLASH_ROW_LENGTH * MASTER_ROWS){
- 197   3                  pointer_head_index = HEAD_INDEX;
- 198   3              }
- 199   2              
- 200   2              pointer_tail_index = pointer_head_index + TAIL_INDEX;
- 201   2              
- 202   2              /* Save the new indexes of the head and tail pointers */
- 203   2              Em_EEPROM_Write((uint8*) &pointer_head_index, 
- 204   2                              (uint8*) &(master_sample_indices[HEAD_INDEX]), 
- 205   2                              sizeof(uint16));
- 206   2      
- 207   2              Em_EEPROM_Write((uint8*) &pointer_tail_index, 
- 208   2                              (uint8*) &(master_sample_indices[TAIL_INDEX]), 
- 209   2                              sizeof(uint16));
- 210   2              
- 211   2              /* Copy current tail to its new location */
- 212   2              Em_EEPROM_Write((uint8*) &sample_tail_index, 
- 213   2                              (uint8*) &(current_sample_indices[pointer_tail_index]), 
- 214   2                              sizeof(uint16));
- 215   2          }
- 216   1          
- 217   1          /* Update bring head up to current tail position */
- 218   1          sample_head_index = sample_tail_index; 
- 219   1          Em_EEPROM_Write((uint8*) &sample_tail_index, 
- 220   1                          (uint8*) &(current_sample_indices[pointer_head_index]), 
- 221   1                          sizeof(uint16));
- 222   1          
- 223   1          /* If memory full flag was set, clear it */
- 224   1          if (mem_full_flag){
- 225   2              mem_full_flag = 0;
- 226   2              Em_EEPROM_Write(&mem_full_flag, &mem_full_flash_flag, sizeof(uint8));
- 227   2          }
- 228   1                  
- 229   1          return;
- 230   1      }
- 231          
- 232          void reset_pointers(){
- 233   1      /* 
- 234   1       * Only invoked by the user through the GUI. Initializes the sample indexes to the tops
- 235   1       * of both the sample and sample indices arrays. This must be run once after programming
- 236   1       * before attempting to store any samples.
- 237   1      */
- 238   1          
- 239   1          pointer_head_index = HEAD_INDEX;
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/01/2014 21:12:53 PAGE 5   
+ 178   1      */
+ 179   1      
+ 180   1          uint16 sample = 0;
+ 181   1          ADC_Wakeup();
+ 182   1          
+ 183   1          sample = ADC_Read16(); 
+ 184   1          sample = (sample >> SAMPLE_SHIFT) & SAMPLE_MASK;
+ 185   1          
+ 186   1          if (store_in_flash((uint8*) &sample, sizeof(sample))){
+ 187   2              memory_full();
+ 188   2              stop_collection();
+ 189   2          }
+ 190   1          
+ 191   1          ADC_Sleep();
+ 192   1          return;    
+ 193   1      }
+ 194          
+ 195          void stop_collection(){
+ 196   1      /*
+ 197   1       * Triggered when sampling is currently active and the user pushes the Stop
+ 198   1       * Sampling button. Stores a timestamp, the sensor being used, the sample interval, and
+ 199   1       * the interval unit in Flash as a header to the samples.
+ 200   1      */
+ 201   1          
+ 202   1          start_collection_enabled = 1;
+ 203   1          stop_collection_enabled = 0;
+ 204   1          sample_enable_flag = 0;
+ 205   1          
+ 206   1          return;   
+ 207   1      }
+ 208          
+ 209          
+ 210          void clear_samples(){
+ 211   1      /* 
+ 212   1       * Called after data has been dumped through the GUI. Moves the current head index
+ 213   1       * up to the same location as the current tail. If this means the head pointer is
+ 214   1       * advanced past the end of the array and wrapped around, then it is time to increment
+ 215   1       * the master sample indices and store the sample head/tail indices in a new location in
+ 216   1       * their array for wear levelling.
+ 217   1      */
+ 218   1      
+ 219   1          /* If we just wrapped our sampling around the end of the array, it's time to 
+ 220   1           * bump the sample pointers to the next Flash row for wear-levelling */
+ 221   1          if (sample_head_index > sample_tail_index){
+ 222   2              pointer_head_index += FLASH_ROW_LENGTH;
+ 223   2              
+ 224   2              if (pointer_head_index >= FLASH_ROW_LENGTH * MASTER_ROWS){
+ 225   3                  pointer_head_index = HEAD_INDEX;
+ 226   3              }
+ 227   2              
+ 228   2              pointer_tail_index = pointer_head_index + TAIL_INDEX;
+ 229   2              
+ 230   2              /* Save the new indexes of the head and tail pointers */
+ 231   2              Em_EEPROM_Write((uint8*) &pointer_head_index, 
+ 232   2                              (uint8*) &(master_sample_indices[HEAD_INDEX]), 
+ 233   2                              sizeof(pointer_head_index));
+ 234   2      
+ 235   2              Em_EEPROM_Write((uint8*) &pointer_tail_index, 
+ 236   2                              (uint8*) &(master_sample_indices[TAIL_INDEX]), 
+ 237   2                              sizeof(pointer_tail_index));
+ 238   2              
+ 239   2              /* Copy current tail to its new location */
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/06/2014 10:37:36 PAGE 5   
 
- 240   1          pointer_tail_index = TAIL_INDEX;
- 241   1          sample_head_index = 0x0;
- 242   1          sample_tail_index = 0x0;
- 243   1              
- 244   1          /* reset master pointers */
- 245   1          Em_EEPROM_Write((uint8*) &pointer_head_index, 
- 246   1                          (uint8*) &(master_sample_indices[HEAD_INDEX]), 
- 247   1                          sizeof(uint16));
- 248   1      
- 249   1          Em_EEPROM_Write((uint8*) &pointer_tail_index, 
- 250   1                          (uint8*) &(master_sample_indices[TAIL_INDEX]), 
- 251   1                          sizeof(uint16));
- 252   1          
- 253   1          /* reset sample pointers to the top of the sample block */
- 254   1          Em_EEPROM_Write((uint8*) &sample_head_index, 
- 255   1                          (uint8*) &(current_sample_indices[HEAD_INDEX]), 
- 256   1                          sizeof(uint16));
- 257   1      
- 258   1          Em_EEPROM_Write((uint8*) &sample_tail_index, 
- 259   1                          (uint8*) &(current_sample_indices[TAIL_INDEX]), 
- 260   1                          sizeof(uint16));
- 261   1          
- 262   1          return;
- 263   1      }
- 264             
- 265          /* [] END OF FILE */
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/01/2014 21:12:53 PAGE 6   
+ 240   2              Em_EEPROM_Write((uint8*) &sample_tail_index, 
+ 241   2                              (uint8*) &(current_sample_indices[pointer_tail_index]), 
+ 242   2                              sizeof(sample_tail_index));
+ 243   2          }
+ 244   1          
+ 245   1          /* Update bring head up to current tail position */
+ 246   1          sample_head_index = sample_tail_index; 
+ 247   1          Em_EEPROM_Write((uint8*) &sample_tail_index, 
+ 248   1                          (uint8*) &(current_sample_indices[pointer_head_index]), 
+ 249   1                          sizeof(sample_tail_index));
+ 250   1          
+ 251   1          /* If memory full flag was set, clear it */
+ 252   1          if (mem_full_flag){
+ 253   2              mem_full_flag = 0;
+ 254   2              Em_EEPROM_Write(&mem_full_flag, &mem_full_flash_flag, sizeof(mem_full_flag));
+ 255   2          }
+ 256   1                  
+ 257   1          return;
+ 258   1      }
+ 259          
+ 260          void reset_pointers(){
+ 261   1      /* 
+ 262   1       * Only invoked by the user through the GUI. Initializes the sample indexes to the tops
+ 263   1       * of both the sample and sample indices arrays. This must be run once after programming
+ 264   1       * before attempting to store any samples.
+ 265   1      */
+ 266   1          
+ 267   1          pointer_head_index = HEAD_INDEX;
+ 268   1          pointer_tail_index = TAIL_INDEX;
+ 269   1          sample_head_index = 0x0;
+ 270   1          sample_tail_index = 0x0;
+ 271   1              
+ 272   1          /* reset master pointers */
+ 273   1          Em_EEPROM_Write((uint8*) &pointer_head_index, 
+ 274   1                          (uint8*) &(master_sample_indices[HEAD_INDEX]), 
+ 275   1                          sizeof(pointer_head_index));
+ 276   1      
+ 277   1          Em_EEPROM_Write((uint8*) &pointer_tail_index, 
+ 278   1                          (uint8*) &(master_sample_indices[TAIL_INDEX]), 
+ 279   1                          sizeof(pointer_tail_index));
+ 280   1          
+ 281   1          /* reset sample pointers to the top of the sample block */
+ 282   1          Em_EEPROM_Write((uint8*) &sample_head_index, 
+ 283   1                          (uint8*) &(current_sample_indices[HEAD_INDEX]), 
+ 284   1                          sizeof(sample_head_index));
+ 285   1      
+ 286   1          Em_EEPROM_Write((uint8*) &sample_tail_index, 
+ 287   1                          (uint8*) &(current_sample_indices[TAIL_INDEX]), 
+ 288   1                          sizeof(sample_tail_index));
+ 289   1          
+ 290   1          return;
+ 291   1      }
+ 292             
+ 293          /* [] END OF FILE */
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/06/2014 10:37:36 PAGE 6   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
 
              ; FUNCTION sampling_setup (BEGIN)
-                                           ; SOURCE LINE # 15
-                                           ; SOURCE LINE # 22
+                                           ; SOURCE LINE # 33
+                                           ; SOURCE LINE # 40
 0000 900000      R     MOV     DPTR,#RTC_int_mask
 0003 7403              MOV     A,#03H
 0005 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 23
+                                           ; SOURCE LINE # 42
 0006 7F01              MOV     R7,#01H
 0008 7E00              MOV     R6,#00H
 000A 120000      E     LCALL   _get_EEPROM_variable
 000D 900000      E     MOV     DPTR,#sample_unit
 0010 EF                MOV     A,R7
 0011 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 24
+                                           ; SOURCE LINE # 43
 0012 7F02              MOV     R7,#02H
 0014 7E00              MOV     R6,#00H
 0016 120000      E     LCALL   _get_EEPROM_variable
 0019 900000      E     MOV     DPTR,#sample_interval
 001C EF                MOV     A,R7
 001D F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 26
+                                           ; SOURCE LINE # 45
 001E 900000      E     MOV     DPTR,#sample_unit
 0021 E0                MOVX    A,@DPTR
 0022 FF                MOV     R7,A
@@ -319,10 +347,9 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 002C 03                DB      03H
 002D 0000              DW      00H
 002F 0000        R     DW      ?C0001
-                                           ; SOURCE LINE # 27
-                                           ; SOURCE LINE # 28
+                                           ; SOURCE LINE # 47
 0031         ?C0002:
-                                           ; SOURCE LINE # 29
+                                           ; SOURCE LINE # 48
 0031 900000      R     MOV     DPTR,#RTC_int_mask
 0034 E0                MOVX    A,@DPTR
 0035 FF                MOV     R7,A
@@ -332,11 +359,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 003A 900000      R     MOV     DPTR,#RTC_int_mask
 003D EF                MOV     A,R7
 003E F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 30
+                                           ; SOURCE LINE # 49
 003F 800E              SJMP    ?C0001
-                                           ; SOURCE LINE # 31
+                                           ; SOURCE LINE # 50
 0041         ?C0003:
-                                           ; SOURCE LINE # 32
+                                           ; SOURCE LINE # 51
 0041 900000      R     MOV     DPTR,#RTC_int_mask
 0044 E0                MOVX    A,@DPTR
 0045 FF                MOV     R7,A
@@ -346,299 +373,49 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 004A 900000      R     MOV     DPTR,#RTC_int_mask
 004D EF                MOV     A,R7
 004E F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/01/2014 21:12:53 PAGE 7   
+                                           ; SOURCE LINE # 52
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/06/2014 10:37:36 PAGE 7   
 
-                                           ; SOURCE LINE # 33
-                                           ; SOURCE LINE # 34
+                                           ; SOURCE LINE # 53
 004F         ?C0001:
-                                           ; SOURCE LINE # 36
+                                           ; SOURCE LINE # 55
 004F 900000      R     MOV     DPTR,#RTC_int_mask
 0052 E0                MOVX    A,@DPTR
 0053 FF                MOV     R7,A
 0054 120000      E     LCALL   _RTC_WriteIntervalMask
-                                           ; SOURCE LINE # 37
+                                           ; SOURCE LINE # 56
 0057 120000      E     LCALL   RTC_EnableInt
-                                           ; SOURCE LINE # 40
+                                           ; SOURCE LINE # 59
 005A         ?C0004:
 005A 22                RET     
              ; FUNCTION sampling_setup (END)
 
-             ; FUNCTION start_collection (BEGIN)
-                                           ; SOURCE LINE # 42
-                                           ; SOURCE LINE # 50
-0000 120000      E     LCALL   RTC_ReadTime
-0003 900000      R     MOV     DPTR,#datetime
-0006 120000      E     LCALL   ?C?PSTXDATA
-                                           ; SOURCE LINE # 53
-0009 900000      R     MOV     DPTR,#header
-000C 7420              MOV     A,#020H
-000E F0                MOVX    @DPTR,A
-000F A3                INC     DPTR
-0010 E4                CLR     A
-0011 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 54
-0012 7F00              MOV     R7,#00H
-0014 7E00              MOV     R6,#00H
-0016 120000      E     LCALL   _get_EEPROM_variable
-0019 900000      R     MOV     DPTR,#header+04H
-001C EF                MOV     A,R7
-001D F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 55
-001E 7F01              MOV     R7,#01H
-0020 7E00              MOV     R6,#00H
-0022 120000      E     LCALL   _get_EEPROM_variable
-0025 900000      R     MOV     DPTR,#header+05H
-0028 EF                MOV     A,R7
-0029 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 56
-002A 7F02              MOV     R7,#02H
-002C 7E00              MOV     R6,#00H
-002E 120000      E     LCALL   _get_EEPROM_variable
-0031 900000      R     MOV     DPTR,#header+06H
-0034 EF                MOV     A,R7
-0035 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 57
-0036 900000      R     MOV     DPTR,#datetime
-0039 120000      E     LCALL   ?C?PLDXDATA
-003C 120000      E     LCALL   ?C?CLDPTR
-003F FF                MOV     R7,A
-0040 900000      R     MOV     DPTR,#header+07H
-0043 EF                MOV     A,R7
-0044 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 58
-0045 900000      R     MOV     DPTR,#datetime
-0048 120000      E     LCALL   ?C?PLDXDATA
-004B E9                MOV     A,R1
-004C 2401              ADD     A,#01H
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/01/2014 21:12:53 PAGE 8   
-
-004E F9                MOV     R1,A
-004F EA                MOV     A,R2
-0050 3400              ADDC    A,#00H
-0052 FA                MOV     R2,A
-0053 120000      E     LCALL   ?C?CLDPTR
-0056 FF                MOV     R7,A
-0057 900000      R     MOV     DPTR,#header+08H
-005A EF                MOV     A,R7
-005B F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 59
-005C 900000      R     MOV     DPTR,#datetime
-005F 120000      E     LCALL   ?C?PLDXDATA
-0062 E9                MOV     A,R1
-0063 2402              ADD     A,#02H
-0065 F9                MOV     R1,A
-0066 EA                MOV     A,R2
-0067 3400              ADDC    A,#00H
-0069 FA                MOV     R2,A
-006A 120000      E     LCALL   ?C?CLDPTR
-006D FF                MOV     R7,A
-006E 900000      R     MOV     DPTR,#header+09H
-0071 EF                MOV     A,R7
-0072 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 60
-0073 900000      R     MOV     DPTR,#datetime
-0076 120000      E     LCALL   ?C?PLDXDATA
-0079 E9                MOV     A,R1
-007A 2404              ADD     A,#04H
-007C F9                MOV     R1,A
-007D EA                MOV     A,R2
-007E 3400              ADDC    A,#00H
-0080 FA                MOV     R2,A
-0081 120000      E     LCALL   ?C?CLDPTR
-0084 FF                MOV     R7,A
-0085 900000      R     MOV     DPTR,#header+0AH
-0088 EF                MOV     A,R7
-0089 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 61
-008A 900000      R     MOV     DPTR,#datetime
-008D 120000      E     LCALL   ?C?PLDXDATA
-0090 E9                MOV     A,R1
-0091 2407              ADD     A,#07H
-0093 F9                MOV     R1,A
-0094 EA                MOV     A,R2
-0095 3400              ADDC    A,#00H
-0097 FA                MOV     R2,A
-0098 120000      E     LCALL   ?C?CLDPTR
-009B FF                MOV     R7,A
-009C 900000      R     MOV     DPTR,#header+0BH
-009F EF                MOV     A,R7
-00A0 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 62
-00A1 900000      R     MOV     DPTR,#datetime
-00A4 120000      E     LCALL   ?C?PLDXDATA
-00A7 E9                MOV     A,R1
-00A8 2408              ADD     A,#08H
-00AA F9                MOV     R1,A
-00AB EA                MOV     A,R2
-00AC 3400              ADDC    A,#00H
-00AE FA                MOV     R2,A
-00AF 120000      E     LCALL   ?C?ILDPTR
-00B2 FF                MOV     R7,A
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/01/2014 21:12:53 PAGE 9   
-
-00B3 AEF0              MOV     R6,B
-00B5 900000      R     MOV     DPTR,#header+02H
-00B8 EE                MOV     A,R6
-00B9 F0                MOVX    @DPTR,A
-00BA A3                INC     DPTR
-00BB EF                MOV     A,R7
-00BC F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 64
-00BD 7B01              MOV     R3,#01H
-00BF 7A00        R     MOV     R2,#HIGH header
-00C1 7900        R     MOV     R1,#LOW header
-00C3 7D10              MOV     R5,#010H
-00C5 120000      R     LCALL   _store_in_flash
-00C8 EF                MOV     A,R7
-00C9 6007              JZ      ?C0005
-                                           ; SOURCE LINE # 65
-00CB 120000      E     LCALL   memory_full
-                                           ; SOURCE LINE # 66
-00CE 120000      R     LCALL   stop_collection
-                                           ; SOURCE LINE # 67
-00D1 22                RET     
-                                           ; SOURCE LINE # 68
-00D2         ?C0005:
-                                           ; SOURCE LINE # 70
-00D2 900000      E     MOV     DPTR,#stop_collection_enabled
-00D5 7401              MOV     A,#01H
-00D7 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 71
-00D8 900000      E     MOV     DPTR,#start_collection_enabled
-00DB E4                CLR     A
-00DC F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 72
-00DD 900000      E     MOV     DPTR,#sample_enable_flag
-00E0 7401              MOV     A,#01H
-00E2 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 73
-00E3 900000      E     MOV     DPTR,#sample_interrupt_count
-00E6 E4                CLR     A
-00E7 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 75
-00E8         exit:
-                                           ; SOURCE LINE # 77
-00E8         ?C0007:
-00E8 22                RET     
-             ; FUNCTION start_collection (END)
-
-             ; FUNCTION take_sample (BEGIN)
-                                           ; SOURCE LINE # 79
-                                           ; SOURCE LINE # 86
-0000 900000      R     MOV     DPTR,#sample
-0003 E4                CLR     A
-0004 F0                MOVX    @DPTR,A
-0005 A3                INC     DPTR
-0006 E4                CLR     A
-0007 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 87
-0008 120000      E     LCALL   ADC_Wakeup
-                                           ; SOURCE LINE # 89
-000B 120000      E     LCALL   ADC_Read16
-000E 900000      R     MOV     DPTR,#sample
-0011 EE                MOV     A,R6
-0012 F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/01/2014 21:12:53 PAGE 10  
-
-0013 A3                INC     DPTR
-0014 EF                MOV     A,R7
-0015 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 90
-0016 900000      R     MOV     DPTR,#sample
-0019 E0                MOVX    A,@DPTR
-001A FE                MOV     R6,A
-001B A3                INC     DPTR
-001C E0                MOVX    A,@DPTR
-001D FF                MOV     R7,A
-001E EE                MOV     A,R6
-001F C4                SWAP    A
-0020 F8                MOV     R0,A
-0021 54F0              ANL     A,#0F0H
-0023 C8                XCH     A,R0
-0024 68                XRL     A,R0
-0025 FE                MOV     R6,A
-0026 EF                MOV     A,R7
-0027 C4                SWAP    A
-0028 540F              ANL     A,#0FH
-002A 48                ORL     A,R0
-002B FF                MOV     R7,A
-002C EE                MOV     A,R6
-002D 540F              ANL     A,#0FH
-002F FE                MOV     R6,A
-0030 900000      R     MOV     DPTR,#sample
-0033 EE                MOV     A,R6
-0034 F0                MOVX    @DPTR,A
-0035 A3                INC     DPTR
-0036 EF                MOV     A,R7
-0037 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 92
-0038 7B01              MOV     R3,#01H
-003A 7A00        R     MOV     R2,#HIGH sample
-003C 7900        R     MOV     R1,#LOW sample
-003E 7D02              MOV     R5,#02H
-0040 120000      R     LCALL   _store_in_flash
-0043 EF                MOV     A,R7
-0044 6006              JZ      ?C0008
-                                           ; SOURCE LINE # 93
-0046 120000      E     LCALL   memory_full
-                                           ; SOURCE LINE # 94
-0049 120000      R     LCALL   stop_collection
-                                           ; SOURCE LINE # 95
-004C         ?C0008:
-                                           ; SOURCE LINE # 97
-004C 120000      E     LCALL   ADC_Sleep
-                                           ; SOURCE LINE # 99
-004F         ?C0009:
-004F 22                RET     
-             ; FUNCTION take_sample (END)
-
-             ; FUNCTION stop_collection (BEGIN)
-                                           ; SOURCE LINE # 101
-                                           ; SOURCE LINE # 108
-0000 900000      E     MOV     DPTR,#start_collection_enabled
-0003 7401              MOV     A,#01H
-0005 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 109
-0006 900000      E     MOV     DPTR,#stop_collection_enabled
-0009 E4                CLR     A
-000A F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/01/2014 21:12:53 PAGE 11  
-
-                                           ; SOURCE LINE # 110
-000B 900000      E     MOV     DPTR,#sample_enable_flag
-000E E4                CLR     A
-000F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 113
-0010         ?C0010:
-0010 22                RET     
-             ; FUNCTION stop_collection (END)
-
              ; FUNCTION _store_in_flash (BEGIN)
-                                           ; SOURCE LINE # 115
+                                           ; SOURCE LINE # 61
 0000 900000      R     MOV     DPTR,#buffer
 0003 120000      E     LCALL   ?C?PSTXDATA
 0006 900000      R     MOV     DPTR,#num_bytes
 0009 ED                MOV     A,R5
 000A F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 123
+                                           ; SOURCE LINE # 69
 000B 900000      R     MOV     DPTR,#byte_diff
 000E E4                CLR     A
 000F F0                MOVX    @DPTR,A
 0010 A3                INC     DPTR
 0011 E4                CLR     A
 0012 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 124
+                                           ; SOURCE LINE # 70
 0013 900000      R     MOV     DPTR,#remaining_bytes
 0016 E4                CLR     A
 0017 F0                MOVX    @DPTR,A
 0018 A3                INC     DPTR
 0019 E4                CLR     A
 001A F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 125
+                                           ; SOURCE LINE # 71
 001B 900000      R     MOV     DPTR,#result
 001E E4                CLR     A
 001F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 128
+                                           ; SOURCE LINE # 74
 0020 900000      E     MOV     DPTR,#sample_tail_index
 0023 E0                MOVX    A,@DPTR
 0024 FE                MOV     R6,A
@@ -661,13 +438,13 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0037 900000      R     MOV     DPTR,#remaining_bytes
 003A EE                MOV     A,R6
 003B F0                MOVX    @DPTR,A
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/06/2014 10:37:36 PAGE 8   
+
 003C A3                INC     DPTR
 003D EF                MOV     A,R7
 003E F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 129
+                                           ; SOURCE LINE # 75
 003F 900000      R     MOV     DPTR,#remaining_bytes
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/01/2014 21:12:53 PAGE 12  
-
 0042 E0                MOVX    A,@DPTR
 0043 FE                MOV     R6,A
 0044 A3                INC     DPTR
@@ -677,8 +454,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0048 EE                MOV     A,R6
 0049 6480              XRL     A,#080H
 004B 9480              SUBB    A,#080H
-004D 5018              JNC     ?C0011
-                                           ; SOURCE LINE # 130
+004D 5018              JNC     ?C0005
+                                           ; SOURCE LINE # 76
 004F 900000      R     MOV     DPTR,#remaining_bytes
 0052 E0                MOVX    A,@DPTR
 0053 FE                MOV     R6,A
@@ -697,9 +474,9 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0064 A3                INC     DPTR
 0065 EF                MOV     A,R7
 0066 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 131
-0067         ?C0011:
-                                           ; SOURCE LINE # 136
+                                           ; SOURCE LINE # 77
+0067         ?C0005:
+                                           ; SOURCE LINE # 82
 0067 900000      R     MOV     DPTR,#num_bytes
 006A E0                MOVX    A,@DPTR
 006B FF                MOV     R7,A
@@ -719,19 +496,19 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 007D EC                MOV     A,R4
 007E 6480              XRL     A,#080H
 0080 98                SUBB    A,R0
-0081 5021              JNC     ?C0012
+0081 5021              JNC     ?C0006
 0083 900000      E     MOV     DPTR,#sample_tail_index
 0086 E0                MOVX    A,@DPTR
 0087 FE                MOV     R6,A
 0088 A3                INC     DPTR
 0089 E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/06/2014 10:37:36 PAGE 9   
+
 008A FF                MOV     R7,A
 008B 900000      E     MOV     DPTR,#sample_head_index
 008E E0                MOVX    A,@DPTR
 008F FC                MOV     R4,A
 0090 A3                INC     DPTR
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/01/2014 21:12:53 PAGE 13  
-
 0091 E0                MOVX    A,@DPTR
 0092 FD                MOV     R5,A
 0093 ED                MOV     A,R5
@@ -740,16 +517,16 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0097 EC                MOV     A,R4
 0098 6E                XRL     A,R6
 0099         ?C0024:
-0099 6009              JZ      ?C0012
-                                           ; SOURCE LINE # 137
+0099 6009              JZ      ?C0006
+                                           ; SOURCE LINE # 83
 009B 900000      R     MOV     DPTR,#result
 009E 7401              MOV     A,#01H
 00A0 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 138
+                                           ; SOURCE LINE # 84
 00A1 020000      R     LJMP    exit
-                                           ; SOURCE LINE # 139
-00A4         ?C0012:
-                                           ; SOURCE LINE # 143
+                                           ; SOURCE LINE # 85
+00A4         ?C0006:
+                                           ; SOURCE LINE # 89
 00A4 900000      R     MOV     DPTR,#num_bytes
 00A7 E0                MOVX    A,@DPTR
 00A8 FF                MOV     R7,A
@@ -771,8 +548,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00BB 94A8              SUBB    A,#0A8H
 00BD EE                MOV     A,R6
 00BE 9461              SUBB    A,#061H
-00C0 506C              JNC     ?C0014
-                                           ; SOURCE LINE # 145
+00C0 506C              JNC     ?C0008
+                                           ; SOURCE LINE # 91
 00C2 900000      R     MOV     DPTR,#buffer
 00C5 120000      E     LCALL   ?C?PLDXDATA
 00C8 C003              PUSH    AR3
@@ -789,13 +566,13 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00D9 F9                MOV     R1,A
 00DA 7400        E     MOV     A,#HIGH sample_block
 00DC 3E                ADDC    A,R6
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/06/2014 10:37:36 PAGE 10  
+
 00DD FA                MOV     R2,A
 00DE 7BFF              MOV     R3,#0FFH
 00E0 900000      E     MOV     DPTR,#?_Em_EEPROM_Write?BYTE+03H
 00E3 120000      E     LCALL   ?C?PSTXDATA
 00E6 900000      R     MOV     DPTR,#num_bytes
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/01/2014 21:12:53 PAGE 14  
-
 00E9 E0                MOVX    A,@DPTR
 00EA FF                MOV     R7,A
 00EB 7E00              MOV     R6,#00H
@@ -809,7 +586,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00F7 D002              POP     AR2
 00F9 D003              POP     AR3
 00FB 120000      E     LCALL   _Em_EEPROM_Write
-                                           ; SOURCE LINE # 146
+                                           ; SOURCE LINE # 92
 00FE 900000      R     MOV     DPTR,#num_bytes
 0101 E0                MOVX    A,@DPTR
 0102 FF                MOV     R7,A
@@ -818,7 +595,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0108 EE                MOV     A,R6
 0109 8FF0              MOV     B,R7
 010B 120000      E     LCALL   ?C?IILDX
-                                           ; SOURCE LINE # 148
+                                           ; SOURCE LINE # 94
 010E 900000      E     MOV     DPTR,#sample_tail_index
 0111 E0                MOVX    A,@DPTR
 0112 FE                MOV     R6,A
@@ -832,34 +609,34 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 011C 6461              XRL     A,#061H
 011E         ?C0025:
 011E 6003              JZ      $ + 5H
-0120 020000      R     LJMP    ?C0016
-                                           ; SOURCE LINE # 149
+0120 020000      R     LJMP    ?C0010
+                                           ; SOURCE LINE # 95
 0123 900000      E     MOV     DPTR,#sample_tail_index
 0126 E4                CLR     A
 0127 F0                MOVX    @DPTR,A
 0128 A3                INC     DPTR
 0129 E4                CLR     A
 012A F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 150
-012B         ?C0015:
-                                           ; SOURCE LINE # 151
-012B 020000      R     LJMP    ?C0016
-012E         ?C0014:
-                                           ; SOURCE LINE # 152
-                                           ; SOURCE LINE # 155
+                                           ; SOURCE LINE # 96
+012B         ?C0009:
+                                           ; SOURCE LINE # 97
+012B 020000      R     LJMP    ?C0010
+012E         ?C0008:
+                                           ; SOURCE LINE # 98
+                                           ; SOURCE LINE # 101
 012E 900000      E     MOV     DPTR,#sample_tail_index
 0131 E0                MOVX    A,@DPTR
 0132 FE                MOV     R6,A
 0133 A3                INC     DPTR
 0134 E0                MOVX    A,@DPTR
 0135 FF                MOV     R7,A
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/06/2014 10:37:36 PAGE 11  
+
 0136 C3                CLR     C
 0137 74A8              MOV     A,#0A8H
 0139 9F                SUBB    A,R7
 013A FF                MOV     R7,A
 013B 7461              MOV     A,#061H
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/01/2014 21:12:53 PAGE 15  
-
 013D 9E                SUBB    A,R6
 013E FE                MOV     R6,A
 013F 900000      R     MOV     DPTR,#remaining_bytes
@@ -868,7 +645,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0144 A3                INC     DPTR
 0145 EF                MOV     A,R7
 0146 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 157
+                                           ; SOURCE LINE # 103
 0147 900000      R     MOV     DPTR,#buffer
 014A 120000      E     LCALL   ?C?PLDXDATA
 014D C003              PUSH    AR3
@@ -905,7 +682,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 017D D002              POP     AR2
 017F D003              POP     AR3
 0181 120000      E     LCALL   _Em_EEPROM_Write
-                                           ; SOURCE LINE # 161
+                                           ; SOURCE LINE # 107
 0184 900000      R     MOV     DPTR,#buffer
 0187 120000      E     LCALL   ?C?PLDXDATA
 018A 900000      R     MOV     DPTR,#remaining_bytes
@@ -917,13 +694,13 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0192 E9                MOV     A,R1
 0193 2F                ADD     A,R7
 0194 F9                MOV     R1,A
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/06/2014 10:37:36 PAGE 12  
+
 0195 EA                MOV     A,R2
 0196 3E                ADDC    A,R6
 0197 FA                MOV     R2,A
 0198 C003              PUSH    AR3
 019A C002              PUSH    AR2
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/01/2014 21:12:53 PAGE 16  
-
 019C C001              PUSH    AR1
 019E 7BFF              MOV     R3,#0FFH
 01A0 7A00        E     MOV     R2,#HIGH sample_block
@@ -957,7 +734,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01CA D002              POP     AR2
 01CC D003              POP     AR3
 01CE 120000      E     LCALL   _Em_EEPROM_Write
-                                           ; SOURCE LINE # 165
+                                           ; SOURCE LINE # 111
 01D1 900000      R     MOV     DPTR,#num_bytes
 01D4 E0                MOVX    A,@DPTR
 01D5 FF                MOV     R7,A
@@ -981,13 +758,13 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01EC A3                INC     DPTR
 01ED EF                MOV     A,R7
 01EE F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 166
-01EF         ?C0016:
-                                           ; SOURCE LINE # 170
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/06/2014 10:37:36 PAGE 13  
+
+                                           ; SOURCE LINE # 112
+01EF         ?C0010:
+                                           ; SOURCE LINE # 116
 01EF 7B01              MOV     R3,#01H
 01F1 7A00        E     MOV     R2,#HIGH sample_tail_index
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/01/2014 21:12:53 PAGE 17  
-
 01F3 7900        E     MOV     R1,#LOW sample_tail_index
 01F5 C003              PUSH    AR3
 01F7 C002              PUSH    AR2
@@ -1023,7 +800,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0225 D002              POP     AR2
 0227 D003              POP     AR3
 0229 120000      E     LCALL   _Em_EEPROM_Write
-                                           ; SOURCE LINE # 174
+                                           ; SOURCE LINE # 120
 022C 900000      E     MOV     DPTR,#sample_head_index
 022F E0                MOVX    A,@DPTR
 0230 FE                MOV     R6,A
@@ -1040,28 +817,278 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 023D B5070A            CJNE    A,AR7,exit
 0240 EC                MOV     A,R4
 0241 B50606            CJNE    A,AR6,exit
-                                           ; SOURCE LINE # 175
+                                           ; SOURCE LINE # 121
 0244 900000      R     MOV     DPTR,#result
 0247 7401              MOV     A,#01H
 0249 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 176
-024A         ?C0017:
-                                           ; SOURCE LINE # 178
-024A         exit:
-                                           ; SOURCE LINE # 179
-024A 900000      R     MOV     DPTR,#result
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/01/2014 21:12:53 PAGE 18  
+                                           ; SOURCE LINE # 122
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/06/2014 10:37:36 PAGE 14  
 
+024A         ?C0011:
+                                           ; SOURCE LINE # 124
+024A         exit:
+                                           ; SOURCE LINE # 125
+024A 900000      R     MOV     DPTR,#result
 024D E0                MOVX    A,@DPTR
 024E FF                MOV     R7,A
-                                           ; SOURCE LINE # 180
-024F         ?C0018:
+                                           ; SOURCE LINE # 126
+024F         ?C0012:
 024F 22                RET     
              ; FUNCTION _store_in_flash (END)
 
-             ; FUNCTION clear_samples (BEGIN)
-                                           ; SOURCE LINE # 182
+             ; FUNCTION start_collection (BEGIN)
+                                           ; SOURCE LINE # 128
+                                           ; SOURCE LINE # 136
+0000 120000      E     LCALL   RTC_ReadTime
+0003 900000      R     MOV     DPTR,#datetime
+0006 120000      E     LCALL   ?C?PSTXDATA
+                                           ; SOURCE LINE # 139
+0009 900000      R     MOV     DPTR,#header
+000C 7420              MOV     A,#020H
+000E F0                MOVX    @DPTR,A
+000F A3                INC     DPTR
+0010 E4                CLR     A
+0011 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 140
+0012 7F00              MOV     R7,#00H
+0014 7E00              MOV     R6,#00H
+0016 120000      E     LCALL   _get_EEPROM_variable
+0019 900000      R     MOV     DPTR,#header+04H
+001C EF                MOV     A,R7
+001D F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 141
+001E 7F01              MOV     R7,#01H
+0020 7E00              MOV     R6,#00H
+0022 120000      E     LCALL   _get_EEPROM_variable
+0025 900000      R     MOV     DPTR,#header+05H
+0028 EF                MOV     A,R7
+0029 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 142
+002A 7F02              MOV     R7,#02H
+002C 7E00              MOV     R6,#00H
+002E 120000      E     LCALL   _get_EEPROM_variable
+0031 900000      R     MOV     DPTR,#header+06H
+0034 EF                MOV     A,R7
+0035 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 143
+0036 900000      R     MOV     DPTR,#datetime
+0039 120000      E     LCALL   ?C?PLDXDATA
+003C 120000      E     LCALL   ?C?CLDPTR
+003F FF                MOV     R7,A
+0040 900000      R     MOV     DPTR,#header+07H
+0043 EF                MOV     A,R7
+0044 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 144
+0045 900000      R     MOV     DPTR,#datetime
+0048 120000      E     LCALL   ?C?PLDXDATA
+004B E9                MOV     A,R1
+004C 2401              ADD     A,#01H
+004E F9                MOV     R1,A
+004F EA                MOV     A,R2
+0050 3400              ADDC    A,#00H
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/06/2014 10:37:36 PAGE 15  
+
+0052 FA                MOV     R2,A
+0053 120000      E     LCALL   ?C?CLDPTR
+0056 FF                MOV     R7,A
+0057 900000      R     MOV     DPTR,#header+08H
+005A EF                MOV     A,R7
+005B F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 145
+005C 900000      R     MOV     DPTR,#datetime
+005F 120000      E     LCALL   ?C?PLDXDATA
+0062 E9                MOV     A,R1
+0063 2402              ADD     A,#02H
+0065 F9                MOV     R1,A
+0066 EA                MOV     A,R2
+0067 3400              ADDC    A,#00H
+0069 FA                MOV     R2,A
+006A 120000      E     LCALL   ?C?CLDPTR
+006D FF                MOV     R7,A
+006E 900000      R     MOV     DPTR,#header+09H
+0071 EF                MOV     A,R7
+0072 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 146
+0073 900000      R     MOV     DPTR,#datetime
+0076 120000      E     LCALL   ?C?PLDXDATA
+0079 E9                MOV     A,R1
+007A 2404              ADD     A,#04H
+007C F9                MOV     R1,A
+007D EA                MOV     A,R2
+007E 3400              ADDC    A,#00H
+0080 FA                MOV     R2,A
+0081 120000      E     LCALL   ?C?CLDPTR
+0084 FF                MOV     R7,A
+0085 900000      R     MOV     DPTR,#header+0AH
+0088 EF                MOV     A,R7
+0089 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 147
+008A 900000      R     MOV     DPTR,#datetime
+008D 120000      E     LCALL   ?C?PLDXDATA
+0090 E9                MOV     A,R1
+0091 2407              ADD     A,#07H
+0093 F9                MOV     R1,A
+0094 EA                MOV     A,R2
+0095 3400              ADDC    A,#00H
+0097 FA                MOV     R2,A
+0098 120000      E     LCALL   ?C?CLDPTR
+009B FF                MOV     R7,A
+009C 900000      R     MOV     DPTR,#header+0BH
+009F EF                MOV     A,R7
+00A0 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 148
+00A1 900000      R     MOV     DPTR,#datetime
+00A4 120000      E     LCALL   ?C?PLDXDATA
+00A7 E9                MOV     A,R1
+00A8 2408              ADD     A,#08H
+00AA F9                MOV     R1,A
+00AB EA                MOV     A,R2
+00AC 3400              ADDC    A,#00H
+00AE FA                MOV     R2,A
+00AF 120000      E     LCALL   ?C?ILDPTR
+00B2 FF                MOV     R7,A
+00B3 AEF0              MOV     R6,B
+00B5 900000      R     MOV     DPTR,#header+02H
+00B8 EE                MOV     A,R6
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/06/2014 10:37:36 PAGE 16  
+
+00B9 F0                MOVX    @DPTR,A
+00BA A3                INC     DPTR
+00BB EF                MOV     A,R7
+00BC F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 150
+00BD 7B01              MOV     R3,#01H
+00BF 7A00        R     MOV     R2,#HIGH header
+00C1 7900        R     MOV     R1,#LOW header
+00C3 7D10              MOV     R5,#010H
+00C5 120000      R     LCALL   _store_in_flash
+00C8 EF                MOV     A,R7
+00C9 6007              JZ      ?C0013
+                                           ; SOURCE LINE # 151
+00CB 120000      E     LCALL   memory_full
+                                           ; SOURCE LINE # 152
+00CE 120000      R     LCALL   stop_collection
+                                           ; SOURCE LINE # 153
+00D1 22                RET     
+                                           ; SOURCE LINE # 154
+00D2         ?C0013:
+                                           ; SOURCE LINE # 156
+00D2 900000      E     MOV     DPTR,#stop_collection_enabled
+00D5 7401              MOV     A,#01H
+00D7 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 157
+00D8 900000      E     MOV     DPTR,#start_collection_enabled
+00DB E4                CLR     A
+00DC F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 158
+00DD 900000      E     MOV     DPTR,#sample_enable_flag
+00E0 7401              MOV     A,#01H
+00E2 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 159
+00E3 900000      E     MOV     DPTR,#sample_interrupt_count
+00E6 E4                CLR     A
+00E7 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 169
+00E8         exit:
+                                           ; SOURCE LINE # 171
+00E8         ?C0015:
+00E8 22                RET     
+             ; FUNCTION start_collection (END)
+
+             ; FUNCTION take_sample (BEGIN)
+                                           ; SOURCE LINE # 173
+                                           ; SOURCE LINE # 180
+0000 900000      R     MOV     DPTR,#sample
+0003 E4                CLR     A
+0004 F0                MOVX    @DPTR,A
+0005 A3                INC     DPTR
+0006 E4                CLR     A
+0007 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 181
+0008 120000      E     LCALL   ADC_Wakeup
+                                           ; SOURCE LINE # 183
+000B 120000      E     LCALL   ADC_Read16
+000E 900000      R     MOV     DPTR,#sample
+0011 EE                MOV     A,R6
+0012 F0                MOVX    @DPTR,A
+0013 A3                INC     DPTR
+0014 EF                MOV     A,R7
+0015 F0                MOVX    @DPTR,A
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/06/2014 10:37:36 PAGE 17  
+
+                                           ; SOURCE LINE # 184
+0016 900000      R     MOV     DPTR,#sample
+0019 E0                MOVX    A,@DPTR
+001A FE                MOV     R6,A
+001B A3                INC     DPTR
+001C E0                MOVX    A,@DPTR
+001D FF                MOV     R7,A
+001E EE                MOV     A,R6
+001F C4                SWAP    A
+0020 F8                MOV     R0,A
+0021 54F0              ANL     A,#0F0H
+0023 C8                XCH     A,R0
+0024 68                XRL     A,R0
+0025 FE                MOV     R6,A
+0026 EF                MOV     A,R7
+0027 C4                SWAP    A
+0028 540F              ANL     A,#0FH
+002A 48                ORL     A,R0
+002B FF                MOV     R7,A
+002C EE                MOV     A,R6
+002D 540F              ANL     A,#0FH
+002F FE                MOV     R6,A
+0030 900000      R     MOV     DPTR,#sample
+0033 EE                MOV     A,R6
+0034 F0                MOVX    @DPTR,A
+0035 A3                INC     DPTR
+0036 EF                MOV     A,R7
+0037 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 186
+0038 7B01              MOV     R3,#01H
+003A 7A00        R     MOV     R2,#HIGH sample
+003C 7900        R     MOV     R1,#LOW sample
+003E 7D02              MOV     R5,#02H
+0040 120000      R     LCALL   _store_in_flash
+0043 EF                MOV     A,R7
+0044 6006              JZ      ?C0016
+                                           ; SOURCE LINE # 187
+0046 120000      E     LCALL   memory_full
+                                           ; SOURCE LINE # 188
+0049 120000      R     LCALL   stop_collection
+                                           ; SOURCE LINE # 189
+004C         ?C0016:
+                                           ; SOURCE LINE # 191
+004C 120000      E     LCALL   ADC_Sleep
                                            ; SOURCE LINE # 193
+004F         ?C0017:
+004F 22                RET     
+             ; FUNCTION take_sample (END)
+
+             ; FUNCTION stop_collection (BEGIN)
+                                           ; SOURCE LINE # 195
+                                           ; SOURCE LINE # 202
+0000 900000      E     MOV     DPTR,#start_collection_enabled
+0003 7401              MOV     A,#01H
+0005 F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 203
+0006 900000      E     MOV     DPTR,#stop_collection_enabled
+0009 E4                CLR     A
+000A F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 204
+000B 900000      E     MOV     DPTR,#sample_enable_flag
+000E E4                CLR     A
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/06/2014 10:37:36 PAGE 18  
+
+000F F0                MOVX    @DPTR,A
+                                           ; SOURCE LINE # 207
+0010         ?C0018:
+0010 22                RET     
+             ; FUNCTION stop_collection (END)
+
+             ; FUNCTION clear_samples (BEGIN)
+                                           ; SOURCE LINE # 210
+                                           ; SOURCE LINE # 221
 0000 900000      E     MOV     DPTR,#sample_tail_index
 0003 E0                MOVX    A,@DPTR
 0004 FE                MOV     R6,A
@@ -1081,12 +1108,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0014 9E                SUBB    A,R6
 0015 5003              JNC     $ + 5H
 0017 020000      R     LJMP    ?C0019
-                                           ; SOURCE LINE # 194
+                                           ; SOURCE LINE # 222
 001A 900000      E     MOV     DPTR,#pointer_head_index
 001D 7401              MOV     A,#01H
 001F 75F020            MOV     B,#020H
 0022 120000      E     LCALL   ?C?IILDX
-                                           ; SOURCE LINE # 196
+                                           ; SOURCE LINE # 224
 0025 900000      E     MOV     DPTR,#pointer_head_index
 0028 E0                MOVX    A,@DPTR
 0029 FE                MOV     R6,A
@@ -1099,24 +1126,24 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0031 EE                MOV     A,R6
 0032 9403              SUBB    A,#03H
 0034 4008              JC      ?C0020
-                                           ; SOURCE LINE # 197
+                                           ; SOURCE LINE # 225
 0036 900000      E     MOV     DPTR,#pointer_head_index
 0039 E4                CLR     A
 003A F0                MOVX    @DPTR,A
 003B A3                INC     DPTR
 003C E4                CLR     A
 003D F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 198
+                                           ; SOURCE LINE # 226
 003E         ?C0020:
-                                           ; SOURCE LINE # 200
+                                           ; SOURCE LINE # 228
 003E 900000      E     MOV     DPTR,#pointer_head_index
 0041 E0                MOVX    A,@DPTR
 0042 FE                MOV     R6,A
 0043 A3                INC     DPTR
 0044 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/01/2014 21:12:53 PAGE 19  
-
 0045 FF                MOV     R7,A
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/06/2014 10:37:36 PAGE 19  
+
 0046 EF                MOV     A,R7
 0047 2401              ADD     A,#01H
 0049 FF                MOV     R7,A
@@ -1129,7 +1156,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0053 A3                INC     DPTR
 0054 EF                MOV     A,R7
 0055 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 204
+                                           ; SOURCE LINE # 232
 0056 7B01              MOV     R3,#01H
 0058 7A00        E     MOV     R2,#HIGH pointer_head_index
 005A 7900        E     MOV     R1,#LOW pointer_head_index
@@ -1151,7 +1178,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0079 D002              POP     AR2
 007B D003              POP     AR3
 007D 120000      E     LCALL   _Em_EEPROM_Write
-                                           ; SOURCE LINE # 208
+                                           ; SOURCE LINE # 236
 0080 7B01              MOV     R3,#01H
 0082 7A00        E     MOV     R2,#HIGH pointer_tail_index
 0084 7900        E     MOV     R1,#LOW pointer_tail_index
@@ -1173,14 +1200,14 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00A3 D002              POP     AR2
 00A5 D003              POP     AR3
 00A7 120000      E     LCALL   _Em_EEPROM_Write
-                                           ; SOURCE LINE # 213
+                                           ; SOURCE LINE # 241
 00AA 7B01              MOV     R3,#01H
 00AC 7A00        E     MOV     R2,#HIGH sample_tail_index
 00AE 7900        E     MOV     R1,#LOW sample_tail_index
 00B0 C003              PUSH    AR3
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/01/2014 21:12:53 PAGE 20  
-
 00B2 C002              PUSH    AR2
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/06/2014 10:37:36 PAGE 20  
+
 00B4 C001              PUSH    AR1
 00B6 900000      E     MOV     DPTR,#pointer_tail_index
 00B9 E0                MOVX    A,@DPTR
@@ -1213,9 +1240,9 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00E0 D002              POP     AR2
 00E2 D003              POP     AR3
 00E4 120000      E     LCALL   _Em_EEPROM_Write
-                                           ; SOURCE LINE # 215
+                                           ; SOURCE LINE # 243
 00E7         ?C0019:
-                                           ; SOURCE LINE # 218
+                                           ; SOURCE LINE # 246
 00E7 900000      E     MOV     DPTR,#sample_tail_index
 00EA E0                MOVX    A,@DPTR
 00EB FE                MOV     R6,A
@@ -1228,7 +1255,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00F4 A3                INC     DPTR
 00F5 EF                MOV     A,R7
 00F6 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 220
+                                           ; SOURCE LINE # 248
 00F7 7B01              MOV     R3,#01H
 00F9 7A00        E     MOV     R2,#HIGH sample_tail_index
 00FB 7900        E     MOV     R1,#LOW sample_tail_index
@@ -1242,9 +1269,9 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0109 E0                MOVX    A,@DPTR
 010A FF                MOV     R7,A
 010B EF                MOV     A,R7
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/01/2014 21:12:53 PAGE 21  
-
 010C 25E0              ADD     A,ACC
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/06/2014 10:37:36 PAGE 21  
+
 010E FF                MOV     R7,A
 010F EE                MOV     A,R6
 0110 33                RLC     A
@@ -1268,17 +1295,17 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 012D D002              POP     AR2
 012F D003              POP     AR3
 0131 120000      E     LCALL   _Em_EEPROM_Write
-                                           ; SOURCE LINE # 224
+                                           ; SOURCE LINE # 252
 0134 900000      E     MOV     DPTR,#mem_full_flag
 0137 E0                MOVX    A,@DPTR
 0138 FF                MOV     R7,A
 0139 EF                MOV     A,R7
 013A 602F              JZ      ?C0022
-                                           ; SOURCE LINE # 225
+                                           ; SOURCE LINE # 253
 013C 900000      E     MOV     DPTR,#mem_full_flag
 013F E4                CLR     A
 0140 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 226
+                                           ; SOURCE LINE # 254
 0141 7B01              MOV     R3,#01H
 0143 7A00        E     MOV     R2,#HIGH mem_full_flag
 0145 7900        E     MOV     R1,#LOW mem_full_flag
@@ -1300,46 +1327,46 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0164 D002              POP     AR2
 0166 D003              POP     AR3
 0168 120000      E     LCALL   _Em_EEPROM_Write
-                                           ; SOURCE LINE # 227
+                                           ; SOURCE LINE # 255
 016B         ?C0021:
-                                           ; SOURCE LINE # 230
+                                           ; SOURCE LINE # 258
 016B         ?C0022:
 016B 22                RET     
              ; FUNCTION clear_samples (END)
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/01/2014 21:12:53 PAGE 22  
 
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/06/2014 10:37:36 PAGE 22  
 
              ; FUNCTION reset_pointers (BEGIN)
-                                           ; SOURCE LINE # 232
-                                           ; SOURCE LINE # 239
+                                           ; SOURCE LINE # 260
+                                           ; SOURCE LINE # 267
 0000 900000      E     MOV     DPTR,#pointer_head_index
 0003 E4                CLR     A
 0004 F0                MOVX    @DPTR,A
 0005 A3                INC     DPTR
 0006 E4                CLR     A
 0007 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 240
+                                           ; SOURCE LINE # 268
 0008 900000      E     MOV     DPTR,#pointer_tail_index
 000B E4                CLR     A
 000C F0                MOVX    @DPTR,A
 000D A3                INC     DPTR
 000E 7401              MOV     A,#01H
 0010 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 241
+                                           ; SOURCE LINE # 269
 0011 900000      E     MOV     DPTR,#sample_head_index
 0014 E4                CLR     A
 0015 F0                MOVX    @DPTR,A
 0016 A3                INC     DPTR
 0017 E4                CLR     A
 0018 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 242
+                                           ; SOURCE LINE # 270
 0019 900000      E     MOV     DPTR,#sample_tail_index
 001C E4                CLR     A
 001D F0                MOVX    @DPTR,A
 001E A3                INC     DPTR
 001F E4                CLR     A
 0020 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 246
+                                           ; SOURCE LINE # 274
 0021 7B01              MOV     R3,#01H
 0023 7A00        E     MOV     R2,#HIGH pointer_head_index
 0025 7900        E     MOV     R1,#LOW pointer_head_index
@@ -1361,7 +1388,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0044 D002              POP     AR2
 0046 D003              POP     AR3
 0048 120000      E     LCALL   _Em_EEPROM_Write
-                                           ; SOURCE LINE # 250
+                                           ; SOURCE LINE # 278
 004B 7B01              MOV     R3,#01H
 004D 7A00        E     MOV     R2,#HIGH pointer_tail_index
 004F 7900        E     MOV     R1,#LOW pointer_tail_index
@@ -1370,9 +1397,9 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0055 C001              PUSH    AR1
 0057 7BFF              MOV     R3,#0FFH
 0059 7A00        E     MOV     R2,#HIGH master_sample_indices+02H
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/01/2014 21:12:53 PAGE 23  
-
 005B 7900        E     MOV     R1,#LOW master_sample_indices+02H
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/06/2014 10:37:36 PAGE 23  
+
 005D 900000      E     MOV     DPTR,#?_Em_EEPROM_Write?BYTE+03H
 0060 120000      E     LCALL   ?C?PSTXDATA
 0063 900000      E     MOV     DPTR,#?_Em_EEPROM_Write?BYTE+06H
@@ -1385,7 +1412,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 006E D002              POP     AR2
 0070 D003              POP     AR3
 0072 120000      E     LCALL   _Em_EEPROM_Write
-                                           ; SOURCE LINE # 255
+                                           ; SOURCE LINE # 283
 0075 7B01              MOV     R3,#01H
 0077 7A00        E     MOV     R2,#HIGH sample_head_index
 0079 7900        E     MOV     R1,#LOW sample_head_index
@@ -1407,7 +1434,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0098 D002              POP     AR2
 009A D003              POP     AR3
 009C 120000      E     LCALL   _Em_EEPROM_Write
-                                           ; SOURCE LINE # 259
+                                           ; SOURCE LINE # 287
 009F 7B01              MOV     R3,#01H
 00A1 7A00        E     MOV     R2,#HIGH sample_tail_index
 00A3 7900        E     MOV     R1,#LOW sample_tail_index
@@ -1429,13 +1456,13 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00C2 D002              POP     AR2
 00C4 D003              POP     AR3
 00C6 120000      E     LCALL   _Em_EEPROM_Write
-                                           ; SOURCE LINE # 263
+                                           ; SOURCE LINE # 291
 00C9         ?C0023:
 00C9 22                RET     
              ; FUNCTION reset_pointers (END)
 
-C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/01/2014 21:12:53 PAGE 24  
 
+C51 COMPILER V9.51   SAMPLE_HANDLER                                                        06/06/2014 10:37:36 PAGE 24  
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE

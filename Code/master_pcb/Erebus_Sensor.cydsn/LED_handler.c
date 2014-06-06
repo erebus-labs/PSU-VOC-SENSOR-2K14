@@ -10,7 +10,24 @@
  * ========================================
 */
 
+/*
+ * ========================================
+ * Header Files
+ * ========================================
+*/
+
+/* Cypress Headers */
+#include "project.h"
+
+/* Project Headers */
+#include "globals.h"
 #include "LED_handler.h"
+
+/*
+ * ========================================
+ * Function Definitions
+ * ========================================
+*/
 
 void LED_on(uint8 color){
 /* 
@@ -21,28 +38,28 @@ void LED_on(uint8 color){
     SOLID_LED_CTRL_Write(OFF);
     
     switch (color){   
-    
-        case RED:
-        case GREEN:
-        case BLUE:
-            SOLID_LED_CTRL_Write(color);
-            break;
-            
-        case MAGENTA:
-            PWM0_CTRL_Write(PWM_BLUE);
-            PWM1_CTRL_Write(PWM_RED);
-            break;
-                
-        case YELLOW:
-            PWM0_CTRL_Write(PWM_GREEN);
-            PWM1_CTRL_Write(PWM_RED);
-            break;
+
+    case RED:
+    case GREEN:
+    case BLUE:
+        SOLID_LED_CTRL_Write(color);
+        break;
         
-        case CYAN:
-            PWM0_CTRL_Write(PWM_GREEN);
-            PWM1_CTRL_Write(PWM_BLUE);
-            break;          
+    case MAGENTA:
+        PWM0_CTRL_Write(PWM_BLUE);
+        PWM1_CTRL_Write(PWM_RED);
+        break;
             
+    case YELLOW:
+        PWM0_CTRL_Write(PWM_GREEN);
+        PWM1_CTRL_Write(PWM_RED);
+        break;
+    
+    case CYAN:
+        PWM0_CTRL_Write(PWM_GREEN);
+        PWM1_CTRL_Write(PWM_BLUE);
+        break;          
+        
     }
     return;
 }

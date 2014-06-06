@@ -12,26 +12,7 @@
 
 #ifndef _MAIN_H_
     #define _MAIN_H_
-    
-    /*
-     * ========================================
-     * Header Files
-     * ========================================
-    */
-    
-    /* C Library Headers */
-    #include <stdlib.h>
-    
-    /* Cypress Headers */
-    #include "project.h"
-
-    /* Project Headers */
-    #include "LED_handler.h"
-    #include "USB_handler.h"
-    #include "utility.h"
-    #include "sample_handler.h"
-    #include "globals.h"
-    
+  
     /*
      * ========================================
      * Macros

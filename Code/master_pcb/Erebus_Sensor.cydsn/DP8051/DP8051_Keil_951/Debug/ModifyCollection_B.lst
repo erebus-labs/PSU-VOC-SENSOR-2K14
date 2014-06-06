@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   MODIFYCOLLECTION_B                                                    05/31/2014 14:02:33 PAGE 1   
+C51 COMPILER V9.51   MODIFYCOLLECTION_B                                                    06/05/2014 22:06:44 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE MODIFYCOLLECTION_B
@@ -62,7 +62,7 @@ line level    source
   49          * Parameters:  
   50          *  mode:  Change the pins to this drive mode.
   51          *
-C51 COMPILER V9.51   MODIFYCOLLECTION_B                                                    05/31/2014 14:02:33 PAGE 2   
+C51 COMPILER V9.51   MODIFYCOLLECTION_B                                                    06/05/2014 22:06:44 PAGE 2   
 
   52          * Return: 
   53          *  None
@@ -126,7 +126,7 @@ line level    source
  111              * Function Name: ModifyCollection_B_ClearInterrupt
  112              ********************************************************************************
  113              *
-C51 COMPILER V9.51   MODIFYCOLLECTION_B                                                    05/31/2014 14:02:33 PAGE 3   
+C51 COMPILER V9.51   MODIFYCOLLECTION_B                                                    06/05/2014 22:06:44 PAGE 3   
 
  114              * Summary:
  115              *  Clears any active interrupts attached to port and returns the value of the 
@@ -148,7 +148,7 @@ line level    source
  131          
  132          
  133          /* [] END OF FILE */
-C51 COMPILER V9.51   MODIFYCOLLECTION_B                                                    05/31/2014 14:02:33 PAGE 4   
+C51 COMPILER V9.51   MODIFYCOLLECTION_B                                                    06/05/2014 22:06:44 PAGE 4   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -212,7 +212,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000E 905013            MOV     DPTR,#05013H
 0011 E0                MOVX    A,@DPTR
 0012 FE                MOV     R6,A
-C51 COMPILER V9.51   MODIFYCOLLECTION_B                                                    05/31/2014 14:02:33 PAGE 5   
+C51 COMPILER V9.51   MODIFYCOLLECTION_B                                                    06/05/2014 22:06:44 PAGE 5   
 
 0013 EE                MOV     A,R6
 0014 54F1              ANL     A,#0F1H
@@ -276,7 +276,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION ModifyCollection_B_ReadDataReg (BEGIN)
                                            ; SOURCE LINE # 101
                                            ; SOURCE LINE # 102
-C51 COMPILER V9.51   MODIFYCOLLECTION_B                                                    05/31/2014 14:02:33 PAGE 6   
+C51 COMPILER V9.51   MODIFYCOLLECTION_B                                                    06/05/2014 22:06:44 PAGE 6   
 
                                            ; SOURCE LINE # 103
 0000 905120            MOV     DPTR,#05120H
@@ -340,7 +340,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    EDATA SIZE       =   ----    ----
    HDATA SIZE       =   ----    ----
    XDATA CONST SIZE =   ----    ----
-C51 COMPILER V9.51   MODIFYCOLLECTION_B                                                    05/31/2014 14:02:33 PAGE 7   
+C51 COMPILER V9.51   MODIFYCOLLECTION_B                                                    06/05/2014 22:06:44 PAGE 7   
 
    FAR CONST SIZE   =   ----    ----
 END OF MODULE INFORMATION.

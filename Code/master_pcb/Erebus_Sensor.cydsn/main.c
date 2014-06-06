@@ -9,13 +9,36 @@
  *
  * ========================================
 */
+  
+/*
+ * ========================================
+ * Header Files
+ * ========================================
+*/
 
+/* C Library Headers */
+#include <stdlib.h>
+
+/* Cypress Headers */
+#include "project.h"
+
+/* Project Headers */
+#include "LED_handler.h"
+#include "USB_handler.h"
+#include "utility.h"
+#include "sample_handler.h"
+#include "globals.h"
 #include "main.h"
 
 /*
  * ========================================
  * Global Variable Definitions
  * ========================================
+*/
+
+/* Even though global variables are allocated from the
+ * heap and should be initialized to zero, we are going
+ * to set them equal to zero anyway to be sure.
 */
 
 /* Awaiting Action Flags */ 
@@ -91,7 +114,6 @@ int main()
     ModifyCollection_IRQ_Start();
     start_collection_enabled = 1;
     
-    
     /* Retrieve Full Memory Flag from Flash */
     mem_full_flag = mem_full_flash_flag;
     if (mem_full_flag){
@@ -107,9 +129,9 @@ int main()
      * ========================================
     */
     
-    for(;;){       
+    for (;;){       
 
-        #ifdef SLEEP_EN 
+#ifdef SLEEP_EN 
         /* Prepare for sleep */
         RTC_DisableInt();
         CyPmSaveClocks();        
@@ -120,7 +142,7 @@ int main()
         /* Restore on wakeup */
         CyPmRestoreClocks(); 
         RTC_EnableInt();
-        #endif
+#endif
         
         /* Cycle through and check each flag that may have been set while asleep */
         if (USB_waiting){

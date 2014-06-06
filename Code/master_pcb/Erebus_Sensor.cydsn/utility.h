@@ -13,19 +13,7 @@
 
 #ifndef _UTILITY_H_
     #define _UTILITY_H_
-        
-    /*
-     * ========================================
-     * Header Files
-     * ========================================
-    */
-    
-    /* Cypress Headers */
-    #include "project.h"
-    
-    /* Project Headers */
-    #include "globals.h"
-    
+ 
     /*
      * ========================================
      * Macros

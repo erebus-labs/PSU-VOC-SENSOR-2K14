@@ -9,8 +9,25 @@
  *
  * ========================================
 */
+       
+/*
+ * ========================================
+ * Header Files
+ * ========================================
+*/
 
+/* Cypress Headers */
+#include "project.h"
+
+/* Project Headers */
+#include "globals.h"
 #include "utility.h"
+
+/*
+ * ========================================
+ * Function Definitions
+ * ========================================
+*/
 
 uint8 get_EEPROM_variable(uint16 var_index){
 /*
@@ -31,7 +48,7 @@ void memory_full(){
 */
     
     mem_full_flag = 1;
-    Em_EEPROM_Write(&mem_full_flag, &mem_full_flash_flag, sizeof(uint8));
+    Em_EEPROM_Write(&mem_full_flag, &mem_full_flash_flag, sizeof(mem_full_flag));
 
     return;
 }

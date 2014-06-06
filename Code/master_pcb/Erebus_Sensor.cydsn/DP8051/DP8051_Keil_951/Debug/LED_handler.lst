@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   LED_HANDLER                                                           05/31/2014 14:01:24 PAGE 1   
+C51 COMPILER V9.51   LED_HANDLER                                                           06/06/2014 09:51:56 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE LED_HANDLER
@@ -21,72 +21,89 @@ line level    source
   10           * ========================================
   11          */
   12          
-  13          #include "LED_handler.h"
-  14          
-  15          void LED_on(uint8 color){
-  16   1      /* 
-  17   1       * Activates the RGB Led in the designated color. If one of the PWM colors is desired,
-  18   1       * the PWM controller must be woken up prior to calling this function.
-  19   1      */
-  20   1          
-  21   1          SOLID_LED_CTRL_Write(OFF);
-  22   1          
-  23   1          switch (color){   
-  24   2          
-  25   2              case RED:
-  26   2              case GREEN:
-  27   2              case BLUE:
-  28   2                  SOLID_LED_CTRL_Write(color);
-  29   2                  break;
-  30   2                  
-  31   2              case MAGENTA:
-  32   2                  PWM0_CTRL_Write(PWM_BLUE);
-  33   2                  PWM1_CTRL_Write(PWM_RED);
-  34   2                  break;
-  35   2                      
-  36   2              case YELLOW:
-  37   2                  PWM0_CTRL_Write(PWM_GREEN);
-  38   2                  PWM1_CTRL_Write(PWM_RED);
-  39   2                  break;
-  40   2              
-  41   2              case CYAN:
-  42   2                  PWM0_CTRL_Write(PWM_GREEN);
-  43   2                  PWM1_CTRL_Write(PWM_BLUE);
-  44   2                  break;          
-  45   2                  
-  46   2          }
-  47   1          return;
-  48   1      }
-  49          
-  50          void LED_off(){
-  51   1      /* 
-  52   1       * Turns off the RGB LED. This funciton does not put the PWM controller back to sleep.
-  53   1      */
-C51 COMPILER V9.51   LED_HANDLER                                                           05/31/2014 14:01:24 PAGE 2   
+  13          /*
+  14           * ========================================
+  15           * Header Files
+  16           * ========================================
+  17          */
+  18          
+  19          /* Cypress Headers */
+  20          #include "project.h"
+  21          
+  22          /* Project Headers */
+  23          #include "globals.h"
+  24          #include "LED_handler.h"
+  25          
+  26          /*
+  27           * ========================================
+  28           * Function Definitions
+  29           * ========================================
+  30          */
+  31          
+  32          void LED_on(uint8 color){
+  33   1      /* 
+  34   1       * Activates the RGB Led in the designated color. If one of the PWM colors is desired,
+  35   1       * the PWM controller must be woken up prior to calling this function.
+  36   1      */
+  37   1          
+  38   1          SOLID_LED_CTRL_Write(OFF);
+  39   1          
+  40   1          switch (color){   
+  41   2      
+  42   2          case RED:
+  43   2          case GREEN:
+  44   2          case BLUE:
+  45   2              SOLID_LED_CTRL_Write(color);
+  46   2              break;
+  47   2              
+  48   2          case MAGENTA:
+  49   2              PWM0_CTRL_Write(PWM_BLUE);
+  50   2              PWM1_CTRL_Write(PWM_RED);
+  51   2              break;
+  52   2                  
+  53   2          case YELLOW:
+C51 COMPILER V9.51   LED_HANDLER                                                           06/06/2014 09:51:56 PAGE 2   
 
-  54   1          
-  55   1          SOLID_LED_CTRL_Write(OFF);
-  56   1          PWM0_CTRL_Write(OFF);
-  57   1          PWM1_CTRL_Write(OFF); 
-  58   1          
-  59   1          return;
-  60   1      }
-  61          
-  62          /* [] END OF FILE */
-C51 COMPILER V9.51   LED_HANDLER                                                           05/31/2014 14:01:24 PAGE 3   
+  54   2              PWM0_CTRL_Write(PWM_GREEN);
+  55   2              PWM1_CTRL_Write(PWM_RED);
+  56   2              break;
+  57   2          
+  58   2          case CYAN:
+  59   2              PWM0_CTRL_Write(PWM_GREEN);
+  60   2              PWM1_CTRL_Write(PWM_BLUE);
+  61   2              break;          
+  62   2              
+  63   2          }
+  64   1          return;
+  65   1      }
+  66          
+  67          void LED_off(){
+  68   1      /* 
+  69   1       * Turns off the RGB LED. This funciton does not put the PWM controller back to sleep.
+  70   1      */
+  71   1          
+  72   1          SOLID_LED_CTRL_Write(OFF);
+  73   1          PWM0_CTRL_Write(OFF);
+  74   1          PWM1_CTRL_Write(OFF); 
+  75   1          
+  76   1          return;
+  77   1      }
+  78          
+  79          /* [] END OF FILE */
+C51 COMPILER V9.51   LED_HANDLER                                                           06/06/2014 09:51:56 PAGE 3   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
 
              ; FUNCTION _LED_on (BEGIN)
-                                           ; SOURCE LINE # 15
+                                           ; SOURCE LINE # 32
 0000 900000      R     MOV     DPTR,#color
 0003 EF                MOV     A,R7
 0004 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 21
+                                           ; SOURCE LINE # 38
 0005 7F00              MOV     R7,#00H
 0007 120000      E     LCALL   _SOLID_LED_CTRL_Write
-                                           ; SOURCE LINE # 23
+                                           ; SOURCE LINE # 40
 000A 900000      R     MOV     DPTR,#color
 000D E0                MOVX    A,@DPTR
 000E FF                MOV     R7,A
@@ -106,69 +123,69 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0024 06                DB      06H
 0025 0000              DW      00H
 0027 0000        R     DW      ?C0008
-                                           ; SOURCE LINE # 25
+                                           ; SOURCE LINE # 42
 0029         ?C0002:
-                                           ; SOURCE LINE # 26
+                                           ; SOURCE LINE # 43
 0029         ?C0003:
-                                           ; SOURCE LINE # 27
+                                           ; SOURCE LINE # 44
 0029         ?C0004:
-                                           ; SOURCE LINE # 28
+                                           ; SOURCE LINE # 45
 0029 900000      R     MOV     DPTR,#color
 002C E0                MOVX    A,@DPTR
 002D FF                MOV     R7,A
 002E 120000      E     LCALL   _SOLID_LED_CTRL_Write
-                                           ; SOURCE LINE # 29
+                                           ; SOURCE LINE # 46
 0031 22                RET     
-                                           ; SOURCE LINE # 31
+                                           ; SOURCE LINE # 48
 0032         ?C0005:
-                                           ; SOURCE LINE # 32
+                                           ; SOURCE LINE # 49
 0032 7F03              MOV     R7,#03H
 0034 120000      E     LCALL   _PWM0_CTRL_Write
-                                           ; SOURCE LINE # 33
+                                           ; SOURCE LINE # 50
 0037 7F02              MOV     R7,#02H
 0039 120000      E     LCALL   _PWM1_CTRL_Write
-                                           ; SOURCE LINE # 34
+                                           ; SOURCE LINE # 51
 003C 22                RET     
-                                           ; SOURCE LINE # 36
+                                           ; SOURCE LINE # 53
 003D         ?C0006:
-                                           ; SOURCE LINE # 37
+                                           ; SOURCE LINE # 54
 003D 7F01              MOV     R7,#01H
 003F 120000      E     LCALL   _PWM0_CTRL_Write
-                                           ; SOURCE LINE # 38
+                                           ; SOURCE LINE # 55
 0042 7F02              MOV     R7,#02H
 0044 120000      E     LCALL   _PWM1_CTRL_Write
-C51 COMPILER V9.51   LED_HANDLER                                                           05/31/2014 14:01:24 PAGE 4   
+C51 COMPILER V9.51   LED_HANDLER                                                           06/06/2014 09:51:56 PAGE 4   
 
-                                           ; SOURCE LINE # 39
+                                           ; SOURCE LINE # 56
 0047 22                RET     
-                                           ; SOURCE LINE # 41
+                                           ; SOURCE LINE # 58
 0048         ?C0007:
-                                           ; SOURCE LINE # 42
+                                           ; SOURCE LINE # 59
 0048 7F01              MOV     R7,#01H
 004A 120000      E     LCALL   _PWM0_CTRL_Write
-                                           ; SOURCE LINE # 43
+                                           ; SOURCE LINE # 60
 004D 7F03              MOV     R7,#03H
 004F 120000      E     LCALL   _PWM1_CTRL_Write
-                                           ; SOURCE LINE # 44
-                                           ; SOURCE LINE # 46
+                                           ; SOURCE LINE # 61
+                                           ; SOURCE LINE # 63
 0052         ?C0001:
-                                           ; SOURCE LINE # 48
+                                           ; SOURCE LINE # 65
 0052         ?C0008:
 0052 22                RET     
              ; FUNCTION _LED_on (END)
 
              ; FUNCTION LED_off (BEGIN)
-                                           ; SOURCE LINE # 50
-                                           ; SOURCE LINE # 55
+                                           ; SOURCE LINE # 67
+                                           ; SOURCE LINE # 72
 0000 7F00              MOV     R7,#00H
 0002 120000      E     LCALL   _SOLID_LED_CTRL_Write
-                                           ; SOURCE LINE # 56
+                                           ; SOURCE LINE # 73
 0005 7F00              MOV     R7,#00H
 0007 120000      E     LCALL   _PWM0_CTRL_Write
-                                           ; SOURCE LINE # 57
+                                           ; SOURCE LINE # 74
 000A 7F00              MOV     R7,#00H
 000C 120000      E     LCALL   _PWM1_CTRL_Write
-                                           ; SOURCE LINE # 60
+                                           ; SOURCE LINE # 77
 000F         ?C0009:
 000F 22                RET     
              ; FUNCTION LED_off (END)

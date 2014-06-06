@@ -13,24 +13,6 @@
 
 #ifndef _USB_HANDLER_H_
     #define _USB_HANDLER_H_
-
-    /*
-     * ========================================
-     * Header Files
-     * ========================================
-    */
-    
-    /* C Library Headers */
-    #include <stdlib.h>
-    #include <math.h>
-    
-    /* Cypress Headers */
-    #include "Project.h"
-    
-    /* Project Headers */
-    #include "globals.h"
-    #include "utility.h"
-    #include "sample_handler.h"    
     
     /*
      * ========================================
@@ -76,7 +58,12 @@
     #define TIME_LENGTH 7
     /* TIME_LENGTH is how many bytes out of a RTC_TIME_DATE
      * structure we actually use to store a time stamp when we start
-     * sampling */
+     * sampling
+    */
+    
+    /* Rename Vbus_Read() for readability */
+    #define check_usb_connection() Vbus_Read()
+
     
     /*
      * ========================================
@@ -97,17 +84,6 @@
     */
  
     void Run_USB();
-    uint8 retrieve_from_buffer(uint8* buffer, uint8 num_bytes);
-    void send_reply(uint8 buffer);
-    void send_settings();
-    uint8 apply_settings();
-    uint8 update_settings(struct sampling_settings new_settings);
-    uint8 export_samples();
-    void load_buffer(uint8* ExportBuffer);
-    uint8 wait_for_continue();
-    void confirm_export();
-    uint8 update_RTC();
-    void USB_Close();
     
 #endif /* ifndef _USB_HANDLER_H */
 
