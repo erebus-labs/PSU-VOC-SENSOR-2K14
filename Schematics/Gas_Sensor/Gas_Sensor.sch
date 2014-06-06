@@ -59,10 +59,10 @@
 <library name="figaro">
 <packages>
 <package name="GAS_SENSOR">
-<pad name="P$1" x="0" y="0" drill="0.6" shape="octagon"/>
-<pad name="P$2" x="3.65" y="0" drill="0.6" shape="octagon"/>
-<pad name="P$3" x="0" y="-3.65" drill="0.6" shape="octagon"/>
-<pad name="P$4" x="3.65" y="-3.65" drill="0.6" shape="octagon"/>
+<pad name="P$1" x="0" y="0" drill="0.8" shape="octagon"/>
+<pad name="P$2" x="3.65" y="0" drill="0.8" shape="octagon"/>
+<pad name="P$3" x="0" y="-3.65" drill="0.8" shape="octagon"/>
+<pad name="P$4" x="3.65" y="-3.65" drill="0.8" shape="octagon"/>
 <text x="3.46" y="-1.4" size="0.8128" layer="21">1</text>
 <text x="3.35" y="-2.67" size="0.8128" layer="21">2</text>
 <text x="-0.25" y="-3" size="0.8128" layer="21">3</text>
@@ -6397,8 +6397,8 @@ RJ45 Jack connectors&lt;br&gt;
 <wire x1="99.06" y1="50.8" x2="83.82" y2="50.8" width="0.1524" layer="91"/>
 <pinref part="AGND4" gate="VR1" pin="AGND"/>
 <pinref part="J3" gate="G$1" pin="2"/>
-<wire x1="83.82" y1="48.26" x2="83.82" y2="43.18" width="0.1524" layer="91"/>
-<wire x1="83.82" y1="43.18" x2="83.82" y2="40.64" width="0.1524" layer="91"/>
+<wire x1="83.82" y1="48.26" x2="83.82" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="83.82" y1="45.72" x2="83.82" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="83.82" y1="40.64" x2="83.82" y2="38.1" width="0.1524" layer="91"/>
 <wire x1="83.82" y1="38.1" x2="83.82" y2="33.02" width="0.1524" layer="91"/>
 <wire x1="99.06" y1="48.26" x2="83.82" y2="48.26" width="0.1524" layer="91"/>
@@ -6409,9 +6409,6 @@ RJ45 Jack connectors&lt;br&gt;
 <pinref part="C36" gate="G$1" pin="2"/>
 <wire x1="86.36" y1="38.1" x2="83.82" y2="38.1" width="0.1524" layer="91"/>
 <junction x="83.82" y="38.1"/>
-<pinref part="J3" gate="G$1" pin="4"/>
-<wire x1="99.06" y1="43.18" x2="83.82" y2="43.18" width="0.1524" layer="91"/>
-<junction x="83.82" y="43.18"/>
 <pinref part="X1" gate="GAS" pin="P$4"/>
 <wire x1="78.74" y1="48.26" x2="83.82" y2="48.26" width="0.1524" layer="91"/>
 <wire x1="83.82" y1="48.26" x2="83.82" y2="50.8" width="0.1524" layer="91"/>
@@ -6419,6 +6416,9 @@ RJ45 Jack connectors&lt;br&gt;
 <pinref part="J3" gate="G$1" pin="8"/>
 <wire x1="83.82" y1="33.02" x2="99.06" y2="33.02" width="0.1524" layer="91"/>
 <junction x="83.82" y="33.02"/>
+<pinref part="J3" gate="G$1" pin="3"/>
+<wire x1="99.06" y1="45.72" x2="83.82" y2="45.72" width="0.1524" layer="91"/>
+<junction x="83.82" y="45.72"/>
 </segment>
 <segment>
 <pinref part="X1" gate="GAS" pin="P$1"/>
@@ -6454,11 +6454,12 @@ RJ45 Jack connectors&lt;br&gt;
 <wire x1="99.06" y1="38.1" x2="93.98" y2="38.1" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$26" class="0">
+<net name="N$1" class="0">
 <segment>
-<pinref part="J3" gate="G$1" pin="3"/>
-<wire x1="99.06" y1="45.72" x2="78.74" y2="45.72" width="0.1524" layer="91"/>
+<pinref part="J3" gate="G$1" pin="4"/>
 <pinref part="X1" gate="GAS" pin="P$3"/>
+<wire x1="99.06" y1="43.18" x2="78.74" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="43.18" x2="78.74" y2="45.72" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

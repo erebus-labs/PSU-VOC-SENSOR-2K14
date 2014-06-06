@@ -69,10 +69,10 @@
 <library name="figaro">
 <packages>
 <package name="GAS_SENSOR">
-<pad name="P$1" x="0" y="0" drill="0.6" shape="octagon"/>
-<pad name="P$2" x="3.65" y="0" drill="0.6" shape="octagon"/>
-<pad name="P$3" x="0" y="-3.65" drill="0.6" shape="octagon"/>
-<pad name="P$4" x="3.65" y="-3.65" drill="0.6" shape="octagon"/>
+<pad name="P$1" x="0" y="0" drill="0.8" shape="octagon"/>
+<pad name="P$2" x="3.65" y="0" drill="0.8" shape="octagon"/>
+<pad name="P$3" x="0" y="-3.65" drill="0.8" shape="octagon"/>
+<pad name="P$4" x="3.65" y="-3.65" drill="0.8" shape="octagon"/>
 <text x="3.46" y="-1.4" size="0.8128" layer="21">1</text>
 <text x="3.35" y="-2.67" size="0.8128" layer="21">2</text>
 <text x="-0.25" y="-3" size="0.8128" layer="21">3</text>
@@ -1502,7 +1502,6 @@ Please make sure your boards conform to these design rules.</description>
 <contactref element="J3" pad="2"/>
 <contactref element="C35" pad="2"/>
 <contactref element="C36" pad="2"/>
-<contactref element="J3" pad="4"/>
 <contactref element="X1" pad="P$1"/>
 <contactref element="X1" pad="P$2"/>
 <contactref element="J3" pad="8"/>
@@ -1524,6 +1523,7 @@ Please make sure your boards conform to these design rules.</description>
 <via x="29.21" y="74.93" extent="1-16" drill="0.7" diameter="0.4064"/>
 <via x="15.24" y="69.85" extent="1-16" drill="0.7" diameter="0.4064"/>
 <via x="11.43" y="72.39" extent="1-16" drill="0.7" diameter="0.4064"/>
+<contactref element="J3" pad="3"/>
 </signal>
 <signal name="N$2">
 <contactref element="R30" pad="2"/>
@@ -1549,12 +1549,11 @@ Please make sure your boards conform to these design rules.</description>
 <wire x1="18.415" y1="56.515" x2="19.05" y2="55.88" width="0.8128" layer="1"/>
 <wire x1="19.05" y1="55.88" x2="23.89" y2="55.88" width="0.8128" layer="1"/>
 </signal>
-<signal name="N$26">
-<contactref element="J3" pad="3"/>
+<signal name="N$1">
+<contactref element="J3" pad="4"/>
 <contactref element="X1" pad="P$3"/>
-<wire x1="11.557" y1="60.325" x2="16.51" y2="60.325" width="0.8128" layer="1"/>
-<wire x1="16.51" y1="60.325" x2="17.145" y2="60.96" width="0.8128" layer="1"/>
-<wire x1="17.145" y1="60.96" x2="31.91" y2="60.96" width="0.8128" layer="1"/>
+<wire x1="31.91" y1="60.96" x2="16.002" y2="60.96" width="0.8128" layer="16"/>
+<wire x1="16.002" y1="60.96" x2="14.097" y2="59.055" width="0.8128" layer="16"/>
 </signal>
 </signals>
 </board>
