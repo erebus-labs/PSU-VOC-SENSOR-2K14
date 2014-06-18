@@ -14,7 +14,7 @@
    id="svg3034"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="new box.svg">
+   sodipodi:docname="new box layout.svg">
   <defs
      id="defs3036" />
   <sodipodi:namedview
@@ -24,17 +24,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.60132025"
-     inkscape:cx="475.92692"
-     inkscape:cy="375.93578"
+     inkscape:zoom="0.85039525"
+     inkscape:cx="783.11092"
+     inkscape:cy="270.91128"
      inkscape:document-units="in"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:snap-bbox="true"
-     inkscape:window-width="1680"
-     inkscape:window-height="988"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:window-width="1920"
+     inkscape:window-height="1003"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
      inkscape:window-maximized="1"
      showguides="true"
      inkscape:guide-bbox="true"
@@ -98,13 +98,13 @@
        width="78.75"
        height="67.5"
        x="866.25"
-       y="737.36218" />
+       y="742.98718" />
     <rect
        style="fill:#ffff00;fill-opacity:1;fill-rule:nonzero;stroke:none"
        id="rect6941-5"
        width="56.25"
        height="50.625"
        x="517.5"
-       y="748.61218" />
+       y="754.23718" />
   </g>
 </svg>
