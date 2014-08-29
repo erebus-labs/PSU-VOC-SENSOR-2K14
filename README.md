@@ -9,18 +9,4 @@ The mutli-board solution allows for the independant and decoupled developement o
 
 All of the Hardware and Software developed is available, keeping in mind that future revisions and use must maintain open source licensing.
 
-#Schematics
 
-##Main Board
-![Main Board](/Schematics/LDO/LDO_Layout.png?raw=true "Main Board Schematic")
-
-##Sensor Boards
-![Gas Sensor](/Schematics/Gas_Sensor/Gas_Sensor_layout.png?raw=true "Gas Sensor Schematic")
-
-![Light Sensor](/Schematics/Ligth_Sensor/Light_Sensor_Layout.png?raw=true "Light Sensor Schematic")
-
-#Code
-
-##uC 
-
-##GUI
