@@ -16,6 +16,7 @@ All of the Hardware and Software developed is available, keeping in mind that fu
 
 ##Sensor Boards
 ![Gas Sensor](/Schematics/Gas_Sensor/Gas_Sensor_layout.png?raw=true "Gas Sensor Schematic")
+
 ![Light Sensor](/Schematics/Ligth_Sensor/Light_Sensor_Layout.png?raw=true "Light Sensor Schematic")
 
 #Code
