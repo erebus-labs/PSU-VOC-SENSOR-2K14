@@ -1,7 +1,7 @@
-frack-n-sensor
+PSU VOC SENSOR PROJECT
 ==============
 
-The frack-n-sensor is a multi-board and software approach to sensor data collection, specifically targetting K20 classrooms - All on an open source HW/SW stack.
+The PSU VOC SENSOR PROJECT is a multi-board and software approach to sensor data collection, specifically targetting K20 classrooms - All on an open source HW/SW stack.
 
 The mutli-board solution allows for the independant and decoupled developement of custom sensors, while the open software stack allows custom interpolation of sensor readings. 
 
